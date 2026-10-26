@@ -54,16 +54,17 @@
 #destination-globe { display: block; width: 100%; height: 880px; border: 0; }
 @media (max-width: 639px) { #destination-globe { height: 800px; } }
 
-/* Match the navigation to the destination's night sky only while it is underneath. */
-.cc-header.is-over-destinations { background:#000; backdrop-filter:none; border-bottom-color:#ffffff26; --focus:#FFFCF7; --focus-halo:#000; }
-.cc-header.is-over-destinations .cc-brand,
-.cc-header.is-over-destinations .cc-brand svg,
-.cc-header.is-over-destinations .cc-nav a,
-.cc-header.is-over-destinations .cc-nav button,
-.cc-header.is-over-destinations .cc-menu-btn { color:#FFFCF7; }
-.cc-header.is-over-destinations .cc-nav a::after { background:#FFFCF7; }
-.cc-header.is-over-destinations .cc-nav button:hover { background:#ffffff1f; }
-@media (max-width:860px) { .cc-header.is-over-destinations .cc-navwrap { background:#000; } }
+/* Smoked glass keeps homepage navigation legible over the moving content. */
+body[data-page="home"] { background-color:#000; }
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) { background:rgba(0,0,0,.6); -webkit-backdrop-filter:blur(18px) saturate(1.15); backdrop-filter:blur(18px) saturate(1.15); border-bottom-color:#ffffff26; --color-text:#FFFCF7; --color-primary:#FFFCF7; --line:#ffffff26; --focus:#FFFCF7; --focus-halo:#000; }
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-brand,
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-brand svg,
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-nav a,
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-nav button,
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-menu-btn { color:#FFFCF7; }
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-nav a::after { background:#FFFCF7; }
+:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-nav button:hover { background:#ffffff1f; }
+@media (max-width:860px) { :is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-navwrap { background:rgba(0,0,0,.92); } }
 
 /* Keep the sky on the sticky stage so it stays behind the moving photographs. */
 body[data-page="home"] .hero {
@@ -120,3 +121,10 @@ body[data-page="home"] .cc-footer {
 body[data-page="home"] .cc-footer a:hover,
 body[data-page="home"] .cc-footer-btn:hover { color: #FFFCF7; }
 body[data-page="home"] .cc-footer-mark svg { color: #B28A45; }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body[data-page="home"] .cc-header { background:rgba(0,0,0,.88); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  body[data-page="home"] .cc-header, body[data-page="home"] .cc-navwrap { background:#000; -webkit-backdrop-filter:none; backdrop-filter:none; }
+}
