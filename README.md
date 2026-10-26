@@ -6,13 +6,33 @@ Built with HTML5, CSS, Bootstrap 5.3.3, vanilla JavaScript, inline SVG and GSAP 
 
 ## Open it
 
-- **Simplest:** double-click `index.html`. Everything works from `file://`: data is loaded as plain scripts, fonts and libraries are in the project.
+- Install dependencies with `npm ci` before the first build. Node.js and npm are required; the local development server also uses Python 3.
+- After building, double-click `index.html` for the static content. The globe needs WebGL and internet access for its Earth textures; use the local server for the full experience.
 - **Local server (optional):**
   ```bash
   npm run dev
   ```
-  Then open http://localhost:8765. This rebuilds the data files and serves the folder with `tools/dev-server.py` (Python's built-in server with caching off). Nothing to install. Stop it with Ctrl + C.
-- **Other commands:** `npm run build` rebuilds the data files after a JSON change; `npm run check` runs the content checker.
+  Then open http://localhost:8765. This rebuilds the site and serves the project folder with `tools/dev-server.py` (Python's built-in server with caching off). Stop it with Ctrl + C.
+- **Other commands:** `npm run build` generates data, compiles the React bundles and CSS, validates content, packages the website into `dist/`, and checks local HTML/CSS links. `npm run check` runs the content checker; `npm run check:dist` checks the packaged output.
+
+## Deploy to Vercel
+
+The repository root is the folder containing `package.json` and `vercel.json`
+(named `implementation` in the local workspace). When importing this repository
+from GitHub, leave Root Directory at the repository root (`./`).
+
+`vercel.json` configures Framework Preset **Other**, Install Command `npm ci`,
+Build Command `npm run build`, and Output Directory `dist`. No environment
+variables or backend are required. Push the changes, then redeploy the new commit.
+The build creates `dist` automatically; do not commit that generated directory.
+
+Only root HTML pages, `assets/`, and `vendor/` are published. Existing `.html`
+URLs and query parameters are preserved, including story/scene IDs and country
+selection. No SPA rewrite is needed. Preview the actual deployment output with
+`python3 -m http.server 8765 --directory dist` after building.
+
+The content checker currently reports editorial verification and synthetic-audio
+warnings. These are tracked content limitations, not build failures.
 
 ## Pages
 
