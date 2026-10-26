@@ -1,0 +1,199 @@
+{
+  "$comment": "Home page content. heroGallery = photographs of cultural life around the world that flow across the opening of the home page, in viewing order (assetId = CC.assets id with kind image and group home-gallery; alt text and credit live in assets.json). place names where the photo was taken, only as far as the file page says; never guess a country or community from appearance. These photos do not mean a country has content: only countries listed below do. countries = destinations listed under the opening. status: ready = has a country page (href). Only list a country here once it has real, sourced content: there are no placeholder countries. preview = media shown behind the list when the name is hovered or focused: imageId (required), optional videoId (landscape clips only; played only when motion is allowed and the connection is not in data-saving mode). intro is editorial: what the page covers, not a cultural claim. contexts (per country, optional) = the three places on the home contents page, in order: title and local (Vietnamese name), line (editorial: what our stories there cover, never a cultural claim), imageId + caption (where the photo really is), phraseId (one phrase used there; its status and audio label come from phrases.json), href (the theme on the country page) and sceneId (the optional practice scene).",
+  "heroGallery": [
+    {
+      "assetId": "img-w-kente-ghana",
+      "place": "Ghana"
+    },
+    {
+      "assetId": "img-w-miao-dance-guizhou",
+      "place": "Guizhou, China"
+    },
+    {
+      "assetId": "img-w-alebrije-oaxaca",
+      "place": "San Martín Tilcajete, Oaxaca, Mexico"
+    },
+    {
+      "assetId": "img-w-tshechu-jakar",
+      "place": "Jakar, Bhutan"
+    },
+    {
+      "assetId": "img-w-castellers-vilanova",
+      "place": "Vilanova i la Geltrú, Catalonia, Spain"
+    },
+    {
+      "assetId": "img-w-tandoor-uzbekistan",
+      "place": "Uzbekistan"
+    },
+    {
+      "assetId": "img-w-capoeira-rio",
+      "place": "Engenho da Rainha, Rio de Janeiro, Brazil"
+    },
+    {
+      "assetId": "img-w-theyyam-kerala",
+      "place": "Muzhappilangad, Kerala, India"
+    },
+    {
+      "assetId": "img-w-kukeri-pernik",
+      "place": "Pernik, Bulgaria"
+    },
+    {
+      "assetId": "img-w-coffee-addis-ababa",
+      "place": "Addis Ababa, Ethiopia"
+    },
+    {
+      "assetId": "img-w-hula-merrie-monarch",
+      "place": "Merrie Monarch Festival, Hawaiʻi, United States"
+    },
+    {
+      "assetId": "img-w-nang-yai-ratchaburi",
+      "place": "Wat Khanon, Ratchaburi, Thailand"
+    },
+    {
+      "assetId": "img-w-tbourida-morocco",
+      "place": "Morocco"
+    },
+    {
+      "assetId": "img-w-morenada-oruro",
+      "place": "Oruro, Bolivia"
+    },
+    {
+      "assetId": "img-w-mochi-tenno",
+      "place": "Tenno, Japan"
+    },
+    {
+      "assetId": "img-w-dogon-masks-mali",
+      "place": "Mali"
+    },
+    {
+      "assetId": "img-w-breton-quimper",
+      "place": "Quimper, Brittany, France"
+    },
+    {
+      "assetId": "img-w-batik-cirebon",
+      "place": "Trusmi, Cirebon, Indonesia"
+    },
+    {
+      "assetId": "img-w-ribbon-skirts-montana",
+      "place": "Poplar, Fort Peck Indian Reservation, Montana, United States"
+    },
+    {
+      "assetId": "img-w-eagle-mongolia",
+      "place": "Northern Mongolia"
+    },
+    {
+      "assetId": "img-w-tanoura-egypt",
+      "place": "Egypt"
+    },
+    {
+      "assetId": "img-w-potter-jaura",
+      "place": "Jaura, Madhya Pradesh, India"
+    },
+    {
+      "assetId": "img-w-durbar-kano",
+      "place": "Kano, Nigeria"
+    },
+    {
+      "assetId": "img-w-animas-mexico",
+      "place": "Mexico"
+    },
+    {
+      "assetId": "img-w-nongak-namwon",
+      "place": "Namwon, South Korea"
+    },
+    {
+      "assetId": "img-w-buso-hungary",
+      "place": "Hungary"
+    },
+    {
+      "assetId": "img-w-kapa-haka-zayed",
+      "place": "Zayed College for Girls, New Zealand"
+    },
+    {
+      "assetId": "img-w-loom-lijiang",
+      "place": "Lijiang, Yunnan, China"
+    },
+    {
+      "assetId": "img-w-sabar-senegal",
+      "place": "Toubab Dialaw, Senegal"
+    },
+    {
+      "assetId": "img-w-highland-glasgow",
+      "place": "Glasgow Green, Scotland, United Kingdom"
+    },
+    {
+      "assetId": "img-w-pattachitra-odisha",
+      "place": "Odisha, India"
+    },
+    {
+      "assetId": "img-w-mandingas-cape-verde",
+      "place": "Cape Verde"
+    },
+    {
+      "assetId": "img-w-taiko-matsuyama",
+      "place": "Matsuyama, Japan"
+    },
+    {
+      "assetId": "img-w-cotton-carding-turkey",
+      "place": "Turkey"
+    },
+    {
+      "assetId": "img-w-mask-festival-png",
+      "place": "Papua New Guinea"
+    },
+    {
+      "assetId": "img-w-drum-ghana",
+      "place": "Northern Region, Ghana"
+    }
+  ],
+  "countries": [
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "local": "Việt Nam",
+      "status": "ready",
+      "href": "vietnam.html",
+      "start": "Starting in Hà Nội",
+      "intro": "Family meals, temple visits, street life and the words people use with each other, told through stories set in Hà Nội.",
+      "preview": {
+        "imageId": "img-old-quarter",
+        "caption": "Old Quarter shopfronts, Hà Nội"
+      },
+      "contexts": [
+        {
+          "id": "table",
+          "title": "At the table",
+          "local": "Bên mâm cơm",
+          "line": "Shared dishes, a host who keeps filling your bowl, and what to do with your chopsticks.",
+          "imageId": "img-pho-ga",
+          "caption": "A pavement phở gà stall, Hà Nội",
+          "phraseId": "ph-no",
+          "href": "vietnam.html#food",
+          "sceneId": "sc02"
+        },
+        {
+          "id": "street",
+          "title": "On the street",
+          "local": "Ngoài phố",
+          "line": "Crossing the road, calling someone with “ơi”, and asking before you take a photo.",
+          "imageId": "img-street-central",
+          "caption": "A street in central Hà Nội",
+          "phraseId": "ph-hoiho",
+          "href": "vietnam.html#people",
+          "sceneId": "sc04"
+        },
+        {
+          "id": "temple",
+          "title": "At the temple",
+          "local": "Văn Miếu – Quốc Tử Giám",
+          "line": "What the Temple of Literature asks of visitors, and the stone stelae in its courtyards.",
+          "imageId": "img-garden",
+          "caption": "A stele pavilion at the Temple of Literature, Hà Nội",
+          "phraseId": "ph-chupanh-noi",
+          "href": "vietnam.html#beliefs",
+          "sceneId": "sc03"
+        }
+      ]
+    }
+  ]
+}

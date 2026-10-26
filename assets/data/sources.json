@@ -1,0 +1,148 @@
+{
+  "$comment": "Sources. Each claim, phrase and asset points to these IDs. type: official | site | press | secondary | reference checked: date the page was read for this project.",
+  "sources": [
+    {
+      "id": "VNAT-ETQ",
+      "short": "Vietnam National Authority of Tourism",
+      "title": "Vietnamese etiquette for travellers — vietnam.travel",
+      "org": "Vietnam National Authority of Tourism (official site)",
+      "url": "https://vietnam.travel/things-to-do/vietnamese-etiquette-travellers",
+      "type": "official",
+      "checked": "2026-10-23",
+      "used": "Forms of address, “bạn ơi”, greeting the eldest first, shared meals, passing with both hands or the right hand, hosts serving guests, declining food, toasting with “dô”, shoes and hats at temples, asking before photos.",
+      "limits": "General advice for travellers, no publication date shown. Not specific to Hanoi or to any one household."
+    },
+    {
+      "id": "VMQTG-RULES",
+      "short": "Văn Miếu – Quốc Tử Giám visitor rules",
+      "title": "Visitor information & rules (Nội quy) — vanmieu.gov.vn",
+      "org": "Văn Miếu – Quốc Tử Giám Centre for Cultural and Scientific Activities",
+      "url": "https://vanmieu.gov.vn/vi/introduction/visitor-information",
+      "type": "site",
+      "checked": "2026-10-23",
+      "used": "Respectful dress in worship areas, keeping quiet, not touching or writing on stelae and artefacts, no smoking, ban on superstitious practices, opening hours.",
+      "limits": "In Vietnamese. Does not mention photography or incense; rules can change, so check on the day."
+    },
+    {
+      "id": "MOWCAP-STELAE",
+      "short": "UNESCO Memory of the World (Asia-Pacific)",
+      "title": "Stone stele records of royal examinations of the Lê and Mạc dynasties",
+      "org": "UNESCO Memory of the World Committee for Asia and the Pacific (MOWCAP)",
+      "url": "https://mowcaparchives.org/mwc/inct/detl/92",
+      "type": "reference",
+      "checked": "2026-10-23",
+      "used": "82 surviving stelae of 85, exams 1442–1779, erected 1484–1780, inscribed 2010 (regional) and 2011 (international), they record the names of doctoral laureates.",
+      "limits": "Does not explain the meaning of the turtle bases."
+    },
+    {
+      "id": "VNA-NAMES",
+      "short": "Vietnam Airlines travel guide",
+      "title": "Common Vietnamese names and forms of address",
+      "org": "Vietnam Airlines (travel guide)",
+      "url": "https://www.vietnamairlines.com/en/useful-information/travel-guide/common-vietnam-names",
+      "type": "secondary",
+      "checked": "2026-10-23",
+      "used": "anh / chị / em, cô / chú / bác; a bare first name without a title is often felt to be impolite.",
+      "limits": "Travel-marketing guide, not a linguistic source. Treated as “being verified”."
+    },
+    {
+      "id": "VNNEWS-TEMPLE",
+      "short": "Viet Nam News",
+      "title": "Temple etiquette keeps visitors in sacred harmony",
+      "org": "Viet Nam News",
+      "url": "https://vietnamnews.vn/life-style/expat-corner/1778088/temple-etiquette-keeps-visitors-in-sacred-harmony.html",
+      "type": "press",
+      "checked": "2026-10-23",
+      "used": "Background on covering shoulders and knees and observing quietly at temples.",
+      "limits": "Newspaper feature about temples in general, not about Văn Miếu."
+    },
+    {
+      "id": "LOCALVN-CHOP",
+      "short": "Local Vietnam (travel blog)",
+      "title": "Vietnamese chopstick etiquette: a traveler’s guide",
+      "org": "localvietnam.com",
+      "url": "https://localvietnam.com/culture/cuisine/vietnamese-chopstick/",
+      "type": "secondary",
+      "checked": "2026-10-23",
+      "used": "Chopsticks standing upright in rice recall incense at funerals.",
+      "limits": "Third-party blog. Not confirmed by an official or academic source yet."
+    },
+    {
+      "id": "W3C-DRAG",
+      "short": "W3C — SC 2.5.7 Dragging Movements",
+      "title": "Understanding Success Criterion 2.5.7: Dragging Movements",
+      "org": "W3C WAI",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html",
+      "type": "reference",
+      "checked": "2026-10-16",
+      "used": "Every pointer interaction has a single-click alternative and keyboard support.",
+      "limits": "Design reference only; this prototype does not claim WCAG conformance."
+    },
+    {
+      "id": "W3C-MOTION",
+      "short": "W3C — SC 2.3.3 Animation from Interactions",
+      "title": "Understanding Success Criterion 2.3.3: Animation from Interactions",
+      "org": "W3C WAI",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html",
+      "type": "reference",
+      "checked": "2026-10-16",
+      "used": "Reduce-motion and text-first settings.",
+      "limits": "AAA criterion, used as guidance only."
+    },
+    {
+      "id": "W3C-MEDIA",
+      "short": "W3C — Making Audio and Video Media Accessible",
+      "title": "Making Audio and Video Media Accessible",
+      "org": "W3C WAI",
+      "url": "https://www.w3.org/WAI/media/av/",
+      "type": "reference",
+      "checked": "2026-10-16",
+      "used": "Every audio phrase has a transcript and meaning.",
+      "limits": "Guidance only."
+    },
+    {
+      "id": "VN-LAW-ROAD",
+      "short": "Law on Road Traffic Order and Safety 2024, Art. 30",
+      "title": "Luật Trật tự, an toàn giao thông đường bộ (No. 36/2024/QH15), Điều 30 — Người đi bộ",
+      "org": "National Assembly of Vietnam (law text read on the hethongphapluat.com legal database)",
+      "url": "https://hethongphapluat.com/luat-trat-tu-an-toan-giao-thong-duong-bo-2024/dieu-30",
+      "type": "official",
+      "checked": "2026-10-24",
+      "used": "Art. 30(1)(b): pedestrians may cross only where there are traffic lights, a marked crossing, or a pedestrian bridge or tunnel, and must follow signals; where there are none, they must watch oncoming vehicles, cross only when it is safe and give a hand signal while crossing. In force since 1 January 2025.",
+      "limits": "In Vietnamese. Read on a legal database, not the Official Gazette. The law does not say how far away a crossing has to be before the “no crossing” rule applies."
+    },
+    {
+      "id": "HATINH-FINE",
+      "short": "Hà Tĩnh provincial government portal",
+      "title": "Người đi bộ không ra tín hiệu bằng tay khi sang đường cũng có thể bị phạt",
+      "org": "Cổng Thông tin điện tử tỉnh Hà Tĩnh (republishing Đời sống & Pháp luật)",
+      "url": "https://hatinh.gov.vn/vi/bai-viet/nguoi-di-bo-khong-ra-tin-hieu-bang-tay-khi-sang-duong-cung-co-the-bi-phat",
+      "type": "official",
+      "checked": "2026-10-24",
+      "used": "Crossing without the required hand signal can be fined 150,000–250,000 đồng under Decree 168/2024 (Art. 10).",
+      "limits": "In Vietnamese. A news article on a government portal (15 January 2025), not the decree itself."
+    },
+    {
+      "id": "UK-FCDO-VN",
+      "short": "UK government travel advice",
+      "title": "Vietnam travel advice: safety and security — GOV.UK",
+      "org": "UK Foreign, Commonwealth & Development Office",
+      "url": "https://www.gov.uk/foreign-travel-advice/vietnam/safety-and-security",
+      "type": "official",
+      "checked": "2026-10-24",
+      "used": "Compliance with road laws is poor; be aware of motorcycles approaching as you walk; bag-snatching by thieves on motorcycles is common, so hold bags in front of you or on the side away from the traffic.",
+      "limits": "Written for British travellers to all of Vietnam. Safety advice, not etiquette. No update date shown on the page we read."
+    },
+    {
+      "id": "VCT-ROAD",
+      "short": "Vietcetera",
+      "title": "Vietnam Survival Guide: Road Crossing 101",
+      "org": "Vietcetera (Vietnamese media company), by Quynh Anh, 22 November 2024",
+      "url": "https://vietcetera.com/en/vietnam-survival-guide-road-crossing-101",
+      "type": "secondary",
+      "checked": "2026-10-24",
+      "used": "Walk at a consistent, even pace in a straight line so your next move is predictable; rushing or zigzagging can confuse drivers; if unsure, position yourself behind local pedestrians and move when they do.",
+      "limits": "Lifestyle guide, not official road-safety advice. Treated as “being verified” until an official source says the same."
+    }
+  ]
+}

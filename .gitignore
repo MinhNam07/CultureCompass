@@ -1,0 +1,9 @@
+node_modules/
+assets/globe/
+.DS_Store
+.env
+.env.*
+!.env.example
+.impeccable/
+# Original video footage; the application uses assets instead.
+background-vietnam/

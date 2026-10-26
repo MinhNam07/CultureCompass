@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>About & sources — CultureCompass</title>
+  <meta name="description" content="How CultureCompass content is researched, what it covers and what it does not, every source with its limits, media credits and accessibility notes.">
+  <meta name="theme-color" content="#F4EFE5">
+  <link rel="preload" href="assets/fonts/source-serif-4-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/cc.css">
+  <link rel="stylesheet" href="assets/css/refinements.css">
+  <link rel="stylesheet" href="assets/css/tracing-beam.css">
+</head>
+<body data-page="about">
+  <header id="cc-header"></header>
+  <main id="main" tabindex="-1">
+    <div class="cc-wrap">
+      <header class="page-head">
+        <h1>About CultureCompass</h1>
+        <p class="cc-lead">A guide to understanding a place before you arrive: its everyday life, history, beliefs and language. The idea is to cover many countries over time. Today there is one, Vietnam, and its stories are set in Hà Nội.</p>
+      </header>
+
+      <div class="about-grid cc-section-tight">
+        <section aria-labelledby="method">
+          <h2 id="method">How the content is made</h2>
+          <ul class="about-list">
+            <li>Every cultural point is written from a source and links to it, with the date we read it and that source’s own limits.</li>
+            <li>Official and site-specific sources come first. Points that rest only on a secondary source are labelled <b>Being verified</b> wherever they appear.</li>
+            <li>A place’s written rules (like those of the Temple of Literature) are kept apart from general customs, from law, and from our own tips.</li>
+            <li>Each story says where it applies and how it varies. Where a source is silent, the story says so and suggests asking.</li>
+            <li>We don’t publish themes, stories, countries, interviews or recordings we don’t have. Empty themes say “Not written yet”.</li>
+          </ul>
+        </section>
+        <section aria-labelledby="status-title">
+          <h2 id="status-title">What is here today</h2>
+          <p class="cc-meta">Counted live from the content files.</p>
+          <table class="status-table" id="status-table"><caption class="visually-hidden">Content status</caption><thead><tr><th scope="col">Content</th><th scope="col">Count</th></tr></thead><tbody></tbody></table>
+        </section>
+      </div>
+
+      <div class="about-grid cc-section-tight">
+        <section aria-labelledby="scope">
+          <h2 id="scope">Scope and limits</h2>
+          <ul class="about-list">
+            <li>One destination so far: Vietnam. Stories and scenes are set in Hà Nội and are not a portrait of the whole country.</li>
+            <li>Reading or practising something here doesn’t mean you know a culture. It is a starting point; follow local cues.</li>
+            <li>No legal, visa, health or safety advice beyond what a story quotes. The street story quotes Vietnam’s road law so you know it exists; it is not legal advice.</li>
+            <li>A student UX prototype: no accounts, bookings, AI or tracking. No user testing results are reported here because none have been run yet.</li>
+          </ul>
+        </section>
+        <section aria-labelledby="feedback-types">
+          <h2 id="feedback-types">Feedback in practice scenes</h2>
+          <p>Choices in scenes are never just right or wrong. Feedback uses four kinds, each with an icon and words:</p>
+          <ul class="fb-legend" id="fb-legend"></ul>
+        </section>
+      </div>
+
+      <section class="cc-section-tight" id="sources" aria-labelledby="src-title" tabindex="-1">
+        <div class="cc-rule cc-rule-left" aria-hidden="true"><i></i></div>
+        <h2 id="src-title">Sources</h2>
+        <p class="cc-meta" style="max-width:70ch">Read on the dates shown. They support the content; they are not permission to reuse their text or media.</p>
+        <ul class="src-list" id="src-list"></ul>
+      </section>
+
+      <div class="about-grid cc-section-tight">
+        <section id="credits" aria-labelledby="credits-title" tabindex="-1">
+          <h2 id="credits-title">Media credits</h2>
+          <p class="cc-meta">Photos and video clips are used under their licences, with the changes noted. Captions name the place each one shows.</p>
+          <ul class="about-list" id="credits-list"></ul>
+          <p><b>Fonts:</b> Source Serif 4 (Adobe, Frank Grießhammer) and Be Vietnam Pro (Lâm Bảo, Tony Le, ViệtAnh Nguyễn), both under the SIL Open Font License, self-hosted.</p>
+        </section>
+        <section id="access" aria-labelledby="a11y-title" tabindex="-1">
+          <h2 id="a11y-title">Accessibility</h2>
+          <ul class="about-list">
+            <li>Everything works with a keyboard. Themes can also be walked with the arrow keys; Escape closes an open theme or skips a scene animation.</li>
+            <li>Videos are silent, have a Pause button and a still image, and don’t start on their own when Reduce motion is on (yours or your device’s).</li>
+            <li>Every object in a scene picture also has a labelled button. Text-first mode shows each action as still steps.</li>
+            <li>Every phrase is written out with its meaning; audio never plays on its own and is labelled when it is a computer voice.</li>
+            <li>Status is shown with words and icons, not colour alone. There are no timers.</li>
+          </ul>
+          <p class="cc-meta">These choices follow W3C guidance. The site has not been audited for WCAG conformance, so we don’t claim it.</p>
+        </section>
+      </div>
+
+      <section class="cc-section-tight" aria-labelledby="data-title">
+        <h2 id="data-title">Your data</h2>
+        <p style="max-width:70ch">My collection, the stories you have opened, your place in each scene and your settings are stored only in this browser (localStorage). If the browser blocks storage, the site still works but forgets when you leave. Earlier versions saved “reminder cards”; those move into My collection automatically, and the old record is left in place rather than deleted.</p>
+      </section>
+    </div>
+  </main>
+  <div id="cc-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/stories.js"></script>
+  <script src="assets/data/topics.js"></script>
+  <script src="assets/data/countries.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages.js"></script>
+  <script defer src="assets/tracing-beam/tracing-beam.js"></script>
+</body>
+</html>

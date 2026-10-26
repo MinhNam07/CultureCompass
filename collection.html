@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>My collection — CultureCompass</title>
+  <meta name="description" content="Stories, phrases and reminder cards you saved, kept in this browser only. Printable.">
+  <meta name="theme-color" content="#F4EFE5">
+  <link rel="preload" href="assets/fonts/source-serif-4-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/cc.css">
+  <link rel="stylesheet" href="assets/css/refinements.css">
+  <link rel="stylesheet" href="assets/css/tracing-beam.css">
+</head>
+<body data-page="collection">
+  <header id="cc-header"></header>
+  <main id="main" tabindex="-1">
+    <div class="cc-wrap">
+      <header class="page-head">
+        <div class="sec-head" style="margin-bottom:0">
+          <div>
+            <h1 id="coll-title" tabindex="-1">My collection</h1>
+            <p class="cc-lead">Stories, phrases and reminder cards you saved for your trip, grouped by destination.</p>
+          </div>
+          <button type="button" class="cc-btn cc-btn-quiet no-print" id="coll-print" hidden><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V4h10v5M7 17H4v-7h16v7h-3"/><path d="M7 14h10v6H7z"/></svg>Print or save as PDF</button>
+        </div>
+        <p class="cc-meta no-print" id="coll-storage" style="margin-top:16px">Saved in this browser on this device only. Nothing is sent anywhere, so it won’t appear on your other devices.</p>
+      </header>
+      <p class="visually-hidden" id="coll-msg" role="status" aria-live="polite"></p>
+      <div id="coll-root"></div>
+    </div>
+  </main>
+  <div id="cc-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/stories.js"></script>
+  <script src="assets/data/topics.js"></script>
+  <script src="assets/data/countries.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages.js"></script>
+  <script defer src="assets/tracing-beam/tracing-beam.js"></script>
+</body>
+</html>

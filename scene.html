@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Practise a moment — CultureCompass</title>
+  <meta name="description" content="Practise an everyday moment in Hà Nội: look around, choose what you would do, see what happens and read why.">
+  <meta name="theme-color" content="#F4EFE5">
+  <link rel="preload" href="assets/fonts/source-serif-4-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/cc.css">
+  <link rel="stylesheet" href="assets/css/refinements.css">
+</head>
+<body data-page="scene">
+  <header id="cc-header"></header>
+  <div id="cc-subnav"></div>
+
+  <main id="main" tabindex="-1">
+    <div class="cc-wrap" id="scene-root">
+      <div class="scene-head">
+        <div>
+          <ol class="cc-crumb" aria-label="Breadcrumb">
+            <li><a href="index.html#destinations">Destinations</a></li>
+            <li><a href="vietnam.html">Vietnam</a></li>
+            <li><a href="vietnam.html#practice">Practise a moment</a></li>
+            <li><span aria-current="page" id="scene-crumb">Scene</span></li>
+          </ol>
+          <h1 id="scene-title">Scene</h1>
+          <p class="cc-meta" id="scene-place" style="margin:0"></p>
+        </div>
+        <span id="scene-status" class="cc-tag cc-tag-done" hidden><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>You have practised this before</span>
+      </div>
+
+      <div class="scene-grid-page">
+        <div class="scene-stage">
+          <div id="stage"></div>
+          <div class="scene-stage-tools">
+            <button type="button" class="cc-btn cc-btn-sm on-media-btn" id="btn-skip" hidden>Skip animation</button>
+          </div>
+          <div class="visually-hidden" id="anim-status" aria-live="polite"></div>
+        </div>
+
+        <section class="scene-panel" id="panel" aria-label="Scene steps"></section>
+
+        <div class="scene-objects">
+          <h2 class="h4" id="hs-list-label" style="font:700 1rem/1.3 var(--font-sans);margin-bottom:10px">Look around: objects in this picture</h2>
+          <div class="scene-hs-list" id="hs-list" role="group" aria-labelledby="hs-list-label"></div>
+          <div class="scene-hs-detail" id="hs-detail" aria-live="polite"></div>
+          <p class="scene-scope" id="scene-scope"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="offcanvas offcanvas-end cc-drawer" tabindex="-1" id="story-oc" aria-labelledby="story-title" style="--bs-offcanvas-width: min(92vw, 500px);">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title" id="story-title">Background</h2>
+      <button type="button" class="cc-close" data-bs-dismiss="offcanvas" aria-label="Close background"><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="offcanvas-body" id="story-body"></div>
+  </div>
+
+  <div id="cc-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/stories.js"></script>
+  <script src="assets/data/topics.js"></script>
+  <script src="assets/data/countries.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/scene-engine.js"></script>
+</body>
+</html>

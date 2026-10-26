@@ -1,0 +1,89 @@
+{
+  "$comment": "Culture themes shown on a country page. Each theme belongs to one country and points at existing content by id: storyIds = CC.stories, sceneIds = CC.scenarios (optional practice), phraseIds = CC.phrases. icon = key in CC.icons (svgs.js). status: ready = has at least one story; planned = shown honestly as not written yet (no ids). question is the guiding question for the theme; blurb says what the theme covers here and is editorial, never a cultural claim. aliases = old topic ids from earlier versions, so old links like vietnam.html#topic-greetings still open the right theme. Themes can differ between countries; do not create empty themes just to match another country.",
+  "topics": [
+    {
+      "id": "people",
+      "country": "vietnam",
+      "label": "People & everyday life",
+      "vi": "Đời sống thường ngày",
+      "icon": "greet",
+      "status": "ready",
+      "question": "How do people live, communicate and build relationships?",
+      "blurb": "Arriving at a home, crossing the street, asking before a photo and keeping calm in public, as covered by our Hà Nội sources.",
+      "storyIds": ["st-arrive-home", "st-hand", "st-photo-ask", "st-keep-cool", "st-family-words"],
+      "sceneIds": ["sc01", "sc04"],
+      "phraseIds": ["ph-xinchao-co", "ph-camon", "ph-chupanh-nguoi"],
+      "aliases": ["greetings", "home", "street", "dress"]
+    },
+    {
+      "id": "food",
+      "country": "vietnam",
+      "label": "Food & dining",
+      "vi": "Ăn uống",
+      "icon": "bowl",
+      "status": "ready",
+      "question": "What do food and the table say about this place?",
+      "blurb": "A family dinner: shared dishes, a host who serves you, saying you are full and joining a toast.",
+      "storyIds": ["st-shared-table", "st-host", "st-chop"],
+      "sceneIds": ["sc02"],
+      "phraseIds": ["ph-no", "ph-do", "ph-camon"],
+      "aliases": []
+    },
+    {
+      "id": "history",
+      "country": "vietnam",
+      "label": "History & memory",
+      "vi": "Lịch sử & ký ức",
+      "icon": "stele",
+      "status": "ready",
+      "question": "Which memories and events help explain the present?",
+      "blurb": "One story so far: the stone stelae of the Temple of Literature, from the UNESCO record.",
+      "storyIds": ["st-stelae"],
+      "sceneIds": ["sc03"],
+      "phraseIds": [],
+      "aliases": ["heritage"]
+    },
+    {
+      "id": "arts",
+      "country": "vietnam",
+      "label": "Arts & creativity",
+      "vi": "Nghệ thuật & sáng tạo",
+      "icon": "puppet",
+      "status": "planned",
+      "question": "What do crafts, art and architecture express?",
+      "blurb": "Not written yet. The water puppetry clip on the home page is footage only; we have no sourced story about it yet.",
+      "storyIds": [],
+      "sceneIds": [],
+      "phraseIds": [],
+      "aliases": []
+    },
+    {
+      "id": "beliefs",
+      "country": "vietnam",
+      "label": "Festivals, beliefs & traditions",
+      "vi": "Lễ hội, tín ngưỡng & truyền thống",
+      "icon": "temple",
+      "status": "ready",
+      "question": "What do people remember, believe in and celebrate together?",
+      "blurb": "Visiting a place of worship, and a table habit linked to remembering the dead. Festivals such as Tết are not written yet.",
+      "storyIds": ["st-temple-visit", "st-chop"],
+      "sceneIds": ["sc03"],
+      "phraseIds": ["ph-chupanh-noi"],
+      "aliases": ["sacred", "festivals"]
+    },
+    {
+      "id": "language",
+      "country": "vietnam",
+      "label": "Language & communication",
+      "vi": "Ngôn ngữ & giao tiếp",
+      "icon": "speech",
+      "status": "ready",
+      "question": "How does the way people speak reflect relationships and situations?",
+      "blurb": "Family words instead of “you”, and calling people with “ơi”. The phrasebook has every phrase.",
+      "storyIds": ["st-family-words", "st-oi"],
+      "sceneIds": ["sc01", "sc04"],
+      "phraseIds": ["ph-banoi", "ph-chioi", "ph-noicham", "ph-xungho"],
+      "aliases": []
+    }
+  ]
+}

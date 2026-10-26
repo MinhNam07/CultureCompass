@@ -1,0 +1,317 @@
+{
+  "$comment": "Culture stories: the explanations a traveller can read directly, before or without practising a scene. One record per story, even when it belongs to several topics (topics.json lists story ids). Fields: country = countries.json id; place = where the story is set (never wider than its sources); title; dek = one-sentence opening; imageId = CC.assets image (optional; the related scene illustration is used otherwise); sceneId = optional practice scene; sections = paragraphs, each with claimIds (CC.claims ids) so every sentence can be traced to a source; editorial: true marks a section that only frames scope or sources and makes no cultural claim; appliesTo = honest scope; varies = how it differs by place, family or region, taken from the sources' own limits; phraseIds = CC.phrases ids. Status is never stored here: a story shows 'being verified' when any of its claims is needs_verification.",
+  "stories": [
+    {
+      "id": "st-family-words",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Why use family words with strangers?",
+      "dek": "In Vietnamese, the word you choose for “you” places both people in a relationship.",
+      "sceneId": "sc01",
+      "sections": [
+        {
+          "text": "In Vietnamese, the words for “you” and “I” are often family terms chosen by age and relationship — so a host of your parents’ generation may become “cô” (aunt), and a slightly older man “anh” (older brother). Choosing a term places both people in a relationship, which is why listening for how someone introduces themself is so useful.",
+          "claimIds": ["C-ADDR-FAMILY"]
+        },
+        {
+          "heading": "The terms you will hear most",
+          "text": "Common terms: anh (a man somewhat older than you), chị (a woman somewhat older), em (someone younger), cô, chú and bác (people of your parents’ generation).",
+          "claimIds": ["C-ADDR-TERMS"]
+        },
+        {
+          "heading": "A first name on its own",
+          "text": "Calling someone by their first name alone, without a family term, is often felt to be impolite. A host may well accept it from a guest, but if someone has offered you a term, using it back is the easy choice.",
+          "claimIds": ["C-ADDR-NAME"]
+        },
+        {
+          "heading": "When you are not sure",
+          "text": "“Bạn ơi” is a safe, neutral way to get someone’s attention when you are unsure which term to use. Asking how a person would like to be called is also a respectful way to start.",
+          "claimIds": ["C-BANOI", "N-ASK"]
+        }
+      ],
+      "appliesTo": "Meeting a host family in Hà Nội. The general guidance comes from Vietnam’s national tourism authority; the list of terms comes from a travel guide we are still checking.",
+      "varies": "Terms depend on age and relationship, and families differ. Follow the word a person uses about themself.",
+      "phraseIds": ["ph-xinchao-co", "ph-xungho", "ph-banoi"]
+    },
+    {
+      "id": "st-oi",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Calling people with “ơi”",
+      "dek": "Instead of “excuse me”, people call each other with a family word and a short “ơi”.",
+      "sceneId": "sc04",
+      "imageId": "img-old-quarter",
+      "sections": [
+        {
+          "text": "Instead of “excuse me”, people call each other with a family word that matches the other person’s age, followed by “ơi”: em ơi for someone younger, chị ơi or anh ơi for a woman or man a bit older, cô ơi or chú ơi for someone your aunt’s or uncle’s age, and bà ơi or ông ơi for someone your grandparents’ age.",
+          "claimIds": ["C-CALL-OI"]
+        },
+        {
+          "heading": "The safe choice",
+          "text": "If you are not sure, “bạn ơi” — “hey, friend” — is a safe, neutral choice.",
+          "claimIds": ["C-BANOI"]
+        },
+        {
+          "heading": "Call, don’t point",
+          "text": "Avoid pointing at people, or patting them on the back or head, particularly if they are older than you. Calling with “ơi” does the job a pointed finger might do elsewhere.",
+          "claimIds": ["C-NO-POINT"]
+        }
+      ],
+      "appliesTo": "Shops and streets in Hà Nội. The guidance is general advice for Vietnam from the national tourism authority.",
+      "varies": "Which word fits depends on how old the other person seems to you. When unsure, use “bạn ơi”.",
+      "phraseIds": ["ph-chioi", "ph-banoi", "ph-hoiho"]
+    },
+    {
+      "id": "st-host",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Why does the host keep filling your bowl?",
+      "dek": "Serving a guest is one of the clearest ways a host shows hospitality.",
+      "sceneId": "sc02",
+      "sections": [
+        {
+          "text": "Serving a guest — topping up drinks and choosing the best pieces for their bowl — is one way hosts show hospitality.",
+          "claimIds": ["C-HOST-SERVE"]
+        },
+        {
+          "heading": "Saying you have had enough",
+          "text": "That is also why saying you are full matters: to decline more food, politely say that you are very full. It gives your host a clear, polite signal.",
+          "claimIds": ["C-DECLINE-FULL"]
+        },
+        {
+          "heading": "When you eat out",
+          "text": "If you are invited out to eat, the person who invited you usually pays; otherwise it is often the most senior person.",
+          "claimIds": ["C-WHO-PAYS"]
+        }
+      ],
+      "appliesTo": "A home-cooked family dinner in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
+      "varies": "Restaurants, other families and other regions may differ.",
+      "phraseIds": ["ph-no", "ph-camon"]
+    },
+    {
+      "id": "st-shared-table",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "A table of shared dishes",
+      "dek": "At a family meal the food sits in the middle, and everyone eats from it together.",
+      "sceneId": "sc02",
+      "sections": [
+        {
+          "text": "Meals are shared: dishes are placed in the middle, and each person has a small rice bowl and chopsticks.",
+          "claimIds": ["C-SHARED-MEAL"]
+        },
+        {
+          "heading": "Passing things",
+          "text": "Pass dishes and other items with both hands or with the right hand, not the left. When eating soup, the spoon is held in the left hand.",
+          "claimIds": ["C-PASS-HANDS", "C-SPOON-LEFT"]
+        },
+        {
+          "heading": "Raising a glass",
+          "text": "Drinking is communal: people often raise glasses together and toast with “dô” — said “zo” in the North and “yo” in the South.",
+          "claimIds": ["C-TOAST-DO"]
+        },
+        {
+          "text": "You can join a toast with any drink. Whether you drink alcohol is your choice.",
+          "claimIds": ["N-ANY-DRINK"]
+        }
+      ],
+      "appliesTo": "A home-cooked family meal in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
+      "varies": "Pronunciation of “dô” differs between North and South. Families set their own tables.",
+      "phraseIds": ["ph-do", "ph-no"]
+    },
+    {
+      "id": "st-chop",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Chopsticks and the rice bowl",
+      "dek": "A small habit at the table that some guides link to how the dead are remembered.",
+      "sceneId": "sc02",
+      "sections": [
+        {
+          "text": "Some guides explain that chopsticks standing upright in rice look like the incense sticks placed for the dead, so they are rested across the bowl or on the table instead.",
+          "claimIds": ["C-CHOP-UPRIGHT"]
+        },
+        {
+          "editorial": true,
+          "text": "We have only found this in a travel blog so far, so it is marked as being verified until a stronger source confirms it.",
+          "claimIds": []
+        }
+      ],
+      "appliesTo": "Family meals. The only source so far is a third-party travel blog.",
+      "varies": "Not confirmed for any particular region or family.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-stelae",
+      "country": "vietnam",
+      "place": "Văn Miếu – Quốc Tử Giám, Hà Nội",
+      "title": "The stelae of doctoral laureates",
+      "dek": "Stone records of three centuries of royal examinations, standing in the Temple of Literature.",
+      "sceneId": "sc03",
+      "imageId": "img-stelae",
+      "sections": [
+        {
+          "text": "Each stone stele records the names of people who passed the highest royal examinations. 82 of the original 85 survive. They were erected between 1484 and 1780 for exams held from 1442 to 1779.",
+          "claimIds": ["C-STELAE-FACTS"]
+        },
+        {
+          "heading": "On UNESCO’s registers",
+          "text": "The stelae were added to UNESCO’s Memory of the World registers in 2010 (Asia-Pacific) and 2011 (international).",
+          "claimIds": ["C-STELAE-FACTS"]
+        },
+        {
+          "heading": "Looking, not touching",
+          "text": "The site’s rules ask visitors not to touch, write on or draw on artefacts, stelae or buildings.",
+          "claimIds": ["C-VM-NOTOUCH"]
+        },
+        {
+          "editorial": true,
+          "text": "The UNESCO record does not explain why the stelae stand on stone turtles. That is a good question to ask a guide on the day.",
+          "claimIds": []
+        }
+      ],
+      "appliesTo": "Văn Miếu – Quốc Tử Giám in Hà Nội, using the UNESCO Memory of the World record and the site’s own rules.",
+      "varies": "Specific to this site.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-temple-visit",
+      "country": "vietnam",
+      "place": "Văn Miếu – Quốc Tử Giám, Hà Nội",
+      "title": "Visiting a temple or heritage site",
+      "dek": "What one site’s own rules say, what general temple guidance adds, and where both are silent.",
+      "sceneId": "sc03",
+      "imageId": "img-garden",
+      "sections": [
+        {
+          "heading": "The site’s own rules",
+          "text": "Văn Miếu – Quốc Tử Giám asks visitors to dress respectfully when entering places of worship and to keep quiet in solemn areas. Visitors must not touch, write on or draw on artefacts, stelae or buildings.",
+          "claimIds": ["C-VM-DRESS", "C-VM-QUIET", "C-VM-NOTOUCH"]
+        },
+        {
+          "heading": "General temple guidance",
+          "text": "General guidance for temples in Vietnam is to dress modestly — for example covering shoulders and knees — and to take off hats.",
+          "claimIds": ["C-TEMPLE-COVER"]
+        },
+        {
+          "heading": "Where the rules are silent",
+          "text": "The site’s published rules do not mention photography or incense, so ask staff or look for signs on the day.",
+          "claimIds": ["C-VM-PHOTO-UNKNOWN"]
+        }
+      ],
+      "appliesTo": "Văn Miếu – Quốc Tử Giám, using the rules on its official website (checked October 2026), plus general temple guidance from Viet Nam News and the national tourism authority.",
+      "varies": "Other temples and pagodas have their own rules, and rules can change. Check signs on the day.",
+      "phraseIds": ["ph-chupanh-noi"]
+    },
+    {
+      "id": "st-arrive-home",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Arriving at a family home",
+      "dek": "Shoes at the door, the eldest first, and a host who takes care of you.",
+      "sceneId": "sc01",
+      "sections": [
+        {
+          "text": "Shoes are taken off just outside the door when entering a home. A row of shoes by the door is a useful cue.",
+          "claimIds": ["C-SHOES-HOME"]
+        },
+        {
+          "heading": "Who to greet first",
+          "text": "When visiting a family, greet the eldest family members first and smile at everyone.",
+          "claimIds": ["C-ELDEST"]
+        },
+        {
+          "heading": "Being looked after",
+          "text": "Hosts show hospitality by serving guests, refilling drinks and placing the best pieces of a dish in a guest’s bowl.",
+          "claimIds": ["C-HOST-SERVE"]
+        }
+      ],
+      "appliesTo": "A family homestay in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
+      "varies": "Families and regions differ — follow how your host introduces themself and what they do.",
+      "phraseIds": ["ph-xinchao-co", "ph-camon", "ph-noicham"]
+    },
+    {
+      "id": "st-hand",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Why raise your hand to cross?",
+      "dek": "Vietnam’s road law asks pedestrians for a hand signal where there is no crossing.",
+      "sceneId": "sc04",
+      "imageId": "img-street-central",
+      "sections": [
+        {
+          "text": "Since 1 January 2025, Vietnam’s Law on Road Traffic Order and Safety says pedestrians may cross only where there are traffic lights, a marked crossing, or a pedestrian bridge or tunnel, and must follow the signals.",
+          "claimIds": ["C-ROAD-WHERE"]
+        },
+        {
+          "heading": "Where there is no crossing",
+          "text": "Where there are none, pedestrians must watch the oncoming vehicles, cross only when it is safe and give a hand signal while crossing. Crossing without the required hand signal can be fined 150,000–250,000 đồng under Decree 168/2024.",
+          "claimIds": ["C-ROAD-HAND", "C-ROAD-FINE"]
+        },
+        {
+          "editorial": true,
+          "text": "The law does not say how far away a crossing has to be before you may cross elsewhere. If one is close, use it.",
+          "claimIds": []
+        },
+        {
+          "heading": "Keep watching anyway",
+          "text": "The UK government’s travel advice says compliance with road laws is poor in Vietnam, and tells people on foot to be aware of motorcycles approaching as they walk. It also advises holding your bag in front of you or on the side away from the traffic.",
+          "claimIds": ["C-ROAD-ALERT", "C-BAG-SIDE"]
+        },
+        {
+          "heading": "A steady pace",
+          "text": "A Vietnamese lifestyle guide suggests walking at a steady, even pace in a straight line so riders can predict where you will be, and, if you are unsure, moving with local pedestrians when they cross.",
+          "claimIds": ["C-CROSS-STEADY", "C-CROSS-LOCALS"]
+        }
+      ],
+      "appliesTo": "Crossing rules are national law (Law 36/2024/QH15, read October 2026). Safety advice is from the UK government.",
+      "varies": "Traffic differs from street to street and hour to hour. This is not legal advice.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-photo-ask",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Asking before a photo",
+      "dek": "A street, a stall or a temple can be photogenic. The people in them get a say.",
+      "sceneId": "sc04",
+      "imageId": "img-vendor-blossom",
+      "sections": [
+        {
+          "text": "Always ask before photographing people. If the answer is no, accept it calmly.",
+          "claimIds": ["C-PHOTO-ASK", "C-KEEP-COOL"]
+        },
+        {
+          "heading": "At heritage sites",
+          "text": "At Văn Miếu – Quốc Tử Giám, the site’s published rules do not mention photography, so ask staff or look for signs on the day.",
+          "claimIds": ["C-VM-PHOTO-UNKNOWN"]
+        }
+      ],
+      "appliesTo": "Streets and heritage sites in Hà Nội. The guidance on photographing people is general advice for Vietnam from the national tourism authority.",
+      "varies": "Each person decides for themself; each site may post its own rules.",
+      "phraseIds": ["ph-chupanh-nguoi", "ph-chupanh-noi"]
+    },
+    {
+      "id": "st-keep-cool",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Keeping your cool in public",
+      "dek": "Why a calm reply often works better than a raised voice.",
+      "sceneId": "sc04",
+      "sections": [
+        {
+          "text": "“Saving face” matters. Keep your cool in public and avoid loud arguments or making a scene.",
+          "claimIds": ["C-KEEP-COOL"]
+        },
+        {
+          "heading": "Gestures to avoid",
+          "text": "Avoid pointing at people, or patting them on the back or head, particularly if they are older than you.",
+          "claimIds": ["C-NO-POINT"]
+        }
+      ],
+      "appliesTo": "Public places in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
+      "varies": "General guidance, not a rule. People and situations differ.",
+      "phraseIds": []
+    }
+  ]
+}

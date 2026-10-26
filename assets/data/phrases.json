@@ -1,0 +1,199 @@
+{
+  "$comment": "Phrasebook. Vietnamese text, natural meaning, who to use it with. status: published = wording taken from an official source; needs_verification = composed for this prototype, waiting for a native-speaker check.",
+  "intents": [
+    {
+      "id": "greet",
+      "label": "Greet"
+    },
+    {
+      "id": "attention",
+      "label": "Get attention"
+    },
+    {
+      "id": "ask",
+      "label": "Ask for help"
+    },
+    {
+      "id": "thank",
+      "label": "Thank"
+    },
+    {
+      "id": "decline",
+      "label": "Decline politely"
+    },
+    {
+      "id": "permission",
+      "label": "Ask permission"
+    },
+    {
+      "id": "toast",
+      "label": "Toast"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "ph-xinchao-co",
+      "intent": "greet",
+      "scenes": [
+        "sc01"
+      ],
+      "vi": "Xin chào cô.",
+      "meaning": "Hello (to a woman of your parents’ generation).",
+      "useWith": "A woman who has introduced herself as “cô”, or who is about your parents’ age. Swap “cô” for the word the person uses about themself.",
+      "audioId": "au-xinchao-co",
+      "sourceIds": [
+        "VNAT-ETQ",
+        "VNA-NAMES"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "id": "ph-banoi",
+      "intent": "attention",
+      "scenes": [
+        "sc01",
+        "sc04"
+      ],
+      "vi": "Bạn ơi!",
+      "meaning": "Excuse me! (literally “hey, friend”)",
+      "useWith": "A neutral way to get someone’s attention when you are not sure which family term to use.",
+      "audioId": "au-banoi",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ph-xungho",
+      "intent": "ask",
+      "scenes": [
+        "sc01"
+      ],
+      "vi": "Tôi nên gọi bạn thế nào ạ?",
+      "meaning": "How should I call you?",
+      "useWith": "Anyone you are meeting for the first time. Asking is a respectful choice, not a mistake.",
+      "audioId": "au-xungho",
+      "sourceIds": [],
+      "status": "needs_verification"
+    },
+    {
+      "id": "ph-noicham",
+      "intent": "ask",
+      "scenes": [
+        "sc01",
+        "sc02"
+      ],
+      "vi": "Xin nói chậm hơn được không ạ?",
+      "meaning": "Could you speak more slowly, please?",
+      "useWith": "Anyone, when you did not catch what was said.",
+      "audioId": "au-noicham",
+      "sourceIds": [],
+      "status": "needs_verification"
+    },
+    {
+      "id": "ph-camon",
+      "intent": "thank",
+      "scenes": [
+        "sc01",
+        "sc02",
+        "sc03"
+      ],
+      "vi": "Cảm ơn.",
+      "meaning": "Thank you.",
+      "useWith": "Anyone. You can add the family term after it, for example “Cảm ơn cô”.",
+      "audioId": "au-camon",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ph-no",
+      "intent": "decline",
+      "scenes": [
+        "sc02"
+      ],
+      "vi": "Tôi no rồi, cảm ơn.",
+      "meaning": "I’m full, thank you.",
+      "useWith": "A host who keeps adding food to your bowl. Saying you are full is the polite way to stop.",
+      "audioId": "au-no",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "id": "ph-do",
+      "intent": "toast",
+      "scenes": [
+        "sc02"
+      ],
+      "vi": "Dô!",
+      "meaning": "Cheers!",
+      "say": "“zo” in the North (Hanoi), “yo” in the South",
+      "useWith": "Everyone at the table, when glasses are raised together. You can raise any drink.",
+      "audioId": "au-do",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ph-chupanh-nguoi",
+      "intent": "permission",
+      "scenes": [
+        "sc03",
+        "sc04"
+      ],
+      "vi": "Tôi chụp ảnh bạn được không?",
+      "meaning": "May I take a photo of you?",
+      "useWith": "A person you would like to photograph. Accept “no” with a smile.",
+      "audioId": "au-chupanh-nguoi",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "id": "ph-chupanh-noi",
+      "intent": "permission",
+      "scenes": [
+        "sc03"
+      ],
+      "vi": "Ở đây có được chụp ảnh không ạ?",
+      "meaning": "Is photography allowed here?",
+      "useWith": "Staff or a guide at a temple, museum or heritage site.",
+      "audioId": "au-chupanh-noi",
+      "sourceIds": [],
+      "status": "needs_verification"
+    },
+    {
+      "id": "ph-chioi",
+      "intent": "attention",
+      "scenes": [
+        "sc04"
+      ],
+      "vi": "Chị ơi!",
+      "meaning": "Excuse me! (to a woman a bit older than you; chị means older sister)",
+      "useWith": "A woman who looks a few years older than you: a shopkeeper, a waiter, someone on the street.",
+      "audioId": "au-chioi",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "ph-hoiho",
+      "intent": "ask",
+      "scenes": [
+        "sc04"
+      ],
+      "vi": "Hồ Hoàn Kiếm ở đâu ạ?",
+      "meaning": "Where is Hoàn Kiếm Lake, please?",
+      "useWith": "Anyone you have just called with “ơi”. The “ạ” at the end makes it more polite.",
+      "audioId": "au-hoiho",
+      "sourceIds": [],
+      "status": "needs_verification"
+    }
+  ]
+}

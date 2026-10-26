@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CultureCompass — Understand the place before you arrive</title>
+  <meta name="description" content="Explore the stories, traditions and everyday life behind your next destination. Starting with Vietnam, in Hà Nội.">
+  <meta name="theme-color" content="#302720">
+  <link rel="preload" href="assets/fonts/source-serif-4-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/cc.css?v=20261026-native-scroll">
+  <link rel="stylesheet" href="assets/css/refinements.css">
+  <script>document.documentElement.classList.add('cc-js');</script>
+  <link rel="stylesheet" href="assets/css/tracing-beam.css">
+</head>
+<body data-page="home">
+  <header id="cc-header"></header>
+
+  <main id="main" tabindex="-1">
+    <!-- Opening: photographs of cultural life around the world enter from the right and flow left as the page scrolls.
+         The section is tall and its stage is sticky, so scrolling stays native; home.js only maps scroll position
+         to one GSAP timeline. Without script, or with reduced motion, it reads top to bottom with no pin. -->
+    <section class="hero on-media" id="hero" aria-labelledby="hero-title">
+      <div class="hero-stage" id="hero-stage">
+        <div class="cc-wrap hero-copy" id="hero-copy">
+          <h1 id="hero-title">Understand the place before you arrive.</h1>
+          <p class="hero-sub">Explore the stories, traditions and everyday life behind your next destination.</p>
+          <div class="hero-entry"><a class="cc-btn on-media-btn" href="#destinations">Explore destinations <svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a><p class="hero-scope">Our first destination: Vietnam, starting in Hà Nội.</p></div>
+        </div>
+        <a class="hero-skip" href="#destinations">Skip to destinations <span aria-hidden="true">↓</span></a>
+        <ul class="hero-flow" id="hero-flow" aria-label="Photographs of cultural life around the world"></ul>
+        <div class="cc-wrap hero-end" id="hero-end">
+          <h2 id="hero-end-title">Every place has a story.</h2>
+          <a class="cc-btn on-media-btn hero-cta" href="#destinations" id="hero-explore">Find your first destination <svg class="cc-icon cc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <p class="hero-note">Photos from around the world, <a href="about.html#credits">credited on the About page</a>. Our first destination is Vietnam.</p>
+          <noscript><p class="hero-note"><a href="vietnam.html">Open Vietnam, our first destination</a></p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Isolated globe keeps its Tailwind styles separate from the existing site. -->
+    <section id="destinations" class="globe-destinations" aria-label="Choose a destination" tabindex="-1">
+      <iframe id="destination-globe" src="globe.html?embed=1" title="Choose a destination on the interactive globe" loading="lazy" scrolling="no"></iframe>
+      <noscript><p><a href="vietnam.html">Explore Vietnam, starting in Hà Nội</a></p></noscript>
+    </section>
+
+    <section class="cc-section how-wrap" aria-labelledby="how-title">
+      <div class="cc-wrap">
+        <div class="cc-rule cc-rule-left" aria-hidden="true"><i></i></div>
+        <h2 id="how-title">How a visit works</h2>
+        <ol class="how">
+          <li><h3>Open a theme</h3><p>Food, language, beliefs, everyday life. Each theme opens the stories we have written about it so far, and says when a theme is still empty.</p></li>
+          <li><h3>Read the story behind it</h3><p>Short explanations with their sources, where they apply and how they vary. Points we are still checking are labelled.</p></li>
+          <li><h3>Keep what helps</h3><p>Save stories, phrases and reminder cards to My collection. If you like, practise a moment in a short interactive scene.</p></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <div id="cc-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/stories.js"></script>
+  <script src="assets/data/topics.js"></script>
+  <script src="assets/data/countries.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/home.js?v=20261026-native-scroll"></script>
+  <script defer src="assets/tracing-beam/tracing-beam.js"></script>
+</body>
+</html>

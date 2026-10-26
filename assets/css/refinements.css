@@ -1,0 +1,122 @@
+/* Painted scenes: SVG controls, editorial feedback and a take-away spread. */
+.scene-stage { box-shadow: none; }
+.cc-painted-stage .art-pin-halo { fill: var(--color-surface); opacity: .22; stroke: var(--color-surface); stroke-width: 1; }
+.cc-painted-stage .art-pin-disc { fill: var(--color-surface); stroke: var(--color-text); stroke-width: 1; }
+.cc-painted-stage .art-pin-number { fill: var(--color-text); font: 700 14px var(--font-sans); pointer-events: none; }
+.cc-painted-stage .art-pin:hover .art-pin-disc,
+.cc-painted-stage .art-pin.is-active .art-pin-disc { fill: var(--color-primary); stroke: var(--color-surface); stroke-width: 2; }
+.cc-painted-stage .art-pin:hover .art-pin-number,
+.cc-painted-stage .art-pin.is-active .art-pin-number { fill: var(--color-surface); }
+.cc-painted-stage .art-pin.is-active .art-pin-halo { opacity: .65; }
+.stage-caption { margin: 0; padding: 14px 18px; min-height: 72px; font: 500 .9375rem/1.5 var(--font-sans); background: var(--color-surface); border-top: 1px solid var(--line); }
+.scene-art-credit { margin: 0; padding: 0 18px 14px; color: var(--color-text-secondary); font: 400 .875rem/1.5 var(--font-sans); }
+.hs-index { display: inline-grid; place-items: center; width: 22px; height: 22px; border: 1px solid currentColor; border-radius: 50%; font: 700 .75rem/1 var(--font-sans); flex: none; }
+.scene-hs-list button { min-height: 44px; border-radius: var(--r-sm); }
+.scene-panel[data-phase="feedback"] { padding-top: 22px; }
+.scene-panel .scene-prompt.is-answered { font: 400 1rem/1.5 var(--font-sans); color: var(--color-text-secondary); margin-bottom: 18px; }
+.scene-picked { display: grid; gap: 4px; padding-bottom: 16px; margin: 0; border-bottom: 1px solid var(--line); }
+.scene-picked > span { color: var(--color-text-secondary); font-size: .875rem; }
+.scene-picked strong { font: 600 1.375rem/1.3 var(--font-serif); }
+.scene-panel[data-phase="feedback"] .fb { border: 0; background: none; padding: 0; margin-top: 20px; border-radius: 0; }
+.scene-panel[data-phase="feedback"] .fb p { font-size: 1rem; line-height: 1.6; }
+.scene-next-actions { padding-block: 4px 20px; border-bottom: 1px solid var(--line); }
+.scene-next-actions .cc-btn-quiet { border-color: transparent; padding-inline: 8px; }
+.scene-explanation { margin-top: 18px; font-size: .9375rem; }
+.scene-explanation summary { cursor: pointer; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; min-height: 36px; }
+.scene-beats { padding-left: 22px; margin-top: 12px; }
+.summary-intro { color: var(--color-text-secondary); max-width: 68ch; }
+.summary-layout { display: grid; gap: 32px; margin-top: 28px; }
+.summary-art { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--r-sm); margin-bottom: 24px; }
+.summary-reflection h3 { font-size: 1.375rem; }
+.summary-reflection .about-list { font-size: 1rem; }
+.summary-keep .reminder { border: 1px solid var(--line-strong); box-shadow: none; padding: 28px; }
+.summary-keep .reminder h3 { font-size: 1.75rem; margin-bottom: 24px; }
+.summary-keep .reminder dl { grid-template-columns: 1fr; gap: 8px; font-size: 1rem; }
+.summary-keep .reminder dd + dt { margin-top: 16px; }
+.summary-keep .scene-actions { margin-bottom: 10px; }
+.summary-keep .scene-actions .cc-btn { width: 100%; justify-content: center; }
+.summary-footer { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 12px; }
+@media (min-width: 961px) {
+  .scene-grid-page { grid-template-columns: minmax(0, 1.4fr) minmax(360px, 1fr); }
+  .scene-grid-page.is-summary { grid-template-columns: 1fr; grid-template-areas: 'panel'; }
+  .is-summary > .scene-stage, .is-summary > .scene-objects { display: none; }
+  .is-summary .scene-panel { position: static; background: none; border: 0; padding: 8px 0 32px; }
+  .is-summary #panel-title { font-size: clamp(2rem, 3.2vw, 3rem); max-width: 24ch; }
+  .summary-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .summary-art { max-height: 260px; }
+  .summary-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .summary-footer .scene-related { margin-top: 0; border: 0; }
+}
+.scene-pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Homepage destination globe: the iframe isolates React/Tailwind from Bootstrap. */
+.globe-destinations { position: relative; background: #000; scroll-margin-top: 80px; }
+#destination-globe { display: block; width: 100%; height: 880px; border: 0; }
+@media (max-width: 639px) { #destination-globe { height: 800px; } }
+
+/* Match the navigation to the destination's night sky only while it is underneath. */
+.cc-header.is-over-destinations { background:#000; backdrop-filter:none; border-bottom-color:#ffffff26; --focus:#FFFCF7; --focus-halo:#000; }
+.cc-header.is-over-destinations .cc-brand,
+.cc-header.is-over-destinations .cc-brand svg,
+.cc-header.is-over-destinations .cc-nav a,
+.cc-header.is-over-destinations .cc-nav button,
+.cc-header.is-over-destinations .cc-menu-btn { color:#FFFCF7; }
+.cc-header.is-over-destinations .cc-nav a::after { background:#FFFCF7; }
+.cc-header.is-over-destinations .cc-nav button:hover { background:#ffffff1f; }
+@media (max-width:860px) { .cc-header.is-over-destinations .cc-navwrap { background:#000; } }
+
+/* Keep the sky on the sticky stage so it stays behind the moving photographs. */
+body[data-page="home"] .hero {
+  --hero-ground: #000;
+  --focus-halo: #000;
+}
+body[data-page="home"] .hero-stage {
+  background-image: linear-gradient(#0007, #0007), url('../img/home-stars.svg');
+  background-position: center top;
+  background-size: auto, 1600px 640px;
+  background-repeat: repeat;
+}
+body[data-page="home"] .hero ::selection { background: #F4EFE5; color: #302720; }
+body[data-page="home"] .hero-skip { background: #000; }
+body[data-page="home"] .hero-skip:hover { background: var(--color-surface); }
+
+/* The homepage's reading section continues the destination night sky. */
+body[data-page="home"] .how-wrap,
+body[data-page="home"] #cc-footer {
+  --color-text: #FFFCF7;
+  --color-text-secondary: #D6D2CB;
+  --focus: #FFFCF7;
+  --focus-halo: #000;
+  --line: #fffcf72e;
+  color: var(--color-text);
+  background: #000;
+}
+body[data-page="home"] .how-wrap {
+  position: relative;
+  isolation: isolate;
+}
+body[data-page="home"] .how-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('../img/home-stars.svg') center top / 1600px 640px repeat;
+  opacity: .55;
+}
+body[data-page="home"] .how-wrap .cc-wrap {
+  background: radial-gradient(ellipse at center, #000c 20%, #0000 75%);
+}
+body[data-page="home"] .how p { color: var(--color-text-secondary); }
+body[data-page="home"] .how li { border-top-color: #b28a4573; }
+body[data-page="home"] .how-wrap .cc-rule { color: #b28a458c; }
+body[data-page="home"] .how-wrap ::selection,
+body[data-page="home"] #cc-footer ::selection { background: #F4EFE5; color: #302720; }
+body[data-page="home"] .cc-footer {
+  margin-top: 0;
+  background: #000;
+  border-top-color: #b28a454d;
+}
+body[data-page="home"] .cc-footer a:hover,
+body[data-page="home"] .cc-footer-btn:hover { color: #FFFCF7; }
+body[data-page="home"] .cc-footer-mark svg { color: #B28A45; }

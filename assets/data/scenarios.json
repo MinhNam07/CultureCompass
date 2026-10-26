@@ -1,0 +1,1462 @@
+{
+  "$comment": "Claims and scenarios. Claim kinds: custom (social custom), siteRule (rule of a specific place), history, law (a national law), safety (official safety advice), projectNote (CultureCompass's own advice, not a cultural claim). Claim status: published = supported by the cited source; needs_verification = only a secondary source so far. Each scenario lists storyIds (CC.stories): the culture stories behind the scene, read on story.html or in the scene's Background drawer. A choice's openStory must be one of them.",
+  "claims": [
+    {
+      "id": "C-ADDR-FAMILY",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "People are usually addressed with family terms that reflect age and relationship — younger people like younger siblings, older people like older siblings, aunts, uncles or grandparents."
+    },
+    {
+      "id": "C-ADDR-TERMS",
+      "kind": "custom",
+      "status": "needs_verification",
+      "sourceIds": [
+        "VNA-NAMES"
+      ],
+      "text": "Common terms: anh (a man somewhat older than you), chị (a woman somewhat older), em (someone younger), cô / chú / bác (people of your parents’ generation)."
+    },
+    {
+      "id": "C-ADDR-NAME",
+      "kind": "custom",
+      "status": "needs_verification",
+      "sourceIds": [
+        "VNA-NAMES"
+      ],
+      "text": "Calling someone by their first name alone, without a family term, is often felt to be impolite."
+    },
+    {
+      "id": "C-BANOI",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "“Bạn ơi” is a safe, neutral way to get someone’s attention when you are unsure which term to use."
+    },
+    {
+      "id": "C-ELDEST",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "When visiting a family, greet the eldest family members first and smile at everyone."
+    },
+    {
+      "id": "C-SHOES-HOME",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Shoes are taken off just outside the door when entering a home."
+    },
+    {
+      "id": "C-SHARED-MEAL",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Meals are shared: dishes are placed in the middle, and each person has a small rice bowl and chopsticks."
+    },
+    {
+      "id": "C-PASS-HANDS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Pass dishes and other items with both hands or with the right hand, not the left."
+    },
+    {
+      "id": "C-SPOON-LEFT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "When eating soup, the spoon is held in the left hand."
+    },
+    {
+      "id": "C-HOST-SERVE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Hosts show hospitality by serving guests, refilling drinks and placing the best pieces of a dish in a guest’s bowl."
+    },
+    {
+      "id": "C-DECLINE-FULL",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "To decline more food, politely say that you are very full."
+    },
+    {
+      "id": "C-TOAST-DO",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Drinking is communal: people often raise glasses together and toast with “dô” — said “zo” in the North and “yo” in the South."
+    },
+    {
+      "id": "C-WHO-PAYS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "When eating out, the person who gave the invitation usually pays; otherwise the most senior person does."
+    },
+    {
+      "id": "C-CHOP-UPRIGHT",
+      "kind": "custom",
+      "status": "needs_verification",
+      "sourceIds": [
+        "LOCALVN-CHOP"
+      ],
+      "text": "Chopsticks left standing upright in a bowl of rice can recall the incense sticks used at funerals, so rest them across the bowl or on the table."
+    },
+    {
+      "id": "C-VM-DRESS",
+      "kind": "siteRule",
+      "status": "published",
+      "sourceIds": [
+        "VMQTG-RULES"
+      ],
+      "text": "Văn Miếu – Quốc Tử Giám asks visitors to dress respectfully when entering places of worship."
+    },
+    {
+      "id": "C-TEMPLE-COVER",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNNEWS-TEMPLE",
+        "VNAT-ETQ"
+      ],
+      "text": "General guidance for temples in Vietnam is to dress modestly — for example covering shoulders and knees — and to take off hats."
+    },
+    {
+      "id": "C-VM-QUIET",
+      "kind": "siteRule",
+      "status": "published",
+      "sourceIds": [
+        "VMQTG-RULES"
+      ],
+      "text": "Visitors are asked to keep quiet in solemn areas."
+    },
+    {
+      "id": "C-VM-NOTOUCH",
+      "kind": "siteRule",
+      "status": "published",
+      "sourceIds": [
+        "VMQTG-RULES"
+      ],
+      "text": "Visitors must not touch, write on or draw on artefacts, stelae or buildings."
+    },
+    {
+      "id": "C-VM-PHOTO-UNKNOWN",
+      "kind": "siteRule",
+      "status": "published",
+      "sourceIds": [
+        "VMQTG-RULES"
+      ],
+      "text": "The site’s published rules do not mention photography or incense, so ask staff or look for signs on the day."
+    },
+    {
+      "id": "C-PHOTO-ASK",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Always ask before photographing people."
+    },
+    {
+      "id": "C-STELAE-FACTS",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "MOWCAP-STELAE"
+      ],
+      "text": "82 of the original 85 stone stelae survive. Erected between 1484 and 1780, they record the names of doctoral laureates of royal examinations held from 1442 to 1779, and were added to UNESCO’s Memory of the World registers in 2010 (Asia-Pacific) and 2011 (international)."
+    },
+    {
+      "id": "N-ASK",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "When you are not sure, asking is always a respectful option."
+    },
+    {
+      "id": "N-ANY-DRINK",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "You can join a toast with any drink. Whether you drink alcohol is your choice."
+    },
+    {
+      "id": "C-ROAD-WHERE",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VN-LAW-ROAD"
+      ],
+      "text": "Vietnam’s road traffic law (in force since 1 January 2025) says pedestrians may cross only where there are traffic lights, a marked crossing, or a pedestrian bridge or tunnel, and must follow the signals."
+    },
+    {
+      "id": "C-ROAD-HAND",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VN-LAW-ROAD"
+      ],
+      "text": "Where there is no light, marked crossing, bridge or tunnel, the law says pedestrians must watch the oncoming vehicles, cross only when it is safe, and give a hand signal while crossing."
+    },
+    {
+      "id": "C-ROAD-FINE",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "HATINH-FINE"
+      ],
+      "text": "Crossing without the required hand signal can be fined 150,000–250,000 đồng under Decree 168/2024."
+    },
+    {
+      "id": "C-ROAD-ALERT",
+      "kind": "safety",
+      "status": "published",
+      "sourceIds": [
+        "UK-FCDO-VN"
+      ],
+      "text": "The UK government’s travel advice says compliance with road laws is poor in Vietnam, and tells people on foot to be aware of motorcycles approaching as they walk."
+    },
+    {
+      "id": "C-BAG-SIDE",
+      "kind": "safety",
+      "status": "published",
+      "sourceIds": [
+        "UK-FCDO-VN"
+      ],
+      "text": "Bag-snatching by thieves on motorcycles is common, so hold your bag in front of you or on the side away from the traffic."
+    },
+    {
+      "id": "C-CROSS-STEADY",
+      "kind": "safety",
+      "status": "needs_verification",
+      "sourceIds": [
+        "VCT-ROAD"
+      ],
+      "text": "Walk at a steady, even pace in a straight line so riders can predict where you will be. Rushing or zigzagging between motorbikes can confuse them."
+    },
+    {
+      "id": "C-CROSS-LOCALS",
+      "kind": "safety",
+      "status": "needs_verification",
+      "sourceIds": [
+        "VCT-ROAD"
+      ],
+      "text": "If you are unsure, stand with local pedestrians who are about to cross and move when they do."
+    },
+    {
+      "id": "C-CALL-OI",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "People rarely say “excuse me” to get attention. They call the person with the word that fits their age plus “ơi”: em ơi (younger than you), chị ơi or anh ơi (a woman or man a bit older), cô ơi or chú ơi (your aunt’s or uncle’s age), bà ơi or ông ơi (your grandparents’ age)."
+    },
+    {
+      "id": "C-NO-POINT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Avoid pointing at people, or patting them on the back or head, particularly if they are older than you."
+    },
+    {
+      "id": "C-KEEP-COOL",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "“Saving face” matters. Keep your cool in public and avoid loud arguments or making a scene."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "sc01",
+      "order": 1,
+      "topic": "Meeting people",
+      "title": "Meeting your homestay host",
+      "place": "A family-run homestay, Hà Nội",
+      "goal": "Greet your host, ask for help when you don’t understand, and greet the family.",
+      "context": "You have just arrived at a small family homestay in Hà Nội. Your host is waiting at the door, and her family is in the living room.",
+      "scope": "A family homestay in Hà Nội. Families and regions differ — follow how your host introduces themself.",
+      "minutes": 4,
+      "svg": "svg-sc01",
+      "hotspots": [
+        {
+          "id": "hs-host",
+          "label": "Your host",
+          "claimIds": [
+            "C-ADDR-FAMILY"
+          ],
+          "text": "She introduces herself with a family term — “cô” — rather than just her name. Listening for that word tells you what to call her."
+        },
+        {
+          "id": "hs-shoes",
+          "label": "Shoes by the door",
+          "claimIds": [
+            "C-SHOES-HOME"
+          ],
+          "text": "Shoes are taken off just outside the door of a home. A row of shoes is a useful cue."
+        },
+        {
+          "id": "hs-family",
+          "label": "Family in the living room",
+          "claimIds": [
+            "C-ELDEST"
+          ],
+          "text": "Her mother and her son are inside. Visitors usually greet the eldest first."
+        }
+      ],
+      "steps": [
+        {
+          "id": "s1",
+          "highlight": [
+            "hs-host"
+          ],
+          "prompt": "Your host smiles and says: “Welcome! I’m cô Lan.” How do you greet her?",
+          "cue": "Tip: listen to the word she uses before her name.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Say “Xin chào cô.”",
+              "type": "fit",
+              "anim": "bow",
+              "feedback": "She called herself “cô”, so using the same word back is a natural fit. Family terms like this are how people are usually addressed.",
+              "claimIds": [
+                "C-ADDR-FAMILY"
+              ],
+              "phraseIds": [
+                "ph-xinchao-co"
+              ],
+              "stills": [
+                "You face cô Lan",
+                "A small nod as you say “Xin chào cô”"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Say “Hi, Lan!”",
+              "type": "needInfo",
+              "anim": "wave",
+              "feedback": "She may well accept this from a guest, but a first name on its own is often felt to be impolite. She offered “cô”, so that is the easy choice here.",
+              "claimIds": [
+                "C-ADDR-NAME"
+              ],
+              "phraseIds": [
+                "ph-xinchao-co"
+              ],
+              "stills": [
+                "You wave",
+                "You say her first name only"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Ask how she would like to be called",
+              "type": "alsoFit",
+              "anim": "ask",
+              "feedback": "Asking is a respectful way to start, especially with a family term you have not heard before.",
+              "claimIds": [
+                "N-ASK"
+              ],
+              "phraseIds": [
+                "ph-xungho"
+              ],
+              "stills": [
+                "You pause",
+                "You ask how to call her"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "highlight": [
+            "hs-shoes"
+          ],
+          "prompt": "Cô Lan explains the house rules quickly in Vietnamese. You only catch part of it. What do you do?",
+          "cue": "Look around the doorway for clues.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Ask her to speak more slowly",
+              "type": "fit",
+              "anim": "ask",
+              "feedback": "Asking her to slow down is clear and polite, and you won’t miss anything important.",
+              "claimIds": [
+                "N-ASK"
+              ],
+              "phraseIds": [
+                "ph-noicham"
+              ],
+              "stills": [
+                "You raise a hand slightly",
+                "You ask her to speak more slowly"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Point at the shoes and check",
+              "type": "alsoFit",
+              "anim": "shoes",
+              "feedback": "Gestures help when words don’t. Shoes are taken off just outside the door, and the row of shoes is your cue.",
+              "claimIds": [
+                "C-SHOES-HOME"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You point to the shoes",
+                "You take yours off and leave them outside"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Nod and smile as if you understood",
+              "type": "needInfo",
+              "anim": "nod",
+              "feedback": "Smiling is kind, but you might miss something practical, like where shoes go. Asking costs nothing here.",
+              "claimIds": [
+                "N-ASK",
+                "C-SHOES-HOME"
+              ],
+              "phraseIds": [
+                "ph-noicham"
+              ],
+              "stills": [
+                "You nod",
+                "The shoes are still on"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "highlight": [
+            "hs-family"
+          ],
+          "prompt": "Inside, cô Lan’s elderly mother and her teenage son look up. Who do you greet first?",
+          "cue": "Think about age.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "The grandmother",
+              "type": "fit",
+              "anim": "greetElder",
+              "feedback": "Visitors are advised to greet the eldest family members first, then smile at everyone.",
+              "claimIds": [
+                "C-ELDEST"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You turn to the grandmother",
+                "You greet her first, then the others"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "The son, who is closest to you",
+              "type": "needInfo",
+              "anim": "greetSon",
+              "feedback": "It is natural to greet the nearest person, but the usual guidance is to start with the eldest.",
+              "claimIds": [
+                "C-ELDEST"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You turn to the son",
+                "The grandmother is greeted last"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Wave to everyone at once",
+              "type": "needInfo",
+              "anim": "wave",
+              "feedback": "A smile for everyone is welcome — just start with a greeting for the grandmother.",
+              "claimIds": [
+                "C-ELDEST"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You wave to the room"
+              ]
+            }
+          ]
+        }
+      ],
+      "storyIds": [
+        "st-family-words",
+        "st-arrive-home"
+      ],
+      "summary": [
+        {
+          "text": "Use the family term your host gives you, such as “cô”.",
+          "claimIds": [
+            "C-ADDR-FAMILY"
+          ]
+        },
+        {
+          "text": "If you don’t understand, ask — “Xin nói chậm hơn được không ạ?”",
+          "claimIds": [
+            "N-ASK"
+          ]
+        },
+        {
+          "text": "Take shoes off outside the door, and greet the eldest first.",
+          "claimIds": [
+            "C-SHOES-HOME",
+            "C-ELDEST"
+          ]
+        }
+      ],
+      "reminder": {
+        "id": "rc-sc01",
+        "title": "Meeting a host family",
+        "action": "Use the family term the person gives you. If unsure, ask, or use “bạn ơi” to get attention.",
+        "phraseIds": [
+          "ph-xinchao-co",
+          "ph-noicham"
+        ],
+        "note": "Applies to a family homestay in Hà Nội. Terms depend on age and relationship, and families differ.",
+        "claimIds": [
+          "C-ADDR-FAMILY",
+          "C-BANOI",
+          "C-ELDEST"
+        ]
+      }
+    },
+    {
+      "id": "sc02",
+      "order": 2,
+      "topic": "Eating together",
+      "title": "Family dinner with shared dishes",
+      "place": "A home-cooked dinner, Hà Nội",
+      "goal": "Recognise a shared meal, pass food politely, accept or decline more food, and join a toast.",
+      "context": "Cô Lan’s family has invited you to dinner. Dishes are in the middle of the table and everyone has a small rice bowl.",
+      "scope": "A home-cooked family dinner in Hà Nội. Restaurants, other families and other regions may differ.",
+      "minutes": 5,
+      "svg": "svg-sc02",
+      "hotspots": [
+        {
+          "id": "hs-bowl",
+          "label": "Your rice bowl",
+          "claimIds": [
+            "C-SHARED-MEAL"
+          ],
+          "text": "Each person has a small rice bowl. You take food from the shared dishes into your own bowl."
+        },
+        {
+          "id": "hs-dish",
+          "label": "Shared dishes",
+          "claimIds": [
+            "C-SHARED-MEAL"
+          ],
+          "text": "Dishes sit in the middle for everyone to share."
+        },
+        {
+          "id": "hs-chop",
+          "label": "Chopsticks",
+          "claimIds": [
+            "C-CHOP-UPRIGHT"
+          ],
+          "text": "When you pause, rest your chopsticks across the bowl or on the table rather than standing them in the rice."
+        },
+        {
+          "id": "hs-spoon",
+          "label": "Soup and spoon",
+          "claimIds": [
+            "C-SPOON-LEFT"
+          ],
+          "text": "Guidance for travellers: hold the soup spoon in your left hand."
+        },
+        {
+          "id": "hs-glass",
+          "label": "Your glass",
+          "claimIds": [
+            "C-TOAST-DO"
+          ],
+          "text": "Glasses are often raised together during the meal."
+        }
+      ],
+      "steps": [
+        {
+          "id": "s1",
+          "highlight": [
+            "hs-dish"
+          ],
+          "prompt": "The grandmother asks you to pass her the plate of greens. How do you pass it?",
+          "cue": "Your left hand is closest to the plate.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Lift it with both hands",
+              "type": "fit",
+              "anim": "passBoth",
+              "feedback": "Passing with both hands is polite and careful, especially to an elder.",
+              "claimIds": [
+                "C-PASS-HANDS"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Both hands hold the plate",
+                "You pass it across to her"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Pass it with your right hand",
+              "type": "alsoFit",
+              "anim": "passRight",
+              "feedback": "The right hand also works. Both hands or the right hand are the usual choices.",
+              "claimIds": [
+                "C-PASS-HANDS"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Right hand holds the plate",
+                "You pass it across"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Pass it with your left hand — it’s closer",
+              "type": "needInfo",
+              "anim": "passLeft",
+              "feedback": "Handy, but travellers are advised to pass things with both hands or the right hand, not the left. Next time, reach over with your right.",
+              "claimIds": [
+                "C-PASS-HANDS"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Left hand holds the plate",
+                "Try both hands or the right hand instead"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "highlight": [
+            "hs-bowl"
+          ],
+          "prompt": "Cô Lan places a piece of fish in your bowl — then another. What do you do?",
+          "cue": "Think about what she is showing you.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Eat it and say “Cảm ơn”",
+              "type": "fit",
+              "anim": "hostServe",
+              "feedback": "Serving you the best pieces is a way of showing hospitality. Thanking her is a warm response.",
+              "claimIds": [
+                "C-HOST-SERVE"
+              ],
+              "phraseIds": [
+                "ph-camon"
+              ],
+              "stills": [
+                "Fish arrives in your bowl",
+                "You thank her and eat"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "You’re full — say so politely",
+              "type": "alsoFit",
+              "anim": "decline",
+              "feedback": "That’s fine too. Saying you are very full is the polite way to stop more food arriving.",
+              "claimIds": [
+                "C-DECLINE-FULL"
+              ],
+              "phraseIds": [
+                "ph-no"
+              ],
+              "stills": [
+                "You gently raise a hand",
+                "You say you are full and thank her"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Leave the food in your bowl and say nothing",
+              "type": "needInfo",
+              "anim": "leave",
+              "feedback": "She may keep adding food, thinking you are being shy. A simple “I’m full, thank you” makes it clear.",
+              "claimIds": [
+                "C-HOST-SERVE",
+                "C-DECLINE-FULL"
+              ],
+              "phraseIds": [
+                "ph-no"
+              ],
+              "stills": [
+                "The food stays in the bowl",
+                "More food may arrive"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "highlight": [
+            "hs-glass"
+          ],
+          "prompt": "The family raise their glasses together. What do you do?",
+          "cue": "You can join with any drink.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Raise your glass and say “Dô!”",
+              "type": "fit",
+              "anim": "toast",
+              "feedback": "Joining in is part of the shared meal. In Hà Nội you will hear “dô” said like “zo”.",
+              "claimIds": [
+                "C-TOAST-DO"
+              ],
+              "phraseIds": [
+                "ph-do"
+              ],
+              "stills": [
+                "Everyone raises a glass",
+                "Together: “Dô!”"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Raise your glass of water",
+              "type": "alsoFit",
+              "anim": "toast",
+              "feedback": "You can join the moment with any drink — it is the shared gesture that counts here.",
+              "claimIds": [
+                "N-ANY-DRINK",
+                "C-TOAST-DO"
+              ],
+              "phraseIds": [
+                "ph-do"
+              ],
+              "stills": [
+                "You raise your water",
+                "Together: “Dô!”"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Keep your glass on the table",
+              "type": "needInfo",
+              "anim": "none",
+              "feedback": "Nobody will force you, but toasts are a shared moment. You can join with water or any other drink.",
+              "claimIds": [
+                "C-TOAST-DO",
+                "N-ANY-DRINK"
+              ],
+              "phraseIds": [
+                "ph-do"
+              ],
+              "stills": [
+                "Your glass stays down"
+              ]
+            }
+          ]
+        }
+      ],
+      "storyIds": [
+        "st-host",
+        "st-shared-table",
+        "st-chop"
+      ],
+      "summary": [
+        {
+          "text": "Food is shared from the middle into your own rice bowl.",
+          "claimIds": [
+            "C-SHARED-MEAL"
+          ]
+        },
+        {
+          "text": "Pass dishes with both hands or the right hand.",
+          "claimIds": [
+            "C-PASS-HANDS"
+          ]
+        },
+        {
+          "text": "A host serving you is hospitality — thank them, or say you’re full.",
+          "claimIds": [
+            "C-HOST-SERVE",
+            "C-DECLINE-FULL"
+          ]
+        }
+      ],
+      "reminder": {
+        "id": "rc-sc02",
+        "title": "Sharing a family meal",
+        "action": "Pass dishes with both hands or the right hand. Say “Tôi no rồi, cảm ơn” when you have had enough.",
+        "phraseIds": [
+          "ph-no",
+          "ph-do"
+        ],
+        "note": "Applies to a home-cooked family meal in Hà Nội. Join toasts with any drink.",
+        "claimIds": [
+          "C-PASS-HANDS",
+          "C-DECLINE-FULL",
+          "C-TOAST-DO"
+        ]
+      }
+    },
+    {
+      "id": "sc03",
+      "order": 3,
+      "topic": "Temples & heritage",
+      "title": "Visiting the Temple of Literature",
+      "place": "Văn Miếu – Quốc Tử Giám, Hà Nội",
+      "goal": "Prepare for the site’s rules, treat the stelae with care, and decide what to do about photos in a worship area.",
+      "context": "Văn Miếu – Quốc Tử Giám is a temple dedicated to Confucius and a historic centre of learning. It is both a heritage site and a place where people still come to worship.",
+      "scope": "Văn Miếu – Quốc Tử Giám, Hà Nội, using the rules on its official website (checked October 2026). Other temples and pagodas have their own rules.",
+      "minutes": 5,
+      "svg": "svg-sc03",
+      "hotspots": [
+        {
+          "id": "hs-sign",
+          "label": "Rules board at the gate",
+          "claimIds": [
+            "C-VM-DRESS",
+            "C-VM-QUIET",
+            "C-VM-NOTOUCH"
+          ],
+          "text": "The site’s rules ask for respectful dress in worship areas, quiet in solemn areas, and no touching or writing on stelae or artefacts."
+        },
+        {
+          "id": "hs-stelae",
+          "label": "Stelae on stone turtles",
+          "claimIds": [
+            "C-STELAE-FACTS",
+            "C-VM-NOTOUCH"
+          ],
+          "text": "Stone stelae recording the names of doctoral laureates. They are protected: look, don’t touch."
+        },
+        {
+          "id": "hs-hall",
+          "label": "Worship hall",
+          "claimIds": [
+            "C-VM-QUIET",
+            "C-VM-PHOTO-UNKNOWN"
+          ],
+          "text": "People come here to worship. Keep your voice low. The published rules don’t mention photography — ask staff."
+        },
+        {
+          "id": "hs-staff",
+          "label": "Staff member",
+          "claimIds": [
+            "C-VM-PHOTO-UNKNOWN"
+          ],
+          "text": "Staff can tell you what is allowed today."
+        }
+      ],
+      "steps": [
+        {
+          "id": "s1",
+          "highlight": [
+            "hs-sign"
+          ],
+          "prompt": "It’s a hot day and you’re wearing a tank top and shorts. You reach the gate. What do you do?",
+          "cue": "Read the rules board.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Put on the shirt with sleeves and long trousers you brought",
+              "type": "fit",
+              "anim": "dress",
+              "feedback": "The site asks for respectful dress in places of worship. Covering shoulders and knees, and taking off your hat, follows general temple guidance too.",
+              "claimIds": [
+                "C-VM-DRESS",
+                "C-TEMPLE-COVER"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Tank top and shorts",
+                "Sleeved shirt and long trousers, hat off"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Ask the staff what is acceptable",
+              "type": "alsoFit",
+              "anim": "askStaff",
+              "feedback": "A good idea when you are unsure. The written rule says “respectful dress” without a detailed list, so staff can tell you what that means today.",
+              "claimIds": [
+                "C-VM-DRESS",
+                "N-ASK"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You walk to the staff member",
+                "You ask about clothing"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Go in as you are — you’ll stay outside the halls",
+              "type": "seeGuide",
+              "anim": "none",
+              "feedback": "The rules ask for respectful dress in worship areas. Coming prepared means you can see every part of the site.",
+              "claimIds": [
+                "C-VM-DRESS"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You walk in as you are"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "highlight": [
+            "hs-stelae"
+          ],
+          "prompt": "In the stelae courtyard, you’d love a photo with your hand on a turtle’s head.",
+          "cue": "Check what the rules say about stelae.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Take the photo without touching",
+              "type": "fit",
+              "anim": "photoNoTouch",
+              "feedback": "The site’s rules say not to touch, write on or draw on stelae and artefacts. A photo from a step away works well.",
+              "claimIds": [
+                "C-VM-NOTOUCH"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You step back",
+                "Photo taken — hands to yourself"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Touch it — other people seem to",
+              "type": "seeGuide",
+              "anim": "touch",
+              "feedback": "What others do doesn’t change the rule: visitors must not touch stelae or artefacts. Rules like this protect them for future visitors.",
+              "claimIds": [
+                "C-VM-NOTOUCH"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Your hand reaches out",
+                "The rule says: don’t touch"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Find out what the stelae are first",
+              "type": "alsoFit",
+              "anim": "read",
+              "openStory": "st-stelae",
+              "feedback": "Good instinct. These stelae are part of UNESCO’s Memory of the World — open “Behind this” to learn more.",
+              "claimIds": [
+                "C-STELAE-FACTS"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You read about the stelae"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "highlight": [
+            "hs-hall",
+            "hs-staff"
+          ],
+          "prompt": "In the worship hall, people are offering incense. You would like a photo. What do you do?",
+          "cue": "The published rules don’t mention photography.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Ask the staff: “Is photography allowed here?”",
+              "type": "fit",
+              "anim": "askStaff",
+              "feedback": "The site’s published rules don’t cover photography, so asking is the reliable way to know. Staff can also tell you about any signs or exceptions.",
+              "claimIds": [
+                "C-VM-PHOTO-UNKNOWN"
+              ],
+              "phraseIds": [
+                "ph-chupanh-noi"
+              ],
+              "stills": [
+                "You find a staff member",
+                "You ask about photos"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Watch quietly from the side",
+              "type": "alsoFit",
+              "anim": "watch",
+              "feedback": "Observing quietly is always an option, and it keeps solemn areas calm for people who are worshipping.",
+              "claimIds": [
+                "C-VM-QUIET"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You stand to one side",
+                "You watch without disturbing anyone"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Photograph the people praying",
+              "type": "needInfo",
+              "anim": "photoPeople",
+              "feedback": "We can’t say the site forbids photos — its rules don’t mention them — but photographing people needs their permission, and worship areas should stay quiet.",
+              "claimIds": [
+                "C-VM-PHOTO-UNKNOWN",
+                "C-PHOTO-ASK",
+                "C-VM-QUIET"
+              ],
+              "phraseIds": [
+                "ph-chupanh-nguoi",
+                "ph-chupanh-noi"
+              ],
+              "stills": [
+                "You raise your camera",
+                "Ask first — staff, and the people themselves"
+              ]
+            }
+          ]
+        }
+      ],
+      "storyIds": [
+        "st-temple-visit",
+        "st-stelae"
+      ],
+      "summary": [
+        {
+          "text": "Dress respectfully for worship areas — bring a layer.",
+          "claimIds": [
+            "C-VM-DRESS",
+            "C-TEMPLE-COVER"
+          ]
+        },
+        {
+          "text": "Don’t touch the stelae or other artefacts.",
+          "claimIds": [
+            "C-VM-NOTOUCH"
+          ]
+        },
+        {
+          "text": "Photo rules aren’t published — ask staff, and ask people before photographing them.",
+          "claimIds": [
+            "C-VM-PHOTO-UNKNOWN",
+            "C-PHOTO-ASK"
+          ]
+        }
+      ],
+      "reminder": {
+        "id": "rc-sc03",
+        "title": "Visiting Văn Miếu – Quốc Tử Giám",
+        "action": "Dress respectfully, keep quiet in the halls, don’t touch the stelae, and ask staff about photos.",
+        "phraseIds": [
+          "ph-chupanh-noi"
+        ],
+        "note": "Applies to Văn Miếu – Quốc Tử Giám (rules checked October 2026). Check signs on the day; other temples differ.",
+        "claimIds": [
+          "C-VM-DRESS",
+          "C-VM-NOTOUCH",
+          "C-VM-PHOTO-UNKNOWN"
+        ]
+      }
+    },
+    {
+      "id": "sc04",
+      "order": 4,
+      "topic": "Streets & public life",
+      "title": "Out on the streets of the Old Quarter",
+      "place": "A street near Hoàn Kiếm Lake, Hà Nội",
+      "goal": "Cross busy roads safely and lawfully, get a stranger’s attention politely, and ask before taking photos of people.",
+      "context": "You are walking from your hotel towards Hoàn Kiếm Lake. The street is full of motorbikes, small shops and people selling things on foot.",
+      "scope": "Crossing rules are national law (Law 36/2024/QH15, read October 2026). Safety advice is from the UK government; etiquette is general guidance for Vietnam from the national tourism authority. Traffic differs from street to street and hour to hour.",
+      "minutes": 6,
+      "svg": "svg-sc04",
+      "hotspots": [
+        {
+          "id": "hs-crossing",
+          "label": "Lights and marked crossing",
+          "claimIds": [
+            "C-ROAD-WHERE",
+            "C-ROAD-ALERT"
+          ],
+          "text": "This is where the law expects you to cross, following the lights. Keep watching anyway: road rules are often not followed."
+        },
+        {
+          "id": "hs-traffic",
+          "label": "Motorbike traffic",
+          "claimIds": [
+            "C-ROAD-ALERT",
+            "C-CROSS-STEADY"
+          ],
+          "text": "Motorbikes may come close as you walk. Riders find a steady walker easier to predict than someone who rushes."
+        },
+        {
+          "id": "hs-bag",
+          "label": "Your bag",
+          "claimIds": [
+            "C-BAG-SIDE"
+          ],
+          "text": "Carry your bag in front of you or on the side away from the traffic."
+        },
+        {
+          "id": "hs-shop",
+          "label": "Shopkeeper",
+          "claimIds": [
+            "C-CALL-OI",
+            "C-NO-POINT"
+          ],
+          "text": "To ask her something, call her with the word that fits her age and “ơi”, rather than pointing or saying “excuse me”."
+        },
+        {
+          "id": "hs-vendor",
+          "label": "Street vendor",
+          "claimIds": [
+            "C-PHOTO-ASK",
+            "C-KEEP-COOL"
+          ],
+          "text": "Ask before you take someone’s photo. If the answer is no, accept it calmly."
+        }
+      ],
+      "steps": [
+        {
+          "id": "s1",
+          "highlight": [
+            "hs-traffic",
+            "hs-crossing"
+          ],
+          "prompt": "Hoàn Kiếm Lake is just across the road. Motorbikes keep coming. There are traffic lights and a marked crossing a short walk down the street. What do you do?",
+          "cue": "Look at the traffic and at where the crossing is.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Walk to the lights and cross on the marked crossing",
+              "type": "fit",
+              "anim": "crossAtLight",
+              "feedback": "That is where the law expects you to cross: at lights or a marked crossing, following the signal. Keep watching on green too — the UK government warns that road rules are often not followed.",
+              "claimIds": [
+                "C-ROAD-WHERE",
+                "C-ROAD-ALERT"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You walk along the pavement to the crossing",
+                "The light turns green",
+                "You cross on the marked crossing, still watching the bikes"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Cross right here: raise your hand and walk slowly",
+              "type": "needInfo",
+              "anim": "crossHere",
+              "feedback": "The hand signal is what the law asks for where there is no crossing. Here there is one close by, and the law says to cross at lights or marked crossings where they exist. The text doesn’t say how far is too far — when it is this close, use it.",
+              "claimIds": [
+                "C-ROAD-WHERE",
+                "C-ROAD-HAND"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You raise your hand",
+                "You step into the traffic away from the crossing"
+              ],
+              "openStory": "st-hand"
+            },
+            {
+              "id": "c",
+              "label": "Wait for a gap, then run across",
+              "type": "seeGuide",
+              "anim": "run",
+              "feedback": "Running makes your movement hard to predict, and the crossing is close by. Road guides for visitors advise a steady, even pace — and the law asks you to use the crossing.",
+              "claimIds": [
+                "C-CROSS-STEADY",
+                "C-ROAD-WHERE"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You wait for a gap",
+                "You run — a rider has to swerve and sounds the horn"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "highlight": [
+            "hs-traffic",
+            "hs-bag"
+          ],
+          "prompt": "Later, on a smaller street, there is no light or crossing in sight. You need to get to the other side.",
+          "cue": "There’s no crossing here. What does the law ask for?",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Watch the bikes, raise your hand, and walk across at a steady pace",
+              "type": "fit",
+              "anim": "crossSteady",
+              "feedback": "Where there is no light or marked crossing, the law asks you to watch the oncoming vehicles, cross only when it is safe, and give a hand signal. A steady pace in a straight line lets riders predict where you’ll be.",
+              "claimIds": [
+                "C-ROAD-HAND",
+                "C-CROSS-STEADY"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You watch the traffic",
+                "You raise your hand",
+                "You walk across at an even pace"
+              ],
+              "openStory": "st-hand"
+            },
+            {
+              "id": "b",
+              "label": "Wait for local people who are crossing and move with them",
+              "type": "alsoFit",
+              "anim": "withLocals",
+              "feedback": "Crossing with others is a common tip when you are unsure. You still need to watch the traffic and give the hand signal yourself.",
+              "claimIds": [
+                "C-CROSS-LOCALS",
+                "C-ROAD-HAND"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Two people arrive at the kerb",
+                "You cross alongside them, hand raised"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Weave between the bikes to get across faster",
+              "type": "seeGuide",
+              "anim": "zigzag",
+              "feedback": "Zigzagging makes your next move hard to guess. Guides for visitors say rushing or weaving through scooters can confuse riders — go steadily in a straight line.",
+              "claimIds": [
+                "C-CROSS-STEADY",
+                "C-ROAD-ALERT"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You dart left and right",
+                "A rider brakes hard"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "highlight": [
+            "hs-shop"
+          ],
+          "prompt": "Back on the pavement, you’re not sure which way the lake path goes. A woman who looks a few years older than you is minding a small shop. How do you get her attention?",
+          "cue": "Think about her age.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Call “Chị ơi!”, then ask your question",
+              "type": "fit",
+              "anim": "callChi",
+              "feedback": "“Chị” means older sister, and “chị ơi” is how people call a woman a bit older than them. It is warmer than “excuse me”, which people rarely use.",
+              "claimIds": [
+                "C-CALL-OI"
+              ],
+              "phraseIds": [
+                "ph-chioi",
+                "ph-hoiho"
+              ],
+              "stills": [
+                "You walk up to the shop",
+                "“Chị ơi!”",
+                "She looks up and listens"
+              ],
+              "openStory": "st-oi"
+            },
+            {
+              "id": "b",
+              "label": "Call “Bạn ơi!” because you are not sure of her age",
+              "type": "alsoFit",
+              "anim": "callBan",
+              "feedback": "“Bạn ơi” (“hey, friend”) is a safe, neutral choice when you are unsure which word to use.",
+              "claimIds": [
+                "C-BANOI",
+                "C-CALL-OI"
+              ],
+              "phraseIds": [
+                "ph-banoi",
+                "ph-hoiho"
+              ],
+              "stills": [
+                "You walk up to the shop",
+                "“Bạn ơi!”"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Point at her and say “Excuse me!”",
+              "type": "seeGuide",
+              "anim": "pointExcuse",
+              "feedback": "Pointing at people is best avoided, especially if they are older than you, and people rarely say “excuse me” to get attention. Calling “chị ơi” does the job politely.",
+              "claimIds": [
+                "C-NO-POINT",
+                "C-CALL-OI"
+              ],
+              "phraseIds": [
+                "ph-chioi"
+              ],
+              "stills": [
+                "You point at her",
+                "“Excuse me!”"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "highlight": [
+            "hs-vendor"
+          ],
+          "prompt": "A street vendor walks past carrying fruit in two baskets on a shoulder pole. You would love a photo of her.",
+          "cue": "She is a person, not a part of the view.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Ask her: “Tôi chụp ảnh bạn được không?”",
+              "type": "fit",
+              "anim": "askPhoto",
+              "feedback": "Asking first respects her privacy — the tourism authority’s advice is to always ask before lifting your camera. If she says no or shakes her head, smile and accept it calmly.",
+              "claimIds": [
+                "C-PHOTO-ASK",
+                "C-KEEP-COOL"
+              ],
+              "phraseIds": [
+                "ph-chupanh-nguoi"
+              ],
+              "stills": [
+                "You ask her",
+                "She nods",
+                "You take the photo"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Show her your camera with a questioning smile",
+              "type": "alsoFit",
+              "anim": "gesturePhoto",
+              "feedback": "A gesture is still asking, and it works when words fail. Wait for a clear yes; if she waves you off, put the camera down.",
+              "claimIds": [
+                "C-PHOTO-ASK",
+                "C-KEEP-COOL"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "You lift your camera slightly and smile",
+                "You wait for her answer"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Take it quickly while she isn’t looking",
+              "type": "seeGuide",
+              "anim": "snapPhoto",
+              "feedback": "The guidance for visitors is to always ask before you photograph people. A quick question costs a few seconds.",
+              "claimIds": [
+                "C-PHOTO-ASK"
+              ],
+              "phraseIds": [
+                "ph-chupanh-nguoi"
+              ],
+              "stills": [
+                "You raise your camera",
+                "Click — she didn’t get a say"
+              ]
+            }
+          ]
+        }
+      ],
+      "storyIds": [
+        "st-hand",
+        "st-oi",
+        "st-photo-ask",
+        "st-keep-cool"
+      ],
+      "summary": [
+        {
+          "text": "Cross at lights or marked crossings. Where there are none, watch, raise your hand and walk at a steady pace.",
+          "claimIds": [
+            "C-ROAD-WHERE",
+            "C-ROAD-HAND",
+            "C-CROSS-STEADY"
+          ]
+        },
+        {
+          "text": "Keep watching for motorbikes as you walk, and carry your bag away from the traffic.",
+          "claimIds": [
+            "C-ROAD-ALERT",
+            "C-BAG-SIDE"
+          ]
+        },
+        {
+          "text": "Call people with “chị ơi”, “anh ơi” or “bạn ơi” instead of pointing.",
+          "claimIds": [
+            "C-CALL-OI",
+            "C-NO-POINT"
+          ]
+        },
+        {
+          "text": "Ask before photographing people, and take “no” calmly.",
+          "claimIds": [
+            "C-PHOTO-ASK",
+            "C-KEEP-COOL"
+          ]
+        }
+      ],
+      "reminder": {
+        "id": "rc-sc04",
+        "title": "On the street in Hà Nội",
+        "action": "Cross at lights or marked crossings; elsewhere watch, raise your hand and walk steadily. Call people with chị ơi / anh ơi / bạn ơi, and ask before photos.",
+        "phraseIds": [
+          "ph-chioi",
+          "ph-chupanh-nguoi"
+        ],
+        "note": "Crossing rules are national law (checked October 2026); traffic varies by street. Etiquette is general guidance for Vietnam.",
+        "claimIds": [
+          "C-ROAD-WHERE",
+          "C-ROAD-HAND",
+          "C-CALL-OI",
+          "C-PHOTO-ASK"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+[
+  {
+    "antipattern": "cramped-padding",
+    "name": "Cramped padding",
+    "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/index.html",
+    "line": 0,
+    "snippet": "<section> \"hero\": children flush against bg on all sides (no inset)"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/index.html",
+    "line": 0,
+    "snippet": "background rgb(255, 255, 255) on body \"Understand the place before you arrive. \" is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "rgb(255, 255, 255)"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/index.html",
+    "line": 0,
+    "snippet": "background rgb(16, 13, 11) on section \"Understand the place before you arrive. \" is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "rgb(16, 13, 11)"
+  },
+  {
+    "antipattern": "design-system-font",
+    "name": "Font outside DESIGN.md",
+    "description": "A font is used that is not declared in DESIGN.md typography. Use the documented type system or update DESIGN.md if this is an intentional brand addition.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/index.html",
+    "line": 0,
+    "snippet": "p \"Explore the stories, traditions and ever\" uses roboto; not declared in DESIGN.md typography",
+    "ignoreValue": "roboto"
+  },
+  {
+    "antipattern": "cramped-padding",
+    "name": "Cramped padding",
+    "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/vietnam.html",
+    "line": 0,
+    "snippet": "<section> \"places\": children flush against bg on all sides (no inset)"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/vietnam.html",
+    "line": 0,
+    "snippet": "background rgb(255, 255, 255) on body \"DestinationsVietnam Read Hà Nội before y\" is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "rgb(255, 255, 255)"
+  },
+  {
+    "antipattern": "design-system-font",
+    "name": "Font outside DESIGN.md",
+    "description": "A font is used that is not declared in DESIGN.md typography. Use the documented type system or update DESIGN.md if this is an intentional brand addition.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/vietnam.html",
+    "line": 0,
+    "snippet": "a \"Destinations\" uses roboto; not declared in DESIGN.md typography",
+    "ignoreValue": "roboto"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/scene.html",
+    "line": 0,
+    "snippet": "background rgb(255, 255, 255) on body \"Destinations Vietnam Practise a moment S\" is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "rgb(255, 255, 255)"
+  },
+  {
+    "antipattern": "design-system-font",
+    "name": "Font outside DESIGN.md",
+    "description": "A font is used that is not declared in DESIGN.md typography. Use the documented type system or update DESIGN.md if this is an intentional brand addition.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/scene.html",
+    "line": 0,
+    "snippet": "a \"Destinations\" uses roboto; not declared in DESIGN.md typography",
+    "ignoreValue": "roboto"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/assets/css/refinements.css",
+    "line": 24,
+    "snippet": "font-size: .9375rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": ".9375rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/henrynguyen/Documents/ChatGPT/CultureCompass/implementation/assets/css/refinements.css",
+    "line": 44,
+    "snippet": "font-size: clamp(2rem, 3.2vw, 3rem) has fluid endpoints 2rem and 3rem off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "2rem"
+  }
+]

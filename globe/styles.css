@@ -1,0 +1,89 @@
+@import "tailwindcss" source("../");
+@source not "../vendor";
+@source not "../assets";
+@source not "../node_modules";
+@theme {
+  --font-sans: "Be Vietnam Pro", sans-serif;
+  --font-serif: "Source Serif 4", serif;
+}
+.destination-experience { --ivory:#FFFCF7; --paper:#F4EFE5; --wine:#762F3B; position:relative; isolation:isolate; overflow:hidden; background:#181d20; color:var(--ivory); font-family:var(--font-sans); min-height:820px; }
+.destination-experience ::selection { background:var(--paper); color:var(--wine); }
+.destination-backdrops,.destination-scrim { position:absolute; inset:0; pointer-events:none; z-index:-1; }
+.destination-backdrops img { position:absolute; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0; transition:opacity .5s ease; }
+.destination-backdrops img.is-active { opacity:1; }
+.destination-scrim { background:linear-gradient(90deg,rgba(16,20,22,.66),rgba(16,20,22,.58) 40%,rgba(16,20,22,.91) 69%,rgba(16,20,22,.96)); }
+.destination-layout { max-width:1440px; margin:auto; padding:48px 48px 24px; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:64px; align-items:start; }
+.destination-header h1 { max-width:18ch; font-family:var(--font-serif); font-size:clamp(32px,3.1vw,46px); font-weight:500; line-height:1.12; letter-spacing:-.025em; text-wrap:balance; }
+.destination-header p { margin-top:16px; max-width:40ch; font-size:16px; line-height:1.6; color:var(--paper); }
+.destination-picker { display:flex; flex-direction:column; gap:8px; font-size:14px; margin-top:26px; width:min(100%,290px); }
+.destination-picker select { min-height:48px; padding:10px 36px 10px 14px; border:1px solid #f4efe580; border-radius:3px; color:var(--ivory); background:#242728; font:inherit; cursor:pointer; color-scheme:dark; }
+.destination-orbit { margin:8px -30px 0; }
+.destination-canvas { height:490px!important; }
+.destination-orbit-hint,.destination-preview { text-align:center; font-size:13px; line-height:1.6; color:var(--paper); padding:0 24px; }
+.destination-preview { min-height:25px; padding-top:7px; font-weight:600; }
+.destination-story { padding-top:0; animation:country-reveal .4s cubic-bezier(.22,1,.36,1) both; }
+.destination-close { display:flex; align-items:center; gap:10px; min-height:44px; font-size:14px; cursor:pointer; margin-bottom:12px; color:var(--paper); }
+.destination-close:hover { color:var(--ivory); text-decoration:underline; text-underline-offset:4px; }
+.destination-story h2 { font-family:var(--font-serif); font-size:clamp(44px,5.2vw,76px); font-weight:500; line-height:1.05; letter-spacing:-.025em; text-wrap:balance; overflow-wrap:break-word; }
+.destination-lede { margin-top:18px; font-family:var(--font-serif); font-size:clamp(23px,2.2vw,30px); line-height:1.25; text-wrap:balance; }
+.destination-description { margin-top:15px; max-width:54ch; font-size:16px; line-height:1.7; color:var(--paper); }
+.destination-culture { margin:24px 0 0; }
+.destination-culture img { display:block; width:100%; aspect-ratio:2.15; object-fit:cover; border:1px solid #f4efe580; }
+.destination-culture figcaption { display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 16px; margin-top:10px; font-size:13px; line-height:1.5; color:var(--paper); }
+.destination-culture a,.destination-footer a { text-decoration:underline; text-underline-offset:4px; }
+.destination-culture a:hover,.destination-footer a:hover { color:var(--ivory); }
+.destination-action { margin-top:28px; }
+.destination-scope { font-size:14px; color:var(--paper); line-height:1.6; margin-bottom:12px; }
+.destination-continue { display:flex; width:100%; align-items:center; justify-content:space-between; gap:18px; background:var(--paper); color:var(--wine); border-radius:3px; min-height:56px; padding:15px 22px; font-size:16px; font-weight:600; line-height:1.5; text-decoration:none; transition:background .18s,color .18s; }
+.destination-continue svg { flex-shrink:0; transition:transform .18s; }
+.destination-continue:hover { background:var(--ivory); color:#302720; }
+.destination-continue:hover svg { transform:translateX(4px); }
+.destination-footer { max-width:1440px; margin:auto; padding:0 48px 24px; display:flex; justify-content:flex-end; min-height:44px; }
+.destination-footer a { max-width:620px; font-size:12px; line-height:1.6; color:var(--paper); text-align:right; }
+.destination-invitation { align-self:center; padding:60px 0; max-width:420px; }
+.destination-invitation-title { font:500 clamp(36px,4vw,56px)/1.12 var(--font-serif); letter-spacing:-.02em; text-wrap:balance; }
+.destination-invitation p+p { margin-top:20px; font-size:16px; line-height:1.7; color:var(--paper); }
+.destination-globe-toggle { display:none; }
+.destination-globe-fallback { min-height:320px; display:flex; flex-direction:column; justify-content:center; gap:12px; max-width:38ch; margin:auto; padding:24px; text-align:center; line-height:1.6; }
+.destination-announcement { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.destination-experience :focus-visible { outline:3px solid var(--ivory); outline-offset:4px; box-shadow:0 0 0 6px #302720; }
+.globe-country-pin { position:relative; min-width:36px; min-height:32px; border-radius:3px; }
+.globe-country-pin.is-selected { outline:2px solid #FFFCF7; outline-offset:3px; background:#762F3B; }
+.globe-pin-label { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); background:#FFFCF7; color:#302720; padding:5px 9px; font:500 12px/1.3 var(--font-sans); border-radius:3px; white-space:nowrap; pointer-events:none; }
+@keyframes country-reveal { from { opacity:.4; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+@media (min-width:1500px) { .destination-layout { padding-top:56px; } .destination-canvas { height:530px!important; } }
+@media (max-width:1100px) and (min-width:761px) { .destination-layout { gap:32px; padding:36px 32px 24px; } .destination-canvas { height:420px!important; } .destination-orbit { margin-left:-20px; margin-right:-20px; } .destination-description { font-size:15px; } }
+@media (max-width:760px) {
+ .destination-experience { min-height:0; }
+ .destination-layout { padding:30px 24px 24px; grid-template-columns:minmax(0,1fr); gap:32px; }
+ .destination-scrim { background:linear-gradient(180deg,rgba(16,20,22,.72),rgba(16,20,22,.88) 36%,rgba(16,20,22,.97)); }
+ .destination-header h1 { max-width:none; font-size:34px; }
+ .destination-header p { font-size:15px; margin-top:12px; }
+ .destination-picker { width:100%; margin-top:20px; }
+ .destination-orbit { margin:0 -12px; }
+ .destination-canvas { height:350px!important; }
+ .has-selection .destination-orbit { display:none; }
+ .has-selection.is-globe-expanded .destination-orbit { display:block; }
+ .destination-globe-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:8px; min-height:44px; font-size:14px; text-align:left; cursor:pointer; }
+ .destination-close { margin-bottom:8px; }
+ .destination-story h2 { font-size:52px; }
+ .destination-lede { font-size:25px; margin-top:16px; }
+ .destination-description { font-size:16px; }
+ .destination-culture img { aspect-ratio:1.65; }
+ .destination-action { margin-top:24px; }
+ .destination-continue { padding:14px 16px; }
+ .destination-footer { padding:0 24px 24px; justify-content:flex-start; }
+ .destination-footer a { text-align:left; }
+ .destination-invitation { padding:0 0 12px; }
+ .destination-invitation-title { font-size:32px; }
+}
+@media (pointer:coarse) { .globe-country-pin { min-width:44px; min-height:44px; } }
+@media (prefers-reduced-motion:reduce) { .destination-experience *, .destination-experience *::before { animation:none!important; transition:none!important; } }
+
+.destination-image-fallback { padding:32px 20px; background:#242728; color:var(--paper); font-size:15px; line-height:1.6; }
+
+/* Space is the resting state; selected destinations retain their cinematic photograph. */
+.destination-experience { background:#000; }
+.destination-stars { position:absolute; inset:0; width:100%; height:100%; z-index:-2; pointer-events:none; opacity:1; transition:opacity .4s ease; }
+.destination-experience:not(.has-backdrop) .destination-scrim { opacity:0; }
+.has-backdrop .destination-stars { opacity:0; }
