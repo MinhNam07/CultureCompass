@@ -45,7 +45,7 @@ window.CC.phrases = [
       "VNAT-ETQ",
       "VNA-NAMES"
     ],
-    "status": "needs_verification"
+    "status": "reviewed"
   },
   {
     "id": "ph-banoi",
@@ -70,11 +70,11 @@ window.CC.phrases = [
       "sc01"
     ],
     "vi": "Tôi nên gọi bạn thế nào ạ?",
-    "meaning": "How should I call you?",
+    "meaning": "What should I call you?",
     "useWith": "Anyone you are meeting for the first time. Asking is a respectful choice, not a mistake.",
     "audioId": "au-xungho",
     "sourceIds": [],
-    "status": "needs_verification"
+    "status": "reviewed"
   },
   {
     "id": "ph-noicham",
@@ -88,7 +88,7 @@ window.CC.phrases = [
     "useWith": "Anyone, when you did not catch what was said.",
     "audioId": "au-noicham",
     "sourceIds": [],
-    "status": "needs_verification"
+    "status": "reviewed"
   },
   {
     "id": "ph-camon",
@@ -120,7 +120,7 @@ window.CC.phrases = [
     "sourceIds": [
       "VNAT-ETQ"
     ],
-    "status": "needs_verification"
+    "status": "reviewed"
   },
   {
     "id": "ph-do",
@@ -152,7 +152,7 @@ window.CC.phrases = [
     "sourceIds": [
       "VNAT-ETQ"
     ],
-    "status": "needs_verification"
+    "status": "reviewed"
   },
   {
     "id": "ph-chupanh-noi",
@@ -165,7 +165,7 @@ window.CC.phrases = [
     "useWith": "Staff or a guide at a temple, museum or heritage site.",
     "audioId": "au-chupanh-noi",
     "sourceIds": [],
-    "status": "needs_verification"
+    "status": "reviewed"
   },
   {
     "id": "ph-chioi",
@@ -193,6 +193,62 @@ window.CC.phrases = [
     "useWith": "Anyone you have just called with “ơi”. The “ạ” at the end makes it more polite.",
     "audioId": "au-hoiho",
     "sourceIds": [],
-    "status": "needs_verification"
+    "status": "reviewed"
+  },
+  {
+    "id": "ph-baonhieu",
+    "intent": "ask",
+    "scenes": [
+      "sc05"
+    ],
+    "vi": "Cái này bao nhiêu tiền?",
+    "meaning": "How much is this?",
+    "useWith": "A seller at a market stall, while pointing at the thing you mean.",
+    "audioId": "au-baonhieu",
+    "sourceIds": [],
+    "status": "reviewed"
+  },
+  {
+    "id": "ph-khongcamon",
+    "intent": "decline",
+    "scenes": [
+      "sc05"
+    ],
+    "vi": "Không, cảm ơn.",
+    "meaning": "No, thank you.",
+    "useWith": "A seller, when you don’t want to buy. Say it with a smile and walk on.",
+    "audioId": "au-khongcamon",
+    "sourceIds": [
+      "VCT-BARGAIN"
+    ],
+    "status": "reviewed"
+  },
+  {
+    "id": "ph-motsuat",
+    "intent": "ask",
+    "scenes": [
+      "sc06"
+    ],
+    "vi": "Cho tôi một suất.",
+    "meaning": "One serving, please.",
+    "useWith": "The cook at a street-food stall, while pointing at the dish.",
+    "audioId": "au-motsuat",
+    "sourceIds": [
+      "VNAT-FOOD"
+    ],
+    "status": "reviewed"
+  },
+  {
+    "id": "ph-tinhtien",
+    "intent": "ask",
+    "scenes": [
+      "sc06"
+    ],
+    "vi": "Chị ơi, tính tiền!",
+    "meaning": "Excuse me, the bill please! (to a woman a bit older than you)",
+    "useWith": "The cook or owner when you are ready to pay. Swap “chị” for “anh” (a man a bit older) or “cô” (a woman your parents’ age).",
+    "audioId": "au-tinhtien",
+    "sourceIds": [],
+    "status": "reviewed"
   }
 ];

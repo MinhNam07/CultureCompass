@@ -100,8 +100,8 @@
     setActiveHotspots([id]);
     if (state !== 'animating') CC.$('stage-caption').textContent = h.label + ': ' + h.text;
     var claims = claimsOf(h.claimIds);
-    $detail.innerHTML = '<div class="scene-hs-card"><h3>' + esc(h.label) + '</h3><p>' + esc(h.text) +
-      (needsVerify(claims) ? ' ' + CC.verifyTag() : '') + '</p>' + evidenceHtml(h.claimIds) + '</div>';
+    /* the caption above already reads the detail out; this line only adds where it comes from */
+    $detail.innerHTML = (needsVerify(claims) ? CC.verifyTag() : '') + evidenceHtml(h.claimIds);
   }
 
   /* ---------- panel states ---------- */
@@ -126,9 +126,7 @@
             '<div class="scene-actions" style="margin-top:0"><button type="button" class="cc-btn" id="btn-resume">Continue at step ' + (saved.step + 1) + ' ' + CC.arrow() + '</button>' +
             '<button type="button" class="cc-btn cc-btn-quiet" id="btn-start">Start over</button></div></div>'
         : '<div class="scene-actions"><button type="button" class="cc-btn" id="btn-start">' + (done ? 'Practise again' : 'Start the scene') + ' ' + CC.arrow() + '</button>' +
-            '<button type="button" class="cc-btn cc-btn-quiet" data-bs-toggle="offcanvas" data-bs-target="#story-oc" aria-controls="story-oc">' + CC.icon('story') + 'Background</button></div>') +
-      '<p class="cc-meta" style="margin-top:14px">Look around the picture first if you like: select an object, or use the buttons under it.</p>' +
-      storyLinks('Read the stories behind this scene');
+            '<button type="button" class="cc-btn cc-btn-quiet" data-bs-toggle="offcanvas" data-bs-target="#story-oc" aria-controls="story-oc">' + CC.icon('story') + 'Background</button></div>');
     CC.$('btn-start').addEventListener('click', function () {
       CC.sceneState.clear(sc.id);
       CC.progress.set(sc.id, 'started');
@@ -386,6 +384,7 @@
     document.addEventListener('cc:settings', function () { if (tl && state === 'animating' && CC.settings.reduce()) tl.progress(1); });
     document.addEventListener('cc:cleared', function () { if (state === 'ready') renderIntro(); CC.$('scene-status').hidden = true; });
 
+    CC.$('scene-reading').innerHTML = storyLinks('Read the stories behind this scene');
     renderStory();
     renderIntro();
   }

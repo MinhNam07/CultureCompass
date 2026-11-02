@@ -178,16 +178,23 @@
     set: function (id, st) { var all = CC.store.get('scenes', {}) || {}; st.at = new Date().toISOString(); all[id] = st; CC.store.set('scenes', all); },
     clear: function (id) { var all = CC.store.get('scenes', {}) || {}; delete all[id]; CC.store.set('scenes', all); }
   };
+  /* scenes are now played inside an Explore zone (explore.html?zone=…); assets/data/explore.js must be loaded */
+  CC.zoneForScene = function (sceneId) {
+    return (CC.exploreZones || []).filter(function (z) { return (z.scenes || []).indexOf(sceneId) !== -1; })[0] || null;
+  };
+  CC.sceneHref = function (sceneId) {
+    var z = CC.zoneForScene(sceneId);
+    return z ? 'explore.html?zone=' + z.id : 'explore.html';
+  };
+  CC.zoneState = function (zoneId) { var all = CC.store.get('explore', {}) || {}; return (all.zones || {})[zoneId] || null; };
   /* honest label + link for a scene, used on every page that lists scenes */
   CC.sceneEntry = function (sc) {
-    var p = CC.progress.get(sc.id);
-    var st = CC.sceneState.get(sc.id);
-    var n = sc.steps.length;
-    if (st && typeof st.step === 'number' && st.step >= 0 && st.step < n) {
-      return { state: 'started', label: 'Continue at step ' + (st.step + 1) + ' of ' + n, status: 'In progress: step ' + (st.step + 1) + ' of ' + n, href: 'scene.html?id=' + sc.id };
-    }
-    if (p === 'done') return { state: 'done', label: 'Practise again', status: 'Practised', href: 'scene.html?id=' + sc.id };
-    return { state: 'new', label: 'Start this scene', status: 'Not started', href: 'scene.html?id=' + sc.id };
+    var z = CC.zoneForScene(sc.id), zs = z ? CC.zoneState(z.id) : null, n = sc.steps.length;
+    var k = zs ? sc.steps.filter(function (st) { var s = zs.steps && zs.steps[sc.id + ':' + st.id]; return s && s.choice; }).length : 0;
+    var href = CC.sceneHref(sc.id);
+    if (CC.progress.get(sc.id) === 'done' || k >= n) return { state: 'done', label: 'Explore again', status: 'Explored', href: href };
+    if (k > 0) return { state: 'started', label: 'Continue: ' + k + ' of ' + n + ' moments', status: 'In progress: ' + k + ' of ' + n + ' moments', href: href };
+    return { state: 'new', label: 'Explore this place', status: 'Not started', href: href };
   };
 
   /* ---------- reading log (opened, not "understood") ---------- */
@@ -292,6 +299,8 @@
     var art = CC.sceneArt && CC.sceneArt[id];
     if (art) return '<img src="assets/img/scenes/' + art.file + '-thumb.jpg" alt="' + CC.esc(art.alt) + '" loading="lazy" decoding="async" width="640" height="360">';
     var s = (CC.svgs && CC.svgs[id]) || '';
+    var z = !s && CC.zoneForScene(id);
+    if (z) return '<img class="cc-thumb-pixel" src="assets/img/explore/' + z.id + '.jpg" alt="Pixel-art view of ' + CC.esc(z.title) + ' in the Explore game" loading="lazy" decoding="async" width="960" height="512">';
     return s.replace(/ id="[^"]*"/g, '').replace('role="img"', 'aria-hidden="true" focusable="false"').replace(/ aria-label="[^"]*"/, '').replace('class="cc-stage"', 'class="cc-thumb-svg" preserveAspectRatio="xMidYMid slice"');
   };
   CC.storyMeta = function (st) {
@@ -474,7 +483,7 @@
       var items = [
         ['vietnam.html#overview', 'Overview', 'overview'],
         ['vietnam.html#themes', 'Themes', 'themes'],
-        ['vietnam.html#practice', 'Practise a moment', 'practice'],
+        ['explore.html', 'Explore', 'practice'],
         ['phrases.html', 'Phrasebook', 'phrases']
       ];
       sub.className = 'cc-subnav';
@@ -492,7 +501,7 @@
           '<div class="cc-footer-grid">' +
             '<div class="cc-footer-about"><p class="cc-footer-mark">' + CC.MARK + 'CultureCompass</p>' +
               '<p>Understand the place before you arrive. A student UX prototype: stories and practice are set in Hà Nội, and customs vary between regions, families and places.</p></div>' +
-            '<div><h2>Destinations</h2><ul><li><a href="vietnam.html">Vietnam</a></li><li><a href="vietnam.html#themes">Themes</a></li><li><a href="vietnam.html#practice">Practise a moment</a></li><li><a href="phrases.html">Phrasebook</a></li></ul></div>' +
+            '<div><h2>Destinations</h2><ul><li><a href="vietnam.html">Vietnam</a></li><li><a href="vietnam.html#themes">Themes</a></li><li><a href="explore.html">Explore (game)</a></li><li><a href="phrases.html">Phrasebook</a></li></ul></div>' +
             '<div><h2>Your trip</h2><ul><li><a href="collection.html">My collection</a></li><li><button type="button" class="cc-footer-btn" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">Sound, motion and text</button></li></ul></div>' +
             '<div><h2>About</h2><ul><li><a href="about.html">Method &amp; scope</a></li><li><a href="about.html#sources">Sources</a></li><li><a href="about.html#credits">Media credits</a></li><li><a href="about.html#access">Accessibility</a></li></ul></div>' +
           '</div>' +

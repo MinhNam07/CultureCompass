@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About & sources — CultureCompass</title>
+  <meta name="description" content="How CultureCompass content was researched, its sources, media credits and the limits of this prototype.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="about">
+  <div id="cc-header"></div>
+  <main id="main" tabindex="-1">
+    <div class="container py-4">
+      <h1>About CultureCompass</h1>
+      <p class="lead">A student UX prototype that helps travellers prepare for a few everyday situations in Hanoi through short interactive scenes.</p>
+
+      <div class="row g-4 mt-1">
+        <section class="col-lg-6" aria-labelledby="method">
+          <h2 class="h4" id="method">How the content was made</h2>
+          <ul>
+            <li>Each scene is limited to one setting — for example a family homestay, or one named heritage site — and says so.</li>
+            <li>Every point links to its source. Official and site-specific sources were used first; secondary sources are marked <span class="cc-badge-verify">Being verified</span>.</li>
+            <li>Site rules (like those of the Temple of Literature) are kept separate from general customs and CultureCompass tips.</li>
+            <li>Where a source is silent — for example on photography at the Temple of Literature — the scene says so and suggests asking.</li>
+            <li>Right now <strong id="pending-count">0</strong> points and phrases are still being verified.</li>
+          </ul>
+        </section>
+        <section class="col-lg-6" aria-labelledby="feedback-types">
+          <h2 class="h4" id="feedback-types">What the feedback means</h2>
+          <ul class="list-unstyled">
+            <li class="mb-2"><span class="cc-feedback fb-fit d-inline-flex px-2 py-1 border-1"><span class="fw-bold">✓ Fits this situation</span></span> — a good choice here, with the reason.</li>
+            <li class="mb-2"><span class="cc-feedback fb-alsoFit d-inline-flex px-2 py-1 border-1"><span class="fw-bold">⇄ Another way that also fits</span></span> — there is often more than one good way.</li>
+            <li class="mb-2"><span class="cc-feedback fb-needInfo d-inline-flex px-2 py-1 border-1"><span class="fw-bold">? Needs more context</span></span> — worth rethinking; here’s why.</li>
+            <li class="mb-2"><span class="cc-feedback fb-seeGuide d-inline-flex px-2 py-1 border-1"><span class="fw-bold">i See the rules and guidance</span></span> — a law, a place’s written rule or official guidance says what to do.</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="mt-4" aria-labelledby="src-title">
+        <h2 class="h4" id="src-title">Sources</h2>
+        <div class="table-responsive">
+          <table class="table cc-table bg-white">
+            <caption class="small">Sources were read on the dates shown. They guide the content; they are not permission to reuse their media.</caption>
+            <thead><tr><th scope="col">Source</th><th scope="col">Type</th><th scope="col">Used for</th><th scope="col">Limits</th><th scope="col">Checked</th></tr></thead>
+            <tbody id="src-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="row g-4">
+        <section class="col-lg-6" aria-labelledby="credits-title">
+          <h2 class="h4" id="credits-title">Media credits</h2>
+          <ul id="credits"></ul>
+        </section>
+        <section class="col-lg-6" aria-labelledby="a11y-title">
+          <h2 class="h4" id="a11y-title">Accessibility features</h2>
+          <ul>
+            <li>Every object in a picture also has a labelled button; everything works with a keyboard.</li>
+            <li>Reduce motion and text-first settings show actions as still steps with the same information.</li>
+            <li>Every phrase has its written form and meaning; audio never plays automatically.</li>
+            <li>Feedback uses words and icons, not just colour. There are no timers.</li>
+          </ul>
+          <p class="small text-soft">These choices follow W3C guidance; this prototype has not been audited for WCAG conformance.</p>
+        </section>
+      </div>
+
+      <section class="mt-4 cc-surface" aria-labelledby="scope2">
+        <h2 class="h5" id="scope2">Prototype scope</h2>
+        <p class="mb-0">One destination (Hanoi), four scenes. No accounts, bookings, AI or tracking. Not included: legal, visa or medical advice — please use official sources for those. The street scene quotes the pedestrian rules of Vietnam’s road traffic law so you know they exist; it is not legal advice.</p>
+      </section>
+    </div>
+  </main>
+  <div id="cc-footer"></div>
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages.js"></script>
+</body>
+</html>

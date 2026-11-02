@@ -13,7 +13,7 @@
     var t = (m && CC.byId(CC.topics, m[1])) || topics[0];
     if (/^scene:/.test(from)) {
       var sc = CC.byId(CC.scenarios, from.slice(6));
-      if (sc) return { href: 'scene.html?id=' + sc.id, label: 'Back to the scene: ' + sc.title, topic: t };
+      if (sc) return { href: CC.sceneHref(sc.id), label: 'Back to Explore: ' + sc.title, topic: t };
     }
     if (from === 'index') return { href: 'vietnam.html#stories', label: 'Back to every story', topic: t };
     if (from === 'overview') return { href: 'vietnam.html#overview', label: 'Back to Vietnam', topic: t };
@@ -79,11 +79,21 @@
 
     var topicsHtml = CC.storyTopics(st).map(function (t) { return '<a href="vietnam.html#' + t.id + '">' + esc(t.label) + '</a>'; }).join(', ');
 
+    /* the story takes its chapter colour from the theme it is read in */
+    var bg = CC.ex ? CC.ex.chapterFor(back.topic ? back.topic.id : (CC.storyTopics(st)[0] || {}).id) : 'teal';
+    var CH_INK = { teal: ['var(--ch-teal)', '#fff', '#02606F'], peach: ['var(--ch-peach)', '#202124', '#A14A12'], jade: ['var(--ch-jade)', '#202124', '#2F6F66'], ember: ['var(--ch-ember)', '#202124', '#B3401A'] }[bg];
+    var root = document.getElementById('story-root');
+    root.style.setProperty('--story-bg', CH_INK[0]);
+    root.style.setProperty('--story-on', CH_INK[1]);
+    root.style.setProperty('--story-ink', CH_INK[2]);
+    var eyebrow = back.topic ? back.topic.label : ((CC.storyTopics(st)[0] || {}).label || 'Story');
+
     var html =
-      '<header class="story-head story-enter">' +
+      '<header class="story-head story-enter" data-bg="' + bg + '">' +
         '<ol class="cc-crumb" aria-label="Breadcrumb"><li><a href="index.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
           (back.topic ? '<li><a href="vietnam.html#' + back.topic.id + '">' + esc(back.topic.label) + '</a></li>' : '') +
           '<li><span aria-current="page">Story</span></li></ol>' +
+        '<span class="ex-eyebrow">' + esc(eyebrow) + '</span>' +
         '<h1 id="story-title" tabindex="-1">' + esc(st.title) + '</h1>' +
         '<p class="story-dek">' + esc(st.dek) + '</p>' +
         '<div class="story-byline">' +
@@ -94,8 +104,9 @@
           (topicsHtml ? '<span>In ' + topicsHtml + '</span>' : '') +
         '</div>' +
         '<div class="story-actions">' + CC.saveButton('story', st.id, { cls: '' }) +
-          (sc ? '<a class="cc-btn cc-btn-quiet" href="' + entry.href + '">' + CC.icon('scene') + (entry.state === 'started' ? esc(entry.label) : 'Practise this moment') + '</a>' : '') +
+          (sc ? '<a class="cc-btn cc-btn-quiet" href="' + entry.href + '">' + CC.icon('scene') + (entry.state === 'started' ? esc(entry.label) : 'Walk through this moment') + '</a>' : '') +
         '</div>' +
+        (CC.ex ? CC.ex.heroFoot() : '') +
       '</header>' +
       figure(st) +
       '<div class="story-layout">' +
@@ -103,11 +114,13 @@
         '<aside class="story-aside" aria-label="About this story">' +
           '<div class="story-box"><h2>' + CC.icon('pin') + 'Where this applies</h2><p>' + esc(st.appliesTo) + '</p></div>' +
           '<div class="story-box"><h2>' + CC.icon('globe') + 'How it varies</h2><p>' + esc(st.varies) + '</p></div>' +
-          (phrases.length ? '<div class="story-box"><h2>' + CC.icon('phrase') + 'Words you can use</h2><div style="display:grid;gap:10px">' +
-            phrases.map(function (p) { return CC.phraseHtml(p, { compact: true }); }).join('') + '</div></div>' : '') +
         '</aside>' +
       '</div>' +
-      '<section class="cc-section-tight story-sources" aria-labelledby="src-title" style="max-width:var(--measure)">' +
+      (phrases.length ? '<section class="story-words cc-section-tight" aria-labelledby="words-title">' +
+        '<h2 id="words-title">' + CC.icon('phrase') + 'Words you can use</h2>' +
+        '<ul class="phrase-grid">' + phrases.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true }); }).join('') + '</ul></section>' : '') +
+      '<div class="story-close cc-section-tight">' +
+      '<section class="story-sources" aria-labelledby="src-title">' +
         '<div class="cc-rule cc-rule-left" aria-hidden="true"><i></i></div>' +
         '<h2 id="src-title" class="h3">Sources</h2>' +
         '<ol>' + srcOrder.map(function (sid, k) {
@@ -117,11 +130,12 @@
         }).join('') + '</ol>' +
         (claims.some(function (c) { return c.kind === 'projectNote'; }) ? '<p class="cc-meta" style="margin-top:16px">Points marked “CultureCompass tip” are our own suggestions, not cultural claims, so they have no source.</p>' : '') +
       '</section>' +
-      (sc ? '<section class="story-practice" aria-labelledby="practice-title">' +
+      (sc ? '<section class="story-practice" data-bg="' + bg + '" aria-labelledby="practice-title">' +
         '<div class="scene-pic">' + CC.sceneThumb(sc.id) + '</div>' +
-        '<div><h2 id="practice-title">Try it in a scene</h2><p>Optional: ' + esc(sc.title) + '. ' + esc(sc.goal) + ' About ' + sc.minutes + ' minutes, no score.</p></div>' +
+        '<div><h2 id="practice-title">Walk through it in Explore</h2><p>Optional: this moment is part of <b>' + esc((CC.zoneForScene(sc.id) || sc).title) + '</b>, a small pixel-art walk in Hà Nội. ' + esc(sc.goal) + ' About ' + ((CC.zoneForScene(sc.id) || sc).minutes) + ' minutes, no score.</p></div>' +
         '<a class="cc-btn" href="' + entry.href + '">' + esc(entry.label) + ' ' + CC.arrow() + '</a>' +
       '</section>' : '') +
+      '</div>' +
       (prev || next ? '<nav class="story-pager cc-section-tight" aria-label="More in ' + esc(back.topic ? back.topic.label : 'Vietnam') + '">' +
         (prev ? '<a class="prev" href="story.html?id=' + prev.id + keepFrom + '"><span>' + CC.icon('arrowLeft') + 'Previous</span><b>' + esc(prev.title) + '</b></a>' : '<span></span>') +
         (next ? '<a class="next" href="story.html?id=' + next.id + keepFrom + '"><span>Next' + CC.icon('arrowRight') + '</span><b>' + esc(next.title) + '</b></a>' : '') +
@@ -130,7 +144,9 @@
         related.map(function (r) { return CC.storyCard(r, from, 3); }).join('') + '</ul></section>' : '') +
       '<p><a class="cc-back" href="' + back.href + '">' + CC.arrow('left') + esc(back.label) + '</a></p>';
 
-    document.getElementById('story-root').innerHTML = html;
+    root.innerHTML = html;
+    var head = root.querySelector('.story-head');
+    if (head) head.classList.add('ex-page-hero');
     document.title = st.title + ' — CultureCompass';
     CC.reads.mark(st.id);
   }

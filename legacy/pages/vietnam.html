@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vietnam, starting in Hà Nội — CultureCompass</title>
+  <meta name="description" content="Nine everyday topics around the Hà Nội street you will walk first: food, greetings, homes, temples, streets and more. Open a topic to see what to rehearse, what to know and the words to use.">
+  <meta name="theme-color" content="#141210">
+  <link rel="preload" href="assets/fonts/anton-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/street.css">
+</head>
+<body data-page="vietnam" class="st">
+  <a class="st-skip" href="#main">Skip to content</a>
+
+  <header class="st-head">
+    <a class="st-head-mark" href="index.html">CultureCompass</a>
+    <nav class="st-head-nav" aria-label="Main">
+      <a class="st-link is-current" href="vietnam.html" aria-current="page">Vietnam</a>
+      <a class="st-link" href="phrases.html">Phrasebook</a>
+      <a class="st-link" href="saved.html">Saved cards <span class="st-count" id="cc-saved-count" hidden></span></a>
+      <a class="st-link" href="about.html">About &amp; sources</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <section class="st-board vn-intro" aria-labelledby="vn-title">
+      <div class="st-tile st-sign-white vn-title-tile">
+        <h1 class="st-h2" id="vn-title">Vietnam, starting in Hà&nbsp;Nội</h1>
+        <p class="vn-lead">Nine everyday topics stand around the first street you will walk. Open one to see what to rehearse, what to know and the words to use.</p>
+      </div>
+    </section>
+
+    <!-- The junction: topic shops around the crossroads where you stand -->
+    <section class="st-board vn-junction-wrap" aria-labelledby="vn-junction-title">
+      <h2 class="visually-hidden" id="vn-junction-title">Topics</h2>
+      <div class="vn-junction" id="vn-junction">
+        <figure class="st-tile st-pic vn-here">
+          <video class="vn-here-video" id="vn-clip" muted playsinline loop preload="metadata" poster="assets/video/hn-train-street.jpg">
+            <source src="assets/video/hn-train-street.webm" type="video/webm">
+          </video>
+          <figcaption class="vn-here-label">
+            <span class="vn-here-big"><span lang="vi">Hà Nội</span><span class="vn-here-small"> · you are here</span></span>
+            <span class="vn-here-progress" id="vn-progress-big">4 scenes to rehearse</span>
+            <a class="vn-here-go" id="vn-continue" href="scene.html?id=sc01">Start the first scene <span class="st-arrow" aria-hidden="true"></span></a>
+            <span class="vn-here-note">Progress stays in this browser. Clip: Train Street, Hà Nội.</span>
+          </figcaption>
+          <button type="button" class="st-clip-btn vn-clip-btn" id="vn-clip-btn">
+            <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg>
+            <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2l10 6-10 6z"/></svg>
+            <span class="st-clip-btn-text">Pause video</span>
+          </button>
+        </figure>
+        <div class="st-tile st-sign-ink vn-before">
+          <h3>Before you go</h3>
+          <p>Visas, health, safety and money are not customs, so the scenes leave them out. Check official advice:</p>
+          <ul>
+            <li><a href="https://vietnam.travel/plan-your-trip/health-safety" target="_blank" rel="noopener">Health and safety tips, Vietnam National Authority of Tourism<span class="visually-hidden"> (opens in new tab)</span></a></li>
+            <li><a href="https://vietnam.travel/faqs" target="_blank" rel="noopener">Travel FAQs, Vietnam National Authority of Tourism<span class="visually-hidden"> (opens in new tab)</span></a></li>
+            <li class="vn-before-note">and your own government’s travel advice for Vietnam.</li>
+          </ul>
+        </div>
+        <!-- topic shops are added by country.js -->
+      </div>
+      <noscript><p class="vn-noscript">The topics need JavaScript. Every scene is also listed below.</p></noscript>
+    </section>
+
+    <!-- Inside the open shop -->
+    <section class="st-board vn-shop" id="vn-shop" aria-labelledby="vn-shop-title" hidden></section>
+
+    <!-- Scenes in Hà Nội (formerly hanoi.html) -->
+    <section class="st-board vn-scenes" id="scenes" aria-labelledby="vn-scenes-title">
+      <div class="st-tile st-sign-red vn-scenes-head">
+        <h2 class="st-h2" id="vn-scenes-title">Scenes in Hà&nbsp;Nội</h2>
+        <p>Each scene describes one setting in Hà Nội. Customs differ between regions, families and places, so use them as a starting point and follow local cues. Phrases use northern pronunciation where it differs.</p>
+      </div>
+      <ul class="vn-scene-list" id="vn-scene-list"></ul>
+    </section>
+
+  </main>
+
+  <footer class="st-foot">
+    <p class="st-foot-mark" role="img" aria-label="CultureCompass" id="st-foot-mark"></p>
+    <div class="st-foot-cols">
+      <nav aria-label="Explore"><h2>Explore</h2><a href="index.html">Home</a><a href="#scenes">Scenes in Hà Nội</a></nav>
+      <nav aria-label="Practise"><h2>Practise</h2><a href="phrases.html">Phrasebook</a><a href="saved.html">Saved cards</a></nav>
+      <nav aria-label="About"><h2>About</h2><a href="about.html">Method &amp; sources</a><a href="about.html#credits">Photo credits</a></nav>
+      <div><h2>Settings</h2><button type="button" class="st-foot-btn" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">Sound, motion and text</button></div>
+      <div class="st-foot-about">
+        <p>A student UX prototype. Guidance applies only to the settings each scene describes.</p>
+        <p class="st-foot-credits" id="st-foot-credits">Photos via Wikimedia Commons; full credits on the About page.</p>
+      </div>
+    </div>
+    <div class="st-foot-last">
+      <p>© 2026 CultureCompass</p>
+      <a class="st-foot-top" href="#main">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/topics.js"></script>
+  <script src="assets/data/countries.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/street-shell.js"></script>
+  <script src="assets/js/country.js"></script>
+  <script src="assets/js/pages.js"></script>
+</body>
+</html>

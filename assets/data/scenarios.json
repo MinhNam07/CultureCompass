@@ -13,8 +13,9 @@
     {
       "id": "C-ADDR-TERMS",
       "kind": "custom",
-      "status": "needs_verification",
+      "status": "published",
       "sourceIds": [
+        "VNAT-ETQ",
         "VNA-NAMES"
       ],
       "text": "Common terms: anh (a man somewhat older than you), chị (a woman somewhat older), em (someone younger), cô / chú / bác (people of your parents’ generation)."
@@ -22,11 +23,12 @@
     {
       "id": "C-ADDR-NAME",
       "kind": "custom",
-      "status": "needs_verification",
+      "status": "published",
       "sourceIds": [
+        "CA-GREET",
         "VNA-NAMES"
       ],
-      "text": "Calling someone by their first name alone, without a family term, is often felt to be impolite."
+      "text": "People are usually addressed with a family term and their given name (for example “chị Lan”). The given name alone can come across as impolite, especially with someone older."
     },
     {
       "id": "C-BANOI",
@@ -121,8 +123,10 @@
     {
       "id": "C-CHOP-UPRIGHT",
       "kind": "custom",
-      "status": "needs_verification",
+      "status": "published",
       "sourceIds": [
+        "CA-ETQ",
+        "VOV5-TABLE",
         "LOCALVN-CHOP"
       ],
       "text": "Chopsticks left standing upright in a bowl of rice can recall the incense sticks used at funerals, so rest them across the bowl or on the table."
@@ -253,8 +257,9 @@
     {
       "id": "C-CROSS-STEADY",
       "kind": "safety",
-      "status": "needs_verification",
+      "status": "published",
       "sourceIds": [
+        "TTN-CROSS-2025",
         "VCT-ROAD"
       ],
       "text": "Walk at a steady, even pace in a straight line so riders can predict where you will be. Rushing or zigzagging between motorbikes can confuse them."
@@ -262,8 +267,9 @@
     {
       "id": "C-CROSS-LOCALS",
       "kind": "safety",
-      "status": "needs_verification",
+      "status": "published",
       "sourceIds": [
+        "TTN-CROSS-2014",
         "VCT-ROAD"
       ],
       "text": "If you are unsure, stand with local pedestrians who are about to cross and move when they do."
@@ -294,6 +300,187 @@
         "VNAT-ETQ"
       ],
       "text": "“Saving face” matters. Keep your cool in public and avoid loud arguments or making a scene."
+    },
+    {
+      "id": "C-DX-1889",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNNEWS-DONGXUAN"
+      ],
+      "text": "Đồng Xuân Market was built in 1889, during the French colonial period, to replace the older Kẻ Chợ markets."
+    },
+    {
+      "id": "C-DX-FLOORS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "HNT-MARKETS"
+      ],
+      "text": "The ground floor of Đồng Xuân Market is a wet market for fresh food; the upper levels sell fabric, clothing and other goods, often at wholesale prices."
+    },
+    {
+      "id": "C-BARGAIN-MARKET",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNN-SHOP",
+        "VCT-BARGAIN"
+      ],
+      "text": "Bargaining is common with street vendors and at market stalls where goods have no printed price tag."
+    },
+    {
+      "id": "C-BARGAIN-POLITE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNN-SHOP",
+        "VCT-BARGAIN"
+      ],
+      "text": "Bargaining goes best when it is polite and respectful; a friendly manner with the seller helps."
+    },
+    {
+      "id": "C-BARGAIN-WALK",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNN-SHOP",
+        "VCT-BARGAIN"
+      ],
+      "text": "If you don’t want to buy, it is fine to say “Không, cảm ơn” (No, thank you) and walk on."
+    },
+    {
+      "id": "N-PRICE-AGREE",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Once you have agreed a price, it is fair to pay it."
+    },
+    {
+      "id": "C-FOOD-ORDER",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-FOOD"
+      ],
+      "text": "At street-food stalls you usually order at the front, then choose your own table or stool."
+    },
+    {
+      "id": "C-FOOD-POINT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-FOOD"
+      ],
+      "text": "You can point at what you want and ask for “một suất” (one serving) or “một cái này” (one of these)."
+    },
+    {
+      "id": "C-FOOD-SHARE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-FOOD"
+      ],
+      "text": "At busy times, other diners may join you at your table."
+    },
+    {
+      "id": "C-FOOD-HERBS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-FOOD"
+      ],
+      "text": "Noodle dishes come with a free side plate of herbs and leafy greens to add as you like."
+    },
+    {
+      "id": "C-FOOD-TRADA",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-FOOD"
+      ],
+      "text": "“Trà đá”, iced green tea, is served at stalls all over the country instead of water."
+    },
+    {
+      "id": "C-FOOD-WIPE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-FOOD"
+      ],
+      "text": "A quick wipe of your chopsticks or spoon before eating is normal."
+    },
+    {
+      "id": "C-FOOD-PAY",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-FOOD"
+      ],
+      "text": "Eat first, pay later: at small stalls, diners ask the total and pay the cook on the way out."
+    },
+    {
+      "id": "C-TIP",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ"
+      ],
+      "text": "Tipping is less common in restaurants; you may tip if you feel the service deserves it, but you don’t have to."
+    },
+    {
+      "id": "C-HK-NAME",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-HOANKIEM"
+      ],
+      "text": "Hoàn Kiếm means “Lake of the Returned Sword”. The legend says that in 1428 Emperor Lê Lợi, boating on the lake, gave his sword back to the Golden Turtle God (Kim Qui)."
+    },
+    {
+      "id": "C-NGOCSON",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-NGOCSON"
+      ],
+      "text": "Ngọc Sơn Temple honours General Trần Hưng Đạo and Văn Xương. It was built in 1841 and fully repaired in 1865 by the scholar Nguyễn Văn Siêu."
+    },
+    {
+      "id": "C-THAPBUT",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-NGOCSON"
+      ],
+      "text": "The Pen Tower is built of stone with a top shaped like a writing brush, and carries the words “Tả Thanh Thiên” (writing on the sky). Beside it, the stone Ink Slab is held up by three frogs."
+    },
+    {
+      "id": "C-THEHUC",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-NGOCSON"
+      ],
+      "text": "Thê Húc (“Sunbeam”) is a red arched bridge that leads across the lake to Ngọc Sơn Temple."
+    },
+    {
+      "id": "C-VM-1070",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "TT-VANMIEU"
+      ],
+      "text": "Văn Miếu was built in 1070 under King Lý Thánh Tông. In 1076 King Lý Nhân Tông set up Quốc Tử Giám, the royal academy, beside it."
+    },
+    {
+      "id": "C-KVC-1805",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "TT-VANMIEU"
+      ],
+      "text": "Khuê Văn Các was built in 1805 under the Nguyễn dynasty. Beyond it lies Thiên Quang Tỉnh, a square pond."
     }
   ],
   "scenarios": [
@@ -1455,6 +1642,495 @@
           "C-ROAD-HAND",
           "C-CALL-OI",
           "C-PHOTO-ASK"
+        ]
+      }
+    },
+    {
+      "id": "sc05",
+      "order": 5,
+      "topic": "People & language",
+      "title": "Shopping at Đồng Xuân Market",
+      "place": "Đồng Xuân Market, Hà Nội",
+      "goal": "Ask a price in Vietnamese, bargain politely or walk on, and keep to a price you agreed.",
+      "context": "Đồng Xuân is Hà Nội’s big covered market on the edge of the Old Quarter: fresh food downstairs, fabric and clothing upstairs, and almost no price tags.",
+      "scope": "Đồng Xuân Market and other local markets in Hà Nội. Shops and supermarkets with price tags usually have fixed prices. Bargaining advice here comes from a Vietnamese media guide, not an official source.",
+      "minutes": 4,
+      "svg": null,
+      "hotspots": [],
+      "steps": [
+        {
+          "id": "s1",
+          "prompt": "At a fabric stall you like a silk scarf, but there is no price tag. The seller looks up and smiles.",
+          "cue": "Try a few words of Vietnamese.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Ask: “Cái này bao nhiêu tiền?”",
+              "type": "fit",
+              "anim": "none",
+              "feedback": "Asking the price in Vietnamese is friendly and clear. In local markets many goods have no price tag, so asking is the normal first step.",
+              "claimIds": [
+                "C-BARGAIN-MARKET"
+              ],
+              "phraseIds": [
+                "ph-baonhieu"
+              ],
+              "stills": [
+                "Ask: “Cái này bao nhiêu tiền?”"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Call “Chị ơi!”, point to the scarf and look curious",
+              "type": "alsoFit",
+              "anim": "none",
+              "feedback": "Calling her with the word that fits her age is polite, and pointing at the scarf (not at her) is fine.",
+              "claimIds": [
+                "C-CALL-OI"
+              ],
+              "phraseIds": [
+                "ph-chioi",
+                "ph-baonhieu"
+              ],
+              "stills": [
+                "Call “Chị ơi!”, point to the scarf and look curious"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Shout “How much?” in English from the next aisle",
+              "type": "needInfo",
+              "anim": "none",
+              "feedback": "People rarely call out “excuse me” to get attention; they call the person with the word that fits, and they come closer first.",
+              "claimIds": [
+                "C-CALL-OI"
+              ],
+              "phraseIds": [
+                "ph-chioi"
+              ],
+              "stills": [
+                "Shout “How much?” in English from the next aisle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "prompt": "She says “Hai trăm nghìn” — 200,000 đồng. That is more than you expected.",
+          "cue": "You can bargain, or say no.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Smile and offer a lower price, friendly and calm",
+              "type": "fit",
+              "anim": "none",
+              "feedback": "Bargaining is common in local markets, and it goes best when you stay polite and friendly.",
+              "claimIds": [
+                "C-BARGAIN-MARKET",
+                "C-BARGAIN-POLITE"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Smile and offer a lower price, friendly and calm"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Say “Không, cảm ơn” and walk on",
+              "type": "alsoFit",
+              "anim": "none",
+              "feedback": "You never have to buy. A calm “no, thank you” and moving on is fine, and sometimes the seller calls you back with a new price.",
+              "claimIds": [
+                "C-BARGAIN-WALK"
+              ],
+              "phraseIds": [
+                "ph-khongcamon"
+              ],
+              "stills": [
+                "Say “Không, cảm ơn” and walk on"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Tell her loudly that it’s a rip-off",
+              "type": "seeGuide",
+              "anim": "none",
+              "feedback": "Keeping your cool matters: loud arguments make a scene and cause loss of face. A friendly offer, or a polite no, works better.",
+              "claimIds": [
+                "C-KEEP-COOL",
+                "C-BARGAIN-POLITE"
+              ],
+              "phraseIds": [
+                "ph-khongcamon"
+              ],
+              "stills": [
+                "Tell her loudly that it’s a rip-off"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "prompt": "You agreed on 150,000 đồng and paid. At the next stall you see the same scarf for less.",
+          "cue": "Think about the deal you made.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Keep your scarf, smile, and say “Cảm ơn” as you leave",
+              "type": "fit",
+              "anim": "none",
+              "feedback": "Once you have agreed a price, it is fair to keep to it. A smile and a thank-you end the deal well.",
+              "claimIds": [
+                "N-PRICE-AGREE"
+              ],
+              "phraseIds": [
+                "ph-camon"
+              ],
+              "stills": [
+                "Keep your scarf, smile, and say “Cảm ơn” as you leave"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Keep the deal, and next time look at a few stalls first",
+              "type": "alsoFit",
+              "anim": "none",
+              "feedback": "Comparing a few stalls before you agree is a good habit; the deal you already made still stands.",
+              "claimIds": [
+                "N-PRICE-AGREE"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Keep the deal, and next time look at a few stalls first"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Go back and demand part of your money",
+              "type": "seeGuide",
+              "anim": "none",
+              "feedback": "You agreed the price, and an argument in public causes loss of face for everyone. Keep the deal and compare earlier next time.",
+              "claimIds": [
+                "N-PRICE-AGREE",
+                "C-KEEP-COOL"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Go back and demand part of your money"
+              ]
+            }
+          ]
+        }
+      ],
+      "storyIds": [
+        "st-market"
+      ],
+      "summary": [
+        {
+          "text": "Ask “Cái này bao nhiêu tiền?” — many market goods have no price tag.",
+          "claimIds": [
+            "C-BARGAIN-MARKET"
+          ]
+        },
+        {
+          "text": "Bargain with a smile, or say “Không, cảm ơn” and walk on.",
+          "claimIds": [
+            "C-BARGAIN-POLITE",
+            "C-BARGAIN-WALK"
+          ]
+        },
+        {
+          "text": "Keep your cool, and keep to a price you agreed.",
+          "claimIds": [
+            "C-KEEP-COOL",
+            "N-PRICE-AGREE"
+          ]
+        }
+      ],
+      "reminder": {
+        "id": "rc-sc05",
+        "title": "Shopping at a market",
+        "action": "Ask “Cái này bao nhiêu tiền?”, bargain with a smile or say “Không, cảm ơn”, and keep to the price you agree.",
+        "phraseIds": [
+          "ph-baonhieu",
+          "ph-khongcamon"
+        ],
+        "note": "Local markets in Hà Nội. Shops with price tags usually have fixed prices.",
+        "claimIds": [
+          "C-BARGAIN-MARKET",
+          "C-BARGAIN-POLITE",
+          "N-PRICE-AGREE"
+        ]
+      }
+    },
+    {
+      "id": "sc06",
+      "order": 6,
+      "topic": "Food & the table",
+      "title": "Lunch at a street-food stall",
+      "place": "A pavement bún chả and phở stall, Hà Nội",
+      "goal": "Order without a menu, share a table, use the free herbs and iced tea, and pay the way small stalls expect.",
+      "context": "Low plastic stools, a steaming pot of phở, pork grilling over charcoal for bún chả: a small stall on the pavement near the Old Quarter.",
+      "scope": "Small street-food stalls in Hà Nội, using the national tourism authority’s street-food guide. Restaurants and other cities may do things differently.",
+      "minutes": 5,
+      "svg": null,
+      "hotspots": [],
+      "steps": [
+        {
+          "id": "s1",
+          "prompt": "There is no menu in English, just a big pot and a grill at the front. The cook looks at you.",
+          "cue": "How do people order at small stalls?",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Point at the pot and say “Cho tôi một suất”",
+              "type": "fit",
+              "anim": "none",
+              "feedback": "Pointing at what you want and asking for “một suất” (one serving) is exactly how many people order at stalls.",
+              "claimIds": [
+                "C-FOOD-POINT",
+                "C-FOOD-ORDER"
+              ],
+              "phraseIds": [
+                "ph-motsuat"
+              ],
+              "stills": [
+                "Point at the pot and say “Cho tôi một suất”"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Order at the front first, then find a stool",
+              "type": "alsoFit",
+              "anim": "none",
+              "feedback": "At small stalls you usually order at the front and then choose your own table or stool.",
+              "claimIds": [
+                "C-FOOD-ORDER"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Order at the front first, then find a stool"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Sit down and wait for someone to bring a menu",
+              "type": "needInfo",
+              "anim": "none",
+              "feedback": "Many stalls cook only two or three dishes and have no menu; you usually order at the front first.",
+              "claimIds": [
+                "C-FOOD-ORDER",
+                "C-FOOD-POINT"
+              ],
+              "phraseIds": [
+                "ph-motsuat"
+              ],
+              "stills": [
+                "Sit down and wait for someone to bring a menu"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "prompt": "It’s lunchtime and every table is full. A man gestures at the empty stool at your little table.",
+          "cue": "Is that normal here?",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Nod, smile and make room",
+              "type": "fit",
+              "anim": "none",
+              "feedback": "At busy times other diners often join you at your table. Making room is the easy, friendly thing to do.",
+              "claimIds": [
+                "C-FOOD-SHARE"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Nod, smile and make room"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Move your bag off the stool for him",
+              "type": "alsoFit",
+              "anim": "none",
+              "feedback": "Sharing a table at peak times is normal, and clearing the stool helps.",
+              "claimIds": [
+                "C-FOOD-SHARE"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Move your bag off the stool for him"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Tell him the stool is taken",
+              "type": "needInfo",
+              "anim": "none",
+              "feedback": "Sharing tables at busy times is normal at stalls, so turning someone away can feel unfriendly.",
+              "claimIds": [
+                "C-FOOD-SHARE"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Tell him the stool is taken"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "prompt": "Your bún chả arrives with a big plate of herbs and a glass of iced tea you didn’t order.",
+          "cue": "Look at what came with the food.",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Tear some herbs into your bowl and sip the trà đá",
+              "type": "fit",
+              "anim": "none",
+              "feedback": "The herbs and leafy greens come free with noodle dishes, to add as you like, and trà đá is served instead of water.",
+              "claimIds": [
+                "C-FOOD-HERBS",
+                "C-FOOD-TRADA"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Tear some herbs into your bowl and sip the trà đá"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Wipe your chopsticks with a napkin first",
+              "type": "alsoFit",
+              "anim": "none",
+              "feedback": "A quick wipe of your chopsticks or spoon before eating is perfectly normal.",
+              "claimIds": [
+                "C-FOOD-WIPE"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Wipe your chopsticks with a napkin first"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Push the herbs away and tell the cook you didn’t order them",
+              "type": "needInfo",
+              "anim": "none",
+              "feedback": "The herbs come with the dish, free of charge — they are part of the meal, not an extra.",
+              "claimIds": [
+                "C-FOOD-HERBS"
+              ],
+              "phraseIds": [],
+              "stills": [
+                "Push the herbs away and tell the cook you didn’t order them"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "prompt": "You’ve finished and you’re ready to go.",
+          "cue": "When and how do people pay here?",
+          "choices": [
+            {
+              "id": "a",
+              "label": "Go to the cook, ask “Chị ơi, tính tiền!” and pay",
+              "type": "fit",
+              "anim": "none",
+              "feedback": "Eat first, pay later: at small stalls people ask the total and pay the cook on the way out.",
+              "claimIds": [
+                "C-FOOD-PAY"
+              ],
+              "phraseIds": [
+                "ph-tinhtien"
+              ],
+              "stills": [
+                "Go to the cook, ask “Chị ơi, tính tiền!” and pay"
+              ]
+            },
+            {
+              "id": "b",
+              "label": "Ask what you owe from your stool, then pay on the way out",
+              "type": "alsoFit",
+              "anim": "none",
+              "feedback": "Asking the total and paying as you leave is how small stalls work; a written bill is rare but you can ask.",
+              "claimIds": [
+                "C-FOOD-PAY"
+              ],
+              "phraseIds": [
+                "ph-tinhtien"
+              ],
+              "stills": [
+                "Ask what you owe from your stool, then pay on the way out"
+              ]
+            },
+            {
+              "id": "c",
+              "label": "Leave some money on the table and walk off",
+              "type": "needInfo",
+              "anim": "none",
+              "feedback": "At small stalls you ask the total and pay the cook directly, so leaving cash and going can leave you short. A tip isn’t expected.",
+              "claimIds": [
+                "C-FOOD-PAY",
+                "C-TIP"
+              ],
+              "phraseIds": [
+                "ph-tinhtien"
+              ],
+              "stills": [
+                "Leave some money on the table and walk off"
+              ]
+            }
+          ]
+        }
+      ],
+      "storyIds": [
+        "st-street-stall"
+      ],
+      "summary": [
+        {
+          "text": "Order at the front: point and say “Cho tôi một suất”.",
+          "claimIds": [
+            "C-FOOD-POINT",
+            "C-FOOD-ORDER"
+          ]
+        },
+        {
+          "text": "Sharing a table at busy times is normal.",
+          "claimIds": [
+            "C-FOOD-SHARE"
+          ]
+        },
+        {
+          "text": "Herbs and trà đá come with the meal.",
+          "claimIds": [
+            "C-FOOD-HERBS",
+            "C-FOOD-TRADA"
+          ]
+        },
+        {
+          "text": "Eat first, pay later: ask the total and pay the cook as you leave.",
+          "claimIds": [
+            "C-FOOD-PAY"
+          ]
+        }
+      ],
+      "reminder": {
+        "id": "rc-sc06",
+        "title": "Eating at a street stall",
+        "action": "Order at the front (“Cho tôi một suất”), share tables, enjoy the free herbs and trà đá, and pay the cook as you leave (“Tính tiền!”).",
+        "phraseIds": [
+          "ph-motsuat",
+          "ph-tinhtien"
+        ],
+        "note": "Small street-food stalls in Hà Nội; restaurants may differ.",
+        "claimIds": [
+          "C-FOOD-ORDER",
+          "C-FOOD-SHARE",
+          "C-FOOD-PAY"
         ]
       }
     }

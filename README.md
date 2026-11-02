@@ -1,6 +1,6 @@
 # CultureCompass
 
-Understand the place before you arrive. A student UX prototype (web-based multimedia application) that helps travellers explore the stories, traditions and everyday life of a destination before a trip. The first destination is **Vietnam, starting in Hà Nội**: six culture themes, eleven sourced stories, four optional practice scenes and a phrasebook.
+Understand the place before you arrive. A student UX prototype (web-based multimedia application) that helps travellers explore the stories, traditions and everyday life of a destination before a trip. The first destination is **Vietnam, starting in Hà Nội**: six culture themes, thirteen sourced stories, **Explore** (a small pixel-art game: five places in Hà Nội to walk through) and a phrasebook.
 
 Built with HTML5, CSS, Bootstrap 5.3.3, vanilla JavaScript, inline SVG and GSAP 3.12.5. No backend, accounts or tracking.
 
@@ -12,32 +12,37 @@ Built with HTML5, CSS, Bootstrap 5.3.3, vanilla JavaScript, inline SVG and GSAP 
   npm run dev
   ```
   Then open http://localhost:8765. This rebuilds the data files and serves the folder with `tools/dev-server.py` (Python's built-in server with caching off). Nothing to install. Stop it with Ctrl + C.
-- **Other commands:** `npm run build` rebuilds the data files after a JSON change; `npm run check` runs the content checker.
+- **Other commands:** `npm run build` rebuilds the data and map files after a JSON or Tiled change; `npm run check` runs the content checker; `npm run zip` makes the submission zip (see below).
 
 ## Pages
 
 | File | Purpose |
 |---|---|
 | `index.html` | Home: credited photo flow, immediate **Explore destinations** CTA and persistent skip link, clear Vietnam scope, then the destination chooser (hover or focus previews the country; click or Enter opens it) |
-| `vietnam.html` | Vietnam, opened like the front of a printed guide: a **cover** (title, scope, counts, the Hà Nội Train Street clip) followed by the **compass of six themes**, then a **contents page of three places** (at the table, on the street, at the temple: photo, what our stories cover, one phrase, links to the theme and scene; from `countries.json` → `contexts`); `#food`, `#language` … deep-link to a theme, a collapsible full story index, optional practice scenes, words to carry |
+| `vietnam.html` | Vietnam as a long editorial page in four colour chapters (Everyday life, Food & the table, Beliefs & temples, History & memory): poster hero, contents tiles, accordion strip, round views, bento clusters, story carousel, practice cover-stack, Văn Miếu stops, a quotation, a “which came first?” game, phrase tiles. Built from the `SECTIONS` config in `assets/js/explore.js`; pictures are labelled frames until photos are chosen. Old anchors (`#food`, `#themes`, `#practice` …) land on the matching section |
+| `vietnam-classic.html` | The earlier Vietnam page: cover, the **compass of six themes** (`#food`, `#language` … open a theme), three familiar places, the full story index, practice scenes, words to carry |
 | `story.html?id=st-…` | A culture story: standfirst, picture with credit, numbered source notes, where it applies, how it varies, phrases, sources with limits, optional practice, next/previous in the theme |
-| `scene.html?id=sc01…sc04` | Optional practice scene; resumes at the exact step you left |
+| `explore.html` | **Explore**: a map of Vietnam (Natural Earth, Vietnam point of view, with Hoàng Sa and Trường Sa) and the five places you can walk in Hà Nội, with your progress; Đà Nẵng and Hội An are “coming later” |
+| `explore.html?zone=…` | One place in the pixel-art game (`homestay`, `pho-co`, `quan-an`, `cho-dong-xuan`, `van-mieu`): walk, talk, look, choose; journal, stamp, Go to… for keyboard play. Remembers where you stood |
+| `scene.html?id=sc01…sc06` | Old practice-scene links; forwards to the Explore place that holds the scene |
 | `phrases.html` | Phrasebook, filtered by what you want to do and by theme or scene (`?intent=`, `?topic=`, `?scene=`) |
 | `collection.html` | My collection: saved stories, phrases and reminder cards, grouped by destination, printable |
 | `about.html` | Method, scope, live content status, sources, media credits, accessibility, your data |
-| `saved.html`, `hanoi.html` | Old addresses; they redirect to `collection.html` and `vietnam.html` |
+| `saved.html`, `hanoi.html`, `vietnam-explore.html` | Old addresses; they redirect to `collection.html` and `vietnam.html` |
 
 ## Content and where to edit it
 
 All content lives in JSON files in `assets/data/`. Each starts with a `"$comment"` explaining its fields; keys starting with `$` never reach the site.
 
 - `sources.json`: every source, with the date checked and its limits
-- `scenarios.json`: **claims** (each linked to sources, with a status) and the four practice scenes (steps, choices, feedback, summaries, reminder cards, `storyIds`)
+- `scenarios.json`: **claims** (each linked to sources, with a status) and the six scenes used in Explore (steps, choices, feedback, summaries, reminder cards, `storyIds`)
 - `stories.json`: the culture stories. Every paragraph lists the claims it rests on; a paragraph that only frames scope is marked `editorial`
 - `topics.json`: the themes on a country page (`storyIds`, `sceneIds`, `phraseIds`, `aliases` for old links). `planned` themes are shown as “Not written yet”
 - `phrases.json`: intents and phrases (meaning, who to use them with, audio id, status)
 - `assets.json`: credits and licences for every image, video and audio file
 - `countries.json`: the home opening (`heroGallery`, photos with the place each was taken), the destinations, and each country's `contexts` (three places: table, street, temple)
+- `explore.json`: the Explore places: scenes, maps, objectives, encounters (which person, what happens after a choice that doesn't fit), facts (each pointing to claims and a story) and which facts open with each moment
+- `vn-map.js`: the Vietnam outline for the Explore map, generated by `tools/vn-map.py` from Natural Earth (don't edit by hand)
 - `svgs.js`: SVG scene wrappers, numbered interactive pins and theme icons. Scene paintings are local JPEGs in `assets/img/scenes/`; small thumbnails load lazily. Exact image-generation prompts are in `docs/design/illustration-prompts-2026-10-25.md` and embedded in the JPEGs.
 
 The pages don't read JSON directly (browsers block that from `file://`); `tools/build-data.js` copies each JSON file into a matching `.js` file. **Don't edit those `.js` files by hand.** After any content change:
@@ -52,6 +57,14 @@ npm run check
 
 The checker fails on invalid JSON, stale generated files, broken references, claims or story paragraphs without sources, stories not reachable from any theme, assets without credits, and hero clips without a place. It lists every item still **being verified**.
 
+## Explore: maps, art and sound
+
+- Engine: `assets/js/game/engine.js` (canvas, integer pixel scale, depth sorting, collision, zones, doors, people, click-to-move). Game rules: `assets/js/game/explore-game.js`. The map of places: `assets/js/game/explore-hub.js`.
+- Maps are Tiled files in `assets/game/maps/*.tmj` (open them in Tiled, embed tilesets). `npm run build` turns each into a `.js` file. Layers: `ground`, `walls` (`ysort`), `collision` (never drawn), `objects` (props, depth-sorted; sprites inside a `tiles/` folder lie flat on the ground), `points` (`spawn`, `target`, `npc`, `hotspot`, `zone`, `door`, `mover`). `tools/maps/draft-*.py` made the first drafts; don't re-run them after editing in Tiled (they need `--force`).
+- Sprites: `assets/game/sprites/`. AI-generated sheets (in `assets/game/raw/`, not submitted) are cut, downscaled and snapped to the palette by `tools/pixelize.py`. Prompts and art direction: `docs/game/`.
+- Sound: `assets/game/audio/` (music and effects chosen from Ninja Adventure, CC0). Sound can be switched off in the game; it never starts before you press Start.
+- Progress is stored under `cc.explore` (steps, facts, position, stamp per place).
+
 ## Saved data
 
 My collection, the reading log (“Read before”), scene progress (including the exact step) and settings are stored in this browser only (`localStorage`, keys starting `cc.`).
@@ -62,9 +75,9 @@ My collection, the reading log (“Read before”), scene progress (including th
 ## Still to do
 
 - **Arts & creativity** has no story yet. The water-puppetry clip is footage only; a story needs a reliable source first.
-- **Native-speaker check** of the 7 phrases marked `needs_verification` in `phrases.json`; then set them to `reviewed`.
 - **Replace the audio.** `assets/audio/*.m4a` is a computer voice (macOS “Linh”), labelled as such. Record each phrase with a person who agrees to its use, keep the file names (or update `file` in `assets.json`), remove `synthetic: true`, set the credit, rebuild.
-- **Stronger sources** for the 5 claims still `needs_verification` (forms of address, chopsticks in rice, crossing pace and moving with locals).
+- **Stronger sources:** the claims on forms of address, chopsticks, road crossing and bargaining now rest on press and reference sources (Tuổi Trẻ News, VietNamNet, VOV5, Cultural Atlas) rather than official guidance; replace them if an official source turns up.
+- **Explore:** Đà Nẵng and Hội An; touch controls beyond tap-to-walk; a “Hà Nội xưa” (1960–80) theme using the art in `assets/game/raw/ha-noi-xua/` once it has its own sources.
 - **Usability testing** has not been run; no results exist yet.
 - Re-check the Temple of Literature rules page shortly before any demo.
 
@@ -74,7 +87,16 @@ My collection, the reading log (“Read before”), scene progress (including th
 - Hover is never required: keyboard focus shows the same previews, and touch screens show them by default.
 - Videos are muted, have Pause/Play and stills; with Reduce motion (yours or the device's) or data saver they wait for Play. Scenes have a Text-first mode.
 - Every phrase is written out with its meaning; audio never plays by itself and computer voices are labelled.
+- Explore: keyboard only is enough (arrows/WASD, E, number keys, **G** for Go to…, J, Escape); open windows keep focus inside; reduced motion turns off camera easing and shake; every fact is also in a story.
 - Status uses words and icons, not colour alone. No timers. Not audited for WCAG conformance.
+
+## Submission zip
+
+```bash
+npm run zip
+```
+
+Writes `../CultureCompass-submission.zip` with only what the site needs (pages, `assets/`, `vendor/`, docs, tools and `package.json`). It leaves out `node_modules/`, `background-vietnam/` (raw footage), `assets/game/raw/` and `assets/game/vendor/` (source art packs; only the three sheets the game loads and the licences go in), `_to_delete/` and hidden folders. Open `index.html` from the unzipped folder to check it.
 
 ## Design and QA
 
@@ -84,7 +106,7 @@ My collection, the reading log (“Read before”), scene progress (including th
 
 ## Media credits
 
-Full list on the About page and in `assets/data/assets.json`. In short: photos and clips from Wikimedia Commons under CC BY, CC BY-SA or CC0 (credited where shown; the market clips are from Hội An); scene paintings are AI-generated illustrations with original SVG interactive overlays; fonts are Source Serif 4 and Be Vietnam Pro (SIL OFL).
+Full list on the About page and in `assets/data/assets.json`. In short: photos and clips from Wikimedia Commons under CC BY, CC BY-SA or CC0 (credited where shown; the market clips are from Hội An); scene paintings are AI-generated illustrations with original SVG interactive overlays; Explore uses LimeZu pixel art (Serene Village Revamped, CC BY 4.0; Modern Interiors free version, non-commercial), AI-generated sprites edited for the project, and Ninja Adventure music and sounds (CC0); the Vietnam map is from Natural Earth (public domain); fonts are Source Serif 4 and Be Vietnam Pro (SIL OFL).
 
 ## Interface refinement · 25 October 2026
 

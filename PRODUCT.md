@@ -14,7 +14,7 @@ The project is also a solo student UX assignment (CSCU9X5), so module assessors 
 
 ## Product Purpose
 
-CultureCompass helps travellers **explore and understand the culture of a destination before they arrive**: everyday life, history and memory, food, arts, beliefs and festivals, and how people speak to each other. Practising a situation in an interactive scene is one branch that helps apply what they read; it is not the whole product.
+CultureCompass helps travellers **explore and understand the culture of a destination before they arrive**: everyday life, history and memory, food, arts, beliefs and festivals, and how people speak to each other. **Explore**, a small pixel-art game in which you walk around real places in Hà Nội and meet everyday moments, is one branch that helps apply what they read; it is not the whole product.
 
 Tagline: *Understand the place before you arrive. Explore the stories, traditions and everyday life behind your next destination.*
 
@@ -23,23 +23,23 @@ After one session a visitor should:
 2. see that it varies by region, community, family or place, and know the limits of what we can tell them;
 3. have saved one story, phrase or reminder that will help on the trip.
 
-Reading or completing something is never presented as having understood or mastered a culture. There are no scores, leaderboards or forced rewards.
+Reading or completing something is never presented as having understood or mastered a culture. There are no scores or leaderboards. Explore keeps a journal of the facts you have found and gives a stamp for each place you have walked through: a record of where you have been, not a measure of what you know (decided by the project owner, 27 October 2026; it replaces the earlier “no rewards” rule).
 
 ## Vision vs. what exists today
 
 - **Vision:** many countries, each with its own themes, regions and communities. The architecture (countries.json → topics.json → stories.json, with scenes and phrases attached) is built for that.
-- **Today (24 October 2026):** one destination, **Vietnam, starting in Hà Nội**. 6 themes (5 with stories; *Arts & creativity* is not written yet), 11 stories, 4 optional practice scenes, 11 phrases, 13 sources. Run `node tools/check-content.js` for current numbers.
+- **Today (1 November 2026):** one destination, **Vietnam, starting in Hà Nội**. 6 themes (5 with stories; *Arts & creativity* is not written yet), 13 stories, 5 places to explore holding 6 scenes (20 moments), 15 phrases, 20 sources. Đà Nẵng and Hội An are shown on the Explore map as “coming later”. Run `node tools/check-content.js` for current numbers.
 - Hà Nội content is never presented as representing all of Vietnam. No placeholder countries, invented articles, interviews, testimonials, contributors or launch dates are shown.
 
 ## Positioning
 
-A cultural publication you explore like a game of discovery. Choosing a destination, turning the compass to a theme, opening a story and keeping a bookmark all respond immediately and with a little delight, but the content is the point: short, sourced explanations that say where they apply and how they vary. Practice scenes give contextual feedback that is never a bare right or wrong (*Fits this situation*, *Another way that also fits*, *Needs more context*, *See the rules and guidance*).
+A cultural publication you explore like a game of discovery. Choosing a destination, turning the compass to a theme, opening a story and keeping a bookmark all respond immediately and with a little delight, but the content is the point: short, sourced explanations that say where they apply and how they vary. In Explore, choices get contextual feedback that is never a bare right or wrong (*Fits this situation*, *Another way that also fits*, *Needs more context*, *See the rules and guidance*). A choice that doesn’t fit shows what happens, then lets you try another way.
 
 ## Operating Context
 
-Main flow: `index.html` (muted culture montage → choose a destination) → `vietnam.html` (overview and scope → compass of six themes → stories) → `story.html?id=…` (the story, its sources, where it applies, phrases) → optional `scene.html?id=…` (practice) → save to `collection.html`.
+Main flow: `index.html` (muted culture montage → choose a destination) → `vietnam.html` (an editorial page in four colour chapters: scope, everyday life, food, beliefs and temples, history, practice, phrases; the six-theme compass is on `vietnam-classic.html`) → `story.html?id=…` (the story, its sources, where it applies, phrases) → optional `explore.html` (the map of places) → `explore.html?zone=…` (walk through one place) → save to `collection.html`. Old `scene.html?id=…` links forward to the place that holds that scene.
 
-Global navigation: **Destinations · My collection · About** (+ Settings). Inside a destination: **Overview · Themes · Practise a moment · Phrasebook**.
+Global navigation: **Destinations · My collection · About** (+ Settings). Inside a destination: **Overview · Themes · Explore · Phrasebook**.
 
 Supporting pages: `phrases.html` (phrasebook by intent, theme or scene), `collection.html` (saved stories, phrases and reminder cards, grouped by destination, printable), `about.html` (method, scope, live content status, sources, credits, accessibility, data). Old routes: `saved.html` → `collection.html`; `hanoi.html` → `vietnam.html`; old theme anchors such as `#topic-greetings` or `#street` open the matching new theme.
 
@@ -49,6 +49,7 @@ Supporting pages: `phrases.html` (phrasebook by intent, theme or scene), `collec
 - Must work when opened from `file://`. Content is authored in `assets/data/*.json`; `tools/build-data.js` generates the `.js` files the pages load (never edit them by hand). `svgs.js` is hand-edited. `tools/check-content.js` validates references, sources, credits, stories and themes.
 - Fonts are self-hosted (Source Serif 4, Be Vietnam Pro); there are no external requests.
 - Storage is the browser's localStorage only, with an in-memory fallback when blocked and a kept backup when data is unreadable. Saved data from older versions is migrated, never silently deleted.
+- Explore runs on a small canvas engine written for the project (`assets/js/game/engine.js`; Phaser could not be installed). Maps are drawn in Tiled (`assets/game/maps/*.tmj`) and `tools/build-maps.js` turns them into `.js` so they open from `file://`. Pixel art: LimeZu packs plus AI-generated sprites cleaned up by `tools/pixelize.py`. The Vietnam map comes from Natural Earth (Vietnam point of view, including Hoàng Sa and Trường Sa) via `tools/vn-map.py`.
 - UI language is English; Vietnamese appears with full diacritics and `lang="vi"`.
 - The assignment requires multimedia: video, audio, animation and interaction.
 
@@ -60,15 +61,16 @@ Supporting pages: `phrases.html` (phrasebook by intent, theme or scene), `collec
 
 ## Evidence on Hand
 
-- Sources with check dates and limits: `assets/data/sources.json`. Claims and their status: `assets/data/scenarios.json` (5 still `needs_verification`). Stories: `assets/data/stories.json` (every paragraph points to claims). Phrases: `assets/data/phrases.json` (7 waiting for a native-speaker check).
+- Sources with check dates and limits: `assets/data/sources.json`. Claims and their status: `assets/data/scenarios.json` (none still `needs_verification` since 1 November 2026; the last eight were backed with press and reference sources). Stories: `assets/data/stories.json` (every paragraph points to claims). Phrases: `assets/data/phrases.json` (the 11 composed ones checked for wording on 1 November 2026, status `reviewed`).
 - Media credits and licences: `assets/data/assets.json`. Videos are trimmed CC clips from Wikimedia Commons; the market clips were filmed in Hội An and are captioned so.
+- Explore art and sound: LimeZu *Serene Village Revamped* (CC BY 4.0) and *Modern Interiors* free version (non-commercial); music and sounds from *Ninja Adventure* by Pixel-boy and AAA (CC0); buildings, people and props AI-generated (Gemini) and edited for CultureCompass. All credited on `about.html#credits` and under the game.
 - Audio in `assets/audio/` is a synthetic placeholder (macOS “Linh” voice), labelled “Computer voice” everywhere. Do not present it as a real speaker.
 - Design research: `docs/research/sandooka-analysis.md` (mechanism reference only; no Sandooka assets or layouts are reused).
 - No user interviews or usability tests have been run; there are no testimonials, quotes or test results. Do not invent any.
 
 ## Product Principles
 
-1. Understanding first: the culture is readable directly; practice is an optional next step.
+1. Understanding first: the culture is readable directly; Explore is an optional next step, and every fact in it is also in a story.
 2. Sourced or labelled: nothing is shown as fact unless it is linked to a checked source; unverified items say so in place.
 3. Scope honestly: every story says where it applies and how it varies; empty themes say "Not written yet".
 4. Context over correctness: feedback explains when a choice fits and offers other ways.
@@ -82,3 +84,4 @@ Target: WCAG 2.2 AA (not audited; not claimed).
 - Videos are muted, have Pause/Play and a still, and wait for Play under reduced motion or data saver.
 - Audio phrases always have written text and meaning; synthetic audio is labelled.
 - Status uses words and icons, never colour alone. No timers.
+- Explore can be played with the keyboard only: arrow keys or W A S D, E to talk, number keys to choose, G (**Go to…**) jumps to any person, place or moment without walking, J opens the journal, Escape closes a window. Open windows keep focus inside and return it afterwards. Reduced motion stops camera easing and screen shake. Every moment and fact is also readable as a story.

@@ -5,11 +5,12 @@
   "description": "CultureCompass: a student UX prototype for exploring and understanding a destination's culture before a trip (Vietnam, starting in Hà Nội).",
   "scripts": {
     "dev": "npm run build && python3 tools/dev-server.py 8765",
-    "build": "node tools/build-data.js && npm run build:globe && npm run build:tracing-beam",
+    "build": "node tools/build-data.js && node tools/build-maps.js && npm run build:globe && npm run build:tracing-beam",
     "check": "node tools/check-content.js",
-    "build:globe": "npm run typecheck && node tools/build-globe.mjs && tailwindcss -i globe/styles.css -o assets/globe/globe.css --minify",
+    "build:globe": "node tools/build-hud-map.mjs && npm run typecheck && node tools/build-globe.mjs && tailwindcss -i globe/styles.css -o assets/globe/globe.css --minify",
     "typecheck": "tsc --noEmit",
-    "build:tracing-beam": "npm run typecheck && node tools/build-tracing-beam.mjs"
+    "build:tracing-beam": "npm run typecheck && node tools/build-tracing-beam.mjs",
+    "zip": "node tools/make-zip.js"
   },
   "dependencies": {
     "@react-three/drei": "10.7.6",

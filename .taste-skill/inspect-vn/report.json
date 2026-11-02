@@ -1,0 +1,2468 @@
+{
+ "url": "http://localhost:8765/vietnam.html",
+ "at": "2026-10-24T11:06:18.140Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    1,
+    0.93,
+    0.53
+   ],
+   "motion": {
+    "elements": 5,
+    "css": 5,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 1,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2659,
+     "screens": 3,
+     "words": 678,
+     "img": 5,
+     "video": 1,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hn-pho-ga.jpg",
+      "van-mieu-garden.jpg",
+      "hn-vendor-pottery.jpg",
+      "hn-hang-ma.jpg",
+      "stelae.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Vietnam, starting in Hà Nội",
+     "words": 5,
+     "chars": 27,
+     "lines": 1,
+     "size": 58,
+     "vw": 4,
+     "font": "Anton",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.12,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "VIETNAM, STARTING IN HÀ NỘI",
+     "words": 5,
+     "lines": 1,
+     "size": 57.6,
+     "font": "Anton"
+    },
+    "headings": [
+     {
+      "text": "CULTURECOMPASS",
+      "words": 1,
+      "chars": 14,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 16,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "VIETNAM, STARTING IN HÀ NỘI",
+      "words": 5,
+      "chars": 27,
+      "lines": 1,
+      "size": 57.6,
+      "vw": 4,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.53,
+      "top": 140,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "GREETINGS & ADDRESS",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 276,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "HOME & HOSPITALITY",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.18,
+      "top": 276,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "FOOD & DINING",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 375,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "TEMPLES & SACRED PLACES",
+      "words": 4,
+      "chars": 23,
+      "lines": 2,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 375,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Hà Nội",
+      "words": 2,
+      "chars": 6,
+      "lines": 1,
+      "size": 57.6,
+      "vw": 4,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.1,
+      "top": 659,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "BEFORE YOU GO",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.21,
+      "top": 678,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "4 SCENES TO REHEARSE",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.22,
+      "top": 739,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "STREETS & PUBLIC LIFE",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.19,
+      "top": 777,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "DRESS & APPEARANCE",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.18,
+      "top": 1025,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "FESTIVALS & TẾT",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.15,
+      "top": 1025,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "EVERYDAY VIETNAMESE",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.19,
+      "top": 1124,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "HISTORY & HERITAGE",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.17,
+      "top": 1124,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "SCENES IN HÀ NỘI",
+      "words": 4,
+      "chars": 16,
+      "lines": 1,
+      "size": 57.6,
+      "vw": 4,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.29,
+      "top": 1404,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "MEETING YOUR HOMESTAY HOST",
+      "words": 4,
+      "chars": 26,
+      "lines": 1,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.27,
+      "top": 1412,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FAMILY DINNER WITH SHARED DISHES",
+      "words": 5,
+      "chars": 32,
+      "lines": 2,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.27,
+      "top": 1517,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "VISITING THE TEMPLE OF LITERATURE",
+      "words": 5,
+      "chars": 33,
+      "lines": 2,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.27,
+      "top": 1647,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "OUT ON THE STREETS OF THE OLD QUARTER",
+      "words": 8,
+      "chars": 37,
+      "lines": 2,
+      "size": 33.1,
+      "vw": 2.3,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.27,
+      "top": 1777,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 19,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 2,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.88,
+       "mono": false
+      },
+      {
+       "family": "Anton",
+       "share": 0.12,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      15,
+      17,
+      33,
+      58
+     ],
+     "sizeCount": 4,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.5
+     },
+     "measureChars": 58,
+     "max": {
+      "size": 57.6,
+      "vw": 4,
+      "font": "Anton",
+      "text": "Vietnam, starting in Hà Nội"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.13,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "· you are here",
+      "above": "4 SCENES TO REHEARSE",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 15,
+      "top": 712
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#141210",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.11,
+      "l": 0.07
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#f2f3f1",
+       "share": 0.46
+      },
+      {
+       "color": "#cfc8bc",
+       "share": 0.23
+      },
+      {
+       "color": "#4a453e",
+       "share": 0.16
+      },
+      {
+       "color": "#141210",
+       "share": 0.11
+      },
+      {
+       "color": "#f4c400",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#141210",
+      "hsl": {
+       "h": 30,
+       "s": 0.11,
+       "l": 0.07
+      },
+      "fg": "#f2f3f1"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 12,
+     "inHero": 7,
+     "radius": 0,
+     "height": 64,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "CULTURECOMPASS",
+      "Vietnam",
+      "Phrasebook",
+      "Saved cards",
+      "About & sources"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1381
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.13
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": false,
+     "height": 80,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "anton",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 2659,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section.st-board.vn-intro",
+      "tag": "section",
+      "top": 88,
+      "height": 157,
+      "words": 27,
+      "media": 0,
+      "middle": 170,
+      "heading": {
+       "text": "Vietnam, starting in Hà Nội",
+       "size": 58,
+       "tag": "h1"
+      },
+      "left": 56,
+      "right": 73,
+      "textLeft": 56,
+      "textRight": 73,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.st-board.vn-junction-wrap",
+      "tag": "section",
+      "top": 253,
+      "height": 1081,
+      "words": 314,
+      "media": 7,
+      "middle": 8,
+      "heading": {
+       "text": "Hà Nội",
+       "size": 58,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 39,
+      "textRight": 47,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#scenes.st-board.vn-scenes",
+      "tag": "section",
+      "top": 1381,
+      "height": 500,
+      "words": 128,
+      "media": 0,
+      "middle": 64,
+      "heading": {
+       "text": "Scenes in Hà Nội",
+       "size": 58,
+       "tag": "h2"
+      },
+      "left": 39,
+      "right": 77,
+      "textLeft": 39,
+      "textRight": 77,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.st-foot",
+      "tag": "footer",
+      "top": 1929,
+      "height": 730,
+      "words": 122,
+      "media": 0,
+      "middle": 152,
+      "heading": {
+       "text": "Explore",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 1860,
+      "height": 428
+     }
+    ],
+    "h1s": [
+     {
+      "text": "VIETNAM, STARTING IN HÀ NỘI",
+      "size": 58,
+      "top": 140,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 39,
+      "n": 4
+     },
+     {
+      "x": 56,
+      "n": 1
+     },
+     {
+      "x": 844,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.01,
+    "voidBox": {
+     "x": 720,
+     "y": 120,
+     "w": 120,
+     "h": 120
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": true,
+    "ground": "#141210",
+    "sidebar": null,
+    "topbar": {
+     "h": 80
+    },
+    "canvas": {
+     "left": 16,
+     "right": -86
+    },
+    "hero": {
+     "text": "Vietnam, starting in Hà Nội",
+     "words": 5,
+     "chars": 27,
+     "lines": 1,
+     "size": 58,
+     "vw": 4,
+     "font": "Anton",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.12,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 17,
+     "firstScreen": 8,
+     "ragged": [],
+     "voids": [
+      {
+       "gap": 250,
+       "at": 1608,
+       "panel": "SCENES IN HÀ NỘI"
+      },
+      {
+       "gap": 157,
+       "at": 446,
+       "panel": "GREETINGS & ADDRESS"
+      },
+      {
+       "gap": 157,
+       "at": 446,
+       "panel": "HOME & HOSPITALITY"
+      },
+      {
+       "gap": 155,
+       "at": 1116,
+       "panel": "FESTIVALS & TẾT"
+      }
+     ]
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 18,
+     "radii": [
+      [
+       0,
+       18
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      15,
+      17,
+      32,
+      33,
+      58
+     ]
+    },
+    "title": {
+     "text": "VIETNAM, STARTING IN HÀ NỘI",
+     "size": 58,
+     "top": 140
+    },
+    "colourShare": 0.246
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.96,
+    0.91,
+    0.73,
+    0.64
+   ],
+   "motion": {
+    "elements": 5,
+    "css": 5,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 1,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3342,
+     "screens": 3.3,
+     "words": 678,
+     "img": 5,
+     "video": 1,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Vietnam, starting in Hà Nội",
+     "words": 5,
+     "chars": 27,
+     "lines": 1,
+     "size": 36,
+     "vw": 4.7,
+     "font": "Anton",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.12,
+     "top": 125,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "VIETNAM, STARTING IN HÀ NỘI",
+     "words": 5,
+     "lines": 1,
+     "size": 36,
+     "font": "Anton"
+    },
+    "headings": [
+     {
+      "text": "VIETNAM, STARTING IN HÀ NỘI",
+      "words": 5,
+      "chars": 27,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 125,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Hà Nội",
+      "words": 2,
+      "chars": 6,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.12,
+      "top": 631,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "SCENES IN HÀ NỘI",
+      "words": 4,
+      "chars": 16,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1821,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 3,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.88,
+       "mono": false
+      },
+      {
+       "family": "Anton",
+       "share": 0.12,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      15,
+      17,
+      24,
+      36
+     ],
+     "sizeCount": 4,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.5
+     },
+     "measureChars": 87,
+     "max": {
+      "size": 36,
+      "vw": 4.7,
+      "font": "Anton",
+      "text": "Vietnam, starting in Hà Nội"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.13,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#141210",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.11,
+      "l": 0.07
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#f2f3f1",
+       "share": 0.46
+      },
+      {
+       "color": "#cfc8bc",
+       "share": 0.23
+      },
+      {
+       "color": "#4a453e",
+       "share": 0.16
+      },
+      {
+       "color": "#141210",
+       "share": 0.11
+      },
+      {
+       "color": "#f4c400",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#141210",
+      "hsl": {
+       "h": 30,
+       "s": 0.11,
+       "l": 0.07
+      },
+      "fg": "#f2f3f1"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 12,
+     "inHero": 7,
+     "radius": 0,
+     "height": 77,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "CULTURECOMPASS",
+      "Vietnam",
+      "Phrasebook",
+      "Saved cards",
+      "About & sources"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 11,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 622
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.12
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": false,
+     "height": 93,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "anton",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 3342,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section.st-board.vn-intro",
+      "tag": "section",
+      "top": 101,
+      "height": 151,
+      "words": 27,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Vietnam, starting in Hà Nội",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 40,
+      "right": 156,
+      "textLeft": 40,
+      "textRight": 156,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.st-board.vn-junction-wrap",
+      "tag": "section",
+      "top": 260,
+      "height": 1497,
+      "words": 314,
+      "media": 2,
+      "middle": 8,
+      "heading": {
+       "text": "Hà Nội",
+       "size": 36,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 32,
+      "textRight": 39,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#scenes.st-board.vn-scenes",
+      "tag": "section",
+      "top": 1805,
+      "height": 695,
+      "words": 128,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Scenes in Hà Nội",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 63,
+      "textLeft": 32,
+      "textRight": 63,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.st-foot",
+      "tag": "footer",
+      "top": 2548,
+      "height": 794,
+      "words": 122,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Explore",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 2480,
+      "height": 468
+     }
+    ],
+    "h1s": [
+     {
+      "text": "VIETNAM, STARTING IN HÀ NỘI",
+      "size": 36,
+      "top": 125,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 32,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": true,
+    "ground": "#141210",
+    "sidebar": null,
+    "topbar": {
+     "h": 93
+    },
+    "canvas": {
+     "left": 16,
+     "right": -93
+    },
+    "hero": {
+     "text": "Vietnam, starting in Hà Nội",
+     "words": 5,
+     "chars": 27,
+     "lines": 1,
+     "size": 36,
+     "vw": 4.7,
+     "font": "Anton",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.12,
+     "top": 125,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 18,
+     "firstScreen": 8,
+     "ragged": [],
+     "voids": [
+      {
+       "gap": 201,
+       "at": 1162,
+       "panel": "FESTIVALS & TẾT"
+      },
+      {
+       "gap": 142,
+       "at": 1578,
+       "panel": "DRESS & APPEARANCE"
+      },
+      {
+       "gap": 116,
+       "at": 461,
+       "panel": "HOME & HOSPITALITY"
+      },
+      {
+       "gap": 98,
+       "at": 923,
+       "panel": "TEMPLES & SACRED PLACES"
+      }
+     ]
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 19,
+     "radii": [
+      [
+       0,
+       19
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      15,
+      17,
+      24,
+      28,
+      36
+     ]
+    },
+    "title": {
+     "text": "VIETNAM, STARTING IN HÀ NỘI",
+     "size": 36,
+     "top": 125
+    },
+    "colourShare": 0.261
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.89,
+    0.86,
+    0.92,
+    0.85,
+    0.86,
+    0.69,
+    0.58
+   ],
+   "motion": {
+    "elements": 5,
+    "css": 5,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 1,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 5671,
+     "screens": 6.7,
+     "words": 678,
+     "img": 5,
+     "video": 1,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hn-pho-ga.jpg",
+      "van-mieu-garden.jpg",
+      "hn-vendor-pottery.jpg",
+      "hn-hang-ma.jpg",
+      "stelae.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Vietnam, starting in Hà Nội",
+     "words": 5,
+     "chars": 27,
+     "lines": 2,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Anton",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.12,
+     "top": 217,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "VIETNAM, STARTING IN HÀ NỘI",
+     "words": 5,
+     "lines": 2,
+     "size": 36,
+     "font": "Anton"
+    },
+    "headings": [
+     {
+      "text": "CULTURECOMPASS",
+      "words": 1,
+      "chars": 14,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 16,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "VIETNAM, STARTING IN HÀ NỘI",
+      "words": 5,
+      "chars": 27,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 217,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Hà Nội",
+      "words": 2,
+      "chars": 6,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 713,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "4 SCENES TO REHEARSE",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 764,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "FOOD & DINING",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 1050,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "GREETINGS & ADDRESS",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.5,
+      "top": 1260,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "HOME & HOSPITALITY",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 1470,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "TEMPLES & SACRED PLACES",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.62,
+      "top": 1789,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "STREETS & PUBLIC LIFE",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.5,
+      "top": 2109,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "DRESS & APPEARANCE",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.49,
+      "top": 2318,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "EVERYDAY VIETNAMESE",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.51,
+      "top": 2615,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "HISTORY & HERITAGE",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 2934,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "FESTIVALS & TẾT",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 3144,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "BEFORE YOU GO",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 3308,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "SCENES IN HÀ NỘI",
+      "words": 4,
+      "chars": 16,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.12,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 3665,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "MEETING YOUR HOMESTAY HOST",
+      "words": 4,
+      "chars": 26,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 3904,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FAMILY DINNER WITH SHARED DISHES",
+      "words": 5,
+      "chars": 32,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 4117,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "VISITING THE TEMPLE OF LITERATURE",
+      "words": 5,
+      "chars": 33,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 4329,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "OUT ON THE STREETS OF THE OLD QUARTER",
+      "words": 8,
+      "chars": 37,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Anton",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.15,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 4542,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 19,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 2,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.88,
+       "mono": false
+      },
+      {
+       "family": "Anton",
+       "share": 0.12,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      15,
+      16,
+      24,
+      36
+     ],
+     "sizeCount": 4,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 16,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.5
+     },
+     "measureChars": 48,
+     "max": {
+      "size": 36,
+      "vw": 9.2,
+      "font": "Anton",
+      "text": "Vietnam, starting in Hà Nội"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.13,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#141210",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.11,
+      "l": 0.07
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#24201c",
+       "top": 436,
+       "hsl": {
+        "h": 30,
+        "s": 0.13,
+        "l": 0.13
+       }
+      },
+      {
+       "color": "#c8102e",
+       "top": 924,
+       "hsl": {
+        "h": 350,
+        "s": 0.85,
+        "l": 0.42
+       }
+      },
+      {
+       "color": "#f2f3f1",
+       "top": 1663,
+       "hsl": {
+        "h": 90,
+        "s": 0.08,
+        "l": 0.95
+       }
+      },
+      {
+       "color": "#f4c400",
+       "top": 2489,
+       "hsl": {
+        "h": 48,
+        "s": 1,
+        "l": 0.48
+       }
+      },
+      {
+       "color": "#0d4d36",
+       "top": 2808,
+       "hsl": {
+        "h": 158,
+        "s": 0.71,
+        "l": 0.18
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#f2f3f1",
+       "share": 0.46
+      },
+      {
+       "color": "#cfc8bc",
+       "share": 0.23
+      },
+      {
+       "color": "#4a453e",
+       "share": 0.16
+      },
+      {
+       "color": "#141210",
+       "share": 0.11
+      },
+      {
+       "color": "#f4c400",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#141210",
+      "hsl": {
+       "h": 30,
+       "s": 0.11,
+       "l": 0.07
+      },
+      "fg": "#f2f3f1"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 12,
+     "inHero": 7,
+     "radius": 0,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "CULTURECOMPASS",
+      "Vietnam",
+      "Phrasebook",
+      "Saved cards",
+      "About & sources"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.29
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": false,
+     "height": 187,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "anton",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 5671,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "header.st-head",
+      "tag": "header",
+      "top": 0,
+      "height": 187,
+      "words": 8,
+      "media": 0,
+      "middle": 23,
+      "heading": {
+       "text": "CultureCompass",
+       "size": 24,
+       "tag": "a"
+      },
+      "left": 32,
+      "right": 43,
+      "textLeft": 32,
+      "textRight": 43,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.st-board.vn-intro",
+      "tag": "section",
+      "top": 193,
+      "height": 237,
+      "words": 27,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Vietnam, starting in Hà Nội",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 40,
+      "right": 50,
+      "textLeft": 40,
+      "textRight": 50,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.st-board.vn-junction-wrap",
+      "tag": "section",
+      "top": 436,
+      "height": 3158,
+      "words": 314,
+      "media": 7,
+      "middle": 0,
+      "heading": {
+       "text": "Hà Nội",
+       "size": 36,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 32,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#scenes.st-board.vn-scenes",
+      "tag": "section",
+      "top": 3649,
+      "height": 1109,
+      "words": 128,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Scenes in Hà Nội",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.st-foot",
+      "tag": "footer",
+      "top": 4815,
+      "height": 857,
+      "words": 122,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Explore",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 4732,
+      "height": 320
+     }
+    ],
+    "h1s": [
+     {
+      "text": "VIETNAM, STARTING IN HÀ NỘI",
+      "size": 36,
+      "top": 217,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 32,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": true,
+    "ground": "#141210",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 16,
+     "right": 16
+    },
+    "hero": {
+     "text": "Vietnam, starting in Hà Nội",
+     "words": 5,
+     "chars": 27,
+     "lines": 2,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Anton",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.12,
+     "top": 217,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 17,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 18,
+     "radii": [
+      [
+       0,
+       18
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      15,
+      16,
+      24,
+      25,
+      36
+     ]
+    },
+    "title": {
+     "text": "VIETNAM, STARTING IN HÀ NỘI",
+     "size": 36,
+     "top": 217
+    },
+    "colourShare": 0.127
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "blank-gap",
+   "width": 1440,
+   "message": "A 428px stretch at 1860px holds nothing.",
+   "fix": "Check that it is a deliberate rest (once per page at most); otherwise close it to the normal section gap.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "colour-sprawl",
+   "width": 1440,
+   "message": "25% of the first screen is strongly coloured.",
+   "fix": "Keep the screen neutral and spend colour on data and status: the studied screens sit near 3%, and only tinted styles reach 10–15%, as pale tints rather than saturated fills.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "below-fold",
+   "width": 1440,
+   "message": "Only 8 of 17 blocks start on the first 1440px screen.",
+   "fix": "Every block the brief names shows its header and first rows on the first desktop screen: size the headline block to its question, cap long lists with \"View all\", and put time-sensitive blocks before long tables."
+  },
+  {
+   "level": "WARN",
+   "id": "panel-void",
+   "width": 1440,
+   "message": "4 card(s) hold a blank band inside: 250px in \"SCENES IN HÀ NỘI\", 157px in \"GREETINGS & ADDRESS\", 157px in \"HOME & HOSPITALITY\".",
+   "fix": "A card stretches to its neighbour only when it has content to fill. Keep a legend or a note directly under its chart (only an action or a total may sit at a stretched card's foot), let a short card keep its own height (align-items: start), and let a filtered block shrink to its rows."
+  },
+  {
+   "level": "WARN",
+   "id": "app-title-size",
+   "width": 1440,
+   "message": "The h1 is 58px (\"VIETNAM, STARTING IN HÀ NỘI\").",
+   "fix": "An app screen is not a landing page: the title is 18-32px (20-24px on a phone).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/inspect-vn/desktop-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/inspect-vn/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/inspect-vn/tablet-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/inspect-vn/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/inspect-vn/mobile-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/inspect-vn/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phrases — CultureCompass</title>
+  <meta name="description" content="Vietnamese phrases from the Hanoi scenes, with meaning, audio and who to use them with.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="phrases">
+  <div id="cc-header"></div>
+  <main id="main" tabindex="-1">
+    <div class="container py-4">
+      <h1 class="mb-1">Phrases</h1>
+      <p class="lead">Every phrase from the Hanoi scenes, with its meaning and who to use it with.</p>
+      <div class="cc-surface mb-4">
+        <form class="row g-3 align-items-end" onsubmit="return false" aria-label="Filter phrases">
+          <fieldset class="col-lg-8">
+            <legend class="h6">What do you want to do?</legend>
+            <div class="cc-filter d-flex flex-wrap gap-2" id="f-intent"></div>
+          </fieldset>
+          <div class="col-lg-4">
+            <label for="f-scene" class="form-label h6">Scene</label>
+            <select id="f-scene" class="form-select"></select>
+          </div>
+        </form>
+      </div>
+      <p class="small text-soft" id="phrase-count" role="status" aria-live="polite"></p>
+      <div class="row g-3" id="phrase-list"></div>
+      <p class="small text-soft mt-4 mb-0">Phrases marked “Being verified” were written for this prototype and are waiting for a check by a native speaker. Audio is currently a computer voice placeholder.</p>
+    </div>
+  </main>
+  <div id="cc-footer"></div>
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages.js"></script>
+</body>
+</html>

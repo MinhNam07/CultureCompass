@@ -15,11 +15,13 @@ window.CC.topics = [
       "st-hand",
       "st-photo-ask",
       "st-keep-cool",
-      "st-family-words"
+      "st-family-words",
+      "st-market"
     ],
     "sceneIds": [
       "sc01",
-      "sc04"
+      "sc04",
+      "sc05"
     ],
     "phraseIds": [
       "ph-xinchao-co",
@@ -45,15 +47,19 @@ window.CC.topics = [
     "storyIds": [
       "st-shared-table",
       "st-host",
-      "st-chop"
+      "st-chop",
+      "st-street-stall"
     ],
     "sceneIds": [
-      "sc02"
+      "sc02",
+      "sc06"
     ],
     "phraseIds": [
       "ph-no",
       "ph-do",
-      "ph-camon"
+      "ph-camon",
+      "ph-motsuat",
+      "ph-tinhtien"
     ],
     "aliases": []
   },
@@ -136,7 +142,9 @@ window.CC.topics = [
       "ph-banoi",
       "ph-chioi",
       "ph-noicham",
-      "ph-xungho"
+      "ph-xungho",
+      "ph-baonhieu",
+      "ph-khongcamon"
     ],
     "aliases": []
   }

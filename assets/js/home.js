@@ -400,7 +400,7 @@
     var topics = (CC.topics || []).filter(function (t) { return t.country === id && t.status === 'ready'; }).length;
     var scenes = (CC.scenarios || []).length; // every scene today is in Vietnam (Hà Nội)
     var phrases = (CC.phrases || []).length;
-    return CC.plural(topics, 'theme') + ' · ' + CC.plural(stories, 'story', 'stories') + ' · ' + CC.plural(scenes, 'practice scene') + ' · ' + CC.plural(phrases, 'phrase');
+    return CC.plural(topics, 'theme') + ' · ' + CC.plural(stories, 'story', 'stories') + ' · ' + CC.plural((CC.exploreZones || []).length || scenes, 'place to explore', 'places to explore') + ' · ' + CC.plural(phrases, 'phrase');
   }
 
   function initDestinations() {
@@ -427,6 +427,8 @@
       window.addEventListener('message' , function (event) {
         if (event.source !== globe.contentWindow || event.origin !== window.location.origin) return;
         var data = event.data;
+        /* the country HUD opens in place: the page is not scrolled for the visitor */
+        if (data && data.type === 'culturecompass-hud') return;
         if (!data || data.type !== 'culturecompass-globe-height' || typeof data.height !== 'number' || !isFinite(data.height)) return;
         globe.style.height = Math.max(500, Math.min(1600, data.height)) + 'px';
       });

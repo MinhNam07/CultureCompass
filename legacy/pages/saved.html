@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved cards — CultureCompass</title>
+  <meta name="description" content="Cards you saved at the end of each scene.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="saved">
+  <div id="cc-header"></div>
+  <main id="main" tabindex="-1">
+    <div class="container py-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-2">
+        <h1 class="mb-0" id="saved-title" tabindex="-1">Saved cards</h1>
+        <button type="button" class="btn btn-cc-ghost d-print-none" id="saved-print" hidden>Print cards</button>
+      </div>
+      <p class="text-soft d-print-none">Cards are saved in this browser on this device only. They aren’t synced, and audio may not play offline.</p>
+      <div id="saved-msg" class="small mb-2" role="status" aria-live="polite"></div>
+      <div class="row g-4" id="saved-list"></div>
+    </div>
+  </main>
+  <div id="cc-footer"></div>
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages.js"></script>
+</body>
+</html>

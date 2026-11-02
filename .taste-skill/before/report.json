@@ -1,0 +1,1664 @@
+{
+ "url": "http://localhost:8765/",
+ "at": "2026-10-24T18:19:19.215Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.96,
+    0.96,
+    0.96,
+    0.96,
+    0.96,
+    0.96,
+    0.96,
+    0.53,
+    0.43,
+    0.54
+   ],
+   "motion": {
+    "elements": 113,
+    "css": 1,
+    "transitions": 1,
+    "scripted": 111,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 8290,
+     "screens": 9.2,
+     "words": 264,
+     "img": 37,
+     "video": 0,
+     "canvas": 0,
+     "svg": 9,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 24,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hula-merrie-monarch-s.avif",
+      "nang-yai-ratchaburi-s.avif",
+      "tbourida-morocco-s.avif",
+      "mochi-tenno-s.avif",
+      "dogon-masks-mali-s.avif",
+      "breton-quimper-s.avif",
+      "batik-cirebon-s.avif",
+      "ribbon-skirts-montana-s.avif"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Understand the place before you arrive.",
+     "words": 6,
+     "chars": 39,
+     "lines": 3,
+     "size": 96,
+     "vw": 6.7,
+     "font": "Source Serif 4",
+     "weight": 600,
+     "tracking": -0.025,
+     "leading": 1.04,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.49,
+     "top": 342,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Understand the place before you arrive.",
+     "words": 6,
+     "lines": 3,
+     "size": 96,
+     "font": "Source Serif 4"
+    },
+    "headings": [
+     {
+      "text": "Understand the place before you arrive.",
+      "words": 6,
+      "chars": 39,
+      "lines": 3,
+      "size": 96,
+      "vw": 6.7,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.49,
+      "top": 342,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Vietnam",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 96,
+      "vw": 6.7,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.38,
+      "top": 6768,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "Choose a destination",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 6792,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How a visit works",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 7451,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Source Serif 4",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      20,
+      22,
+      24,
+      40,
+      60,
+      96
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 49,
+     "max": {
+      "size": 96,
+      "vw": 6.7,
+      "font": "Source Serif 4",
+      "text": "Understand the place before you arrive."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f4efe5",
+     "bodyBgHsl": {
+      "h": 40,
+      "s": 0.41,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#100d0b",
+       "top": 0,
+       "hsl": {
+        "h": 24,
+        "s": 0.19,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#302720",
+       "top": 6480,
+       "hsl": {
+        "h": 26,
+        "s": 0.2,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#fffcf7",
+       "top": 7926,
+       "hsl": {
+        "h": 38,
+        "s": 1,
+        "l": 0.98
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#302720",
+       "share": 0.46
+      },
+      {
+       "color": "#80634d",
+       "share": 0.4
+      },
+      {
+       "color": "#fffcf7",
+       "share": 0.13
+      },
+      {
+       "color": "#762f3b",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#762f3b",
+      "hsl": {
+       "h": 350,
+       "s": 0.43,
+       "l": 0.32
+      },
+      "fg": "#fffcf7"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 3,
+     "height": 47,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "ol#dest-list.dest-list 641px",
+      "li.dest-item 641px",
+      "li 376px",
+      "li 376px",
+      "li 376px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 18,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 7518
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 5,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "source serif 4",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 8290,
+    "margins": {
+     "left": 100,
+     "right": 93
+    },
+    "sections": [
+     {
+      "sel": "section#hero.hero.on-media",
+      "tag": "section",
+      "top": 0,
+      "height": 6480,
+      "words": 0,
+      "media": 43,
+      "middle": 3794,
+      "heading": null,
+      "left": 290,
+      "right": 0,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#destinations.dest",
+      "tag": "section",
+      "top": 6480,
+      "height": 828,
+      "words": 60,
+      "media": 0,
+      "middle": 120,
+      "heading": {
+       "text": "Vietnam",
+       "size": 96,
+       "tag": "span"
+      },
+      "left": 100,
+      "right": 235,
+      "textLeft": 100,
+      "textRight": 235,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.cc-section.how-wrap",
+      "tag": "section",
+      "top": 7308,
+      "height": 490,
+      "words": 77,
+      "media": 0,
+      "middle": 73,
+      "heading": {
+       "text": "How a visit works",
+       "size": 40,
+       "tag": "h2"
+      },
+      "left": 100,
+      "right": 114,
+      "textLeft": 100,
+      "textRight": 114,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cc-footer",
+      "tag": "div",
+      "top": 7926,
+      "height": 364,
+      "words": 66,
+      "media": 0,
+      "middle": 155,
+      "heading": {
+       "text": "CultureCompass",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 100,
+      "right": 100,
+      "textLeft": 100,
+      "textRight": 100,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 7032,
+      "height": 412
+     },
+     {
+      "top": 7684,
+      "height": 284
+     }
+    ],
+    "h1s": [],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 100,
+      "n": 3
+     },
+     {
+      "x": 728,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 4,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.14,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 240,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.98,
+    0.98,
+    0.98,
+    0.98,
+    0.98,
+    0.98,
+    0.98,
+    0.72,
+    0.7,
+    0.84
+   ],
+   "motion": {
+    "elements": 113,
+    "css": 1,
+    "transitions": 1,
+    "scripted": 111,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 9562,
+     "screens": 9.3,
+     "words": 264,
+     "img": 37,
+     "video": 0,
+     "canvas": 0,
+     "svg": 9,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "batik-cirebon-s.avif",
+      "potter-jaura-s.avif",
+      "pattachitra-odisha-s.avif",
+      "hn-old-quarter.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Understand the place before you arrive.",
+     "words": 6,
+     "chars": 39,
+     "lines": 3,
+     "size": 73.4,
+     "vw": 9.6,
+     "font": "Source Serif 4",
+     "weight": 600,
+     "tracking": -0.025,
+     "leading": 1.04,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.7,
+     "top": 536,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Understand the place before you arrive.",
+     "words": 6,
+     "lines": 3,
+     "size": 73.4,
+     "font": "Source Serif 4"
+    },
+    "headings": [
+     {
+      "text": "Understand the place before you arrive.",
+      "words": 6,
+      "chars": 39,
+      "lines": 3,
+      "size": 73.4,
+      "vw": 9.6,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.7,
+      "top": 536,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Choose a destination",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 46.4,
+      "vw": 6,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 7718,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Vietnam",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 73.4,
+      "vw": 9.6,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.35,
+      "top": 7720,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "How a visit works",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 33.2,
+      "vw": 4.3,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8407,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Source Serif 4",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      20,
+      22,
+      24,
+      33,
+      46,
+      73
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 54,
+     "max": {
+      "size": 73.4,
+      "vw": 9.6,
+      "font": "Source Serif 4",
+      "text": "Understand the place before you arrive."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f4efe5",
+     "bodyBgHsl": {
+      "h": 40,
+      "s": 0.41,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#100d0b",
+       "top": 0,
+       "hsl": {
+        "h": 24,
+        "s": 0.19,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#302720",
+       "top": 7373,
+       "hsl": {
+        "h": 26,
+        "s": 0.2,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#fffcf7",
+       "top": 8821,
+       "hsl": {
+        "h": 38,
+        "s": 1,
+        "l": 0.98
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#302720",
+       "share": 0.46
+      },
+      {
+       "color": "#80634d",
+       "share": 0.4
+      },
+      {
+       "color": "#fffcf7",
+       "share": 0.13
+      },
+      {
+       "color": "#762f3b",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#762f3b",
+      "hsl": {
+       "h": 350,
+       "s": 0.43,
+       "l": 0.32
+      },
+      "fg": "#fffcf7"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 3,
+     "height": 47,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "ol#dest-list.dest-list 367px",
+      "li.dest-item 367px",
+      "footer.cc-footer 768px",
+      "div.cc-footer-last 707px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 1,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 8463
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 5,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "source serif 4",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 9562,
+    "margins": {
+     "left": 31,
+     "right": 19
+    },
+    "sections": [
+     {
+      "sel": "section#hero.hero.on-media",
+      "tag": "section",
+      "top": 0,
+      "height": 7373,
+      "words": 0,
+      "media": 4,
+      "middle": 2340,
+      "heading": null,
+      "left": 155,
+      "right": 0,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#destinations.dest",
+      "tag": "section",
+      "top": 7373,
+      "height": 942,
+      "words": 60,
+      "media": 0,
+      "middle": 60,
+      "heading": {
+       "text": "Vietnam",
+       "size": 73,
+       "tag": "span"
+      },
+      "left": 31,
+      "right": 49,
+      "textLeft": 31,
+      "textRight": 49,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.cc-section.how-wrap",
+      "tag": "section",
+      "top": 8315,
+      "height": 429,
+      "words": 77,
+      "media": 0,
+      "middle": 37,
+      "heading": {
+       "text": "How a visit works",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 31,
+      "right": 34,
+      "textLeft": 31,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cc-footer",
+      "tag": "div",
+      "top": 8821,
+      "height": 741,
+      "words": 66,
+      "media": 0,
+      "middle": 88,
+      "heading": {
+       "text": "CultureCompass",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 31,
+      "right": 31,
+      "textLeft": 31,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 7980,
+      "height": 424
+     }
+    ],
+    "h1s": [],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 31,
+      "n": 3
+     },
+     {
+      "x": 399,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 4,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 9,
+   "filled": [
+    0.98,
+    0.98,
+    0.98,
+    0.98,
+    0.91,
+    0.62,
+    0.55,
+    0.98,
+    0.96
+   ],
+   "motion": {
+    "elements": 66,
+    "css": 1,
+    "transitions": 2,
+    "scripted": 63,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 6764,
+     "screens": 8,
+     "words": 265,
+     "img": 37,
+     "video": 0,
+     "canvas": 0,
+     "svg": 9,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "coffee-addis-ababa-s.avif",
+      "hula-merrie-monarch-s.avif",
+      "mochi-tenno-s.avif",
+      "breton-quimper-s.avif",
+      "batik-cirebon-s.avif",
+      "hn-old-quarter.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Understand the place before you arrive.",
+     "words": 6,
+     "chars": 39,
+     "lines": 3,
+     "size": 52.2,
+     "vw": 13.4,
+     "font": "Source Serif 4",
+     "weight": 600,
+     "tracking": -0.025,
+     "leading": 1.04,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 444,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Understand the place before you arrive.",
+     "words": 6,
+     "lines": 3,
+     "size": 52.2,
+     "font": "Source Serif 4"
+    },
+    "headings": [
+     {
+      "text": "Understand the place before you arrive.",
+      "words": 6,
+      "chars": 39,
+      "lines": 3,
+      "size": 52.2,
+      "vw": 13.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.04,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 444,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Choose a destination",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 36.5,
+      "vw": 9.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4123,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Vietnam",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 52.2,
+      "vw": 13.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.69,
+      "top": 4630,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "How a visit works",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5154,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "CultureCompass",
+      "words": 1,
+      "chars": 14,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5853,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 2,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Source Serif 4",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      24,
+      28,
+      37,
+      52
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 48,
+     "max": {
+      "size": 52.2,
+      "vw": 13.4,
+      "font": "Source Serif 4",
+      "text": "Understand the place before you arrive."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "Old Quarter shopfronts, Hà Nội",
+      "above": "Vietnam",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 4576
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f4efe5",
+     "bodyBgHsl": {
+      "h": 40,
+      "s": 0.41,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#100d0b",
+       "top": 0,
+       "hsl": {
+        "h": 24,
+        "s": 0.19,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#fffcf7",
+       "top": 5804,
+       "hsl": {
+        "h": 38,
+        "s": 1,
+        "l": 0.98
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#302720",
+       "share": 0.46
+      },
+      {
+       "color": "#80634d",
+       "share": 0.4
+      },
+      {
+       "color": "#fffcf7",
+       "share": 0.13
+      },
+      {
+       "color": "#762f3b",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#762f3b",
+      "hsl": {
+       "h": 350,
+       "s": 0.43,
+       "l": 0.32
+      },
+      "fg": "#fffcf7"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 3,
+     "height": 47,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "ol#dest-list.dest-list 358px",
+      "li.dest-item 358px",
+      "li 358px",
+      "li 358px",
+      "li 358px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 6,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 6,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 61,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "source serif 4",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 6764,
+    "margins": {
+     "left": 16,
+     "right": 17
+    },
+    "sections": [
+     {
+      "sel": "section#hero.hero.on-media",
+      "tag": "section",
+      "top": 0,
+      "height": 4051,
+      "words": 0,
+      "media": 8,
+      "middle": 1340,
+      "heading": null,
+      "left": 42,
+      "right": 0,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#destinations.dest.is-previewing",
+      "tag": "section",
+      "top": 4051,
+      "height": 1016,
+      "words": 98,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Choose a destination",
+       "size": 37,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.cc-section.how-wrap",
+      "tag": "section",
+      "top": 5067,
+      "height": 672,
+      "words": 77,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "How a visit works",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 34,
+      "textLeft": 16,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cc-footer",
+      "tag": "div",
+      "top": 5804,
+      "height": 960,
+      "words": 66,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "CultureCompass",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 3
+     },
+     {
+      "x": 45,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 4,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"Understand the place before you arrive.\" → 3 lines (6 words, 96px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "7 thin rule(s)/divider line(s): ol#dest-list.dest-list 641px | li.dest-item 641px | li 376px | li 376px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (page background #f4efe5, section #fffcf7, text #fffcf7).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "10 different font sizes (14, 15, 16, 17, 20, 22, 24, 40, 60, 96).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "blank-gap",
+   "width": 1440,
+   "message": "A 412px stretch at 7032px holds nothing.",
+   "fix": "Check that it is a deliberate rest (once per page at most); otherwise close it to the normal section gap."
+  },
+  {
+   "level": "FAIL",
+   "id": "no-title",
+   "width": 1440,
+   "message": "The page has no visible h1.",
+   "fix": "Give the first screen a clear title in an h1 that says what this is (a name with what it does, the product with what it is for, the event with its date and place).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 1440,
+   "message": "Large text lies under another element at some scroll position: \"Understand the place before you arrive.\" (screen 7, 67% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "pinned-over-picture",
+   "width": 1440,
+   "message": "Pinned large text slides across pictures while the page scrolls: \"Understand the place before you arrive.\" (screen 6, 40% over a picture)",
+   "fix": "Jurors read a pinned title crossing drawings or photographs as a collision. Keep the pictures in the column the title does not occupy, or unpin it.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "long-pin",
+   "width": 1440,
+   "message": "The same large text stays on screen for 7 screens in a row: \"Understand the place before you arrive.\"",
+   "fix": "A pinned element earns two screens, and something must change at each. Shorten the run or give every screen its own content."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"Understand the place before you arrive.\" → 3 lines (6 words, 73.4px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"Understand the place before you arrive.\" → 3 lines (6 words, 52.2px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 390,
+   "message": "1 eyebrow/kicker label(s) above headings: \"Old Quarter shopfronts, Hà Nội\" above \"Vietnam\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence."
+  },
+  {
+   "level": "FAIL",
+   "id": "reduced-hidden",
+   "width": 1440,
+   "message": "With reduced motion requested, 10 text block(s) on the first screen stay invisible: \"Settings\", \"Sound\", \"Phrases play only when you press Listen.\", \"Reduce motion\"",
+   "fix": "Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8)."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/before/desktop-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/before/desktop-page-01.jpg",
+    "/Users/henrynguyen/CultureCompass/.taste-skill/before/desktop-page-02.jpg",
+    "/Users/henrynguyen/CultureCompass/.taste-skill/before/desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/before/tablet-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/before/tablet-page-01.jpg",
+    "/Users/henrynguyen/CultureCompass/.taste-skill/before/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/before/mobile-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/before/mobile-page-01.jpg",
+    "/Users/henrynguyen/CultureCompass/.taste-skill/before/mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

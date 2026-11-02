@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scene — CultureCompass</title>
+  <meta name="description" content="Rehearse an everyday situation in Hanoi: observe, choose, see what happens and learn why.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <div id="cc-header"></div>
+
+  <main id="main" tabindex="-1">
+    <div class="container py-4">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb small mb-2">
+          <li class="breadcrumb-item"><a href="vietnam.html#scenes">Hanoi</a></li>
+          <li class="breadcrumb-item active" aria-current="page" id="scene-crumb">Scene</li>
+        </ol>
+      </nav>
+      <div class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-3">
+        <div>
+          <h1 class="h2 mb-0" id="scene-title">Scene</h1>
+          <p class="text-soft mb-0" id="scene-place"></p>
+        </div>
+        <span id="scene-status" class="cc-status cc-status-done" hidden>✓ You’ve explored this before</span>
+      </div>
+
+      <div class="cc-scene-grid">
+        <div class="cc-area-stage">
+          <div class="cc-stage-wrap">
+            <div id="stage"></div>
+            <div class="cc-stage-tools">
+              <button type="button" class="btn btn-sm btn-cc-ghost" id="btn-skip" hidden>Skip animation</button>
+            </div>
+          </div>
+          <div class="visually-hidden" id="anim-status" aria-live="polite"></div>
+        </div>
+
+        <div class="cc-area-panel">
+          <section class="cc-panel" id="panel" aria-live="off"></section>
+        </div>
+
+        <div class="cc-area-objects">
+          <h2 class="h6 mb-2" id="hs-list-label">Objects in this scene</h2>
+          <div class="cc-hotspot-list" id="hs-list" role="group" aria-labelledby="hs-list-label"></div>
+          <div id="hs-detail" aria-live="polite"></div>
+          <p class="cc-scope mt-3 mb-0" id="scene-scope"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="story-oc" aria-labelledby="story-title" style="--bs-offcanvas-width: min(92vw, 480px);">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title h5" id="story-title">Behind this scene</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="story-body"></div>
+  </div>
+
+  <div id="cc-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/scene-engine.js"></script>
+</body>
+</html>

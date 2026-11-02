@@ -7,3 +7,10 @@ assets/globe/
 .impeccable/
 # Original video footage; the application uses assets instead.
 background-vietnam/
+
+# Full Ninja Adventure pack (111 MB); only chosen audio is copied into assets/game/audio/.
+assets/game/vendor/ninja-adventure/
+
+# Temporary archives, not part of the site.
+_to_delete/
+docs/game/ref/tmp/

@@ -78,6 +78,27 @@ interface Globe3DProps {
   onMarkerClick?: (marker: GlobeMarker) => void;
   /** Callback when a marker is hovered */
   onMarkerHover?: (marker: GlobeMarker | null) => void;
+  /** Point to turn towards; defaults to the selected marker */
+  focus?: { lat: number; lng: number } | null;
+  /** Degrees the focus sits above the disc centre, so it faces the viewer near the top edge */
+  focusTilt?: number;
+  /** Freeze dragging and auto-rotation and hide the flags (while a screen is projected from the globe) */
+  locked?: boolean;
+}
+
+const CAMERA_FOV = 39;
+const CAMERA_DISTANCE = 3.5; // in globe radii
+
+/**
+ * Where a focus point tilted `tiltDeg` above centre lands on the canvas, and where the globe's top edge is,
+ * both as fractions of the canvas height from its top. Lets the page line things up with the globe.
+ */
+export function globeFocusGeometry(tiltDeg: number) {
+  const t = tiltDeg * Math.PI / 180;
+  const tanHalf = Math.tan(CAMERA_FOV * Math.PI / 360);
+  const pin = Math.sin(t) / ((CAMERA_DISTANCE - Math.cos(t)) * tanHalf);
+  const edge = Math.tan(Math.asin(1 / CAMERA_DISTANCE)) / tanHalf;
+  return { pin: (1 - pin) / 2, top: (1 - edge) / 2, radius: edge / 2 };
 }
 
 // ============================================================================
@@ -117,6 +138,7 @@ function latLngToVector3(
 
 interface MarkerProps {
   selected?: boolean;
+  hidden?: boolean;
   marker: GlobeMarker;
   radius: number;
   defaultSize: number;
@@ -126,6 +148,7 @@ interface MarkerProps {
 
 function Marker({
   selected = false,
+  hidden = false,
   marker,
   radius,
   defaultSize,
@@ -168,7 +191,7 @@ function Marker({
     const dot = markerDirection.dot(cameraDirection);
 
     // Show marker only if it's facing the camera (stricter threshold)
-    setIsVisible(dot > 0.1);
+    setIsVisible(!hidden && dot > 0.1);
   });
 
   const handlePointerEnter = useCallback(() => {
@@ -266,6 +289,7 @@ function Marker({
 
 interface RotatingGlobeProps {
   selectedMarker?: GlobeMarker | null;
+  hideMarkers?: boolean;
   config: Required<Globe3DConfig>;
   markers: GlobeMarker[];
   onMarkerClick?: (marker: GlobeMarker) => void;
@@ -274,6 +298,7 @@ interface RotatingGlobeProps {
 
 function RotatingGlobe({
   selectedMarker,
+  hideMarkers,
   config,
   markers,
   onMarkerClick,
@@ -337,6 +362,7 @@ function RotatingGlobe({
         <Marker
           key={`marker-${index}-${marker.lat}-${marker.lng}`}
           selected={selectedMarker === marker}
+          hidden={hideMarkers}
           marker={marker}
           radius={config.radius}
           defaultSize={config.markerSize}
@@ -411,6 +437,9 @@ function Atmosphere({ radius, color, intensity, blur }: AtmosphereProps) {
 
 interface SceneProps {
   selectedMarker?: GlobeMarker | null;
+  focus?: { lat: number; lng: number } | null;
+  focusTilt?: number;
+  locked?: boolean;
   reducedMotion?: boolean;
   markers: GlobeMarker[];
   config: Required<Globe3DConfig>;
@@ -418,23 +447,26 @@ interface SceneProps {
   onMarkerHover?: (marker: GlobeMarker | null) => void;
 }
 
-function Scene({ markers, config, onMarkerClick, onMarkerHover, selectedMarker, reducedMotion }: SceneProps) {
+function Scene({ markers, config, onMarkerClick, onMarkerHover, selectedMarker, focus, focusTilt = 0, locked = false, reducedMotion }: SceneProps) {
   const { camera } = useThree();
   const sunlight = useRef<THREE.DirectionalLight>(null);
   const controls = useRef<React.ElementRef<typeof OrbitControls>>(null);
   const flight = useRef<{ from: THREE.Vector3; turn: THREE.Quaternion; distance: number; progress: number } | null>(null);
 
+  const target = focus ?? selectedMarker ?? null;
+  const targetLat = target?.lat, targetLng = target?.lng;
   React.useEffect(() => {
-    if (!selectedMarker) { flight.current = null; return; }
+    if (targetLat === undefined || targetLng === undefined) { flight.current = null; return; }
     const from = camera.position.clone().normalize();
-    const destination = latLngToVector3(selectedMarker.lat, selectedMarker.lng, 1).normalize();
+    // Look from slightly south of the target so it sits above the centre with north still up.
+    const destination = latLngToVector3(targetLat - focusTilt, targetLng, 1).normalize();
     flight.current = { from, turn: new THREE.Quaternion().setFromUnitVectors(from, destination), distance: camera.position.length(), progress: 0 };
-  }, [selectedMarker, camera]);
+  }, [targetLat, targetLng, focusTilt, camera]);
 
   useFrame((_, delta) => {
     const move = flight.current;
     if (!move) return;
-    move.progress = reducedMotion ? 1 : Math.min(1, move.progress + delta / .7);
+    move.progress = reducedMotion ? 1 : Math.min(1, move.progress + delta / .6);
     const ease = 1 - Math.pow(1 - move.progress, 3);
     const rotation = new THREE.Quaternion().slerp(move.turn, ease);
     camera.position.copy(move.from).applyQuaternion(rotation).multiplyScalar(move.distance);
@@ -449,7 +481,7 @@ function Scene({ markers, config, onMarkerClick, onMarkerHover, selectedMarker, 
 
   // Set initial camera position (pulled back to accommodate markers)
   React.useEffect(() => {
-    camera.position.set(0, 0, config.radius * 3.5);
+    camera.position.set(0, 0, config.radius * CAMERA_DISTANCE);
     camera.lookAt(0, 0, 0);
   }, [camera, config.radius]);
 
@@ -472,6 +504,7 @@ function Scene({ markers, config, onMarkerClick, onMarkerHover, selectedMarker, 
       {/* Rotating Globe with Markers */}
       <RotatingGlobe
         selectedMarker={selectedMarker}
+        hideMarkers={locked}
         config={config}
         markers={markers}
         onMarkerClick={onMarkerClick}
@@ -493,12 +526,13 @@ function Scene({ markers, config, onMarkerClick, onMarkerHover, selectedMarker, 
         ref={controls}
         onStart={() => { flight.current = null; }}
         makeDefault
+        enableRotate={!locked}
         enablePan={config.enablePan}
         enableZoom={config.enableZoom}
         minDistance={config.minDistance}
         maxDistance={config.maxDistance}
         rotateSpeed={0.4}
-        autoRotate={config.autoRotateSpeed > 0}
+        autoRotate={!locked && config.autoRotateSpeed > 0}
         autoRotateSpeed={config.autoRotateSpeed}
         enableDamping={false}
         dampingFactor={0.1}
@@ -555,6 +589,9 @@ const defaultConfig: Required<Globe3DConfig> = {
 export function Globe3D({
   onBlankClick,
   selectedMarker,
+  focus,
+  focusTilt,
+  locked,
   reducedMotion,
   markers = [],
   config = {},
@@ -577,11 +614,14 @@ export function Globe3D({
           powerPreference: "high-performance",
         }}
         dpr={[1, 2]}
+        // Measure without CSS transforms: the page scales this canvas down when a HUD opens,
+        // and a transformed measurement would shrink and shift the globe a second time.
+        resize={{ offsetSize: true }}
         camera={{
-          fov: 39,
+          fov: CAMERA_FOV,
           near: 0.1,
           far: 1000,
-          position: [0, 0, mergedConfig.radius * 3.5],
+          position: [0, 0, mergedConfig.radius * CAMERA_DISTANCE],
         }}
         style={{
           background: mergedConfig.backgroundColor || "transparent",
@@ -590,6 +630,9 @@ export function Globe3D({
         <Suspense fallback={<LoadingFallback />}>
           <Scene
             selectedMarker={selectedMarker}
+            focus={focus}
+            focusTilt={focusTilt}
+            locked={locked}
             reducedMotion={reducedMotion}
             markers={markers}
             config={mergedConfig}

@@ -185,7 +185,9 @@ Small, printed radii: 3px on buttons and inputs, 6px on cards, frames and panels
 - **Compass atlas (signature, country page).** Six themes around a centre disc. Hover or focus turns the brass-ringed needle toward the theme (620ms spring, retargets on every move) and shows its guiding question in the centre. Choosing draws a wine-red line to it (420ms), pops the medallion and opens the panel, whose stories rise in a 45ms stagger. Planned themes have a dashed medallion and say “Not written yet”. Arrow keys walk the ring; Escape closes; the URL follows (`#food`), so Back closes too. Under 640px the ring becomes a list of tiles with the needle as a small badge.
 - **Destination preview (signature, Home).** The country name is the object: hover or keyboard focus fades its credited photo in behind the section (520ms) with the text turning ivory over a scrim. Only click or Enter navigates; the exit widens the picture for at most 650ms, and a second click goes at once. On touch and narrow screens the picture is always shown as a card above the name.
 - **Story row / story card.** Thumbnail (photo or scene illustration), serif title, standfirst, meta (place, minutes, sources, “Being verified”, “Read before”). The whole row is the link; the bookmark sits beside it.
-- **Feedback (practice scenes).** Four kinds, each with its own icon and words: Fits this situation (filled check), Another way that also fits (outlined swap), Needs more context (question mark, dashed border), See the rules and guidance (dark info). Never colour alone.
+- **Explore frame (game).** The pixel world sits inside a paper frame on the page, never full-screen; the canvas scales by whole pixels so the art stays crisp. Everything around the pixels (goal pill with the compass needle, tool buttons, dialogs, journal, Go to…, stamp) uses the site's own type, colours and buttons, never a pixel font. Markers over people: “!” a moment is waiting, “?” something to look at. A choice that doesn't fit shakes the frame once (not under reduced motion) and shows what happens, then Try another way.
+- **Explore map (hub).** The Vietnam outline from Natural Earth (Vietnam point of view, Hoàng Sa and Trường Sa always shown and named) in warm sand on a pale sea, neighbours in paper beige; the ready city gets a filled pin with a slow halo, later cities a grey pin and “soon”. Beside it, one card per place: a dashed stamp that becomes a double-ringed wine-red stamp once explored, the time, the moments and honest progress (“1 of 3 moments”).
+- **Feedback (Explore moments).** Four kinds, each with its own icon and words: Fits this situation (filled check), Another way that also fits (outlined swap), Needs more context (question mark, dashed border), See the rules and guidance (dark info). Never colour alone.
 - **Reminder card.** Ivory card with a brass border and a wine-red ribbon notch; Do / Say / Applies to.
 - **Status tags.** “Being verified” (half-filled circle, dashed underline), “Computer voice” (microphone), “Read before” / “Practised” (check). Text always present.
 - **Focus.** 3px wine-red outline with a 3px ivory halo, offset 3px. On media it flips to ivory with a dark halo.
@@ -221,3 +223,87 @@ One real culture photograph carries each introduction, with place and source. La
 
 ### Destination resting state follow-up
 User-requested resting state: pure black with a stable dense white star field (780 points), with “Let curiosity lead the way.” The cinematic destination photo appears only after explicit selection. Header becomes black with ivory navigation while the destination section reaches the sticky header, and restores outside it. Clicking empty stage/canvas space closes the overview and resumes globe auto-rotation (except reduced motion); content, country controls and globe dragging do not dismiss it. Browser-verified country-flag switching and blank-stage/canvas dismissal; build/typecheck passed. Screenshot: docs/qa/screens/destination-space.png.
+
+### Editorial system · country page and inner pages · 26–27 October 2026
+
+**Where it applies (27 October 2026):** every page except the home page. That is `vietnam.html`, `story.html`, `scene.html`, `phrases.html`, `collection.html` and `about.html`, each marked `body.ex`. **The home page (`index.html`, `home.js`, the globe) keeps the original publication system above and must not be changed by this system.** `vietnam-classic.html` also stays on the original system. The rest of this section was first written for the country page only:
+
+User-approved, first for the country page only: `vietnam.html` (styles `assets/css/explore.css`, scoped under `body.ex`; behaviour and the page config in `assets/js/explore.js`). The global header, sub-navigation, footer, settings drawer, bookmark and focus behaviour stay as above. The previous country page (cover, compass atlas, places, story directory) remains available as `vietnam-classic.html`, and the compass stays its signature there.
+
+**North star for this page:** a long editorial magazine you scroll and explore rather than read. Pictures lead, text is short and sits on them over a dark scrim, and the background changes colour with each chapter.
+
+**Tokens (this page only)**
+| Token | Value | Role |
+|---|---|---|
+| `--bg-paper` | `#F3E4CB` | Cream paper, the default section ground (also re-points the shell's `--color-background`) |
+| `--bg-paper-hi` | `#FBF3E4` | Raised cream: arrow buttons, game card backs, quiet panels |
+| `--ch-teal` | `#037A90` | Chapter 1, Everyday life (white text, 5.0:1) |
+| `--ch-peach` | `#F7A96A` | Chapter 2, Food & the table (dark text) |
+| `--ch-jade` | `#75B2A8` | Chapter 3, Beliefs & temples (dark text) |
+| `--ch-ember` | `#FC6C39` | Chapter 4, History & memory (dark text) |
+| `--text-primary` / `--text-secondary` / `--text-muted` | `#202124` / `#3C4043` / `#5F6368` | Text; muted is the lightest allowed on cream (4.8:1) |
+| `--eyebrow-bg` / `--eyebrow-ink` | `#FBAB64` / `#A14A12` | Eyebrow pill fill (dark text on it); uppercase category text on cream |
+| radii | 8px cards and frames, 56px pills, 50% round views and icon buttons | |
+
+Measured contrast (October 2026): every chapter heading, question and section subtitle is ≥ 5:1 on its chapter colour; uppercase category text and muted text on cream ≥ 4.79:1. Links on cream use `#02606F`.
+
+**Typography.** Be Vietnam Pro throughout (already self-hosted with the Vietnamese subset): section titles 28–40px at weight 400, centred, with a 16px subtitle; chapter titles 40–68px at 400; card titles 18–22px at 500. The hero is a poster wordmark: “Việt Nam” in Be Vietnam Pro 700 as four offset SVG layers (cream over peach, ember and teal), with full diacritics and a visually hidden real heading. Source Serif 4 italic appears only in the large quotation.
+
+**Rules this page relaxes (and only here)**
+- Uppercase, letter-spaced eyebrow pills on cards (category or place, 11px bold) and the small uppercase “Explore” / theme labels. They never sit above a section heading.
+- One colour per chapter, from the four tokens above. Countries do not get their own palette: a second destination reuses the same four chapter colours.
+- Numbered chapter marks (digit + short dash) in the table of contents and chapter openings, because the order is the page's structure.
+- Decorative motifs drawn as our own SVG: a band of four parallel wavy stripes (sóng nước), concentric half rings, a wavy ribbon crossing pictures in the chapter colour, and a bronze-drum sun ring. They are ornament only, never information.
+
+**Modules** (each one a render function; the page is the `SECTIONS` array, so editors reorder or remove sections without touching module code): hero · sources strip · table of contents tiles · small banner · chapter opener · accordion strip · chips · round views ribbon · clusters (bento) · cards ribbon · cover stack · stories inline (plan with numbered stops) · large story cards · quotation · “Which came first?” game · phrase tiles · keep exploring · before you go · keep-it toast.
+
+**Picture frames.** Until photos are chosen, every picture is a frame: a tone, a faint fish-scale wave pattern and a small tag naming the intended shot (“Photo · a pavement phở gà stall”). Setting `PHOTOS = true` in `explore.js` loads each frame's `imageId` from `assets.json` (or `src`) when it comes within 200px of the viewport and fades it in over 300ms. The Natural Media Rule still applies to the real photos.
+
+**Motion**
+- Easing `cubic-bezier(0.19, 1, 0.22, 1)` (ease-out-expo) for almost everything; durations 150 / 300 / 500 / 1000ms. A light spring `cubic-bezier(0.24, 1, 0.32, 1)` only for the heart, pins and badges.
+- Hover zoom inside frames: scale 1 → 1.08 over 1000ms, the same way out; the scrim deepens over 300ms.
+- Accordion strip: the hovered or focused strip opens over 500ms while the picture inside stays a fixed width, so it reads as a curtain opening; its text fades and rises 8px after 100ms. Arrow keys walk the strips. On screens ≤ 768px it is a swipe row and the card nearest the middle is open.
+- Cover stack: scale by distance from the centre card (1, .861, .780, .723, .678, .642, .611, .584), z-index 10 − distance, 500ms. Hover, arrow keys, the arrow buttons or a swipe choose the centre; only the centre card shows text and is in the tab order.
+- Ribbons: scroll-snap rows with 40px round arrow buttons that appear only when there is more to see.
+- The one authored entrance: the wavy ribbons on the contents tiles and chapter openers draw across when they arrive (1400ms), starting a third drawn so nothing is ever hidden.
+- Ink ripple on pills, chips and icon buttons; heart bounce on like; the game cards turn over (800ms).
+- The URL follows the chapter you are reading (`#everyday`, `#food`, `#beliefs`, `#history`) with `replaceState`. Old anchors still land: `#overview` → hero, `#themes` → contents, `#practice` → the stack, a theme id or alias → its chapter (language → the phrase tiles).
+- No parallax, no scroll hijacking, no per-letter text animation. Under the OS or site Reduce motion setting, zoom, stack, curtain, ribbon drawing and ripples stop, and only the image fade remains (150ms).
+
+**Honesty.** Copy that has not been written from a source carries a visible “Placeholder copy” tag in place (the quotation, the Văn Miếu stop descriptions, the game's dates). Round “360°” views open the nearest story or say that no view exists yet.
+
+**Inner pages (27 October 2026).** `assets/css/ex-pages.css` (after cc.css, refinements.css and explore.css) carries the system to the inner pages, and `assets/js/ex-kit.js` (after core.js) holds what they share: the SVG motifs, the chapter colour for a theme or scene, the page-head band and the ink ripple. `explore.js` takes its motifs from the kit.
+- **Tokens, scoped to `body.ex`:** the six cc.css roles are re-pointed so every shared component follows. `background` is cream `#F3E4CB`, `surface` is `#FBF3E4`, `primary` becomes the deep teal ink `#02606F` (links, selected and saved states; 5.9:1 on cream), `text` is `#202124`, `text-secondary` is `#54585D`, and `accent` is ember `#E0652F` (ornament only). `--font-serif` maps to Be Vietnam Pro, and radii are 8px. Only the CultureCompass wordmark keeps Source Serif 4.
+- **Controls:** buttons are pills. A primary button is dark ink `#202124` with cream text and turns teal on hover; on a teal band it inverts to cream. A quiet button is an outline pill. Chips are outline pills, and the selected chip is dark. Selects and Listen buttons are pills. The current page in the header and sub-navigation gets an ember underline.
+- **Night frame, paper page (27 October 2026):** the frame of every inner page carries the home page's night sky, and the reading stays on cream paper. Pure black is never used behind long reading text.
+  - Lacquer black `#100E0C` (`--night`; was pure `#000` until 27 October 2026, warmed so it sits with the cream paper and the warm paintings): the header (opaque, because a translucent bar over cream turns grey), the Vietnam sub-navigation, the page head and the footer. The page head has the home page's star tile (`home-stars.svg` under a 44% black veil).
+  - Ink on night: `#FFFCF7` (19.9:1) for text, links and focus, and `#D6D2CB` (13.9:1) for secondary text. Hairlines are `rgb(255 252 247 / .16)`, buttons invert to cream, and the current page and the saved count are marked in cream ink (not ember: the frame carries one colour only). On black, teal is lifted to `--ch-teal-night` `#2BA3B7` (7.0:1); the paper keeps `#037A90`.
+  - **The horizon (27 October 2026, replaces the four-stripe band and half rings on inner pages).** The page head ends in one long, low wave (`CC.ex.MOTIF.horizon`): the paper is cut along it, a 4px rim in the chapter colour runs on the edge, and two fading inlay lines (55%, 30%) follow it on the night side. The same horizon, with night below, joins the paper to the footer (`.ex-foot-join`). The rainbow band and half rings stay only in `vietnam.html`'s own modules.
+  - **Nothing crosses the horizon.** Content starts below the wave with its own space; cards, filters and photos are never pulled up over it.
+  - **The chapter colour leads, alone.** One colour per page: the horizon rim and inlays, the eyebrow pill (dark text, ≥ 5.3:1) and the footer mark. Everything else in the frame is neutral (night, cream ink). Story and Scene use the colour of their theme; Phrasebook is teal, Collection is peach and About is jade. The ground is always night.
+  - "Try it in a scene" cards and the chapters of `vietnam.html` keep their chapter fills on paper.
+  - Toasts carry a 1px cream hairline so they stay separate over the black footer. In print, the night frame and both bands are removed.
+- **Story:** body in Be Vietnam Pro, 17–19px at a 1.75 line height and 66ch measure.
+  - Drop cap in the chapter's ink; source numbers are small teal pills.
+  - Aside boxes have a round icon in the chapter colour.
+  - Sources are a numbered list with round counters.
+  - "Try it in a scene" is a card in the chapter colour; the previous/next links are bordered cards.
+- **Story cards** (related, collection): a borderless 8px frame with the slow 1.08 hover zoom, the theme as an uppercase label, and a round floating save button.
+- **Scene:** stage and panel are raised surfaces lifted over the band.
+  - Choices are 8px cards; the picked choice is teal.
+  - Step dots are peach when done and dark for the current step.
+  - Hotspot rings in the painting are ember.
+  - The four feedback kinds keep their icons and words.
+- **Phrasebook, Collection, About:**
+  - The phrasebook filters sit in a raised panel over the band.
+  - Phrase cards, collection items and source entries are cream-on-cream cards with 1px hairlines.
+  - Uppercase labels (intent, source type, reminder Do/Say/Applies to, table headers) use the eyebrow ink or the eyebrow pill.
+  - About lists use ember dots.
+- **Motion:** the story entrance keeps its short rise, now on the expo ease. Hover zoom (1000ms), card lifts and the ink ripple stop under Reduce motion.
+
+**Inner page structure (27 October 2026).** `assets/css/ex-layout.css` (loaded last on the five inner pages) owns order, grouping and space only.
+- Scene: one stage card reads painting → live caption → object buttons → art credit; the side panel holds only the task (sticky, scrolls inside itself); background stories and "Applies to" sit under the painting.
+- Story: the photo is a wide plate (max 62vh); the aside keeps only "Where this applies" and "How it varies"; "Words you can use" is a full-width row after the body; Sources and "Try it in a scene" close the story side by side.
+- Phrasebook: with "All", phrases are grouped by what you want to do; each group is as wide as its phrases (up to three), so small groups share a row.
+- Collection: stories are full-width reading-list rows; phrases and reminders stay as cards.
+- About: a sticky "On this page" rail beside one reading column; on phones it becomes a contents card at the top.

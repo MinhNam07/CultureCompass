@@ -1,0 +1,209 @@
+/* CultureCompass — page structure for the inner pages (scene, story, phrasebook, collection, about).
+   Load last, after ex-pages.css. This file only decides order, grouping and space; colour and type stay in ex-pages.css.
+   Spacing steps used here: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 72. */
+
+body.ex {
+  --gap-tight: 12px;
+  --gap-group: clamp(24px, 3vw, 32px);
+  --gap-section: clamp(48px, 6vw, 72px);
+  --rail: 232px;
+}
+
+/* =========================================================
+   SCENE — one painting card you explore, one task panel
+   ========================================================= */
+
+/* a shorter band: title and place on one rhythm, so the painting and Start are in the first screen */
+body.ex[data-page="scene"] .scene-head { padding-bottom: clamp(72px, 7vw, 96px) !important; gap: 8px; }
+body.ex[data-page="scene"] .scene-head h1 { max-width: 26ch; margin-bottom: 4px; }
+body.ex[data-page="scene"] .scene-head .cc-crumb { margin-bottom: 8px; }
+
+body.ex .scene-grid-page {
+  grid-template-columns: minmax(0, 1.75fr) minmax(340px, 1fr);
+  grid-template-areas: "stage panel" "more panel";
+  gap: var(--gap-group) clamp(24px, 3vw, 40px);
+}
+
+/* the stage card reads top to bottom: painting → what you are looking at → the objects → credit */
+body.ex .scene-stage { display: flex; flex-direction: column; }
+body.ex .scene-stage #stage { display: contents; }
+body.ex .scene-stage #stage-location { order: 0; }
+body.ex .scene-stage svg.cc-stage { order: 1; }
+body.ex .scene-stage #stage-caption { order: 2; min-height: 0; padding: 16px 20px 4px; border-top: 0; background: none; font-size: 1rem; }
+body.ex .scene-stage .scene-objects { order: 3; padding: 12px 20px 16px; }
+body.ex .scene-stage .scene-art-credit { order: 4; padding: 12px 20px 16px; margin: 0; border-top: 1px solid var(--line); font-size: .875rem; }
+
+body.ex .scene-objects h2 { font: 500 .875rem/1.4 var(--font-sans) !important; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 0; }
+body.ex .scene-hs-list { gap: 8px; }
+body.ex .scene-hs-list button { min-height: 40px; border-radius: var(--radius-pill); padding: 6px 14px 6px 8px; background: transparent; }
+body.ex .scene-hs-list button[aria-pressed="true"] { background: #202124; border-color: #202124; color: #FBF3E4; }
+body.ex .scene-hs-detail { margin-top: 0; font-size: .875rem; color: var(--color-text-secondary); }
+body.ex .scene-hs-detail:not(:empty) { margin-top: 10px; }
+body.ex .scene-hs-detail .cc-src { margin: 0; }
+body.ex .scene-hs-detail > .cc-tag { margin-right: 8px; }
+
+/* the panel holds only the task; it stays beside the painting while you scroll */
+body.ex .scene-panel { top: calc(var(--header-h) + 20px); max-height: calc(100vh - var(--header-h) - 40px); overflow: auto; overscroll-behavior: contain; }
+body.ex .scene-panel > h2:first-of-type { margin-bottom: 12px; }
+body.ex .scene-panel > p { margin-bottom: 12px; }
+body.ex .scene-panel .scene-actions { margin-top: 24px; }
+
+/* reading and scope sit under the painting, out of the task's way */
+body.ex .scene-more { grid-area: more; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px var(--gap-group); align-items: start; }
+body.ex .scene-more .scene-related { margin: 0; padding: 0; border: 0; }
+body.ex .scene-more .scene-related h3 { font: 500 1rem/1.4 var(--font-sans); margin-bottom: 4px; }
+body.ex .scene-more .scene-scope { margin: 0; padding-top: 6px; }
+body.ex .scene-more #scene-reading:empty { display: none; }
+body.ex .scene-more #scene-reading:empty + .scene-scope { grid-column: 1 / -1; max-width: 70ch; }
+.is-summary > .scene-more { display: none; }
+
+@media (max-width: 960px) {
+  body.ex .scene-grid-page { grid-template-columns: 1fr; grid-template-areas: "stage" "panel" "more"; }
+  body.ex .scene-panel { max-height: none; overflow: visible; }
+  body.ex .scene-more { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   STORY — picture, then one reading column with its notes beside it,
+   then the words, then sources and practice as a closing spread
+   ========================================================= */
+
+/* the picture is a wide plate, not a full screen: text starts in the first scroll */
+body.ex .story-figure .frame { width: 100%; }
+body.ex .story-figure .frame img { width: 100%; max-height: min(62vh, 560px); object-fit: cover; display: block; }
+body.ex .story-figure figcaption { max-width: 90ch; }
+
+body.ex .story-layout { grid-template-columns: minmax(0, var(--measure)) minmax(240px, 300px); justify-content: space-between; gap: clamp(32px, 6vw, 96px); }
+body.ex .story-aside { gap: var(--gap-tight); }
+
+body.ex .story-words { border-top: 1px solid var(--line); padding-top: var(--gap-group); margin-top: var(--gap-section); }
+body.ex .story-words h2 { display: flex; align-items: center; gap: 10px; font-weight: 400; font-size: clamp(1.5rem, 1.3rem + .6vw, 1.875rem); margin: 0 0 var(--gap-group); }
+body.ex .story-words h2 .cc-icon { width: 34px; height: 34px; padding: 7px; border-radius: 50%; background: var(--story-bg, var(--ch-teal)); color: var(--story-on, #fff); }
+body.ex .story-words .phrase-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+
+body.ex .story-close { display: grid; grid-template-columns: minmax(0, var(--measure)) minmax(280px, 380px); justify-content: space-between; gap: var(--gap-group) clamp(32px, 6vw, 96px); align-items: start; }
+body.ex .story-close .story-sources { margin: 0; }
+body.ex .story-close .story-sources h2 { margin-bottom: 16px; }
+/* practice becomes a tall card beside the sources */
+body.ex .story-close .story-practice { grid-template-columns: 1fr; gap: 16px; position: sticky; top: calc(var(--header-h) + 24px); }
+body.ex .story-close .story-practice .scene-pic { width: 100%; aspect-ratio: 16 / 10; }
+body.ex .story-close .story-practice h2 { margin-bottom: 8px; }
+body.ex .story-close .story-practice p { margin: 0; }
+body.ex .story-close .story-practice .cc-btn { justify-self: start; }
+body.ex .story-close:not(:has(.story-practice)) { grid-template-columns: minmax(0, var(--measure)); }
+
+body.ex .story-pager { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body.ex #story-root > .cc-section-tight[aria-labelledby="rel-title"] { border-top: 1px solid var(--line); padding-top: var(--gap-group); }
+body.ex #story-root > p:last-child { margin-block: var(--gap-group) var(--gap-section); }
+
+@media (max-width: 960px) {
+  body.ex .story-layout { grid-template-columns: 1fr; }
+  body.ex .story-aside { position: static; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  body.ex .story-close { grid-template-columns: 1fr; }
+  body.ex .story-close .story-practice { position: static; }
+  body.ex .story-close .story-practice .scene-pic { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 640px) {
+  body.ex .story-pager { grid-template-columns: 1fr; }
+  body.ex .story-pager > span:empty { display: none; }
+}
+
+/* =========================================================
+   PHRASE CARDS — phrase, meaning and use first; listening and status at the foot
+   ========================================================= */
+body.ex .phrase-grid > .phrase { grid-template-rows: auto auto auto 1fr auto; }
+body.ex .phrase-meaning { margin: 0; }
+body.ex .phrase-use { margin-top: 8px; }
+body.ex .phrase-foot { margin-top: 12px; padding-top: 12px; gap: 8px 12px; }
+body.ex .phrase-foot .phrase-src { flex-basis: 100%; }
+body.ex .phrase-foot .cc-audio-msg:empty { display: none; }
+
+/* =========================================================
+   PHRASEBOOK — filters over the band, then phrases grouped by what you want to do
+   ========================================================= */
+body.ex .filters { grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); gap: 16px 32px; margin-bottom: var(--gap-tight); }
+body.ex .filters .cc-select { max-width: none; }
+body.ex .result-count { margin: 0 0 var(--gap-group); color: var(--color-text-secondary); font-size: .875rem; }
+
+/* groups share rows: a group is as wide as its phrases (up to three), so one-phrase groups sit side by side */
+body.ex .phrase-grid.is-grouped { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-section) 16px; }
+body.ex .phrase-group { list-style: none; grid-column: span min(var(--n, 1), 3); display: grid; grid-template-rows: auto 1fr; gap: 16px; min-width: 0; }
+body.ex .phrase-group-title { display: flex; align-items: center; gap: 10px; margin: 0; padding-bottom: 12px; border-bottom: 1px solid var(--line); font: 400 clamp(1.25rem, 1.1rem + .5vw, 1.5rem)/1.2 var(--font-sans); }
+body.ex .phrase-group-title .cc-count { background: #202124; color: #FBF3E4; }
+body.ex .phrase-group .phrase-grid { grid-template-columns: repeat(min(var(--n, 1), 3), minmax(0, 1fr)); gap: 16px; }
+body.ex[data-page="phrases"] .cc-note { margin-top: var(--gap-section) !important; max-width: 820px; }
+
+@media (max-width: 1080px) and (min-width: 761px) {
+  body.ex .phrase-grid.is-grouped { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.ex .phrase-group { grid-column: span min(var(--n, 1), 2); }
+  body.ex .phrase-group .phrase-grid { grid-template-columns: repeat(min(var(--n, 1), 2), minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  body.ex .filters { grid-template-columns: 1fr; }
+  body.ex .phrase-grid.is-grouped { grid-template-columns: 1fr; gap: var(--gap-group); }
+  body.ex .phrase-group { grid-column: auto; }
+  body.ex .phrase-group .phrase-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   COLLECTION — a reading list of stories, then cards for phrases and reminders
+   ========================================================= */
+body.ex .coll-dest { grid-template-columns: minmax(180px, 220px) minmax(0, 1fr); padding-block: var(--gap-group) var(--gap-section); }
+body.ex .coll-dest-head { position: sticky; top: calc(var(--header-h) + 20px); }
+body.ex .coll-dest-head p { margin-top: 4px; }
+body.ex .coll-group + .coll-group { margin-top: var(--gap-section); }
+body.ex .coll-group h3 { margin-bottom: 16px; }
+
+/* stories: full-width rows — thumbnail, words, then the action at the far end */
+body.ex .coll-group[data-type="story"] .coll-list { grid-template-columns: 1fr; gap: var(--gap-tight); }
+body.ex .coll-group[data-type="story"] .coll-story { grid-template-columns: 136px minmax(0, 1fr); gap: 20px; padding: 14px; align-items: center; }
+body.ex .coll-group[data-type="story"] .coll-story .story-thumb { width: 136px; aspect-ratio: 4 / 3; }
+body.ex .coll-group[data-type="story"] .coll-story > div:last-child { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; align-items: center; }
+body.ex .coll-group[data-type="story"] .coll-story > div:last-child > :not(.coll-actions) { grid-column: 1; }
+body.ex .coll-group[data-type="story"] .coll-actions { grid-column: 2; grid-row: 1 / span 3; margin: 0; }
+body.ex .coll-group[data-type="story"] .coll-story p.cc-small { max-width: 62ch; }
+
+body.ex .coll-group:not([data-type="story"]) .coll-list { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+body.ex .coll-item .phrase .coll-actions { flex-basis: 100%; margin-top: 4px; }
+
+@media (max-width: 760px) {
+  body.ex .coll-dest { grid-template-columns: minmax(0, 1fr); gap: var(--gap-group); }
+  body.ex .coll-dest-head { position: static; }
+  body.ex .coll-group[data-type="story"] .coll-story { grid-template-columns: 88px minmax(0, 1fr); align-items: start; }
+  body.ex .coll-group[data-type="story"] .coll-story .story-thumb { width: 88px; }
+  body.ex .coll-group[data-type="story"] .coll-story > div:last-child { display: block; }
+  body.ex .coll-group[data-type="story"] .coll-actions { margin-top: 10px; }
+}
+
+/* =========================================================
+   ABOUT — a contents rail beside one reading column
+   ========================================================= */
+body.ex .doc-layout { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; padding-bottom: var(--gap-section); }
+body.ex .doc-toc { position: sticky; top: calc(var(--header-h) + 24px); padding-top: 8px; }
+body.ex .doc-toc-title { margin: 0 0 12px; font: 500 .875rem/1.4 var(--font-sans); color: var(--color-text-secondary); }
+body.ex .doc-toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; border-left: 1px solid var(--line); }
+body.ex .doc-toc a { display: block; padding: 7px 0 7px 16px; margin-left: -1px; border-left: 2px solid transparent; color: var(--color-text); text-decoration: none; font: 400 .9375rem/1.4 var(--font-sans); transition: border-color 200ms ease-out, color 200ms ease-out; }
+body.ex .doc-toc a:hover { border-left-color: var(--line-strong); }
+body.ex .doc-toc a[aria-current="true"] { border-left-color: var(--ch-ember); font-weight: 500; }
+
+body.ex .doc-body { display: grid; gap: var(--gap-section); min-width: 0; }
+body.ex .doc-body > section { scroll-margin-top: calc(var(--header-h) + 24px); }
+body.ex .doc-body > section > h2 { margin-bottom: 16px; }
+body.ex .doc-body > section > :is(p, ul):not(.src-list) { max-width: 70ch; }
+body.ex .doc-body > section + section { padding-top: var(--gap-group); border-top: 1px solid var(--line); margin-top: calc(var(--gap-group) * -1); }
+body.ex .doc-body .status-table { max-width: 70ch; }
+body.ex .doc-body .src-list { margin-top: var(--gap-group); }
+body.ex .doc-body .about-grid h2, body.ex .doc-body > section > h2 { font-weight: 400; font-size: clamp(1.625rem, 1.35rem + .9vw, 2.125rem); }
+body.ex[data-page="about"] .doc-layout { margin-top: 8px; }
+
+@media (max-width: 960px) {
+  body.ex .doc-layout { grid-template-columns: 1fr; }
+  body.ex .doc-toc { position: static; padding: 16px 18px; border-radius: var(--radius-card); background: rgb(251 243 228 / .75); box-shadow: var(--shadow-1); }
+  body.ex .doc-toc ol { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); border-left: 0; }
+  body.ex .doc-toc a { padding-left: 0; border-left: 0; min-height: 40px; display: flex; align-items: center; text-decoration: underline; text-decoration-color: var(--line-strong); }
+}
+
+@media print {
+  body.ex .doc-toc { display: none; }
+  body.ex .doc-layout { grid-template-columns: 1fr; }
+}

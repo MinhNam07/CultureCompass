@@ -1,0 +1,2762 @@
+{
+ "$comment": "Input for tools/pixelize.py build. src is relative to assets/game/raw, out to assets/game/sprites. w/h = output size in pixels (16 = one tile).",
+ "assets": [
+  {
+   "src": "van-mieu/cong-van-mieu.png",
+   "note": "C2 Văn Miếu Môn",
+   "outputs": [
+    {
+     "index": 0,
+     "w": 128,
+     "out": "van-mieu/van-mieu-mon.png"
+    }
+   ]
+  },
+  {
+   "src": "van-mieu/khue-van-cac.png",
+   "note": "C1 Khuê Văn Các",
+   "outputs": [
+    {
+     "index": 0,
+     "w": 96,
+     "out": "van-mieu/khue-van-cac.png"
+    }
+   ]
+  },
+  {
+   "src": "van-mieu/bia-rua.png",
+   "note": "C3 steles",
+   "outputs": [
+    {
+     "index": 0,
+     "w": 32,
+     "out": "van-mieu/bia-1.png"
+    },
+    {
+     "index": 1,
+     "w": 28,
+     "out": "van-mieu/bia-2.png"
+    },
+    {
+     "index": 2,
+     "w": 128,
+     "out": "van-mieu/nha-bia.png"
+    }
+   ]
+  },
+  {
+   "src": "van-mieu/dai-thanh.png",
+   "note": "C4 hall + incense burner",
+   "outputs": [
+    {
+     "boxPx": [
+      24,
+      12,
+      2376,
+      1172
+     ],
+     "w": 192,
+     "out": "van-mieu/dai-thanh.png"
+    },
+    {
+     "boxPx": [
+      114,
+      1236,
+      486,
+      1746
+     ],
+     "w": 32,
+     "h": 44,
+     "out": "van-mieu/lu-huong-0.png"
+    },
+    {
+     "boxPx": [
+      714,
+      1236,
+      1086,
+      1746
+     ],
+     "w": 32,
+     "h": 44,
+     "out": "van-mieu/lu-huong-1.png"
+    },
+    {
+     "boxPx": [
+      1314,
+      1236,
+      1686,
+      1746
+     ],
+     "w": 32,
+     "h": 44,
+     "out": "van-mieu/lu-huong-2.png"
+    },
+    {
+     "boxPx": [
+      1914,
+      1236,
+      2286,
+      1746
+     ],
+     "w": 32,
+     "h": 44,
+     "out": "van-mieu/lu-huong-3.png"
+    }
+   ]
+  },
+  {
+   "src": "van-mieu/gach-tuong.png",
+   "note": "C5 tiles (each Gemini cell has a frame, inset trims it)",
+   "box": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "outputs": [
+    {
+     "boxPx": [
+      22,
+      18,
+      298,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-0.png"
+    },
+    {
+     "boxPx": [
+      319,
+      18,
+      595,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-1.png"
+    },
+    {
+     "boxPx": [
+      617,
+      18,
+      893,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-2.png"
+    },
+    {
+     "boxPx": [
+      914,
+      18,
+      1190,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-3.png"
+    },
+    {
+     "boxPx": [
+      1212,
+      18,
+      1488,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-4.png"
+    },
+    {
+     "boxPx": [
+      1510,
+      18,
+      1786,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-5.png"
+    },
+    {
+     "boxPx": [
+      1807,
+      18,
+      2083,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-6.png"
+    },
+    {
+     "boxPx": [
+      2105,
+      18,
+      2381,
+      290
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-7.png"
+    },
+    {
+     "boxPx": [
+      22,
+      314,
+      298,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-0.png"
+    },
+    {
+     "boxPx": [
+      319,
+      314,
+      595,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-1.png"
+    },
+    {
+     "boxPx": [
+      617,
+      314,
+      893,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-2.png"
+    },
+    {
+     "boxPx": [
+      914,
+      314,
+      1190,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-3.png"
+    },
+    {
+     "boxPx": [
+      1212,
+      314,
+      1488,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-4.png"
+    },
+    {
+     "boxPx": [
+      1510,
+      314,
+      1786,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-5.png"
+    },
+    {
+     "boxPx": [
+      1807,
+      314,
+      2083,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-6.png"
+    },
+    {
+     "boxPx": [
+      2105,
+      314,
+      2381,
+      586
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/san-gach-b-7.png"
+    },
+    {
+     "boxPx": [
+      22,
+      610,
+      298,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-0.png"
+    },
+    {
+     "boxPx": [
+      319,
+      610,
+      595,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-1.png"
+    },
+    {
+     "boxPx": [
+      617,
+      610,
+      893,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-2.png"
+    },
+    {
+     "boxPx": [
+      914,
+      610,
+      1190,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-3.png"
+    },
+    {
+     "boxPx": [
+      1212,
+      610,
+      1488,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-4.png"
+    },
+    {
+     "boxPx": [
+      1510,
+      610,
+      1786,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-5.png"
+    },
+    {
+     "boxPx": [
+      1807,
+      610,
+      2083,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-6.png"
+    },
+    {
+     "boxPx": [
+      2105,
+      610,
+      2381,
+      882
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/tuong-7.png"
+    },
+    {
+     "boxPx": [
+      22,
+      906,
+      298,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-0.png"
+    },
+    {
+     "boxPx": [
+      319,
+      906,
+      595,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-1.png"
+    },
+    {
+     "boxPx": [
+      617,
+      906,
+      893,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-2.png"
+    },
+    {
+     "boxPx": [
+      914,
+      906,
+      1190,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-3.png"
+    },
+    {
+     "boxPx": [
+      1212,
+      906,
+      1488,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-4.png"
+    },
+    {
+     "boxPx": [
+      1510,
+      906,
+      1786,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-5.png"
+    },
+    {
+     "boxPx": [
+      1807,
+      906,
+      2083,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-6.png"
+    },
+    {
+     "boxPx": [
+      2105,
+      906,
+      2381,
+      1178
+     ],
+     "inset": 0.02,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/mai-tuong-7.png"
+    },
+    {
+     "boxPx": [
+      22,
+      1206,
+      298,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-0.png"
+    },
+    {
+     "boxPx": [
+      319,
+      1206,
+      595,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-1.png"
+    },
+    {
+     "boxPx": [
+      617,
+      1206,
+      893,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-2.png"
+    },
+    {
+     "boxPx": [
+      914,
+      1206,
+      1190,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-3.png"
+    },
+    {
+     "boxPx": [
+      1212,
+      1206,
+      1488,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-4.png"
+    },
+    {
+     "boxPx": [
+      1510,
+      1206,
+      1786,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-5.png"
+    },
+    {
+     "boxPx": [
+      1807,
+      1206,
+      2083,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-6.png"
+    },
+    {
+     "boxPx": [
+      2105,
+      1206,
+      2381,
+      1478
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bac-da-7.png"
+    },
+    {
+     "boxPx": [
+      22,
+      1506,
+      298,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-0.png"
+    },
+    {
+     "boxPx": [
+      319,
+      1506,
+      595,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-1.png"
+    },
+    {
+     "boxPx": [
+      617,
+      1506,
+      893,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-2.png"
+    },
+    {
+     "boxPx": [
+      914,
+      1506,
+      1190,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-3.png"
+    },
+    {
+     "boxPx": [
+      1212,
+      1506,
+      1488,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-4.png"
+    },
+    {
+     "boxPx": [
+      1510,
+      1506,
+      1786,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-5.png"
+    },
+    {
+     "boxPx": [
+      1807,
+      1506,
+      2083,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-6.png"
+    },
+    {
+     "boxPx": [
+      2105,
+      1506,
+      2381,
+      1778
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 12,
+     "out": "van-mieu/tiles/bo-ho-7.png"
+    }
+   ]
+  },
+  {
+   "src": "npc/npc-ha-noi.png",
+   "note": "G NPCs v2 (28/10, chibi). con-trai and nguoi-ban came with a back view instead of a 2nd idle frame: the front frame is reused.",
+   "outputs": [
+    {
+     "boxPx": [
+      98,
+      111,
+      409,
+      830
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/co-lan-0.png"
+    },
+    {
+     "boxPx": [
+      470,
+      111,
+      781,
+      830
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/co-lan-1.png"
+    },
+    {
+     "boxPx": [
+      855,
+      99,
+      1190,
+      830
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/ba-0.png"
+    },
+    {
+     "boxPx": [
+      1227,
+      111,
+      1562,
+      830
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/ba-1.png"
+    },
+    {
+     "boxPx": [
+      1635,
+      99,
+      1946,
+      830
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/con-trai-0.png"
+    },
+    {
+     "boxPx": [
+      1635,
+      99,
+      1946,
+      830
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/con-trai-1.png"
+    },
+    {
+     "boxPx": [
+      2008,
+      99,
+      2318,
+      830
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/con-trai-back.png"
+    },
+    {
+     "boxPx": [
+      98,
+      987,
+      409,
+      1694
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/nhan-vien-0.png"
+    },
+    {
+     "boxPx": [
+      470,
+      987,
+      782,
+      1694
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/nhan-vien-1.png"
+    },
+    {
+     "boxPx": [
+      867,
+      987,
+      1178,
+      1694
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/dau-bep-0.png"
+    },
+    {
+     "boxPx": [
+      1239,
+      987,
+      1562,
+      1694
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/dau-bep-1.png"
+    },
+    {
+     "boxPx": [
+      1636,
+      951,
+      1946,
+      1694
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/nguoi-ban-0.png"
+    },
+    {
+     "boxPx": [
+      1636,
+      951,
+      1946,
+      1694
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/nguoi-ban-1.png"
+    },
+    {
+     "boxPx": [
+      2008,
+      963,
+      2319,
+      1694
+     ],
+     "h": 28,
+     "w": 15,
+     "canvas": [
+      16,
+      32
+     ],
+     "colours": 16,
+     "out": "npc/nguoi-ban-back.png"
+    }
+   ]
+  },
+  {
+   "src": "chung/duong-via-he.png",
+   "note": "A1 street tiles (Gemini cells are not square and kerbs are drawn on cell edges: each cell becomes one 16x16 tile)",
+   "outputs": [
+    {
+     "boxPx": [
+      460,
+      0,
+      894,
+      463
+     ],
+     "inset": 0.04,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/nhua-nut.png"
+    },
+    {
+     "boxPx": [
+      918,
+      0,
+      1352,
+      463
+     ],
+     "inset": 0.04,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/nhua-dau.png"
+    },
+    {
+     "boxPx": [
+      1400,
+      83,
+      1822,
+      463
+     ],
+     "inset": 0.04,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/vach-ngua.png"
+    },
+    {
+     "boxPx": [
+      1858,
+      0,
+      2281,
+      463
+     ],
+     "inset": 0.02,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/via-he-xam.png"
+    },
+    {
+     "boxPx": [
+      918,
+      499,
+      1352,
+      1025
+     ],
+     "inset": 0.02,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/via-he-xam-b.png"
+    },
+    {
+     "boxPx": [
+      1400,
+      1061,
+      1822,
+      1536
+     ],
+     "inset": 0.02,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/unused/via-he-do.png"
+    },
+    {
+     "boxPx": [
+      1858,
+      1061,
+      2281,
+      1536
+     ],
+     "inset": 0.02,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/via-he-cam.png"
+    },
+    {
+     "boxPx": [
+      1400,
+      499,
+      1822,
+      1025
+     ],
+     "inset": 0.04,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/nap-cong.png"
+    },
+    {
+     "boxPx": [
+      1858,
+      499,
+      2281,
+      1025
+     ],
+     "inset": 0.04,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/nap-cong-b.png"
+    },
+    {
+     "boxPx": [
+      0,
+      0,
+      446,
+      463
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/le-tren.png"
+    },
+    {
+     "boxPx": [
+      918,
+      1061,
+      1352,
+      1536
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/le-duoi.png"
+    },
+    {
+     "boxPx": [
+      0,
+      499,
+      446,
+      1025
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/le-trai.png"
+    },
+    {
+     "boxPx": [
+      2306,
+      499,
+      2752,
+      1025
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/le-phai.png"
+    },
+    {
+     "boxPx": [
+      2306,
+      0,
+      2752,
+      463
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/le-goc-tren-phai.png"
+    },
+    {
+     "boxPx": [
+      0,
+      1061,
+      446,
+      1536
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/le-goc-duoi-trai.png"
+    },
+    {
+     "boxPx": [
+      2306,
+      1061,
+      2752,
+      1536
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "chung/tiles/le-goc-duoi-phai.png"
+    }
+   ]
+  },
+  {
+   "src": "chung/xe-may-do.png",
+   "note": "A2 parked scooters",
+   "outputs": [
+    {
+     "index": 0,
+     "w": 32,
+     "out": "chung/xe-may-do-do.png"
+    },
+    {
+     "index": 1,
+     "w": 32,
+     "out": "chung/xe-may-do-xanh.png"
+    },
+    {
+     "index": 2,
+     "w": 32,
+     "out": "chung/xe-may-do-den.png"
+    }
+   ]
+  },
+  {
+   "src": "chung/xe-may-chay.png",
+   "note": "A3 scooter rider, 4 directions x 2 frames, same 430px box per frame so the rider doesn't jump",
+   "outputs": [
+    {
+     "boxPx": [
+      85,
+      21,
+      515,
+      451
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-down-0.png"
+    },
+    {
+     "boxPx": [
+      691,
+      21,
+      1121,
+      451
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-down-1.png"
+    },
+    {
+     "boxPx": [
+      91,
+      465,
+      521,
+      895
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-left-0.png"
+    },
+    {
+     "boxPx": [
+      691,
+      465,
+      1121,
+      895
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-left-1.png"
+    },
+    {
+     "boxPx": [
+      79,
+      909,
+      509,
+      1339
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-right-0.png"
+    },
+    {
+     "boxPx": [
+      679,
+      909,
+      1109,
+      1339
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-right-1.png"
+    },
+    {
+     "boxPx": [
+      85,
+      1353,
+      515,
+      1783
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-up-0.png"
+    },
+    {
+     "boxPx": [
+      685,
+      1353,
+      1115,
+      1783
+     ],
+     "w": 32,
+     "h": 32,
+     "colours": 16,
+     "out": "chung/xe-may-chay-up-1.png"
+    }
+   ]
+  },
+  {
+   "src": "chung/do-vat-pho.png",
+   "gap": 1,
+   "note": "A4 street props",
+   "outputs": [
+    {
+     "index": 0,
+     "out": "chung/cot-dien.png",
+     "h": 48
+    },
+    {
+     "index": 1,
+     "out": "chung/den-duong.png",
+     "h": 48
+    },
+    {
+     "index": 2,
+     "out": "chung/den-giao-thong.png",
+     "h": 48
+    },
+    {
+     "index": 3,
+     "out": "chung/bien-hieu.png",
+     "w": 32
+    },
+    {
+     "index": 4,
+     "out": "chung/cay-bang.png",
+     "h": 64
+    },
+    {
+     "index": 5,
+     "out": "chung/cay-da.png",
+     "w": 80
+    },
+    {
+     "index": 6,
+     "out": "chung/xe-dap.png",
+     "w": 34
+    },
+    {
+     "index": 7,
+     "out": "chung/chau-cay.png",
+     "h": 20
+    }
+   ]
+  },
+  {
+   "src": "homestay/nha-ong-hien-dai.png",
+   "note": "B1 modern tube house (v2, 28/10)",
+   "outputs": [
+    {
+     "index": 0,
+     "w": 64,
+     "out": "homestay/nha-ong.png"
+    }
+   ]
+  },
+  {
+   "src": "homestay/san-tuong-hien-dai.png",
+   "note": "B2a modern interior tiles",
+   "outputs": [
+    {
+     "boxPx": [
+      12,
+      6,
+      665,
+      602
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/gach-men.png"
+    },
+    {
+     "boxPx": [
+      700,
+      6,
+      1353,
+      602
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/gach-men-bong.png"
+    },
+    {
+     "boxPx": [
+      1388,
+      6,
+      2052,
+      602
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/san-go.png"
+    },
+    {
+     "boxPx": [
+      2087,
+      6,
+      2740,
+      602
+     ],
+     "inset": 0.03,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/san-go-toi.png"
+    },
+    {
+     "boxPx": [
+      12,
+      637,
+      665,
+      1026
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/tuong-trang.png"
+    },
+    {
+     "boxPx": [
+      700,
+      637,
+      1353,
+      1026
+     ],
+     "inset": 0.05,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/tuong-trang-b.png"
+    },
+    {
+     "boxPx": [
+      1388,
+      637,
+      2052,
+      1026
+     ],
+     "inset": 0.04,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/tuong-chan.png"
+    },
+    {
+     "boxPx": [
+      12,
+      1119,
+      665,
+      1530
+     ],
+     "inset": 0.02,
+     "opaque": true,
+     "w": 16,
+     "h": 16,
+     "colours": 10,
+     "out": "homestay/tiles/gach-bep.png"
+    }
+   ]
+  },
+  {
+   "src": "homestay/do-dac.png",
+   "note": "B2b modern furniture; one shared scale (15 source px per art pixel) so sizes stay consistent",
+   "outputs": [
+    {
+     "boxPx": [
+      36,
+      29,
+      762,
+      492
+     ],
+     "w": 48,
+     "colours": 20,
+     "out": "homestay/sofa.png"
+    },
+    {
+     "boxPx": [
+      855,
+      29,
+      1421,
+      452
+     ],
+     "w": 38,
+     "colours": 20,
+     "out": "homestay/tv.png"
+    },
+    {
+     "boxPx": [
+      1532,
+      115,
+      2092,
+      469
+     ],
+     "w": 37,
+     "colours": 20,
+     "out": "homestay/ke-giay.png"
+    },
+    {
+     "boxPx": [
+      2168,
+      19,
+      2699,
+      451
+     ],
+     "w": 35,
+     "colours": 20,
+     "out": "homestay/xe-may-trong-nha.png"
+    },
+    {
+     "boxPx": [
+      30,
+      523,
+      801,
+      1020
+     ],
+     "w": 51,
+     "colours": 20,
+     "out": "homestay/ban-an.png"
+    },
+    {
+     "boxPx": [
+      895,
+      774,
+      1324,
+      1518
+     ],
+     "w": 29,
+     "colours": 20,
+     "out": "homestay/giuong.png"
+    },
+    {
+     "boxPx": [
+      1371,
+      562,
+      2132,
+      796
+     ],
+     "w": 51,
+     "colours": 20,
+     "out": "homestay/bep.png"
+    },
+    {
+     "boxPx": [
+      2202,
+      528,
+      2465,
+      1072
+     ],
+     "w": 18,
+     "colours": 20,
+     "out": "homestay/tu-lanh.png"
+    },
+    {
+     "boxPx": [
+      2536,
+      586,
+      2706,
+      1072
+     ],
+     "w": 11,
+     "colours": 20,
+     "out": "homestay/cay-nuoc.png"
+    },
+    {
+     "boxPx": [
+      1996,
+      1165,
+      2419,
+      1410
+     ],
+     "w": 28,
+     "colours": 20,
+     "out": "homestay/ban-tho.png"
+    },
+    {
+     "boxPx": [
+      2490,
+      1159,
+      2705,
+      1507
+     ],
+     "w": 14,
+     "colours": 20,
+     "out": "homestay/chau-cay-nha.png"
+    },
+    {
+     "boxPx": [
+      1422,
+      901,
+      1898,
+      1518
+     ],
+     "w": 32,
+     "colours": 20,
+     "out": "homestay/tu-giuong.png"
+    }
+   ]
+  },
+  {
+   "src": "ha-noi-xua/nha-ong-kieu-phap.png",
+   "note": "French-era tube house: such houses still stand in the Old Quarter today, used as a neighbour on the homestay street",
+   "outputs": [
+    {
+     "index": 0,
+     "w": 64,
+     "out": "chung/nha-kieu-phap.png"
+    }
+   ]
+  },
+  {
+   "src": "pho-co/nha-pho-co.png",
+   "note": "D1 Old Quarter houses, one shared scale (11 px per art pixel)",
+   "outputs": [
+    {
+     "boxPx": [
+      103,
+      234,
+      984,
+      1479
+     ],
+     "w": 80,
+     "h": 113,
+     "colours": 24,
+     "out": "pho-co/nha-pho-co-1.png"
+    },
+    {
+     "boxPx": [
+      1128,
+      41,
+      1658,
+      1486
+     ],
+     "w": 48,
+     "h": 131,
+     "colours": 24,
+     "out": "pho-co/nha-pho-co-2.png"
+    },
+    {
+     "boxPx": [
+      1837,
+      76,
+      2614,
+      1493
+     ],
+     "w": 71,
+     "h": 129,
+     "colours": 24,
+     "out": "pho-co/nha-pho-co-3.png"
+    }
+   ]
+  },
+  {
+   "src": "pho-co/tang-tret.png",
+   "note": "Extra: single-storey Old Quarter shopfronts (lanterns, grocery, jeweller, shutters, fabric)",
+   "outputs": [
+    {
+     "boxPx": [
+      22,
+      20,
+      761,
+      655
+     ],
+     "w": 67,
+     "h": 58,
+     "colours": 24,
+     "out": "pho-co/shop-hang-ma.png"
+    },
+    {
+     "boxPx": [
+      796,
+      20,
+      1569,
+      655
+     ],
+     "w": 70,
+     "h": 58,
+     "colours": 24,
+     "out": "pho-co/shop-tap-hoa.png"
+    },
+    {
+     "boxPx": [
+      1603,
+      20,
+      2408,
+      655
+     ],
+     "w": 73,
+     "h": 58,
+     "colours": 24,
+     "out": "pho-co/shop-kim-hoan.png"
+    },
+    {
+     "boxPx": [
+      2449,
+      20,
+      3147,
+      655
+     ],
+     "w": 63,
+     "h": 58,
+     "colours": 24,
+     "out": "pho-co/shop-cua-cuon.png"
+    },
+    {
+     "boxPx": [
+      32,
+      689,
+      737,
+      1323
+     ],
+     "w": 64,
+     "h": 58,
+     "colours": 24,
+     "out": "pho-co/shop-hang-ma-2.png"
+    },
+    {
+     "boxPx": [
+      760,
+      689,
+      1703,
+      1323
+     ],
+     "w": 86,
+     "h": 58,
+     "colours": 24,
+     "out": "pho-co/shop-tap-hoa-banh-mi.png"
+    },
+    {
+     "boxPx": [
+      1727,
+      689,
+      2424,
+      1323
+     ],
+     "w": 63,
+     "h": 58,
+     "colours": 24,
+     "out": "pho-co/shop-hang-vai.png"
+    },
+    {
+     "boxPx": [
+      2475,
+      689,
+      3142,
+      1318
+     ],
+     "w": 61,
+     "h": 57,
+     "colours": 24,
+     "out": "pho-co/shop-cua-cuon-xe-cub.png"
+    }
+   ]
+  },
+  {
+   "src": "pho-co/ho-guom.png",
+   "note": "D2 lake set (the image has English labels: those boxes are not used)",
+   "outputs": [
+    {
+     "boxPx": [
+      112,
+      48,
+      1808,
+      510
+     ],
+     "w": 154,
+     "h": 42,
+     "colours": 24,
+     "out": "pho-co/cau-the-huc.png"
+    },
+    {
+     "boxPx": [
+      121,
+      597,
+      969,
+      1345
+     ],
+     "w": 77,
+     "h": 68,
+     "colours": 24,
+     "out": "pho-co/cong-ngoc-son.png"
+    },
+    {
+     "boxPx": [
+      1307,
+      984,
+      1928,
+      1752
+     ],
+     "w": 56,
+     "h": 70,
+     "colours": 24,
+     "out": "pho-co/cay-lieu.png"
+    },
+    {
+     "boxPx": [
+      1984,
+      1237,
+      2267,
+      1739
+     ],
+     "w": 26,
+     "h": 46,
+     "colours": 24,
+     "out": "pho-co/den-ho.png"
+    },
+    {
+     "boxPx": [
+      841,
+      1517,
+      1199,
+      1675
+     ],
+     "w": 33,
+     "h": 14,
+     "colours": 24,
+     "out": "pho-co/ghe-da.png"
+    }
+   ]
+  },
+  {
+   "src": "pho-co/thap-but.png",
+   "note": "D2 Pen Tower (the blurred smudges next to it are ignored)",
+   "outputs": [
+    {
+     "boxPx": [
+      513,
+      21,
+      1544,
+      2027
+     ],
+     "w": 50,
+     "colours": 20,
+     "out": "pho-co/thap-but.png"
+    }
+   ]
+  },
+  {
+   "src": "pho-co/xe-dap-ban-hoa.png",
+   "note": "D3 street vendor (front idle, side walk) and flower bicycle",
+   "outputs": [
+    {
+     "boxPx": [
+      11,
+      11,
+      491,
+      501
+     ],
+     "w": 31,
+     "h": 31,
+     "colours": 20,
+     "canvas": [
+      32,
+      32
+     ],
+     "out": "npc/ban-hang-rong-0.png"
+    },
+    {
+     "boxPx": [
+      533,
+      11,
+      993,
+      501
+     ],
+     "w": 31,
+     "h": 31,
+     "colours": 20,
+     "canvas": [
+      32,
+      32
+     ],
+     "out": "npc/ban-hang-rong-1.png"
+    },
+    {
+     "boxPx": [
+      1035,
+      11,
+      1525,
+      501
+     ],
+     "w": 31,
+     "h": 31,
+     "colours": 20,
+     "canvas": [
+      32,
+      32
+     ],
+     "out": "pho-co/ban-hang-rong-right-0.png"
+    },
+    {
+     "boxPx": [
+      1547,
+      11,
+      2037,
+      501
+     ],
+     "w": 31,
+     "h": 31,
+     "colours": 20,
+     "canvas": [
+      32,
+      32
+     ],
+     "out": "pho-co/ban-hang-rong-right-1.png"
+    },
+    {
+     "boxPx": [
+      22,
+      1189,
+      993,
+      2048
+     ],
+     "w": 54,
+     "colours": 24,
+     "out": "pho-co/xe-dap-hoa-right-0.png"
+    },
+    {
+     "boxPx": [
+      1045,
+      1189,
+      2006,
+      2048
+     ],
+     "w": 53,
+     "colours": 24,
+     "out": "pho-co/xe-dap-hoa-right-1.png"
+    }
+   ]
+  },
+  {
+   "src": "cho-dong-xuan/mat-tien-cho.png",
+   "note": "E1 market front (cropTop removes the flag Gemini drew on the roof)",
+   "outputs": [
+    {
+     "boxPx": [
+      30,
+      36,
+      2882,
+      1390
+     ],
+     "w": 256,
+     "h": 122,
+     "colours": 24,
+     "out": "cho-dong-xuan/mat-tien-cho.png",
+     "cropTop": 12
+    }
+   ]
+  },
+  {
+   "src": "cho-dong-xuan/sap-hang.png",
+   "note": "E2 stalls, scale 13 (drawn smaller than the racks in the source)",
+   "outputs": [
+    {
+     "boxPx": [
+      126,
+      84,
+      722,
+      646
+     ],
+     "w": 46,
+     "h": 43,
+     "colours": 24,
+     "out": "cho-dong-xuan/sap-vai.png"
+    },
+    {
+     "boxPx": [
+      971,
+      124,
+      1751,
+      691
+     ],
+     "w": 60,
+     "h": 44,
+     "colours": 24,
+     "out": "cho-dong-xuan/sap-quan-ao.png"
+    },
+    {
+     "boxPx": [
+      1918,
+      50,
+      2723,
+      697
+     ],
+     "w": 62,
+     "h": 50,
+     "colours": 24,
+     "out": "cho-dong-xuan/sap-kho.png"
+    },
+    {
+     "boxPx": [
+      160,
+      818,
+      914,
+      1339
+     ],
+     "w": 58,
+     "h": 40,
+     "colours": 24,
+     "out": "cho-dong-xuan/sap-tap-hoa.png"
+    },
+    {
+     "boxPx": [
+      1105,
+      790,
+      1819,
+      1351
+     ],
+     "w": 55,
+     "h": 43,
+     "colours": 24,
+     "out": "cho-dong-xuan/sap-hoa-qua.png"
+    },
+    {
+     "boxPx": [
+      2014,
+      823,
+      2871,
+      1351
+     ],
+     "w": 66,
+     "h": 41,
+     "colours": 24,
+     "out": "cho-dong-xuan/sap-rau.png"
+    }
+   ]
+  },
+  {
+   "src": "cho-dong-xuan/san-cot.png",
+   "note": "E3 pillars only (floor tiles are redrawn by hand)",
+   "outputs": [
+    {
+     "boxPx": [
+      1655,
+      98,
+      2020,
+      1536
+     ],
+     "w": 12,
+     "h": 48,
+     "colours": 12,
+     "out": "cho-dong-xuan/cot.png"
+    },
+    {
+     "boxPx": [
+      2086,
+      98,
+      2451,
+      1536
+     ],
+     "w": 12,
+     "h": 48,
+     "colours": 12,
+     "out": "cho-dong-xuan/cot-dien-ke.png"
+    }
+   ]
+  },
+  {
+   "src": "cho-dong-xuan/do-treo-cho.png",
+   "note": "Extra market props, shared scale 17",
+   "outputs": [
+    {
+     "boxPx": [
+      78,
+      100,
+      1150,
+      819
+     ],
+     "w": 63,
+     "h": 42,
+     "colours": 24,
+     "out": "cho-dong-xuan/gia-quan-ao.png"
+    },
+    {
+     "boxPx": [
+      1392,
+      85,
+      2266,
+      819
+     ],
+     "w": 51,
+     "h": 43,
+     "colours": 24,
+     "out": "cho-dong-xuan/gia-ao-dai.png"
+    },
+    {
+     "boxPx": [
+      106,
+      905,
+      1009,
+      1611
+     ],
+     "w": 53,
+     "h": 42,
+     "colours": 24,
+     "out": "cho-dong-xuan/ban-bat-xanh.png"
+    },
+    {
+     "boxPx": [
+      1152,
+      1033,
+      1518,
+      1356
+     ],
+     "w": 22,
+     "h": 19,
+     "colours": 24,
+     "out": "cho-dong-xuan/den-tuyp.png"
+    },
+    {
+     "boxPx": [
+      1646,
+      1004,
+      2026,
+      1597
+     ],
+     "w": 22,
+     "h": 35,
+     "colours": 24,
+     "out": "cho-dong-xuan/kien-hang.png"
+    },
+    {
+     "boxPx": [
+      2141,
+      962,
+      2436,
+      1596
+     ],
+     "w": 17,
+     "h": 37,
+     "colours": 24,
+     "out": "cho-dong-xuan/quat-cay.png"
+    }
+   ]
+  },
+  {
+   "src": "quan-an/do-quan-via-he.png",
+   "note": "F1 pavement food-stall props, shared scale 17",
+   "outputs": [
+    {
+     "boxPx": [
+      70,
+      419,
+      274,
+      636
+     ],
+     "w": 12,
+     "h": 13,
+     "colours": 24,
+     "out": "quan-an/ghe-do.png"
+    },
+    {
+     "boxPx": [
+      402,
+      86,
+      607,
+      303
+     ],
+     "w": 12,
+     "h": 13,
+     "colours": 24,
+     "out": "quan-an/ghe-xanh.png"
+    },
+    {
+     "boxPx": [
+      310,
+      350,
+      664,
+      658
+     ],
+     "w": 21,
+     "h": 18,
+     "colours": 24,
+     "out": "quan-an/ban-inox.png"
+    },
+    {
+     "boxPx": [
+      734,
+      29,
+      1169,
+      636
+     ],
+     "w": 26,
+     "h": 36,
+     "colours": 24,
+     "out": "quan-an/noi-pho-0.png"
+    },
+    {
+     "boxPx": [
+      1239,
+      29,
+      1674,
+      636
+     ],
+     "w": 26,
+     "h": 36,
+     "colours": 24,
+     "out": "quan-an/noi-pho-1.png"
+    },
+    {
+     "boxPx": [
+      1755,
+      29,
+      2190,
+      636
+     ],
+     "w": 26,
+     "h": 36,
+     "colours": 24,
+     "out": "quan-an/noi-pho-2.png"
+    },
+    {
+     "boxPx": [
+      770,
+      646,
+      1245,
+      1115
+     ],
+     "w": 28,
+     "h": 28,
+     "colours": 24,
+     "out": "quan-an/bep-than-0.png"
+    },
+    {
+     "boxPx": [
+      1280,
+      646,
+      1761,
+      1115
+     ],
+     "w": 28,
+     "h": 28,
+     "colours": 24,
+     "out": "quan-an/bep-than-1.png"
+    },
+    {
+     "boxPx": [
+      1789,
+      646,
+      2277,
+      1115
+     ],
+     "w": 29,
+     "h": 28,
+     "colours": 24,
+     "out": "quan-an/bep-than-2.png"
+    },
+    {
+     "boxPx": [
+      70,
+      797,
+      596,
+      1473
+     ],
+     "w": 31,
+     "h": 40,
+     "colours": 24,
+     "out": "quan-an/tu-kinh.png"
+    },
+    {
+     "boxPx": [
+      2295,
+      564,
+      2694,
+      1135
+     ],
+     "w": 23,
+     "h": 34,
+     "colours": 24,
+     "out": "quan-an/tu-kinh-2.png"
+    },
+    {
+     "boxPx": [
+      723,
+      1210,
+      997,
+      1473
+     ],
+     "w": 16,
+     "h": 15,
+     "colours": 24,
+     "out": "quan-an/ro-rau.png"
+    },
+    {
+     "boxPx": [
+      1033,
+      1199,
+      1444,
+      1473
+     ],
+     "w": 24,
+     "h": 16,
+     "colours": 24,
+     "out": "quan-an/bat-dua.png"
+    },
+    {
+     "boxPx": [
+      1560,
+      1199,
+      1811,
+      1484
+     ],
+     "w": 15,
+     "h": 17,
+     "colours": 24,
+     "out": "quan-an/chai-nuoc-cham.png"
+    },
+    {
+     "boxPx": [
+      1939,
+      1199,
+      2201,
+      1461
+     ],
+     "w": 15,
+     "h": 15,
+     "colours": 24,
+     "out": "quan-an/binh-tra-da.png"
+    },
+    {
+     "boxPx": [
+      2294,
+      1187,
+      2694,
+      1484
+     ],
+     "w": 24,
+     "h": 17,
+     "colours": 24,
+     "out": "quan-an/bien-quan.png"
+    }
+   ]
+  },
+  {
+   "src": "quan-an/npc-quan-an.png",
+   "note": "F2 food-stall people; customers have one pose each (both frames the same)",
+   "outputs": [
+    {
+     "boxPx": [
+      13,
+      34,
+      400,
+      796
+     ],
+     "w": 15,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/dau-bep-pho-0.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      486,
+      34,
+      862,
+      796
+     ],
+     "w": 15,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/dau-bep-pho-1.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      989,
+      34,
+      1332,
+      796
+     ],
+     "w": 14,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/khach-ngoi-0.png"
+    },
+    {
+     "boxPx": [
+      989,
+      34,
+      1332,
+      796
+     ],
+     "w": 14,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/khach-ngoi-1.png"
+    },
+    {
+     "boxPx": [
+      1486,
+      46,
+      1884,
+      794
+     ],
+     "w": 16,
+     "h": 29,
+     "colours": 20,
+     "out": "npc/khach-ngoi-ben-0.png"
+    },
+    {
+     "boxPx": [
+      1486,
+      46,
+      1884,
+      794
+     ],
+     "w": 16,
+     "h": 29,
+     "colours": 20,
+     "out": "npc/khach-ngoi-ben-1.png"
+    },
+    {
+     "boxPx": [
+      1966,
+      47,
+      2363,
+      794
+     ],
+     "w": 16,
+     "h": 29,
+     "colours": 20,
+     "out": "npc/khach-ngoi-ben-b-0.png"
+    },
+    {
+     "boxPx": [
+      1966,
+      47,
+      2363,
+      794
+     ],
+     "w": 16,
+     "h": 29,
+     "colours": 20,
+     "out": "npc/khach-ngoi-ben-b-1.png"
+    },
+    {
+     "boxPx": [
+      151,
+      852,
+      765,
+      1792
+     ],
+     "w": 24,
+     "h": 37,
+     "colours": 20,
+     "out": "npc/dau-bep-bun-cha-0.png"
+    },
+    {
+     "boxPx": [
+      946,
+      897,
+      1514,
+      1792
+     ],
+     "w": 22,
+     "h": 35,
+     "colours": 20,
+     "out": "npc/dau-bep-bun-cha-1.png"
+    }
+   ]
+  },
+  {
+   "src": "npc/npc-cho.png",
+   "note": "E4 market sellers. Gemini changed the outfit between frames, so each drawing is used as its own person (idle frame repeated); only the purple-shirt fruit seller has 2 matching frames.",
+   "outputs": [
+    {
+     "boxPx": [
+      26,
+      33,
+      396,
+      799
+     ],
+     "w": 15,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/ban-vai-0.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      26,
+      33,
+      396,
+      799
+     ],
+     "w": 15,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/ban-vai-1.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      492,
+      33,
+      910,
+      799
+     ],
+     "w": 16,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/ban-vai-b-0.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      492,
+      33,
+      910,
+      799
+     ],
+     "w": 16,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/ban-vai-b-1.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      1007,
+      45,
+      1379,
+      799
+     ],
+     "w": 15,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/ban-vai-c-0.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      1007,
+      45,
+      1379,
+      799
+     ],
+     "w": 15,
+     "h": 30,
+     "colours": 20,
+     "out": "npc/ban-vai-c-1.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      1500,
+      45,
+      1871,
+      835
+     ],
+     "w": 15,
+     "h": 31,
+     "colours": 20,
+     "out": "npc/ban-do-kho-0.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      1500,
+      45,
+      1871,
+      835
+     ],
+     "w": 15,
+     "h": 31,
+     "colours": 20,
+     "out": "npc/ban-do-kho-1.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      1969,
+      45,
+      2351,
+      835
+     ],
+     "w": 15,
+     "h": 31,
+     "colours": 20,
+     "out": "npc/ban-do-kho-b-0.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      1969,
+      45,
+      2351,
+      835
+     ],
+     "w": 15,
+     "h": 31,
+     "colours": 20,
+     "out": "npc/ban-do-kho-b-1.png",
+     "canvas": [
+      16,
+      32
+     ]
+    },
+    {
+     "boxPx": [
+      157,
+      933,
+      611,
+      1792
+     ],
+     "w": 14,
+     "h": 27,
+     "colours": 20,
+     "out": "npc/ban-hoa-qua-0.png"
+    },
+    {
+     "boxPx": [
+      157,
+      933,
+      611,
+      1792
+     ],
+     "w": 14,
+     "h": 27,
+     "colours": 20,
+     "out": "npc/ban-hoa-qua-1.png"
+    },
+    {
+     "boxPx": [
+      1332,
+      933,
+      1799,
+      1792
+     ],
+     "w": 15,
+     "h": 27,
+     "colours": 20,
+     "out": "npc/ban-hoa-qua-b-0.png"
+    },
+    {
+     "boxPx": [
+      1837,
+      933,
+      2291,
+      1792
+     ],
+     "w": 14,
+     "h": 27,
+     "colours": 20,
+     "out": "npc/ban-hoa-qua-b-1.png"
+    }
+   ]
+  }
+ ]
+}

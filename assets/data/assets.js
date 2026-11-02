@@ -1001,5 +1001,29 @@ window.CC.assets = [
     "license": "Generated project artwork; not a third-party documentary photograph. No Creative Commons licence is claimed.",
     "alt": "AI-generated arrival-state illustration: a traveller in a tank top and shorts approaches the Temple of Literature.",
     "note": "Fictional editorial interpretation. People, architecture and arrangements are illustrative, not evidence of customs or site rules."
+  },
+  {
+    "id": "au-baonhieu",
+    "kind": "audio",
+    "credit": "No recording yet",
+    "license": "To be recorded (a native speaker, or the same placeholder voice as the other phrases)."
+  },
+  {
+    "id": "au-khongcamon",
+    "kind": "audio",
+    "credit": "No recording yet",
+    "license": "To be recorded (a native speaker, or the same placeholder voice as the other phrases)."
+  },
+  {
+    "id": "au-motsuat",
+    "kind": "audio",
+    "credit": "No recording yet",
+    "license": "To be recorded (a native speaker, or the same placeholder voice as the other phrases)."
+  },
+  {
+    "id": "au-tinhtien",
+    "kind": "audio",
+    "credit": "No recording yet",
+    "license": "To be recorded (a native speaker, or the same placeholder voice as the other phrases)."
   }
 ];

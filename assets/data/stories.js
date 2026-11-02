@@ -407,5 +407,97 @@ window.CC.stories = [
     "appliesTo": "Public places in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
     "varies": "General guidance, not a rule. People and situations differ.",
     "phraseIds": []
+  },
+  {
+    "id": "st-street-stall",
+    "country": "vietnam",
+    "place": "Hà Nội",
+    "title": "Eating at a street-food stall",
+    "dek": "Order at the front, sit where there is room, eat first and pay on the way out.",
+    "sceneId": "sc06",
+    "sections": [
+      {
+        "text": "At a small street-food stall there is often no menu. You order at the front, where the cook is, then choose your own table or stool. Pointing at what you want is fine: ask for “một suất” (one serving) or “một cái này” (one of these).",
+        "claimIds": [
+          "C-FOOD-ORDER",
+          "C-FOOD-POINT"
+        ]
+      },
+      {
+        "heading": "Sharing a table",
+        "text": "Stalls are small. At busy times other diners may sit down at your table; that is normal, not rude.",
+        "claimIds": [
+          "C-FOOD-SHARE"
+        ]
+      },
+      {
+        "heading": "What is already on the table",
+        "text": "Noodle dishes come with a free plate of herbs and leafy greens to add as you like. “Trà đá”, iced green tea, is served instead of water. A quick wipe of your chopsticks or spoon before you eat is normal.",
+        "claimIds": [
+          "C-FOOD-HERBS",
+          "C-FOOD-TRADA",
+          "C-FOOD-WIPE"
+        ]
+      },
+      {
+        "heading": "Paying",
+        "text": "Eat first, pay later: ask the cook for the total on your way out. Tipping is less common; you may tip if you want to, but you don’t have to.",
+        "claimIds": [
+          "C-FOOD-PAY",
+          "C-TIP"
+        ]
+      }
+    ],
+    "appliesTo": "Small pavement stalls in Hà Nội, using the national tourism authority’s street-food guide.",
+    "varies": "Restaurants, cafés and stalls in other cities may do things differently. Watch what the people around you do.",
+    "phraseIds": [
+      "ph-motsuat",
+      "ph-tinhtien"
+    ]
+  },
+  {
+    "id": "st-market",
+    "country": "vietnam",
+    "place": "Hà Nội",
+    "title": "Shopping at a market",
+    "dek": "Many prices are talked about, not printed. Be friendly, agree a price, or say no and walk on.",
+    "sceneId": "sc05",
+    "sections": [
+      {
+        "text": "Đồng Xuân, Hà Nội’s big covered market, was built in 1889 to replace the older Kẻ Chợ markets. Fresh food is sold on the ground floor; fabric, clothes and other goods upstairs, often at wholesale prices.",
+        "claimIds": [
+          "C-DX-1889",
+          "C-DX-FLOORS"
+        ]
+      },
+      {
+        "heading": "Asking the price",
+        "text": "In local markets many goods have no price tag, and bargaining is common. Ask “Bao nhiêu tiền?” (How much?).",
+        "claimIds": [
+          "C-BARGAIN-MARKET"
+        ]
+      },
+      {
+        "heading": "Bargaining kindly",
+        "text": "Bargaining goes best when it is polite: smile, stay friendly and keep it light. Once you have agreed a price, it is fair to pay it.",
+        "claimIds": [
+          "C-BARGAIN-POLITE",
+          "N-PRICE-AGREE"
+        ]
+      },
+      {
+        "heading": "Saying no",
+        "text": "If you don’t want to buy, say “Không, cảm ơn” (No, thank you) and walk on.",
+        "claimIds": [
+          "C-BARGAIN-WALK"
+        ]
+      }
+    ],
+    "appliesTo": "Local markets in Hà Nội, such as Đồng Xuân.",
+    "varies": "Shops with printed prices, supermarkets and malls usually don’t bargain.",
+    "phraseIds": [
+      "ph-baonhieu",
+      "ph-khongcamon"
+    ]
   }
 ];

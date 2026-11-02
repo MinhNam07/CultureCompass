@@ -128,3 +128,5 @@ body[data-page="home"] .cc-footer-mark svg { color: #B28A45; }
 @media (prefers-reduced-transparency: reduce) {
   body[data-page="home"] .cc-header, body[data-page="home"] .cc-navwrap { background:#000; -webkit-backdrop-filter:none; backdrop-filter:none; }
 }
+.cc-thumb-pixel { image-rendering: pixelated; object-fit: cover; }
+.scene-pic img.cc-thumb-pixel { width: 100%; height: 100%; display: block; }

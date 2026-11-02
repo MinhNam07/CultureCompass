@@ -18,7 +18,7 @@
     var themes = (CC.topics || []).filter(function (t) { return t.status === 'ready' && (t.phraseIds || []).length; });
     sel.innerHTML = '<option value="all">All themes and scenes</option>' +
       '<optgroup label="Themes">' + themes.map(function (t) { return '<option value="topic:' + t.id + '">' + esc(t.label) + '</option>'; }).join('') + '</optgroup>' +
-      '<optgroup label="Practice scenes">' + scenes().map(function (s) { return '<option value="scene:' + s.id + '">' + esc(s.title) + '</option>'; }).join('') + '</optgroup>';
+      '<optgroup label="Moments in Explore">' + scenes().map(function (s) { return '<option value="scene:' + s.id + '">' + esc(s.title) + '</option>'; }).join('') + '</optgroup>';
 
     /* deep links: ?scene=sc01 (old links) and ?topic=food; ?intent=thank */
     var qScene = CC.qs('scene'), qTopic = CC.qs('topic'), qIntent = CC.qs('intent');
@@ -51,7 +51,18 @@
         CC.$('f-reset').addEventListener('click', function () { intentWrap.querySelector('input[value="all"]').checked = true; sel.value = 'all'; draw(true); intentWrap.querySelector('input').focus(); });
         return;
       }
-      out.innerHTML = list.map(function (p) { return CC.phraseHtml(p, { tag: 'li', showIntent: true }); }).join('');
+      out.classList.toggle('is-grouped', intent === 'all');
+      if (intent !== 'all') {
+        out.innerHTML = list.map(function (p) { return CC.phraseHtml(p, { tag: 'li' }); }).join('');
+        return;
+      }
+      /* "All" reads as a phrasebook: one group per thing you want to do */
+      out.innerHTML = CC.intents.map(function (it) {
+        var of = list.filter(function (p) { return p.intent === it.id; });
+        if (!of.length) return '';
+        return '<li class="phrase-group" style="--n:' + of.length + '"><h2 class="phrase-group-title">' + esc(it.label) + ' <span class="cc-count">' + of.length + '</span></h2>' +
+          '<ul class="phrase-grid">' + of.map(function (p) { return CC.phraseHtml(p, { tag: 'li' }); }).join('') + '</ul></li>';
+      }).join('');
     }
     intentWrap.addEventListener('change', function () { draw(true); });
     sel.addEventListener('change', function () { draw(true); });
@@ -95,7 +106,7 @@
           '<dt>Say</dt><dd>' + ph2.map(function (p) { return '<span lang="vi"><strong>' + esc(p.vi) + '</strong></span> — ' + esc(p.meaning); }).join('<br>') + '</dd>' +
           '<dt>Applies to</dt><dd>' + esc(r.note) + '</dd></dl>' +
           '<p class="cc-meta">' + CC.sourceLinks(CC.sourcesOf(CC.claimsOf(r.claimIds))) + '</p>' +
-          '<div class="coll-actions"><a class="cc-btn cc-btn-quiet cc-btn-sm" href="scene.html?id=' + x.sc.id + '">' + CC.icon('scene') + 'Open the scene<span class="visually-hidden">: ' + esc(x.sc.title) + '</span></a>' + removeBtn(it, r.title) + '</div></article>';
+          '<div class="coll-actions"><a class="cc-btn cc-btn-quiet cc-btn-sm" href="' + CC.sceneHref(x.sc.id) + '">' + CC.icon('scene') + 'Explore this place<span class="visually-hidden">: ' + esc(x.sc.title) + '</span></a>' + removeBtn(it, r.title) + '</div></article>';
       }
       return null;
     }
@@ -123,7 +134,7 @@
               var h = itemHtml(it);
               return '<li class="coll-item" data-key="' + it.type + ':' + esc(it.id) + '">' + (h || '<div class="coll-missing"><p>This saved ' + T[0] + ' (“' + esc(it.id) + '”) is no longer in the content. It may have been renamed.</p><div class="coll-actions">' + removeBtn(it, it.id) + '</div></div>') + '</li>';
             }).join('');
-            return '<div class="coll-group"><h3>' + CC.icon(T[2]) + T[1] + ' <span class="cc-count">' + of.length + '</span></h3><ul class="coll-list">' + rows + '</ul></div>';
+            return '<div class="coll-group" data-type="' + T[0] + '"><h3>' + CC.icon(T[2]) + T[1] + ' <span class="cc-count">' + of.length + '</span></h3><ul class="coll-list">' + rows + '</ul></div>';
           }).join('') + '</div></section>';
       }).join('');
     }
@@ -162,7 +173,7 @@
       ['Destinations', (CC.countries || []).length + ' (Vietnam, starting in Hà Nội)'],
       ['Themes with stories', ready.length + ' of ' + CC.topics.length + (planned.length ? ' (not written yet: ' + planned.map(function (t) { return t.label; }).join(', ') + ')' : '')],
       ['Stories', CC.stories.length],
-      ['Practice scenes', CC.scenarios.length],
+      ['Places to explore', (CC.exploreZones || []).length],
       ['Cultural points with sources', CC.claims.filter(function (c) { return c.kind !== 'projectNote'; }).length + ' (' + pendingClaims + ' still being verified)'],
       ['Phrases', CC.phrases.length + ' (' + pendingPhrases + ' waiting for a native-speaker check)'],
       ['Audio recordings', synthetic + ' computer voice, 0 recorded by a person'],
@@ -186,6 +197,19 @@
         (a.licenseUrl ? ', <a href="' + esc(a.licenseUrl) + '" target="_blank" rel="noopener">' + esc(a.license) + '</a>' : ', ' + esc(a.license)) +
         (a.note ? ' <span class="cc-meta">(' + esc(a.note.replace(/\.$/, '')) + ')</span>' : '') + '</li>';
     }).join('') + (audio.length ? '<li>Audio (' + audio.length + ' phrases): ' + esc(audio[0].credit) + '. ' + esc(audio[0].license) + '</li>' : '');
+
+    /* the contents rail marks the section you are reading */
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));
+    if (links.length && 'IntersectionObserver' in window) {
+      var seen = {};
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { seen[en.target.id] = en.isIntersecting; });
+        var first = links.filter(function (a) { return seen[a.hash.slice(1)]; })[0];
+        if (!first) return;
+        links.forEach(function (a) { if (a === first) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      }, { rootMargin: '-20% 0px -55% 0px' });
+      links.forEach(function (a) { var t = document.getElementById(a.hash.slice(1)); if (t) io.observe(t); });
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {

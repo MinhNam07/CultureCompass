@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CultureCompass — Rehearse everyday Hà Nội before you land</title>
+  <meta name="description" content="Practise ordinary moments in Hà Nội before your trip: choose what you would do, see it play out, read why, hear the words to say, and keep a reminder card.">
+  <meta name="theme-color" content="#141210">
+  <link rel="preload" href="assets/fonts/anton-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/street.css">
+</head>
+<body data-page="home" class="st">
+  <a class="st-skip" href="#main">Skip to content</a>
+
+  <main id="main" tabindex="-1">
+
+    <!-- First screen: the street front -->
+    <section class="st-front" aria-labelledby="st-title">
+      <h1 class="st-band" id="st-title">
+        <span class="st-band-word" aria-hidden="true">CultureCompass</span>
+        <span class="visually-hidden">CultureCompass: rehearse everyday Hà Nội before you land</span>
+      </h1>
+
+      <nav class="st-links" aria-label="Main">
+        <a class="st-link" href="vietnam.html">Vietnam</a>
+        <a class="st-link" href="phrases.html">Phrasebook</a>
+        <a class="st-link" href="saved.html">Saved cards <span class="st-count" id="cc-saved-count" hidden></span></a>
+        <a class="st-link" href="about.html">About &amp; sources</a>
+      </nav>
+
+      <div class="st-rail st-rail-left">
+        <figure class="st-tile st-clip">
+          <video class="st-clip-video" id="st-clip" muted playsinline loop preload="metadata"
+                 poster="assets/video/hn-train-street.jpg" aria-describedby="st-clip-cap">
+            <source src="assets/video/hn-train-street.webm" type="video/webm">
+          </video>
+          <figcaption class="st-clip-cap" id="st-clip-cap">Train Street, Hà Nội</figcaption>
+          <button type="button" class="st-clip-btn" id="st-clip-btn">
+            <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg>
+            <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2l10 6-10 6z"/></svg>
+            <span class="st-clip-btn-text">Pause video</span>
+          </button>
+        </figure>
+        <div class="st-tile st-facts">
+          <h2 class="visually-hidden">At a glance</h2>
+          <ul id="st-facts">
+            <li>Everyday scenes in Hà Nội</li>
+            <li>A few minutes each</li>
+            <li>Phrases with audio</li>
+            <li>Sources dated, open points labelled</li>
+            <li>No timer, no score</li>
+            <li>No sign-up, nothing tracked</li>
+          </ul>
+        </div>
+      </div>
+
+      <figure class="st-tile st-photo">
+        <img src="assets/img/hn-hang-ma.jpg" width="1600" height="1200"
+             alt="Shops on Hàng Mã Street in Hanoi’s Old Quarter, with striped awnings, red goods stacked at the doors and motorbikes parked in front.">
+        <figcaption class="st-photo-cap">Hàng Mã Street, Old Quarter</figcaption>
+        <p class="st-statement">Rehearse everyday Hà&nbsp;Nội before you land.</p>
+      </figure>
+
+      <div class="st-rail st-rail-right">
+        <div class="st-tile st-sign-white st-say">
+          <p class="st-say-vi" lang="vi">Cảm ơn.</p>
+          <p class="st-say-en">Thank you. Computer voice.</p>
+          <p class="cc-audio-msg st-say-note" role="status" aria-live="polite"></p>
+          <button type="button" class="st-listen" data-audio="au-camon" aria-pressed="false" aria-label="Listen: Cảm ơn">
+            <span class="st-play" aria-hidden="true"></span>Listen
+          </button>
+        </div>
+        <div class="st-tile st-sign-green st-say">
+          <p class="st-say-vi" lang="vi">Bạn ơi!</p>
+          <p class="st-say-en">Excuse me! Literally “hey, friend”. Computer voice.</p>
+          <p class="cc-audio-msg st-say-note" role="status" aria-live="polite"></p>
+          <button type="button" class="st-listen" data-audio="au-banoi" aria-pressed="false" aria-label="Listen: Bạn ơi">
+            <span class="st-play" aria-hidden="true"></span>Listen
+          </button>
+        </div>
+        <a class="st-tile st-sign-yellow st-rail-link" href="vietnam.html" aria-label="Vietnam, starting in Hà Nội">
+          <span class="st-rail-big">Vietnam <span class="st-arrow" aria-hidden="true"></span></span>
+        </a>
+        <a class="st-tile st-sign-ink st-rail-link" href="phrases.html">
+          <span class="st-rail-big">All <span class="st-nw">phrases <span class="st-arrow" aria-hidden="true"></span></span></span>
+        </a>
+        <a class="st-tile st-sign-red st-start" id="st-start" href="scene.html?id=sc01">
+          <span class="st-rail-big"><span id="st-start-word">Start a scene</span>&nbsp;<span class="st-arrow" aria-hidden="true"></span></span>
+          <span id="st-start-sub">Meeting your homestay host · 4 min</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Where are you going: open shopfronts and closed shutters -->
+    <section class="st-board st-countries" aria-labelledby="st-countries-title">
+      <div class="st-tile st-sign-yellow st-countries-head">
+        <h2 class="st-h2" id="st-countries-title">Where are you going?</h2>
+        <p>Each country opens once its points are sourced or labelled as still being checked.</p>
+      </div>
+      <div class="st-countries-list" id="st-countries-list">
+        <a class="st-shop-open" href="vietnam.html">
+          <img src="assets/img/hn-old-quarter.jpg" width="1600" height="1200" loading="lazy" alt="">
+          <span class="st-shop-sign" lang="vi">Việt Nam</span>
+          <span class="st-shop-foot">Vietnam, starting in Hà Nội <span class="st-arrow" aria-hidden="true"></span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- What this is -->
+    <section class="st-board st-intro" aria-labelledby="st-intro-title">
+      <div class="st-tile st-sign-white st-intro-lead">
+        <h2 class="st-h2" id="st-intro-title">Practise before you go</h2>
+        <p class="st-lead">Rehearse ordinary moments before a trip: a homestay welcome, a shared dinner, a busy street, a temple. Choose, watch it play out, read why.</p>
+      </div>
+      <figure class="st-tile st-pic st-intro-pic1"><img src="assets/img/hn-vendor-blossom.jpg" width="1600" height="1355" loading="lazy" alt="A street vendor’s bicycle loaded with branches of pink blossom, parked in front of shops with painted signs in Hanoi’s Old Quarter."></figure>
+      <div class="st-tile st-sign-yellow st-intro-who"><h3>Who it’s for</h3><p>Travellers who don’t speak Vietnamese and want to know what to do and say in everyday situations, not to study culture in the abstract.</p></div>
+      <div class="st-tile st-sign-green st-intro-what"><h3>What you do</h3><p>Each scene is a short situation. Pick an action, see it animated, read a calm explanation, hear the phrase, and keep a reminder card for the trip.</p></div>
+      <figure class="st-tile st-pic st-intro-pic2"><img src="assets/img/hn-pho-ga.jpg" width="1200" height="1600" loading="lazy" alt="A pavement phở gà stall in Hanoi: a bowl of noodle soup on a low red table, plastic stools and a pot of chopsticks."></figure>
+      <div class="st-tile st-sign-ink st-intro-where"><h3>Where it covers</h3><p><span id="st-where">Vietnam, starting in Hà Nội.</span> Each scene says which setting it describes, because customs vary by family, region and place.</p></div>
+      <div class="st-tile st-sign-white st-intro-how"><h3>How it’s checked</h3><p>Points link to a source with the date it was checked. Anything still being verified is labelled on the page, never shown as fact.</p></div>
+      <figure class="st-tile st-pic st-intro-pic3"><img src="assets/img/stelae.jpg" width="600" height="900" loading="lazy" alt="A row of stone stelae, each standing on the back of a carved stone turtle, under trees at the Temple of Literature."></figure>
+    </section>
+
+    <!-- Real places -->
+    <section class="st-board st-mosaic-wrap" aria-labelledby="st-places-title">
+      <div class="st-mosaic" id="st-mosaic">
+        <div class="st-m st-sign-red st-m-head"><h2 class="st-h2" id="st-places-title">Set in real places</h2></div>
+        <!-- photo pieces and place tiles are added by landing.js -->
+      </div>
+      <p class="st-credit-line">Photo: a street in central Hanoi, by Vyacheslav Argenberg, CC BY 4.0, via Wikimedia Commons.</p>
+    </section>
+
+    <!-- Phrases marquee -->
+    <section class="st-marquee" aria-labelledby="st-say-title">
+      <h2 class="visually-hidden" id="st-say-title">Words you will use</h2>
+      <ul class="visually-hidden" id="st-marquee-list"></ul>
+      <div class="st-marquee-track" aria-hidden="true"><div class="st-marquee-run" id="st-marquee-run"></div></div>
+      <button type="button" class="st-marquee-btn" id="st-marquee-btn">Pause</button>
+    </section>
+
+    <!-- The scenes as shops: the live part -->
+    <section class="st-board st-shops" aria-labelledby="st-shops-title">
+      <div class="st-tile st-sign-ink st-shops-head">
+        <h2 class="st-h2" id="st-shops-title"><span class="st-soft">Pick a scene,</span><br>look inside</h2>
+        <a class="st-btn" id="st-shops-open" href="scene.html?id=sc01">Open this scene</a>
+      </div>
+      <div class="st-shops-body">
+        <div class="st-tabs" role="tablist" aria-label="Scenes in Hà Nội" id="st-tabs"></div>
+        <div class="st-panel" id="st-panel" role="tabpanel" tabindex="0">
+          <noscript><p class="st-noscript">Scenes need JavaScript. You can still read every scene’s guidance on the <a href="vietnam.html">Vietnam page</a>.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- How a scene works, shown with a real moment from a scene -->
+    <section class="st-board st-how" aria-labelledby="st-how-title">
+      <div class="st-tile st-sign-red st-how-head">
+        <h2 class="st-h2" id="st-how-title">How a scene works</h2>
+        <p>One moment from the family dinner scene, start to finish.</p>
+      </div>
+      <div class="st-tile st-sign-ink st-how-choose">
+        <h3>Choose</h3>
+        <p class="st-how-prompt" id="st-how-prompt">The grandmother asks you to pass her the plate of greens. How do you pass it?</p>
+        <ul class="st-how-choices" id="st-how-choices"></ul>
+      </div>
+      <div class="st-tile st-sign-white st-how-why">
+        <h3>See why</h3>
+        <p>Feedback is never just right or wrong. Each choice gets one of four answers:</p>
+        <ul class="st-fb">
+          <li class="st-fb-fit">Fits this situation</li>
+          <li class="st-fb-also">Another way that also fits</li>
+          <li class="st-fb-need">Needs more context</li>
+          <li class="st-fb-guide">See the rules and guidance</li>
+        </ul>
+      </div>
+      <div class="st-tile st-sign-yellow st-how-take">
+        <h3>Take it along</h3>
+        <div class="st-card" id="st-how-card"></div>
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section class="st-board st-checked" aria-labelledby="st-checked-title">
+      <div class="st-tile st-sign-ink st-checked-head">
+        <h2 class="st-h2" id="st-checked-title">Checked, or labelled</h2>
+        <p>Customs differ between families and places, so each point says where it comes from. If a point or phrase is still being checked, the page says so.</p>
+        <a class="st-btn st-btn-quiet" href="about.html">See every source</a>
+      </div>
+      <figure class="st-tile st-pic st-checked-photo">
+        <img src="assets/img/van-mieu-garden.jpg" width="800" height="540" loading="lazy"
+             alt="A stele pavilion at the Temple of Literature: a tiled roof over whitewashed walls, with a stone stele on a carved turtle inside and inscribed panels on either side.">
+        <figcaption class="st-checked-note">At Văn Miếu – Quốc Tử Giám, the scene follows the site’s own published visitor rules. Photo: audrey_sel, CC BY-SA 2.0.</figcaption>
+      </figure>
+      <div class="st-tile st-sign-green st-map">
+        <img src="assets/img/hub-map-street.svg" alt="" width="1600" height="1000" loading="lazy">
+        <span class="st-map-dot" aria-hidden="true"></span>
+        <p class="st-map-label">Văn Miếu in central Hà Nội, map not to scale</p>
+      </div>
+      <dl class="st-numbers" id="st-numbers">
+        <div class="st-tile st-sign-white"><dt>Sources</dt><dd>—</dd></div>
+        <div class="st-tile st-sign-yellow"><dt>Last checked</dt><dd>—</dd></div>
+        <div class="st-tile st-sign-ink"><dt>Being verified</dt><dd>—</dd></div>
+        <div class="st-tile st-sign-red"><dt>Phrase audio</dt><dd>Computer voice, to be replaced</dd></div>
+      </dl>
+    </section>
+
+  </main>
+
+  <!-- Footer: the name built as a row of signboards -->
+  <footer class="st-foot">
+    <p class="st-foot-mark" role="img" aria-label="CultureCompass" id="st-foot-mark"></p>
+    <div class="st-foot-cols">
+      <nav aria-label="Explore"><h2>Explore</h2><a href="vietnam.html">Vietnam compass</a><a href="scene.html?id=sc01">First scene</a></nav>
+      <nav aria-label="Practise"><h2>Practise</h2><a href="phrases.html">Phrasebook</a><a href="saved.html">Saved cards</a></nav>
+      <nav aria-label="About"><h2>About</h2><a href="about.html">Method &amp; sources</a><a href="about.html#credits">Photo credits</a></nav>
+      <div><h2>Settings</h2><button type="button" class="st-foot-btn" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">Sound, motion and text</button></div>
+      <div class="st-foot-about">
+        <p>A student UX prototype. Guidance applies only to the settings each scene describes.</p>
+        <p class="st-foot-credits" id="st-foot-credits">Photos via Wikimedia Commons; full credits on the About page.</p>
+      </div>
+    </div>
+    <div class="st-foot-last">
+      <p>© 2026 CultureCompass</p>
+      <a class="st-foot-top" href="#main">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/topics.js"></script>
+  <script src="assets/data/countries.js"></script>
+  <script src="assets/data/svgs.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/landing.js"></script>
+  <script src="assets/js/pages.js"></script>
+</body>
+</html>

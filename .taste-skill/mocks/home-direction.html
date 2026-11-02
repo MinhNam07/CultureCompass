@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home direction mock</title>
+<!-- Static mock of the proposed home direction ("cover + contents"). Not part of the site. -->
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<style>
+  :root {
+    --paper: #F4EFE5; --ivory: #FFFCF7; --wine: #762F3B; --ink: #302720; --earth: #80634D; --brass: #B28A45;
+    --serif: 'Source Serif 4', Georgia, serif; --sans: 'Be Vietnam Pro', system-ui, sans-serif;
+    --g: clamp(16px, 4vw, 48px);
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); }
+  .wrap { max-width: 1344px; margin: 0 auto; padding: 0 var(--g); }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  header { height: 68px; display: flex; align-items: center; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .logo { font: 600 20px var(--serif); display: flex; gap: 10px; align-items: center; color: var(--ink); }
+  .logo svg { color: var(--wine); }
+  nav { display: flex; gap: 28px; font-size: 15px; font-weight: 500; }
+  nav a { color: var(--ink); text-decoration: none; }
+  nav .on { color: var(--wine); }
+  .menu { display: none; font-weight: 700; }
+
+  /* cover */
+  .cover { display: grid; grid-template-columns: 7fr 5fr; gap: 64px; align-items: end; padding-top: 40px; min-height: 832px; }
+  .cover h1 { font: 600 clamp(44px, 6vw, 88px)/1.04 var(--serif); letter-spacing: -0.03em; white-space: nowrap; }
+  .cover .lead { font: 400 23px/1.5 var(--serif); margin-top: 36px; max-width: 30ch; }
+  .cover .lead i { color: var(--ink); }
+  .actions { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+  .btn { height: 52px; padding: 0 26px; display: inline-flex; align-items: center; gap: 10px; border-radius: 3px; font: 700 16px var(--sans); text-decoration: none; }
+  .btn.primary { background: var(--wine); color: var(--ivory); }
+  .btn.quiet { color: var(--ink); border: 1px solid var(--earth); }
+  .counts { margin-top: 28px; font-size: 15px; color: var(--earth); }
+  .counts b { color: var(--ink); font-weight: 700; }
+  .cover-copy { padding-bottom: 72px; }
+  .plate { position: relative; }
+  .plate .pic { height: 700px; background: var(--ink); }
+  .plate figcaption { font-size: 14px; color: var(--earth); margin-top: 10px; }
+  .pause { position: absolute; right: 14px; bottom: 44px; background: rgba(48,39,32,.78); color: var(--ivory); font: 600 14px var(--sans); padding: 7px 14px; border-radius: 20px; }
+
+  /* contents */
+  .contents { background: var(--ivory); padding: 136px 0 144px; margin-top: 120px; }
+  .contents .rule { display: flex; align-items: center; gap: 12px; color: var(--brass); margin-bottom: 28px; }
+  .contents .rule::after { content: ''; height: 1px; background: currentColor; flex: 1; }
+  .contents .rule i { width: 7px; height: 7px; transform: rotate(45deg); border: 1px solid currentColor; }
+  .c-grid { display: grid; grid-template-columns: 6fr 6fr; gap: 72px; align-items: start; }
+  .contents h2 { font: 600 52px/1.08 var(--serif); letter-spacing: -0.015em; }
+  .contents .intro { font: 400 21px/1.5 var(--serif); margin-top: 18px; max-width: 34ch; }
+  .toc { list-style: none; padding: 0; margin-top: 56px; }
+  .toc li { padding: 26px 0; }
+  .toc li + li { border-top: 1px solid rgba(128,99,77,.38); }
+  .toc a { text-decoration: none; color: var(--ink); display: grid; grid-template-columns: 1fr auto; column-gap: 24px; align-items: baseline; }
+  .toc .t { font: 600 46px/1.1 var(--serif); letter-spacing: -0.015em; }
+  .toc .vi { font: italic 400 21px var(--serif); color: var(--earth); grid-column: 1; margin-top: 6px; }
+  .toc .q { font-size: 17px; grid-column: 1; margin-top: 8px; max-width: 46ch; }
+  .toc .arrow { grid-row: 1; grid-column: 2; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--earth); display: grid; place-items: center; color: var(--ink); }
+  .toc .on .t { color: var(--wine); }
+  .toc .on .arrow { background: var(--wine); border-color: var(--wine); color: var(--ivory); }
+  .toc li:not(.on) .q { display: none; }
+
+  .spread .pic { height: 560px; }
+  .spread figcaption { font-size: 14px; color: var(--earth); margin-top: 10px; }
+  .phrase { background: var(--paper); margin-top: 28px; padding: 28px 32px; display: grid; grid-template-columns: 1fr; gap: 8px 24px; align-items: center; }
+  .phrase .say { font: 600 34px/1.15 var(--serif); }
+  .phrase .mean { font-size: 17px; grid-column: 1; }
+  .phrase .when { font-size: 14px; color: var(--earth); grid-column: 1; }
+  .listen { justify-self: start; margin-top: 10px; height: 44px; padding: 0 18px; border-radius: 20px; border: 1px solid var(--earth); font: 600 15px var(--sans); display: inline-flex; gap: 8px; align-items: center; }
+
+  /* more destinations */
+  .more { padding-top: 128px; padding-bottom: 120px; display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: center; }
+  .more h2 { font: 600 40px/1.12 var(--serif); }
+  .more p { margin-top: 16px; max-width: 40ch; }
+  .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .strip .pic { height: 210px; }
+
+  /* colophon */
+  footer { background: var(--ink); color: var(--paper); padding: 96px 0 40px; }
+  footer .name { font: 600 clamp(56px, 11.5vw, 168px)/1 var(--serif); letter-spacing: -0.035em; }
+  footer .row { display: flex; justify-content: space-between; margin-top: 40px; font-size: 15px; color: #d9cdb9; gap: 24px; flex-wrap: wrap; }
+
+  @media (max-width: 760px) {
+    nav { display: none; } .menu { display: block; }
+    header { height: 60px; }
+    .cover { grid-template-columns: 1fr; gap: 0; min-height: 0; padding-top: 24px; }
+    .cover-copy { padding-bottom: 32px; order: 1; }
+    .cover h1 { font-size: 40px; }
+    .plate { order: 2; } .plate .pic { height: 440px; }
+    .cover .lead { font-size: 19px; margin-top: 20px; }
+    .actions { margin-top: 28px; } .actions .btn { flex: 1; justify-content: center; }
+    .contents { padding: 80px 0; margin-top: 72px; }
+    .c-grid { grid-template-columns: 1fr; gap: 0; }
+    .contents h2 { font-size: 36px; }
+    .toc { margin-top: 28px; } .toc .t { font-size: 32px; } .toc .arrow { width: 44px; height: 44px; }
+    .spread { margin-top: 8px; } .spread .pic { height: 300px; }
+    .phrase { padding: 22px; } .phrase .say { font-size: 26px; }
+    .more { grid-template-columns: 1fr; gap: 28px; padding-top: 80px; padding-bottom: 80px; }
+    .more h2 { font-size: 30px; }
+    .strip { grid-template-columns: repeat(2, 1fr); } .strip .pic { height: 140px; }
+    footer { padding: 64px 0 32px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 5l2.2 7L12 19l-2.2-7z" fill="currentColor"/></svg>CultureCompass</span>
+    <nav><a class="on">Destinations</a><a>My collection</a><a>About</a><a>Settings</a></nav>
+    <span class="menu">Menu</span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap cover">
+    <div class="cover-copy">
+      <h1>Read Hà Nội<br>before you land.</h1>
+      <p class="lead">Short, sourced stories for a first trip to Vietnam: what happens at the table, on the street and at the temple, and the words people use there.</p>
+      <div class="actions">
+        <a class="btn primary">Open Vietnam <span aria-hidden="true">→</span></a>
+        <a class="btn quiet">Practise a moment</a>
+      </div>
+      <p class="counts"><b>5</b> themes · <b>11</b> stories · <b>4</b> practice scenes · <b>11</b> phrases</p>
+    </div>
+    <figure class="plate">
+      <div class="pic"><img src="../../assets/video/hn-train-street.jpg" alt=""></div>
+      <span class="pause">❙❙ Pause</span>
+      <figcaption>Train Street, Hà Nội: a train passes between houses and shops. Clip: L. Shyamal, CC0.</figcaption>
+    </figure>
+  </section>
+
+  <section class="contents">
+    <div class="wrap">
+      <div class="rule"><i></i></div>
+      <div class="c-grid">
+        <div>
+          <h2>Three places you will find yourself</h2>
+          <p class="intro">Choose one to see what to expect there, and one thing worth saying.</p>
+          <ol class="toc">
+            <li class="on"><a><span class="t">At the table</span><span class="vi" lang="vi">Bên mâm cơm</span><span class="q">Shared dishes, who starts first, and how to say you have had enough.</span><span class="arrow">→</span></a></li>
+            <li><a><span class="t">On the street</span><span class="vi" lang="vi">Ngoài phố</span><span class="q">Crossing, asking the way, taking photos of people.</span><span class="arrow">→</span></a></li>
+            <li><a><span class="t">At the temple</span><span class="vi" lang="vi">Văn Miếu – Quốc Tử Giám</span><span class="q">Dress, quiet and photography at the Temple of Literature.</span><span class="arrow">→</span></a></li>
+          </ol>
+        </div>
+        <figure class="spread">
+          <div class="pic"><img src="../../assets/img/hn-pho-ga.jpg" alt="" style="object-position:50% 60%"></div>
+          <figcaption>A pavement phở gà stall, Hà Nội. Photo: Schellack, CC BY-SA.</figcaption>
+          <div class="phrase">
+            <span class="say" lang="vi">Tôi no rồi, cảm ơn.</span>
+            <span class="mean">I’m full, thank you.</span>
+            <span class="when">When the host keeps adding food to your bowl.</span>
+            <span class="listen">▶ Listen <span style="color:var(--earth);font-weight:500">· computer voice</span></span>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap more">
+    <div>
+      <h2>More destinations, once they are sourced</h2>
+      <p>We add a country only when its stories have been researched and checked. Vietnam is the first.</p>
+    </div>
+    <div class="strip">
+      <div class="pic"><img src="../../assets/img/world/drum-ghana-l.webp" alt=""></div>
+      <div class="pic"><img src="../../assets/img/world/batik-cirebon-l.webp" alt=""></div>
+      <div class="pic"><img src="../../assets/img/world/alebrije-oaxaca-l.webp" alt=""></div>
+      <div class="pic"><img src="../../assets/img/world/coffee-addis-ababa-l.webp" alt=""></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="name">CultureCompass</div>
+    <div class="row"><span>Understand the place before you arrive. A student UX prototype; stories are set in Hà Nội.</span><span>Sources · Media credits · Accessibility</span></div>
+  </div>
+</footer>
+</body>
+</html>

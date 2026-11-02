@@ -1,9 +1,9 @@
-/* CultureCompass — country page (vietnam.html).
+/* CultureCompass — Vietnam theme compass (vietnam-classic.html; vietnam.html is now the explore page in explore.js).
    The cover (title, scope, the Hà Nội clip) and the contents of three places (countries.json → contexts) open the page.
    The atlas: six themes stand around a compass. Hover or focus turns the needle toward a theme and shows its
    question; choosing one draws its line, pops the medallion and opens its stories in the panel.
    - Every theme is a real button (aria-pressed). Planned themes open an honest "not written yet" note.
-   - The URL follows the choice (vietnam.html#food), pushed to history, so Back closes the theme.
+   - The URL follows the choice (vietnam-classic.html#food), pushed to history, so Back closes the theme.
    - Old links still work: #topic-greetings, #street, #heritage … map through each theme's aliases.
    - Coming back from a story restores the theme, the scroll position and focus on the story you opened.
    Animations never gate input: a new choice interrupts the previous one. */
@@ -29,7 +29,7 @@
   function initOverview() {
     var ready = topics.filter(function (t) { return t.status === 'ready'; }).length;
     var stories = (CC.stories || []).filter(function (s) { return s.country === COUNTRY; });
-    var counts = [[ready, 'themes'], [stories.length, 'stories'], [CC.scenarios.length, 'practice scenes'], [CC.phrases.length, 'phrases']];
+    var counts = [[ready, 'themes'], [stories.length, 'stories'], [(CC.exploreZones || []).length, 'places to explore'], [CC.phrases.length, 'phrases']];
     $('country-counts').innerHTML = counts.map(function (c) { return '<li><b>' + c[0] + '</b>' + c[1] + '</li>'; }).join('');
 
     var first = CC.byId(CC.stories, 'st-family-words') || stories[0];
@@ -39,13 +39,12 @@
     $('go-themes').addEventListener('click', function (e) { e.preventDefault(); var t = $('themes'); CC.motion.scrollTo(t); t.focus({ preventScroll: true }); });
 
     /* resume: the most recent scene left part-way, named honestly */
-    var inProgress = CC.scenarios.map(function (sc) { return { sc: sc, st: CC.sceneState.get(sc.id) }; })
-      .filter(function (x) { return x.st && typeof x.st.step === 'number'; })
-      .sort(function (a, b) { return (b.st.at || '').localeCompare(a.st.at || ''); })[0];
+    var inProgress = CC.scenarios.map(function (sc) { return { sc: sc, e: CC.sceneEntry(sc) }; })
+      .filter(function (x) { return x.e.state === 'started'; })[0];
     if (inProgress) {
       var e = CC.sceneEntry(inProgress.sc);
       $('country-resume').innerHTML = '<div class="country-resume">' + CC.icon('scene', 'cc-icon-lg') +
-        '<p>You were practising <b>' + esc(inProgress.sc.title) + '</b>.</p><a class="cc-btn cc-btn-sm" href="' + e.href + '">' + esc(e.label) + '</a></div>';
+        '<p>You were exploring <b>' + esc(inProgress.sc.title) + '</b>.</p><a class="cc-btn cc-btn-sm" href="' + e.href + '">' + esc(e.label) + '</a></div>';
     }
 
     /* the Hà Nội clip: muted, paused when off screen, never autoplays with reduced motion */
@@ -94,7 +93,7 @@
         '<div class="place-body" id="' + id + '-body"><div>' +
           '<p>' + esc(x.line) + '</p>' +
           '<p class="place-links"><a href="' + esc(x.href.replace(/^[^#]*(?=#)/, '')) + '" data-theme-link>Read the stories' + CC.arrow() + '</a>' +
-            (sc ? '<a href="' + esc(CC.sceneEntry(sc).href) + '">Practise this moment<span class="visually-hidden">: ' + esc(sc.title) + '</span></a>' : '') + '</p>' +
+            (sc ? '<a href="' + esc(CC.sceneEntry(sc).href) + '">Walk through this moment<span class="visually-hidden">: ' + esc(sc.title) + '</span></a>' : '') + '</p>' +
         '</div></div>' +
       '</div>' +
       '<div class="place-media" id="' + id + '-media" role="group" aria-labelledby="' + id + '-btn">' +
@@ -252,7 +251,7 @@
       '<p class="atlas-panel-stats">' + esc(t.blurb) + '</p>' +
       '<ul class="story-list">' + stories.map(function (s, i) { return CC.storyRow(s, i, from).replace('class="story-row"', 'class="story-row' + (animate ? ' is-reveal' : '') + '"'); }).join('') + '</ul>' +
       '<div class="atlas-panel-foot">' +
-        scenes.map(function (sc) { var e = CC.sceneEntry(sc); return '<a class="cc-link" href="' + e.href + '">' + CC.icon('scene') + 'Practise: ' + esc(sc.title) + '</a>'; }).join('') +
+        scenes.map(function (sc) { var e = CC.sceneEntry(sc); return '<a class="cc-link" href="' + e.href + '">' + CC.icon('scene') + 'Explore: ' + esc(sc.title) + '</a>'; }).join('') +
         ((t.phraseIds || []).length ? '<a class="cc-link" href="phrases.html?topic=' + t.id + '">' + CC.icon('phrase') + CC.plural(t.phraseIds.length, 'phrase') + ' for this theme</a>' : '') +
       '</div>' +
     '</div>';

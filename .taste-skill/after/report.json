@@ -1,0 +1,1962 @@
+{
+ "url": "http://localhost:8765/",
+ "at": "2026-10-24T18:37:21.207Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.45,
+    0.93,
+    0.64,
+    0.67
+   ],
+   "motion": {
+    "elements": 21,
+    "css": 0,
+    "transitions": 1,
+    "scripted": 20,
+    "videos": 1,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3209,
+     "screens": 3.6,
+     "words": 378,
+     "img": 7,
+     "video": 1,
+     "canvas": 0,
+     "svg": 29,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hn-pho-ga.jpg",
+      "hn-street-central.jpg",
+      "van-mieu-garden.jpg",
+      "kente-ghana-s.avif",
+      "miao-dance-guizhou-s.avif",
+      "alebrije-oaxaca-s.avif",
+      "tshechu-jakar-s.avif"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Read Hà Nội before you land.",
+     "words": 6,
+     "chars": 28,
+     "lines": 2,
+     "size": 84,
+     "vw": 5.8,
+     "font": "Source Serif 4",
+     "weight": 600,
+     "tracking": -0.03,
+     "leading": 1.06,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.47,
+     "top": 305,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Read Hà Nội before you land.",
+     "words": 6,
+     "lines": 2,
+     "size": 84,
+     "font": "Source Serif 4"
+    },
+    "headings": [
+     {
+      "text": "Read Hà Nội before you land.",
+      "words": 6,
+      "chars": 28,
+      "lines": 2,
+      "size": 84,
+      "vw": 5.8,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.03,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 305,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Three places you will find yourself",
+      "words": 6,
+      "chars": 35,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 1180,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "At the table",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 1469,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Tôi no rồi, cảm ơn.",
+      "words": 5,
+      "chars": 19,
+      "lines": 1,
+      "size": 31.5,
+      "vw": 2.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.18,
+      "top": 1685,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "On the street",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 1746,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "At the temple",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 1882,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Destinations",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 2279,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Vietnam",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 2473,
+      "tag": "span",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 2,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.75,
+       "mono": false
+      },
+      {
+       "family": "Source Serif 4",
+       "share": 0.25,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      20,
+      22,
+      24,
+      32,
+      46,
+      60,
+      84
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.3
+     },
+     "measureChars": 49,
+     "max": {
+      "size": 84,
+      "vw": 5.8,
+      "font": "Source Serif 4",
+      "text": "Read Hà Nội"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.04,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "Read the stories",
+      "above": "On the street",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 17,
+      "top": 1631
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f4efe5",
+     "bodyBgHsl": {
+      "h": 40,
+      "s": 0.41,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffcf7",
+       "top": 989,
+       "hsl": {
+        "h": 38,
+        "s": 1,
+        "l": 0.98
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#302720",
+       "share": 0.51
+      },
+      {
+       "color": "#80634d",
+       "share": 0.42
+      },
+      {
+       "color": "#762f3b",
+       "share": 0.04
+      },
+      {
+       "color": "#fffcf7",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#fffcf7",
+      "hsl": {
+       "h": 38,
+       "s": 1,
+       "l": 0.98
+      },
+      "fg": "#fffcf7"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 8,
+     "inHero": 5,
+     "radius": 3,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content",
+      "Open Vietnam",
+      "Practise a moment",
+      "Pause"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "header#cc-header.cc-header 1440px",
+      "div.phrase-foot 527px",
+      "div.place-head 577px",
+      "div.place-head 577px",
+      "footer.cc-footer 1440px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 1,
+     "blurred": 2,
+     "roundedBoxes": 8,
+     "boxRadius": 6,
+     "squareMedia": 0,
+     "roundedMedia": 2,
+     "mediaRadius": 6,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.26
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "source serif 4",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 3209,
+    "margins": {
+     "left": 100,
+     "right": 100
+    },
+    "sections": [
+     {
+      "sel": "section#cover.cover",
+      "tag": "section",
+      "top": 69,
+      "height": 792,
+      "words": 61,
+      "media": 1,
+      "middle": 231,
+      "heading": {
+       "text": "Read Hà Nội",
+       "size": 84,
+       "tag": "h1"
+      },
+      "left": 100,
+      "right": 100,
+      "textLeft": 100,
+      "textRight": 111,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#places.places",
+      "tag": "section",
+      "top": 989,
+      "height": 1146,
+      "words": 117,
+      "media": 1,
+      "middle": 86,
+      "heading": {
+       "text": "Three places you will find yourself",
+       "size": 60,
+       "tag": "h2"
+      },
+      "left": 100,
+      "right": 100,
+      "textLeft": 100,
+      "textRight": 104,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#destinations.dest",
+      "tag": "section",
+      "top": 2135,
+      "height": 581,
+      "words": 92,
+      "media": 8,
+      "middle": 159,
+      "heading": {
+       "text": "Destinations",
+       "size": 60,
+       "tag": "h2"
+      },
+      "left": 100,
+      "right": 100,
+      "textLeft": 100,
+      "textRight": 166,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cc-footer",
+      "tag": "div",
+      "top": 2844,
+      "height": 364,
+      "words": 66,
+      "media": 0,
+      "middle": 155,
+      "heading": {
+       "text": "CultureCompass",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 100,
+      "right": 100,
+      "textLeft": 100,
+      "textRight": 100,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Read Hà Nội before you land.",
+      "size": 84,
+      "top": 305,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 100,
+      "n": 7
+     },
+     {
+      "x": 667,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.11,
+    "voidBox": {
+     "x": 660,
+     "y": 120,
+     "w": 180,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.61,
+    0.79,
+    0.7,
+    0.81,
+    0.85,
+    0.64,
+    0.9
+   ],
+   "motion": {
+    "elements": 25,
+    "css": 0,
+    "transitions": 1,
+    "scripted": 24,
+    "videos": 1,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 6769,
+     "screens": 6.6,
+     "words": 570,
+     "img": 7,
+     "video": 1,
+     "canvas": 0,
+     "svg": 29,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hn-pho-ga.jpg",
+      "hn-street-central.jpg",
+      "van-mieu-garden.jpg",
+      "kente-ghana-s.avif",
+      "miao-dance-guizhou-s.avif",
+      "alebrije-oaxaca-s.avif",
+      "tshechu-jakar-s.avif"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Read Hà Nội before you land.",
+     "words": 6,
+     "chars": 28,
+     "lines": 2,
+     "size": 53.6,
+     "vw": 7,
+     "font": "Source Serif 4",
+     "weight": 600,
+     "tracking": -0.03,
+     "leading": 1.06,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 100,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Read Hà Nội before you land.",
+     "words": 6,
+     "lines": 2,
+     "size": 53.6,
+     "font": "Source Serif 4"
+    },
+    "headings": [
+     {
+      "text": "Read Hà Nội before you land.",
+      "words": 6,
+      "chars": 28,
+      "lines": 2,
+      "size": 53.6,
+      "vw": 7,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.03,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 100,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Three places you will find yourself",
+      "words": 6,
+      "chars": 35,
+      "lines": 2,
+      "size": 46.4,
+      "vw": 6,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.48,
+      "top": 1518,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "At the table",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 37.8,
+      "vw": 4.9,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 1750,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Tôi no rồi, cảm ơn.",
+      "words": 5,
+      "chars": 19,
+      "lines": 1,
+      "size": 26.1,
+      "vw": 3.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 2561,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "On the street",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 37.8,
+      "vw": 4.9,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 2871,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Hồ Hoàn Kiếm ở đâu ạ?",
+      "words": 6,
+      "chars": 21,
+      "lines": 1,
+      "size": 26.1,
+      "vw": 3.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 3682,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "At the temple",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 37.8,
+      "vw": 4.9,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 3967,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Ở đây có được chụp ảnh không ạ?",
+      "words": 8,
+      "chars": 31,
+      "lines": 1,
+      "size": 26.1,
+      "vw": 3.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.5,
+      "top": 4778,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Destinations",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 46.4,
+      "vw": 6,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5159,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Vietnam",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 46.4,
+      "vw": 6,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 5337,
+      "tag": "span",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 10,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.81,
+       "mono": false
+      },
+      {
+       "family": "Source Serif 4",
+       "share": 0.19,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      20,
+      22,
+      24,
+      26,
+      38,
+      46,
+      54
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 54,
+     "max": {
+      "size": 53.6,
+      "vw": 7,
+      "font": "Source Serif 4",
+      "text": "Read Hà Nội"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f4efe5",
+     "bodyBgHsl": {
+      "h": 40,
+      "s": 0.41,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#302720",
+       "top": 544,
+       "hsl": {
+        "h": 26,
+        "s": 0.2,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#fffcf7",
+       "top": 1410,
+       "hsl": {
+        "h": 38,
+        "s": 1,
+        "l": 0.98
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#302720",
+       "share": 0.52
+      },
+      {
+       "color": "#80634d",
+       "share": 0.41
+      },
+      {
+       "color": "#762f3b",
+       "share": 0.05
+      },
+      {
+       "color": "#fffcf7",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#fffcf7",
+      "hsl": {
+       "h": 38,
+       "s": 1,
+       "l": 0.98
+      },
+      "fg": "#fffcf7"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 8,
+     "inHero": 4,
+     "radius": 3,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content",
+      "Open Vietnam",
+      "Practise a moment"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "header#cc-header.cc-header 768px",
+      "div.phrase-foot 657px",
+      "div.phrase-foot 657px",
+      "div.phrase-foot 657px",
+      "footer.cc-footer 768px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 3,
+     "blurred": 2,
+     "roundedBoxes": 12,
+     "boxRadius": 6,
+     "squareMedia": 0,
+     "roundedMedia": 4,
+     "mediaRadius": 6,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.43
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "source serif 4",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 6769,
+    "margins": {
+     "left": 31,
+     "right": 31
+    },
+    "sections": [
+     {
+      "sel": "section#cover.cover",
+      "tag": "section",
+      "top": 69,
+      "height": 1265,
+      "words": 61,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Read Hà Nội",
+       "size": 54,
+       "tag": "h1"
+      },
+      "left": 31,
+      "right": 31,
+      "textLeft": 31,
+      "textRight": 58,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#places.places",
+      "tag": "section",
+      "top": 1410,
+      "height": 3669,
+      "words": 272,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Three places you will find yourself",
+       "size": 46,
+       "tag": "h2"
+      },
+      "left": 31,
+      "right": 31,
+      "textLeft": 31,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#destinations.dest",
+      "tag": "section",
+      "top": 5079,
+      "height": 872,
+      "words": 92,
+      "media": 8,
+      "middle": 0,
+      "heading": {
+       "text": "Destinations",
+       "size": 46,
+       "tag": "h2"
+      },
+      "left": 31,
+      "right": 31,
+      "textLeft": 31,
+      "textRight": 106,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cc-footer",
+      "tag": "div",
+      "top": 6028,
+      "height": 741,
+      "words": 66,
+      "media": 0,
+      "middle": 88,
+      "heading": {
+       "text": "CultureCompass",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 31,
+      "right": 31,
+      "textLeft": 31,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Read Hà Nội before you land.",
+      "size": 54,
+      "top": 100,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 31,
+      "n": 8
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 8,
+   "filled": [
+    0.69,
+    0.64,
+    0.72,
+    0.76,
+    0.67,
+    0.71,
+    0.79,
+    0.96
+   ],
+   "motion": {
+    "elements": 25,
+    "css": 0,
+    "transitions": 1,
+    "scripted": 24,
+    "videos": 1,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 6711,
+     "screens": 8,
+     "words": 566,
+     "img": 7,
+     "video": 1,
+     "canvas": 0,
+     "svg": 29,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hn-pho-ga.jpg",
+      "hn-street-central.jpg",
+      "van-mieu-garden.jpg",
+      "kente-ghana-s.avif",
+      "miao-dance-guizhou-s.avif",
+      "alebrije-oaxaca-s.avif",
+      "tshechu-jakar-s.avif"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Read Hà Nội before you land.",
+     "words": 6,
+     "chars": 28,
+     "lines": 2,
+     "size": 40,
+     "vw": 10.3,
+     "font": "Source Serif 4",
+     "weight": 600,
+     "tracking": -0.03,
+     "leading": 1.06,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 85,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Read Hà Nội before you land.",
+     "words": 6,
+     "lines": 2,
+     "size": 40,
+     "font": "Source Serif 4"
+    },
+    "headings": [
+     {
+      "text": "Read Hà Nội before you land.",
+      "words": 6,
+      "chars": 28,
+      "lines": 2,
+      "size": 40,
+      "vw": 10.3,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.03,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 85,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Three places you will find yourself",
+      "words": 6,
+      "chars": 35,
+      "lines": 2,
+      "size": 36.5,
+      "vw": 9.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.75,
+      "top": 1211,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "At the table",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 1416,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Tôi no rồi, cảm ơn.",
+      "words": 5,
+      "chars": 19,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.52,
+      "top": 2031,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "On the street",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 2408,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Hồ Hoàn Kiếm ở đâu ạ?",
+      "words": 6,
+      "chars": 21,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.64,
+      "top": 3023,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "At the temple",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 3400,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Ở đây có được chụp ảnh không ạ?",
+      "words": 8,
+      "chars": 31,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.67,
+      "top": 4042,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Destinations",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 36.5,
+      "vw": 9.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4505,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Vietnam",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 36.5,
+      "vw": 9.4,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.63,
+      "top": 4695,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "CultureCompass",
+      "words": 1,
+      "chars": 14,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Source Serif 4",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5800,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 11,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 5,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Be Vietnam Pro",
+       "share": 0.81,
+       "mono": false
+      },
+      {
+       "family": "Source Serif 4",
+       "share": 0.19,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      24,
+      32,
+      37,
+      40
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Be Vietnam Pro",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 48,
+     "max": {
+      "size": 40,
+      "vw": 10.3,
+      "font": "Source Serif 4",
+      "text": "Read Hà Nội"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f4efe5",
+     "bodyBgHsl": {
+      "h": 40,
+      "s": 0.41,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#302720",
+       "top": 537,
+       "hsl": {
+        "h": 26,
+        "s": 0.2,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#fffcf7",
+       "top": 1108,
+       "hsl": {
+        "h": 38,
+        "s": 1,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#f4efe5",
+       "top": 2008,
+       "hsl": {
+        "h": 40,
+        "s": 0.41,
+        "l": 0.93
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#302720",
+       "share": 0.52
+      },
+      {
+       "color": "#80634d",
+       "share": 0.42
+      },
+      {
+       "color": "#762f3b",
+       "share": 0.05
+      },
+      {
+       "color": "#fffcf7",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#fffcf7",
+      "hsl": {
+       "h": 38,
+       "s": 1,
+       "l": 0.98
+      },
+      "fg": "#fffcf7"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 8,
+     "inHero": 4,
+     "radius": 3,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content",
+      "Open Vietnam",
+      "Practise a moment"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "header#cc-header.cc-header 390px",
+      "div.phrase-foot 308px",
+      "div.phrase-foot 308px",
+      "div.phrase-foot 308px",
+      "footer.cc-footer 390px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 3,
+     "blurred": 2,
+     "roundedBoxes": 12,
+     "boxRadius": 6,
+     "squareMedia": 0,
+     "roundedMedia": 4,
+     "mediaRadius": 6,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.33
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 61,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "source serif 4",
+     "be vietnam pro"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 6711,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section#cover.cover",
+      "tag": "section",
+      "top": 61,
+      "height": 975,
+      "words": 61,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Read Hà Nội",
+       "size": 40,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#places.places",
+      "tag": "section",
+      "top": 1108,
+      "height": 3317,
+      "words": 272,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Three places you will find yourself",
+       "size": 37,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#destinations.dest",
+      "tag": "section",
+      "top": 4425,
+      "height": 1262,
+      "words": 92,
+      "media": 8,
+      "middle": 0,
+      "heading": {
+       "text": "Destinations",
+       "size": 37,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 55,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cc-footer",
+      "tag": "div",
+      "top": 5751,
+      "height": 960,
+      "words": 66,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "CultureCompass",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Read Hà Nội before you land.",
+      "size": 40,
+      "top": 85,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 8
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "1 eyebrow/kicker label(s) above headings: \"Read the stories\" above \"On the street\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence."
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "6 thin rule(s)/divider line(s): header#cc-header.cc-header 1440px | div.phrase-foot 527px | div.place-head 577px | div.place-head 577px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "1 box(es) drawn with a 1px outline.",
+   "fix": "Prefer a filled surface or no box.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "dashed",
+   "width": 1440,
+   "message": "1 dashed/dotted border(s).",
+   "fix": "Remove unless it is a real drop zone.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 1440,
+   "message": "2 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (page background #f4efe5, section #fffcf7, button #fffcf7).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "11 different font sizes (14, 15, 16, 17, 20, 22, 24, 32, 46, 60, 84).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "body-size",
+   "width": 768,
+   "message": "Body text is 14px (the size most of the running text is set in).",
+   "fix": "Body copy 16–20px. Map small sizes from blueprints onto your body step.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "reduced-hidden",
+   "width": 1440,
+   "message": "With reduced motion requested, 10 text block(s) on the first screen stay invisible: \"Settings\", \"Sound\", \"Phrases play only when you press Listen.\", \"Reduce motion\"",
+   "fix": "Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8)."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/after/desktop-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/after/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/after/tablet-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/after/tablet-page-01.jpg",
+    "/Users/henrynguyen/CultureCompass/.taste-skill/after/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/henrynguyen/CultureCompass/.taste-skill/after/mobile-fold.jpg",
+   "pages": [
+    "/Users/henrynguyen/CultureCompass/.taste-skill/after/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

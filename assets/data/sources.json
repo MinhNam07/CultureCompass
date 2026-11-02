@@ -143,6 +143,149 @@
       "checked": "2026-10-24",
       "used": "Walk at a consistent, even pace in a straight line so your next move is predictable; rushing or zigzagging can confuse drivers; if unsure, position yourself behind local pedestrians and move when they do.",
       "limits": "Lifestyle guide, not official road-safety advice. Treated as “being verified” until an official source says the same."
+    },
+    {
+      "id": "VNAT-FOOD",
+      "short": "Vietnam National Authority of Tourism",
+      "title": "A beginner’s guide to Vietnamese street food — vietnam.travel",
+      "org": "Vietnam National Authority of Tourism (official site)",
+      "url": "https://vietnam.travel/things-to-do/beginners-guide-vietnamese-street-food",
+      "type": "official",
+      "checked": "2026-11-01",
+      "used": "Ordering at the front, pointing and “một suất”, sharing tables at busy times, free herbs with noodle dishes, trà đá, wiping chopsticks, “eat first, pay later”.",
+      "limits": "General advice for the whole country, no publication date shown. Not specific to Hà Nội or to one stall."
+    },
+    {
+      "id": "VCT-BARGAIN",
+      "short": "Vietcetera",
+      "title": "Vietnam Survival Guide: Bargaining 101",
+      "org": "Vietcetera (Vietnamese media company)",
+      "url": "https://vietcetera.com/en/vietnam-survival-guide-bargaining-101",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "Bargaining is common in local markets; politeness and rapport; “Không, cảm ơn” and walking away.",
+      "limits": "A lifestyle article (5 December 2024), not an official source. Its advice to open at half the quoted price is not used here."
+    },
+    {
+      "id": "VNNEWS-DONGXUAN",
+      "short": "Việt Nam News",
+      "title": "Book tells bygone memories of Hà Nội’s iconic Đồng Xuân Market",
+      "org": "Việt Nam News (national English-language daily)",
+      "url": "https://vietnamnews.vn/life-style/1726898/book-tells-bygone-memories-of-ha-noi-s-iconic-dong-xuan-market.html",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "Built in 1889 during the French colonial period to replace the Kẻ Chợ markets.",
+      "limits": "A news article about a book (9 October 2025); it does not describe the market’s later rebuilding."
+    },
+    {
+      "id": "HNT-MARKETS",
+      "short": "Hanoi Times",
+      "title": "Five most popular markets in Hanoi",
+      "org": "Hanoi Times (Hà Nội People’s Committee’s English-language outlet)",
+      "url": "https://m.hanoitimes.vn/five-most-popular-markets-in-hanoi-8993.html",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "Ground-floor wet market; upper levels selling fabric, clothing and other goods, often wholesale.",
+      "limits": "No publication date shown; layout may have changed."
+    },
+    {
+      "id": "VNAT-NGOCSON",
+      "short": "Vietnam Tourism",
+      "title": "Ngoc Son Temple",
+      "org": "Vietnam National Authority of Tourism",
+      "url": "https://vietnamtourism.vn/en/index.php/news/items/4154",
+      "type": "official",
+      "checked": "2026-11-01",
+      "used": "Who the temple honours, its 1841 building and 1865 repair under Nguyễn Văn Siêu; the stone Pen Tower with its brush-shaped top and “Tả Thanh Thiên” inscription; the Ink Slab on three frogs; the red Thê Húc (“Sunbeam”) bridge.",
+      "limits": "A short official page last updated 16 March 2011; it gives no height for the tower."
+    },
+    {
+      "id": "VNAT-HOANKIEM",
+      "short": "Vietnam Tourism",
+      "title": "Hoan Kiem Lake",
+      "org": "Vietnam National Authority of Tourism (SEA Games 31 visitor site)",
+      "url": "https://seagames31.vietnamtourism.gov.vn/?p=1255",
+      "type": "official",
+      "checked": "2026-11-01",
+      "used": "The meaning of the name and the legend of Lê Lợi returning the sword to the Golden Turtle God in 1428.",
+      "limits": "A visitor page made for the 2022 SEA Games; it tells the legend as a legend, not as history."
+    },
+    {
+      "id": "TT-VANMIEU",
+      "short": "Tuổi Trẻ",
+      "title": "Văn Miếu – Quốc Tử Giám, trường đại học cổ nhất Việt Nam",
+      "org": "Tuổi Trẻ (national daily)",
+      "url": "https://tuoitre.vn/van-mieu---quoc-tu-giam-truong-dai-hoc-co-nhat-viet-nam-327456.htm",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "Văn Miếu built in 1070 under Lý Thánh Tông; Quốc Tử Giám set up beside it in 1076 under Lý Nhân Tông; Khuê Văn Các built in 1805; Thiên Quang Tỉnh, the square pond.",
+      "limits": "A newspaper feature from 21 July 2009, in Vietnamese."
+    },
+    {
+      "id": "CA-GREET",
+      "short": "Cultural Atlas",
+      "title": "Vietnamese culture: Greetings",
+      "org": "Cultural Atlas (cultural reference site, first published by SBS Australia), by Nina Evason",
+      "url": "https://theculturalatlas.org/vietnamese-culture/vietnamese-culture-greetings",
+      "type": "reference",
+      "checked": "2026-11-01",
+      "used": "People are usually addressed by their given name together with an honorific, normally a family (kinship) term chosen by age, gender and status.",
+      "limits": "A general reference for Vietnamese culture (2024 edition), not specific to Hà Nội; it does not say outright that a bare first name is rude."
+    },
+    {
+      "id": "CA-ETQ",
+      "short": "Cultural Atlas",
+      "title": "Vietnamese culture: Etiquette",
+      "org": "Cultural Atlas (cultural reference site, first published by SBS Australia), Cultural Atlas editors",
+      "url": "https://theculturalatlas.org/vietnamese-culture/vietnamese-culture-etiquette",
+      "type": "reference",
+      "checked": "2026-11-01",
+      "used": "Do not rest chopsticks upright in a bowl of rice, as this recalls burning incense, which is linked to mourning.",
+      "limits": "A general reference (2016), not specific to Hà Nội."
+    },
+    {
+      "id": "VOV5-TABLE",
+      "short": "VOV5",
+      "title": "Knowing table manners, knowing social values of a country",
+      "org": "VOV5, the foreign-language service of Voice of Vietnam (national broadcaster)",
+      "url": "https://vov5.vov.gov.vn/index.php/culture-rendezvous/knowing-table-manners-knowing-social-values-of-a-country-2232713.vov5",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "A Vietnamese tour guide: sticking chopsticks straight into the bowl is a taboo because it reminds people of a funeral, where incense is stuck into rice for the dead.",
+      "limits": "A feature quoting a tour guide and foreign residents; no date shown on the page."
+    },
+    {
+      "id": "TTN-CROSS-2025",
+      "short": "Tuổi Trẻ News",
+      "title": "What is it about crossing the streets in Vietnam?",
+      "org": "Tuổi Trẻ News (English edition of a national daily), by contributor Ray Kuschert",
+      "url": "https://news.tuoitre.vn/what-is-it-about-crossing-the-streets-in-vietnam-10383990.htm",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "Walk slowly, raise your arm and look at riders; don’t step backwards when you panic — stand still and let motorbikes go around you.",
+      "limits": "A personal column by a long-term resident (17 January 2025), not official road-safety advice."
+    },
+    {
+      "id": "TTN-CROSS-2014",
+      "short": "Tuổi Trẻ News",
+      "title": "Rules for crossing the street in Vietnam’s major cities",
+      "org": "Tuổi Trẻ News (English edition of a national daily), by Terry F. Buss",
+      "url": "https://news.tuoitre.vn/rules-for-crossing-the-street-in-vietnams-major-cities-10321558.htm",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "Wait until a group of local people is about to cross, and cross with them.",
+      "limits": "A light-hearted expat column (25 July 2014), not official advice."
+    },
+    {
+      "id": "VNN-SHOP",
+      "short": "VietNamNet",
+      "title": "A guide to shopping in VN",
+      "org": "VietNamNet Global (national news site), by David Mann",
+      "url": "https://vietnamnet.vn/en/a-guide-to-shopping-in-vn-E89187.html",
+      "type": "press",
+      "checked": "2026-11-01",
+      "used": "Bargaining is for street vendors and places without printed price tags; keep it light and friendly, a smile helps; you can walk away.",
+      "limits": "An expat column from 28 November 2013; prices and habits may have changed."
     }
   ]
 }

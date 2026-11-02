@@ -2,24 +2,25 @@
 .cc-tracing-content { position: relative; }
 .cc-tracing-mount {
   position: fixed;
-  inset: 0 auto 0 0;
-  width: 20px;
+  inset: 0 0 auto 0;
+  height: 2px;
   pointer-events: none;
   z-index: 50;
-  overflow: hidden;
-  color: #80634d;
 }
-.cc-tracing-beam { display: block; position: absolute; top: 0; left: 0; pointer-events: none; }
-.cc-tracing-content > .cc-tracing-beam { color: #80634d; }
-@media (max-width: 600px) {
-  .cc-tracing-mount { width: 10px; }
-  .cc-tracing-beam { left: -5px; }
+.cc-tracing-beam {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
 }
-@media (prefers-reduced-motion: reduce) {
-  .cc-tracing-beam circle, .cc-tracing-beam path[stroke^="url"] { display: none; }
+.cc-tracing-content > .cc-tracing-beam { position: sticky; top: 0; height: 2px; }
+.cc-tracing-fill {
+  height: 100%;
+  background: #fff;
+  transform-origin: 0 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  will-change: transform;
 }
+@media (prefers-reduced-motion: reduce) { .cc-tracing-fill { display: none; } }
+.cc-reduce-motion .cc-tracing-fill { display: none; }
 @media print { .cc-tracing-mount, .cc-tracing-beam { display: none; } }
-/* Override the site's responsive SVG sizing inside the narrow overlay. */
-.cc-tracing-beam { width: 20px; max-width: none; }
-.cc-reduce-motion .cc-tracing-beam circle,
-.cc-reduce-motion .cc-tracing-beam path[stroke^="url"] { display: none; }
