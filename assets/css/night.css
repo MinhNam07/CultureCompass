@@ -8,7 +8,7 @@
   --night-line: #1E3A4C;
   --night-text: #E6EEF6;
   --night-muted: #A9B8C8;
-  --cyan: #3EE6D8;
+  --cyan: #5FD8E8; /* the globe HUD's cyan (globe/styles.css --cy): one action colour across the product */
   --cyan-ink: #062A2A;
   --gold: #F2C14E;
   --lacquer: #E2543B;
@@ -45,7 +45,7 @@
   --chapter: var(--cyan);
   --btn-bg: var(--cyan);
   --btn-fg: var(--cyan-ink);
-  --btn-hover: #8FF3EA;
+  --btn-hover: #9EEEF7;
   --color-background-page: var(--night);
 }
 body.ex .cc-count, body.ex .cc-subnav ul a[aria-current] { color: var(--night-text); }
@@ -56,7 +56,7 @@ html { color-scheme: dark; }
 body { background: var(--night); color: var(--night-text); }
 ::selection { background: var(--cyan); color: var(--cyan-ink); }
 a { color: var(--cyan); }
-a:hover { color: #8FF3EA; }
+a:hover { color: #9EEEF7; }
 
 /* buttons on cyan carry dark ink, never the surface colour */
 .cc-btn:not(.cc-btn-quiet), .cc-count, .gx-badge { color: var(--cyan-ink); }
@@ -125,7 +125,7 @@ body.ex .story-card .cc-save-mini { background: rgb(11 18 32 / .92); color: var(
 body.ex :is(.cc-chip input:checked + span, .cc-listen[aria-pressed="true"], .scene-hs-list button[aria-pressed="true"], .coll-group h3 .cc-count) { background: var(--cyan); border-color: var(--cyan); color: var(--cyan-ink); }
 body.ex .story-body .fn:hover { background: var(--cyan); color: var(--cyan-ink); }
 body.ex .cc-skip { background: var(--cyan); color: var(--cyan-ink); }
-body.ex .story-practice[data-bg] { --chapter-bg: var(--night-3); --ink: var(--night-text); --ink-2: #C6D2DE; --ink-line: rgb(230 238 246 / .4); --btn-bg: var(--cyan); --btn-fg: var(--cyan-ink); --btn-hover: #8FF3EA; --focus: var(--cyan); --focus-halo: var(--night); border: 2px solid var(--cyan); }
+body.ex .story-practice[data-bg] { --chapter-bg: var(--night-3); --ink: var(--night-text); --ink-2: #C6D2DE; --ink-line: rgb(230 238 246 / .4); --btn-bg: var(--cyan); --btn-fg: var(--cyan-ink); --btn-hover: #9EEEF7; --focus: var(--cyan); --focus-halo: var(--night); border: 2px solid var(--cyan); }
 body.ex :is(.story-body, .phrase-meaning) { color: #D6DEE8; }
 body.ex .story-body > section:first-child p:first-child::first-letter { color: var(--cyan); }
 body.ex .story-card p { color: #C6D2DE; }

@@ -9,6 +9,15 @@
         "dev"
       ],
       "port": 8765
+    },
+    {
+      "name": "static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "tools/dev-server.py",
+        "8766"
+      ],
+      "port": 8766
     }
   ]
 }

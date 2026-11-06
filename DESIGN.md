@@ -307,3 +307,32 @@ Measured contrast (October 2026): every chapter heading, question and section su
 - Phrasebook: with "All", phrases are grouped by what you want to do; each group is as wide as its phrases (up to three), so small groups share a row.
 - Collection: stories are full-width reading-list rows; phrases and reminders stay as cards.
 - About: a sticky "On this page" rail beside one reading column; on phones it becomes a contents card at the top.
+
+### Country reading page · "Field Atlas" · 7 November 2026
+
+**Supersedes, for `vietnam.html` only,** the cream-paper tokens, chapter fills, eyebrow pills, numbered chapter marks, rainbow motifs and picture frames described in "Editorial system" above. Those rules still describe the inner pages. The page's colours are the night palette of `assets/css/night.css`. Its styles live in `assets/css/read.css`, loaded last and scoped to `body[data-page="vietnam"]` and the `rd-` classes that `assets/js/explore.js` renders. It is the template for every country: a new country needs data, not new CSS.
+
+**Idea.** Each chapter is a page of a field notebook. On wide screens (≥ 1001px) a picture (the *plate*) stands still on the left while the reading column scrolls on the right. The plate changes with the section being read: each module may name its own `plate` in `SECTIONS`. Below 1001px the plate becomes the chapter's opening picture.
+
+**Colour.** One ground (`--night` #0B1220), one ink (`--night-text` #E6EEF6, secondary #C6D2DE), one action colour (`--cyan` **#5FD8E8**, now the same value as the globe HUD's `--cy`). Surfaces step in tone (`--night-2`, `--night-3`), never in lines or shadows. The Food chapter takes the `--night-2` field, so the three chapters read as separate rooms. Chapter tones (cyan, gold, jade) appear only as the 4px mark above the plate.
+
+**Type (six sizes).** Display 72–176px Source Serif 4 600 (the country name, real text in the `h1`). Chapter 40–56px serif. Section 26–32px serif. Lead and row titles 22px serif. Body 18px Be Vietnam Pro, 1.6, at most 60ch. Meta, captions and credits 14px. Nothing smaller than 13px. On phones, row titles drop to the body size in the sans.
+
+**Blocks** (the `SECTIONS` array):
+- Required: cover · contents · start · chapter bar · chapter (opener + modules) · places in the game · picture credits · before you go.
+- Optional: moments strip · story list · around the table · quotation · walk-through plan · timeline · which came first · keep it · keep exploring.
+- No two neighbouring blocks share a layout. A block with no data renders nothing, never a placeholder.
+
+**Pictures.** `pic()` resolves every picture: first a credited photo or video from `CC.assets`, then the story's scene painting (a pin of the painting can be zoomed to show a different detail), then the pixel art of the story's Explore zone. Every picture used is listed with its credit, licence and source in "Picture credits" at the foot of the page. Plates and the start picture carry their credit beside them. Pictures that repeat the text of their link are decorative (`alt=""`). Videos play muted only while on screen, never under reduced motion, and each has a pause button.
+
+**Chapter bar.** Sticky under the header: the three chapters plus Places in the game, the current one underlined in cyan, and a 3px reading-progress line. On phones it becomes a native "Go to a chapter" select.
+
+**Places in the game** is the only HUD quotation on the page: a `data-ui` panel with the HUD's cyan corner brackets and hairline frame, holding the zones' pixel art, stamps and progress. The heading stays outside the panel.
+
+**Motion (intensity 3).** Headings, text and pictures rise 24px and fade in turn (70ms stagger) the first time they arrive. The plate cross-fades over 400ms. Hover zoom on pictures is 1.05 over 900ms. The moments strip opens over 500ms. The quiz cards turn over in 800ms. Under the OS or site Reduce motion setting nothing travels, the hidden start states never apply, and videos wait for Play.
+
+**Gate (7 November 2026).** `inspect.mjs` reports 0 FAIL at 1440, 768 and 390 and leaves two warnings, both defended:
+- Eleven type sizes: the page itself uses six plus the plan's SVG label; 15, 17, 20 and 24px come from the shared header and footer.
+- Mixed-font rows on phones: a serif row title above a sans standfirst is two roles, not a headline that switches face mid-line.
+
+`lint.mjs` is clean. The neutral scrims under text on pictures and the HUD frame carry `taste-skill-ignore` comments.
