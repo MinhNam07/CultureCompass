@@ -44,7 +44,8 @@
         "ph-xinchao-co",
         "ph-xungho",
         "ph-banoi"
-      ]
+      ],
+      "imageId": "art-sc01"
     },
     {
       "id": "st-oi",
@@ -300,7 +301,8 @@
         "ph-xinchao-co",
         "ph-camon",
         "ph-noicham"
-      ]
+      ],
+      "imageId": "art-sc01"
     },
     {
       "id": "st-hand",
@@ -406,7 +408,8 @@
       ],
       "appliesTo": "Public places in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
       "varies": "General guidance, not a rule. People and situations differ.",
-      "phraseIds": []
+      "phraseIds": [],
+      "imageId": "art-sc04"
     },
     {
       "id": "st-street-stall",
@@ -499,6 +502,491 @@
         "ph-baonhieu",
         "ph-khongcamon"
       ]
+    },
+    {
+      "id": "st-van-mieu-university",
+      "country": "vietnam",
+      "place": "Văn Miếu – Quốc Tử Giám, Hà Nội",
+      "title": "Vietnam’s first university",
+      "dek": "A temple to Confucius from 1070, and the royal academy that grew up beside it.",
+      "sceneId": "sc03",
+      "sections": [
+        {
+          "text": "Văn Miếu, the “Temple of Literature”, was built in 1070 under King Lý Thánh Tông. Six years later King Lý Nhân Tông founded Quốc Tử Giám beside it: a school first for princes, later for gifted students from across the country.",
+          "claimIds": [
+            "C-VM-FOUNDED"
+          ]
+        },
+        {
+          "heading": "Seven centuries of teaching",
+          "text": "The academy taught for more than 700 years, until 1802. The temple honours Confucius and Confucian scholars, and the teacher Chu Văn An, remembered as a model of learning and integrity.",
+          "claimIds": [
+            "C-VM-ACADEMY"
+          ]
+        },
+        {
+          "heading": "Five courtyards",
+          "text": "Today the walled site is divided into five courtyards, walked from the street gate to Thái Học house at the back. The plan on this page follows that route.",
+          "claimIds": [
+            "C-VM-LAYOUT"
+          ]
+        },
+        {
+          "editorial": true,
+          "text": "Calling it a “university” is a modern shorthand: it trained scholars for the royal examinations in the Confucian classics, not in the subjects a university teaches today.",
+          "claimIds": []
+        }
+      ],
+      "appliesTo": "Văn Miếu – Quốc Tử Giám in Hà Nội, from a Tuổi Trẻ feature on the site.",
+      "varies": "Specific to this site.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-family-altar",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "The family altar",
+      "dek": "Photos, incense and fruit: where the living keep company with the family’s dead.",
+      "sections": [
+        {
+          "text": "Many Vietnamese homes have an ancestral altar, often in the main room, holding photographs of family members who have died, with incense, flowers, fruit and water as offerings.",
+          "claimIds": [
+            "C-ALTAR"
+          ]
+        },
+        {
+          "heading": "When it matters most",
+          "text": "Some families light incense every day. Most give the altar special attention on a person’s death anniversary (giỗ), on the 1st and 15th days of the lunar month, and above all at Tết.",
+          "claimIds": [
+            "C-ALTAR"
+          ]
+        },
+        {
+          "heading": "Not tied to one religion",
+          "text": "The practice rests on filial piety (hiếu), the duty to care for parents and elders in life and after death. Most people in Vietnam keep it up whatever their religion, including many Catholics and people who call themselves non-religious.",
+          "claimIds": [
+            "C-ALTAR-ALL"
+          ]
+        },
+        {
+          "heading": "As a guest",
+          "editorial": true,
+          "text": "Our sources say nothing about guests and altars. Leaving the altar and its offerings alone, and asking before taking a photo of it, are the safe choices.",
+          "claimIds": []
+        }
+      ],
+      "appliesTo": "Homes of Vietnam’s Việt majority, as described by the Cultural Atlas.",
+      "varies": "Altars, offerings and how often incense is lit differ from family to family.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-sacred-places",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Chùa, đền, đình: which is which?",
+      "dek": "Pagoda, temple and communal house are three different kinds of sacred place.",
+      "sections": [
+        {
+          "text": "English signs often say “temple” for all of them, but Vietnamese tells them apart. A chùa is a Buddhist pagoda. A đền is usually a temple to a national hero, a king or a deity. A đình is a village communal house, built for the guardian spirit that each village is thought to have.",
+          "claimIds": [
+            "C-SACRED-TYPES"
+          ]
+        },
+        {
+          "heading": "Three examples in Hà Nội",
+          "editorial": true,
+          "text": "Trấn Quốc on West Lake is a chùa. Ngọc Sơn on Hoàn Kiếm Lake is a đền. Văn Miếu, the Temple of Literature, is something else again: a temple to Confucius.",
+          "claimIds": []
+        },
+        {
+          "heading": "Lines blur",
+          "text": "Real places mix the three: a pagoda may have a shrine to a spirit, and a temple may hold a Buddha statue. Ngọc Sơn, for one, keeps a statue of the Buddha Amitābha.",
+          "claimIds": [
+            "C-NGOCSON"
+          ]
+        }
+      ],
+      "appliesTo": "Places of worship in and around Hà Nội. The three-way distinction comes from a travel guide we are still checking.",
+      "varies": "Many sites combine a pagoda, a temple and a communal house in one compound.",
+      "phraseIds": [
+        "ph-chupanh-noi"
+      ]
+    },
+    {
+      "id": "st-paper-offerings",
+      "country": "vietnam",
+      "place": "Hàng Mã, Hà Nội",
+      "title": "Paper offerings on Hàng Mã",
+      "dek": "A street named after paper gifts for the dead, and the smoke on festival days.",
+      "imageId": "img-hangma",
+      "sections": [
+        {
+          "text": "Hàng Mã, in the Old Quarter, is named after its trade: “mã” are paper goods made as offerings. Shops sell paper money and paper objects alongside lanterns and decorations for festivals.",
+          "claimIds": [
+            "C-HANGMA"
+          ]
+        },
+        {
+          "heading": "Gifts that are burnt",
+          "text": "Families burn paper money for their ancestors, for example on the 1st and 15th of the lunar month.",
+          "claimIds": [
+            "C-HANGMA"
+          ]
+        },
+        {
+          "heading": "Smoke in the street",
+          "text": "On the 15th day of the seventh lunar month many people in the Old Quarter burn votive paper on the pavement, and the smoke, fire risk and waste are a recurring concern in the press.",
+          "claimIds": [
+            "C-VOTIVE-BURN"
+          ]
+        }
+      ],
+      "appliesTo": "Hàng Mã street and the Old Quarter, from Hanoi Times, Dân trí and a travel guide we are still checking.",
+      "varies": "Some families burn a great deal, others very little or none.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-tet",
+      "country": "vietnam",
+      "place": "Vietnam",
+      "title": "Tết, the Lunar New Year",
+      "dek": "Cleaning, cooking and calling the ancestors home: the most important days of the year.",
+      "sections": [
+        {
+          "text": "Tết is the most important celebration in Vietnam. Families get ready by cooking New Year foods, cleaning the house and paying respects to their ancestors, and flowering trees appear outside homes and offices.",
+          "claimIds": [
+            "C-TET-PREP"
+          ]
+        },
+        {
+          "heading": "Inviting the ancestors",
+          "text": "In the last days of the old year many families visit their ancestors’ graves and invite them home to celebrate.",
+          "claimIds": [
+            "C-TET-GRAVES"
+          ]
+        },
+        {
+          "heading": "The first visitor",
+          "text": "The first person to enter a home in the new year (xông đất) is believed to bear on the family’s fortune, so families often invite someone to come first, usually on the morning of the first day.",
+          "claimIds": [
+            "C-TET-FIRST"
+          ]
+        },
+        {
+          "heading": "Lucky money",
+          "text": "On the first day children receive lucky money in a red envelope from their elders — “mừng tuổi” in the north, “lì xì” in the south.",
+          "claimIds": [
+            "C-TET-PREP"
+          ]
+        },
+        {
+          "editorial": true,
+          "text": "If you are in Hà Nội at Tết and not invited anywhere, it is kinder not to drop in on a family on the first day.",
+          "claimIds": []
+        }
+      ],
+      "appliesTo": "Vietnam as a whole, from the national tourism authority, VietNamNet and the Vietnam News Agency.",
+      "varies": "Dates move with the lunar calendar, and customs differ between regions and families.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-sword-lake",
+      "country": "vietnam",
+      "place": "Hồ Hoàn Kiếm, Hà Nội",
+      "title": "The lake of the returned sword",
+      "dek": "How a golden turtle gave Hoàn Kiếm Lake its name, and the temple on its islet.",
+      "sections": [
+        {
+          "text": "In the legend, after the victory over the Ming in 1428, Lê Lợi was boating on the lake when a golden turtle rose and asked for the magic sword he had been lent. He gave it back, and the lake, once called Lục Thủy (“Green Water”), became Hoàn Kiếm: the Lake of the Returned Sword.",
+          "claimIds": [
+            "C-SWORD-LEGEND"
+          ]
+        },
+        {
+          "heading": "Turtle Tower",
+          "text": "The small tower on the islet near the south of the lake is linked to the legend and is often used as an emblem of Hà Nội.",
+          "claimIds": [
+            "C-SWORD-LEGEND"
+          ]
+        },
+        {
+          "heading": "Ngọc Sơn temple",
+          "text": "At the north end, the red Thê Húc bridge leads to Ngọc Sơn temple, dated by its own documents to 1841 and restored in 1865. It honours General Trần Hưng Đạo and Văn Xương; the Pen Tower and Ink Slab at its gate are linked with learning, and students come to pray for luck in exams.",
+          "claimIds": [
+            "C-NGOCSON"
+          ]
+        }
+      ],
+      "appliesTo": "Hoàn Kiếm Lake and Ngọc Sơn temple, from the national tourism authority.",
+      "varies": "Specific to this place. The legend is told with small differences.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-thang-long",
+      "country": "vietnam",
+      "place": "Hoàng thành Thăng Long, Hà Nội",
+      "title": "Thăng Long, a capital since 1010",
+      "dek": "Why Hà Nội celebrated its thousandth birthday in 2010.",
+      "sections": [
+        {
+          "text": "Hà Nội counts its history as a capital from 1010, when King Lý Thái Tổ moved the court here and named the city Thăng Long. The city marked its thousandth year in 2010.",
+          "claimIds": [
+            "C-THANGLONG"
+          ]
+        },
+        {
+          "heading": "The citadel",
+          "text": "In the same year the Central Sector of the Imperial Citadel of Thăng Long – Hà Nội was added to UNESCO’s World Heritage List.",
+          "claimIds": [
+            "C-THANGLONG"
+          ]
+        },
+        {
+          "heading": "What you can see",
+          "text": "Đoan Môn, the main gate of the old Forbidden City, faces south; the heritage area also includes the excavations at 18 Hoàng Diệu.",
+          "claimIds": [
+            "C-DOANMON"
+          ]
+        }
+      ],
+      "appliesTo": "The Imperial Citadel in Ba Đình, Hà Nội, from UNESCO and the site’s own conservation centre.",
+      "varies": "Specific to this site.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-mother-goddess",
+      "country": "vietnam",
+      "place": "Northern Vietnam",
+      "title": "The Mother Goddesses",
+      "dek": "A northern belief in goddesses of heaven, water and forest, and the lên đồng ritual.",
+      "sections": [
+        {
+          "text": "Many people worship the Mother Goddesses of Three Realms — heaven, water, and mountains and forests — asking for health and success. Liễu Hạnh is honoured as the Mother of the World.",
+          "claimIds": [
+            "C-MAU"
+          ]
+        },
+        {
+          "heading": "Lên đồng",
+          "text": "Practice includes daily worship, festivals and lên đồng, a ritual in which a medium in costume embodies a series of spirits. UNESCO added these practices to its intangible heritage list in 2016.",
+          "claimIds": [
+            "C-MAU"
+          ]
+        },
+        {
+          "heading": "Open to anyone",
+          "text": "The belief is open to people of any age, occupation or religion, and is most common in the north.",
+          "claimIds": [
+            "C-MAU-OPEN"
+          ]
+        },
+        {
+          "editorial": true,
+          "text": "Phủ Tây Hồ, on a spit of land in West Lake, is one Hà Nội shrine to Mother Liễu Hạnh. A ritual you come across is worship, not a show: watch quietly and ask before filming.",
+          "claimIds": []
+        }
+      ],
+      "appliesTo": "Northern Vietnam, from UNESCO, the UN in Viet Nam and the national tourism authority.",
+      "varies": "Shrines and rituals differ; not everyone in the north takes part.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-old-quarter",
+      "country": "vietnam",
+      "place": "Phố cổ, Hà Nội",
+      "title": "Streets named after what they sold",
+      "dek": "Silver, herbs, paper offerings: how the Old Quarter’s street names tell its trades.",
+      "sections": [
+        {
+          "text": "North of Hoàn Kiếm Lake, the Old Quarter is often called the “36 streets”. Each was named after a trade or craft that settled there, and many workshops once made goods for the royal court at the nearby citadel.",
+          "claimIds": [
+            "C-OQ-GUILDS"
+          ]
+        },
+        {
+          "heading": "Reading a street sign",
+          "text": "“Hàng” means goods, so the word after it tells you what the street sold.",
+          "claimIds": [
+            "C-OQ-HANG"
+          ]
+        },
+        {
+          "heading": "Then and now",
+          "text": "Hàng Bạc was the street of silversmiths and now has jewellers and money changers. Lãn Ông still smells of traditional medicine and herbs, and Hàng Mã sells religious goods and festival decorations. Hàng Gai today sells fabric and made-to-measure clothes. Only a few streets still match their names.",
+          "claimIds": [
+            "C-OQ-EXAMPLES",
+            "C-OQ-GUILDS"
+          ]
+        },
+        {
+          "heading": "Narrow, deep and tall",
+          "text": "The tube houses lining these streets have narrow fronts but run far back, with small courtyards inside for light. At the eastern edge, Ô Quan Chưởng is the last surviving gate of the old city wall.",
+          "claimIds": [
+            "C-OQ-TUBE"
+          ]
+        }
+      ],
+      "appliesTo": "Hà Nội’s Old Quarter (Hoàn Kiếm), from the national tourism authority’s visitor guide.",
+      "varies": "Shops change quickly; many streets now sell clothes and souvenirs whatever their name.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-pavement",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Life on the pavement",
+      "dek": "A teapot, some glasses, a few plastic stools: the city’s smallest meeting place.",
+      "sections": [
+        {
+          "text": "A trà đá (iced tea) stall needs very little: a teapot, glasses and a few plastic stools on the pavement. Some also sell peanut sweets, sunflower seeds and bottled drinks. They open from early morning until late, and in winter the tea comes hot.",
+          "claimIds": [
+            "C-TRADA"
+          ]
+        },
+        {
+          "heading": "Who sits there",
+          "text": "Everyone: office workers and street sweepers, students and retirees. People stop after breakfast, at lunch, after work or with friends in the evening, watch the street go by and talk, sometimes with people they have only just met.",
+          "claimIds": [
+            "C-TRADA-SOCIAL"
+          ]
+        },
+        {
+          "heading": "Pavements are changing",
+          "text": "Since December 2025 the city has been fining unlicensed vendors and businesses that block the pavement, using about 2,000 cameras, so stalls and pavement seating are less spontaneous than older guides describe.",
+          "claimIds": [
+            "C-PAVEMENT-2026"
+          ]
+        },
+        {
+          "editorial": true,
+          "text": "Sitting down on a free stool and ordering a glass is how most people join in.",
+          "claimIds": []
+        }
+      ],
+      "appliesTo": "Hà Nội, from Hanoi Times and an AFP report from June 2026.",
+      "varies": "Rules on pavement use are changing; what you find depends on the street and the year.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-hoan-kiem-days",
+      "country": "vietnam",
+      "place": "Hồ Hoàn Kiếm, Hà Nội",
+      "title": "Mornings and weekends by the lake",
+      "dek": "Tai chi at dawn and a car-free lakeside at the weekend.",
+      "sections": [
+        {
+          "text": "Hoàn Kiếm Lake wakes up early. Around 6 a.m. residents practise tai chi and other exercises along the shore.",
+          "claimIds": [
+            "C-HK-MORNING"
+          ]
+        },
+        {
+          "heading": "A walking city at the weekend",
+          "text": "From Friday evening to Sunday night the streets around the lake close to traffic and become a walking space until midnight, with music, performances and events.",
+          "claimIds": [
+            "C-HK-WALK"
+          ]
+        },
+        {
+          "heading": "Practising English",
+          "text": "You may be approached by students who want to practise their English. They are usually polite, and a short chat is an easy way to meet local people.",
+          "claimIds": [
+            "C-HK-MORNING"
+          ]
+        }
+      ],
+      "appliesTo": "Hoàn Kiếm Lake, from the national tourism authority and Hanoi Times.",
+      "varies": "Walking-street hours and streets have changed over time, and it may close on some holidays.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-pho",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "A bowl of phở",
+      "dek": "From a street snack in the early 1900s to national heritage in 2024.",
+      "sections": [
+        {
+          "text": "Phở began as a street snack in the early 1900s. A bowl is rice noodles in an aromatic broth, served mainly with beef (phở bò) or chicken (phở gà), often with fresh herbs, spices and crisp fried dough sticks.",
+          "claimIds": [
+            "C-PHO-BOWL"
+          ]
+        },
+        {
+          "heading": "Heritage in a bowl",
+          "text": "In August 2024 Hà Nội phở was added to Vietnam’s list of national intangible cultural heritage. By 2023 the city had nearly 700 phở shops.",
+          "claimIds": [
+            "C-PHO-HERITAGE"
+          ]
+        },
+        {
+          "heading": "Not only Hà Nội",
+          "text": "Phở Nam Định, from a province south-east of the capital, was recognised in the same year, and other regions have their own versions.",
+          "claimIds": [
+            "C-PHO-NAMDINH"
+          ]
+        }
+      ],
+      "appliesTo": "Hà Nội, from Hanoi Times and The Investor.",
+      "varies": "Every shop has its own broth and toppings, and southern phở is served quite differently.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-bun-cha",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "How to eat bún chả",
+      "dek": "Grilled pork, cold noodles and a bowl of sauce you dip into.",
+      "sections": [
+        {
+          "text": "Bún chả comes in parts: a bowl of dipping sauce with grilled pork patties and pork belly in it, a plate of cold rice vermicelli and a basket of fresh herbs. The sauce balances fish sauce, vinegar or lime, chilli and sugar, sometimes with thin slices of green papaya or kohlrabi.",
+          "claimIds": [
+            "C-BUNCHA"
+          ]
+        },
+        {
+          "heading": "Dip, then eat",
+          "text": "Take some noodles, dip them in the sauce and eat them with the pork and herbs.",
+          "claimIds": [
+            "C-BUNCHA-EAT"
+          ]
+        },
+        {
+          "heading": "A Hà Nội dish",
+          "text": "Hanoians eat it at any meal. It was once sold from bamboo baskets carried through the streets, and the writer Thạch Lam called it the most characteristic dish of Hà Nội.",
+          "claimIds": [
+            "C-BUNCHA-EAT"
+          ]
+        }
+      ],
+      "appliesTo": "Hà Nội, from Viet Nam News.",
+      "varies": "Shops differ in their sauce and how they serve it.",
+      "phraseIds": []
+    },
+    {
+      "id": "st-egg-coffee",
+      "country": "vietnam",
+      "place": "Hà Nội",
+      "title": "Egg coffee",
+      "dek": "A drink invented when milk ran short, still served by the same family.",
+      "sections": [
+        {
+          "text": "Egg coffee (cà phê trứng) is thought to have begun in the 1940s with Nguyễn Văn Giang, a bartender at the Metropole Hotel, who used whisked egg yolk because fresh milk was scarce. In 1946 he opened his own café, Café Giảng, which his family still runs.",
+          "claimIds": [
+            "C-EGGCOFFEE"
+          ]
+        },
+        {
+          "heading": "What is in the cup",
+          "text": "Egg yolk is whipped into a thick, sweet foam and poured over hot black coffee. Some cafés serve the cup in a bowl of hot water to keep it warm.",
+          "claimIds": [
+            "C-EGGCOFFEE-MAKE"
+          ]
+        }
+      ],
+      "appliesTo": "Hà Nội, from VietNamNet. The origin story is the one told by the café’s family.",
+      "varies": "Recipes differ from café to café, and many now serve iced and flavoured versions.",
+      "phraseIds": []
     }
   ]
 }

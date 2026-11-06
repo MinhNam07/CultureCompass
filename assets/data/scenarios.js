@@ -444,7 +444,7 @@ window.CC.claims = [
     "sourceIds": [
       "VNAT-NGOCSON"
     ],
-    "text": "Ngọc Sơn Temple honours General Trần Hưng Đạo and Văn Xương. It was built in 1841 and fully repaired in 1865 by the scholar Nguyễn Văn Siêu."
+    "text": "Ngọc Sơn temple stands on an islet in the lake; documents kept there date it to 1841, and it was restored in 1865 by the scholar Nguyễn Văn Siêu. It honours General Trần Hưng Đạo and Văn Xương and is reached by the red Thê Húc bridge; the Pen Tower and Ink Slab at the entrance are linked with learning, and students come to pray for luck in exams."
   },
   {
     "id": "C-THAPBUT",
@@ -481,6 +481,355 @@ window.CC.claims = [
       "TT-VANMIEU"
     ],
     "text": "Khuê Văn Các was built in 1805 under the Nguyễn dynasty. Beyond it lies Thiên Quang Tỉnh, a square pond."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-FOUNDED",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU"
+    ],
+    "text": "Văn Miếu was built in 1070 under King Lý Thánh Tông. In 1076 King Lý Nhân Tông founded Quốc Tử Giám beside it, at first for princes and later for gifted students from across the country."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-ACADEMY",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU"
+    ],
+    "text": "Quốc Tử Giám taught for more than 700 years (1076–1802). Văn Miếu honours Confucius, Confucian scholars and the teacher Chu Văn An."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-LAYOUT",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU"
+    ],
+    "text": "The site covers 54,331 m², including Văn Lake and the Giám garden; inside the walls it is divided into five courtyards."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-GATE",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU"
+    ],
+    "text": "The main gate is a two-storey, three-arched gate inscribed “Văn Miếu Môn”, with Lê-period stone dragons outside and Nguyễn-period dragons inside. Đại Trung gate follows, flanked by the small Thành Đức and Đạt Tài gates."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-KHUEVAN",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU"
+    ],
+    "text": "Khuê Văn Các was built in 1805 under the Nguyễn: two storeys and eight roofs, brick pillars below and wood above, with round windows whose spokes stand for the rays of the Khuê star. Scholars’ best poems were read there, and it has been taken as the symbol of Hà Nội."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-WELL",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU",
+      "MOWCAP-STELAE"
+    ],
+    "text": "A square pond, Thiên Quang Tỉnh (“Well of Heavenly Clarity”), lies between two gardens of stelae; the 82 stelae, erected 1484–1780, record the names and home villages of the doctoral laureates of 82 examinations."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-DAITHANH",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU"
+    ],
+    "text": "Đại Thành gate opens onto a brick courtyard whose side halls once held tablets for Confucius’s 72 disciples and Vietnamese scholars. At its end stand the Đại Bái hall and sanctuary; a large bronze bell cast in 1768 hangs on the left and a stone chime on the right."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VM-THAIHOC",
+    "kind": "history",
+    "sourceIds": [
+      "TT-VANMIEU"
+    ],
+    "text": "When the Nguyễn moved the academy to Huế in the early 19th century, its site became Khải Thánh temple; it was burnt in 1946–1947. Thái Học house was completed in 2000 and honours kings Lý Thánh Tông, Lý Nhân Tông and Lê Thánh Tông and the teacher Chu Văn An."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-STELAE-1442",
+    "kind": "history",
+    "sourceIds": [
+      "TT-STELAE-WH",
+      "NHANDAN-STELAE"
+    ],
+    "text": "The first stele was erected in 1484 for the examination of 1442, and the last in 1780. The inscription for 1442, written by Thân Nhân Trung, contains the line “Hiền tài là nguyên khí của quốc gia”."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-ALTAR",
+    "kind": "custom",
+    "sourceIds": [
+      "CA-REL"
+    ],
+    "text": "Many homes of the Việt majority have an ancestral altar with photographs of family members who have died, and offerings of incense, flowers, fruit and water. Ancestors are honoured most on a death anniversary (giỗ), on the 1st and 15th of the lunar month and above all at Tết."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-ALTAR-ALL",
+    "kind": "custom",
+    "sourceIds": [
+      "CA-REL"
+    ],
+    "text": "Ancestor veneration rests on filial piety (hiếu) and is practised by most people in Vietnam whatever their religion, including many Catholics and people with no religion."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-SACRED-TYPES",
+    "kind": "custom",
+    "sourceIds": [
+      "VT-TEMPLES",
+      "CA-REL"
+    ],
+    "text": "A chùa is a Buddhist pagoda; a đền is usually a temple to a national hero, a king or a deity; a đình is a village communal house dedicated to a guardian spirit, and villages are thought to have such a tutelary spirit."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-HANGMA",
+    "kind": "custom",
+    "sourceIds": [
+      "HNT-HANGMA",
+      "VT-HANGMA"
+    ],
+    "text": "Hàng Mã in the Old Quarter sells paper offerings and paper decorations; “mã” refers to paper goods made for offerings, and families burn paper money for their ancestors, for example on the 1st and 15th of the lunar month."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-VOTIVE-BURN",
+    "kind": "custom",
+    "sourceIds": [
+      "DTI-VOTIVE"
+    ],
+    "text": "On the 15th day of the seventh lunar month many people in the Old Quarter burn votive paper in the street, which raises concern about smoke, fire risk and waste."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-TET-PREP",
+    "kind": "custom",
+    "sourceIds": [
+      "VNAT-TET"
+    ],
+    "text": "Families prepare for Tết by cooking New Year foods, cleaning their homes and paying respects to their ancestors, and flowering trees are set outside homes. On the first day children receive lucky money in a red envelope, called “mừng tuổi” in the north and “lì xì” in the south."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-TET-GRAVES",
+    "kind": "custom",
+    "sourceIds": [
+      "VNN-TET"
+    ],
+    "text": "In the last days of the lunar year families visit their ancestors’ graves and invite them home to celebrate Tết."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-TET-FIRST",
+    "kind": "custom",
+    "sourceIds": [
+      "VNA-XONGDAT"
+    ],
+    "text": "The first visitor of the new year (xông đất) is believed to bear on the household’s fortune, so families often invite someone to come first, usually on the morning of the first day."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-SWORD-LEGEND",
+    "kind": "history",
+    "sourceIds": [
+      "VNAT-HOANKIEM"
+    ],
+    "text": "In the legend, after the victory over the Ming in 1428, Lê Lợi was boating on the lake when a golden turtle rose and asked for his magic sword; he returned it, and the lake, once called Lục Thủy (“Green Water”), became Hoàn Kiếm, the Lake of the Returned Sword. The Turtle Tower on its islet is linked to the legend."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-THANGLONG",
+    "kind": "history",
+    "sourceIds": [
+      "HTTL-1010",
+      "UNESCO-TL"
+    ],
+    "text": "Hà Nội counts its thousand years from 1010, when King Lý Thái Tổ moved the capital here and named it Thăng Long. The Central Sector of the Imperial Citadel of Thăng Long – Hà Nội was inscribed on the UNESCO World Heritage List in 2010."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-DOANMON",
+    "kind": "history",
+    "sourceIds": [
+      "VNAT-DISAN-TL"
+    ],
+    "text": "Đoan Môn is the main gate of the former Forbidden City and faces south; the heritage area also takes in the archaeological site at 18 Hoàng Diệu."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-MAU",
+    "kind": "custom",
+    "sourceIds": [
+      "UNESCO-MAU",
+      "UN-VN-MAU"
+    ],
+    "text": "The Mother Goddesses of Three Realms — heaven, water, and mountains and forests — are worshipped for health and success; Liễu Hạnh is honoured as Mother of the World. The practice includes the lên đồng mediumship ritual and was inscribed by UNESCO in 2016."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-MAU-OPEN",
+    "kind": "custom",
+    "sourceIds": [
+      "VNAT-DISAN-MAU",
+      "CA-REL"
+    ],
+    "text": "The belief is open to anyone regardless of age, occupation or religion, and is most common in northern Vietnam."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-OQ-GUILDS",
+    "kind": "history",
+    "sourceIds": [
+      "VNAT-OLDQ"
+    ],
+    "text": "The Old Quarter has 36 streets, each named after a trade or craft that settled north of Hoàn Kiếm Lake; its workshops made goods for the royal court at the nearby Thăng Long citadel. Only a few streets still sell what their names describe."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-OQ-HANG",
+    "kind": "custom",
+    "sourceIds": [
+      "VT-HANGMA"
+    ],
+    "text": "“Hàng” in a street name means goods or merchandise."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-OQ-EXAMPLES",
+    "kind": "custom",
+    "sourceIds": [
+      "VNAT-OLDQ"
+    ],
+    "text": "Hàng Bạc was home to silversmiths making items for the palace and now has jewellers and money changers; Lãn Ông is known for traditional medicines and herbs; Hàng Mã for religious goods and festival decorations; Hàng Gai today sells fabrics and made-to-measure clothes."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-OQ-TUBE",
+    "kind": "history",
+    "sourceIds": [
+      "VNAT-OLDQ"
+    ],
+    "text": "The quarter’s tube houses have narrow fronts but are built deep and tall, with courtyards inside to let in light. Ô Quan Chưởng is the only surviving gate of the wall that once protected the area."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-TRADA",
+    "kind": "custom",
+    "sourceIds": [
+      "HNT-TRADA"
+    ],
+    "text": "A trà đá (iced tea) stall needs little more than a teapot, some glasses and a few plastic stools on the pavement; some also sell peanut sweets, sunflower seeds and bottled drinks. Stalls open from early morning until late, and serve hot tea in winter."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-TRADA-SOCIAL",
+    "kind": "custom",
+    "sourceIds": [
+      "HNT-TRADA"
+    ],
+    "text": "Office workers and street sweepers, young and old, stop for tea after breakfast, at lunch, after work or with friends in the evening, watching the street and chatting, sometimes with strangers."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-PAVEMENT-2026",
+    "kind": "custom",
+    "sourceIds": [
+      "AFP-PAVEMENT"
+    ],
+    "text": "Since December 2025 Hà Nội has been fining unauthorised street vending and businesses that block pavements, helped by about 2,000 surveillance cameras, so pavement stalls and seating are less spontaneous than before."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-HK-MORNING",
+    "kind": "custom",
+    "sourceIds": [
+      "VNAT-HOANKIEM"
+    ],
+    "text": "Around 6 a.m. local residents practise tai chi on the shore of Hoàn Kiếm Lake. Small groups of students sometimes approach foreign visitors to practise their English."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-HK-WALK",
+    "kind": "custom",
+    "sourceIds": [
+      "HNT-WALK"
+    ],
+    "text": "From Friday evening to Sunday night the streets around Hoàn Kiếm Lake close to traffic and become a walking space, from about 7 p.m. in summer and 6 p.m. in winter until midnight, with cultural and art performances; the scheme began on trial around 2016."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-PHO-HERITAGE",
+    "kind": "custom",
+    "sourceIds": [
+      "HNT-PHO"
+    ],
+    "text": "Hà Nội phở was added to Vietnam’s list of national intangible cultural heritage in August 2024. The city had nearly 700 phở shops by 2023."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-PHO-BOWL",
+    "kind": "history",
+    "sourceIds": [
+      "HNT-PHO"
+    ],
+    "text": "Phở began as a street snack in the early 1900s. It is served mainly with beef or chicken, in an aromatic broth with soft rice noodles, often with fresh herbs, spices and crisp fried dough sticks."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-PHO-NAMDINH",
+    "kind": "custom",
+    "sourceIds": [
+      "INVESTOR-NAMDINH"
+    ],
+    "text": "Phở Nam Định was also recognised as national intangible cultural heritage by the Ministry of Culture, Sports and Tourism in 2024."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-BUNCHA",
+    "kind": "custom",
+    "sourceIds": [
+      "VNNEWS-BUNCHA"
+    ],
+    "text": "Bún chả is rice vermicelli with pork patties and sliced pork belly grilled over charcoal, fresh herbs such as lettuce, coriander, basil and perilla, and a dipping sauce that balances fish sauce, vinegar or lime, chilli and sugar, sometimes with green papaya, kohlrabi or carrot pickles."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-BUNCHA-EAT",
+    "kind": "custom",
+    "sourceIds": [
+      "VNNEWS-BUNCHA"
+    ],
+    "text": "You dip the noodles in the sauce and eat them with the pork and herbs. Hanoians eat it at breakfast, lunch or dinner; it was once sold from bamboo baskets carried through the streets, and the writer Thạch Lam called it the most characteristic dish of Hà Nội."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-EGGCOFFEE",
+    "kind": "history",
+    "sourceIds": [
+      "VNN-EGG"
+    ],
+    "text": "Egg coffee is thought to have begun in the 1940s with Nguyễn Văn Giang, a bartender at the Metropole Hotel, who whisked egg yolk in place of fresh milk when milk was scarce. He opened Café Giảng in 1946, which his family still runs."
+  },
+  {
+    "status": "needs_verification",
+    "id": "C-EGGCOFFEE-MAKE",
+    "kind": "custom",
+    "sourceIds": [
+      "VNN-EGG"
+    ],
+    "text": "Egg yolk is whipped into a thick, creamy foam and poured over hot black coffee; some cafés serve the cup standing in a bowl of hot water to keep it warm."
   }
 ];
 window.CC.scenarios = [

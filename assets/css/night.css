@@ -1,0 +1,135 @@
+/* CultureCompass — "Đêm Hà Nội" (Hà Nội at night). Load LAST on every page that uses the site shell.
+   A navy-black ground that matches the globe HUD, cyan for anything you can press, gold for stamps and rewards,
+   lacquer red for Vietnam's own mark. Overrides the six tokens in cc.css and the paper tokens in explore.css. */
+:root, body.ex {
+  --night: #0B1220;
+  --night-2: #121B2E;
+  --night-3: #16263A;
+  --night-line: #1E3A4C;
+  --night-text: #E6EEF6;
+  --night-muted: #A9B8C8;
+  --cyan: #3EE6D8;
+  --cyan-ink: #062A2A;
+  --gold: #F2C14E;
+  --lacquer: #E2543B;
+  --pixel-ink: #3A3A50;
+
+  --color-background: var(--night);
+  --color-surface: var(--night-2);
+  --color-primary: var(--cyan);
+  --color-text: var(--night-text);
+  --color-text-secondary: var(--night-muted);
+  --color-accent: var(--gold);
+  --ink-shadow: 0, 0, 0;
+  --line: var(--night-line);
+  --line-strong: #2E5268;
+  --focus: var(--cyan);
+  --focus-halo: var(--night);
+  --grain: none;
+
+  /* explore.css paper tokens */
+  --bg-paper: var(--night);
+  --bg-paper-hi: var(--night-2);
+  --text-primary: var(--night-text);
+  --text-secondary: #C6D2DE;
+  --text-muted: var(--night-muted);
+  --ink-line: rgb(230 238 246 / .2);
+  --ink-hover: rgb(230 238 246 / .07);
+  --eyebrow-bg: var(--night-3);
+  --eyebrow-ink: var(--cyan);
+
+  /* ex-pages.css frame and button tokens */
+  --night-ink: var(--night-text);
+  --night-ink-2: var(--night-muted);
+  --ch-teal-night: var(--cyan);
+  --chapter: var(--cyan);
+  --btn-bg: var(--cyan);
+  --btn-fg: var(--cyan-ink);
+  --btn-hover: #8FF3EA;
+  --color-background-page: var(--night);
+}
+body.ex .cc-count, body.ex .cc-subnav ul a[aria-current] { color: var(--night-text); }
+body.ex .cc-count { background: var(--cyan); color: var(--cyan-ink); }
+body.ex .cc-subnav ul a[aria-current] { box-shadow: inset 0 -2px 0 var(--cyan); }
+body.ex .cc-nav a[aria-current="page"]::after, body.ex .cc-nav a.is-section::after { background: var(--cyan); }
+html { color-scheme: dark; }
+body { background: var(--night); color: var(--night-text); }
+::selection { background: var(--cyan); color: var(--cyan-ink); }
+a { color: var(--cyan); }
+a:hover { color: #8FF3EA; }
+
+/* buttons on cyan carry dark ink, never the surface colour */
+.cc-btn:not(.cc-btn-quiet), .cc-count, .gx-badge { color: var(--cyan-ink); }
+
+/* shell */
+.cc-header, body.ex .cc-header { background: color-mix(in srgb, var(--night) 94%, transparent); border-bottom: 1px solid var(--night-line); }
+.cc-brand svg { color: var(--cyan); }
+.cc-nav a, .cc-nav button { color: var(--night-muted); }
+.cc-nav a:hover { color: var(--night-text); }
+.cc-nav a[aria-current="page"], .cc-nav a.is-section { color: var(--night-text); }
+.cc-nav a[aria-current="page"]::after, .cc-nav a.is-section::after { background: var(--cyan); }
+.cc-nav-icon { width: 44px; justify-content: center; padding: 0 !important; border: 1px solid var(--night-line) !important; border-radius: 8px !important; }
+.cc-nav-icon .cc-icon { margin: 0; }
+.cc-nav-icon-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 860px) {
+  .cc-nav-icon { width: 100%; justify-content: flex-start; padding: 8px 12px !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; border-radius: 0 !important; }
+  .cc-nav-icon-label { position: static; width: auto; height: auto; clip: auto; }
+}
+.cc-subnav, body.ex .cc-subnav { background: var(--night); border-bottom: 1px solid var(--night-line); }
+.cc-subnav-name { color: var(--night-text); }
+.cc-subnav ul a { color: var(--night-muted); font-size: 1rem; }
+.cc-subnav ul a[aria-current] { color: var(--night-text); box-shadow: inset 0 -2px 0 var(--cyan); border-radius: 0; }
+.cc-footer, body.ex .cc-footer { background: #08101C; border-top: 1px solid var(--night-line); }
+.cc-drawer, .offcanvas { background: var(--night-2); color: var(--night-text); }
+
+/* Read page: the places of the game */
+.ex-places { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.ex-place a { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 16px 14px 14px;
+  background: var(--night-2); color: var(--night-text); text-decoration: none; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--night-line); }
+.ex-place a:hover { box-shadow: inset 0 0 0 1px var(--cyan); color: var(--night-text); }
+.ex-place a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.ex-place-stamp { width: 56px; height: 56px; display: grid; place-content: center; text-align: center; padding: 4px; border-radius: 50%;
+  border: 2px dashed var(--line-strong); color: var(--night-muted); font: 700 .66rem/1.1 var(--font-sans); transform: rotate(-8deg); overflow: hidden; hyphens: none; }
+.ex-place.is-done .ex-place-stamp { border: 3px double var(--gold); color: var(--gold); }
+.ex-place-txt { display: grid; gap: 4px; min-width: 0; }
+.ex-place-title { font-weight: 600; }
+.ex-place-meta { font-size: .875rem; color: var(--night-muted); }
+.ex-place.is-done .ex-place-meta b { color: var(--gold); }
+.ex-place.is-going .ex-place-meta b { color: var(--cyan); }
+.ex-place-go { display: inline-flex; align-items: center; gap: 6px; color: var(--cyan); font-weight: 600; }
+.ex-place-go svg { width: 18px; height: 18px; }
+
+/* Read page chapters: night grounds with the chapter colour kept as a rim and accent, so the page stays one night */
+.ex-wordmark .l0 { fill: var(--night-text); }
+.ex-wordmark .l1 { fill: var(--gold); }
+.ex-wordmark .l2 { fill: var(--lacquer); }
+.ex-wordmark .l3 { fill: var(--cyan); }
+.ex-chapter[data-bg] { --ink: var(--night-text); --ink-2: #C6D2DE; --ink-line: rgb(230 238 246 / .4); --ink-hover: rgb(230 238 246 / .1); --focus: var(--cyan); --focus-halo: var(--night); --m2: var(--gold); --m3: var(--night-text); }
+.ex-chapter[data-bg="teal"]  { --chapter-bg: #0E2230; --rib: var(--cyan); --m4: var(--cyan); }
+.ex-chapter[data-bg="peach"] { --chapter-bg: #1E1A1A; --rib: var(--gold); }
+.ex-chapter[data-bg="jade"]  { --chapter-bg: #0F2321; --rib: #5DCAA5; }
+.ex-chapter[data-bg="ember"] { --chapter-bg: #24151A; --rib: var(--lacquer); --m1: var(--lacquer); }
+.ex-chapter[data-bg] { border-top: 2px solid var(--rib); }
+
+/* paper-tinted cards from the old palette, re-grounded on night */
+.ex-navcards a, .ex-before { background: var(--night-2); border-color: var(--night-line); color: var(--night-text); }
+.ex-navcards a:hover { background: var(--night-3); border-color: var(--cyan); }
+.ex-before-ic { background: var(--cyan); color: var(--cyan-ink); }
+#explore .ex-before a { color: var(--cyan); }
+
+/* inner pages (story, passport, about): the remaining paper cards and dark-on-light controls */
+body.ex :is(.cc-note, .cc-empty, .story-editorial, .story-box, .filters, .phrase, .coll-story, .story-sources li:target) { background: var(--night-2); border-color: var(--night-line); color: var(--night-text); }
+body.ex .cc-note > .cc-icon { background: var(--cyan); color: var(--cyan-ink); }
+body.ex .story-editorial { color: #C6D2DE; }
+body.ex .story-card .cc-save-mini { background: rgb(11 18 32 / .92); color: var(--night-text); }
+body.ex :is(.cc-chip input:checked + span, .cc-listen[aria-pressed="true"], .scene-hs-list button[aria-pressed="true"], .coll-group h3 .cc-count) { background: var(--cyan); border-color: var(--cyan); color: var(--cyan-ink); }
+body.ex .story-body .fn:hover { background: var(--cyan); color: var(--cyan-ink); }
+body.ex .cc-skip { background: var(--cyan); color: var(--cyan-ink); }
+body.ex .story-practice[data-bg] { --chapter-bg: var(--night-3); --ink: var(--night-text); --ink-2: #C6D2DE; --ink-line: rgb(230 238 246 / .4); --btn-bg: var(--cyan); --btn-fg: var(--cyan-ink); --btn-hover: #8FF3EA; --focus: var(--cyan); --focus-halo: var(--night); border: 2px solid var(--cyan); }
+body.ex :is(.story-body, .phrase-meaning) { color: #D6DEE8; }
+body.ex .story-body > section:first-child p:first-child::first-letter { color: var(--cyan); }
+body.ex .story-card p { color: #C6D2DE; }
+body.ex :is(.cc-chip input:hover + span, .cc-listen:hover, .scene-hs-list button:hover) { border-color: var(--cyan); color: var(--night-text); background: var(--night-3); }
+body.ex .scene-choice:hover:not(:disabled), body.ex .scene-choice.is-picked { background: var(--night-3); border-color: var(--cyan); }
+body.ex .scene-choice:hover:not(:disabled) .key { border-color: var(--cyan); color: var(--cyan); }
+@media print { :root, body.ex { --color-background: #fff; --color-text: #202124; --night-text: #202124; } body, body.ex :is(.story-body, .phrase-meaning) { background: #fff; color: #202124; } }

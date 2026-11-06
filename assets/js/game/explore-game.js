@@ -68,6 +68,7 @@
     var b = CC.$('gx-sound');
     b.setAttribute('aria-pressed', soundOn() ? 'true' : 'false');
     b.querySelector('span').textContent = soundOn() ? 'Sound on' : 'Sound off';
+    b.setAttribute('aria-label', soundOn() ? 'Sound on' : 'Sound off');
     if (!soundOn() && music) music.pause();
     else if (soundOn() && started) startMusic();
   }
@@ -93,8 +94,10 @@
   function updateGoal() {
     var o = currentObjective();
     CC.$('gx-goal-count').textContent = doneCount() + ' of ' + zone.objectives.length + ' moments';
-    CC.$('gx-goal-text').textContent = o ? o.text : 'All moments done — open your journal';
+    var next = o ? null : nextZone();
+    CC.$('gx-goal-text').textContent = o ? o.text : (next ? 'Place done — next: ' + next.title : 'Place done — choose another place');
     CC.$('gx-needle').style.opacity = o ? '1' : '0';
+    syncNext(!o, next);
     syncPeople();
     eng.markers = {};
     zone.objectives.forEach(function (ob) {
@@ -105,6 +108,25 @@
     eng.npcs.forEach(function (n) { if (!eng.markers[n.id] && n.props.fact && !state.facts[n.props.fact]) eng.markers[n.id] = 'look'; });
     CC.$('gx-journal-count').textContent = Object.keys(state.facts).length;
   }
+  /* ---------- place finished: the Map button blinks and points at the next place ---------- */
+  function nextZone() {
+    var all = (CC.store.get('explore', {}) || {}).zones || {};
+    var list = (CC.exploreZones || []).filter(function (z) { return z.country === zone.country; });
+    var i = list.indexOf(zone);
+    var after = list.slice(i + 1).concat(list.slice(0, Math.max(i, 0)));
+    return after.filter(function (z) { return !(all[z.id] && all[z.id].done); })[0] || null;
+  }
+  function syncNext(complete, next) {
+    var btn = CC.$('gx-map'), goal = CC.$('gx-goal');
+    btn.classList.toggle('is-next', complete);
+    goal.classList.toggle('is-complete', complete);
+    btn.querySelector('span').textContent = complete ? 'Next place' : 'Map';
+    btn.href = 'explore.html#' + encodeURIComponent(complete && next ? next.id : zone.id);
+    btn.setAttribute('aria-label', complete
+      ? 'You finished this place. Map of Hà Nội: ' + (next ? 'next place is ' + next.title : 'choose another place')
+      : 'Map of Hà Nội: choose another place');
+  }
+
   function tickCompass() {
     var o = currentObjective();
     var needle = CC.$('gx-needle');
@@ -488,6 +510,7 @@
     });
     CC.$('gx-journal').addEventListener('click', function () { journal(); });
     CC.$('gx-goto').addEventListener('click', goTo);
+    CC.$('gx-goal').addEventListener('click', function () { if (this.classList.contains('is-complete')) location.href = CC.$('gx-map').href; });
     CC.$('gx-help').addEventListener('click', help);
     CC.$('gx-sound').addEventListener('click', function () { CC.store.set('exploreSound', !soundOn()); syncSound(); });
     window.addEventListener('pagehide', savePos);
@@ -528,9 +551,10 @@
     CC.renderShell({ section: 'destinations', country: zone ? zone.country : 'vietnam', sub: 'practice' });
     var maps = zone ? (zone.maps || [zone.map]) : [];
     if (!zone || !CC.maps || maps.some(function (m) { return !CC.maps[m]; })) { CC.$('gx-frame').innerHTML = '<p class="gx-empty">This place isn’t ready yet.</p>'; return; }
-    document.title = 'Explore ' + zone.title + ' — CultureCompass';
-    CC.$('gx-title').textContent = 'Explore ' + zone.title;
-    CC.$('gx-crumb').textContent = zone.title;
+    document.title = zone.title + ' · Play Vietnam — CultureCompass';
+    CC.$('gx-title').textContent = 'Play: ' + zone.title;
+    CC.$('gx-map').href = 'explore.html#' + encodeURIComponent(zone.id);
+    CC.$('gx-map').setAttribute('aria-label', 'Map of Hà Nội: choose another place');
     CC.$('gx-frame').setAttribute('aria-label', 'Game: ' + zone.title + '. Press Tab to reach the buttons.');
     frame = CC.$('gx-frame'); dialog = CC.$('gx-dialog'); panel = CC.$('gx-panel');
     load();
@@ -539,7 +563,12 @@
     eng.on('zone', onZone);
     eng.on('door', onDoor);
     CC.explore = { engine: eng, map: function () { return mapId; } };   // handy in the browser console
-    startScreen();
+    /* the map of places is the start screen now: arriving here means "travel here", so the walk starts at once.
+       Browsers only allow music after a gesture on this page, so the first key or click starts it. */
+    var hud = document.querySelector('.gx-hud'); if (hud) hud.setAttribute('inert', '');
+    var wake = function () { if (started) startMusic(); frame.removeEventListener('keydown', wake); frame.removeEventListener('pointerdown', wake); };
+    frame.addEventListener('keydown', wake);
+    frame.addEventListener('pointerdown', wake);
     bind();
     syncSound();
     var startMap = (state.pos && CC.maps[state.pos.map]) ? state.pos.map : zone.map;
@@ -549,9 +578,11 @@
       eng.start();
       tickCompass();
       frame.classList.add('is-ready');
+      begin();
     });
     var stories = [];
     scenes().forEach(function (sc) { (sc.storyIds || []).forEach(function (s) { if (stories.indexOf(s) === -1) stories.push(s); }); });
+    CC.$('gx-read-lead').textContent = stories.length ? '. For this place:' : '.';
     CC.$('gx-read').innerHTML = stories.map(function (sid) {
       var st = CC.byId(CC.stories, sid);
       return st ? '<li><a href="' + storyHref(st) + '">' + esc(st.title) + '</a>' + (CC.reads.has(st.id) ? ' <span class="cc-meta">· read</span>' : '') + '</li>' : '';

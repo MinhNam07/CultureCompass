@@ -47,6 +47,12 @@ Ký hiệu: **[H]** Henry · **[G]** Gemini (Henry gửi prompt) · **[C]** Clau
 - [x] [C] `npm run zip` → `../CultureCompass-submission.zip` (bỏ footage gốc, raw, vendor, node_modules)
 - [ ] [H] Đóng zip nộp bài
 
+## Redesign 03/11 (Đêm Hà Nội)
+- [x] [C] Nav chính: Explore · Passport · About · icon Settings. Thanh của nước: Play | Read (bỏ Themes, Phrasebook; `phrases.html` chuyển về game)
+- [x] [C] `explore.html` = màn chọn map trong game (pin trên bản đồ pixel Hà Nội, danh sách moment, All places, chip Hội An/Đà Nẵng "soon"); vào place là chơi luôn, nút Map quay lại
+- [x] [C] Bảng màu Đêm Hà Nội trong `assets/css/night.css`; hộp thoại khung pixel + cyan; trang Read nền đêm, thêm "Places in the game"
+- [ ] [H] Chơi thử luồng mới trên Chrome + Safari, ghi lỗi bên dưới
+
 ## Sau 20/11
 - [ ] Chủ đề "Hà Nội xưa" (khoảng 1960–1980): dùng ảnh trong `raw/ha-noi-xua/`, cần nguồn riêng cho từng fact
 - [ ] Hội An, Đà Nẵng · chế độ tự tạo nhân vật · điều khiển cảm ứng trên điện thoại · chuẩn hóa cho nước khác

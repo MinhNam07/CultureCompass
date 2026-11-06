@@ -226,19 +226,19 @@
     var on = CC.collection.has(type, id);
     var name = opts.name || '';
     if (opts.mini) {
-      return '<button type="button" class="cc-save-mini" data-save-type="' + type + '" data-save-id="' + CC.esc(id) + '" aria-pressed="' + on + '" aria-label="Save ' + SAVE_NAMES[type] + (name ? ': ' + CC.esc(name) : '') + '" title="Save to My collection">' +
+      return '<button type="button" class="cc-save-mini" data-save-type="' + type + '" data-save-id="' + CC.esc(id) + '" aria-pressed="' + on + '" aria-label="Save ' + SAVE_NAMES[type] + (name ? ': ' + CC.esc(name) : '') + '" title="Save to your passport">' +
         CC.icon('bookmark', 'cc-icon-line') + CC.icon('bookmarkFill', 'cc-icon-fill') + '</button>';
     }
     return '<button type="button" class="cc-btn ' + (opts.cls || 'cc-btn-quiet') + ' cc-save" data-save-type="' + type + '" data-save-id="' + CC.esc(id) + '" aria-pressed="' + on + '">' +
       CC.icon('bookmark', 'cc-icon-line') + CC.icon('bookmarkFill', 'cc-icon-fill') +
-      '<span class="cc-save-label">' + (on ? 'Saved to My collection' : 'Save ' + SAVE_NAMES[type]) + '</span></button>';
+      '<span class="cc-save-label">' + (on ? 'Saved to your passport' : 'Save ' + SAVE_NAMES[type]) + '</span></button>';
   };
   function syncSaveButtons() {
     Array.prototype.forEach.call(document.querySelectorAll('[data-save-type]'), function (b) {
       var on = CC.collection.has(b.getAttribute('data-save-type'), b.getAttribute('data-save-id'));
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       var lab = b.querySelector('.cc-save-label');
-      if (lab) lab.textContent = on ? 'Saved to My collection' : 'Save ' + SAVE_NAMES[b.getAttribute('data-save-type')];
+      if (lab) lab.textContent = on ? 'Saved to your passport' : 'Save ' + SAVE_NAMES[b.getAttribute('data-save-type')];
     });
   }
   CC.syncSaveButtons = syncSaveButtons;
@@ -252,7 +252,7 @@
       b.classList.remove('is-popping'); void b.offsetWidth; b.classList.add('is-popping');
     }
     if (!r.ok) CC.toast('This browser isn’t letting us save, so it will be forgotten when you close the tab.', 'alert');
-    else CC.toast(r.saved ? 'Saved to <a href="collection.html">My collection</a>.' : 'Removed from My collection.', r.saved ? 'bookmarkFill' : 'bookmark', true);
+    else CC.toast(r.saved ? 'Saved to your <a href="collection.html">passport</a>.' : 'Removed from your passport.', r.saved ? 'bookmarkFill' : 'bookmark', true);
   });
 
   /* ---------- content helpers ---------- */
@@ -435,8 +435,8 @@
   CC.renderShell = function (opts) {
     opts = opts || {};
     var links = [
-      ['index.html#destinations', 'Destinations', 'destinations'],
-      ['collection.html', 'My collection', 'collection'],
+      ['index.html', 'Explore', 'destinations'],
+      ['collection.html', 'Passport', 'collection'],
       ['about.html', 'About', 'about']
     ];
     var nav = links.map(function (l) {
@@ -445,7 +445,7 @@
       var extra = l[2] === 'collection' ? ' <span class="cc-count" data-coll-count hidden></span>' : '';
       return '<li><a href="' + l[0] + '"' + (cur ? ' aria-current="page"' : '') + (sec ? ' class="is-section"' : '') + '>' + l[1] + extra + '</a></li>';
     }).join('') +
-      '<li><button type="button" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">' + CC.icon('sliders') + 'Settings</button></li>';
+      '<li><button type="button" class="cc-nav-icon" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings" aria-label="Settings" title="Settings">' + CC.icon('sliders') + '<span class="cc-nav-icon-label">Settings</span></button></li>';
 
     var header = document.getElementById('cc-header');
     if (header) {
@@ -476,21 +476,21 @@
       }
     }
 
-    /* country sub-navigation: the same four routes inside every destination */
+    /* country sub-navigation: two modes inside every destination, Play (the game) and Read (the guide).
+       Older keys still map: 'practice' is Play; 'overview', 'themes' and 'phrases' are Read. */
     var sub = document.getElementById('cc-subnav');
     if (sub && opts.country) {
       var c = CC.byId(CC.countries, opts.country) || { name: opts.country, href: '#' };
+      var mode = opts.sub === 'practice' ? 'practice' : 'overview';
       var items = [
-        ['vietnam.html#overview', 'Overview', 'overview'],
-        ['vietnam.html#themes', 'Themes', 'themes'],
-        ['explore.html', 'Explore', 'practice'],
-        ['phrases.html', 'Phrasebook', 'phrases']
+        ['explore.html', 'Play', 'practice'],
+        ['vietnam.html', 'Read', 'overview']
       ];
       sub.className = 'cc-subnav';
       sub.innerHTML = '<nav class="cc-wrap cc-subnav-in" aria-label="' + CC.esc(c.name) + '">' +
         '<a class="cc-subnav-name" href="' + CC.esc(c.href) + '">' + CC.esc(c.name) + '</a><span class="cc-subnav-sep" aria-hidden="true"></span>' +
         '<ul>' + items.map(function (it) {
-          return '<li><a href="' + it[0] + '"' + (opts.sub === it[2] ? ' aria-current="' + (it[2] === 'phrases' ? 'page' : 'true') + '"' : '') + '>' + it[1] + '</a></li>';
+          return '<li><a href="' + it[0] + '"' + (mode === it[2] ? ' aria-current="true"' : '') + '>' + it[1] + '</a></li>';
         }).join('') + '</ul></nav>';
     }
 
@@ -501,8 +501,8 @@
           '<div class="cc-footer-grid">' +
             '<div class="cc-footer-about"><p class="cc-footer-mark">' + CC.MARK + 'CultureCompass</p>' +
               '<p>Understand the place before you arrive. A student UX prototype: stories and practice are set in Hà Nội, and customs vary between regions, families and places.</p></div>' +
-            '<div><h2>Destinations</h2><ul><li><a href="vietnam.html">Vietnam</a></li><li><a href="vietnam.html#themes">Themes</a></li><li><a href="explore.html">Explore (game)</a></li><li><a href="phrases.html">Phrasebook</a></li></ul></div>' +
-            '<div><h2>Your trip</h2><ul><li><a href="collection.html">My collection</a></li><li><button type="button" class="cc-footer-btn" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">Sound, motion and text</button></li></ul></div>' +
+            '<div><h2>Explore</h2><ul><li><a href="index.html">The globe</a></li><li><a href="explore.html">Play Vietnam</a></li><li><a href="vietnam.html">Read about Vietnam</a></li></ul></div>' +
+            '<div><h2>Your trip</h2><ul><li><a href="collection.html">Passport</a></li><li><button type="button" class="cc-footer-btn" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">Sound, motion and text</button></li></ul></div>' +
             '<div><h2>About</h2><ul><li><a href="about.html">Method &amp; scope</a></li><li><a href="about.html#sources">Sources</a></li><li><a href="about.html#credits">Media credits</a></li><li><a href="about.html#access">Accessibility</a></li></ul></div>' +
           '</div>' +
           '<div class="cc-footer-last"><span>© 2026 CultureCompass · student prototype, not a commercial service</span><a href="#main">Back to top</a></div>' +
@@ -558,7 +558,7 @@
         CC.store.set('backupsSeen', (CC.store.get('backupsSeen', []) || []).concat(keys));
         CC.toast('Some saved data on this browser could not be read (' + keys.join(', ') + '). A copy was kept and that part started fresh.', 'alert');
       } else if (CC._migratedCount) {
-        CC.toast('Your ' + CC.plural(CC._migratedCount, 'saved card') + ' moved into <a href="collection.html">My collection</a>.', 'bookmarkFill', true);
+        CC.toast('Your ' + CC.plural(CC._migratedCount, 'saved card') + ' moved into your <a href="collection.html">passport</a>.', 'bookmarkFill', true);
       }
     }, 500);
   };

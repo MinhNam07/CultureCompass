@@ -9,14 +9,17 @@ window.CC.topics = [
     "icon": "greet",
     "status": "ready",
     "question": "How do people live, communicate and build relationships?",
-    "blurb": "Arriving at a home, crossing the street, asking before a photo and keeping calm in public, as covered by our Hà Nội sources.",
+    "blurb": "Arriving at a home, crossing the street, asking before a photo, the Old Quarter’s trade streets, tea on the pavement and weekends by the lake.",
     "storyIds": [
       "st-arrive-home",
       "st-hand",
       "st-photo-ask",
       "st-keep-cool",
       "st-family-words",
-      "st-market"
+      "st-market",
+      "st-old-quarter",
+      "st-pavement",
+      "st-hoan-kiem-days"
     ],
     "sceneIds": [
       "sc01",
@@ -43,12 +46,15 @@ window.CC.topics = [
     "icon": "bowl",
     "status": "ready",
     "question": "What do food and the table say about this place?",
-    "blurb": "A family dinner: shared dishes, a host who serves you, saying you are full and joining a toast.",
+    "blurb": "A family dinner: shared dishes, a host who serves you, saying you are full; then phở, bún chả and egg coffee.",
     "storyIds": [
       "st-shared-table",
       "st-host",
       "st-chop",
-      "st-street-stall"
+      "st-street-stall",
+      "st-pho",
+      "st-bun-cha",
+      "st-egg-coffee"
     ],
     "sceneIds": [
       "sc02",
@@ -71,9 +77,12 @@ window.CC.topics = [
     "icon": "stele",
     "status": "ready",
     "question": "Which memories and events help explain the present?",
-    "blurb": "One story so far: the stone stelae of the Temple of Literature, from the UNESCO record.",
+    "blurb": "Thăng Long as a capital since 1010, the Temple of Literature and its stelae, and the legend of the returned sword.",
     "storyIds": [
-      "st-stelae"
+      "st-stelae",
+      "st-van-mieu-university",
+      "st-sword-lake",
+      "st-thang-long"
     ],
     "sceneIds": [
       "sc03"
@@ -105,10 +114,15 @@ window.CC.topics = [
     "icon": "temple",
     "status": "ready",
     "question": "What do people remember, believe in and celebrate together?",
-    "blurb": "Visiting a place of worship, and a table habit linked to remembering the dead. Festivals such as Tết are not written yet.",
+    "blurb": "Family altars, pagodas and temples, paper offerings, Tết and the Mother Goddesses, plus what a temple asks of visitors.",
     "storyIds": [
       "st-temple-visit",
-      "st-chop"
+      "st-chop",
+      "st-family-altar",
+      "st-sacred-places",
+      "st-paper-offerings",
+      "st-tet",
+      "st-mother-goddess"
     ],
     "sceneIds": [
       "sc03"

@@ -117,7 +117,7 @@
       if (!items.length) {
         root.innerHTML = '<div class="cc-empty"><svg class="cc-empty-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/></svg>' +
           '<h2 class="h3">Nothing saved yet</h2><p>Use the bookmark on any story, phrase or reminder card to keep it here for your trip. You can print it all before you go.</p>' +
-          '<div class="scene-actions"><a class="cc-btn" href="vietnam.html#themes">Explore Vietnam’s themes ' + CC.arrow() + '</a><a class="cc-btn cc-btn-quiet" href="phrases.html">Open the phrasebook</a></div></div>';
+          '<div class="scene-actions"><a class="cc-btn" href="explore.html">Play Vietnam ' + CC.arrow() + '</a><a class="cc-btn cc-btn-quiet" href="vietnam.html">Read about Vietnam</a></div></div>';
         return;
       }
       var byCountry = {};
@@ -147,7 +147,7 @@
       var nextLi = all[all.indexOf(li) + 1] || all[all.indexOf(li) - 1];
       var nextKey = nextLi ? nextLi.getAttribute('data-key') : null;
       CC.collection.toggle(type, id);
-      CC.$('coll-msg').textContent = 'Removed from My collection.';
+      CC.$('coll-msg').textContent = 'Removed from your passport.';
       var finish = function () {
         draw();
         var target = nextKey && root.querySelector('.coll-item[data-key="' + nextKey + '"] [data-remove-type]');

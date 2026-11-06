@@ -300,7 +300,7 @@
           return '<li>' + esc(s.text) + (needsVerify(claimsOf(s.claimIds)) ? ' ' + CC.verifyTag() : '') + '</li>';
         }).join('') + '</ul></div>' +
         '<div class="summary-keep"><div class="scene-actions">' + CC.saveButton('reminder', sc.reminder.id, { cls: '' }) + '</div>' +
-          '<p class="cc-meta">Keep this reminder in My collection, in this browser.</p>' + reminderHtml(sc.reminder) +
+          '<p class="cc-meta">Keep this reminder in your passport, in this browser.</p>' + reminderHtml(sc.reminder) +
         '</div></div>' +
       '<div class="summary-footer"><div class="scene-actions">' +
         (next ? '<a class="cc-btn cc-btn-quiet" href="scene.html?id=' + next.id + '">Next scene: ' + esc(next.title) + '</a>' : '<a class="cc-btn cc-btn-quiet" href="vietnam.html#practice">All scenes</a>') +

@@ -15,9 +15,9 @@
       var sc = CC.byId(CC.scenarios, from.slice(6));
       if (sc) return { href: CC.sceneHref(sc.id), label: 'Back to Explore: ' + sc.title, topic: t };
     }
-    if (from === 'index') return { href: 'vietnam.html#stories', label: 'Back to every story', topic: t };
+    if (from === 'index') return { href: 'vietnam-classic.html', label: 'Back to every story', topic: t };
     if (from === 'overview') return { href: 'vietnam.html#overview', label: 'Back to Vietnam', topic: t };
-    if (from === 'collection') return { href: 'collection.html', label: 'Back to My collection', topic: t };
+    if (from === 'collection') return { href: 'collection.html', label: 'Back to your passport', topic: t };
     if (t) return { href: 'vietnam.html#' + t.id, label: 'Back to ' + t.label, topic: t };
     return { href: 'vietnam.html', label: 'Back to Vietnam', topic: null };
   }
@@ -157,7 +157,7 @@
       '<div class="cc-section-tight"><div class="cc-empty"><svg class="cc-empty-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5.5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6.5v13"/></svg>' +
       '<h1 class="h2" id="story-title" tabindex="-1">We couldn’t find that story</h1>' +
       '<p>' + (id ? 'There is no story called “' + esc(id) + '”. The link may be out of date.' : 'The link doesn’t say which story to open.') + '</p>' +
-      '<p><a class="cc-btn" href="vietnam.html#stories">See every story ' + CC.arrow() + '</a></p></div></div>';
+      '<p><a class="cc-btn" href="vietnam-classic.html">See every story ' + CC.arrow() + '</a></p></div></div>';
   }
 
   document.addEventListener('DOMContentLoaded', function () {

@@ -213,7 +213,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 .ex-partners-more a { text-decoration: underline !important; text-underline-offset: 3px; color: var(--text-secondary) !important; }
 
 /* ---------------- table of contents ---------------- */
-.ex-toc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; counter-reset: none; }
+.ex-toc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 980px; margin-inline: auto; counter-reset: none; }
 .ex-toc-tile { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .ex-toc-tile[data-bg="teal"] { --rib: var(--ch-teal); }
 .ex-toc-tile[data-bg="peach"] { --rib: var(--ch-peach); }
@@ -464,7 +464,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 
 /* ---------------- responsive ---------------- */
 @media (max-width: 1080px) {
-  .ex-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+  .ex-toc { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 16px; }
   .ex-navcards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ex-acc-item { flex-basis: 64px; }
   .ex-acc-item.is-open { flex-basis: 340px; }
@@ -540,3 +540,6 @@ html.cc-reduce-motion body.ex .ex-game-inner { transform: none !important; }
 html.cc-reduce-motion body.ex .ex-game.is-done .ex-game-face { visibility: hidden; }
 html.cc-reduce-motion body.ex .ex-game.is-done .ex-game-back { transform: none; }
 html.cc-reduce-motion body.ex .ex-ink { display: none; }
+
+/* chapter lead paragraph (added with the chapter 1–2 content) */
+.ex-ch-lead { max-width: 52ch; margin: 14px auto 0; font-size: 1.05rem; line-height: 1.65; opacity: .86; text-align: center; text-wrap: pretty; }

@@ -25,6 +25,8 @@ function Arrow({ back = false }: { back?: boolean }) {
 
 // When a country opens, the globe shrinks to the bottom centre and a V-shaped beam rises from
 // the country into the HUD above it. Only on wide screens: phones have no room for both.
+/* the globe opens facing South-East Asia with Vietnam just above centre, then auto-rotates from there */
+const START_VIEW = { lat: 10, lng: 108 };
 const FOCUS_TILT = 34;      // the focus sits this many degrees above the globe's centre
 const GLOBE_SCALE = 0.9;    // the globe rises as a horizon; its lower half fades out below the section edge
 const PIN_FROM_BOTTOM = 100;
@@ -234,7 +236,7 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
             <div className="destination-globe-stage" ref={stage} style={{ transform: stageMove }}>
             <GlobeBoundary>
               <Globe3D onBlankClick={selected ? closeCountry : undefined} markers={countries} selectedMarker={selected} reducedMotion={reducedMotion} className="destination-canvas"
-                focus={beamed ? hudFocus ?? selected : null} focusTilt={beamed ? FOCUS_TILT : 0} locked={beamed} config={{ bumpScale: .65, ambientIntensity: 1.6, pointLightIntensity: 1.1, frontLightIntensity: 3.2, autoRotateSpeed: hovered || selected || reducedMotion ? 0 : 0.3 }}
+                focus={beamed ? hudFocus ?? selected : null} focusTilt={beamed ? FOCUS_TILT : 0} locked={beamed} config={{ bumpScale: .65, ambientIntensity: 1.6, pointLightIntensity: 1.1, frontLightIntensity: 3.2, initialView: START_VIEW, autoRotateSpeed: hovered || selected || reducedMotion ? 0 : 0.3 }}
                 onMarkerHover={(marker) => preview(marker as CountryMarker | null)}
                 onMarkerClick={(marker) => chooseCountry(marker as CountryMarker)} />
             </GlobeBoundary>

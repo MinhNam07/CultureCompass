@@ -9,7 +9,7 @@
   var CC = window.CC;
   var esc = CC.esc;
   var COUNTRY = 'vietnam';
-  var PHOTOS = false;
+  var PHOTOS = true;
 
   /* ---------------- icons (same 24-grid, 1.75 stroke as core.js) ---------------- */
   var P = {
@@ -104,27 +104,28 @@
         '<ul class="ex-logos">' + names.map(function (s) {
           return '<li><div class="ex-logo">' + MOTIF.drum('ex-logo-mark') + '<span>' + esc(s.org || s.title) + '</span></div></li>';
         }).join('') + '</ul>' +
-        '<p class="ex-partners-more"><a href="about.html#sources">and ' + Math.max(0, src.length - names.length) + ' more sources</a> · logo frames are placeholders</p>' +
+        '<p class="ex-partners-more"><a href="about.html#sources">and ' + Math.max(0, src.length - names.length) + ' more sources</a></p>' +
       '</div></section>';
   };
 
+  var LEADS = {"everyday":"Hà Nội life spills onto the street: tea on the pavement, prices agreed at the market, a word for “you” chosen with care. These stories start at the door of a family home and end by the lake.","food":"Most meals here are shared, and many are eaten on a low stool by the road. Start with how a family table works, then try the city’s best-known bowls and cups.","beliefs":"A thousand years as a capital have left temples, stone stelae and legends all over the city, and most homes keep an altar of their own."};
   var CHAPTERS = [
     { anchor: 'everyday', topic: 'people', name: 'Everyday life', bg: 'teal', label: 'Photo · a lane in the Old Quarter', imageId: 'img-old-quarter' },
     { anchor: 'food', topic: 'food', name: 'Food & the table', bg: 'peach', label: 'Photo · a pavement phở gà stall', imageId: 'img-pho-ga' },
-    { anchor: 'beliefs', topic: 'beliefs', name: 'Beliefs & temples', bg: 'jade', label: 'Photo · Văn Miếu garden', imageId: 'img-garden' },
-    { anchor: 'history', topic: 'history', name: 'History & memory', bg: 'ember', label: 'Photo · the stone stelae', imageId: 'img-stelae' }
+    { anchor: 'beliefs', topic: 'beliefs', name: 'Temples, beliefs & history', bg: 'jade', label: 'Photo · Văn Miếu garden', imageId: 'img-garden',
+      q: 'What do people believe, remember and honour together?', vi: 'Tín ngưỡng & lịch sử' }
   ];
 
   R.toc = function () {
     return '<section class="ex-sec" id="contents" aria-labelledby="toc-title"><div class="ex-wrap">' +
-      head('Four ways into Vietnam', 'Pick a chapter, or keep scrolling and let the page carry you.', 'toc-title') +
+      head('Three ways into Vietnam', 'Pick a chapter, or keep scrolling and let the page carry you.', 'toc-title') +
       '<ol class="ex-toc">' + CHAPTERS.map(function (ch, i) {
         var t = topic(ch.topic) || {};
         return '<li class="ex-toc-tile ex-zoomable" data-bg="' + ch.bg + '">' +
           '<div class="ex-toc-pic">' + frame({ ratio: '4/5', label: ch.label, imageId: ch.imageId }) + MOTIF.ribbon() + '</div>' +
           '<p class="ex-num">' + (i + 1) + '<i></i></p>' +
           '<h3>' + esc(ch.name) + '</h3>' +
-          '<p>' + esc(t.question || '') + '</p>' +
+          '<p>' + esc(ch.q || t.question || '') + '</p>' +
           '<a class="ex-pill ex-ripple ex-jump" href="#' + ch.anchor + '">Explore<span class="visually-hidden"> ' + esc(ch.name) + '</span></a>' +
         '</li>';
       }).join('') + '</ol></div></section>';
@@ -146,8 +147,9 @@
     return '<header class="ex-ch-open">' +
       '<p class="ex-num">' + (i + 1) + '<i></i></p>' +
       '<h2 id="' + ch.anchor + '-title">' + esc(ch.name) + '</h2>' +
-      '<p class="ex-ch-q">' + esc(t.question || '') + '</p>' +
-      '<p class="ex-ch-vi" lang="vi">' + esc(t.vi || '') + '</p>' +
+      '<p class="ex-ch-q">' + esc(ch.q || t.question || '') + '</p>' +
+      '<p class="ex-ch-vi" lang="vi">' + esc(ch.vi || t.vi || '') + '</p>' +
+      (LEADS[ch.anchor] ? '<p class="ex-ch-lead">' + esc(LEADS[ch.anchor]) + '</p>' : '') +
       MOTIF.ribbon() +
     '</header>';
   };
@@ -157,13 +159,9 @@
     var items = [];
     var ctx = CC.byId((CC.byId(CC.countries, COUNTRY) || {}).contexts, 'street');
     if (ctx) items.push({ kind: 'Place', title: ctx.title, text: ctx.line, href: CC.sceneHref(ctx.sceneId), label: ctx.caption, imageId: ctx.imageId, vi: ctx.local });
-    t.storyIds.forEach(function (id) {
+    ['st-arrive-home', 'st-hand', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market'].forEach(function (id) {
       var st = story(id); if (!st) return;
       items.push({ kind: 'Story', title: st.title, text: st.dek, href: storyHref(st), label: 'Photo · ' + st.title, imageId: st.imageId });
-    });
-    t.sceneIds.forEach(function (id) {
-      var sc = scene(id); if (!sc) return;
-      items.push({ kind: 'Explore', title: sc.title, text: sc.goal, href: CC.sceneHref(sc.id), label: 'Illustration · ' + sc.title, kind2: 'scene' });
     });
     return '<section class="ex-sec ex-acc-sec" aria-labelledby="acc-title">' + MOTIF.band('ex-band-behind') +
       '<div class="ex-wrap">' + head('Moments on the street and at home', 'Hover or tab through. Each strip opens one moment you might meet in Hà Nội.', 'acc-title') +
@@ -188,39 +186,17 @@
       }).join('') + '</ul><span class="visually-hidden" id="chip-planned">This theme has no stories yet.</span></div></nav>';
   };
 
-  R.views = function () {
-    var places = [
-      ['The Old Quarter', 'img-old-quarter', 'st-oi'],
-      ['Hoàn Kiếm Lake', null, null],
-      ['Văn Miếu – Quốc Tử Giám', 'img-garden', 'st-temple-visit'],
-      ['Hàng Mã street', 'img-hangma', null],
-      ['A pavement food stall', 'img-pho-ga', 'st-shared-table'],
-      ['Long Biên Bridge', null, null],
-      ['West Lake', null, null]
-    ];
-    return '<section class="ex-sec" aria-labelledby="views-title"><div class="ex-wrap">' +
-      head('Look around Hà Nội', 'Round views of places our stories visit. 360° views are not built yet, so each one opens the nearest story.', 'views-title') +
-      '<div class="ex-rib" data-ribbon><ul class="ex-rib-track ex-views">' + places.map(function (p) {
-        var st = p[2] ? story(p[2]) : null;
-        var inner = frame({ round: true, label: '360°', kind: 'look', imageId: p[1] }) +
-          '<span class="ex-view-badge" aria-hidden="true">' + ic('look') + '</span>' +
-          '<span class="ex-view-k">Explore</span><span class="ex-view-name">' + esc(p[0]) + '</span>';
-        return '<li class="ex-view ex-zoomable">' + (st
-          ? '<a href="' + storyHref(st) + '">' + inner + '<span class="visually-hidden">: read “' + esc(st.title) + '”</span></a>'
-          : '<button type="button" data-soon="' + esc(p[0]) + '">' + inner + '<span class="visually-hidden"> (no story yet)</span></button>') + '</li>';
-      }).join('') + '</ul>' + arrowBtns() + '</div></div></section>';
-  };
 
   R.clusters = function () {
     var ctx = CC.byId((CC.byId(CC.countries, COUNTRY) || {}).contexts, 'table');
-    var sc = scene('sc02'), no = phrase('ph-no');
+    var no = phrase('ph-no');
     var tiles = [
       { area: 'a', eyebrow: 'Hà Nội', title: ctx.title, text: ctx.line, href: CC.sceneHref(ctx.sceneId), label: ctx.caption, imageId: ctx.imageId, vi: ctx.local },
       { area: 'b', eyebrow: 'Story', st: 'st-shared-table' },
       { area: 'c', eyebrow: 'Story', st: 'st-host' },
-      { area: 'd', eyebrow: 'Practise', title: sc.title, text: sc.goal, href: CC.sceneHref('sc02'), label: 'Illustration · family dinner scene', kind: 'scene' },
+      { area: 'd', eyebrow: 'Story', st: 'st-street-stall' },
       { area: 'e', eyebrow: 'Story', st: 'st-chop' },
-      { area: 'f', eyebrow: 'Phrase', title: no.vi, text: no.meaning, href: 'phrases.html', label: 'Graphic · phrase card', vi: true }
+      { area: 'f', eyebrow: 'Phrase', title: no.vi, text: no.meaning, href: 'explore.html', label: 'Graphic · phrase card', vi: true }
     ].map(function (x) {
       if (x.st) { var s = story(x.st); x.title = s.title; x.text = s.dek; x.href = storyHref(s); x.label = 'Photo · ' + s.title; x.imageId = s.imageId; }
       return x;
@@ -237,45 +213,7 @@
       '<p class="ex-center">' + pill('vietnam-classic.html#food', 'Explore food &amp; dining') + '</p></div></section>';
   };
 
-  R.cards = function () {
-    var list = (CC.stories || []).filter(function (s) { return s.country === COUNTRY || !s.country; });
-    return '<section class="ex-sec" id="stories" aria-labelledby="cards-title"><div class="ex-wrap">' +
-      head('Every story so far', CC.plural(list.length, 'short, sourced story', 'short, sourced stories') + ', each saying where it applies.', 'cards-title') +
-      '<div class="ex-rib" data-ribbon><ul class="ex-rib-track ex-cards">' + list.map(function (st) {
-        return '<li class="ex-card ex-zoomable">' +
-          '<a href="' + storyHref(st) + '" class="ex-card-link">' + frame({ ratio: '4/3', label: 'Photo · ' + st.place, imageId: st.imageId }) +
-            '<span class="ex-card-k">' + esc(topicOf(st)) + '</span>' +
-            '<span class="ex-card-title">' + esc(st.title) + '</span>' +
-            '<span class="ex-card-desc">' + esc(firstSentence(st.dek)) + '</span></a>' +
-          '<div class="ex-card-act">' + CC.saveButton('story', st.id, { mini: true, name: st.title }) +
-            '<button type="button" class="ex-share-mini ex-ripple" data-share="' + storyHref(st) + '" data-share-title="' + esc(st.title) + '" aria-label="Share “' + esc(st.title) + '”">' + ic('share') + '</button></div>' +
-        '</li>';
-      }).join('') + '</ul>' + arrowBtns() + '</div></div></section>';
-  };
 
-  R.stack = function () {
-    var zones = (CC.exploreZones || []).map(function (z) {
-      return { k: 'Explore · about ' + z.minutes + ' min', title: z.title, text: z.intro, href: 'explore.html?zone=' + z.id, label: 'Pixel-art place · ' + z.place };
-    });
-    var stories = ['st-oi', 'st-family-words', 'st-photo-ask'].map(story).filter(Boolean).map(function (st) {
-      return { k: 'Story', title: st.title, text: st.dek, href: storyHref(st), label: 'Photo · ' + st.title, imageId: st.imageId };
-    });
-    /* places first in the middle: interleave so the stack reads story · place · story … */
-    var order = [stories[0], zones[0], stories[1], zones[1], zones[2], stories[2], zones[3], zones[4]].filter(Boolean);
-    return '<section class="ex-sec ex-stack-sec" id="practise" aria-labelledby="stack-title"><div class="ex-wrap">' +
-      head('Walk through Hà Nội', 'A small pixel-art game: walk around five places, choose what to do in everyday moments, and see what happens and why. Stories to read before you go sit in between. Hover, swipe or use the arrow keys.', 'stack-title') +
-      '<div class="ex-stack" data-stack role="group" aria-roledescription="carousel" aria-label="Places and stories">' +
-        '<ul class="ex-stack-list">' + order.map(function (x, i) {
-          return '<li class="ex-stack-card ex-zoomable" data-i="' + i + '"><a href="' + esc(x.href) + '">' +
-            frame({ label: x.label, imageId: x.imageId }) + '<div class="ex-scrim"></div>' +
-            '<span class="ex-stack-text"><span class="ex-eyebrow">' + esc(x.k) + '</span><span class="ex-stack-title">' + esc(x.title) + '</span>' +
-            '<span class="ex-stack-desc">' + esc(firstSentence(x.text)) + '</span></span></a></li>';
-        }).join('') + '</ul>' +
-        '<div class="ex-stack-ctrl"><button type="button" class="ex-arrow" data-stack-dir="-1" aria-label="Previous">' + ic('arrowLeft') + '</button>' +
-          '<span class="ex-stack-count" aria-live="polite"></span>' +
-          '<button type="button" class="ex-arrow" data-stack-dir="1" aria-label="Next">' + ic('arrowRight') + '</button></div>' +
-      '</div></div></section>';
-  };
 
   R.inline = function () {
     var pins = [
@@ -285,6 +223,8 @@
       { x: 50, y: 32, name: 'Great Success courtyard', vi: 'Đại Thành' },
       { x: 50, y: 14, name: 'National Academy', vi: 'Thái Học' }
     ];
+    var STOPS = [{"text":"The walk starts at a two-storey gate with three arches and the words Văn Miếu Môn above the middle one. Stone dragons guard it: Lê-period ones outside, Nguyễn-period ones inside. Straight ahead, Đại Trung gate leads on, with two small side gates named Thành Đức (“becoming virtuous”) and Đạt Tài (“reaching talent”).","imageId":"img-vm-gate"},{"text":"Built in 1805, this little two-storey pavilion has eight roofs and a round window on each side whose spokes stand for the rays of Khuê, the star of literature. Scholars’ best poems were once read aloud here. Today it is the symbol of Hà Nội.","imageId":"img-vm-khuevan"},{"text":"A square pond sits at the centre of the third courtyard. On either side stand the 82 stone stelae, each on a stone turtle, erected between 1484 and 1780 with the names and home villages of the doctoral laureates of 82 examinations. The site asks visitors not to touch them.","imageId":"img-vm-well"},{"text":"Through Đại Thành gate is a wide brick courtyard. Its side halls once held tablets for Confucius’s 72 disciples and Vietnamese scholars; at the end are the Đại Bái hall and the sanctuary of Confucius. A bronze bell cast in 1768 hangs on the left, a stone chime on the right. This is a place of worship, so keep your voice down.","imageId":"img-vm-daithanh"},{"text":"The last courtyard stands on the site of the old academy. It became a temple when the Nguyễn moved the school to Huế, burned in 1946–1947, and was rebuilt as Thái Học house in 2000. Upstairs are altars to the three kings who built and grew the school, Lý Thánh Tông, Lý Nhân Tông and Lê Thánh Tông; downstairs honours the teacher Chu Văn An.","imageId":"img-vm-thaihoc"}];
+    pins.forEach(function (p, i) { p.text = STOPS[i].text; });
     return '<section class="ex-sec" aria-labelledby="inl-title"><div class="ex-wrap">' +
       head('Walk through Văn Miếu', 'Five courtyards from the gate to the academy. Choose a number to read about that stop.', 'inl-title') +
       '<div class="ex-inline" data-inline>' +
@@ -296,15 +236,17 @@
         '<ol class="ex-inline-list">' + pins.map(function (p, i) {
           return '<li class="' + (i === 0 ? 'is-on' : '') + '" data-pin-item="' + i + '">' +
             '<button type="button" data-pin="' + i + '" aria-expanded="' + (i === 0) + '" aria-controls="pin-body-' + i + '"><span class="ex-pin-n">' + (i + 1) + '</span><span><b>' + esc(p.name) + '</b> <i lang="vi">' + esc(p.vi) + '</i></span></button>' +
-            '<div class="ex-pin-body" id="pin-body-' + i + '"><p>A short paragraph about this stop will sit here, written from the Văn Miếu – Quốc Tử Giám Centre source: what visitors see and what it asks of them.</p>' + ph() + '</div></li>';
+            '<div class="ex-pin-body" id="pin-body-' + i + '"><p>' + esc(p.text) + '</p><p class="ex-pin-src"><a href="story.html?id=st-van-mieu-university&amp;from=overview">Sources and more on Văn Miếu</a></p></div></li>';
         }).join('') + '</ol>' +
       '</div></div></section>';
   };
 
-  R.large = function () {
-    var ids = (topic('beliefs') || {}).storyIds || [];
-    return '<section class="ex-sec" aria-labelledby="large-title"><div class="ex-wrap">' +
-      head('Read before you visit', 'What a temple or heritage site asks of visitors, and a table habit linked to remembering the dead.', 'large-title') +
+  R.large = function (s) {
+    s = s || {};
+    var ids = s.ids || (topic('beliefs') || {}).storyIds || [];
+    var hid = s.id || 'large-title';
+    return '<section class="ex-sec" aria-labelledby="' + hid + '"><div class="ex-wrap">' +
+      head(s.title || 'Read before you visit', s.sub || '', hid) +
       '<ul class="ex-large">' + ids.map(story).filter(Boolean).map(function (st) {
         return '<li class="ex-large-card ex-zoomable"><a href="' + storyHref(st) + '">' + frame({ ratio: '16/11', label: 'Photo · ' + st.place, imageId: st.imageId }) + '<div class="ex-scrim"></div>' +
           '<span class="ex-large-text"><span class="ex-eyebrow">' + esc(st.place.split(',')[0]) + '</span><span class="ex-large-title">' + esc(st.title) + '</span><span class="ex-large-desc">' + esc(st.dek) + '</span>' +
@@ -315,18 +257,18 @@
   R.quote = function () {
     return '<section class="ex-sec ex-quote-sec" aria-label="Quotation">' + MOTIF.drum('ex-quote-drum') +
       '<div class="ex-wrap"><figure class="ex-quote">' +
-        '<blockquote><p>A line from one of our cited sources will sit here, set large, so the chapter opens with a voice rather than a summary.</p></blockquote>' +
-        '<figcaption>Author, source title · ' + ph() + '</figcaption>' +
+        '<blockquote><p lang="vi">Hiền tài là nguyên khí của quốc gia.</p><p>People of talent and virtue are the life-breath of the nation.</p></blockquote>' +
+        '<figcaption>Thân Nhân Trung, inscription for the examination of 1442, carved on the first doctoral stele at Văn Miếu in 1484. Translation ours.</figcaption>' +
       '</figure></div></section>';
   };
 
   R.game = function () {
-    var a = { name: 'The Temple of Literature is founded', year: '1070', label: 'Photo · Văn Miếu gate' };
-    var b = { name: 'The first doctoral stelae are carved', year: '1484', label: 'Photo · a stele on its tortoise' };
+    var a = { name: 'The Temple of Literature is founded', year: '1070', label: 'Photo · Văn Miếu gate', imageId: 'img-vm-gate' };
+    var b = { name: 'The first doctoral stelae are carved', year: '1484', label: 'Photo · a stele on its tortoise', imageId: 'img-stelae' };
     function card(x, which) {
       return '<li><button type="button" class="ex-game-card ex-zoomable" data-game="' + which + '" aria-pressed="false">' +
         '<span class="ex-game-inner">' +
-          '<span class="ex-game-face">' + frame({ ratio: '4/5', label: x.label }) + '<div class="ex-scrim"></div><span class="ex-game-name">' + esc(x.name) + '</span></span>' +
+          '<span class="ex-game-face">' + frame({ ratio: '4/5', label: x.label, imageId: x.imageId }) + '<div class="ex-scrim"></div><span class="ex-game-name">' + esc(x.name) + '</span></span>' +
           '<span class="ex-game-back"><span class="ex-game-year">' + x.year + '</span><span class="ex-game-name">' + esc(x.name) + '</span></span>' +
         '</span></button></li>';
     }
@@ -335,7 +277,7 @@
       '<div class="ex-game" data-game-wrap><ul>' + card(a, 'a') + '<li class="ex-game-or" aria-hidden="true">or</li>' + card(b, 'b') + '</ul>' +
         '<p class="ex-game-msg" role="status" aria-live="polite"></p>' +
         '<p class="ex-center"><button type="button" class="ex-pill ex-ripple" data-game-reset hidden>' + ic('flip') + ' Play again</button></p>' +
-        '<p class="ex-center ex-game-note">' + ph() + ' Dates to be checked against the UNESCO stelae record before this ships.</p>' +
+        '<p class="ex-center ex-game-note">Dates from Tuổi Trẻ and the UNESCO Memory of the World record. <a href="story.html?id=st-stelae&amp;from=overview">Read about the stelae</a></p>' +
       '</div></div></section>';
   };
 
@@ -353,14 +295,35 @@
       '<p class="ex-center">' + pill('phrases.html', 'Open the phrasebook') + '</p></div></section>';
   };
 
+  /* the five places of the game, with the player's progress in each; every card opens the game on that place */
+  R.places = function () {
+    var all = ((CC.store.get('explore', {}) || {}).zones) || {};
+    var zones = (CC.exploreZones || []).filter(function (z) { return z.country === COUNTRY; });
+    function status(z) {
+      var s = all[z.id], n = (z.objectives || []).length;
+      if (!s) return { label: 'Not started', cls: '' };
+      var k = (z.objectives || []).filter(function (o) { var st = s.steps && (s.steps[o.step] || s.steps[(z.sceneId || '') + ':' + o.step]); return st && st.choice; }).length;
+      if (s.done || (n && k >= n)) return { label: 'Stamp collected', cls: ' is-done' };
+      return { label: k ? k + ' of ' + n + ' moments' : 'Started', cls: ' is-going' };
+    }
+    return '<section class="ex-sec ex-places-sec" id="places" aria-labelledby="places-title" tabindex="-1"><div class="ex-wrap">' +
+      head('Places in the game', 'Each place is a short episode of three to six moments. Play one when you have five minutes.', 'places-title') +
+      '<ul class="ex-places">' + zones.map(function (z) {
+        var st = status(z);
+        return '<li class="ex-place' + st.cls + '"><a href="explore.html#' + esc(z.id) + '">' +
+          '<span class="ex-place-stamp" aria-hidden="true">' + esc(z.stamp || z.title) + '</span>' +
+          '<span class="ex-place-txt"><span class="ex-place-title">' + esc(z.title) + '</span>' +
+          '<span class="ex-place-meta">About ' + z.minutes + ' min · ' + (z.objectives || []).length + ' moments · <b>' + st.label + '</b></span></span>' +
+          '<span class="ex-place-go">Play' + ic('arrowRight') + '</span></a></li>';
+      }).join('') + '</ul></div></section>';
+  };
+
   R.nav = function () {
     var links = [
-      ['phrases.html', 'Phrasebook', 'Every phrase, by situation, with its meaning and who to use it with.', 'phrase'],
-      ['explore.html', 'Explore Hà Nội', 'Walk through five places in a small pixel-art game. No score, only what happens and why.', 'scene'],
-      ['collection.html', 'My collection', 'Stories, phrases and reminder cards you have saved, ready to print.', 'bookmark'],
+      ['explore.html', 'Play Hà Nội', 'Walk through five places in a small pixel-art game and collect a passport stamp in each.', 'scene'],
+      ['collection.html', 'Your passport', 'Stamps, facts, phrases and stories you have kept, ready to print.', 'bookmark'],
       ['about.html', 'Method & sources', 'How we write, what we leave out, and every source we cite.', 'source'],
-      ['index.html#destinations', 'Other destinations', 'Turn the globe. Vietnam is the only one with sourced stories so far.', 'globe'],
-      ['vietnam-classic.html', 'Theme compass', 'Turn the compass to one of six themes and see every story in it.', 'compass']
+      ['index.html', 'Other destinations', 'Turn the globe. Vietnam is the only one with sourced stories so far.', 'globe']
     ];
     return '<section class="ex-sec ex-nav-sec" aria-labelledby="nav-title"><div class="ex-wrap">' + head('Keep exploring', null, 'nav-title') +
       '<ul class="ex-navcards">' + links.map(function (l) {
@@ -390,14 +353,22 @@
     { type: 'partners' },
     { type: 'toc' },
     { type: 'banner' },
-    { type: 'chapter', ch: 0, modules: [{ type: 'accordion' }, { type: 'chips', title: 'Every theme in Vietnam', label: 'All themes' }] },
-    { type: 'views' },
-    { type: 'chapter', ch: 1, modules: [{ type: 'clusters' }] },
-    { type: 'cards' },
-    { type: 'stack' },
-    { type: 'chapter', ch: 2, modules: [{ type: 'inline' }, { type: 'large' }] },
-    { type: 'chapter', ch: 3, modules: [{ type: 'quote' }, { type: 'game' }] },
-    { type: 'tiles' },
+    { type: 'chapter', ch: 0, modules: [
+      { type: 'accordion' },
+      { type: 'large', id: 'oq-title', title: 'Around the Old Quarter', sub: 'Trade streets, tea on the pavement, and the lake at dawn and at the weekend.', ids: ['st-old-quarter', 'st-pavement', 'st-hoan-kiem-days'] }
+    ] },
+    { type: 'chapter', ch: 1, modules: [
+      { type: 'clusters' },
+      { type: 'large', id: 'eat-title', title: 'What Hà Nội eats and drinks', sub: 'Three dishes the city is known for, and how to order at a pavement stall.', ids: ['st-pho', 'st-bun-cha', 'st-egg-coffee', 'st-street-stall'] }
+    ] },
+    { type: 'chapter', ch: 2, modules: [
+      { type: 'quote' },
+      { type: 'inline' },
+      { type: 'large', id: 'past-title', title: 'A thousand years in Hà Nội', sub: 'A capital since 1010, a university since 1076, and a lake named after a legend.', ids: ['st-thang-long', 'st-van-mieu-university', 'st-stelae', 'st-sword-lake'] },
+      { type: 'game' },
+      { type: 'large', id: 'belief-title', title: 'Altars, temples and festivals', sub: 'What you will see in homes, on Hàng Mã and at the pagoda, and what a temple asks of visitors.', ids: ['st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] }
+    ] },
+    { type: 'places' },
     { type: 'nav' },
     { type: 'before' }
   ];
