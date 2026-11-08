@@ -134,7 +134,7 @@ Identity comes from two places only: the publication itself (paper, type, rules)
 |---|---|---|
 | `background` | `#F4EFE5` | Paper. Page ground, storytelling sections, white space. The largest area. |
 | `surface` | `#FFFCF7` | Ivory. Reading boxes, open panels, drawers, cards, menus. Separated from paper by a 1px line, not by colour alone. |
-| `primary` | `#762F3B` | Wine-red ink. Logo, primary buttons, links, selected states, the compass needle and selection line. Never a large fill. |
+| `primary` | `#762F3B` | Wine-red ink. Primary buttons, links, selected states, the compass needle and selection line. Never a large fill. |
 | `text` | `#302720` | Dark wood. Headings, body, menus. Also the hover fill of primary buttons. |
 | `text-secondary` | `#80634D` | Earth brown. Metadata, captions, places, dates, secondary labels, control borders. Never made lighter with opacity. |
 | `accent` | `#B28A45` | Brass. Chapter rules, the compass ring, the reminder-card border, decorative icons. Never text, never a CTA, never the only focus signal. |
@@ -336,3 +336,14 @@ Measured contrast (October 2026): every chapter heading, question and section su
 - Mixed-font rows on phones: a serif row title above a sans standfirst is two roles, not a headline that switches face mid-line.
 
 `lint.mjs` is clean. The neutral scrims under text on pictures and the HUD frame carry `taste-skill-ignore` comments.
+
+## Logo (8 November 2026)
+
+**The mark is "Orbit Rose".** A four-point compass star (north point cyan, the others navy with a cyan outline), a wireframe globe in the centre, a thin white orbit ring that passes in front of the star at the lower right and behind it at the top, and a small cyan rocket with an amber flame at the end of the orbit. Drawn by Gemini; it is a picture, not a coloured icon, so it no longer follows `currentColor` or the page's primary ink.
+
+- Files live in `assets/img/brand/`: `cc-logo-128.png` and `cc-logo-256.png` (header and footer, 1x/2x, transparent), `cc-logo-1024.png` (master), `favicon.ico`, `favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png` (simplified: star and globe only, no orbit or rocket), `cc-lockup-dark.png` (mark plus wordmark on night, for slides and social only), `cc-logo-pixel.png` (pixel version for the Explore game).
+- `CC.MARK` in `core.js` renders the mark in the header (40px, 34px under 360px) and the footer (44px). The wordmark beside it stays live text in the page's own type; never use the lockup image in the site header.
+- Every page links the favicon set in its `<head>`. A new page copies those three `<link>` lines.
+- Over photographs the header adds a soft shadow under the mark instead of recolouring it.
+- Do not recolour, outline or rotate the mark at rest (the header's hover turn is the only motion). Do not put it on mid-tone backgrounds where the navy star disappears; night and cream both work.
+

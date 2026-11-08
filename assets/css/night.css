@@ -63,7 +63,6 @@ a:hover { color: #9EEEF7; }
 
 /* shell */
 .cc-header, body.ex .cc-header { background: color-mix(in srgb, var(--night) 94%, transparent); border-bottom: 1px solid var(--night-line); }
-.cc-brand svg { color: var(--cyan); }
 .cc-nav a, .cc-nav button { color: var(--night-muted); }
 .cc-nav a:hover { color: var(--night-text); }
 .cc-nav a[aria-current="page"], .cc-nav a.is-section { color: var(--night-text); }

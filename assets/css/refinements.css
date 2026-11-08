@@ -58,7 +58,6 @@
 body[data-page="home"] { background-color:#000; }
 :is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) { background:rgba(0,0,0,.6); -webkit-backdrop-filter:blur(18px) saturate(1.15); backdrop-filter:blur(18px) saturate(1.15); border-bottom-color:#ffffff26; --color-text:#FFFCF7; --color-primary:#FFFCF7; --line:#ffffff26; --focus:#FFFCF7; --focus-halo:#000; }
 :is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-brand,
-:is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-brand svg,
 :is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-nav a,
 :is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-nav button,
 :is(body[data-page="home"] .cc-header, .cc-header.is-over-destinations) .cc-menu-btn { color:#FFFCF7; }
@@ -120,7 +119,6 @@ body[data-page="home"] .cc-footer {
 }
 body[data-page="home"] .cc-footer a:hover,
 body[data-page="home"] .cc-footer-btn:hover { color: #FFFCF7; }
-body[data-page="home"] .cc-footer-mark svg { color: #B28A45; }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   body[data-page="home"] .cc-header { background:rgba(0,0,0,.88); }
@@ -130,3 +128,17 @@ body[data-page="home"] .cc-footer-mark svg { color: #B28A45; }
 }
 .cc-thumb-pixel { image-rendering: pixelated; object-fit: cover; }
 .scene-pic img.cc-thumb-pixel { width: 100%; height: 100%; display: block; }
+
+/* ---- Home: the rocket from the logo (assets/js/rocket.js) ---- */
+.has-rocket .cc-brand { position: relative; isolation: isolate; }
+.has-rocket .cc-brand .cc-mark { position: relative; z-index: 1; }
+.has-rocket .cc-brand:hover .cc-mark { transform: none; }
+.cc-mark-rocket { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; line-height: 0; transform-origin: 50% 50%; }
+.cc-mark-rocket.is-behind { z-index: 0; }
+.cc-mark-rocket img { display: block; width: 100%; height: auto; }
+.cc-rocket { position: fixed; left: 0; top: 0; z-index: 39; pointer-events: none; transform-origin: 50% 50%; will-change: transform, opacity; }
+.cc-rocket.is-over-header { z-index: 41; }
+.cc-rocket.is-hidden { visibility: hidden; }
+.cc-rocket.is-away { opacity: 0 !important; transition: opacity .3s ease; }
+.cc-rocket img { display: block; width: 100%; height: 100%; filter: drop-shadow(0 10px 22px rgba(0, 0, 0, .45)); }
+@media print { .cc-rocket, .cc-mark-rocket { display: none !important; } }

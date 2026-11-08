@@ -471,10 +471,12 @@
   function reduce() { return CC.motion.reduce(); }
   function each(sel, fn, root) { Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn); }
 
-  /* entrances: heading, text, picture rise in turn as their section arrives. Content is never hidden without script,
+  /* entrances: headings rise as their section arrives. Content is never hidden without script,
      and with reduced motion nothing moves (read.css keeps the hidden start inside prefers-reduced-motion: no-preference). */
   function initRise() {
-    var els = document.querySelectorAll('.rd-rise');
+    /* only headings rise; text, pictures and lists are simply there (24 reveals on one page read as noise) */
+    each('.rd-rise', function (e) { if (!e.matches('.rd-head, h2.rd-rise, .rd-start-txt')) e.classList.add('is-in'); });
+    var els = document.querySelectorAll('.rd-rise:not(.is-in)');
     if (reduce() || !('IntersectionObserver' in window)) { each('.rd-rise', function (e) { e.classList.add('is-in'); }); return; }
     document.documentElement.classList.add('rd-motion');
     var io = new IntersectionObserver(function (es) {

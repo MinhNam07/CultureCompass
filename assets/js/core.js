@@ -57,7 +57,7 @@
     return '<svg class="cc-icon' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + (P[name] || '') + '</svg>';
   };
   CC.arrow = function (dir) { return CC.icon(dir === 'left' ? 'arrowLeft' : dir === 'down' ? 'arrowDown' : 'arrowRight', 'cc-arrow'); };
-  CC.MARK = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="13.5"/><circle cx="16" cy="16" r="9.5" stroke-dasharray="1.4 2.6"/><path d="M16 5.5l3 10.5-3 10.5-3-10.5z" fill="currentColor" stroke="none" opacity=".25"/><path d="M16 5.5l3 10.5h-6z" fill="currentColor" stroke="none"/></svg>';
+  CC.MARK = '<img class="cc-mark" src="assets/img/brand/cc-logo-128.png" srcset="assets/img/brand/cc-logo-128.png 1x, assets/img/brand/cc-logo-256.png 2x" width="40" height="40" alt="" decoding="async">';
 
   /* ---------- motion ---------- */
   CC.motion = {

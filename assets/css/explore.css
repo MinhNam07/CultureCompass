@@ -21,10 +21,10 @@ body.ex {
   --radius-pill: 56px;
   --radius-lg: 16px;
   /* motion */
-  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out-soft: cubic-bezier(0.39, 0.575, 0.565, 1);
-  --ease-spring-ui: cubic-bezier(0.24, 1, 0.32, 1);
+  /* easing comes from cc.css; these names stay so the rules below read as before */
+  --ease-standard: var(--ease-in-out);
+  --ease-out-soft: var(--ease-out);
+  --ease-spring-ui: var(--ease-out);
   --dur-fast: 150ms;
   --dur-ui: 300ms;
   --dur-move: 500ms;

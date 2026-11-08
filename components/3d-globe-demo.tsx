@@ -118,6 +118,32 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
   const [closing, setClosing] = useState(false);
   const closeTimer = useRef(0);
   const blankPointer = useRef<{ x: number; y: number } | null>(null);
+  const pointer = useRef<Point | null>(null);
+
+  // The home page's rocket lives outside this iframe: tell it where the globe is (iframe px), where the
+  // country text starts, which flag the pointer is on, and whether a country is open (the rocket steps aside).
+  useEffect(() => {
+    if (!embedded) return;
+    const root = section.current;
+    if (!root) return;
+    const send = () => {
+      const canvas = root.querySelector<HTMLElement>(".destination-canvas");
+      const text = root.querySelector<HTMLElement>(".destination-invitation");
+      const c = canvas?.getBoundingClientRect();
+      const t = text?.getBoundingClientRect();
+      tellParent({
+        type: "culturecompass-rocket",
+        globe: c && c.width > 0 && c.height > 0 ? { x: c.left + c.width / 2 + window.scrollX, y: c.top + c.height / 2 + window.scrollY, r: globeFocusGeometry(0).radius * c.height } : null,
+        textLeft: t && t.width > 0 ? t.left + window.scrollX : null,
+        hover: hovered && pointer.current ? pointer.current : null,
+        hud: !!selected,
+      });
+    };
+    send();
+    const ro = new ResizeObserver(send);
+    ro.observe(root);
+    return () => ro.disconnect();
+  }, [embedded, selected, hovered]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -207,7 +233,7 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
   }
 
   return (
-    <section ref={section} style={{ "--hud-space": `${HUD_SPACE}px` } as CSSProperties} className={`destination-experience ${beamed ? "is-beamed" : ""} ${closing ? "is-closing" : ""} ${selected ? "has-selection" : ""} ${globeExpanded ? "is-globe-expanded" : ""} ${selected ? "has-hud" : ""}`} onPointerDown={(event) => { blankPointer.current = { x: event.clientX, y: event.clientY }; }} onClick={(event) => {
+    <section ref={section} style={{ "--hud-space": `${HUD_SPACE}px` } as CSSProperties} className={`destination-experience ${beamed ? "is-beamed" : ""} ${closing ? "is-closing" : ""} ${selected ? "has-selection" : ""} ${globeExpanded ? "is-globe-expanded" : ""} ${selected ? "has-hud" : ""}`} onPointerDown={(event) => { blankPointer.current = { x: event.clientX, y: event.clientY }; }} onPointerMove={(event) => { pointer.current = { x: event.clientX, y: event.clientY }; }} onClick={(event) => {
       const start = blankPointer.current;
       blankPointer.current = null;
       if (!selected || !start || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 5) return;
