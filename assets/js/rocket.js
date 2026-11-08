@@ -15,7 +15,7 @@
    site's setting) there is no separate rocket and the logo stays whole. Transforms and opacity only, one
    requestAnimationFrame loop that stops when nothing moves; layout is read in measure(), never per frame. The
    globe lives in an iframe, which reports where the globe is (components/3d-globe-demo.tsx, message
-   "culturecompass-rocket"). Plan: plans/002-rocket-swoop.md */
+   "culturecompass-rocket"). Plans: plans/002-rocket-swoop.md (flight), plans/015-new-ship.md (ship art). */
 (function () {
   'use strict';
   var CC = window.CC;
@@ -43,14 +43,21 @@
     follow: { response: 0.15, damping: 0.8 },          // spring on position (seconds, damping ratio)
     turn: { response: 0.2, damping: 0.85 },            // spring on the nose
     hover: { amp: 0.012, tilt: 2, period: 3.2 },       // parked: bob (diameters), sway (deg), seconds
+    shadow: 0.03,       // shadow drop below the rocket, in box sides; always straight down on screen
+    flame: { min: 0.45, max: 1.0, full: 1.2, flicker: 0.05 },   // flame length (share of its picture) at rest / flat out, speed for flat out (viewport heights per s), flicker share
     phone: 760
   };
 
   /* measured once from assets/img/brand/cc-logo-1024.png (the ring is an ellipse; t = 0 is its upper-right end) */
-  var LOGO = { size: 1024, cx: 511.17, cy: 509.62, a: 478.78, b: 136.62, ux: 0.78853222, uy: -0.61499345, t0: -0.066, rocketLen: 137.9 };
-  /* assets/img/brand/cc-rocket.png (Gemini, white and red, cleaned 8/11): 1024px square, nose to the north-east,
-     rocket centred; len = nose-to-flame length in picture px, width = upright width / length */
-  var PIC = { src: 'assets/img/brand/cc-rocket.png', side: 1024, len: 1316.6, width: 0.481, nose: 45 };
+  var LOGO = { size: 1024, cx: 511.17, cy: 509.62, a: 478.78, b: 136.62, ux: 0.78853222, uy: -0.61499345, t0: -0.066, rocketLen: 137.9, head: 45 };   // head: the logo's own rocket points north-east
+  /* the ship (Gemini, 08/11; plans/015-new-ship.md): drawn nose up, cropped tight, 956 x 2464 at full size.
+     It sits in a square box as tall as the picture, centred, so the box turns about the middle of the ship.
+     side = box side in picture px, len = nose-to-tail length, width = width / length, nose = heading of the picture */
+  var PIC = { src: 'assets/img/brand/ship-rocket-900.webp', side: 2464, len: 2464, width: 956 / 2464, nose: 0 };
+  var PIC_SMALL = 'assets/img/brand/ship-rocket-256.webp';   // the logo's rocket is ~5px long; a small source keeps it from shimmering
+  /* the flame is its own picture (753 x 2323), tucked into the nozzle behind the hull. Placement in shares of the
+     ship picture: left 18%, width 64.6%, top 95.4%. It stretches from its top edge (the nozzle). */
+  var FLAME = { src: 'assets/img/brand/ship-flame-900.webp', left: 0.18, width: 0.646, top: 0.954, aspect: 2323 / 753 };
   var LOGO_NO_ROCKET = 'assets/img/brand/cc-logo-no-rocket-128.png';
   var LOGO_NO_ROCKET_2X = 'assets/img/brand/cc-logo-no-rocket-256.png';
   var FLY_BASE = 512;      // the flying rocket's box, scaled to size
@@ -98,7 +105,7 @@
   }
   function logoState() {
     var p = orbitPoint(orbitT), k = m.mark.w / LOGO.size;
-    return { x: m.mark.x + p.x * k, y: m.mark.y + p.y * k, len: LOGO.rocketLen * k, head: lerpAng(PIC.nose, orbitHead(orbitT), orbitRamp), front: p.front };
+    return { x: m.mark.x + p.x * k, y: m.mark.y + p.y * k, len: LOGO.rocketLen * k, head: lerpAng(LOGO.head, orbitHead(orbitT), orbitRamp), front: p.front };
   }
 
   /* ---- measuring (the only place layout is read) ---- */
@@ -114,6 +121,7 @@
       frame: { x: fr.left + sx, y: fr.top + sy, w: fr.width, h: fr.height } };
     els.markRocket.style.left = els.mark.offsetLeft + 'px';
     els.markRocket.style.top = els.mark.offsetTop + 'px';
+    els.markRocket.style.width = els.markRocket.style.height = (LOGO.rocketLen * (mr.width || 40) / LOGO.size * PIC.side / PIC.len).toFixed(2) + 'px';
 
     /* parking spot: one globe long; overlap the globe's edge before shrinking; never cover the text */
     var g = globe && globe.globe && globe.globe.r > 0 ? globe.globe : { x: fr.width * 0.27, y: 520, r: Math.min(220, fr.width * 0.14) };
@@ -263,12 +271,23 @@
   function drawFly(st) {
     var side = st.len * PIC.side / PIC.len, k = side / FLY_BASE;
     els.fly.style.transform = 'translate3d(' + (st.x - FLY_BASE / 2).toFixed(1) + 'px,' + (st.y - FLY_BASE / 2).toFixed(1) + 'px,0) rotate(' + (st.head - PIC.nose).toFixed(2) + 'deg) scale(' + k.toFixed(4) + ')';
+    /* the box is rotated, so turn "straight down on screen" into its own axes */
+    var a = (st.head - PIC.nose) * Math.PI / 180, s = CFG.shadow * FLY_BASE;
+    els.shadow.style.transform = 'translate3d(' + (s * Math.sin(a)).toFixed(1) + 'px,' + (s * Math.cos(a)).toFixed(1) + 'px,0)';
     els.fly.style.opacity = st.op.toFixed(3);
+  }
+  /* longer the faster it flies (the spring's speed, so it eases in and out), with a small flicker */
+  function drawFlame(now) {
+    var fc = CFG.flame, speed = Math.hypot(sp.vx, sp.vy) / m.vh, ts = now / 1000;
+    var f = (fc.min + (fc.max - fc.min) * smoothstep(speed / fc.full)) *
+      (1 + fc.flicker * Math.sin(ts * 2 * Math.PI * 9) + fc.flicker * 0.6 * Math.sin(ts * 2 * Math.PI * 13.7));
+    f = clamp(f, 0.3, 1.1);
+    /* longer from the nozzle down, and a touch wider as it grows */
+    els.flame.style.transform = 'scale(' + (0.85 + 0.15 * f).toFixed(3) + ',' + f.toFixed(3) + ')';
   }
   function drawMarkRocket(l) {
     var k = m.mark.w / LOGO.size, side = LOGO.rocketLen * k * PIC.side / PIC.len, p = orbitPoint(orbitT);
     els.markRocket.style.transform = 'translate3d(' + (p.x * k - side / 2).toFixed(2) + 'px,' + (p.y * k - side / 2).toFixed(2) + 'px,0) rotate(' + (l.head - PIC.nose).toFixed(2) + 'deg)';
-    els.markRocket.style.width = side.toFixed(2) + 'px';
     els.markRocket.classList.toggle('is-behind', !l.front);
   }
   function showHome(home) {
@@ -310,13 +329,14 @@
     r = springAng(sp.h, sp.vh, t.head, CFG.turn, dt); sp.h = r[0]; sp.vh = r[1];
 
     /* back in the logo once the page is at the top and the rocket is close (the smoothed scroll's last few
-       pixels take seconds, and the orbit keeps moving, so neither may be waited for) */
+       pixels take seconds, and the orbit keeps moving, so neither may be waited for); the nose must line up too,
+       or it snaps round as it docks */
     var l = atTop ? logoState() : null;
-    var home = atTop && Math.hypot(l.x - sp.x, l.y - sp.y) < 4;
+    var home = atTop && Math.hypot(l.x - sp.x, l.y - sp.y) < Math.max(0.5, 0.15 * l.len) && Math.abs(angDiff(sp.h, l.head)) < 6;
     if (home) { sm = sy; t = target(now, sm); sp.x = t.x; sp.y = t.y; sp.vx = sp.vy = 0; sp.h = t.head; sp.vh = 0; }
     cur = { x: sp.x, y: sp.y, len: t.len, head: sp.h, op: t.op };
     showHome(home);
-    if (home) drawMarkRocket(logoState()); else drawFly(cur);
+    if (home) drawMarkRocket(logoState()); else { drawFly(cur); drawFlame(now); }
     /* above the header whenever any of it reaches the header band (otherwise the header's blur covers it) */
     els.fly.classList.toggle('is-over-header', cur.y - 0.6 * cur.len < m.headerBottom);
 
@@ -338,12 +358,22 @@
     els.markRocket = document.createElement('span');
     els.markRocket.className = 'cc-mark-rocket';
     els.markRocket.setAttribute('aria-hidden', 'true');
-    els.markRocket.innerHTML = '<img src="' + PIC.src + '" alt="" decoding="async">';
+    els.markRocket.innerHTML = '<img src="' + PIC_SMALL + '" alt="" decoding="async">';
     brand.insertBefore(els.markRocket, els.mark.nextSibling);
     els.fly = document.createElement('div');
     els.fly.className = 'cc-rocket is-hidden';
     els.fly.setAttribute('aria-hidden', 'true');
-    els.fly.innerHTML = '<img src="' + PIC.src + '" alt="" decoding="async">';
+    els.fly.innerHTML = '<div class="cc-rocket-fade"><img class="cc-rocket-shadow" src="' + PIC.src + '" alt="" decoding="async">' +
+      '<img class="cc-rocket-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
+      '<img class="cc-rocket-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
+    els.shadow = els.fly.querySelector('.cc-rocket-shadow');
+    els.flame = els.fly.querySelector('.cc-rocket-flame');
+    /* the ship fills the box's height and is centred across it; the flame is placed in shares of the ship */
+    var shipW = FLY_BASE * PIC.width, shipX = (FLY_BASE - shipW) / 2, flameW = FLAME.width * shipW;
+    els.flame.style.left = (shipX + FLAME.left * shipW).toFixed(2) + 'px';
+    els.flame.style.top = (FLAME.top * FLY_BASE).toFixed(2) + 'px';
+    els.flame.style.width = flameW.toFixed(2) + 'px';
+    els.flame.style.height = (flameW * FLAME.aspect).toFixed(2) + 'px';
     document.body.appendChild(els.fly);
     return true;
   }

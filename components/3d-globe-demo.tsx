@@ -129,13 +129,16 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
     const send = () => {
       const canvas = root.querySelector<HTMLElement>(".destination-canvas");
       const text = root.querySelector<HTMLElement>(".destination-invitation");
-      const c = canvas?.getBoundingClientRect();
+      // Where the globe rests, ignoring the stage's transform: right after a country closes, the stage is still
+      // sliding back from the bottom centre (0.6 s), and no later message would correct a measurement taken then.
+      const c = canvas && canvas.offsetWidth > 0 && canvas.offsetHeight > 0 ? offsetWithin(canvas, root) : null;
+      const o = root.getBoundingClientRect();
       const t = text?.getBoundingClientRect();
       tellParent({
         type: "culturecompass-rocket",
-        globe: c && c.width > 0 && c.height > 0 ? { x: c.left + c.width / 2 + window.scrollX, y: c.top + c.height / 2 + window.scrollY, r: globeFocusGeometry(0).radius * c.height } : null,
+        globe: c ? { x: o.left + c.x + c.w / 2 + window.scrollX, y: o.top + c.y + c.h / 2 + window.scrollY, r: globeFocusGeometry(0).radius * c.h } : null,
         textLeft: t && t.width > 0 ? t.left + window.scrollX : null,
-        hover: hovered && pointer.current ? pointer.current : null,
+        hover: hovered && pointer.current && window.matchMedia("(hover: hover) and (pointer: fine)").matches ? pointer.current : null,
         hud: !!selected,
       });
     };
