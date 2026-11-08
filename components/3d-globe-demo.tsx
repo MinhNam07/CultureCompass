@@ -119,6 +119,7 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
   const closeTimer = useRef(0);
   const blankPointer = useRef<{ x: number; y: number } | null>(null);
   const pointer = useRef<Point | null>(null);
+  const starsRef = useRef<SVGSVGElement>(null);
 
   // The home page's rocket lives outside this iframe: tell it where the globe is (iframe px), where the
   // country text starts, which flag the pointer is on, and whether a country is open (the rocket steps aside).
@@ -147,6 +148,42 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
     ro.observe(root);
     return () => ro.disconnect();
   }, [embedded, selected, hovered]);
+
+  // The home page's rocket reports how it moves near the globe: the stars slide the other way (at most 24px,
+  // through a spring), and while it is parked they drift slowly against its nose, so the ship still seems to travel.
+  useEffect(() => {
+    if (!embedded || reducedMotion) return;
+    const el = starsRef.current;
+    if (!el) return;
+    type Info = { vx: number; vy: number; head: number; parked: boolean };
+    let x = 0, y = 0, vx = 0, vy = 0, tx = 0, ty = 0, raf = 0, last = 0, at = 0, parkedAt = 0, info: Info | null = null;
+    const MAX = 24, w = 2 * Math.PI / 0.6, k = w * w, c = 2 * 0.9 * w;   // spring: 0.6 s response, damping 0.9
+    const tick = (now: number) => {
+      const dt = Math.min(64, last ? now - last : 16.7) / 1000;
+      last = now;
+      if (info && now - at > 400) info = null;   // the rocket stopped talking: drift home
+      if (!info) { tx = 0; ty = 0; parkedAt = 0; }
+      else if (info.parked) {
+        if (!parkedAt) parkedAt = now;
+        const h = info.head * Math.PI / 180, o = MAX * Math.sin((now - parkedAt) / 1000 * 3 / MAX);   // 3 px/s at first, wraps within ±24
+        tx = -Math.sin(h) * o; ty = Math.cos(h) * o;
+      } else {
+        parkedAt = 0;
+        tx = Math.max(-MAX, Math.min(MAX, -info.vx * 12)); ty = Math.max(-MAX, Math.min(MAX, -info.vy * 12));
+      }
+      vx += (-k * (x - tx) - c * vx) * dt; x += vx * dt;
+      vy += (-k * (y - ty) - c * vy) * dt; y += vy * dt;
+      el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) scale(1.06)`;   // 1.06 leaves 24px spare at each edge of a section 800px tall
+      raf = info || Math.abs(x) + Math.abs(y) + Math.abs(vx) + Math.abs(vy) > 0.05 ? requestAnimationFrame(tick) : 0;
+    };
+    const onMsg = (e: MessageEvent) => {
+      if (e.source !== window.parent || e.origin !== window.location.origin || e.data?.type !== "culturecompass-stars") return;
+      info = e.data as Info; at = performance.now();
+      if (!raf) { last = 0; raf = requestAnimationFrame(tick); }
+    };
+    window.addEventListener("message", onMsg);
+    return () => { window.removeEventListener("message", onMsg); cancelAnimationFrame(raf); el.style.transform = ""; };
+  }, [embedded, reducedMotion]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -243,7 +280,7 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
       const target = event.target as Element;
       if (!target.closest("button, a, select, label, .cc-hud, .destination-story, .destination-header, .destination-orbit, .destination-footer")) closeCountry();
     }} onKeyDown={(event) => { if (event.key === "Escape" && selected) { event.preventDefault(); closeCountry(); } }}>
-      <svg className="destination-stars" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">{stars.map((star, i) => <circle key={i} cx={star.x} cy={star.y} r={star.r} fill="#fff" opacity={star.opacity} />)}</svg>
+      <svg ref={starsRef} className="destination-stars" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">{stars.map((star, i) => <circle key={i} cx={star.x} cy={star.y} r={star.r} fill="#fff" opacity={star.opacity} />)}</svg>
       <div className="destination-layout">
         <div className="destination-explore">
           <header className="destination-header">

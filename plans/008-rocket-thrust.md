@@ -1,6 +1,6 @@
 # 008 — Động cơ đốt theo gia tốc: đánh lửa, tăng tốc, trôi, tắt máy
 
-- **Status**: TODO (viết lại 9/11 cho tàu và lửa mới của plan 015; số liệu đã đo trên trang thật, xem "Số đo")
+- **Status**: DONE (9/11, `?v=…-rocket12`). Đo trên trang thật 1100×800: cuộn đều flameLen 0.43–0.49; hất cuộn 350px đỉnh 0.78–0.80 sau 79ms, về mồi sau ~0.55s; cú lượn: bẻ xuống 0.62–0.74, bổ nhào giảm về 0.53, kéo lên 0.84–0.91 (lớn nhất); cất cánh: 0 khi còn cỡ logo, đỉnh 1.0 khi tàu lớn ~45%, rồi về mồi; về logo: lửa tắt ~0.9s trước khi nhập vào logo
 - **Commit**: e48080b + các thay đổi chưa commit của plan 003–006 và 015 (rocket.js có `FLAME` dạng ảnh, `drawFlame`, `CFG.flame`, `?v=…-rocket11`)
 - **Severity**: MEDIUM (cảm giác "tàu vũ trụ" quan trọng nhất)
 - **Category**: Purpose / Cohesion

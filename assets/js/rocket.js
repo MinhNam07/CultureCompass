@@ -6,14 +6,17 @@
    320 ms follow), weaves gently twice, and answers the hand (it surges ahead and lifts its nose when the page is
    scrolled fast, drifts back when the scroll slows). When the opening ends it swoops: bends down, dips below the
    parking spot and pulls up through a wide arc into it, nose up, arriving at exactly the speed the page moves,
-   so it docks without a bump. Parked beside the globe in "Choose a destination" it bobs a little and points at
-   the flag under the pointer. A light spring (0.15 s) over the whole flight gives it a little weight.
-   Scroll back and it flies the same way back into the logo. On phones it crosses the opening and fades out; it
-   does not park.
+   so it docks without a bump. Parked beside the globe in "Choose a destination" it holds station (a slow drift,
+   a puff now and then) and points at the flag under the pointer. A light spring (0.15 s) over the whole flight
+   gives it a little weight. The engine burns when it speeds up or turns (longer, brighter flame, a trail of
+   puffs) and coasts on a pilot flame otherwise; nose jets on the capsule start and stop each turn.
+   Scroll back and it flies the same way back into the logo. On phones it crosses the opening and then burns
+   away up and to the right; it does not park.
 
    Decoration only: aria-hidden, never focusable, nothing depends on it. With reduced motion (system or the
-   site's setting) there is no separate rocket and the logo stays whole. Transforms and opacity only, one
-   requestAnimationFrame loop that stops when nothing moves; layout is read in measure(), never per frame. The
+   site's setting) nothing flies: the logo stays whole and one still rocket stands beside the globe (wider
+   screens only). Transforms and opacity only, one requestAnimationFrame loop that stops when nothing moves;
+   layout is read in measure(), never per frame. The
    globe lives in an iframe, which reports where the globe is (components/3d-globe-demo.tsx, message
    "culturecompass-rocket"). Plans: plans/002-rocket-swoop.md (flight), plans/015-new-ship.md (ship art). */
 (function () {
@@ -42,9 +45,12 @@
     swoop: { bend: 0.09, drop: 0.08, pull: 0.11 },     // bend-down radius, descent, pull-up radius (viewport heights)
     follow: { response: 0.15, damping: 0.8 },          // spring on position (seconds, damping ratio)
     turn: { response: 0.2, damping: 0.85 },            // spring on the nose
-    hover: { amp: 0.012, tilt: 2, period: 3.2 },       // parked: bob (diameters), sway (deg), seconds
+    keep: { ax: 0.010, ay: 0.008, px: 9.0, py: 7.0, tilt: 1.5, pt: 11.0, puffMin: 4, puffMax: 7 },   // parked drift (diameters), periods (s), nose drift (deg), seconds between trim puffs
     shadow: 0.03,       // shadow drop below the rocket, in box sides; always straight down on screen
-    flame: { min: 0.45, max: 1.0, full: 1.2, flicker: 0.05 },   // flame length (share of its picture) at rest / flat out, speed for flat out (viewport heights per s), flicker share
+    flame: { pilot: 0.45, max: 1.0, flicker: 0.05 },        // flame length (share of its picture) coasting / at full burn, flicker share
+    thrust: { full: 2, side: 0.8, up: 60, down: 280 },       // acceleration for full burn (viewport heights per s^2), weight of turning, smoothing ms (rise, fall)
+    rcs: { minRate: 70, brake: 25, gap: 180, ms: 160 },   // nose jets: deg/s to fire, deg/s drop that counts as braking, ms between puffs per side, puff ms
+    trail: { count: 18, rate: 40, life: 700, speed: 0.35, size: 48 },   // exhaust puffs: pool size, per s at full burn, ms, viewport heights per s, px
     phone: 760
   };
 
@@ -58,6 +64,9 @@
   /* the flame is its own picture (753 x 2323), tucked into the nozzle behind the hull. Placement in shares of the
      ship picture: left 18%, width 64.6%, top 95.4%. It stretches from its top edge (the nozzle). */
   var FLAME = { src: 'assets/img/brand/ship-flame-900.webp', left: 0.18, width: 0.646, top: 0.954, aspect: 2323 / 753 };
+  /* nose jets on the capsule cone, below the two round windows (plans/010-rocket-rcs.md) */
+  var RCS = { left: { at: [211.5, 116.4], dir: [-0.934, -0.356] }, right: { at: [300.5, 116.4], dir: [0.934, -0.356] } };   // 512-box px on the capsule cone; dir = which way the gas leaves
+  var NOZZLE = [256, 490];   // nozzle exit in the 512 box (plans/015-new-ship.md)
   var LOGO_NO_ROCKET = 'assets/img/brand/cc-logo-no-rocket-128.png';
   var LOGO_NO_ROCKET_2X = 'assets/img/brand/cc-logo-no-rocket-256.png';
   var FLY_BASE = 512;      // the flying rocket's box, scaled to size
@@ -70,6 +79,10 @@
   var sp = null;           // spring state { x, y, vx, vy, h, vh }
   var orbitT = LOGO.t0, orbitRamp = 0;
   var sm = 0, prevScroll = 0, vScroll = 0, surge = 0;   // smoothed scroll, last raw scroll, px/frame, surge px
+  var thr = 0, grow = 0, flameLen = 0, pvx = 0, pvy = 0;   // engine: thrust 0..1, take-off growth 0..1, last flame length, last spring speed
+  var pvh = 0, nextTrim = 0;   // last turn rate (deg/s), for the nose jets; when the next parked trim puff is due
+  var puffs = [], emitAcc = 0, smPrev = 0, flameH = 0;   // exhaust pool, puffs owed, last smoothed scroll, flame picture height in the box
+  var lastStarMsg = 0;     // when the iframe's stars were last told how the ship moves
 
   function reduce() { return CC.motion.reduce(); }
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
@@ -119,9 +132,11 @@
       headerBottom: header ? header.getBoundingClientRect().bottom : 68,
       heroRun: Math.max(1, hero.offsetHeight - vh),
       frame: { x: fr.left + sx, y: fr.top + sy, w: fr.width, h: fr.height } };
-    els.markRocket.style.left = els.mark.offsetLeft + 'px';
-    els.markRocket.style.top = els.mark.offsetTop + 'px';
-    els.markRocket.style.width = els.markRocket.style.height = (LOGO.rocketLen * (mr.width || 40) / LOGO.size * PIC.side / PIC.len).toFixed(2) + 'px';
+    if (els.markRocket) {   // not built under reduced motion
+      els.markRocket.style.left = els.mark.offsetLeft + 'px';
+      els.markRocket.style.top = els.mark.offsetTop + 'px';
+      els.markRocket.style.width = els.markRocket.style.height = (LOGO.rocketLen * (mr.width || 40) / LOGO.size * PIC.side / PIC.len).toFixed(2) + 'px';
+    }
 
     /* parking spot: one globe long; overlap the globe's edge before shrinking; never cover the text */
     var g = globe && globe.globe && globe.globe.r > 0 ? globe.globe : { x: fr.width * 0.27, y: 520, r: Math.min(220, fr.width * 0.14) };
@@ -238,17 +253,24 @@
   }
   function pathPos(s) {
     if (s < m.s1) return takeoffPos(s);
-    if (s < m.s2 || m.phone) return cruisePos(Math.min(s, m.s2));
+    if (s < m.s2) return cruisePos(s);
+    /* phones: no parking; it burns away up and to the right, faster and faster */
+    if (m.phone) {
+      var c = cruisePos(m.s2), e = s - m.s2, d = e * (1 + e / (0.5 * m.vh)) * 1.2, A = 20 * Math.PI / 180;
+      return { x: c.x + d * Math.cos(A), y: c.y - d * Math.sin(A) };
+    }
     return swoopPos(s);
   }
 
-  /* parked: bob, sway, point at the flag under the pointer */
+  /* parked: hold station, point at the flag under the pointer */
   function attached(now, sy) {
-    var st = m.station, tsec = (now - startedAt) / 1000, w = 2 * Math.PI / CFG.hover.period;
-    var x = st.x, y = st.y - sy + Math.sin(tsec * w) * CFG.hover.amp * m.D;
-    var head = Math.sin(tsec * w + 1) * CFG.hover.tilt;
-    if (globe && globe.hover && !m.phone) head = headingOf(m.frame.x - window.scrollX + globe.hover.x - x, m.frame.y - sy + globe.hover.y - y);
-    return { x: x, y: y, len: st.len, head: head, op: 1, phase: 'parked' };
+    /* station keeping: a slow drift on two axes at two rates (no "down", so no bob), the nose wandering a little */
+    var st = m.station, k = CFG.keep, ts = (now - startedAt) / 1000, TAU = 2 * Math.PI;
+    var x = st.x + k.ax * m.D * Math.sin(TAU * ts / k.px);
+    var y = st.y - sy + k.ay * m.D * Math.sin(TAU * ts / k.py + 1.3);
+    var head = k.tilt * Math.sin(TAU * ts / k.pt + 0.4), pointing = false;
+    if (globe && globe.hover && !m.phone) { head = headingOf(m.frame.x - window.scrollX + globe.hover.x - x, m.frame.y - sy + globe.hover.y - y); pointing = true; }
+    return { x: x, y: y, len: st.len, head: head, op: 1, phase: 'parked', pointing: pointing };
   }
 
   /* where the rocket should be for scroll s; phases: logo, takeoff, cruise, swoop, parked */
@@ -263,11 +285,51 @@
     p.x += surge * k;
     head -= clamp(vScroll * 0.35, -5, 7) * k;
     if (s < m.s1) head = lerpAng(logoState().head, head, smoothstep(s / m.s1 / 0.2));
-    var op = m.phone ? 1 - smoothstep((s - m.s2) / (0.3 * m.vh)) : 1;
+    /* phones: fades only once the tail has crossed the right edge, so it flies off rather than vanishing */
+    var op = m.phone ? 1 - smoothstep((p.x - m.vw - 0.5 * m.full) / (0.3 * m.full)) : 1;
     return { x: p.x, y: p.y, len: s < m.s1 ? takeoffLen(p.y) : m.full, head: head, op: op, phase: s < m.s1 ? 'takeoff' : s < m.s2 ? 'cruise' : 'swoop' };
   }
 
   /* ---- drawing ---- */
+  /* where the nozzle is on screen: the box is turned about its centre and scaled by k */
+  function nozzleScreen(st, back) {   // back: box px behind the nozzle, along the hull
+    var side = st.len * PIC.side / PIC.len, k = side / FLY_BASE, a = (st.head - PIC.nose) * Math.PI / 180;
+    var lx = (NOZZLE[0] - FLY_BASE / 2) * k, ly = (NOZZLE[1] + back - FLY_BASE / 2) * k;
+    return { x: st.x + lx * Math.cos(a) - ly * Math.sin(a), y: st.y + lx * Math.sin(a) + ly * Math.cos(a), k: k };
+  }
+  /* exhaust puffs: born near the flame's tail, then left behind where they are (they drift with the pictures in
+     the opening, with the page after it), growing and fading out; returns how many are still alive */
+  function stepTrail(dt, sy, dRaw, emit) {
+    var tc = CFG.trail, driftX = sy <= m.heroRun ? flowAt(sm) * (sm - smPrev) : 0, driftY = sy <= m.heroRun ? 0 : dRaw, alive = 0;
+    smPrev = sm;
+    if (emit) {
+      emitAcc += tc.rate * thr * dt / 1000;
+      var n = nozzleScreen(cur, 0.8 * flameH * flameLen), hr = cur.head * Math.PI / 180;
+      while (emitAcc >= 1) {
+        emitAcc -= 1;
+        var p = null;
+        for (var i = 0; i < puffs.length; i++) if (!puffs[i].alive) { p = puffs[i]; break; }
+        if (!p) break;
+        var dev = (Math.random() - 0.5) * 24 * Math.PI / 180, sp0 = tc.speed * m.vh * (0.75 + Math.random() * 0.5);
+        p.alive = true; p.age = 0; p.life = tc.life * (0.8 + Math.random() * 0.4); p.k = n.k;
+        p.x = n.x; p.y = n.y; p.vx = -Math.sin(hr + dev) * sp0; p.vy = Math.cos(hr + dev) * sp0;
+      }
+    } else emitAcc = 0;
+    var damp = Math.exp(-dt / 400);
+    for (var j = 0; j < puffs.length; j++) {
+      var q = puffs[j];
+      if (!q.alive) continue;
+      q.age += dt;
+      var u = q.age / q.life;
+      if (u >= 1) { q.alive = false; q.el.style.opacity = '0'; continue; }
+      q.vx *= damp; q.vy *= damp;
+      q.x += q.vx * dt / 1000 - driftX; q.y += q.vy * dt / 1000 - driftY;
+      q.el.style.transform = 'translate3d(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px,0) scale(' + (q.k * lerp(0.5, 1.8, u)).toFixed(3) + ')';
+      q.el.style.opacity = (0.75 * (1 - u) * (1 - u)).toFixed(3);
+      alive++;
+    }
+    return alive;
+  }
   function drawFly(st) {
     var side = st.len * PIC.side / PIC.len, k = side / FLY_BASE;
     els.fly.style.transform = 'translate3d(' + (st.x - FLY_BASE / 2).toFixed(1) + 'px,' + (st.y - FLY_BASE / 2).toFixed(1) + 'px,0) rotate(' + (st.head - PIC.nose).toFixed(2) + 'deg) scale(' + k.toFixed(4) + ')';
@@ -276,14 +338,31 @@
     els.shadow.style.transform = 'translate3d(' + (s * Math.sin(a)).toFixed(1) + 'px,' + (s * Math.cos(a)).toFixed(1) + 'px,0)';
     els.fly.style.opacity = st.op.toFixed(3);
   }
-  /* longer the faster it flies (the spring's speed, so it eases in and out), with a small flicker */
+  /* thrust sets the length; it lights with a burst as the rocket grows out of the logo and goes out before it docks */
   function drawFlame(now) {
-    var fc = CFG.flame, speed = Math.hypot(sp.vx, sp.vy) / m.vh, ts = now / 1000;
-    var f = (fc.min + (fc.max - fc.min) * smoothstep(speed / fc.full)) *
-      (1 + fc.flicker * Math.sin(ts * 2 * Math.PI * 9) + fc.flicker * 0.6 * Math.sin(ts * 2 * Math.PI * 13.7));
-    f = clamp(f, 0.3, 1.1);
-    /* longer from the nozzle down, and a touch wider as it grows */
-    els.flame.style.transform = 'scale(' + (0.85 + 0.15 * f).toFixed(3) + ',' + f.toFixed(3) + ')';
+    var fc = CFG.flame, ts = now / 1000;
+    var cut = smoothstep(grow / 0.15), ign = 1.15 * Math.sin(Math.PI * clamp((grow - 0.1) / 0.6, 0, 1));
+    var level = Math.max(thr, ign), q = fc.flicker * (0.5 + 0.5 * level);
+    flameLen = clamp(cut * (fc.pilot + (fc.max - fc.pilot) * level) *
+      (1 + q * Math.sin(ts * 2 * Math.PI * 9) + q * 0.6 * Math.sin(ts * 2 * Math.PI * 13.7)), 0, 1.2);
+    /* hotter and brighter the harder it burns */
+    var lit = flameLen < 0.05 ? 0 : 1;
+    els.core.style.opacity = (lit * (0.15 + 0.85 * thr)).toFixed(3);
+    els.glow.style.opacity = (lit * (0.2 + 0.6 * thr)).toFixed(3);
+    els.flame.style.opacity = flameLen < 0.05 ? '0' : '1';
+    if (flameLen < 0.05) return;
+    /* longer from the nozzle down, a touch wider as it grows, and the plume opens up at full burn */
+    var wide = (0.85 + 0.15 * flameLen) * (1 + 0.25 * thr);
+    els.flame.style.transform = 'scale(' + wide.toFixed(3) + ',' + flameLen.toFixed(3) + ')';
+    els.core.style.transform = 'scale(' + (1 + 0.25 * thr).toFixed(3) + ',' + flameLen.toFixed(3) + ')';
+  }
+  /* one short puff from a nose jet; WAAPI, so nothing runs per frame */
+  function rcs(side, now) {
+    var r = RCS[side];
+    if (!r.el || now - r.lastAt < CFG.rcs.gap) return;
+    r.lastAt = now;
+    r.el.animate([{ opacity: 0.95, transform: 'rotate(' + r.ang + 'deg) scaleX(0.4)' }, { opacity: 0, transform: 'rotate(' + r.ang + 'deg) scaleX(1.2)' }],
+      { duration: CFG.rcs.ms, easing: 'cubic-bezier(.22, 1, .36, 1)' });
   }
   function drawMarkRocket(l) {
     var k = m.mark.w / LOGO.size, side = LOGO.rocketLen * k * PIC.side / PIC.len, p = orbitPoint(orbitT);
@@ -327,6 +406,16 @@
     r = springStep(sp.x, sp.vx, t.x, CFG.follow, dt); sp.x = r[0]; sp.vx = r[1];
     r = springStep(sp.y, sp.vy, t.y, CFG.follow, dt); sp.y = r[0]; sp.vy = r[1];
     r = springAng(sp.h, sp.vh, t.head, CFG.turn, dt); sp.h = r[0]; sp.vh = r[1];
+    /* the engine burns when the rocket speeds up or turns, not when it merely moves */
+    var sec = dt / 1000, ax = (sp.vx - pvx) / sec, ay = (sp.vy - pvy) / sec, hr = sp.h * Math.PI / 180;
+    pvx = sp.vx; pvy = sp.vy;
+    var hx = Math.sin(hr), hy = -Math.cos(hr), A = CFG.thrust.full;
+    var aAlong = (ax * hx + ay * hy) / m.vh, aLat = Math.abs(ax * hy - ay * hx) / m.vh;
+    var thrTarget = t.phase === 'parked' ? 0 : clamp(smoothstep(Math.max(0, aAlong) / A) + CFG.thrust.side * smoothstep(aLat / A), 0, 1);
+    thr += (thrTarget - thr) * (1 - Math.exp(-dt / (thrTarget > thr ? CFG.thrust.up : CFG.thrust.down)));
+    /* lights as it grows out of the logo, goes out before it shrinks back in */
+    var logoLen = LOGO.rocketLen * m.mark.w / LOGO.size;
+    grow = clamp((t.len - logoLen) / Math.max(1, m.full - logoLen), 0, 1);
 
     /* back in the logo once the page is at the top and the rocket is close (the smoothed scroll's last few
        pixels take seconds, and the orbit keeps moving, so neither may be waited for); the nose must line up too,
@@ -334,15 +423,39 @@
     var l = atTop ? logoState() : null;
     var home = atTop && Math.hypot(l.x - sp.x, l.y - sp.y) < Math.max(0.5, 0.15 * l.len) && Math.abs(angDiff(sp.h, l.head)) < 6;
     if (home) { sm = sy; t = target(now, sm); sp.x = t.x; sp.y = t.y; sp.vx = sp.vy = 0; sp.h = t.head; sp.vh = 0; }
+    if (home) { thr = 0; pvx = pvy = 0; }
+    /* nose jets: one side starts a turn, the other side stops it */
+    var rate = Math.abs(sp.vh), prevRate = Math.abs(pvh);
+    if (!home && !hidden && t.phase !== 'logo' && rate > CFG.rcs.minRate) {
+      if (rate > prevRate) rcs(sp.vh > 0 ? 'left' : 'right', now);
+      else if (prevRate - rate > CFG.rcs.brake * dt / 16.67) rcs(sp.vh > 0 ? 'right' : 'left', now);
+    }
+    pvh = sp.vh;
+    /* parked: now and then a small puff on the side the nose is drifting towards, as if holding station */
+    if (t.phase === 'parked' && !t.pointing && !hidden && !m.phone) {
+      if (!nextTrim) nextTrim = now + 1000 * lerp(CFG.keep.puffMin, CFG.keep.puffMax, Math.random());
+      else if (now >= nextTrim) {
+        var drift = Math.cos(2 * Math.PI * (now - startedAt) / 1000 / CFG.keep.pt + 0.4);   // sign of the nose's drift
+        rcs(drift > 0 ? 'right' : 'left', now);
+        nextTrim = 0;
+      }
+    } else nextTrim = 0;
     cur = { x: sp.x, y: sp.y, len: t.len, head: sp.h, op: t.op };
     showHome(home);
     if (home) drawMarkRocket(logoState()); else { drawFly(cur); drawFlame(now); }
     /* above the header whenever any of it reaches the header band (otherwise the header's blur covers it) */
     els.fly.classList.toggle('is-over-header', cur.y - 0.6 * cur.len < m.headerBottom);
+    var puffsAlive = stepTrail(dt, sy, dRaw, !home && t.phase !== 'parked' && thr >= 0.08 && !hidden);
 
     var moving = surge !== 0 || vScroll !== 0 || sy !== sm || Math.abs(sp.vx) + Math.abs(sp.vy) > 2 ||
-      Math.abs(sp.vh) > 2 || Math.hypot(t.x - sp.x, t.y - sp.y) > 0.4 || Math.abs(angDiff(sp.h, t.head)) > 0.3;
+      Math.abs(sp.vh) > 2 || Math.hypot(t.x - sp.x, t.y - sp.y) > 0.4 || Math.abs(angDiff(sp.h, t.head)) > 0.3 ||
+      Math.abs(thrTarget - thr) > 0.01 || puffsAlive > 0;
     var onScreen = cur.y > -cur.len && cur.y < m.vh + cur.len;
+    /* near the globe, the iframe's stars slide against the ship (at most 20 messages a second) */
+    if ((t.phase === 'parked' || t.phase === 'swoop') && !m.phone && !hidden && onScreen && now - lastStarMsg > 50 && els.frame && els.frame.contentWindow) {
+      lastStarMsg = now;
+      els.frame.contentWindow.postMessage({ type: 'culturecompass-stars', vx: sp.vx / m.vh, vy: sp.vy / m.vh, head: sp.h, parked: t.phase === 'parked' }, window.location.origin);
+    }
     var idle = (atTop && !document.hidden) || (t.phase === 'parked' && onScreen && !hidden && !m.phone);
     if (idle || moving) raf = requestAnimationFrame(frame);
     else last = 0;
@@ -364,16 +477,41 @@
     els.fly.className = 'cc-rocket is-hidden';
     els.fly.setAttribute('aria-hidden', 'true');
     els.fly.innerHTML = '<div class="cc-rocket-fade"><img class="cc-rocket-shadow" src="' + PIC.src + '" alt="" decoding="async">' +
+      '<i class="cc-rocket-glow"></i>' +
       '<img class="cc-rocket-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
+      '<i class="cc-rocket-core"></i>' +
       '<img class="cc-rocket-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
     els.shadow = els.fly.querySelector('.cc-rocket-shadow');
     els.flame = els.fly.querySelector('.cc-rocket-flame');
+    els.glow = els.fly.querySelector('.cc-rocket-glow'); els.core = els.fly.querySelector('.cc-rocket-core');
     /* the ship fills the box's height and is centred across it; the flame is placed in shares of the ship */
     var shipW = FLY_BASE * PIC.width, shipX = (FLY_BASE - shipW) / 2, flameW = FLAME.width * shipW;
     els.flame.style.left = (shipX + FLAME.left * shipW).toFixed(2) + 'px';
     els.flame.style.top = (FLAME.top * FLY_BASE).toFixed(2) + 'px';
     els.flame.style.width = flameW.toFixed(2) + 'px';
     els.flame.style.height = (flameW * FLAME.aspect).toFixed(2) + 'px';
+    flameH = flameW * FLAME.aspect;
+    /* the nose jets sit above the hull, in the box's own units */
+    ['left', 'right'].forEach(function (side) {
+      var j = document.createElement('i');
+      j.className = 'cc-rocket-rcs';
+      var r = RCS[side], ang = Math.atan2(r.dir[1], r.dir[0]) * 180 / Math.PI;
+      j.style.left = r.at[0] + 'px';
+      j.style.top = (r.at[1] - 13) + 'px';
+      r.el = j; r.ang = ang; r.lastAt = -1e9;
+      els.fly.querySelector('.cc-rocket-fade').appendChild(j);
+    });
+    /* the exhaust: a fixed pool, reused; it sits just under the rocket */
+    els.trail = document.createElement('div');
+    els.trail.className = 'cc-rocket-trail';
+    els.trail.setAttribute('aria-hidden', 'true');
+    puffs = [];
+    for (var i = 0; i < CFG.trail.count; i++) {
+      var d = document.createElement('i');
+      els.trail.appendChild(d);
+      puffs.push({ el: d, alive: false, x: 0, y: 0, vx: 0, vy: 0, age: 0, life: 1, k: 1 });
+    }
+    document.body.appendChild(els.trail);
     document.body.appendChild(els.fly);
     return true;
   }
@@ -387,10 +525,11 @@
     els.mark.dataset.srcset = els.mark.getAttribute('srcset') || '';
     els.mark.src = LOGO_NO_ROCKET;
     els.mark.srcset = LOGO_NO_ROCKET + ' 1x, ' + LOGO_NO_ROCKET_2X + ' 2x';
-    els.fly.hidden = false; els.markRocket.hidden = false;
+    els.fly.hidden = false; els.markRocket.hidden = false; els.trail.hidden = false;
     els.fly.style.width = els.fly.style.height = FLY_BASE + 'px';
     startedAt = performance.now();
-    sm = prevScroll = window.scrollY; vScroll = 0; surge = 0; sp = null;
+    sm = smPrev = prevScroll = window.scrollY; vScroll = 0; surge = 0; sp = null;
+    puffs.forEach(function (q) { q.alive = false; q.el.style.opacity = '0'; });
     measure();
     kick();
   }
@@ -402,27 +541,57 @@
     document.documentElement.classList.remove('has-rocket');
     els.mark.src = els.mark.dataset.src;
     if (els.mark.dataset.srcset) els.mark.srcset = els.mark.dataset.srcset;
-    els.fly.hidden = true; els.markRocket.hidden = true;
+    els.fly.hidden = true; els.markRocket.hidden = true; els.trail.hidden = true;
+  }
+
+  /* reduced motion: one still rocket beside the globe, nose up; it scrolls with the page, so no script runs */
+  function placeStill() {
+    if (!els.still) {
+      els.still = document.createElement('div');
+      els.still.className = 'cc-rocket-still';
+      els.still.setAttribute('aria-hidden', 'true');
+      els.still.innerHTML = '<div class="cc-rocket-fade"><img class="cc-rocket-still-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
+        '<img class="cc-rocket-still-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
+      document.body.appendChild(els.still);
+    }
+    if (!els.mark) { var brand = document.querySelector('#cc-header .cc-brand'); els.mark = brand && brand.querySelector('.cc-mark'); }
+    els.frame = els.frame || CC.$('destination-globe');
+    if (!els.mark || !els.frame) return;
+    measure();
+    var side = m.station.len * PIC.side / PIC.len;
+    els.still.hidden = m.phone;
+    els.still.style.cssText = 'width:' + side.toFixed(1) + 'px;height:' + side.toFixed(1) + 'px;left:' + (m.station.x - side / 2).toFixed(1) + 'px;top:' + (m.station.y - side / 2).toFixed(1) + 'px';   // the ship is drawn nose up: no rotation
+  }
+  /* after a layout change: re-measure the flight, or re-place the still rocket */
+  function relayout() {
+    if (on) { measure(); kick(); }
+    else if (reduce()) placeStill();
   }
 
   function init() {
     if (!CC || !CC.$('hero') || !CC.$('destination-globe')) return;
+    els.frame = els.frame || CC.$('destination-globe');   // the iframe's messages are checked against it, in either mode
     enable();
+    if (reduce()) placeStill();
     window.addEventListener('scroll', kick, { passive: true });
     var rt = 0;
-    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (on) { measure(); kick(); } }, 120); });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (on) { measure(); kick(); } });
-    window.addEventListener('load', function () { if (on) { measure(); kick(); } });
-    if (window.ResizeObserver) new ResizeObserver(function () { if (on) { measure(); kick(); } }).observe(els.frame || CC.$('destination-globe'));
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(relayout, 120); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+    window.addEventListener('load', relayout);
+    if (window.ResizeObserver) new ResizeObserver(relayout).observe(els.frame);
     document.addEventListener('visibilitychange', function () { if (!document.hidden) { last = 0; kick(); } });
-    document.addEventListener('cc:settings', function () { if (reduce()) disable(); else enable(); });
+    document.addEventListener('cc:settings', function () {
+      if (reduce()) { disable(); placeStill(); }
+      else { if (els.still) els.still.hidden = true; enable(); }
+    });
     /* the iframe reports where the globe is, which flag the pointer is on, and whether a country is open */
     window.addEventListener('message', function (e) {
       if (!els.frame || e.source !== els.frame.contentWindow || e.origin !== window.location.origin) return;
       var d = e.data;
       if (!d || d.type !== 'culturecompass-rocket') return;
       globe = d;
-      if (on) { measure(); kick(); }
+      if (!on && els.still) els.still.classList.toggle('is-away', !!(globe && globe.hud));
+      relayout();
     });
   }
 

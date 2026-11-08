@@ -1,6 +1,6 @@
 # 010 — Tia chỉnh hướng (RCS) ở mũi khi tên lửa xoay
 
-- **Status**: TODO (sửa 9/11 cho tàu mới của plan 015)
+- **Status**: DONE (9/11, `?v=…-rocket13`). Đo: bay ngang 0 lần phụt; cú lượn 7 lần, đúng bên (bẻ xuống: trái rồi phải; kéo lên: phải rồi trái); mỗi bên cách nhau ≥ 183ms. Vị trí cổng kiểm bằng cách vẽ lên ảnh gốc: nằm đúng mép nón dưới hai cửa sổ. Chưa đo lúc chỉ cờ (không giả lập được con trỏ trong iframe)
 - **Commit**: e48080b + các thay đổi chưa commit của plan 003–006 và 015
 - **Severity**: LOW (thêm mới)
 - **Category**: Missed opportunities

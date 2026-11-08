@@ -1,6 +1,6 @@
 # 012 — Khi đỗ: giữ vị trí kiểu tàu vũ trụ thay cho nhấp nhô
 
-- **Status**: TODO
+- **Status**: DONE (9/11, `?v=…-rocket14`). Đo 25 giây khi đỗ (1100×800): trôi 7.1px ngang, 5.6px dọc; mũi ±1.5°; 5 lần phụt chỉnh, cách nhau 4.3–5.9s, đổi bên theo hướng mũi trôi; 60 fps. Chưa đo lúc chỉ cờ (không giả lập được con trỏ trong iframe)
 - **Commit**: e48080b + các thay đổi chưa commit của plan 003–006 và 015
 - **Severity**: LOW
 - **Category**: Cohesion

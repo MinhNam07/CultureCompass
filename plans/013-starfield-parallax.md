@@ -1,6 +1,6 @@
 # 013 — Nền sao trôi nhẹ theo tên lửa (tuỳ chọn)
 
-- **Status**: TODO
+- **Status**: DONE (9/11, `?v=…-rocket19`). Đo 1100×800: lượn vào thì sao trượt ngược tối đa ~12px rồi lắng mượt; đỗ thì trôi ~3 px/giây ngược mũi (bắt đầu từ 0 lúc đỗ, không nhảy); cuộn đi thì lắc tới 23.5px rồi về 0 trong ~0.8 giây và vòng rAF của iframe dừng; ~15 tin nhắn/giây. Đổi so với plan: lớp sao `scale(1.06)` thay vì 1.04 (1.04 chỉ dư 16px ở mép trên/dưới khung 820px, không đủ cho biên độ 24px)
 - **Commit**: e48080b + các thay đổi chưa commit của plan 003–007
 - **Severity**: LOW (tuỳ chọn; chỉ làm nếu sau 008–012 vẫn thấy thiếu chiều sâu)
 - **Category**: Missed opportunities

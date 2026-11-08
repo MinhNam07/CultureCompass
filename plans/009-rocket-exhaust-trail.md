@@ -1,6 +1,6 @@
 # 009 — Vệt khói/tia lửa bị bỏ lại phía sau
 
-- **Status**: TODO (sửa 9/11 cho tàu mới của plan 015)
+- **Status**: DONE (9/11, `?v=…-rocket15`). Đo 1100×800: cuộn đều (sau khi tàu ổn định) 0 hạt; hất cuộn 350px tối đa 5 hạt, tan hết sau ~1.2s; cú lượn tối đa 13/18 hạt; đỗ: 0 hạt sau 1.5s. Frame trong cú lượn: p50 16.7ms, p95 17.8ms, không frame nào quá 20ms. Lưu ý: đầu đoạn bay ngang tàu ở sát mép trái nên hạt phần lớn ra ngoài màn hình
 - **Commit**: e48080b + các thay đổi chưa commit của plan 003–006, 015 và 008
 - **Severity**: LOW (thêm mới)
 - **Category**: Missed opportunities

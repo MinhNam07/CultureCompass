@@ -1,6 +1,6 @@
 # 014 — Điện thoại: đốt máy bay vụt đi; giảm chuyển động: tên lửa đứng yên cạnh quả cầu
 
-- **Status**: TODO (sửa 9/11 cho tàu mới của plan 015)
+- **Status**: DONE (9/11, `?v=…-rocket18`). Điện thoại 375×812: tên lửa đốt máy bay chếch lên 20° rồi bay ra khỏi mép phải, quay về đúng đường cũ; bước nhảy lớn nhất 18 px/khung; bắt đầu mờ khi đuôi ở x=365, tắt hẳn ở x=402. Giảm chuyển động: tên lửa đứng yên cạnh quả cầu, logo dùng `cc-logo-128.png`, `rocket.js` không gọi rAF; mở thẻ quốc gia thì tên lửa mờ về 0, đóng thẻ thì hiện lại; tắt giảm chuyển động ngay trên trang thì tên lửa đứng yên ẩn đi và tên lửa bay quay lại
 - **Commit**: e48080b + các thay đổi chưa commit của plan 003–006 và 015
 - **Severity**: LOW
 - **Category**: Cohesion / Accessibility

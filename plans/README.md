@@ -11,13 +11,13 @@
 | 005 | [Bóng tên lửa luôn đổ xuống dưới, không xoay theo thân](005-rocket-shadow.md) | MEDIUM | DONE |
 | 006 | [Về logo không giật, không chỉ cờ khi chạm trên cảm ứng](006-rocket-small-polish.md) | LOW | DONE |
 | 007 | [Lửa đuôi sống: dài ra khi tăng tốc, lập lòe khi đỗ (tuỳ chọn)](007-rocket-living-flame.md) | LOW | Thay bằng 015 |
-| 008 | [Động cơ đốt theo gia tốc: đánh lửa, tăng tốc, trôi, tắt máy](008-rocket-thrust.md) | MEDIUM | TODO |
-| 009 | [Vệt khói/tia lửa bị bỏ lại phía sau](009-rocket-exhaust-trail.md) | LOW | TODO |
-| 010 | [Tia chỉnh hướng (RCS) ở mũi khi tên lửa xoay](010-rocket-rcs.md) | LOW | TODO |
-| 011 | [Động cơ phát sáng: lõi nóng, quầng sáng, lửa loe theo lực đẩy](011-rocket-leaves-atmosphere.md) | LOW | TODO |
-| 012 | [Khi đỗ: giữ vị trí kiểu tàu vũ trụ thay cho nhấp nhô](012-rocket-station-keeping.md) | LOW | TODO |
-| 013 | [Nền sao trôi nhẹ theo tên lửa (tuỳ chọn)](013-starfield-parallax.md) | LOW | TODO |
-| 014 | [Điện thoại: đốt máy bay vụt đi; giảm chuyển động: tên lửa đứng yên](014-rocket-phone-and-reduced-motion.md) | LOW | TODO |
+| 008 | [Động cơ đốt theo gia tốc: đánh lửa, tăng tốc, trôi, tắt máy](008-rocket-thrust.md) | MEDIUM | DONE |
+| 009 | [Vệt khói/tia lửa bị bỏ lại phía sau](009-rocket-exhaust-trail.md) | LOW | DONE |
+| 010 | [Tia chỉnh hướng (RCS) ở mũi khi tên lửa xoay](010-rocket-rcs.md) | LOW | DONE |
+| 011 | [Động cơ phát sáng: lõi nóng, quầng sáng, lửa loe theo lực đẩy](011-rocket-leaves-atmosphere.md) | LOW | DONE |
+| 012 | [Khi đỗ: giữ vị trí kiểu tàu vũ trụ thay cho nhấp nhô](012-rocket-station-keeping.md) | LOW | DONE |
+| 013 | [Nền sao trôi nhẹ theo tên lửa (tuỳ chọn)](013-starfield-parallax.md) | LOW | DONE |
+| 014 | [Điện thoại: đốt máy bay vụt đi; giảm chuyển động: tên lửa đứng yên](014-rocket-phone-and-reduced-motion.md) | LOW | DONE |
 | 015 | [Lắp tàu và lửa mới (Gemini) vào trang chủ](015-new-ship.md) | HIGH | DONE |
 
 Trước khi làm, chạy `npm run build` một lần để iframe quả địa cầu gửi vị trí cho tên lửa.

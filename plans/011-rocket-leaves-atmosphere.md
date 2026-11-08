@@ -1,6 +1,6 @@
 # 011 — Động cơ phát sáng: lõi nóng, quầng sáng và luồng lửa loe theo lực đẩy
 
-- **Status**: TODO (viết lại 9/11; thay cho bản "thoát khỏi khí quyển", xem Problem)
+- **Status**: DONE (9/11, `?v=…-rocket16`). Đo 1100×800 (opacity lõi / quầng): bay ngang 0.15 / 0.20; hất cuộn 0.63 / 0.54; kéo lên 0.85 / 0.69; đỗ 0.15 / 0.20. Ảnh chụp lúc đốt mạnh: gốc lõi nằm khuất trong miệng ống
 - **Commit**: e48080b + các thay đổi chưa commit của plan 003–006, 015 và 008
 - **Severity**: LOW (thêm mới)
 - **Category**: Missed opportunities
