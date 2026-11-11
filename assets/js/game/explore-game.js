@@ -131,6 +131,7 @@
     var o = currentObjective();
     var needle = CC.$('gx-needle');
     var t = goalTarget(o);
+    eng.setGuide(t);
     if (t && eng.player) {
       var a = eng.angleTo(t);
       var near = eng.distanceTo(t) < 40;

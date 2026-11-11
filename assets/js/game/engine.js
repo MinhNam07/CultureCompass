@@ -60,6 +60,7 @@
     this.inZones = {}; this.inDoors = {};
     this.moveTarget = null; this.pendingInteract = null;
     this.objectsOrder = null;
+    this.guidePath = null; this.guideKey = '';
     map.tilesets.forEach(function (ts) {
       if (ts.image) jobs.push(cachedImage(ts.image).then(function (img) { ts.img = img; }));
       else Object.keys(ts.tiles).forEach(function (id) {
@@ -195,6 +196,7 @@
       p.anim += dt * 0.6;
     }
     this.near = this.frozen ? null : this.nearest();
+    this.updateGuide(dt);
     this.emotes = this.emotes.filter(function (e) { e.t -= dt; return e.t > 0; });
   };
 
@@ -299,6 +301,158 @@
     return Math.sqrt(Math.pow(t.x - this.player.x, 2) + Math.pow(t.y - this.player.y, 2));
   };
 
+  /* ---------- guide arrows: a trail on the ground from the player to the current goal ---------- */
+  /* name = a key in this.targets, or null to hide */
+  Engine.prototype.setGuide = function (name) {
+    if (name === this.guideName) return;
+    this.guideName = name;
+    this.guideKey = '';
+  };
+
+  /* shortest walkable route over the tile grid (8 directions, no corner cutting).
+     Ends on the reachable tile closest to the goal, so goals inside counters or doorways still work. */
+  Engine.prototype.findPath = function (sx, sy, gx, gy) {
+    var m = this.map, T = this.T, W = m.w, H = m.h, col = this.collision;
+    var start = Math.floor(sy / T) * W + Math.floor(sx / T);
+    if (start < 0 || start >= W * H) return null;
+    var prev = new Int32Array(W * H).fill(-1);
+    prev[start] = start;
+    var queue = [start], best = start, bestD = Infinity, head = 0;
+    var gtx = gx / T - 0.5, gty = gy / T - 0.5;
+    while (head < queue.length) {
+      var c = queue[head++], cx = c % W, cy = (c - cx) / W;
+      var d = (cx - gtx) * (cx - gtx) + (cy - gty) * (cy - gty);
+      if (d < bestD) { bestD = d; best = c; if (d < 0.6) break; }
+      for (var oy = -1; oy <= 1; oy++) for (var ox = -1; ox <= 1; ox++) {
+        if (!ox && !oy) continue;
+        var nx = cx + ox, ny = cy + oy;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+        var n = ny * W + nx;
+        if (prev[n] !== -1 || col[n]) continue;
+        if (ox && oy && (col[cy * W + nx] || col[ny * W + cx])) continue;
+        prev[n] = c;
+        queue.push(n);
+      }
+    }
+    var cells = [];
+    for (var k = best; k !== start; k = prev[k]) cells.push(k);
+    cells.reverse();
+    var pts = cells.map(function (i) { return { x: (i % W) * T + T / 2, y: Math.floor(i / W) * T + T / 2 + 2 }; });
+    // finish on the goal itself when it is close to the last free tile
+    var last = pts.length ? pts[pts.length - 1] : { x: sx, y: sy };
+    if (Math.abs(last.x - gx) < T && Math.abs(last.y - gy) < T && !this.blockedAt(gx, gy, 4, 2)) pts.push({ x: gx, y: gy });
+    return this.smoothPath(sx, sy, pts);
+  };
+
+  /* drop corners the player could walk straight past, so the trail runs in clean lines, not tile steps */
+  Engine.prototype.smoothPath = function (sx, sy, pts) {
+    var self = this, p = this.player;
+    var clear = function (a, b) {
+      var n = Math.ceil(Math.hypot(b.x - a.x, b.y - a.y) / 3);
+      for (var i = 1; i <= n; i++) {
+        var f = i / n;
+        if (self.blockedAt(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, p.w, p.h, p)) return false;
+      }
+      return true;
+    };
+    var out = [], from = { x: sx, y: sy }, i = 0;
+    while (i < pts.length) {
+      var j = pts.length - 1;
+      while (j > i && !clear(from, pts[j])) j--;
+      out.push(pts[j]);
+      from = pts[j];
+      i = j + 1;
+    }
+    return out;
+  };
+
+  Engine.prototype.updateGuide = function (dt) {
+    var t = this.guideName && this.targets[this.guideName], p = this.player;
+    if (!t) { this.guidePath = null; return; }
+    var T = this.T;
+    var k = this.guideName + ':' + t.x + ',' + t.y + ':' + Math.floor(p.x / T) + ',' + Math.floor(p.y / T);
+    this.guideAge = (this.guideAge || 0) + dt;
+    if (k !== this.guideKey || this.guideAge > 1) {
+      this.guideKey = k; this.guideAge = 0;
+      this.guidePath = this.findPath(p.x, p.y, t.x, t.y);
+    }
+  };
+
+  /* one pixel chevron pointing along (dx, dy), each -1, 0 or 1 */
+  Engine.prototype.chevron = function (x, y, dx, dy, alpha) {
+    var ctx = this.ctx, px = [];
+    if (dx && dy) {           // diagonal: an L whose corner points the way
+      for (var k = -2; k <= 2; k++) { px.push([dx * 2, dy * k], [dx * k, dy * 2]); }
+      for (k = -2; k <= 1; k++) { px.push([dx * 1, dy * k], [dx * k, dy * 1]); }
+    } else {                  // straight: a > shape two pixels thick
+      [[0, -3], [1, -2], [2, -1], [3, 0], [2, 1], [1, 2], [0, 3],
+       [-1, -3], [0, -2], [1, -1], [2, 0], [1, 1], [0, 2], [-1, 3]].forEach(function (q) {
+        px.push([q[0] * dx - q[1] * dy, q[0] * dy + q[1] * dx]);
+      });
+    }
+    x = Math.round(x); y = Math.round(y);
+    // a dark outline (heavier underneath) keeps it readable on light floors and dark brick alike
+    ctx.globalAlpha = alpha * 0.45;
+    ctx.fillStyle = '#3a3a50';
+    px.forEach(function (q) { ctx.fillRect(x + q[0] - 1, y + q[1], 3, 1); ctx.fillRect(x + q[0], y + q[1] - 1, 1, 3); });
+    ctx.globalAlpha = alpha * 0.5;
+    px.forEach(function (q) { ctx.fillRect(x + q[0], y + q[1] + 1, 1, 1); });
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = '#f1ce8e';
+    px.forEach(function (q) { ctx.fillRect(x + q[0], y + q[1], 1, 1); });
+    ctx.globalAlpha = 1;
+  };
+
+  Engine.prototype.drawGuide = function () {
+    var path = this.guidePath, p = this.player;
+    this.guideEnd = null;
+    if (this.frozen || !path || !path.length) return;
+    var pts = [{ x: p.x, y: p.y - 2 }].concat(path);
+    var end = pts[pts.length - 1];
+    var total = 0, i;
+    for (i = 1; i < pts.length; i++) total += Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+    if (total < 26) return;   // already there
+
+    var GAP = 14, START = 14, STOP = 10;
+    var phase = this.reduce ? 0 : (this.time * 18) % GAP;
+    var at = START + phase, walked = 0, seg = 1;
+    while (at < total - STOP && seg < pts.length) {
+      var a = pts[seg - 1], b = pts[seg], len = Math.hypot(b.x - a.x, b.y - a.y);
+      if (walked + len < at) { walked += len; seg++; continue; }
+      var f = len ? (at - walked) / len : 0;
+      var oct = Math.round(Math.atan2(b.y - a.y, b.x - a.x) / (Math.PI / 4));
+      var sx = Math.round(Math.cos(oct * Math.PI / 4)), sy = Math.round(Math.sin(oct * Math.PI / 4));
+      // fade in near the player and out near the goal, so the trail has soft ends
+      var alpha = Math.min(1, (at - START + 4) / 16, (total - STOP - at) / 16);
+      if (len) this.chevron(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, sx, sy, Math.max(0, alpha) * 0.95);
+      at += GAP;
+    }
+    this.guideEnd = end;
+  };
+
+  /* where the trail ends: a pulsing ring on the floor and a bouncing arrow pointing down at it.
+     Drawn on top so doorways and walls don't hide it. */
+  Engine.prototype.drawGuideEnd = function () {
+    var end = this.guideEnd;
+    if (!end) return;
+    var ctx = this.ctx, wave = this.reduce ? 0.5 : (Math.sin(this.time * 4) + 1) / 2;
+    var ex = Math.round(end.x), ey = Math.round(end.y);
+    var ring = function (r, color, dy) {
+      ctx.fillStyle = color;
+      ctx.fillRect(ex - r + 2, ey - 3 + dy, 2 * r - 3, 1); ctx.fillRect(ex - r + 2, ey + 3 + dy, 2 * r - 3, 1);
+      ctx.fillRect(ex - r + 1, ey - 2 + dy, 1, 1); ctx.fillRect(ex + r - 1, ey - 2 + dy, 1, 1);
+      ctx.fillRect(ex - r + 1, ey + 2 + dy, 1, 1); ctx.fillRect(ex + r - 1, ey + 2 + dy, 1, 1);
+      ctx.fillRect(ex - r, ey - 1 + dy, 1, 3); ctx.fillRect(ex + r, ey - 1 + dy, 1, 3);
+    };
+    var r = 6 + Math.round(wave * 2);
+    ctx.globalAlpha = 0.5; ring(r, '#3a3a50', 1);
+    ctx.globalAlpha = 0.65 + wave * 0.35; ring(r, '#f1ce8e', 0);
+    ctx.globalAlpha = 1;
+    // bouncing arrow above the ring
+    var ay = ey - 14 - Math.round(wave * 3);
+    this.chevron(ex, ay, 0, 1, 1);
+  };
+
   /* ---------- drawing ---------- */
   Engine.prototype.drawTile = function (gid, x, y) {
     var t = this.tileFor(gid);
@@ -350,6 +504,9 @@
     var viewL = cx - 200, viewR = cx + this.vw + 200, viewT = cy - 20, viewB = cy + this.vh + 220;
     this.props.forEach(function (o) { if (o.tile.flat && o.x < viewR && o.x + o.tile.w > viewL && o.y > viewT && o.y - o.tile.h < viewB) self.drawProp(o); });
 
+    // the guide trail is painted on the ground, under people and buildings
+    this.drawGuide();
+
     // depth-sorted: sorted tile rows, props, people
     var list = [];
     this.tileLayers.forEach(function (l) {
@@ -372,6 +529,7 @@
     // overlays: unsorted layers above the objects layer (e.g. tree tops)
     this.tileLayers.forEach(function (l) { if (!l.ysort && l.order > sortOrder) self.drawLayerRows(l, r0, r1, c0, c1); });
 
+    this.drawGuideEnd();
     this.drawMarkers();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
   };
