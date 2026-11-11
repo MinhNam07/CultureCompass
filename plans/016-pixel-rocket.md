@@ -1,9 +1,8 @@
 # 016 — Tên lửa pixel (#4 + #16)
 
-- **Trạng thái:** xong 11/11. Henry chọn tàu pixel, giờ là mặc định; `index.html?rocket=classic` xem tàu cũ. Henry giao Claude tự làm: tàu vẽ bằng code (`tools/pixel-rocket/ship.py`, không qua Gemini), hiệu ứng bằng beanfx (`tools/pixel-rocket/fx.py`). Ảnh nằm trong `assets/img/brand/pixel/`. Mục 3 (prompt Gemini) giữ lại phòng khi muốn vẽ lại tàu bằng Gemini.
+- **Trạng thái:** xong 11/11. Henry chọn tàu pixel và thay hết tàu cũ, kể cả trong logo (`tools/pixel-rocket/logo.py`). Chế độ tàu cũ đã gỡ. Henry giao Claude tự làm: tàu vẽ bằng code (`tools/pixel-rocket/ship.py`, không qua Gemini), hiệu ứng bằng beanfx (`tools/pixel-rocket/fx.py`). Ảnh nằm trong `assets/img/brand/pixel/`. Mục 3 (prompt Gemini) giữ lại phòng khi muốn vẽ lại tàu bằng Gemini.
 - **Chạy lại:** `.venv/bin/python tools/pixel-rocket/ship.py && .venv/bin/python tools/pixel-rocket/fx.py` (cần chạy setup beanfx trước), rồi copy `tools/pixel-rocket/out/ship.png` và `out/pixel-*.{png,json}` vào `assets/img/brand/pixel/`.
 - **Phạm vi:** `assets/js/rocket.js` (chế độ pixel sau cờ), ảnh mới trong `assets/img/brand/pixel/`.
-- **So sánh:** `index.html` là bản pixel, `index.html?rocket=classic` là tàu cũ.
 
 ## 1. Đánh giá tàu hiện tại (`ship-rocket-900.webp`, 349×900)
 

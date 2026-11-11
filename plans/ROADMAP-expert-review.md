@@ -146,10 +146,9 @@ Henry giao Claude tự làm cả tàu lẫn hiệu ứng. Chi tiết ở `plans/
 - Đã chụp so sánh hai bản ở lúc cất cánh, lúc bay và lúc đỗ: đường bay giống nhau, không lỗi console.
 
 Henry chọn tàu pixel (11/11):
-- Tàu pixel là mặc định trên trang chủ. `index.html?rocket=classic` vẫn xem được tàu cũ để so.
-- Bản pixel không tải ảnh lửa và thân tàu cũ nữa. Khi giảm chuyển động, tàu đứng yên cũng là tàu pixel, có lửa mồi nhỏ.
-- Tàu nhỏ bay quanh logo vẫn là `ship-rocket-256.webp` (5px thì pixel không đọc được).
-- Còn có thể làm: xóa hẳn code và ảnh tàu cũ khi không cần so nữa; bóng tàu pixel; #15 đổi la bàn thành tên lửa pixel.
+- Tàu pixel thay hết tàu cũ (11/11): tàu bay, tàu nhỏ quanh logo, tàu đứng yên khi giảm chuyển động, và chiếc tàu vẽ sẵn trong logo (`cc-logo-128/256/1024.png`, làm lại bằng `tools/pixel-rocket/logo.py`).
+- Đã gỡ chế độ `?rocket=classic` cùng ảnh và CSS của tàu cũ.
+- Còn có thể làm: bóng tàu pixel; logo ghép chữ `cc-lockup-dark.png` vẫn là tàu cũ; #15 đổi la bàn thành tên lửa pixel.
 
 
 ### #4 Hướng tên lửa pixel art

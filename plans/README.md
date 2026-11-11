@@ -21,7 +21,7 @@
 | 013 | [Nền sao trôi nhẹ theo tên lửa (tuỳ chọn)](013-starfield-parallax.md) | LOW | DONE |
 | 014 | [Điện thoại: đốt máy bay vụt đi; giảm chuyển động: tên lửa đứng yên](014-rocket-phone-and-reduced-motion.md) | LOW | DONE |
 | 015 | [Lắp tàu và lửa mới (Gemini) vào trang chủ](015-new-ship.md) | HIGH | DONE |
-| 016 | [Tên lửa pixel (mặc định, `?rocket=classic` xem tàu cũ)](016-pixel-rocket.md) | LOW | Xong, đã chọn pixel |
+| 016 | [Tên lửa pixel (thay hết tàu cũ)](016-pixel-rocket.md) | LOW | Xong, đã chọn pixel |
 
 Trước khi làm, chạy `npm run build` một lần để iframe quả địa cầu gửi vị trí cho tên lửa.
 

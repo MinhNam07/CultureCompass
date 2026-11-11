@@ -59,17 +59,12 @@
 
   /* measured once from assets/img/brand/cc-logo-1024.png (the ring is an ellipse; t = 0 is its upper-right end) */
   var LOGO = { size: 1024, cx: 511.17, cy: 509.62, a: 478.78, b: 136.62, ux: 0.78853222, uy: -0.61499345, t0: -0.066, rocketLen: 137.9, head: 45 };   // head: the logo's own rocket points north-east
-  /* the ship (Gemini, 08/11; plans/015-new-ship.md): drawn nose up, cropped tight, 956 x 2464 at full size.
-     It sits in a square box as tall as the picture, centred, so the box turns about the middle of the ship.
-     side = box side in picture px, len = nose-to-tail length, width = width / length, nose = heading of the picture */
-  var PIC = { src: 'assets/img/brand/ship-rocket-900.webp', side: 2464, len: 2464, width: 956 / 2464, nose: 0 };
-  var PIC_SMALL = 'assets/img/brand/ship-rocket-256.webp';   // the logo's rocket is ~5px long; a small source keeps it from shimmering
-  /* the flame is its own picture (753 x 2323), tucked into the nozzle behind the hull. Placement in shares of the
-     ship picture: left 18%, width 64.6%, top 95.4%. It stretches from its top edge (the nozzle). */
-  var FLAME = { src: 'assets/img/brand/ship-flame-900.webp', left: 0.18, width: 0.646, top: 0.954, aspect: 2323 / 753 };
-  /* nose jets on the capsule cone, below the two round windows (plans/010-rocket-rcs.md) */
-  var RCS = { left: { at: [211.5, 116.4], dir: [-0.934, -0.356] }, right: { at: [300.5, 116.4], dir: [0.934, -0.356] } };   // 512-box px on the capsule cone; dir = which way the gas leaves
-  var NOZZLE = [256, 490];   // nozzle exit in the 512 box (plans/015-new-ship.md)
+  /* the pixel ship (plans/016-pixel-rocket.md): drawn nose up, 26 x 64 sprite px. It sits in a square box as tall as
+     the ship, centred, so it turns about its middle. side = box side, len = nose-to-tail length, width = width / length,
+     nose = heading of the sprite */
+  var PIC = { side: 64, len: 64, width: 26 / 64, nose: 0 };
+  var PIC_SMALL = 'assets/img/brand/pixel/ship.png?v=3';   // the logo's rocket, ~5px long: drawn smooth, not pixelated
+  var NOZZLE = [256, 488];   // nozzle exit in the 512 box (sprite row 61 of 64)
   var LOGO_NO_ROCKET = 'assets/img/brand/cc-logo-no-rocket-128.png';
   var LOGO_NO_ROCKET_2X = 'assets/img/brand/cc-logo-no-rocket-256.png';
   var FLY_BASE = 512;      // the flying rocket's box, scaled to size
@@ -85,13 +80,11 @@
   var back = false, flip = 0;   // scrolled back: it turns round (through nose down) and flies nose first the other way
   var thr = 0, grow = 0, flameLen = 0, pvx = 0, pvy = 0;   // engine: thrust 0..1, take-off growth 0..1, last flame length, last spring speed
 
-  /* ---------- pixel rocket (plans/016-pixel-rocket.md), the default since 11/11; index.html?rocket=classic shows
-     the painted ship for comparison ----------
+  /* ---------- pixel rocket (plans/016-pixel-rocket.md) ----------
      The ship, its flame and its nose jets are drawn into a small canvas (G x G sprite pixels), rotated there in 15°
      steps with smoothing off, and that canvas is scaled up with image-rendering: pixelated. So pixels stay square at
      every angle and the box itself is never rotated. Ship: tools/pixel-rocket/ship.py; effects: beanfx sheets from
      tools/pixel-rocket/fx.py (4 frames per row). */
-  var PIXEL = !/[?&]rocket=classic\b/.test(window.location.search);
   var PXDIR = 'assets/img/brand/pixel/';
   var PX = { w: 26, h: 64, G: 128, step: 15, fps: 12, cols: 4,
     nozzle: [13, 61],                        // where the flame hangs, sprite px
@@ -465,55 +458,34 @@
       if (u >= 1) { q.alive = false; q.el.style.opacity = '0'; continue; }
       q.vx *= damp; q.vy *= damp;
       q.x += q.vx * dt / 1000 - driftX; q.y += q.vy * dt / 1000 - driftY;
-      if (PIXEL) {
-        /* the sheet already grows and thins out, so only the frame changes */
-        var pf = Math.min(PX.size.puff[2] - 1, Math.floor(u * PX.size.puff[2]));
-        q.el.style.transform = 'translate3d(' + Math.round(q.x) + 'px,' + Math.round(q.y) + 'px,0) scale(' + q.k.toFixed(3) + ')';
-        q.el.style.backgroundPosition = (-(pf % PX.cols) * 48) + 'px ' + (-Math.floor(pf / PX.cols) * 48) + 'px';   // 48 px cells (CSS)
-        q.el.style.opacity = u < 0.85 ? '1' : '0.6';
-      } else {
-        q.el.style.transform = 'translate3d(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px,0) scale(' + (q.k * lerp(0.5, 1.8, u)).toFixed(3) + ')';
-        q.el.style.opacity = (0.75 * (1 - u) * (1 - u)).toFixed(3);
-      }
+      /* the puff sheet already grows and thins out, so only the frame changes */
+      var pf = Math.min(PX.size.puff[2] - 1, Math.floor(u * PX.size.puff[2]));
+      q.el.style.transform = 'translate3d(' + Math.round(q.x) + 'px,' + Math.round(q.y) + 'px,0) scale(' + q.k.toFixed(3) + ')';
+      q.el.style.backgroundPosition = (-(pf % PX.cols) * 48) + 'px ' + (-Math.floor(pf / PX.cols) * 48) + 'px';   // 48 px cells (CSS)
+      q.el.style.opacity = u < 0.85 ? '1' : '0.6';
       alive++;
     }
     return alive;
   }
   function drawFly(st) {
     var side = st.len * PIC.side / PIC.len, k = side / FLY_BASE;
-    els.fly.style.transform = 'translate3d(' + (st.x - FLY_BASE / 2).toFixed(1) + 'px,' + (st.y - FLY_BASE / 2).toFixed(1) + 'px,0)' + (PIXEL ? '' : ' rotate(' + (st.head - PIC.nose).toFixed(2) + 'deg)') + ' scale(' + k.toFixed(4) + ')';
-    /* the box is rotated, so turn "straight down on screen" into its own axes */
-    var a = (st.head - PIC.nose) * Math.PI / 180, s = CFG.shadow * FLY_BASE;
-    if (els.shadow) els.shadow.style.transform = 'translate3d(' + (s * Math.sin(a)).toFixed(1) + 'px,' + (s * Math.cos(a)).toFixed(1) + 'px,0)';
+    /* the box is never rotated: the canvas inside turns the ship in 15° steps */
+    els.fly.style.transform = 'translate3d(' + (st.x - FLY_BASE / 2).toFixed(1) + 'px,' + (st.y - FLY_BASE / 2).toFixed(1) + 'px,0) scale(' + k.toFixed(4) + ')';
     els.fly.style.opacity = st.op.toFixed(3);
   }
-  /* thrust sets the length; it lights with a burst as the rocket grows out of the logo and goes out before it docks */
+  /* thrust sets the flame length; it lights with a burst as the rocket grows out of the logo and goes out before it docks */
   function drawFlame(now) {
     var fc = CFG.flame, ts = now / 1000;
     var cut = smoothstep(grow / 0.15), ign = 1.15 * Math.sin(Math.PI * clamp((grow - 0.1) / 0.6, 0, 1));
     var level = Math.max(thr, ign), q = fc.flicker * (0.5 + 0.5 * level);
     flameLen = clamp(cut * (fc.pilot + (fc.max - fc.pilot) * level) *
       (1 + q * Math.sin(ts * 2 * Math.PI * 9) + q * 0.6 * Math.sin(ts * 2 * Math.PI * 13.7)), 0, 1.2);
-    /* hotter and brighter the harder it burns */
-    var lit = flameLen < 0.05 ? 0 : 1;
-    if (PIXEL) return;   // the pixel canvas draws its own flame from flameLen
-    els.core.style.opacity = (lit * (0.15 + 0.85 * thr)).toFixed(3);
-    els.glow.style.opacity = (lit * (0.2 + 0.6 * thr)).toFixed(3);
-    els.flame.style.opacity = flameLen < 0.05 ? '0' : '1';
-    if (flameLen < 0.05) return;
-    /* longer from the nozzle down, a touch wider as it grows, and the plume opens up at full burn */
-    var wide = (0.85 + 0.15 * flameLen) * (1 + 0.25 * thr);
-    els.flame.style.transform = 'scale(' + wide.toFixed(3) + ',' + flameLen.toFixed(3) + ')';
-    els.core.style.transform = 'scale(' + (1 + 0.25 * thr).toFixed(3) + ',' + flameLen.toFixed(3) + ')';
+    /* drawPixel turns flameLen into flame frames */
   }
-  /* one short puff from a nose jet; WAAPI, so nothing runs per frame */
+  /* one short puff from a nose jet (the pixel canvas plays the rcs sheet) */
   function rcs(side, now) {
-    var r = RCS[side];
-    if (!r.el || now - r.lastAt < CFG.rcs.gap) return;
-    r.lastAt = now;
-    if (PIXEL) { px.jetAt[side] = now; return; }
-    r.el.animate([{ opacity: 0.95, transform: 'rotate(' + r.ang + 'deg) scaleX(0.4)' }, { opacity: 0, transform: 'rotate(' + r.ang + 'deg) scaleX(1.2)' }],
-      { duration: CFG.rcs.ms, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+    if (now - px.jetAt[side] < CFG.rcs.gap) return;
+    px.jetAt[side] = now;
   }
   function drawMarkRocket(l) {
     var k = m.mark.w / LOGO.size, side = LOGO.rocketLen * k * PIC.side / PIC.len, p = orbitPoint(orbitT);
@@ -600,12 +572,9 @@
     if (home) drawMarkRocket(logoState());
     else {
       /* pixel ship: it hovers, stepping up and down one whole sprite pixel at a time like a sprite in the game */
-      var shown = cur;
-      if (PIXEL) {
-        var bob = Math.round(Math.sin(2 * Math.PI * (now - startedAt) / 1000 / CFG.bob.period) * CFG.bob.amp);
-        shown = { x: cur.x, y: cur.y + bob * cur.len / PX.h, len: cur.len, head: cur.head, op: cur.op };
-      }
-      drawFly(shown); drawFlame(now); if (PIXEL) drawPixel(cur, now);
+      var bob = Math.round(Math.sin(2 * Math.PI * (now - startedAt) / 1000 / CFG.bob.period) * CFG.bob.amp);
+      var shown = { x: cur.x, y: cur.y + bob * cur.len / PX.h, len: cur.len, head: cur.head, op: cur.op };
+      drawFly(shown); drawFlame(now); drawPixel(cur, now);
     }
     /* above the header whenever any of it reaches the header band (otherwise the header's blur covers it) */
     els.fly.classList.toggle('is-over-header', cur.y - 0.6 * cur.len < m.headerBottom);
@@ -623,7 +592,7 @@
     var idle = (atTop && !document.hidden) || (t.phase === 'parked' && onScreen && !hidden && !m.phone);
     /* the pixel flame and the hover keep going while the ship is in view, even when the page rests
        (drawPixel only repaints at 12 fps, so a resting frame costs little) */
-    var alive = PIXEL && !home && onScreen && !hidden;
+    var alive = !home && onScreen && !hidden;
     if (idle || moving || alive) raf = requestAnimationFrame(frame);
     else last = 0;
   }
@@ -641,50 +610,22 @@
     els.markRocket.innerHTML = '<img src="' + PIC_SMALL + '" alt="" decoding="async">';
     brand.insertBefore(els.markRocket, els.mark.nextSibling);
     els.fly = document.createElement('div');
-    els.fly.className = 'cc-rocket is-hidden';
     els.fly.setAttribute('aria-hidden', 'true');
-    els.fly.innerHTML = PIXEL ? '<div class="cc-rocket-fade"></div>' : '<div class="cc-rocket-fade"><img class="cc-rocket-shadow" src="' + PIC.src + '" alt="" decoding="async">' +
-      '<i class="cc-rocket-glow"></i>' +
-      '<img class="cc-rocket-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
-      '<i class="cc-rocket-core"></i>' +
-      '<img class="cc-rocket-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
-    if (PIXEL) {
-      els.fly.classList.add('is-pixel');
-      var cv = document.createElement('canvas');
-      cv.className = 'cc-rocket-px'; cv.width = cv.height = PX.G;
-      /* the ship is FLY_BASE tall in the box, so one sprite pixel is FLY_BASE / PX.h box pixels */
-      var cs = FLY_BASE * PX.G / PX.h;
-      cv.style.width = cv.style.height = cs + 'px';
-      cv.style.left = cv.style.top = ((FLY_BASE - cs) / 2) + 'px';
-      els.fly.querySelector('.cc-rocket-fade').appendChild(cv);
-      px.ctx = cv.getContext('2d');
-      pxLoad();
-    }
-    els.shadow = els.fly.querySelector('.cc-rocket-shadow');
-    els.flame = els.fly.querySelector('.cc-rocket-flame');
-    els.glow = els.fly.querySelector('.cc-rocket-glow'); els.core = els.fly.querySelector('.cc-rocket-core');
-    /* the ship fills the box's height and is centred across it; the flame is placed in shares of the ship */
-    var shipW = FLY_BASE * PIC.width, shipX = (FLY_BASE - shipW) / 2, flameW = FLAME.width * shipW;
-    if (els.flame) {
-      els.flame.style.left = (shipX + FLAME.left * shipW).toFixed(2) + 'px';
-      els.flame.style.top = (FLAME.top * FLY_BASE).toFixed(2) + 'px';
-      els.flame.style.width = flameW.toFixed(2) + 'px';
-      els.flame.style.height = (flameW * FLAME.aspect).toFixed(2) + 'px';
-    }
-    flameH = flameW * FLAME.aspect;
-    /* the nose jets sit above the hull, in the box's own units */
-    ['left', 'right'].forEach(function (side) {
-      var j = document.createElement('i');
-      j.className = 'cc-rocket-rcs';
-      var r = RCS[side], ang = Math.atan2(r.dir[1], r.dir[0]) * 180 / Math.PI;
-      j.style.left = r.at[0] + 'px';
-      j.style.top = (r.at[1] - 13) + 'px';
-      r.el = j; r.ang = ang; r.lastAt = -1e9;
-      els.fly.querySelector('.cc-rocket-fade').appendChild(j);
-    });
+    els.fly.className = 'cc-rocket is-hidden is-pixel';
+    els.fly.innerHTML = '<div class="cc-rocket-fade"></div>';
+    var cv = document.createElement('canvas');
+    cv.className = 'cc-rocket-px'; cv.width = cv.height = PX.G;
+    /* the ship is FLY_BASE tall in the box, so one sprite pixel is FLY_BASE / PX.h box pixels */
+    var cs = FLY_BASE * PX.G / PX.h;
+    cv.style.width = cv.style.height = cs + 'px';
+    cv.style.left = cv.style.top = ((FLY_BASE - cs) / 2) + 'px';
+    els.fly.querySelector('.cc-rocket-fade').appendChild(cv);
+    px.ctx = cv.getContext('2d');
+    pxLoad();
+    flameH = FLY_BASE * PX.size.flame[1] / PX.h;   // the flame sheet at full length, in box px
     /* the exhaust: a fixed pool, reused; it sits just under the rocket */
     els.trail = document.createElement('div');
-    els.trail.className = 'cc-rocket-trail' + (PIXEL ? ' is-pixel' : '');
+    els.trail.className = 'cc-rocket-trail is-pixel';
     els.trail.setAttribute('aria-hidden', 'true');
     puffs = [];
     for (var i = 0; i < CFG.trail.count; i++) {
@@ -731,11 +672,8 @@
       els.still = document.createElement('div');
       els.still.className = 'cc-rocket-still';
       els.still.setAttribute('aria-hidden', 'true');
-      els.still.innerHTML = PIXEL
-        ? '<div class="cc-rocket-fade is-pixel"><i class="cc-rocket-still-px-flame"></i>' +
-          '<img class="cc-rocket-still-body" src="' + PXDIR + PX.sheets.ship + '" alt="" decoding="async"></div>'
-        : '<div class="cc-rocket-fade"><img class="cc-rocket-still-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
-          '<img class="cc-rocket-still-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
+      els.still.innerHTML = '<div class="cc-rocket-fade is-pixel"><i class="cc-rocket-still-px-flame"></i>' +
+        '<img class="cc-rocket-still-body" src="' + PXDIR + PX.sheets.ship + '" alt="" decoding="async"></div>';
       document.body.appendChild(els.still);
     }
     if (!els.mark) { var brand = document.querySelector('#cc-header .cc-brand'); els.mark = brand && brand.querySelector('.cc-mark'); }
