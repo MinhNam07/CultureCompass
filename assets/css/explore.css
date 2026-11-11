@@ -195,7 +195,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 .ex-hero-tag { max-width: 560px; font-size: clamp(1rem, .95rem + .3vw, 1.125rem); line-height: 1.55; text-shadow: 0 1px 12px rgb(0 0 0 / .35); text-wrap: balance; }
 .ex-hero-actions { display: flex; gap: 12px; }
 .ex-hero-down { position: absolute; left: 50%; bottom: 92px; transform: translateX(-50%); width: 44px; height: 44px; display: grid; place-items: center; color: #fff; border-radius: 50%; transition: transform var(--dur-ui) var(--ease-out-expo); }
-.ex-hero-down:hover { transform: translate(-50%, 4px); }
+@media (hover: hover) and (pointer: fine) { .ex-hero-down:hover { transform: translate(-50%, 4px); } }
 .ex-hero-down .cc-icon { width: 28px; height: 28px; }
 .ex-hero-foot { position: absolute; left: 0; right: 0; bottom: -40px; height: 110px; z-index: 1; pointer-events: none; }
 .ex-hero-foot::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 50px; background: var(--bg-paper); }
@@ -291,7 +291,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 .ex-view > a, .ex-view > button { position: relative; display: grid; justify-items: center; gap: 4px; width: 100%; padding: 0; border: 0; background: none; text-align: center; cursor: pointer; border-radius: var(--radius-card); }
 .ex-view .fr { width: 184px; height: 184px; margin-bottom: 18px; }
 .ex-view-badge { position: absolute; top: 166px; left: 50%; transform: translateX(-50%); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: #fff; color: var(--text-primary); box-shadow: 0 1px 2px rgb(32 33 36 / .2), 0 2px 6px rgb(32 33 36 / .14); transition: transform var(--dur-ui) var(--ease-spring-ui); }
-.ex-view:hover .ex-view-badge { transform: translateX(-50%) scale(1.12); }
+@media (hover: hover) and (pointer: fine) { .ex-view:hover .ex-view-badge { transform: translateX(-50%) scale(1.12); } }
 .ex-view-badge .cc-icon { width: 18px; height: 18px; }
 .ex-view-k { font: 700 .6875rem/1.4 'Be Vietnam Pro', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--eyebrow-ink); }
 .ex-view-name { font-size: 1rem; font-weight: 500; line-height: 1.3; }
@@ -351,7 +351,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
   border-radius: 50%; border: 2px solid #fff; background: var(--bg-paper-hi); color: var(--text-primary); font-weight: 700; cursor: pointer;
   box-shadow: 0 2px 8px rgb(0 0 0 / .25); transition: transform var(--dur-ui) var(--ease-spring-ui), background-color 200ms ease-out, color 200ms ease-out;
 }
-.ex-pin:hover { transform: translate(-50%, -50%) scale(1.1); }
+@media (hover: hover) and (pointer: fine) { .ex-pin:hover { transform: translate(-50%, -50%) scale(1.1); } }
 .ex-pin[aria-pressed="true"] { background: var(--text-primary); color: #fff; transform: translate(-50%, -50%) scale(1.18); }
 .ex-inline-list li { border-top: 1px solid var(--ink-line); }
 .ex-inline-list li:last-child { border-bottom: 1px solid var(--ink-line); }
@@ -374,7 +374,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 .ex-large-desc { font-size: .9375rem; line-height: 1.5; opacity: .92; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .ex-large-go { display: inline-flex; align-items: center; gap: 8px; font-size: .875rem; font-weight: 600; }
 .ex-large-go .cc-icon { width: 18px; height: 18px; transition: transform var(--dur-ui) var(--ease-out-expo); }
-.ex-large-card:hover .ex-large-go .cc-icon { transform: translateX(4px); }
+@media (hover: hover) and (pointer: fine) { .ex-large-card:hover .ex-large-go .cc-icon { transform: translateX(4px); } }
 
 /* ---------------- quote ---------------- */
 .ex-quote-sec { text-align: center; overflow: hidden; }
@@ -401,8 +401,8 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 .ex-game-year { font-size: 4rem; line-height: 1; font-weight: 400; font-variant-numeric: tabular-nums; }
 .ex-game-back .ex-game-name { font-size: 1rem; line-height: 1.4; color: var(--text-secondary); }
 .ex-game-card[aria-pressed="true"] .ex-game-back { box-shadow: inset 0 0 0 3px var(--text-primary); }
-.ex-game-card:hover:not([aria-pressed="true"]) .ex-game-inner { transform: translateY(-4px); }
-.ex-game.is-done .ex-game-card:hover .ex-game-inner { transform: rotateY(180deg); }
+@media (hover: hover) and (pointer: fine) { .ex-game-card:hover:not([aria-pressed="true"]) .ex-game-inner { transform: translateY(-4px); } }
+@media (hover: hover) and (pointer: fine) { .ex-game.is-done .ex-game-card:hover .ex-game-inner { transform: rotateY(180deg); } }
 .ex-game-msg { min-height: 1.6em; margin-top: 24px !important; text-align: center; font-size: 1.0625rem; }
 .ex-game .ex-center { margin-top: 16px !important; }
 .ex-game-note { font-size: .875rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
@@ -430,7 +430,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 .ex-nav-title { font-size: 1.0625rem; font-weight: 500; }
 .ex-nav-desc { font-size: .875rem; line-height: 1.45; color: var(--text-secondary); }
 .ex-nav-go { flex: none; color: var(--text-secondary); transition: transform var(--dur-ui) var(--ease-out-expo), color 200ms ease-out; }
-.ex-navcards a:hover .ex-nav-go { transform: translateX(4px); color: var(--text-primary); }
+@media (hover: hover) and (pointer: fine) { .ex-navcards a:hover .ex-nav-go { transform: translateX(4px); color: var(--text-primary); } }
 
 /* ---------------- before you go ---------------- */
 .ex-nav-sec { padding-bottom: clamp(24px, 3vw, 40px); }

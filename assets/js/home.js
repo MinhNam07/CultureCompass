@@ -24,9 +24,12 @@
   function galleryItems() {
     return (CC.heroGallery || []).map(function (g) {
       var a = CC.byId(CC.assets, g.assetId);
-      return a && a.sizes ? { a: a, place: g.place, ratio: a.width / a.height } : null;
+      return a && a.sizes ? { a: a, place: g.place, what: g.what || '', ratio: a.width / a.height } : null;
     }).filter(Boolean);
   }
+
+  /* the label keeps the last two parts of a long place ("Oaxaca, Mexico"); the alt text keeps all of it */
+  function shortPlace(p) { var parts = String(p).split(', '); return parts.length > 2 ? parts.slice(-2).join(', ') : p; }
 
   function srcset(a, ext) {
     var small = a.width > a.height * 1.1 || a.width === a.height ? 640 : 480;
@@ -44,7 +47,7 @@
         '<source type="image/webp" ' + att + '="' + esc(srcset(a, 'webp')) + '" sizes="(max-width: 760px) 50vw, 33vw">' +
         '<img ' + (deferred ? 'data-src' : 'src') + '="' + esc(a.sizes.s + '.webp') + '" alt="' + esc(a.alt + ' ' + it.place + '.') + '" width="' + a.width + '" height="' + a.height + '" decoding="async"' +
         (deferred ? '' : ' loading="lazy"') + '>' +
-      '</picture><span class="hero-photo-place">' + esc(it.place) + '</span></li>';
+      '</picture><span class="hero-photo-cap" aria-hidden="true">' + (it.what ? '<b>' + esc(it.what) + '</b>' : '') + '<span>' + esc(shortPlace(it.place)) + '</span></span></li>';
     }).join('');
     flow.tiles = Array.prototype.slice.call($list.children);
     flow.tiles.forEach(function (li) {
@@ -95,8 +98,8 @@
     var laneH = (band - gapY) / 2;
     var lanes = [{ y0: top, y1: top + laneH }, { y0: bottom - laneH, y1: bottom }];
     /* small prints scattered at uneven heights, like a contact sheet spread on a table */
-    var maxW = W * (phone ? 0.46 : 0.19);
-    var scales = phone ? [0.78, 0.62, 0.7, 0.56] : [0.74, 0.56, 0.66, 0.5, 0.62];
+    var maxW = W * (phone ? 0.52 : 0.24);
+    var scales = phone ? [0.86, 0.7, 0.8, 0.64] : [0.88, 0.68, 0.8, 0.62, 0.74];
     var rand, placed, D = W * (phone ? 4 : 3.5);
 
     function sizeFor(i, h) {
@@ -122,7 +125,10 @@
       for (var i = from; i < to && guard < 400; guard++) {
         var li = dir < 0 ? (cur[0] >= cur[1] ? 0 : 1) : (cur[0] <= cur[1] ? 0 : 1);
         var lane = lanes[li];
-        var s = sizeFor(i, laneH * scales[k % scales.length] * (0.94 + 0.06 * rand()));
+        var sc = scales[k % scales.length];
+        /* portrait prints get the taller sizes, so they stay wide enough for their two-line label */
+        if (flow.items[i].ratio < 0.9) sc = Math.max(sc, scales[0]);
+        var s = sizeFor(i, laneH * sc * (0.94 + 0.06 * rand()));
         var x = dir < 0 ? cur[li] - s.w : cur[li];
         var f = fits(lane, zone, x, s.w);
         if (f.ok && f.maxH && s.h > f.maxH) { s = sizeFor(i, f.maxH); x = dir < 0 ? cur[li] - s.w : cur[li]; }

@@ -2,6 +2,8 @@
 
 **Kế hoạch tổng cho 008–014 (thứ tự, skill, prompt):** [ROADMAP-rocket-space.md](ROADMAP-rocket-space.md)
 
+**Sửa theo góp ý chuyên gia (10/11, #1–#17, 4 đợt):** [ROADMAP-expert-review.md](ROADMAP-expert-review.md)
+
 | # | Plan | Severity | Status |
 | --- | --- | --- | --- |
 | 001 | [Đường bay tên lửa: bay ngang giữa màn hình, bổ nhào, lộn ngược, đỗ](001-rocket-flight-path.md) | HIGH | Thay bằng 002 |
@@ -19,6 +21,7 @@
 | 013 | [Nền sao trôi nhẹ theo tên lửa (tuỳ chọn)](013-starfield-parallax.md) | LOW | DONE |
 | 014 | [Điện thoại: đốt máy bay vụt đi; giảm chuyển động: tên lửa đứng yên](014-rocket-phone-and-reduced-motion.md) | LOW | DONE |
 | 015 | [Lắp tàu và lửa mới (Gemini) vào trang chủ](015-new-ship.md) | HIGH | DONE |
+| 016 | [Tên lửa pixel (mặc định, `?rocket=classic` xem tàu cũ)](016-pixel-rocket.md) | LOW | Xong, đã chọn pixel |
 
 Trước khi làm, chạy `npm run build` một lần để iframe quả địa cầu gửi vị trí cho tên lửa.
 

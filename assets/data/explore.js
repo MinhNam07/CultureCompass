@@ -157,8 +157,8 @@ window.CC.exploreZones = [
     "facts": [
       {
         "id": "f-host",
-        "title": "What to call your host",
-        "text": "She introduces herself with a family term — “cô” — rather than just her name. Listening for that word tells you what to call her.",
+        "title": "Call her what she calls herself",
+        "text": "Your host introduces herself as “cô”, a family word, not by her name. Use the same word when you speak to her.",
         "claimIds": [
           "C-ADDR-FAMILY"
         ],
@@ -167,8 +167,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-shoes",
-        "title": "Shoes off at the door",
-        "text": "Shoes are taken off just outside the door of a home. A row of shoes is a useful cue.",
+        "title": "Take your shoes off at the door",
+        "text": "Leave your shoes just outside the door of a home. A row of shoes there is your cue.",
         "claimIds": [
           "C-SHOES-HOME"
         ],
@@ -178,7 +178,7 @@ window.CC.exploreZones = [
       {
         "id": "f-family",
         "title": "Greet the eldest first",
-        "text": "Visitors usually greet the eldest family members first.",
+        "text": "Visitors usually greet the oldest people in the family first.",
         "claimIds": [
           "C-ELDEST"
         ],
@@ -187,8 +187,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-shared",
-        "title": "Shared dishes, your own bowl",
-        "text": "Dishes sit in the middle for everyone to share. Each person has a small rice bowl and takes food from the shared dishes into it.",
+        "title": "Take from shared dishes into your bowl",
+        "text": "Dishes sit in the middle for everyone. Take food from them into your own small rice bowl.",
         "claimIds": [
           "C-SHARED-MEAL"
         ],
@@ -197,8 +197,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-chop",
-        "title": "Resting your chopsticks",
-        "text": "When you pause, rest your chopsticks across the bowl or on the table rather than standing them in the rice.",
+        "title": "Don’t stand chopsticks in the rice",
+        "text": "When you pause, rest them across your bowl or on the table.",
         "claimIds": [
           "C-CHOP-UPRIGHT"
         ],
@@ -207,7 +207,7 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-glass",
-        "title": "Raising glasses",
+        "title": "Raise your glass with everyone",
         "text": "Glasses are often raised together during the meal.",
         "claimIds": [
           "C-TOAST-DO"
@@ -329,8 +329,8 @@ window.CC.exploreZones = [
     "facts": [
       {
         "id": "f-call",
-        "title": "Calling someone politely",
-        "text": "To ask someone something, call her with the word that fits her age and “ơi”, rather than pointing or saying “excuse me”.",
+        "title": "Call people with “ơi”",
+        "text": "To ask someone something, use the word that fits their age, then “ơi”. Don’t point or say “excuse me”.",
         "claimIds": [
           "C-CALL-OI",
           "C-NO-POINT"
@@ -340,8 +340,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-traffic",
-        "title": "Motorbikes come close",
-        "text": "Motorbikes may come close as you walk. Riders find a steady walker easier to predict than someone who rushes.",
+        "title": "Walk at a steady pace",
+        "text": "Motorbikes may pass close. Riders can predict a steady walker more easily than someone who rushes.",
         "claimIds": [
           "C-ROAD-ALERT",
           "C-CROSS-STEADY"
@@ -351,8 +351,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-crossing",
-        "title": "Where to cross",
-        "text": "Lights and marked crossings are where the law expects you to cross. Keep watching anyway: road rules are often not followed.",
+        "title": "Cross at lights, and keep watching",
+        "text": "Lights and marked crossings are where the law expects you to cross. Keep looking anyway: road rules are often not followed.",
         "claimIds": [
           "C-ROAD-WHERE",
           "C-ROAD-ALERT"
@@ -362,8 +362,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-bag",
-        "title": "Carry your bag safely",
-        "text": "Carry your bag in front of you or on the side away from the traffic.",
+        "title": "Keep your bag away from the traffic",
+        "text": "Carry it in front of you or on the side away from the road.",
         "claimIds": [
           "C-BAG-SIDE"
         ],
@@ -372,7 +372,7 @@ window.CC.exploreZones = [
       {
         "id": "f-vendor",
         "title": "Ask before a photo",
-        "text": "Ask before you take someone’s photo. If the answer is no, accept it calmly.",
+        "text": "Ask before you photograph someone. If they say no, accept it calmly.",
         "claimIds": [
           "C-PHOTO-ASK",
           "C-KEEP-COOL"
@@ -530,8 +530,8 @@ window.CC.exploreZones = [
     "facts": [
       {
         "id": "f-order",
-        "title": "Order at the front",
-        "text": "At small stalls you usually order at the front, pointing at what you want and asking for “một suất” (one serving), then find a stool.",
+        "title": "Order at the front, then sit",
+        "text": "Point at what you want and ask for “một suất” (one serving). Then find a stool.",
         "claimIds": [
           "C-FOOD-ORDER",
           "C-FOOD-POINT"
@@ -541,8 +541,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-share",
-        "title": "Sharing a table",
-        "text": "At busy times, other diners may join you at your table.",
+        "title": "Expect to share a table",
+        "text": "At busy times, other diners may sit at your table.",
         "claimIds": [
           "C-FOOD-SHARE"
         ],
@@ -551,8 +551,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-herbs",
-        "title": "Free herbs",
-        "text": "Noodle dishes come with a free side plate of herbs and leafy greens — mint, coriander, basil, lettuce — to add as you like.",
+        "title": "Add the herbs as you like",
+        "text": "Noodle dishes come with a free plate of herbs and greens: mint, coriander, basil, lettuce.",
         "claimIds": [
           "C-FOOD-HERBS"
         ],
@@ -561,8 +561,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-trada",
-        "title": "Trà đá",
-        "text": "“Trà đá”, iced green tea, is served at stalls all over the country instead of water.",
+        "title": "Trà đá comes instead of water",
+        "text": "Iced green tea is served at stalls all over the country.",
         "claimIds": [
           "C-FOOD-TRADA"
         ],
@@ -571,8 +571,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-wipe",
-        "title": "Wipe your chopsticks",
-        "text": "A quick wipe of your chopsticks or spoon with a napkin before eating is normal.",
+        "title": "Wipe your chopsticks first",
+        "text": "A quick wipe of your chopsticks or spoon with a napkin is normal.",
         "claimIds": [
           "C-FOOD-WIPE"
         ],
@@ -581,8 +581,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-pay",
-        "title": "Eat first, pay later",
-        "text": "At small stalls people ask the total and pay the cook on the way out. Tipping is not expected.",
+        "title": "Eat first, pay on the way out",
+        "text": "Ask the cook for the total as you leave. Tipping is not expected.",
         "claimIds": [
           "C-FOOD-PAY",
           "C-TIP"
@@ -699,7 +699,7 @@ window.CC.exploreZones = [
       {
         "id": "f-dx-floors",
         "title": "Fresh food below, fabric above",
-        "text": "The ground floor is a wet market for fresh food; the upper levels sell fabric, clothing and other goods, often at wholesale prices.",
+        "text": "The ground floor sells fresh food. The upper floors sell fabric, clothes and other goods, often at wholesale prices.",
         "claimIds": [
           "C-DX-FLOORS"
         ],
@@ -708,8 +708,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-bargain",
-        "title": "No price tags",
-        "text": "Bargaining is common in local markets, where many goods have no price tag. It goes best when you stay polite and friendly.",
+        "title": "Bargain, and keep it friendly",
+        "text": "Many goods in local markets have no price tag, so bargaining is common. It goes best when you stay polite.",
         "claimIds": [
           "C-BARGAIN-MARKET",
           "C-BARGAIN-POLITE"
@@ -719,8 +719,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-walk",
-        "title": "You can always say no",
-        "text": "If you don’t want to buy, say “Không, cảm ơn” (No, thank you) and walk on.",
+        "title": "Say no and walk on",
+        "text": "If you don’t want to buy, say “Không, cảm ơn” (No, thank you) and keep walking.",
         "claimIds": [
           "C-BARGAIN-WALK"
         ],
@@ -729,8 +729,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-agree",
-        "title": "Keep to the price you agreed",
-        "text": "Once you have agreed a price, it is fair to pay it. Compare a few stalls before you agree.",
+        "title": "Pay the price you agreed",
+        "text": "Compare a few stalls first. Once you agree a price, it is fair to pay it.",
         "claimIds": [
           "N-PRICE-AGREE"
         ],
@@ -818,8 +818,8 @@ window.CC.exploreZones = [
     "facts": [
       {
         "id": "f-rules",
-        "title": "The rules board",
-        "text": "The site’s rules ask for respectful dress in worship areas, quiet in solemn areas, and no touching or writing on stelae or artefacts.",
+        "title": "Dress respectfully, keep quiet, don’t touch",
+        "text": "The site’s rules ask for respectful dress in worship areas and quiet in solemn ones. Don’t touch or write on the stelae or artefacts.",
         "claimIds": [
           "C-VM-DRESS",
           "C-VM-QUIET",
@@ -830,8 +830,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-staff",
-        "title": "Ask the staff",
-        "text": "Staff can tell you what is allowed today. The published rules don’t mention photography or incense, so asking is the reliable way to know.",
+        "title": "Ask staff about photos and incense",
+        "text": "The published rules don’t mention photography or incense. Staff can tell you what is allowed today.",
         "claimIds": [
           "C-VM-PHOTO-UNKNOWN"
         ],
@@ -839,8 +839,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-stelae",
-        "title": "Stelae of doctoral laureates",
-        "text": "82 of the original 85 stone stelae survive. Erected between 1484 and 1780, they record the names of laureates of royal examinations held from 1442 to 1779. They are protected: look, don’t touch.",
+        "title": "Look at the stelae, don’t touch",
+        "text": "82 of the original 85 stone stelae survive. Carved between 1484 and 1780, they record the laureates of royal examinations held from 1442 to 1779.",
         "claimIds": [
           "C-STELAE-FACTS",
           "C-VM-NOTOUCH"
@@ -850,8 +850,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-hall",
-        "title": "The worship hall",
-        "text": "People come here to worship. Keep your voice low in solemn areas.",
+        "title": "Keep your voice low in the hall",
+        "text": "People come here to worship.",
         "claimIds": [
           "C-VM-QUIET"
         ],
@@ -860,8 +860,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-cover",
-        "title": "Dressing for temples",
-        "text": "General guidance for temples in Vietnam is to dress modestly — for example covering shoulders and knees — and to take off hats.",
+        "title": "Cover shoulders and knees",
+        "text": "The usual advice for temples in Vietnam: dress modestly, with shoulders and knees covered, and take off your hat.",
         "claimIds": [
           "C-TEMPLE-COVER"
         ],
@@ -870,8 +870,8 @@ window.CC.exploreZones = [
       },
       {
         "id": "f-photo-people",
-        "title": "Photographing people",
-        "text": "Always ask before photographing people.",
+        "title": "Ask before photographing people",
+        "text": "Ask first, every time.",
         "claimIds": [
           "C-PHOTO-ASK"
         ],

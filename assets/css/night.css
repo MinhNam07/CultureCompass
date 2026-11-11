@@ -132,3 +132,6 @@ body.ex :is(.cc-chip input:hover + span, .cc-listen:hover, .scene-hs-list button
 body.ex .scene-choice:hover:not(:disabled), body.ex .scene-choice.is-picked { background: var(--night-3); border-color: var(--cyan); }
 body.ex .scene-choice:hover:not(:disabled) .key { border-color: var(--cyan); color: var(--cyan); }
 @media print { :root, body.ex { --color-background: #fff; --color-text: #202124; --night-text: #202124; } body, body.ex :is(.story-body, .phrase-meaning) { background: #fff; color: #202124; } }
+
+/* a thin scrollbar in the page's own colours: long pages still show how far there is to go (home hides it, refinements.css) */
+html, html:has(body.ex) { scrollbar-width: thin; scrollbar-color: var(--line-strong) var(--night); }

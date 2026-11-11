@@ -164,8 +164,10 @@
     return '<p class="gx-readhint">' + CC.icon('story') + 'You read “' + esc(read[0].title) + '”. It may help here.</p>';
   }
   function factCard(f) {
+    /* what to know first; where it comes from and what to read next sit apart, under a rule */
+    var foot = sourcesHtml(f.claimIds) + storyLink(f.storyId);
     return '<article class="gx-fact"><h3>' + esc(f.title) + '</h3><p>' + esc(f.text) + verify(f.claimIds) + '</p>' +
-      sourcesHtml(f.claimIds) + storyLink(f.storyId) + '</article>';
+      (foot ? '<footer class="gx-fact-foot">' + foot + '</footer>' : '') + '</article>';
   }
   function unlock(id, opts) {
     var f = factById(id);
@@ -192,18 +194,57 @@
 
   /* ---------- dialog (bottom of the frame) ---------- */
   var open = null, returnFocus = null;
+  /* entrance: a fresh dialog opens from a line (is-opening), a dialog that is already up swaps its content
+     (is-swapping); either way the parts come in one after another and the first line types itself in.
+     Continue or E while it types shows the whole line; the next press goes on. Reduced motion: a plain fade. */
+  var typing = null;
+  function typeIn(el, delay) {
+    var full = el.textContent;
+    if (!full || el.children.length) return;
+    var on = document.createElement('span'), off = document.createElement('span'), raf = 0;
+    off.className = 'gx-tw-off';   // the rest of the line is laid out but clear, so nothing reflows as it types
+    el.textContent = ''; el.append(on, off);
+    var start = performance.now() + delay, per = Math.min(18, 1100 / full.length);   // 55 letters a second, never over 1.1 s
+    function done() {
+      cancelAnimationFrame(raf);
+      el.textContent = full;
+      dialog.classList.remove('is-typing');
+      typing = null;
+    }
+    function step(now) {
+      var n = Math.max(0, Math.floor((now - start) / per));
+      if (n >= full.length) return done();
+      on.textContent = full.slice(0, n); off.textContent = full.slice(n);
+      raf = requestAnimationFrame(step);
+    }
+    dialog.classList.add('is-typing');
+    typing = { done: done };
+    step(performance.now());
+  }
   function showDialog(html, label) {
     eng.frozen = true; eng.releaseKeys();
     returnFocus = returnFocus || document.activeElement;
+    var fresh = dialog.hidden;
+    if (typing) typing.done();
     dialog.innerHTML = html;
     dialog.setAttribute('aria-label', label || 'Conversation');
+    dialog.classList.remove('is-opening', 'is-swapping');
+    void dialog.offsetWidth;   // restart the entrance
+    dialog.classList.add(fresh ? 'is-opening' : 'is-swapping');
+    var i = 0;
+    Array.prototype.forEach.call(dialog.children, function (c) {
+      c.style.setProperty('--i', i++);
+      if (c.classList.contains('gx-choices')) Array.prototype.forEach.call(c.children, function (li) { li.style.setProperty('--i', i++); });
+    });
     dialog.hidden = false;
+    var line = dialog.querySelector('.gx-text');
+    if (line && !CC.motion.reduce()) typeIn(line, fresh ? 160 : 60);
     var first = dialog.querySelector('[data-autofocus]') || dialog.querySelector('button:not([disabled]), a');
     if (first) first.focus({ preventScroll: true });
   }
   function closeDialog() {
-    dialog.hidden = true;
-    dialog.innerHTML = '';
+    if (typing) typing.done();
+    dialog.hidden = true;   // the content stays for the 120 ms fade out; the next dialog replaces it
     open = null;
     if (panel.hidden) eng.frozen = false;
     frame.focus({ preventScroll: true });
@@ -421,7 +462,7 @@
       '<li><b>Doors</b> walk into a doorway to go inside or out.</li>' +
       '<li><b>Choices</b> press 1, 2 or 3. If a choice doesn’t fit, you’ll see what happens and can try another way.</li>' +
       '<li><b>G</b> or <b>Go to…</b> jumps to any place or person without walking, so you can play with the keyboard only.</li>' +
-      '<li><b>J</b> opens your journal. <b>Esc</b> closes a window.</li></ul>' +
+      '<li><b>J</b> opens your journal. <b>F</b> or the corner button goes full screen. <b>Esc</b> closes a window, then leaves full screen.</li></ul>' +
       scenes().map(function (sc) { return '<p class="cc-meta">' + esc(sc.scope || '') + '</p>'; }).join(''), 'help');
   }
   function summary() {
@@ -446,6 +487,37 @@
       '</div>', 'summary');
   }
 
+  /* ---------- full screen ----------
+     The Fullscreen API on the frame where the browser has it (desktop, Android, iPad). iPhone Safari has none for
+     ordinary elements, so there the frame covers the window (is-full) and the page underneath stops scrolling.
+     Dialogs and panels live inside the frame, so they come along either way. */
+  function nativeFull() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
+  function syncFull() {
+    var on = !!nativeFull() || frame.classList.contains('is-fake-full');
+    frame.classList.toggle('is-full', on);
+    document.documentElement.classList.toggle('gx-lock', frame.classList.contains('is-fake-full'));
+    var b = CC.$('gx-full');
+    if (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen'); b.title = (on ? 'Exit full screen' : 'Full screen') + ' (F)'; }
+    if (eng) { eng.resize(); eng.snapCamera = true; }
+  }
+  function toggleFull(want) {
+    var on = frame.classList.contains('is-full');
+    if (want === undefined) want = !on;
+    if (want === on) return;
+    var req = frame.requestFullscreen || frame.webkitRequestFullscreen;
+    var exit = document.exitFullscreen || document.webkitExitFullscreen;
+    if (want) {
+      if (req && (document.fullscreenEnabled || document.webkitFullscreenEnabled)) {
+        var p = req.call(frame);
+        if (p && p.catch) p.catch(function () { frame.classList.add('is-fake-full'); syncFull(); });
+      } else { frame.classList.add('is-fake-full'); syncFull(); }
+    } else if (nativeFull()) { exit.call(document); }
+    else { frame.classList.remove('is-fake-full'); syncFull(); }
+    frame.focus({ preventScroll: true });
+  }
+  document.addEventListener('fullscreenchange', function () { if (frame) syncFull(); });
+  document.addEventListener('webkitfullscreenchange', function () { if (frame) syncFull(); });
+
   /* ---------- wiring ---------- */
   function savePos() { if (eng && eng.player && mapId) { state.pos = { map: mapId, x: Math.round(eng.player.x), y: Math.round(eng.player.y) }; save(); } }
 
@@ -456,6 +528,7 @@
       if (e.key === 'Escape') {
         if (!panel.hidden) { closePanel(); e.preventDefault(); }
         else if (!dialog.hidden && !open) { closeDialog(); e.preventDefault(); }
+        else if (frame.classList.contains('is-full') && !nativeFull()) { toggleFull(false); e.preventDefault(); }
         return;
       }
       // E continues an open dialog. Ignore a held key, so the press that opened it can't also close it.
@@ -473,6 +546,7 @@
       if (inUi || !panel.hidden) return;   // let the open panel scroll with the arrow keys
       if ((e.key === 'j' || e.key === 'J') && panel.hidden && dialog.hidden) { journal(); e.preventDefault(); return; }
       if ((e.key === 'g' || e.key === 'G') && panel.hidden && dialog.hidden) { goTo(); e.preventDefault(); return; }
+      if ((e.key === 'f' || e.key === 'F') && !e.metaKey && !e.ctrlKey && panel.hidden && dialog.hidden) { toggleFull(); e.preventDefault(); return; }
       if (eng.setKey(e.key, true)) { e.preventDefault(); return; }
       if ((e.key === 'e' || e.key === 'E' || e.key === ' ' || e.key === 'Enter') && e.target === frame) { eng.interact(); e.preventDefault(); }
     });
@@ -494,6 +568,8 @@
     frame.addEventListener('click', function (e) {
       var t = e.target.closest('button, a');
       if (!t) return;
+      /* still typing: the first Continue shows the whole line */
+      if (typing && (t.dataset.act === 'close' || t.dataset.act === 'done')) { typing.done(); return; }
       if (t.dataset.choice) choose(t.dataset.choice);
       else if (t.dataset.act === 'close') closeDialog();
       else if (t.dataset.act === 'done') finishStep();
@@ -512,6 +588,7 @@
     CC.$('gx-goto').addEventListener('click', goTo);
     CC.$('gx-goal').addEventListener('click', function () { if (this.classList.contains('is-complete')) location.href = CC.$('gx-map').href; });
     CC.$('gx-help').addEventListener('click', help);
+    CC.$('gx-full').addEventListener('click', function () { toggleFull(); });
     CC.$('gx-sound').addEventListener('click', function () { CC.store.set('exploreSound', !soundOn()); syncSound(); });
     window.addEventListener('pagehide', savePos);
     setInterval(savePos, 4000);

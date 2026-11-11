@@ -56,10 +56,44 @@
 
 /* dialog: a paper card along the bottom */
 .gx-dialog {
-  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); width: min(760px, calc(100% - 24px));
+  /* centred with margins, not transform, so the appear animation can own transform */
+  position: absolute; left: 0; right: 0; margin-inline: auto; bottom: 12px; width: min(760px, calc(100% - 24px));
   max-height: calc(100% - 84px); overflow: auto; padding: 18px 20px; background: var(--color-surface); color: var(--color-text);
-  border-radius: 12px; box-shadow: var(--shadow-2), 0 0 0 1px rgba(var(--ink-shadow), .12); animation: cc-rise var(--t-open) var(--ease-out);
+  border-radius: 12px; box-shadow: var(--shadow-2), 0 0 0 1px rgba(var(--ink-shadow), .12);
+  transition: opacity 120ms var(--ease-out), translate 120ms var(--ease-out), display 120ms allow-discrete;
 }
+/* entrance (explore-game.js showDialog): the window opens from a line across its middle, then the name tag,
+   the line (typed in by JS) and the buttons follow 50 ms apart. A new line in an open dialog only restaggers. */
+.gx-dialog.is-opening { animation: gx-open 220ms var(--ease-out) both; }
+.gx-dialog.is-opening > *, .gx-dialog.is-swapping > *, .gx-dialog:is(.is-opening, .is-swapping) .gx-choices > li {
+  animation: gx-item 200ms var(--ease-out) backwards; animation-delay: calc(var(--d0, 0ms) + var(--i, 0) * 50ms);
+}
+.gx-dialog.is-opening { --d0: 120ms; }
+.gx-dialog.is-opening > .gx-who:first-child { animation-name: gx-tag; }
+.gx-dialog .gx-choices { animation: none !important; }
+/* while the line types, the buttons wait, dimmed but usable (a press shows the whole line) */
+.gx-actions { transition: opacity 160ms var(--ease-out); }
+.gx-dialog.is-typing .gx-actions { opacity: .45; }
+.gx-tw-off { color: transparent; }
+/* closing: a quick fade, 4px down */
+.gx-dialog[hidden] { opacity: 0; translate: 0 4px; }
+@keyframes gx-open {
+  from { opacity: 0; clip-path: inset(calc(50% - 2px) -12px calc(50% - 2px) -12px); }
+  40% { opacity: 1; }
+  to { opacity: 1; clip-path: inset(-12px -12px -72px -12px); }   /* past the frame rings and the drop shadow */
+}
+@keyframes gx-item { from { opacity: 0; transform: translateY(4px); } }
+@keyframes gx-tag { from { opacity: 0; transform: translateY(4px) scale(.94); } }
+@media (prefers-reduced-motion: reduce) {
+  .gx-dialog.is-opening { animation: gx-fade 150ms ease both; }
+  .gx-dialog.is-opening > *, .gx-dialog.is-swapping > *, .gx-dialog .gx-choices > li { animation: none; }
+  .gx-dialog[hidden] { translate: none; }
+}
+html.cc-reduce-motion .gx-dialog.is-opening { animation: gx-fade 150ms ease both; }
+html.cc-reduce-motion .gx-dialog > *, html.cc-reduce-motion .gx-dialog .gx-choices > li { animation: none !important; }
+html.cc-reduce-motion .gx-dialog[hidden] { translate: none; }
+@keyframes gx-fade { from { opacity: 0; } }
+html.cc-reduce-motion :is(.gx-toast, .gx-panel-in, .gx-stamp) { animation: gx-fade 160ms ease-out; }
 .gx-who { margin: 0 0 4px; font: 600 .8125rem/1.3 var(--font-sans); color: var(--color-text-secondary); display: flex; gap: 6px; align-items: center; }
 .gx-who .cc-icon { width: 15px; height: 15px; }
 .gx-text { margin: 0 0 10px; font: 400 1.125rem/1.5 var(--font-serif); }
@@ -90,11 +124,14 @@
 .gx-fact h3 { font: 600 1.125rem/1.3 var(--font-serif); margin: 0 0 6px; }
 .gx-fact p { margin: 0 0 6px; }
 .gx-fact .cc-src { font-size: var(--fs-meta); color: var(--color-text-secondary); }
-.gx-fact .gx-link { margin-top: 4px; }
+.gx-fact .gx-link { margin-top: 0; }
+.gx-fact-foot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); }
+.gx-fact-foot .cc-src { margin: 0; order: 2; }
+.gx-fact-foot .cc-src a { color: inherit; text-underline-offset: 3px; }
 
 /* panels: journal, go to, help, summary */
-.gx-panel { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(var(--ink-shadow), .45); }
-.gx-panel-in { width: min(620px, 100%); max-height: 100%; min-height: 0; display: flex; flex-direction: column; background: var(--color-surface); border-radius: 14px; box-shadow: var(--shadow-2); animation: cc-rise var(--t-open) var(--ease-out); }
+.gx-panel { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(var(--ink-shadow), .45); animation: gx-fade 160ms ease-out; }
+.gx-panel-in { width: min(620px, 100%); max-height: 100%; min-height: 0; display: flex; flex-direction: column; background: var(--color-surface); border-radius: 14px; box-shadow: var(--shadow-2); animation: cc-rise 220ms var(--ease-out); }
 .gx-panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px 10px; border-bottom: 1px solid var(--line); }
 .gx-panel-head h2 { font-size: var(--fs-h3); margin: 0; }
 .gx-panel-body { flex: 1 1 auto; min-height: 0; padding: 14px 20px 20px; overflow-y: auto; overscroll-behavior: contain; }
@@ -149,7 +186,7 @@
   .gx-below { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .gx-dialog, .gx-toast, .gx-panel-in, .gx-stamp { animation: none; }
+  .gx-toast, .gx-panel-in, .gx-stamp { animation: gx-fade 160ms ease-out; }
   .gx-compass .gx-needle { transition: none; }
 }
 
@@ -184,7 +221,7 @@
 .gxh-zone a { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 16px 12px 12px;
   background: var(--color-surface); border-radius: 12px; box-shadow: var(--shadow-1); color: inherit; text-decoration: none;
   transition: transform var(--t-micro) var(--ease-out), box-shadow var(--t-micro) var(--ease-out); }
-.gxh-zone a:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+@media (hover: hover) and (pointer: fine) { .gxh-zone a:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); } }
 .gxh-zone a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .gxh-stamp { width: 64px; height: 64px; border-radius: 50%; display: grid; place-content: center; text-align: center; padding: 6px;
   border: 2px dashed var(--line-strong, #bba98d); color: var(--color-text-secondary); font: 700 .68rem/1.1 var(--font-serif); transform: rotate(-8deg); overflow-wrap: anywhere; overflow: hidden; }
@@ -269,6 +306,7 @@ a.gx-tool { text-decoration: none; }
 .gx-choice .gx-key { background: transparent; box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--night-muted); border-radius: 2px; }
 .gx-dialog .cc-btn, .gx-panel .cc-btn, .gx-start .cc-btn { border-radius: 2px; }
 .gx-fact, .gx-keep, .gx-goto button { background: var(--night-3); border-color: var(--night-line); border-radius: 2px; color: var(--night-text); }
+.gx-fact-foot { border-top-color: var(--night-line); }
 .gx-goto button:hover { border-color: var(--cyan); }
 
 /* toast and panels */
@@ -398,3 +436,13 @@ a.gx-tool { text-decoration: none; }
 
 /* opaque header over the game: the dark map and panel showed through the translucent header when scrolling */
 body.ex[data-page="explore"] .cc-header { background: var(--color-background); backdrop-filter: none; }
+
+/* full screen (#2): the native API where it exists, else the frame covers the window (is-fake-full, iPhone) */
+.gx-full-off { display: none; }
+.gx-frame.is-full .gx-full-on { display: none; }
+.gx-frame.is-full .gx-full-off { display: block; }
+.gx-frame:fullscreen { width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
+.gx-frame.is-fake-full { position: fixed; inset: 0; z-index: 1000; width: auto; height: 100vh; height: 100dvh; border-radius: 0; box-shadow: none; }
+.gx-frame.is-full .gx-hud { top: max(12px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); }
+.gx-frame.is-full .gx-dialog { bottom: max(16px, env(safe-area-inset-bottom)); }
+html.gx-lock, html.gx-lock body { overflow: hidden; overscroll-behavior: none; }

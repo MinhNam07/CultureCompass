@@ -77,8 +77,6 @@
     CC.storyTopics(st).forEach(function (t) { (t.storyIds || []).forEach(function (id) { if (id !== st.id && related.indexOf(id) === -1 && (!next || id !== next.id) && (!prev || id !== prev.id)) related.push(id); }); });
     related = related.slice(0, 3).map(function (id) { return CC.byId(CC.stories, id); }).filter(Boolean);
 
-    var topicsHtml = CC.storyTopics(st).map(function (t) { return '<a href="vietnam.html#' + t.id + '">' + esc(t.label) + '</a>'; }).join(', ');
-
     /* the story takes its chapter colour from the theme it is read in */
     var bg = CC.ex ? CC.ex.chapterFor(back.topic ? back.topic.id : (CC.storyTopics(st)[0] || {}).id) : 'teal';
     var CH_INK = { teal: ['var(--ch-teal)', '#fff', '#02606F'], peach: ['var(--ch-peach)', '#202124', '#A14A12'], jade: ['var(--ch-jade)', '#202124', '#2F6F66'], ember: ['var(--ch-ember)', '#202124', '#B3401A'] }[bg];
@@ -86,29 +84,28 @@
     root.style.setProperty('--story-bg', CH_INK[0]);
     root.style.setProperty('--story-on', CH_INK[1]);
     root.style.setProperty('--story-ink', CH_INK[2]);
-    var eyebrow = back.topic ? back.topic.label : ((CC.storyTopics(st)[0] || {}).label || 'Story');
+    /* the story's own photograph is the backdrop of its opening; without one, a plain night ground */
+    var photo = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
+    var nSrc = CC.sourcesOf(claims).length;
+    var credit = photo ? '<p class="story-credit">Photo: ' + esc(photo.credit) + ', <a href="' + esc(photo.licenseUrl) + '" target="_blank" rel="noopener">' + esc(photo.license) + '</a>, via <a href="' + esc(photo.sourceUrl) + '" target="_blank" rel="noopener">Wikimedia Commons</a></p>' : '';
 
     var html =
-      '<header class="story-head story-enter" data-bg="' + bg + '">' +
+      '<header class="story-head story-enter' + (photo ? ' has-photo' : '') + '" data-bg="' + bg + '">' +
+        (photo ? '<div class="story-head-media"><img src="' + esc(photo.file) + '" alt="' + esc(photo.alt) + '" decoding="async" fetchpriority="high"></div>' : '') +
         '<ol class="cc-crumb" aria-label="Breadcrumb"><li><a href="index.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
           (back.topic ? '<li><a href="vietnam.html#' + back.topic.id + '">' + esc(back.topic.label) + '</a></li>' : '') +
           '<li><span aria-current="page">Story</span></li></ol>' +
-        '<span class="ex-eyebrow">' + esc(eyebrow) + '</span>' +
         '<h1 id="story-title" tabindex="-1">' + esc(st.title) + '</h1>' +
         '<p class="story-dek">' + esc(st.dek) + '</p>' +
-        '<div class="story-byline">' +
-          '<span>' + CC.icon('pin') + esc(st.place) + '</span>' +
-          '<span>' + CC.icon('clock') + CC.storyMinutes(st) + ' min read</span>' +
-          '<span>' + CC.icon('source') + CC.plural(CC.sourcesOf(claims).length, 'source') + '</span>' +
-          (CC.unverified(claims) ? CC.verifyTag() : '<span class="cc-tag">' + CC.icon('check') + 'Every point has a checked source</span>') +
-          (topicsHtml ? '<span>In ' + topicsHtml + '</span>' : '') +
+        '<p class="story-byline">' + esc(st.place) + '<span aria-hidden="true"> · </span>' + CC.storyMinutes(st) + ' min read<span aria-hidden="true"> · </span>' +
+          '<a href="#src-title">' + CC.plural(nSrc, 'source') + '</a>' + (CC.unverified(claims) ? ' ' + CC.verifyTag() : '') + '</p>' +
+        '<div class="story-actions">' +
+          (sc ? '<a class="cc-btn" href="' + entry.href + '">' + (entry.state === 'started' ? esc(entry.label) : 'Walk through this moment') + ' ' + CC.arrow() + '</a>' : '') +
+          CC.saveButton('story', st.id, { cls: 'cc-btn-quiet' }) +
         '</div>' +
-        '<div class="story-actions">' + CC.saveButton('story', st.id, { cls: '' }) +
-          (sc ? '<a class="cc-btn cc-btn-quiet" href="' + entry.href + '">' + CC.icon('scene') + (entry.state === 'started' ? esc(entry.label) : 'Walk through this moment') + '</a>' : '') +
-        '</div>' +
-        (CC.ex ? CC.ex.heroFoot() : '') +
+        credit +
       '</header>' +
-      figure(st) +
+      (photo ? '' : figure(st)) +
       '<div class="story-layout">' +
         '<article class="story-body" aria-labelledby="story-title">' + body + '</article>' +
         '<aside class="story-aside" aria-label="About this story">' +

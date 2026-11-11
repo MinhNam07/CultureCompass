@@ -138,6 +138,7 @@
         '<p class="rd-cover-tag">' + esc(c.name) + ', ' + esc(c.start.replace(/^Starting/, 'starting')) + '. ' + esc(c.intro) + '</p>' +
         '<div class="rd-cover-actions">' +
           '<a class="rd-btn" href="#contents" data-jump>Start reading' + ic('arrowDown') + '</a>' +
+          '<a class="rd-btn rd-btn-quiet" href="explore.html">' + ic('play') + 'Play in Hà Nội</a>' +
           '<button type="button" class="rd-round ex-heart" id="ex-heart" aria-pressed="false" aria-label="Like Vietnam">' + ic('heart') + '</button>' +
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
@@ -261,37 +262,57 @@
   /* walk through Văn Miếu: a drawn plan of the five courtyards on their axis, and one stop open at a time */
   R.inline = function () {
     var pins = [
-      { x: 4, name: 'Văn Miếu Gate', vi: 'Văn Miếu Môn' },
+      { x: 2, name: 'Văn Miếu Gate', vi: 'Văn Miếu Môn' },
       { x: 40, name: 'Constellation of Literature pavilion', vi: 'Khuê Văn Các' },
-      { x: 52, name: 'Well of Heavenly Clarity and the stelae', vi: 'Thiên Quang Tỉnh' },
-      { x: 74, name: 'Great Success courtyard', vi: 'Đại Thành' },
-      { x: 91, name: 'National Academy', vi: 'Thái Học' }
+      { x: 52.4, name: 'Well of Heavenly Clarity and the stelae', vi: 'Thiên Quang Tỉnh' },
+      { x: 77.5, name: 'Great Success courtyard', vi: 'Đại Thành' },
+      { x: 92.7, name: 'National Academy', vi: 'Thái Học' }
     ];
     var STOPS = [{"text":"The walk starts at a two-storey gate with three arches and the words Văn Miếu Môn above the middle one. Stone dragons guard it: Lê-period ones outside, Nguyễn-period ones inside. Straight ahead, Đại Trung gate leads on, with two small side gates named Thành Đức (“becoming virtuous”) and Đạt Tài (“reaching talent”)."},{"text":"Built in 1805, this little two-storey pavilion has eight roofs and a round window on each side whose spokes stand for the rays of Khuê, the star of literature. Scholars’ best poems were once read aloud here. Today it is the symbol of Hà Nội."},{"text":"A square pond sits at the centre of the third courtyard. On either side stand the 82 stone stelae, each on a stone turtle, erected between 1484 and 1780 with the names and home villages of the doctoral laureates of 82 examinations. The site asks visitors not to touch them."},{"text":"Through Đại Thành gate is a wide brick courtyard. Its side halls once held tablets for Confucius’s 72 disciples and Vietnamese scholars; at the end are the Đại Bái hall and the sanctuary of Confucius. A bronze bell cast in 1768 hangs on the left, a stone chime on the right. This is a place of worship, so keep your voice down."},{"text":"The last courtyard stands on the site of the old academy. It became a temple when the Nguyễn moved the school to Huế, burned in 1946–1947, and was rebuilt as Thái Học house in 2000. Upstairs are altars to the three kings who built and grew the school, Lý Thánh Tông, Lý Nhân Tông and Lê Thánh Tông; downstairs honours the teacher Chu Văn An."}];
-    /* plan, gate on the left, north to the right. Courtyards as filled grounds; the gaps between them are the walls. */
+    /* plan, gate on the left (south), north to the right; not to scale. Drawn as a site plan in ivory hairlines:
+       a double outer wall, five courtyards (each one a [data-yard] group that lights up with its stop), and the
+       features a visitor recognises: the three-way gate, old trees, Khuê Văn Các's round window, the square well
+       with the 82 stelae in rows beside it, the halls of the temple and the academy with its bell and drum towers. */
+    var r = function (x, y, w, h, c) { return '<rect' + (c ? ' class="' + c + '"' : '') + ' x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '"/>'; };
+    var hall = function (x, y, w, h) {   // a building in plan: a block with its roof ridge along the long side
+      var ridge = w > h ? '<line class="ridge" x1="' + (x + 6) + '" y1="' + (y + h / 2) + '" x2="' + (x + w - 6) + '" y2="' + (y + h / 2) + '"/>'
+        : '<line class="ridge" x1="' + (x + w / 2) + '" y1="' + (y + 6) + '" x2="' + (x + w / 2) + '" y2="' + (y + h - 6) + '"/>';
+      return r(x, y, w, h, 'hall') + ridge;
+    };
+    var trees = function (pts) { return pts.map(function (q) { return '<circle class="tree" cx="' + q[0] + '" cy="' + q[1] + '" r="' + (q[2] || 7) + '"/>'; }).join(''); };
+    var stelae = '';
+    [[70, 21], [90, 20], [210, 21], [230, 20]].forEach(function (row) {   // 82 stelae, as on the site
+      for (var k = 0; k < row[1]; k++) stelae += r(422 + k * 9.9 + (row[1] === 20 ? 5 : 0), row[0] - 5, 4, 10, 'stela');
+    });
+    var yard = function (n, x, w, inner) { return '<g class="yard' + (n === 0 ? ' is-on' : '') + '" data-yard="' + n + '">' + r(x + 2, 38, w - 4, 224, 'court') +
+      '<line class="axis" x1="' + (x - 8) + '" y1="150" x2="' + (x + w) + '" y2="150"/>' + inner + '</g>'; };   // the path runs through the gates
     var plan = '<svg class="rd-plan-svg" viewBox="0 0 1000 300" aria-hidden="true" focusable="false">' +
-      '<rect class="c" x="20" y="40" width="210" height="220"/><rect class="c" x="238" y="40" width="162" height="220"/>' +
-      '<rect class="c" x="408" y="40" width="232" height="220"/><rect class="c" x="648" y="40" width="182" height="220"/><rect class="c" x="838" y="40" width="146" height="220"/>' +
-      '<rect class="axis" x="20" y="146" width="964" height="8"/>' +
-      '<rect class="b" x="388" y="122" width="32" height="56"/>' +
-      '<rect class="w" x="489" y="114" width="70" height="72"/>' +
-      [70, 100, 200, 230].map(function (y) { return '<rect class="s" x="422" y="' + (y - 8) + '" width="204" height="12"/>'; }).join('') +
-      '<rect class="b" x="790" y="96" width="30" height="108"/><rect class="b" x="664" y="56" width="110" height="22"/><rect class="b" x="664" y="222" width="110" height="22"/>' +
-      '<rect class="b" x="896" y="80" width="62" height="140"/>' +
-      '<text x="984" y="26" text-anchor="end">North →</text></svg>';
+      '<rect class="wall" x="16" y="30" width="972" height="240"/><rect class="wall wall-in" x="22" y="36" width="960" height="228"/>' +
+      yard(0, 22, 206, r(48, 62, 160, 62, 'lawn') + r(48, 176, 160, 62, 'lawn') + trees([[60, 50], [120, 50, 8], [186, 50], [70, 250, 8], [140, 250], [200, 250, 6]]) +
+        hall(8, 116, 26, 68) + '<line class="arch" x1="21" y1="128" x2="21" y2="138"/><line class="arch" x1="21" y1="145" x2="21" y2="155"/><line class="arch" x1="21" y1="162" x2="21" y2="172"/>') +
+      yard(1, 236, 162, r(256, 62, 118, 62, 'lawn') + r(256, 176, 118, 62, 'lawn') + trees([[268, 50, 6], [330, 50, 8], [290, 250, 8], [360, 250, 6]]) +
+        hall(222, 128, 20, 44) + r(386, 60, 22, 22, 'hall') + r(386, 218, 22, 22, 'hall') +
+        r(383, 133, 34, 34, 'hall') + '<circle class="window" cx="400" cy="150" r="9.5"/>') +
+      yard(2, 406, 232, stelae + r(489, 114, 70, 72, 'well') + '<path class="ripple" d="M503 138h42M497 150h54M503 162h42"/>') +
+      yard(3, 646, 182, hall(630, 128, 22, 44) + hall(664, 52, 110, 24) + hall(664, 224, 110, 24) + hall(782, 96, 34, 108)) +
+      yard(4, 836, 146, hall(820, 134, 20, 32) + hall(896, 80, 62, 140) + hall(852, 54, 26, 26) + hall(852, 220, 26, 26)) +
+            '<text x="988" y="296" text-anchor="end">North →</text></svg>';
     return '<section class="rd-sec rd-walk" aria-labelledby="inl-title">' +
       head(3, 'Walk through Văn Miếu', 'Five courtyards from the gate to the academy. Choose a number to read about that stop.', 'inl-title') +
       '<div data-inline>' +
       '<figure class="rd-plan rd-rise">' +
-        '<div class="rd-plan-box">' + plan +
+        '<div class="rd-plan-scroll"><div class="rd-plan-box">' + plan +
           pins.map(function (p, i) {
-            return '<button type="button" class="rd-pin" style="left:' + p.x + '%" data-pin="' + i + '" aria-pressed="' + (i === 0) + '" aria-label="Stop ' + (i + 1) + ': ' + esc(p.name) + '">' + (i + 1) + '</button>';
-          }).join('') + '</div>' +
-        '<figcaption>Illustrated plan · Văn Miếu – Quốc Tử Giám</figcaption></figure>' +
+            return '<button type="button" class="rd-pin" style="--x:' + p.x + '" data-pin="' + i + '" aria-pressed="' + (i === 0) + '" aria-label="Stop ' + (i + 1) + ': ' + esc(p.name) + '">' + (i + 1) + '</button>';
+          }).join('') + '</div></div>' +
+        '<figcaption>Illustrated plan, not to scale · Văn Miếu – Quốc Tử Giám</figcaption></figure>' +
       '<ol class="rd-stops">' + pins.map(function (p, i) {
         return '<li class="' + (i === 0 ? 'is-on' : '') + '" data-pin-item="' + i + '">' +
           '<button type="button" data-pin="' + i + '" aria-expanded="' + (i === 0) + '" aria-controls="pin-body-' + i + '"><span class="rd-stop-n" aria-hidden="true">' + (i + 1) + '</span><span><b>' + esc(p.name) + '</b> <i lang="vi">' + esc(p.vi) + '</i></span></button>' +
-          '<div class="rd-stop-body" id="pin-body-' + i + '"><p>' + esc(STOPS[i].text) + '</p>' + link('story.html?id=st-van-mieu-university&amp;from=overview', 'Sources and more on Văn Miếu') + '</div></li>';
+          '<div class="rd-stop-body" id="pin-body-' + i + '"><p>' + esc(STOPS[i].text) + '</p>' +
+          /* walk on without going back up to the plan */
+          (i < pins.length - 1 ? '<button type="button" class="rd-stop-next" data-pin="' + (i + 1) + '" data-pin-next>Next stop: ' + esc(pins[i + 1].name) + ' <span aria-hidden="true">→</span></button>' : '') +
+          link('story.html?id=st-van-mieu-university&amp;from=overview', 'Sources and more on Văn Miếu') + '</div></li>';
       }).join('') + '</ol></div></section>';
   };
 
@@ -471,23 +492,22 @@
   function reduce() { return CC.motion.reduce(); }
   function each(sel, fn, root) { Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn); }
 
-  /* entrances: headings rise as their section arrives. Content is never hidden without script,
-     and with reduced motion nothing moves (read.css keeps the hidden start inside prefers-reduced-motion: no-preference). */
+  /* entrances: each block rises once as it arrives (never again on the way back up). Blocks that arrive together
+     follow each other by 50ms. Content is never hidden without script, and with reduced motion nothing moves
+     (read.css keeps the hidden start inside prefers-reduced-motion: no-preference). */
   function initRise() {
-    /* only headings rise; text, pictures and lists are simply there (24 reveals on one page read as noise) */
-    each('.rd-rise', function (e) { if (!e.matches('.rd-head, h2.rd-rise, .rd-start-txt')) e.classList.add('is-in'); });
-    var els = document.querySelectorAll('.rd-rise:not(.is-in)');
+    var els = document.querySelectorAll('.rd-rise');
     if (reduce() || !('IntersectionObserver' in window)) { each('.rd-rise', function (e) { e.classList.add('is-in'); }); return; }
     document.documentElement.classList.add('rd-motion');
     var io = new IntersectionObserver(function (es) {
+      var n = 0;
       es.forEach(function (e) {
         if (!e.isIntersecting) return;
         io.unobserve(e.target);
-        var sib = e.target.parentNode ? Array.prototype.indexOf.call(e.target.parentNode.children, e.target) : 0;
-        e.target.style.setProperty('--i', Math.min(sib, 6));
+        e.target.style.setProperty('--i', Math.min(n++, 6));
         e.target.classList.add('is-in');
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    }, { rootMargin: '0px 0px -6% 0px' });
     Array.prototype.forEach.call(els, function (e) { io.observe(e); });
   }
 
@@ -569,16 +589,38 @@
   function initInline() {
     each('[data-inline]', function (box) {
       var set = function (n) {
+        var open = null;
         each('.rd-pin', function (p) { p.setAttribute('aria-pressed', String(Number(p.getAttribute('data-pin')) === n)); }, box);
+        each('[data-yard]', function (g) { g.classList.toggle('is-on', Number(g.getAttribute('data-yard')) === n); }, box);
+        var sc = box.querySelector('.rd-plan-scroll'), pin = box.querySelector('.rd-pin[data-pin="' + n + '"]');
+        if (sc && pin && sc.scrollWidth > sc.clientWidth + 1) {   // phones: the plan scrolls sideways; bring the stop to the middle
+          sc.scrollTo({ left: pin.offsetLeft - sc.clientWidth / 2, behavior: reduce() ? 'auto' : 'smooth' });
+        }
         each('[data-pin-item]', function (li) {
           var on = Number(li.getAttribute('data-pin-item')) === n;
           li.classList.toggle('is-on', on);
           li.querySelector('button').setAttribute('aria-expanded', String(on));
+          if (on) open = li;
         }, box);
+        return open;
+      };
+      /* the open stop can land off screen (below the plan on a phone, or above once a long stop closes): bring it into view */
+      var reveal = function (li) {
+        var top = 0;
+        each('.cc-header, .rd-chbar', function (bar) { var r = bar.getBoundingClientRect(); if (r.top >= 0 && r.top < 160 && r.bottom > top) top = r.bottom; /* bars stuck to the top */ }, document);
+        var r = li.getBoundingClientRect();
+        if (r.top >= top && r.bottom <= window.innerHeight) return;
+        if (r.top >= top && r.top < window.innerHeight * 0.55) return; /* its start is in view: let the reader scroll on */
+        window.scrollTo({ top: window.scrollY + r.top - top - 12, behavior: reduce() ? 'auto' : 'smooth' });
       };
       box.addEventListener('click', function (e) {
         var b = e.target.closest('[data-pin]');
-        if (b) set(Number(b.getAttribute('data-pin')));
+        if (!b) return;
+        var li = set(Number(b.getAttribute('data-pin')));
+        if (li) {
+          reveal(li);
+          if (b.hasAttribute('data-pin-next')) li.querySelector('button').focus({ preventScroll: true });
+        }
       });
     });
   }

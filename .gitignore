@@ -16,3 +16,8 @@ assets/game/vendor/ninja-adventure/
 # Temporary archives, not part of the site.
 _to_delete/
 docs/game/ref/tmp/
+
+# beanfx (pixel effects plugin): its Python venv and scratch output; finished sheets are copied into assets/.
+.venv/
+drafts/
+out/

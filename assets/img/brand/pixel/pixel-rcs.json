@@ -1,0 +1,129 @@
+{
+ "frames": [
+  {
+   "filename": "pixel-rcs 0",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 8,
+    "h": 6
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 8,
+    "h": 6
+   },
+   "sourceSize": {
+    "w": 8,
+    "h": 6
+   },
+   "duration": 67
+  },
+  {
+   "filename": "pixel-rcs 1",
+   "frame": {
+    "x": 8,
+    "y": 0,
+    "w": 8,
+    "h": 6
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 8,
+    "h": 6
+   },
+   "sourceSize": {
+    "w": 8,
+    "h": 6
+   },
+   "duration": 67
+  },
+  {
+   "filename": "pixel-rcs 2",
+   "frame": {
+    "x": 0,
+    "y": 6,
+    "w": 8,
+    "h": 6
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 8,
+    "h": 6
+   },
+   "sourceSize": {
+    "w": 8,
+    "h": 6
+   },
+   "duration": 67
+  },
+  {
+   "filename": "pixel-rcs 3",
+   "frame": {
+    "x": 8,
+    "y": 6,
+    "w": 8,
+    "h": 6
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 8,
+    "h": 6
+   },
+   "sourceSize": {
+    "w": 8,
+    "h": 6
+   },
+   "duration": 67
+  }
+ ],
+ "meta": {
+  "app": "beanfx",
+  "version": "1",
+  "image": "pixel-rcs.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 16,
+   "h": 12
+  },
+  "scale": "1",
+  "frameTags": [
+   {
+    "name": "pixel-rcs",
+    "from": 0,
+    "to": 3,
+    "direction": "forward"
+   }
+  ],
+  "beanfx": {
+   "name": "pixel-rcs",
+   "fps": 15,
+   "loop": false,
+   "end": "remove",
+   "frames": 4,
+   "rows": 1,
+   "frameSize": [
+    8,
+    6
+   ],
+   "pivot": [
+    0,
+    3
+   ],
+   "columns": 2,
+   "sheet": "pixel-rcs.png"
+  }
+ }
+}

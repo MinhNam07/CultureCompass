@@ -10,7 +10,8 @@
    a puff now and then) and points at the flag under the pointer. A light spring (0.15 s) over the whole flight
    gives it a little weight. The engine burns when it speeds up or turns (longer, brighter flame, a trail of
    puffs) and coasts on a pilot flame otherwise; nose jets on the capsule start and stop each turn.
-   Scroll back and it flies the same way back into the logo. On phones it crosses the opening and then burns
+   Scroll back and it turns round under itself (nose down) and flies nose first back into the logo; scroll on and
+   it turns back. On phones it crosses the opening and then burns
    away up and to the right; it does not park.
 
    Decoration only: aria-hidden, never focusable, nothing depends on it. With reduced motion (system or the
@@ -42,10 +43,12 @@
     weave: 0.03,        // cruise weave height, in viewport heights
     waves: 2,           // weaves across the opening
     surge: 0.05,        // furthest it surges ahead when scrolled fast, in viewport widths
+    reverse: { speed: 1.5, ms: 520 },   // scrolling back faster than this (px per frame) turns it round, over this long
     swoop: { bend: 0.09, drop: 0.08, pull: 0.11 },     // bend-down radius, descent, pull-up radius (viewport heights)
     follow: { response: 0.15, damping: 0.8 },          // spring on position (seconds, damping ratio)
     turn: { response: 0.2, damping: 0.85 },            // spring on the nose
     keep: { ax: 0.010, ay: 0.008, px: 9.0, py: 7.0, tilt: 1.5, pt: 11.0, puffMin: 4, puffMax: 7 },   // parked drift (diameters), periods (s), nose drift (deg), seconds between trim puffs
+    bob: { amp: 1, period: 2.4 },   // pixel ship hover: up and down by whole sprite pixels (amp), one cycle every period s
     shadow: 0.03,       // shadow drop below the rocket, in box sides; always straight down on screen
     flame: { pilot: 0.45, max: 1.0, flicker: 0.05 },        // flame length (share of its picture) coasting / at full burn, flicker share
     thrust: { full: 2, side: 0.8, up: 60, down: 280 },       // acceleration for full burn (viewport heights per s^2), weight of turning, smoothing ms (rise, fall)
@@ -79,7 +82,96 @@
   var sp = null;           // spring state { x, y, vx, vy, h, vh }
   var orbitT = LOGO.t0, orbitRamp = 0;
   var sm = 0, prevScroll = 0, vScroll = 0, surge = 0;   // smoothed scroll, last raw scroll, px/frame, surge px
+  var back = false, flip = 0;   // scrolled back: it turns round (through nose down) and flies nose first the other way
   var thr = 0, grow = 0, flameLen = 0, pvx = 0, pvy = 0;   // engine: thrust 0..1, take-off growth 0..1, last flame length, last spring speed
+
+  /* ---------- pixel rocket (plans/016-pixel-rocket.md), the default since 11/11; index.html?rocket=classic shows
+     the painted ship for comparison ----------
+     The ship, its flame and its nose jets are drawn into a small canvas (G x G sprite pixels), rotated there in 15°
+     steps with smoothing off, and that canvas is scaled up with image-rendering: pixelated. So pixels stay square at
+     every angle and the box itself is never rotated. Ship: tools/pixel-rocket/ship.py; effects: beanfx sheets from
+     tools/pixel-rocket/fx.py (4 frames per row). */
+  var PIXEL = !/[?&]rocket=classic\b/.test(window.location.search);
+  var PXDIR = 'assets/img/brand/pixel/';
+  var PX = { w: 26, h: 64, G: 128, step: 15, fps: 12, cols: 4,
+    nozzle: [13, 61],                        // where the flame hangs, sprite px
+    jets: { left: [5, 14], right: [21, 14] }, // nose jet roots, sprite px
+    sheets: { ship: 'ship.png?v=3', flame: 'pixel-flame.png', ignite: 'pixel-ignite.png', puff: 'pixel-puff.png', rcs: 'pixel-rcs.png' },
+    size: { flame: [16, 32, 6], ignite: [16, 32, 5], puff: [12, 12, 6], rcs: [8, 6, 4] } };
+  var px = { img: {}, ctx: null, key: '', frame: 0, lastFrameAt: 0, litAt: -1e9, wasLit: false, jetAt: { left: -1e9, right: -1e9 },
+    shake: [0, 0], embers: [] };
+  var PX_SHAKE = { from: 0.7, steps: [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]] };   // thrust that starts the shake; 1 px nudges
+  var PX_EMBER = { from: 0.5, max: 10, colours: ['#F1CE8E', '#E8B84A', '#FC5C46', '#BA2D2F'] };   // thrust that sheds embers, pool, hot to cool
+  /* once per 12 fps tick: pick the shake nudge, shed and move the embers (sprite px, in the ship's own axes) */
+  function pxTick(rows) {
+    px.shake = thr > PX_SHAKE.from ? PX_SHAKE.steps[Math.floor(Math.random() * PX_SHAKE.steps.length)] : [0, 0];
+    var e = px.embers;
+    for (var i = e.length - 1; i >= 0; i--) {
+      e[i].x += e[i].vx; e[i].y += e[i].vy; e[i].age++;
+      if (e[i].age >= e[i].life) e.splice(i, 1);
+    }
+    /* born at the flame's edge where it tapers, then thrown out sideways and left behind */
+    var n = thr > PX_EMBER.from ? 1 + (Math.random() < (thr - PX_EMBER.from) * 2 ? 1 : 0) : 0;
+    for (var k = 0; k < n && e.length < PX_EMBER.max; k++) {
+      var side = Math.random() < 0.5 ? -1 : 1, at = 0.45 + Math.random() * 0.4;
+      e.push({ x: PX.nozzle[0] - 1 + side * Math.round(1 + 4 * (1 - at)), y: PX.nozzle[1] + Math.floor(rows * at),
+        vx: side, vy: 1 + (Math.random() < 0.6 ? 1 : 0), age: 0, life: 4 + Math.floor(Math.random() * 3) });
+    }
+  }
+  function pxLoad() {
+    Object.keys(PX.sheets).forEach(function (k) {
+      var img = new Image();
+      img.onload = function () { px.img[k] = img; px.key = ''; };
+      img.src = PXDIR + PX.sheets[k];
+    });
+  }
+  /* frame f of a sheet, drawn with its pivot at (x, y); rows clips it to its top rows; flip mirrors it */
+  function pxCell(x, name, f, dx, dy, rows, flip) {
+    var img = px.img[name], sz = PX.size[name];
+    if (!img) return;
+    var w = sz[0], h = Math.min(sz[1], rows || sz[1]), sx = (f % PX.cols) * w, sy = Math.floor(f / PX.cols) * sz[1];
+    if (flip) { x.save(); x.scale(-1, 1); x.drawImage(img, sx, sy, w, h, -dx, dy, w, h); x.restore(); }
+    else x.drawImage(img, sx, sy, w, h, dx, dy, w, h);
+  }
+  function drawPixel(st, now) {
+    if (!px.ctx || !px.img.ship) return;
+    var ang = Math.round((st.head - PIC.nose) / PX.step) * PX.step;
+    var ticked = false;
+    if (now - px.lastFrameAt > 1000 / PX.fps) { px.frame++; px.lastFrameAt = now; ticked = true; }
+    /* flame: a short pilot uses the small ignition shapes, a burn the looping sheet cut to length; it lights with
+       the whole ignition run */
+    var lit = flameLen >= 0.05, fl = '', ff = 0, rows = 0;
+    if (lit && !px.wasLit) px.litAt = now;
+    px.wasLit = lit;
+    if (lit) {
+      var since = Math.floor((now - px.litAt) * PX.fps / 1000);
+      if (since < PX.size.ignite[2]) { fl = 'ignite'; ff = since; }
+      else if (flameLen < 0.3) { fl = 'ignite'; ff = flameLen < 0.15 ? 1 : 2; }
+      else { fl = 'flame'; ff = px.frame % PX.size.flame[2]; rows = Math.max(12, Math.round(Math.min(1, flameLen) * 32)); }
+    }
+    if (ticked) pxTick(rows || 12);
+    var jl = Math.floor((now - px.jetAt.left) * 15 / 1000), jr = Math.floor((now - px.jetAt.right) * 15 / 1000);
+    jl = jl < PX.size.rcs[2] ? jl : -1; jr = jr < PX.size.rcs[2] ? jr : -1;
+    var key = ang + '|' + fl + ff + '|' + rows + '|' + jl + '|' + jr + '|' + px.shake + '|' + (px.embers.length ? px.frame : 0);
+    if (key === px.key) return;
+    px.key = key;
+    var x = px.ctx, G = PX.G;
+    x.setTransform(1, 0, 0, 1, 0, 0);
+    x.clearRect(0, 0, G, G);
+    x.imageSmoothingEnabled = false;
+    x.translate(G / 2 + px.shake[0], G / 2 + px.shake[1]);   // the shake is on screen, whatever way the ship faces
+    x.rotate(ang * Math.PI / 180);
+    x.translate(-PX.w / 2, -PX.h / 2);
+    if (fl) pxCell(x, fl, ff, PX.nozzle[0] - 8, PX.nozzle[1], rows);
+    for (var i = 0; i < px.embers.length; i++) {
+      var em = px.embers[i];
+      x.fillStyle = PX_EMBER.colours[Math.min(PX_EMBER.colours.length - 1, Math.floor(em.age / em.life * PX_EMBER.colours.length))];
+      x.fillRect(em.x, em.y, 1, 1);
+    }
+    x.drawImage(px.img.ship, 0, 0);
+    if (jl >= 0) pxCell(x, 'rcs', jl, PX.jets.left[0], PX.jets.left[1] - 3, 0, true);
+    if (jr >= 0) pxCell(x, 'rcs', jr, PX.jets.right[0], PX.jets.right[1] - 3);
+  }
   var pvh = 0, nextTrim = 0;   // last turn rate (deg/s), for the nose jets; when the next parked trim puff is due
   var puffs = [], emitAcc = 0, smPrev = 0, flameH = 0;   // exhaust pool, puffs owed, last smoothed scroll, flame picture height in the box
   var lastStarMsg = 0;     // when the iframe's stars were last told how the ship moves
@@ -179,8 +271,54 @@
     m.x0 = Math.max(CFG.cruiseFrom * vw, m.mark.x + m.mark.w + 0.04 * vw, m.full / 2 + 24);
     m.x1 = m.phone ? vw * 0.62 : m.Sx;
     if (!m.phone) buildSwoop();
+
+    /* the opening's words: the first title and the closing line sit low in the pinned stage; the flight keeps
+       above them while they show (plans/ROADMAP-expert-review.md #3). Boxes are relative to the stage top. */
+    var stage = CC.$('hero-stage'), stTop = stage ? stage.getBoundingClientRect().top : 0;
+    function box(sel) {   // the ink, not the boxes: a heading's box runs the full width of the page
+      var b = null;
+      Array.prototype.forEach.call(document.querySelectorAll(sel), function (el) {
+        var range = document.createRange(); range.selectNodeContents(el);
+        var r = /^(H1|H2|P)$/.test(el.tagName) ? range.getBoundingClientRect() : el.getBoundingClientRect();
+        if (!r.width) return;
+        b = b ? { l: Math.min(b.l, r.left), t: Math.min(b.t, r.top), r: Math.max(b.r, r.right), b: Math.max(b.b, r.bottom) } : { l: r.left, t: r.top, r: r.right, b: r.bottom };
+      });
+      return b && { l: b.l, r: b.r, t: b.t - stTop, b: b.b - stTop };
+    }
+    /* the closing line: the flight keeps to its right, where the pictures have left room (phones: above it).
+       The first title is left alone: holding the take-off up there made it drop late and hard. */
+    m.words = [
+      { box: box('#hero-end h2, #hero-end .hero-cta'), side: m.phone ? 'up' : 'right',
+        show: function (u) { return smoothstep((u - 0.78) / 0.1); } }         // clear before it fades in (0.88)
+    ].filter(function (w) { return w.box; });
   }
 
+  /* moves the flight off the opening's words while they show: a smooth push, zero away from the words and
+     gone before parking, so the path (and the nose read from it) stays continuous */
+  function clearWords(p, s) {
+    if (!m.words || !m.words.length) return p;
+    var u = s / m.heroRun, len = s < m.s1 ? takeoffLen(p.y) : m.full;
+    var stageTop = Math.min(0, m.heroRun - s);                      // pinned, then scrolls away with the page
+    var away = m.phone ? 1 : 1 - smoothstep((s - (m.sLand - 0.3 * m.vh)) / (0.3 * m.vh));
+    var x = p.x, y = p.y;
+    m.words.forEach(function (w) {
+      var k = w.show(u) * away; if (k <= 0) return;
+      var b = w.box, t = stageTop + b.t, bt = stageTop + b.b;
+      if (w.side === 'up') {
+        var rad = 0.45 * len, f = rad;
+        var kx = smoothstep((x - (b.l - rad - f)) / f) * smoothstep(((b.r + rad + f) - x) / f);
+        var under = clamp((bt + rad - y) / rad, 0, 1);              // one well under the words is left alone
+        var lift = Math.max(0, y - (t - rad)) * kx * under * k;
+        y = Math.max(Math.min(y, m.headerBottom + 0.3 * len), y - lift);   // never up under the header
+      } else {
+        var rx = 0.4 * len, ry = 0.45 * len, g = ry;
+        var ky = smoothstep((y - (t - ry - g)) / g) * smoothstep(((bt + ry + g) - y) / g);
+        var push = Math.max(0, (b.r + rx) - x) * ky * k;
+        x = Math.max(x, Math.min(x + push, m.vw - 0.6 * rx));         // not off the right edge
+      }
+    });
+    return x === p.x && y === p.y ? p : { x: x, y: y };
+  }
   /* ---- the path (screen px, as a function of scroll) ---- */
   function cruiseX(s) {
     var u = clamp(s / m.s2, 0, 1);
@@ -251,7 +389,8 @@
     var f = (d - acc[lo]) / Math.max(1e-6, acc[hi] - acc[lo]), a = sw.pts[lo], b = sw.pts[hi];
     return { x: lerp(a.x, b.x, f), y: lerp(a.y, b.y, f) };
   }
-  function pathPos(s) {
+  function pathPos(s) { return clearWords(rawPath(s), s); }
+  function rawPath(s) {
     if (s < m.s1) return takeoffPos(s);
     if (s < m.s2) return cruisePos(s);
     /* phones: no parking; it burns away up and to the right, faster and faster */
@@ -284,6 +423,8 @@
     var k = smoothstep(s / m.s1) * (1 - smoothstep((s - (m.s2 - 0.4 * m.vh)) / (0.4 * m.vh)));
     p.x += surge * k;
     head -= clamp(vScroll * 0.35, -5, 7) * k;
+    /* scrolled back: turned round. Always add, so the turn dips under (nose down), both ways */
+    head += 180 * smoothstep(flip);
     if (s < m.s1) head = lerpAng(logoState().head, head, smoothstep(s / m.s1 / 0.2));
     /* phones: fades only once the tail has crossed the right edge, so it flies off rather than vanishing */
     var op = m.phone ? 1 - smoothstep((p.x - m.vw - 0.5 * m.full) / (0.3 * m.full)) : 1;
@@ -324,18 +465,26 @@
       if (u >= 1) { q.alive = false; q.el.style.opacity = '0'; continue; }
       q.vx *= damp; q.vy *= damp;
       q.x += q.vx * dt / 1000 - driftX; q.y += q.vy * dt / 1000 - driftY;
-      q.el.style.transform = 'translate3d(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px,0) scale(' + (q.k * lerp(0.5, 1.8, u)).toFixed(3) + ')';
-      q.el.style.opacity = (0.75 * (1 - u) * (1 - u)).toFixed(3);
+      if (PIXEL) {
+        /* the sheet already grows and thins out, so only the frame changes */
+        var pf = Math.min(PX.size.puff[2] - 1, Math.floor(u * PX.size.puff[2]));
+        q.el.style.transform = 'translate3d(' + Math.round(q.x) + 'px,' + Math.round(q.y) + 'px,0) scale(' + q.k.toFixed(3) + ')';
+        q.el.style.backgroundPosition = (-(pf % PX.cols) * 48) + 'px ' + (-Math.floor(pf / PX.cols) * 48) + 'px';   // 48 px cells (CSS)
+        q.el.style.opacity = u < 0.85 ? '1' : '0.6';
+      } else {
+        q.el.style.transform = 'translate3d(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px,0) scale(' + (q.k * lerp(0.5, 1.8, u)).toFixed(3) + ')';
+        q.el.style.opacity = (0.75 * (1 - u) * (1 - u)).toFixed(3);
+      }
       alive++;
     }
     return alive;
   }
   function drawFly(st) {
     var side = st.len * PIC.side / PIC.len, k = side / FLY_BASE;
-    els.fly.style.transform = 'translate3d(' + (st.x - FLY_BASE / 2).toFixed(1) + 'px,' + (st.y - FLY_BASE / 2).toFixed(1) + 'px,0) rotate(' + (st.head - PIC.nose).toFixed(2) + 'deg) scale(' + k.toFixed(4) + ')';
+    els.fly.style.transform = 'translate3d(' + (st.x - FLY_BASE / 2).toFixed(1) + 'px,' + (st.y - FLY_BASE / 2).toFixed(1) + 'px,0)' + (PIXEL ? '' : ' rotate(' + (st.head - PIC.nose).toFixed(2) + 'deg)') + ' scale(' + k.toFixed(4) + ')';
     /* the box is rotated, so turn "straight down on screen" into its own axes */
     var a = (st.head - PIC.nose) * Math.PI / 180, s = CFG.shadow * FLY_BASE;
-    els.shadow.style.transform = 'translate3d(' + (s * Math.sin(a)).toFixed(1) + 'px,' + (s * Math.cos(a)).toFixed(1) + 'px,0)';
+    if (els.shadow) els.shadow.style.transform = 'translate3d(' + (s * Math.sin(a)).toFixed(1) + 'px,' + (s * Math.cos(a)).toFixed(1) + 'px,0)';
     els.fly.style.opacity = st.op.toFixed(3);
   }
   /* thrust sets the length; it lights with a burst as the rocket grows out of the logo and goes out before it docks */
@@ -347,6 +496,7 @@
       (1 + q * Math.sin(ts * 2 * Math.PI * 9) + q * 0.6 * Math.sin(ts * 2 * Math.PI * 13.7)), 0, 1.2);
     /* hotter and brighter the harder it burns */
     var lit = flameLen < 0.05 ? 0 : 1;
+    if (PIXEL) return;   // the pixel canvas draws its own flame from flameLen
     els.core.style.opacity = (lit * (0.15 + 0.85 * thr)).toFixed(3);
     els.glow.style.opacity = (lit * (0.2 + 0.6 * thr)).toFixed(3);
     els.flame.style.opacity = flameLen < 0.05 ? '0' : '1';
@@ -361,6 +511,7 @@
     var r = RCS[side];
     if (!r.el || now - r.lastAt < CFG.rcs.gap) return;
     r.lastAt = now;
+    if (PIXEL) { px.jetAt[side] = now; return; }
     r.el.animate([{ opacity: 0.95, transform: 'rotate(' + r.ang + 'deg) scaleX(0.4)' }, { opacity: 0, transform: 'rotate(' + r.ang + 'deg) scaleX(1.2)' }],
       { duration: CFG.rcs.ms, easing: 'cubic-bezier(.22, 1, .36, 1)' });
   }
@@ -389,6 +540,10 @@
     if (Math.abs(vScroll) < 0.01) vScroll = 0;
     surge += (clamp(vScroll * 2.2, -0.03 * m.vw, CFG.surge * m.vw) - surge) * (1 - Math.exp(-dt / 260));
     if (Math.abs(surge) < 0.05) surge = 0;
+    /* which way it faces: set by a clear scroll back or on, kept while the page rests; never turned at the top */
+    if (vScroll < -CFG.reverse.speed) back = true; else if (vScroll > CFG.reverse.speed) back = false;
+    if (sm <= 0.5) back = false;   // only once it is home: on the way in it keeps flying nose first
+    flip = clamp(flip + (back ? 1 : -1) * dt / CFG.reverse.ms, 0, 1);
     /* the scroll as the rocket reads it: same follow as the pictures */
     sm += (sy - sm) * (1 - Math.exp(-dt / CFG.smoothMs));
     if (Math.abs(sy - sm) < 0.3) sm = sy;
@@ -442,14 +597,23 @@
     } else nextTrim = 0;
     cur = { x: sp.x, y: sp.y, len: t.len, head: sp.h, op: t.op };
     showHome(home);
-    if (home) drawMarkRocket(logoState()); else { drawFly(cur); drawFlame(now); }
+    if (home) drawMarkRocket(logoState());
+    else {
+      /* pixel ship: it hovers, stepping up and down one whole sprite pixel at a time like a sprite in the game */
+      var shown = cur;
+      if (PIXEL) {
+        var bob = Math.round(Math.sin(2 * Math.PI * (now - startedAt) / 1000 / CFG.bob.period) * CFG.bob.amp);
+        shown = { x: cur.x, y: cur.y + bob * cur.len / PX.h, len: cur.len, head: cur.head, op: cur.op };
+      }
+      drawFly(shown); drawFlame(now); if (PIXEL) drawPixel(cur, now);
+    }
     /* above the header whenever any of it reaches the header band (otherwise the header's blur covers it) */
     els.fly.classList.toggle('is-over-header', cur.y - 0.6 * cur.len < m.headerBottom);
     var puffsAlive = stepTrail(dt, sy, dRaw, !home && t.phase !== 'parked' && thr >= 0.08 && !hidden);
 
     var moving = surge !== 0 || vScroll !== 0 || sy !== sm || Math.abs(sp.vx) + Math.abs(sp.vy) > 2 ||
       Math.abs(sp.vh) > 2 || Math.hypot(t.x - sp.x, t.y - sp.y) > 0.4 || Math.abs(angDiff(sp.h, t.head)) > 0.3 ||
-      Math.abs(thrTarget - thr) > 0.01 || puffsAlive > 0;
+      Math.abs(thrTarget - thr) > 0.01 || puffsAlive > 0 || (flip > 0 && flip < 1);
     var onScreen = cur.y > -cur.len && cur.y < m.vh + cur.len;
     /* near the globe, the iframe's stars slide against the ship (at most 20 messages a second) */
     if ((t.phase === 'parked' || t.phase === 'swoop') && !m.phone && !hidden && onScreen && now - lastStarMsg > 50 && els.frame && els.frame.contentWindow) {
@@ -457,7 +621,10 @@
       els.frame.contentWindow.postMessage({ type: 'culturecompass-stars', vx: sp.vx / m.vh, vy: sp.vy / m.vh, head: sp.h, parked: t.phase === 'parked' }, window.location.origin);
     }
     var idle = (atTop && !document.hidden) || (t.phase === 'parked' && onScreen && !hidden && !m.phone);
-    if (idle || moving) raf = requestAnimationFrame(frame);
+    /* the pixel flame and the hover keep going while the ship is in view, even when the page rests
+       (drawPixel only repaints at 12 fps, so a resting frame costs little) */
+    var alive = PIXEL && !home && onScreen && !hidden;
+    if (idle || moving || alive) raf = requestAnimationFrame(frame);
     else last = 0;
   }
   function kick() { if (on && !raf && !document.hidden) raf = requestAnimationFrame(frame); }
@@ -476,20 +643,34 @@
     els.fly = document.createElement('div');
     els.fly.className = 'cc-rocket is-hidden';
     els.fly.setAttribute('aria-hidden', 'true');
-    els.fly.innerHTML = '<div class="cc-rocket-fade"><img class="cc-rocket-shadow" src="' + PIC.src + '" alt="" decoding="async">' +
+    els.fly.innerHTML = PIXEL ? '<div class="cc-rocket-fade"></div>' : '<div class="cc-rocket-fade"><img class="cc-rocket-shadow" src="' + PIC.src + '" alt="" decoding="async">' +
       '<i class="cc-rocket-glow"></i>' +
       '<img class="cc-rocket-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
       '<i class="cc-rocket-core"></i>' +
       '<img class="cc-rocket-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
+    if (PIXEL) {
+      els.fly.classList.add('is-pixel');
+      var cv = document.createElement('canvas');
+      cv.className = 'cc-rocket-px'; cv.width = cv.height = PX.G;
+      /* the ship is FLY_BASE tall in the box, so one sprite pixel is FLY_BASE / PX.h box pixels */
+      var cs = FLY_BASE * PX.G / PX.h;
+      cv.style.width = cv.style.height = cs + 'px';
+      cv.style.left = cv.style.top = ((FLY_BASE - cs) / 2) + 'px';
+      els.fly.querySelector('.cc-rocket-fade').appendChild(cv);
+      px.ctx = cv.getContext('2d');
+      pxLoad();
+    }
     els.shadow = els.fly.querySelector('.cc-rocket-shadow');
     els.flame = els.fly.querySelector('.cc-rocket-flame');
     els.glow = els.fly.querySelector('.cc-rocket-glow'); els.core = els.fly.querySelector('.cc-rocket-core');
     /* the ship fills the box's height and is centred across it; the flame is placed in shares of the ship */
     var shipW = FLY_BASE * PIC.width, shipX = (FLY_BASE - shipW) / 2, flameW = FLAME.width * shipW;
-    els.flame.style.left = (shipX + FLAME.left * shipW).toFixed(2) + 'px';
-    els.flame.style.top = (FLAME.top * FLY_BASE).toFixed(2) + 'px';
-    els.flame.style.width = flameW.toFixed(2) + 'px';
-    els.flame.style.height = (flameW * FLAME.aspect).toFixed(2) + 'px';
+    if (els.flame) {
+      els.flame.style.left = (shipX + FLAME.left * shipW).toFixed(2) + 'px';
+      els.flame.style.top = (FLAME.top * FLY_BASE).toFixed(2) + 'px';
+      els.flame.style.width = flameW.toFixed(2) + 'px';
+      els.flame.style.height = (flameW * FLAME.aspect).toFixed(2) + 'px';
+    }
     flameH = flameW * FLAME.aspect;
     /* the nose jets sit above the hull, in the box's own units */
     ['left', 'right'].forEach(function (side) {
@@ -503,7 +684,7 @@
     });
     /* the exhaust: a fixed pool, reused; it sits just under the rocket */
     els.trail = document.createElement('div');
-    els.trail.className = 'cc-rocket-trail';
+    els.trail.className = 'cc-rocket-trail' + (PIXEL ? ' is-pixel' : '');
     els.trail.setAttribute('aria-hidden', 'true');
     puffs = [];
     for (var i = 0; i < CFG.trail.count; i++) {
@@ -528,7 +709,7 @@
     els.fly.hidden = false; els.markRocket.hidden = false; els.trail.hidden = false;
     els.fly.style.width = els.fly.style.height = FLY_BASE + 'px';
     startedAt = performance.now();
-    sm = smPrev = prevScroll = window.scrollY; vScroll = 0; surge = 0; sp = null;
+    sm = smPrev = prevScroll = window.scrollY; vScroll = 0; surge = 0; sp = null; back = false; flip = 0;
     puffs.forEach(function (q) { q.alive = false; q.el.style.opacity = '0'; });
     measure();
     kick();
@@ -550,8 +731,11 @@
       els.still = document.createElement('div');
       els.still.className = 'cc-rocket-still';
       els.still.setAttribute('aria-hidden', 'true');
-      els.still.innerHTML = '<div class="cc-rocket-fade"><img class="cc-rocket-still-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
-        '<img class="cc-rocket-still-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
+      els.still.innerHTML = PIXEL
+        ? '<div class="cc-rocket-fade is-pixel"><i class="cc-rocket-still-px-flame"></i>' +
+          '<img class="cc-rocket-still-body" src="' + PXDIR + PX.sheets.ship + '" alt="" decoding="async"></div>'
+        : '<div class="cc-rocket-fade"><img class="cc-rocket-still-flame" src="' + FLAME.src + '" alt="" decoding="async">' +
+          '<img class="cc-rocket-still-body" src="' + PIC.src + '" alt="" decoding="async"></div>';
       document.body.appendChild(els.still);
     }
     if (!els.mark) { var brand = document.querySelector('#cc-header .cc-brand'); els.mark = brand && brand.querySelector('.cc-mark'); }

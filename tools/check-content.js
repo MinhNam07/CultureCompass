@@ -64,6 +64,7 @@ for (const h of CC.heroGallery || []) {
   if (galleryIds.has(h.assetId)) errors.push(`Home gallery: ${h.assetId} is listed twice`);
   galleryIds.add(h.assetId);
   if (!h.place) errors.push(`Home gallery ${h.assetId} needs a place`);
+  if (!h.what) errors.push(`Home gallery ${h.assetId} needs a short caption (what)`);
   if (!a.sourceUrl || !a.width || !a.height) errors.push(`Asset ${a.id} needs sourceUrl, width and height`);
   for (const size of ['s', 'l']) for (const ext of ['avif', 'webp']) {
     const f = `${(a.sizes || {})[size]}.${ext}`;

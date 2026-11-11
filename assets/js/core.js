@@ -476,24 +476,6 @@
       }
     }
 
-    /* country sub-navigation: two modes inside every destination, Play (the game) and Read (the guide).
-       Older keys still map: 'practice' is Play; 'overview', 'themes' and 'phrases' are Read. */
-    var sub = document.getElementById('cc-subnav');
-    if (sub && opts.country) {
-      var c = CC.byId(CC.countries, opts.country) || { name: opts.country, href: '#' };
-      var mode = opts.sub === 'practice' ? 'practice' : 'overview';
-      var items = [
-        ['explore.html', 'Play', 'practice'],
-        ['vietnam.html', 'Read', 'overview']
-      ];
-      sub.className = 'cc-subnav';
-      sub.innerHTML = '<nav class="cc-wrap cc-subnav-in" aria-label="' + CC.esc(c.name) + '">' +
-        '<a class="cc-subnav-name" href="' + CC.esc(c.href) + '">' + CC.esc(c.name) + '</a><span class="cc-subnav-sep" aria-hidden="true"></span>' +
-        '<ul>' + items.map(function (it) {
-          return '<li><a href="' + it[0] + '"' + (mode === it[2] ? ' aria-current="true"' : '') + '>' + it[1] + '</a></li>';
-        }).join('') + '</ul></nav>';
-    }
-
     var footer = document.getElementById('cc-footer');
     if (footer) {
       footer.innerHTML =

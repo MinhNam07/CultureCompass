@@ -3,146 +3,182 @@ window.CC = window.CC || {};
 window.CC.heroGallery = [
   {
     "assetId": "img-w-kente-ghana",
+    "what": "Weaving kente cloth",
     "place": "Ghana"
   },
   {
     "assetId": "img-w-miao-dance-guizhou",
+    "what": "Miao village dance",
     "place": "Guizhou, China"
   },
   {
     "assetId": "img-w-alebrije-oaxaca",
+    "what": "Painting an alebrije",
     "place": "San Martín Tilcajete, Oaxaca, Mexico"
   },
   {
     "assetId": "img-w-tshechu-jakar",
+    "what": "A tshechu dancer",
     "place": "Jakar, Bhutan"
   },
   {
     "assetId": "img-w-castellers-vilanova",
+    "what": "Castellers’ human tower",
     "place": "Vilanova i la Geltrú, Catalonia, Spain"
   },
   {
     "assetId": "img-w-tandoor-uzbekistan",
+    "what": "Bread from the tandoor",
     "place": "Uzbekistan"
   },
   {
     "assetId": "img-w-capoeira-rio",
+    "what": "Capoeira in the roda",
     "place": "Engenho da Rainha, Rio de Janeiro, Brazil"
   },
   {
     "assetId": "img-w-theyyam-kerala",
+    "what": "A Theyyam night ritual",
     "place": "Muzhappilangad, Kerala, India"
   },
   {
     "assetId": "img-w-kukeri-pernik",
+    "what": "Kukeri at the Surva festival",
     "place": "Pernik, Bulgaria"
   },
   {
     "assetId": "img-w-coffee-addis-ababa",
+    "what": "A coffee ceremony",
     "place": "Addis Ababa, Ethiopia"
   },
   {
     "assetId": "img-w-hula-merrie-monarch",
+    "what": "Hula kahiko on stage",
     "place": "Merrie Monarch Festival, Hawaiʻi, United States"
   },
   {
     "assetId": "img-w-nang-yai-ratchaburi",
+    "what": "Nang yai shadow puppetry",
     "place": "Wat Khanon, Ratchaburi, Thailand"
   },
   {
     "assetId": "img-w-tbourida-morocco",
+    "what": "A tbourida charge",
     "place": "Morocco"
   },
   {
     "assetId": "img-w-morenada-oruro",
+    "what": "Morenada at the Carnival",
     "place": "Oruro, Bolivia"
   },
   {
     "assetId": "img-w-mochi-tenno",
+    "what": "Rolling fresh mochi",
     "place": "Tenno, Japan"
   },
   {
     "assetId": "img-w-dogon-masks-mali",
+    "what": "Dogon mask dance",
     "place": "Mali"
   },
   {
     "assetId": "img-w-breton-quimper",
+    "what": "Breton costume in a parade",
     "place": "Quimper, Brittany, France"
   },
   {
     "assetId": "img-w-batik-cirebon",
+    "what": "Drawing batik tulis in wax",
     "place": "Trusmi, Cirebon, Indonesia"
   },
   {
     "assetId": "img-w-ribbon-skirts-montana",
+    "what": "Ribbon skirt dancers",
     "place": "Poplar, Fort Peck Indian Reservation, Montana, United States"
   },
   {
     "assetId": "img-w-eagle-mongolia",
+    "what": "An eagle hunter and his eagle",
     "place": "Northern Mongolia"
   },
   {
     "assetId": "img-w-tanoura-egypt",
+    "what": "A spinning tanoura dancer",
     "place": "Egypt"
   },
   {
     "assetId": "img-w-potter-jaura",
+    "what": "A potter at the wheel",
     "place": "Jaura, Madhya Pradesh, India"
   },
   {
     "assetId": "img-w-durbar-kano",
+    "what": "Horsemen at the Durbar",
     "place": "Kano, Nigeria"
   },
   {
     "assetId": "img-w-animas-mexico",
+    "what": "Paseo de las Ánimas",
     "place": "Mexico"
   },
   {
     "assetId": "img-w-nongak-namwon",
+    "what": "Nongak in the village street",
     "place": "Namwon, South Korea"
   },
   {
     "assetId": "img-w-buso-hungary",
+    "what": "Busójárás carnival",
     "place": "Hungary"
   },
   {
     "assetId": "img-w-kapa-haka-zayed",
+    "what": "Kapa haka at school",
     "place": "Zayed College for Girls, New Zealand"
   },
   {
     "assetId": "img-w-loom-lijiang",
+    "what": "Weaving at a doorway loom",
     "place": "Lijiang, Yunnan, China"
   },
   {
     "assetId": "img-w-sabar-senegal",
+    "what": "Sabar drums on the beach",
     "place": "Toubab Dialaw, Senegal"
   },
   {
     "assetId": "img-w-highland-glasgow",
+    "what": "Highland dancing",
     "place": "Glasgow Green, Scotland, United Kingdom"
   },
   {
     "assetId": "img-w-pattachitra-odisha",
+    "what": "Painting pattachitra",
     "place": "Odisha, India"
   },
   {
     "assetId": "img-w-mandingas-cape-verde",
+    "what": "Mandinga carnival performers",
     "place": "Cape Verde"
   },
   {
     "assetId": "img-w-taiko-matsuyama",
+    "what": "Taiko at the autumn festival",
     "place": "Matsuyama, Japan"
   },
   {
     "assetId": "img-w-cotton-carding-turkey",
+    "what": "Carding cotton by hand",
     "place": "Turkey"
   },
   {
     "assetId": "img-w-mask-festival-png",
+    "what": "National Mask Festival",
     "place": "Papua New Guinea"
   },
   {
     "assetId": "img-w-drum-ghana",
+    "what": "A drum lesson",
     "place": "Northern Region, Ghana"
   }
 ];

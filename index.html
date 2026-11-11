@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#302720">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/cc.css?v=20261026-native-scroll">
-  <link rel="stylesheet" href="assets/css/refinements.css">
+  <link rel="stylesheet" href="assets/css/cc.css?v=20261110-b3">
+  <link rel="stylesheet" href="assets/css/refinements.css?v=20261111-px3">
   <script>document.documentElement.classList.add('cc-js');</script>
   <link rel="stylesheet" href="assets/css/tracing-beam.css">
   <link rel="icon" href="assets/img/brand/favicon.ico" sizes="any">
@@ -43,7 +43,8 @@
 
     <!-- Isolated globe keeps its Tailwind styles separate from the existing site. -->
     <section id="destinations" class="globe-destinations" aria-label="Choose a destination" tabindex="-1">
-      <iframe id="destination-globe" src="globe.html?embed=1" title="Choose a destination on the interactive globe" loading="lazy" scrolling="no"></iframe>
+      <div class="cc-loader globe-loader" role="status"><svg class="cc-loader-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".45"/><circle cx="20" cy="20" r="12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1.4 2.6" opacity=".45"/><g class="cc-loader-needle"><path d="M20 5l4 15h-8z" fill="currentColor"/><path d="M20 35l-4-15h8z" fill="currentColor" opacity=".35"/></g></svg><span>Loading the globe…</span></div>
+      <iframe onload="this.parentNode.classList.add('is-loaded')" id="destination-globe" src="globe.html?embed=1" title="Choose a destination on the interactive globe" loading="lazy" scrolling="no"></iframe>
       <noscript><p><a href="vietnam.html">Explore Vietnam, starting in Hà Nội</a></p></noscript>
     </section>
 
@@ -73,8 +74,8 @@
   <script src="assets/data/topics.js"></script>
   <script src="assets/data/countries.js"></script>
   <script src="assets/js/core.js"></script>
-  <script src="assets/js/home.js?v=20261026-native-scroll"></script>
-  <script src="assets/js/rocket.js?v=20261109-rocket19"></script>
+  <script src="assets/js/home.js?v=20261110-b2"></script>
+  <script src="assets/js/rocket.js?v=20261111-rocket34"></script>
   <script defer src="assets/tracing-beam/tracing-beam.js"></script>
 </body>
 </html>

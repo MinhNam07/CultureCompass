@@ -16,6 +16,7 @@ body[data-page="vietnam"] {
   --rd-act: var(--cyan);
   --rd-act-ink: var(--cyan-ink);
   --rd-tone: var(--cyan);
+  --rd-seal: #B23A26;   /* lacquer, deepened so ivory numerals read at 6:1 */
 
   /* type: six sizes */
   --fs-display: clamp(4.5rem, 1.6rem + 11vw, 11rem);
@@ -76,8 +77,8 @@ body[data-page="vietnam"] .ex-foot-join { display: none; }
 .rd-btn:hover { background: var(--btn-hover, #9EEEF7); }
 .rd-btn:active { transform: scale(.97); }
 .rd-btn .cc-icon { width: 18px; height: 18px; transition: transform 300ms var(--rd-ease); }
-.rd-btn:hover .cc-icon { transform: translateX(3px); }
-.rd-btn[href^="#"]:hover .cc-icon { transform: translateY(3px); }
+@media (hover: hover) and (pointer: fine) { .rd-btn:hover .cc-icon { transform: translateX(3px); } }
+@media (hover: hover) and (pointer: fine) { .rd-btn[href^="#"]:hover .cc-icon { transform: translateY(3px); } }
 .rd-btn-quiet { background: var(--rd-step-2); color: var(--rd-ink) !important; }
 .rd-btn-quiet:hover { background: #20344C; }
 .rd-btn[hidden] { display: none; }
@@ -106,7 +107,7 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-cover-in { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 var(--rd-gutter) 104px; }
 #explore .rd-cover h1 { font-size: var(--fs-display); line-height: .95; letter-spacing: -0.035em; color: var(--rd-ink); margin-left: -.04em; }
 .rd-cover-tag { max-width: 46ch; margin-top: 28px !important; font-size: var(--fs-body); line-height: 1.6; color: var(--rd-ink); text-wrap: pretty; }
-.rd-cover-actions { display: flex; align-items: center; gap: 12px; margin-top: 32px; }
+.rd-cover-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
 .rd-cover-foot { position: absolute; right: var(--rd-gutter); bottom: 24px; left: var(--rd-gutter); display: flex; align-items: center; justify-content: flex-end; gap: 12px; text-align: right; }
 .rd-cover-foot .rd-credit { color: #D6DEE8; max-width: 52ch; }
 
@@ -120,7 +121,7 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-toc a:hover { background: var(--rd-step); }
 .rd-toc-pic { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 2px; }
 .rd-toc-pic .rd-media { transition: transform 300ms var(--ease-out); }
-.rd-toc a:hover .rd-toc-pic .rd-media { transform: scale(1.05); }
+@media (hover: hover) and (pointer: fine) { .rd-toc a:hover .rd-toc-pic .rd-media { transform: scale(1.05); } }
 .rd-toc-txt { display: grid; gap: 8px; justify-items: start; }
 .rd-toc-name { font: 600 var(--fs-h)/1.15 var(--font-serif); letter-spacing: -0.015em; }
 .rd-toc-q { color: var(--rd-ink-2); }
@@ -205,8 +206,8 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-tile-pic { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 2px; background: var(--rd-step-2); }
 .rd-tile.is-wide .rd-tile-pic { aspect-ratio: 16 / 9; }
 .rd-tile-pic .rd-media { transition: transform 300ms var(--ease-out); }
-.rd-tile a:hover .rd-tile-pic .rd-media { transform: scale(1.05); }
-.rd-tile a:hover .rd-tile-pic .rd-media[style*="scale("] { transform: none; }
+@media (hover: hover) and (pointer: fine) { .rd-tile a:hover .rd-tile-pic .rd-media { transform: scale(1.05); } }
+@media (hover: hover) and (pointer: fine) { .rd-tile a:hover .rd-tile-pic .rd-media[style*="scale("] { transform: none; } }
 .rd-tile-title { margin-top: 6px; font: 600 var(--fs-lead)/1.25 var(--font-serif); color: var(--rd-ink); }
 .rd-tile a:hover .rd-tile-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .rd-tile-dek { font-size: 1rem; line-height: 1.55; color: var(--rd-ink-2); }
@@ -222,17 +223,53 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-quote figcaption { margin-top: 20px; max-width: 56ch; font-size: var(--fs-meta); color: var(--rd-muted); }
 
 /* ---------------- walk through Văn Miếu ---------------- */
-.rd-plan-box { position: relative; }
+/* the plan: a site drawing in ivory hairlines on the night ground. The open stop's courtyard takes a warm
+   ground and its buildings are drawn in gold. Above it, a rail of square seals (triện), one per stop, each with
+   a thread down to its place on the path; the open one is stamped in lacquer. */
+.rd-plan-box { position: relative; container-type: inline-size; padding-top: 64px; }
 .rd-plan-svg { display: block; width: 100%; height: auto; }
-.rd-plan-svg .c { fill: var(--rd-step); }
-.rd-plan-svg .axis { fill: var(--rd-step-2); }
-.rd-plan-svg .b { fill: #2B4260; }
-.rd-plan-svg .s { fill: #22374F; }
-.rd-plan-svg .w { fill: rgb(95 216 232 / .32); }
-.rd-plan-svg text { fill: var(--rd-muted); font: 500 24px var(--font-sans); }
-.rd-pin { position: absolute; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--rd-step-2); color: var(--rd-ink); font: 700 1rem/1 var(--font-sans); cursor: pointer; transition: transform 300ms var(--ease-out), background-color 200ms ease-out; }
-.rd-pin:hover { transform: translate(-50%, -50%) scale(1.08); background: #2B4260; }
-.rd-pin[aria-pressed="true"] { background: var(--rd-act); color: var(--rd-act-ink); transform: translate(-50%, -50%) scale(1.15); }
+.rd-plan-svg .wall { fill: none; stroke: rgb(230 238 246 / .42); stroke-width: 1.5; }
+.rd-plan-svg .wall-in { stroke: rgb(230 238 246 / .16); stroke-width: 1; }
+.rd-plan-svg .court { fill: var(--rd-step); transition: fill 300ms var(--rd-ease); }
+.rd-plan-svg .axis { stroke: rgb(230 238 246 / .24); stroke-width: 2; stroke-dasharray: 2 7; stroke-linecap: round; transition: stroke 300ms var(--rd-ease); }
+.rd-plan-svg .lawn { fill: none; stroke: rgb(230 238 246 / .12); stroke-dasharray: 3 5; }
+.rd-plan-svg .tree { fill: none; stroke: rgb(230 238 246 / .22); }
+.rd-plan-svg .hall { fill: var(--rd-step-2); stroke: rgb(230 238 246 / .5); stroke-width: 1.25; transition: stroke 300ms var(--rd-ease); }
+.rd-plan-svg .ridge { stroke: rgb(230 238 246 / .32); }
+.rd-plan-svg .arch { stroke: var(--rd-ground); stroke-width: 3; }
+.rd-plan-svg .window { fill: none; stroke: rgb(230 238 246 / .6); stroke-width: 1.5; transition: stroke 300ms var(--rd-ease); }
+.rd-plan-svg .well { fill: #16263A; stroke: rgb(230 238 246 / .4); transition: stroke 300ms var(--rd-ease); }
+.rd-plan-svg .ripple { fill: none; stroke: rgb(230 238 246 / .22); stroke-linecap: round; }
+.rd-plan-svg .stela { fill: rgb(230 238 246 / .3); transition: fill 300ms var(--rd-ease); }
+.rd-plan-svg text { fill: var(--rd-muted); font: 500 16px var(--font-sans); letter-spacing: .04em; }
+.rd-plan-svg .yard.is-on .court { fill: color-mix(in srgb, var(--gold) 9%, var(--rd-step)); }
+.rd-plan-svg .yard.is-on :is(.hall, .window, .well) { stroke: var(--gold); }
+.rd-plan-svg .yard.is-on .stela { fill: color-mix(in srgb, var(--gold) 75%, transparent); }
+.rd-plan-svg .yard.is-on .axis { stroke: color-mix(in srgb, var(--gold) 60%, transparent); }
+
+.rd-pin {
+  position: absolute; top: 14px; left: clamp(20px, calc(var(--x) * 1%), calc(100% - 20px)); translate: -50% 0;
+  width: 40px; height: 40px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 3px;
+  background: var(--rd-step-2); color: var(--rd-ink); font: 600 1.0625rem/1 var(--font-serif); cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgb(230 238 246 / .3), inset 0 0 0 4px var(--rd-step-2), inset 0 0 0 5px rgb(230 238 246 / .12);
+  transition: background-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+/* the thread from the seal to its place on the path (the plan is 30cqw tall; the path runs through its middle) */
+.rd-pin::after { content: ''; position: absolute; left: 50%; top: 100%; width: 1px; height: calc(10px + 15cqw); translate: -50% 0; background: rgb(230 238 246 / .26); pointer-events: none; transition: background-color 200ms ease-out; }
+.rd-pin::before { content: ''; position: absolute; left: 50%; top: calc(100% + 10px + 15cqw); width: 7px; height: 7px; translate: -50% -50%; border-radius: 50%; background: var(--rd-ground); box-shadow: inset 0 0 0 1.5px rgb(230 238 246 / .55); pointer-events: none; transition: background-color 200ms ease-out, box-shadow 200ms ease-out; }
+.rd-pin[aria-pressed="true"] {
+  background: var(--rd-seal); color: #FFF6EE; animation: rd-stamp 260ms var(--rd-ease);
+  box-shadow: inset 0 0 0 1px rgb(255 246 238 / .55), inset 0 0 0 4px var(--rd-seal), inset 0 0 0 5px rgb(255 246 238 / .35), 0 6px 16px -6px rgb(0 0 0 / .6);
+}
+.rd-pin[aria-pressed="true"]::after { background: var(--gold); }
+.rd-pin[aria-pressed="true"]::before { background: var(--gold); box-shadow: 0 0 0 3px var(--rd-ground); }
+.rd-pin:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .rd-pin:not([aria-pressed="true"]):hover { background: #1D3049; box-shadow: inset 0 0 0 1px rgb(230 238 246 / .55), inset 0 0 0 4px #1D3049, inset 0 0 0 5px rgb(230 238 246 / .2); }
+}
+@keyframes rd-stamp { from { transform: scale(1.16); } }
+@media (prefers-reduced-motion: reduce) { .rd-pin[aria-pressed="true"] { animation: none; } }
+html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
 .rd-plan figcaption { margin-top: 10px; font-size: var(--fs-meta); color: var(--rd-muted); }
 .rd-stops { margin-top: 24px !important; display: grid; gap: 4px; }
 .rd-stops li { border-radius: 4px; transition: background-color 200ms ease-out; }
@@ -241,11 +278,20 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-stops li:not(.is-on) button:hover { background: var(--rd-step); }
 .rd-stops b { font-weight: 600; }
 .rd-stops i { font-style: normal; font-weight: 400; color: var(--rd-ink-2); }
-.rd-stop-n { flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--rd-step-2); font: 700 var(--fs-meta)/1 var(--font-sans); transition: background-color 200ms ease-out, color 200ms ease-out; }
-.rd-stops li.is-on .rd-stop-n { background: var(--rd-act); color: var(--rd-act-ink); }
+.rd-stop-n { flex: none; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 3px; background: var(--rd-step-2); box-shadow: inset 0 0 0 1px rgb(230 238 246 / .26); font: 600 1rem/1 var(--font-serif); transition: background-color 200ms ease-out, color 200ms ease-out, box-shadow 200ms ease-out; }
+.rd-stops li.is-on .rd-stop-n { background: var(--rd-seal); color: #FFF6EE; box-shadow: inset 0 0 0 1px rgb(255 246 238 / .5); }
 .rd-stop-body { padding: 0 20px 22px 62px; display: grid; gap: 14px; justify-items: start; }
 .rd-stop-body p { color: var(--rd-ink-2); max-width: 60ch; }
 .rd-stops li:not(.is-on) .rd-stop-body { display: none; }
+.rd-stop-next { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--rd-step-2); border-radius: 4px; background: none; color: var(--rd-ink); font: 600 var(--fs-meta)/1.3 var(--font-sans); text-align: left; cursor: pointer; transition: background-color 200ms ease-out, border-color 200ms ease-out; }
+.rd-stop-next:hover { background: var(--rd-step-2); }
+.rd-stop-next:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (max-width: 760px) {
+  /* phones: the plan keeps its detail and scrolls sideways; choosing a stop brings it to the middle */
+  .rd-plan-scroll { margin-inline: calc(var(--rd-gutter) * -1); padding-inline: var(--rd-gutter); overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .rd-plan-scroll::-webkit-scrollbar { display: none; }
+  .rd-plan-box { min-width: 680px; }
+}
 
 /* ---------------- timeline ---------------- */
 .rd-time { display: grid; gap: 4px; }
@@ -260,8 +306,8 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-qcard-in { position: relative; display: block; aspect-ratio: 4 / 5; transform-style: preserve-3d; transition: transform 800ms var(--rd-ease); }
 .is-done .rd-qcard-in { transform: rotateY(180deg); }
 .rd-qcards > li:last-child .rd-qcard-in { transition-delay: 120ms; }
-.rd-qcard:hover:not([aria-pressed="true"]) .rd-qcard-in { transform: translateY(-4px); }
-.is-done .rd-qcard:hover .rd-qcard-in { transform: rotateY(180deg); }
+@media (hover: hover) and (pointer: fine) { .rd-qcard:hover:not([aria-pressed="true"]) .rd-qcard-in { transform: translateY(-4px); } }
+@media (hover: hover) and (pointer: fine) { .is-done .rd-qcard:hover .rd-qcard-in { transform: rotateY(180deg); } }
 .is-done .rd-qcard { cursor: default; }
 .rd-qcard-face, .rd-qcard-back { position: absolute; inset: 0; overflow: hidden; border-radius: 2px; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 .rd-qcard-face .rd-media { position: absolute; inset: 0; }
@@ -316,10 +362,10 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-credits-list { grid-column: 7 / span 6; display: grid; gap: 8px; font-size: var(--fs-meta); line-height: 1.5; color: var(--rd-muted); }
 .rd-credits-more { grid-column: 7 / span 6; margin-top: 16px !important; font-size: var(--fs-meta); }
 
-/* ---------------- entrances (motion 3): only headings rise; the rest is simply there (explore.js initRise) ---------------- */
+/* ---------------- entrances: every block rises once, 12px over 400ms; blocks arriving together follow by 50ms (explore.js initRise) ---------------- */
 @media (prefers-reduced-motion: no-preference) {
-  html.rd-motion:not(.cc-reduce-motion) .rd-rise { transition: opacity 600ms ease-out, transform 800ms var(--rd-ease); transition-delay: calc(var(--i, 0) * 70ms); }
-  html.rd-motion:not(.cc-reduce-motion) .rd-rise:not(.is-in) { opacity: 0; transform: translateY(24px); }
+  html.rd-motion:not(.cc-reduce-motion) .rd-rise { transition: opacity 400ms var(--rd-ease), transform 400ms var(--rd-ease); transition-delay: calc(var(--i, 0) * 50ms); }
+  html.rd-motion:not(.cc-reduce-motion) .rd-rise:not(.is-in) { opacity: 0; transform: translateY(12px); }
 }
 html.cc-reduce-motion body[data-page="vietnam"] .rd-rise { opacity: 1 !important; transform: none !important; }
 html.cc-reduce-motion body[data-page="vietnam"] :is(.rd-acc-item, .rd-acc-text, .rd-plate-fig, .rd-qcard-in, .rd-media, .rd-go, .rd-pin) { transition: none !important; animation: none !important; }
