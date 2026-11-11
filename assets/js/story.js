@@ -185,7 +185,9 @@
     if (came && came === location.search && history.length > 1) { e.preventDefault(); history.back(); }
   });
 
-  document.addEventListener('DOMContentLoaded', function () {
+  /* Render as soon as this script runs (it is the last thing in <body>, so everything it fills already exists),
+     not on DOMContentLoaded: the first frame the browser paints, which a page transition morphs into, is the story. */
+  (function start() {
     CC.renderShell({ section: 'destinations', country: 'vietnam', sub: 'themes' });
     var id = CC.qs('id');
     var st = id && CC.byId(CC.stories, id);
@@ -195,5 +197,5 @@
     /* leaving for another story or a scene: remember to come back to the top of this one */
     if (CC.motion.reduce()) Array.prototype.forEach.call(document.querySelectorAll('.story-enter > *'), function (el) { el.style.animation = 'none'; });
     document.addEventListener('cc:cleared', function () { render(st, from); });
-  });
+  })();
 })();

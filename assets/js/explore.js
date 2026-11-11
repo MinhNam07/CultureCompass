@@ -337,6 +337,8 @@
       yard(2, 406, 232, stelae + r(489, 114, 70, 72, 'well') + '<path class="ripple" d="M503 138h42M497 150h54M503 162h42"/>') +
       yard(3, 646, 182, hall(630, 128, 22, 44) + hall(664, 52, 110, 24) + hall(664, 224, 110, 24) + hall(782, 96, 34, 108)) +
       yard(4, 836, 146, hall(820, 134, 20, 32) + hall(896, 80, 62, 140) + hall(852, 54, 26, 26) + hall(852, 220, 26, 26)) +
+            /* the walk so far: drawn along the axis from the gate to the open stop (initInline sets --walk) */
+            '<path class="walk" d="M8 150H982" pathLength="974"/>' +
             '<text x="988" y="296" text-anchor="end">North →</text></svg>';
     return '<section class="rd-sec rd-walk" aria-labelledby="inl-title">' +
       head(3, 'Walk through Văn Miếu', 'Five courtyards from the gate to the academy. Choose a number to read about that stop.', 'inl-title') +
@@ -637,7 +639,10 @@
       var open = function (li) { items.forEach(function (x) { x.classList.toggle('is-open', x === li); }); };
       items.forEach(function (li, i) {
         var a = li.querySelector('a');
-        li.addEventListener('mouseenter', function () { if (wide() && matchMedia('(hover: hover)').matches) open(li); });
+        /* hover intent: a pointer crossing the strip on its way elsewhere does not open every moment it passes */
+        var t = 0;
+        li.addEventListener('mouseenter', function () { if (wide() && matchMedia('(hover: hover)').matches) { clearTimeout(t); t = setTimeout(function () { open(li); }, 80); } });
+        li.addEventListener('mouseleave', function () { clearTimeout(t); });
         a.addEventListener('focus', function () { open(li); });
         a.addEventListener('click', function (e) { if (wide() && !li.classList.contains('is-open')) { e.preventDefault(); open(li); } });
         a.addEventListener('keydown', function (e) {
@@ -660,6 +665,8 @@
         var open = null;
         each('.rd-pin', function (p) { p.setAttribute('aria-pressed', String(Number(p.getAttribute('data-pin')) === n)); }, box);
         each('[data-yard]', function (g) { g.classList.toggle('is-on', Number(g.getAttribute('data-yard')) === n); }, box);
+        var svg = box.querySelector('.rd-plan-svg');
+        if (svg) svg.style.setProperty('--walk', String(974 - ([117, 309, 514, 729, 901][n] || 0)));   // distance from the gate to the middle of yard n
         var sc = box.querySelector('.rd-plan-scroll'), pin = box.querySelector('.rd-pin[data-pin="' + n + '"]');
         if (sc && pin && sc.scrollWidth > sc.clientWidth + 1) {   // phones: the plan scrolls sideways; bring the stop to the middle
           sc.scrollTo({ left: pin.offsetLeft - sc.clientWidth / 2, behavior: reduce() ? 'auto' : 'smooth' });

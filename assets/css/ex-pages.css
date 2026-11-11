@@ -224,7 +224,7 @@ body.ex .story-practice h2 { font-weight: 400; font-size: clamp(1.5rem, 1.3rem +
 body.ex .story-practice p { color: var(--ink-2); }
 body.ex .story-practice .scene-pic { grid-row: auto; width: 200px; border: 0; border-radius: var(--radius-card); }
 body.ex .story-practice .scene-pic img { transition: transform var(--dur-zoom) var(--ease-out-expo); }
-@media (hover: hover) and (pointer: fine) { body.ex .story-practice:hover .scene-pic img { transform: scale(1.08); } }
+@media (hover: hover) and (pointer: fine) { body.ex .story-practice:hover .scene-pic img { transform: scale(var(--zoom-hover)); } }
 
 body.ex .story-pager { gap: 16px; border-top: 0; padding-top: 24px; }
 body.ex .story-pager a { padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius-card); transition: background-color 200ms ease-out, border-color 200ms ease-out; }
@@ -240,8 +240,8 @@ body.ex .cc-back { font-weight: 500; }
 body.ex .story-card { gap: 8px; }
 body.ex .story-card .story-pic { border: 0; border-radius: var(--radius-card); }
 body.ex .story-card .story-pic img, body.ex .story-card .story-pic svg { transition: transform var(--dur-zoom) var(--ease-out-expo); }
-body.ex .story-card:hover .story-pic img, body.ex .story-card:focus-within .story-pic img { transform: scale(1.08); }
-body.ex .story-card:hover .story-pic svg, body.ex .story-card:focus-within .story-pic svg { transform: scale(1.35); }
+/* one zoom for every picture under a fine pointer (cc.css --zoom-hover); focus shows its ring, not a zoom */
+@media (hover: hover) and (pointer: fine) { body.ex .story-card:hover .story-pic :is(img, svg) { transform: scale(var(--zoom-hover)); } }
 body.ex .story-card .story-topics { order: -1; font: 700 .6875rem/1.4 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--eyebrow-ink); }
 body.ex .story-card h3 { font-size: 1.1875rem; font-weight: 500; }
 body.ex .story-card:hover h3 a { text-decoration: none; }

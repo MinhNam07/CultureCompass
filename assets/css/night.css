@@ -178,3 +178,21 @@ body.ex .story-checking .cc-icon { width: 15px; height: 15px; }
 .cc-read-progress[hidden] { display: none; }
 .cc-read-progress i { display: block; height: 100%; background: var(--chapter, var(--cyan)); transform: scaleX(0); transform-origin: 0 50%; }
 @media print { .cc-read-progress { display: none; } }
+
+/* ---------- page transitions (ex-kit.js): every night page opts in; reduced motion opts out ----------
+   The story's picture morphs between its card and the story's opening (450ms, in-out: it moves on screen);
+   the rest of the page cross-fades in 200ms. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: var(--t-micro); animation-timing-function: var(--ease-out); }
+::view-transition-group(story-hero) { animation-duration: var(--t-move); animation-timing-function: var(--ease-in-out); }
+::view-transition-old(story-hero), ::view-transition-new(story-hero) { height: 100%; object-fit: cover; overflow: clip; animation-duration: var(--t-move); }
+html.vt-arrived .story-enter > * { animation: none !important; }
+
+/* after a jump to a source (or back to the text), the place you landed glows once and fades, so the eye finds it */
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.cc-reduce-motion) body.ex .story-sources li:target, html:not(.cc-reduce-motion) body.ex .story-body .fn:target { animation: cc-landed 1600ms var(--ease-out) both; }
+}
+@keyframes cc-landed { from { background-color: rgb(95 216 232 / .22); } }
+body.ex .story-body .fn:target { outline: 2px solid var(--cyan); outline-offset: 2px; }

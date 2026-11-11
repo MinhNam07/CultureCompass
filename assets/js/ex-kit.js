@@ -99,10 +99,10 @@
 
   CC.ex = { MOTIF: MOTIF, reading: READING, readingChapter: readingChapter, chapterFor: chapterFor, chapterForScene: chapterForScene, heroFoot: heroFoot, decorate: decorate };
 
-  /* ink ripple: pills, chips, icon buttons and the site's buttons */
+  /* ink ripple: pills, chips and Listen buttons. Not on .cc-btn, which already presses down: one press, one response */
   document.addEventListener('pointerdown', function (e) {
     if (!document.body.classList.contains('ex')) return;
-    var el = e.target.closest && e.target.closest('.ex-ripple, .cc-btn, .cc-listen');
+    var el = e.target.closest && e.target.closest('.ex-ripple, .cc-listen');
     if (!el || CC.motion.reduce()) return;
     var r = el.getBoundingClientRect();
     var size = Math.max(r.width, r.height);
@@ -153,5 +153,56 @@
     /* the paper returns to night above the footer (a sibling, so the footer's own render cannot remove it) */
     var foot = document.getElementById('cc-footer');
     if (foot && !document.querySelector('.ex-foot-join')) foot.insertAdjacentHTML('beforebegin', '<div class="ex-foot-join" aria-hidden="true">' + MOTIF.horizon('up') + '</div>');
+  });
+
+  /* ---------- page transitions (cross-document View Transitions; night.css opts the pages in) ----------
+     Opening a story from vietnam.html, the picture you pressed grows into the story's opening photograph, and
+     Back shrinks it into its card again. Only the picture morphs (a title would smear between 22px and 76px);
+     everything else cross-fades. It runs only where the browser supports it and only over http(s): from file://
+     or in an older browser the page simply loads. Reduced motion (the OS or the site setting) skips it. */
+  var HERO = 'story-hero';
+  function storyPhoto(id) {
+    var st = CC.byId(CC.stories, id), a = st && st.imageId ? CC.byId(CC.assets, st.imageId) : null;
+    return a && a.file && a.kind === 'image' ? a.file : null;
+  }
+  function storyIdOf(url) { var m = /story\.html\?(?:[^#]*&)?id=([\w-]+)/.exec(url || ''); return m ? m[1] : null; }
+  function samePicture(img, file) {
+    if (!img || !file || /scale\(/.test(img.getAttribute('style') || '')) return false;   // a zoomed detail is not the same picture
+    try { return new URL(img.currentSrc || img.src, location.href).pathname.replace(/^\//, '') === new URL(file, location.href).pathname.replace(/^\//, ''); } catch (e) { return false; }
+  }
+  function onScreen(el) { var r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.width > 0; }
+  function clearHero() { Array.prototype.forEach.call(document.querySelectorAll('[data-vt-hero]'), function (el) { el.style.viewTransitionName = ''; el.removeAttribute('data-vt-hero'); }); }
+  function name(el) { if (!el) return; clearHero(); el.style.viewTransitionName = HERO; el.setAttribute('data-vt-hero', ''); }
+  /* the card's picture for a story on this page, if it shows the story's own photograph and is on screen */
+  function cardPicture(id, link) {
+    var file = storyPhoto(id); if (!file) return null;
+    var links = link ? [link] : Array.prototype.slice.call(document.querySelectorAll('a[href*="id=' + id + '"]'));
+    for (var i = 0; i < links.length; i++) {
+      var img = links[i].querySelector('img');
+      if (samePicture(img, file) && onScreen(img)) return img;
+    }
+    return null;
+  }
+  var pressed = null;
+  document.addEventListener('click', function (e) { pressed = e.target.closest && e.target.closest('a[href]'); }, true);
+
+  window.addEventListener('pageswap', function (e) {
+    if (!e.viewTransition) return;
+    if (CC.motion.reduce()) { e.viewTransition.skipTransition(); return; }
+    var to = e.activation && e.activation.entry ? e.activation.entry.url : '';
+    var page = document.body.getAttribute('data-page');
+    if (page === 'vietnam' && storyIdOf(to)) name(cardPicture(storyIdOf(to), pressed && pressed.closest('a')));
+    else if (page === 'story' && /vietnam\.html/.test(to)) name(document.querySelector('.story-head-media img'));
+  });
+  window.addEventListener('pagereveal', function (e) {
+    clearHero();
+    if (!e.viewTransition) return;
+    if (CC.motion.reduce()) { e.viewTransition.skipTransition(); return; }
+    document.documentElement.classList.add('vt-arrived');   // the transition is the entrance: the story head does not also rise
+    var nav = window.navigation, from = nav && nav.activation && nav.activation.from ? nav.activation.from.url : "";
+    var page = document.body.getAttribute('data-page');
+    if (page === 'story' && /vietnam\.html/.test(from)) name(document.querySelector('.story-head-media img'));
+    else if (page === 'vietnam' && storyIdOf(from)) name(cardPicture(storyIdOf(from)));
+    e.viewTransition.finished.then(clearHero, clearHero);
   });
 })();

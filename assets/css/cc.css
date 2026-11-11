@@ -769,11 +769,14 @@ a:hover { color: var(--color-primary); text-decoration-color: currentColor; text
 .story-pager a span { font-size: var(--fs-meta); color: var(--color-text-secondary); display: inline-flex; gap: 6px; align-items: center; }
 .story-pager a b { font: 600 1.125rem/1.3 var(--font-serif); }
 .story-pager .next { text-align: right; justify-items: end; }
-.story-enter > * { animation: cc-rise 420ms var(--ease-out) both; }
-.story-enter > *:nth-child(2) { animation-delay: 50ms; }
-.story-enter > *:nth-child(3) { animation-delay: 100ms; }
-.story-enter > *:nth-child(4) { animation-delay: 150ms; }
-.story-enter > *:nth-child(5) { animation-delay: 200ms; }
+.story-enter > * { animation: cc-rise var(--t-open) var(--ease-out) both; }
+/* by role, not by position (the opening photo and its credit are children too): the crumb and title arrive as one,
+   then the standfirst, byline and actions follow by 50ms. The photo only fades: a picture behind words should not travel. */
+.story-enter > :is(.story-head-media, .story-credit) { animation-name: cc-fade-in; }
+.story-enter > .story-dek { animation-delay: 50ms; }
+.story-enter > .story-byline { animation-delay: 100ms; }
+.story-enter > :is(.story-actions, .story-credit) { animation-delay: 150ms; }
+@keyframes cc-fade-in { from { opacity: 0; } }
 @media (max-width: 960px) { .story-layout { grid-template-columns: 1fr; } .story-aside { position: static; } }
 @media (max-width: 560px) { .story-practice { grid-template-columns: 1fr; } .story-practice .scene-pic { width: 100%; grid-row: auto; } .story-pager { grid-template-columns: 1fr; } .story-pager .next { text-align: left; justify-items: start; } }
 

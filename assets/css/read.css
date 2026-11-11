@@ -84,7 +84,7 @@ body[data-page="vietnam"] .ex-foot-join { display: none; }
 .rd-btn[hidden] { display: none; }
 .rd-round { width: 48px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgb(11 18 32 / .72); color: var(--rd-ink); cursor: pointer; transition: background-color 200ms ease-out, transform 120ms ease-out; }
 .rd-round:hover { background: var(--rd-step-2); }
-.rd-round:active { transform: scale(.94); }
+.rd-round:active { transform: scale(.96); }
 .rd-round .cc-icon { width: 20px; height: 20px; }
 .rd-link { display: inline-flex; align-items: center; gap: 8px; color: var(--rd-act) !important; font: 600 1rem/1.3 var(--font-sans); text-decoration: none; }
 .rd-link:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -128,8 +128,8 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-toc a { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 24px; align-items: center; padding: 16px; margin-inline: -16px; border-radius: 4px; text-decoration: none; transition: background-color 200ms ease-out; }
 .rd-toc a:hover { background: var(--rd-step); }
 .rd-toc-pic { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 2px; }
-.rd-toc-pic .rd-media { transition: transform 300ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .rd-toc a:hover .rd-toc-pic .rd-media { transform: scale(1.05); } }
+.rd-toc-pic .rd-media { transition: transform 400ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .rd-toc a:hover .rd-toc-pic .rd-media { transform: scale(var(--zoom-hover)); transition: transform var(--t-reveal) var(--ease-out-expo); } }
 .rd-toc-txt { display: grid; gap: 8px; justify-items: start; }
 .rd-toc-name { font: 600 var(--fs-h)/1.15 var(--font-serif); letter-spacing: -0.015em; }
 .rd-toc-q { color: var(--rd-ink-2); }
@@ -176,8 +176,10 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 
 .rd-plate { grid-column: 1 / span 5; position: sticky; top: calc(var(--header-h) + var(--chbar-h) + 32px); align-self: start; height: calc(100svh - var(--header-h) - var(--chbar-h) - 64px); max-height: 860px; min-height: 420px; }
 .rd-plate::before { content: ''; position: absolute; left: 0; top: -16px; width: 56px; height: 4px; background: var(--rd-tone); }
-.rd-plate-fig { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; opacity: 0; visibility: hidden; transition: opacity 400ms ease-out, visibility 0s linear 400ms; }
-.rd-plate-fig.is-on { opacity: 1; visibility: visible; transition-delay: 0s; }
+/* the incoming picture fades in over the outgoing one, which stays whole until it is covered:
+   a one-sided fade never shows two half-pictures over the dark ground */
+.rd-plate-fig { position: absolute; inset: 0; z-index: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; opacity: 0; visibility: hidden; transition: opacity 0s linear var(--t-open), visibility 0s linear var(--t-open); }
+.rd-plate-fig.is-on { z-index: 1; opacity: 1; visibility: visible; transition: opacity var(--t-open) var(--ease-out), visibility 0s; }
 .rd-plate-pic { position: relative; overflow: hidden; border-radius: 2px; background: var(--rd-step); }
 .rd-plate-pic .rd-media { position: absolute; inset: 0; }
 .rd-plate-pic .rd-vbtn { position: absolute; right: 12px; bottom: 12px; }
@@ -190,7 +192,8 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 
 /* ---------------- moments strip ---------------- */
 .rd-acc { display: flex; gap: 6px; height: 460px; }
-.rd-acc-item { position: relative; flex: 0 0 48px; min-width: 0; transition: flex-grow 500ms var(--rd-ease); --focus: var(--rd-ink); --focus-halo: #0B1220; }
+.rd-acc { contain: layout paint; }   /* the strip's resizing stays inside the strip */
+.rd-acc-item { position: relative; flex: 0 0 48px; min-width: 0; transition: flex-grow var(--t-open) var(--ease-in-out); --focus: var(--rd-ink); --focus-halo: #0B1220; }
 .rd-acc-item.is-open { flex-grow: 1; }
 .rd-acc-link { position: absolute; inset: 0; display: block; overflow: hidden; border-radius: 2px; color: var(--rd-ink) !important; text-decoration: none; }
 .rd-acc-win { position: absolute; inset: 0; overflow: hidden; }
@@ -200,7 +203,7 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-acc-short { position: absolute; z-index: 2; left: 50%; bottom: 18px; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); max-height: calc(100% - 36px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 600 var(--fs-meta)/1.2 var(--font-sans); transition: opacity 150ms ease; }
 .rd-acc-item.is-open .rd-acc-short { opacity: 0; }
 .rd-acc-text { position: absolute; z-index: 2; left: 22px; right: 22px; bottom: 22px; display: grid; gap: 8px; opacity: 0; transform: translateY(8px); transition: opacity 150ms ease, transform 150ms ease; pointer-events: none; min-width: 240px; }
-.rd-acc-item.is-open .rd-acc-text { opacity: 1; transform: none; transition: opacity 300ms ease 120ms, transform 400ms var(--rd-ease) 120ms; }
+.rd-acc-item.is-open .rd-acc-text { opacity: 1; transform: none; transition: opacity var(--t-open) var(--ease-out) 120ms, transform 400ms var(--ease-out) 120ms; }
 .rd-acc-title { font: 600 var(--fs-lead)/1.25 var(--font-serif); }
 .rd-acc-desc { font-size: 1rem; line-height: 1.5; color: #E6EEF6; }
 
@@ -225,8 +228,8 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-tile a { display: grid; gap: 10px; align-content: start; text-decoration: none; border-radius: 2px; }
 .rd-tile-pic { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 2px; background: var(--rd-step-2); }
 .rd-tile.is-wide .rd-tile-pic { aspect-ratio: 16 / 9; }
-.rd-tile-pic .rd-media { transition: transform 300ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .rd-tile a:hover .rd-tile-pic .rd-media { transform: scale(1.05); } }
+.rd-tile-pic .rd-media { transition: transform 400ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .rd-tile a:hover .rd-tile-pic .rd-media { transform: scale(var(--zoom-hover)); transition: transform var(--t-reveal) var(--ease-out-expo); } }
 @media (hover: hover) and (pointer: fine) { .rd-tile a:hover .rd-tile-pic .rd-media[style*="scale("] { transform: none; } }
 .rd-tile-title { margin-top: 6px; font: 600 var(--fs-lead)/1.25 var(--font-serif); color: var(--rd-ink); }
 .rd-tile a:hover .rd-tile-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
@@ -281,6 +284,11 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-plan-svg .yard.is-on .court { fill: color-mix(in srgb, var(--gold) 9%, var(--rd-step)); }
 .rd-plan-svg .yard.is-on :is(.hall, .window, .well) { stroke: var(--gold); }
 .rd-plan-svg .yard.is-on .stela { fill: color-mix(in srgb, var(--gold) 75%, transparent); }
+.rd-plan-svg { --walk: 857; }
+/* the walk: a gold line along the path from the gate to the open stop; it draws on (or back) when you change stop */
+.rd-plan-svg .walk { fill: none; stroke: var(--gold); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 974; stroke-dashoffset: var(--walk); opacity: .85; pointer-events: none; transition: stroke-dashoffset var(--t-move) var(--ease-in-out); }
+html.cc-reduce-motion .rd-plan-svg .walk { transition: none; }
+@media (prefers-reduced-motion: reduce) { .rd-plan-svg .walk { transition: none; } }
 .rd-plan-svg .yard.is-on .axis { stroke: color-mix(in srgb, var(--gold) 60%, transparent); }
 
 .rd-pin {
@@ -345,7 +353,7 @@ html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
 .rd-qcard { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; perspective: 1200px; border-radius: 2px; text-align: left; }
 .rd-qcard-in { position: relative; display: block; aspect-ratio: 4 / 5; transform-style: preserve-3d; transition: transform var(--t-reveal) var(--ease-out-expo); }
 .is-done .rd-qcard-in { transform: rotateY(180deg); }
-.rd-qcards > li:last-child .rd-qcard-in { transition-delay: 120ms; }
+.rd-qcards > li:last-child .rd-qcard-in { transition-delay: 80ms; }
 @media (hover: hover) and (pointer: fine) { .rd-qcard:hover:not([aria-pressed="true"]) .rd-qcard-in { transform: translateY(-4px); } }
 @media (hover: hover) and (pointer: fine) { .is-done .rd-qcard:hover .rd-qcard-in { transform: rotateY(180deg); } }
 .is-done .rd-qcard { cursor: default; }
@@ -496,3 +504,22 @@ html.cc-reduce-motion body[data-page="vietnam"] .offcanvas:not(.show):not(.showi
   .rd-chbar, .rd-cover-media, .rd-plate, .rd-vbtn, .rd-keep { display: none !important; }
   .rd-cover { min-height: 0; color: #202124; }
 }
+
+/* ---------------- touch: no sticky hover, an instant press instead (11 November 2026) ----------------
+   On a phone a tap leaves :hover on, so a row stayed lit and an arrow stayed nudged after you came back.
+   Without a hovering pointer the hover looks are undone, and :active gives the feedback at the moment of the tap. */
+body[data-page="vietnam"] a, body[data-page="vietnam"] button { -webkit-tap-highlight-color: transparent; }
+@media (hover: none) {
+  .rd-toc a:hover, .rd-row:hover, .rd-more-list a:hover, .rd-stops li:not(.is-on) button:hover, .rd-stop-next:hover { background: none; }
+  .rd-ch[data-tone="gold"] :is(.rd-row, .rd-toc a):hover { background: none; }
+  a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:hover .rd-link .rd-go, .rd-stop-next:hover .rd-go { transform: none; }
+  a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go { transform: none; }
+  .rd-zone a:hover .rd-zone-pic .rd-media { outline: 1px solid rgb(95 216 232 / .25); outline-offset: -1px; }
+  .rd-btn:hover { background: var(--rd-act); }
+  .rd-btn-quiet:hover, .rd-round:hover, .rd-vbtn:hover { background: var(--rd-step-2); }
+  .rd-round:hover, .rd-vbtn:hover { background: rgb(11 18 32 / .72); }
+  .rd-tile a:hover .rd-tile-title { text-decoration: none; }
+}
+:is(.rd-toc a, .rd-row, .rd-more-list a, .rd-stops button, .rd-stop-next):active { background: var(--rd-step-2); transition-duration: 0ms; }
+:is(.rd-tile a, .rd-zone a, .rd-acc-link):active .rd-media { transform: scale(.98); transition: transform var(--t-press) var(--ease-out); }
+html.cc-reduce-motion :is(.rd-tile a, .rd-zone a, .rd-acc-link):active .rd-media { transform: none; }

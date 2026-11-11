@@ -28,7 +28,7 @@ body.ex {
   --dur-fast: 150ms;
   --dur-ui: 300ms;
   --dur-move: 500ms;
-  --dur-zoom: 1000ms;
+  --dur-zoom: var(--t-reveal);   /* one hover zoom for the site: 1.04 over 600ms (cc.css) */
   /* section ink (overridden on dark chapters) */
   --ink: var(--text-primary);
   --ink-2: var(--text-secondary);
@@ -150,7 +150,7 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 .ex-arrow[hidden] { display: none; }
 .ex-arrow .cc-icon { width: 20px; height: 20px; }
 
-.ex-ink { position: absolute; border-radius: 50%; background: currentColor; opacity: .22; transform: scale(.2); pointer-events: none; animation: ex-ink 600ms var(--ease-standard) forwards; }
+.ex-ink { position: absolute; border-radius: 50%; background: currentColor; opacity: .22; transform: scale(.2); pointer-events: none; animation: ex-ink 450ms var(--ease-out) forwards; }
 @keyframes ex-ink { to { transform: scale(2.2); opacity: 0; } }
 
 .ex-ph-note { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px 2px 5px; border: 1px dashed currentColor; border-radius: var(--radius-pill); font: 500 .75rem/1.4 'Be Vietnam Pro', sans-serif; opacity: .85; vertical-align: middle; }
