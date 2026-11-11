@@ -81,7 +81,23 @@
     if (!el.querySelector(':scope > .ex-page-foot')) el.insertAdjacentHTML('beforeend', heroFoot());
   }
 
-  CC.ex = { MOTIF: MOTIF, chapterFor: chapterFor, chapterForScene: chapterForScene, heroFoot: heroFoot, decorate: decorate };
+  /* The reading page's chapters (vietnam.html, explore.js CHAPTERS + SECTIONS) and their stories in the order the
+     page shows them. story.js uses it for the breadcrumb, Back, previous/next and the chapter colour, so a story
+     always belongs to the chapter you read it in. explore.js warns in the console if the page drifts from it. */
+  var READING = {
+    vietnam: [
+      { anchor: 'everyday', name: 'Everyday life', tone: 'teal', stories: ['st-arrive-home', 'st-hand', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market', 'st-old-quarter', 'st-pavement', 'st-hoan-kiem-days'] },
+      { anchor: 'food', name: 'Food & the table', tone: 'peach', stories: ['st-shared-table', 'st-host', 'st-chop', 'st-pho', 'st-bun-cha', 'st-egg-coffee', 'st-street-stall'] },
+      { anchor: 'beliefs', name: 'Temples, beliefs & history', tone: 'jade', stories: ['st-thang-long', 'st-van-mieu-university', 'st-sword-lake', 'st-stelae', 'st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] }
+    ]
+  };
+  function readingChapter(storyId, anchor, country) {
+    var list = READING[country || 'vietnam'] || [];
+    var byAnchor = list.filter(function (c) { return c.anchor === anchor && c.stories.indexOf(storyId) !== -1; })[0];
+    return byAnchor || list.filter(function (c) { return c.stories.indexOf(storyId) !== -1; })[0] || null;
+  }
+
+  CC.ex = { MOTIF: MOTIF, reading: READING, readingChapter: readingChapter, chapterFor: chapterFor, chapterForScene: chapterForScene, heroFoot: heroFoot, decorate: decorate };
 
   /* ink ripple: pills, chips, icon buttons and the site's buttons */
   document.addEventListener('pointerdown', function (e) {
@@ -98,12 +114,42 @@
     dot.addEventListener('animationend', function () { dot.remove(); });
   });
 
+  /* reading progress on the story, passport and about pages: a 3px line under the header, in the page's colour.
+     On a story it measures the article only (not the related stories or the footer); elsewhere, the page.
+     It follows the scroll, so it stays under reduced motion, and it hides when there is less than a screen to read.
+     Replaces the React "tracing beam" (a 359 KB bundle for the same line). */
+  function readProgress() {
+    var page = document.body.getAttribute('data-page');
+    if (['story', 'about', 'collection'].indexOf(page) === -1) return;
+    var bar = document.createElement('div');
+    bar.className = 'cc-read-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    bar.innerHTML = '<i></i>';
+    document.body.appendChild(bar);
+    var fill = bar.firstChild, raf = 0, top = 0, span = 1;
+    var target = function () { return page === 'story' ? document.querySelector('.story-body') : document.getElementById('main'); };
+    var measure = function () {
+      var el = target(); if (!el) { bar.hidden = true; return; }
+      var r = el.getBoundingClientRect(), head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 68;
+      top = r.top + scrollY - head; span = Math.max(1, r.height - (innerHeight - head));
+      bar.hidden = r.height < innerHeight * .9;
+      draw();
+    };
+    var draw = function () { raf = 0; fill.style.transform = 'scaleX(' + Math.max(0, Math.min(1, (scrollY - top) / span)).toFixed(4) + ')'; };
+    addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(draw); }, { passive: true });
+    addEventListener('resize', measure);
+    addEventListener('load', measure);
+    document.addEventListener('cc:rendered', measure);
+    setTimeout(measure, 0);
+  }
+
   /* static page heads become chapter bands before the page script fills them */
   document.addEventListener('DOMContentLoaded', function () {
     if (!document.body.classList.contains('ex')) return;
     var page = document.body.getAttribute('data-page');
     if (PAGE_BG[page]) decorate(document.querySelector('.page-head'), PAGE_BG[page]);
     if (page === 'scene') decorate(document.querySelector('.scene-head'), chapterForScene(CC.qs('id')));
+    readProgress();
     /* the paper returns to night above the footer (a sibling, so the footer's own render cannot remove it) */
     var foot = document.getElementById('cc-footer');
     if (foot && !document.querySelector('.ex-foot-join')) foot.insertAdjacentHTML('beforebegin', '<div class="ex-foot-join" aria-hidden="true">' + MOTIF.horizon('up') + '</div>');

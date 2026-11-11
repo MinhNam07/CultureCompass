@@ -544,6 +544,19 @@
     Array.prototype.forEach.call(els, function (e) { io.observe(e); });
   }
 
+  /* story.js reads each chapter's stories from CC.ex.reading (ex-kit.js) for Back, previous/next and the breadcrumb.
+     If this page's SECTIONS change, say so here, so the two never disagree in silence. */
+  function checkReadingOrder() {
+    var want = (CC.ex && CC.ex.reading && CC.ex.reading[COUNTRY]) || [];
+    want.forEach(function (ch) {
+      var box = document.getElementById(ch.anchor), got = [];
+      if (!box) return;
+      each('a[href^="story.html?id="]', function (a) { var id = /id=([\w-]+)/.exec(a.getAttribute('href'))[1]; if (got.indexOf(id) === -1) got.push(id); }, box);
+      /* same stories, not the same order: the reading order follows the timeline's years, while the quiz and the plan link a few of them earlier */
+      if (got.slice().sort().join() !== ch.stories.slice().sort().join()) console.warn('CultureCompass: the ' + ch.anchor + ' chapter shows ' + got.join(', ') + ' but CC.ex.reading has ' + ch.stories.join(', ') + '. Update ex-kit.js READING.');
+    });
+  }
+
   /* a jump (chapter bar, contents, a link with a #hash) lands the reader on blocks that have not risen yet:
      show everything in the first screen of the destination at once, so they never read a faded block */
   function settle(el) {
@@ -827,6 +840,7 @@
     CC.renderShell({ section: 'destinations', country: COUNTRY, sub: 'overview' });
     var main = document.getElementById('explore');
     main.innerHTML = render();
+    checkReadingOrder();
     initRise();
     initVideos();
     initHeroActions();

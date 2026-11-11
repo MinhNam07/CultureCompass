@@ -156,3 +156,25 @@ body.ex .cc-note > .cc-icon { color: var(--cyan-ink); }
 body.ex ::selection { background: var(--cyan); color: var(--cyan-ink); }
 body.ex .ex-before-ic { color: var(--cyan-ink); }
 body.ex .src-back .cc-icon { width: 16px; height: 16px; }
+
+/* ---------- the reading site speaks with one voice (11 November 2026) ----------
+   vietnam.html sets its headings in Source Serif 4; the story, passport and about pages now do too,
+   so opening a story never turns into another publication. Small labels (aside boxes, phrase cards) stay sans. */
+body.ex :is(.ex-page-hero h1, .story-body h2, #src-title, #words-title, #rel-title, #practice-title, .doc-body > section > h2, .doc-body .about-grid h2, .coll-group > h2) {
+  font-family: 'Source Serif 4', 'Iowan Old Style', Georgia, serif; font-weight: 600; letter-spacing: -0.015em;
+}
+body.ex .ex-page-hero h1 { letter-spacing: -0.025em; }
+/* a story of a minute or less gets an opening its own size: the words reach the first screen */
+body.ex .story-head.has-photo.is-short { min-height: clamp(420px, calc(60svh - var(--header-h)), 620px); }
+body.ex .story-head.has-photo::before { background: linear-gradient(to top, rgb(11 18 32 / .94) 0%, rgb(11 18 32 / .66) 32%, rgb(11 18 32 / .08) 64%, rgb(11 18 32 / .6) 100%); } /* taste-skill-ignore: neutral scrim under text on a picture */
+/* "being verified": said once in the byline; each paragraph it touches carries a small mark, not a repeated tag */
+body.ex .story-checking-note { display: inline-flex; align-items: center; gap: 6px; color: var(--gold); }
+body.ex .story-checking-note .cc-icon { width: 16px; height: 16px; }
+body.ex .story-checking { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-left: 4px; vertical-align: -.25em; color: var(--gold); }
+body.ex .story-checking .cc-icon { width: 15px; height: 15px; }
+
+/* reading progress (ex-kit.js readProgress): under the sticky header, in the page's chapter colour */
+.cc-read-progress { position: fixed; z-index: 39; left: 0; right: 0; top: var(--header-h); height: 3px; pointer-events: none; background: rgb(230 238 246 / .08); }
+.cc-read-progress[hidden] { display: none; }
+.cc-read-progress i { display: block; height: 100%; background: var(--chapter, var(--cyan)); transform: scaleX(0); transform-origin: 0 50%; }
+@media print { .cc-read-progress { display: none; } }
