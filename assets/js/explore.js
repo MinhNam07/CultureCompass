@@ -31,7 +31,8 @@
   function topic(id) { return CC.byId(CC.topics, id); }
   function phrase(id) { return CC.byId(CC.phrases, id); }
   function asset(id) { return id ? CC.byId(CC.assets, id) : null; }
-  function storyHref(st) { return 'story.html?id=' + st.id + '&from=overview'; }
+  var CUR = null;   // the chapter being rendered: a story opened from it comes back to it
+  function storyHref(st) { return 'story.html?id=' + st.id + '&from=' + (CUR ? 'vn:' + CUR : 'overview'); }
   function country() { return CC.byId(CC.countries, COUNTRY) || {}; }
   function ctx(id) { return CC.byId(country().contexts, id); }
 
@@ -47,13 +48,13 @@
   function fromAsset(a) {
     if (!a) return null;
     var video = a.kind === 'video';
-    return { key: a.id, src: video ? a.poster : a.file, video: video ? a.file : null, alt: a.alt || '', credit: a.credit, license: a.license, licenseUrl: a.licenseUrl, sourceUrl: a.sourceUrl, kind: video ? 'video' : (/^art-/.test(a.id) ? 'art' : 'photo') };
+    return { key: a.id, src: video ? a.poster : a.file, video: video ? a.file : null, alt: a.alt || '', credit: a.credit, license: a.license, licenseUrl: a.licenseUrl, sourceUrl: a.sourceUrl, kind: video ? 'video' : (/^art-/.test(a.id) ? 'art' : 'photo'), web: video ? null : a.web, w: video ? null : a.width, h: video ? null : a.height };
   }
   function fromScene(sceneId, small) {
     var art = CC.sceneArt && CC.sceneArt[sceneId];
     if (art) {
       var a = (CC.assets || []).filter(function (x) { return x.file === art.src; })[0] || {};
-      return { key: a.id || 'art-' + sceneId, src: small ? 'assets/img/scenes/' + art.file + '-thumb.jpg' : art.src, alt: art.alt, credit: a.credit || 'Painting made for CultureCompass', license: a.license, licenseUrl: a.licenseUrl, kind: 'art', pins: art.pins };
+      return { key: a.id || 'art-' + sceneId, src: small ? 'assets/img/scenes/' + art.file + '-thumb.jpg' : art.src, w: small ? null : a.width, h: small ? null : a.height, alt: art.alt, credit: a.credit || 'Painting made for CultureCompass', license: a.license, licenseUrl: a.licenseUrl, kind: 'art', pins: art.pins };
     }
     var z = CC.zoneForScene && CC.zoneForScene(sceneId);
     if (z) return zonePic(z);
@@ -93,7 +94,11 @@
     if (p.video && o.video) {
       return '<video class="' + cls + '" data-autoplay muted loop playsinline preload="none" poster="' + esc(p.src) + '"' + (alt ? ' aria-label="' + esc(alt) + '"' : ' aria-hidden="true"') + style + '><source src="' + esc(p.video) + '"></video>';
     }
-    return '<img class="' + cls + '" src="' + esc(p.src) + '" alt="' + esc(alt) + '" loading="' + (o.eager ? 'eager' : 'lazy') + '" decoding="async"' + style + '>';
+    /* a 1000px copy for the many places a picture is shown at half the screen or less; the full file for the rest.
+       width and height give the browser the shape before the file arrives, so nothing jumps as pictures load. */
+    var set = p.web && p.w ? ' srcset="' + esc(p.web) + ' 1000w, ' + esc(p.src) + ' ' + p.w + 'w" sizes="' + (o.sizes || '(min-width: 1001px) 42vw, 100vw') + '"' : '';
+    var dim = p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '';
+    return '<img class="' + cls + '" src="' + esc(p.src) + '"' + set + dim + ' alt="' + esc(alt) + '" loading="' + (o.eager ? 'eager' : 'lazy') + '" decoding="async"' + style + '>';
   }
   function creditLine(p) {
     if (!p || !p.credit) return '';
@@ -109,6 +114,16 @@
   }
   function link(href, label, cls) {
     return '<a class="rd-link' + (cls ? ' ' + cls : '') + '" href="' + href + '">' + label + GO + '</a>';
+  }
+  /* Where a link goes is always visible before you press it:
+     a story says "N min read →", the game says "▶ Play · about N min", a jump on this page points down,
+     and a phrase is not a link at all (it plays and saves where it is). */
+  function playTag(sceneId) {
+    var z = CC.zoneForScene && CC.zoneForScene(sceneId);
+    return '<span class="rd-play">' + ic('play') + 'Play' + (z && z.minutes ? ' · about ' + z.minutes + ' min' : '') + '</span>';
+  }
+  function jump(id, label, cls) {
+    return '<a class="rd-link' + (cls ? ' ' + cls : '') + '" href="#' + id + '" data-jump>' + label + ic('arrowDown', 'rd-go') + '</a>';
   }
 
   /* ================================================================
@@ -139,7 +154,6 @@
         '<div class="rd-cover-actions">' +
           '<a class="rd-btn" href="#contents" data-jump>Start reading' + ic('arrowDown') + '</a>' +
           '<a class="rd-btn rd-btn-quiet" href="explore.html">' + ic('play') + 'Play in Hà Nội</a>' +
-          '<button type="button" class="rd-round ex-heart" id="ex-heart" aria-pressed="false" aria-label="Like Vietnam">' + ic('heart') + '</button>' +
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
       '</div>' +
@@ -157,7 +171,7 @@
           '<span class="rd-toc-pic">' + media(pic({ imageId: ch.imageId }), { decorative: true }) + '</span>' +
           '<span class="rd-toc-txt"><span class="rd-toc-name">' + esc(ch.name) + '</span>' +
             '<span class="rd-toc-q">' + esc(chQ(ch)) + '</span>' +
-            '<span class="rd-link" aria-hidden="true">Explore' + GO + '</span></span></a></li>';
+            '<span class="rd-link" aria-hidden="true">Read the chapter' + ic('arrowDown', 'rd-go') + '</span></span></a></li>';
       }).join('') + '</ol>' +
       '<p class="rd-sources rd-rise" id="sources">Built from sources such as ' + names.map(function (s) { return esc(s.org || s.title); }).join(', ') +
         ' <a href="about.html#sources">and ' + Math.max(0, src.length - names.length) + ' more sources</a></p></div></section>';
@@ -175,7 +189,7 @@
 
   /* the chapter bar: every chapter, the one you are reading, and how far down the page you are */
   R.chbar = function () {
-    var items = CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; }).concat([['places', 'Places in the game']]);
+    var items = CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; }).concat([['phrases', 'Words'], ['places', 'Places in the game']]);
     return '<nav class="rd-chbar" aria-label="Chapters"><div class="rd-wrap">' +
       '<ul class="rd-chbar-list">' + items.map(function (x) { return '<li><a href="#' + x[0] + '" data-jump data-chlink="' + x[0] + '">' + esc(x[1]) + '</a></li>'; }).join('') + '</ul>' +
       '<label class="rd-chbar-pick"><span class="visually-hidden">Go to a chapter</span><select data-chpick>' +
@@ -197,23 +211,24 @@
   R.accordion = function () {
     var items = [];
     var c = ctx('street');
-    if (c) items.push({ title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), p: pic({ imageId: c.imageId }), pos: '30% 50%' });
+    if (c) items.push({ title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), play: c.sceneId, p: pic({ imageId: c.imageId }), pos: '30% 50%' });
     var crops = { 'st-arrive-home': 'hs-shoes', 'st-family-words': 'hs-family' };
     ['st-arrive-home', 'st-hand', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market'].forEach(function (id) {
       var st = story(id); if (!st) return;
       var p = pic({ story: st });
       if (crops[id]) p = focusOn(p, crops[id], 1.6);
-      items.push({ title: st.title, text: st.dek, href: storyHref(st), p: p, pos: id === 'st-hand' ? '75% 50%' : null });
+      items.push({ title: st.title, text: st.dek, href: storyHref(st), min: CC.storyMinutes(st), p: p, pos: id === 'st-hand' ? '75% 50%' : null });
     });
     return '<section class="rd-sec rd-moments" aria-labelledby="acc-title">' +
-      head(3, 'Moments on the street and at home', 'Hover or tab through. Each strip opens one moment you might meet in Hà Nội.', 'acc-title') +
+      head(3, 'Moments on the street and at home', '<span class="rd-hint-wide">Point at a strip, or tab through, to open it.</span><span class="rd-hint-touch">Tap a moment to read it.</span> Each one is something you might meet in Hà Nội.', 'acc-title') +
       '<ul class="rd-acc rd-rise" data-acc>' + items.map(function (it, i) {
         return '<li class="rd-acc-item' + (i === 0 ? ' is-open' : '') + '">' +
           '<a href="' + esc(it.href) + '" class="rd-acc-link">' +
             '<span class="rd-acc-win">' + media(it.p, { pos: it.pos, decorative: true }) + '</span>' +
             '<span class="rd-acc-short" aria-hidden="true">' + esc(it.title) + '</span>' +
             '<span class="rd-acc-text"><span class="rd-acc-title">' + esc(it.title) + '</span>' +
-              '<span class="rd-acc-desc">' + esc(it.text) + '</span></span>' +
+              '<span class="rd-acc-desc">' + esc(it.text) + '</span>' +
+              (it.play ? playTag(it.play) : '<span class="rd-acc-read">' + esc(it.min) + ' min read' + GO + '</span>') + '</span>' +
           '</a></li>';
       }).join('') + '</ul></section>';
   };
@@ -237,13 +252,12 @@
     var c = ctx('table');
     var no = phrase('ph-no');
     var tiles = [
-      { cls: 'is-wide', title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), p: pic({ imageId: c.imageId }) },
+      { cls: 'is-wide', title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), play: c.sceneId, p: pic({ imageId: c.imageId }) },
       { st: 'st-shared-table', pin: 'hs-dish', zoom: 1.5 },
       { st: 'st-host', pin: 'hs-bowl', zoom: 1.9 },
-      { st: 'st-chop', pin: 'hs-chop', zoom: 2.6 },
-      { st: 'st-street-stall' }
+      { st: 'st-chop', pin: 'hs-chop', zoom: 2.6 }
     ].map(function (x) {
-      if (x.st) { var s = story(x.st); x.title = s.title; x.text = s.dek; x.href = storyHref(s); x.p = pic({ story: s, small: !x.pin }); if (x.pin) x.p = focusOn(pic({ story: s }), x.pin, x.zoom); }
+      if (x.st) { var s = story(x.st); x.title = s.title; x.text = s.dek; x.href = storyHref(s); x.min = CC.storyMinutes(s); x.p = pic({ story: s, small: !x.pin }); if (x.pin) x.p = focusOn(pic({ story: s }), x.pin, x.zoom); }
       return x;
     });
     return '<section class="rd-sec" aria-labelledby="cl-title">' +
@@ -252,11 +266,42 @@
         return '<li class="rd-tile rd-rise ' + (x.cls || '') + '"><a href="' + esc(x.href) + '">' +
           '<span class="rd-tile-pic">' + media(x.p, { decorative: true }) + '</span>' +
           '<span class="rd-tile-title">' + esc(x.title) + '</span>' +
-          '<span class="rd-tile-dek">' + esc(x.text) + '</span></a></li>';
+          '<span class="rd-tile-dek">' + esc(x.text) + '</span>' +
+          (x.play ? playTag(x.play) : '<span class="rd-row-meta">' + x.min + ' min read' + GO + '</span>') + '</a></li>';
+      }).join('') + (no ? phraseTile(no) : '') +
+      '</ul></section>';
+  };
+
+  /* a phrase is something to say, not a place to go: hear it and keep it, right here */
+  function phraseTile(ph) {
+    var a = asset(ph.audioId);
+    return '<li class="rd-tile rd-phrase rd-rise"><div class="phrase">' +
+      '<p class="rd-phrase-vi" lang="vi">' + esc(ph.vi) + '</p>' +
+      '<p class="rd-phrase-mean">“' + esc(ph.meaning) + '”</p>' +
+      (ph.useWith ? '<p class="rd-phrase-use">' + esc(ph.useWith) + '</p>' : '') +
+      '<div class="rd-phrase-foot">' +
+        '<button type="button" class="rd-btn rd-btn-quiet rd-listen" data-audio="' + esc(ph.audioId) + '" aria-pressed="false"' + (a && a.file ? '' : ' aria-disabled="true"') + '>' +
+          ic('listen') + 'Listen<span class="visually-hidden">: ' + esc(ph.vi) + '</span></button>' +
+        CC.saveButton('phrase', ph.id, { mini: true, name: ph.vi }) +
+        (a && a.synthetic ? '<span class="rd-phrase-voice">Computer voice</span>' : '') +
+      '</div>' +
+      '<p class="cc-audio-msg rd-phrase-msg" role="status" aria-live="polite"></p>' +
+    '</div></li>';
+  }
+
+  /* words for Hà Nội: every phrase, grouped by what you want to do. A phrase plays and saves where it is.
+     (phrases.html, the old phrasebook, now opens here.) */
+  R.phrases = function () {
+    var groups = (CC.intents || []).map(function (it) {
+      return { it: it, list: (CC.phrases || []).filter(function (ph) { return ph.intent === it.id; }) };
+    }).filter(function (g) { return g.list.length; });
+    if (!groups.length) return '';
+    return '<section class="rd-sec rd-words" id="phrases" aria-labelledby="phrases-title" tabindex="-1"><div class="rd-wrap">' +
+      head(2, 'Words for Hà Nội', 'A few phrases for the moments in these stories. Listen, then save the ones you want in your Passport. The voice is a computer’s, not a person’s.', 'phrases-title') +
+      groups.map(function (g) {
+        return '<div class="rd-words-group"><h3 class="rd-words-h">' + esc(g.it.label) + '</h3><ul class="rd-words-list">' + g.list.map(phraseTile).join('') + '</ul></div>';
       }).join('') +
-        '<li class="rd-tile rd-phrase rd-rise"><a href="explore.html"><span class="rd-phrase-vi" lang="vi">' + esc(no.vi) + '</span><span class="rd-tile-dek">' + esc(no.meaning) + '</span></a></li>' +
-      '</ul>' +
-      '<p class="rd-after">' + link('vietnam-classic.html#food', 'Explore food &amp; dining') + '</p></section>';
+    '</div></section>';
   };
 
   /* walk through Văn Miếu: a drawn plan of the five courtyards on their axis, and one stop open at a time */
@@ -296,6 +341,8 @@
       yard(2, 406, 232, stelae + r(489, 114, 70, 72, 'well') + '<path class="ripple" d="M503 138h42M497 150h54M503 162h42"/>') +
       yard(3, 646, 182, hall(630, 128, 22, 44) + hall(664, 52, 110, 24) + hall(664, 224, 110, 24) + hall(782, 96, 34, 108)) +
       yard(4, 836, 146, hall(820, 134, 20, 32) + hall(896, 80, 62, 140) + hall(852, 54, 26, 26) + hall(852, 220, 26, 26)) +
+            /* the walk so far: drawn along the axis from the gate to the open stop (initInline sets --walk) */
+            '<path class="walk" d="M8 150H982" pathLength="974"/>' +
             '<text x="988" y="296" text-anchor="end">North →</text></svg>';
     return '<section class="rd-sec rd-walk" aria-labelledby="inl-title">' +
       head(3, 'Walk through Văn Miếu', 'Five courtyards from the gate to the academy. Choose a number to read about that stop.', 'inl-title') +
@@ -305,15 +352,16 @@
           pins.map(function (p, i) {
             return '<button type="button" class="rd-pin" style="--x:' + p.x + '" data-pin="' + i + '" aria-pressed="' + (i === 0) + '" aria-label="Stop ' + (i + 1) + ': ' + esc(p.name) + '">' + (i + 1) + '</button>';
           }).join('') + '</div></div>' +
-        '<figcaption>Illustrated plan, not to scale · Văn Miếu – Quốc Tử Giám</figcaption></figure>' +
+        '<figcaption><span class="rd-swipe" aria-hidden="true">Swipe the plan →</span>Illustrated plan, not to scale · Văn Miếu – Quốc Tử Giám</figcaption></figure>' +
       '<ol class="rd-stops">' + pins.map(function (p, i) {
         return '<li class="' + (i === 0 ? 'is-on' : '') + '" data-pin-item="' + i + '">' +
           '<button type="button" data-pin="' + i + '" aria-expanded="' + (i === 0) + '" aria-controls="pin-body-' + i + '"><span class="rd-stop-n" aria-hidden="true">' + (i + 1) + '</span><span><b>' + esc(p.name) + '</b> <i lang="vi">' + esc(p.vi) + '</i></span></button>' +
           '<div class="rd-stop-body" id="pin-body-' + i + '"><p>' + esc(STOPS[i].text) + '</p>' +
           /* walk on without going back up to the plan */
-          (i < pins.length - 1 ? '<button type="button" class="rd-stop-next" data-pin="' + (i + 1) + '" data-pin-next>Next stop: ' + esc(pins[i + 1].name) + ' <span aria-hidden="true">→</span></button>' : '') +
-          link('story.html?id=st-van-mieu-university&amp;from=overview', 'Sources and more on Văn Miếu') + '</div></li>';
-      }).join('') + '</ol></div></section>';
+          (i < pins.length - 1 ? '<button type="button" class="rd-stop-next" data-pin="' + (i + 1) + '" data-pin-next>Next stop: ' + esc(pins[i + 1].name) + GO + '</button>' : '') +
+          '</div></li>';
+      }).join('') + '</ol>' +
+      '<p class="rd-after">' + link(esc(storyHref({ id: 'st-van-mieu-university' })), 'Read the full story of Văn Miếu, with sources') + '</p></div></section>';
   };
 
   /* a thousand years: the stories on a line of their own years (each year is the one the story itself gives) */
@@ -353,7 +401,7 @@
       '<div data-game-wrap><ul class="rd-qcards rd-rise">' + card(pair[0]) + '<li class="rd-or" aria-hidden="true">or</li>' + card(pair[1]) + '</ul>' +
         '<p class="rd-qmsg" role="status" aria-live="polite"></p>' +
         '<p class="rd-after"><button type="button" class="rd-btn rd-btn-quiet" data-game-reset hidden>' + ic('flip') + ' Play again</button></p>' +
-        '<p class="rd-note">Dates from Tuổi Trẻ and the UNESCO Memory of the World record. <a href="story.html?id=st-stelae&amp;from=overview">Read about the stelae</a></p>' +
+        '<p class="rd-note">Dates from Tuổi Trẻ and the UNESCO Memory of the World record. <a href="' + esc(storyHref({ id: 'st-stelae' })) + '">Read about the stelae</a></p>' +
       '</div></section>';
   };
 
@@ -373,11 +421,11 @@
       '<div class="rd-hud" data-ui><i class="rd-hud-c is-tl"></i><i class="rd-hud-c is-tr"></i><i class="rd-hud-c is-bl"></i><i class="rd-hud-c is-br"></i>' +
       '<ul class="rd-zones">' + zones.map(function (z) {
         var st = status(z);
-        return '<li class="rd-zone rd-rise' + st.cls + '"><a href="explore.html#' + esc(z.id) + '">' +
+        return '<li class="rd-zone rd-rise' + st.cls + '"><a href="explore.html?zone=' + encodeURIComponent(z.id) + '">' +
           '<span class="rd-zone-pic">' + media(zonePic(z), { decorative: true }) + '<span class="rd-zone-stamp" aria-hidden="true">' + esc(z.stamp || z.title) + '</span></span>' +
           '<span class="rd-zone-title">' + esc(z.title) + '</span>' +
           '<span class="rd-zone-meta">About ' + z.minutes + ' min · ' + (z.objectives || []).length + ' moments · <b>' + st.label + '</b></span>' +
-          '<span class="rd-zone-go">Play' + GO + '</span></a></li>';
+          '<span class="rd-zone-go">' + (st.cls ? (st.cls === ' is-done' ? 'Play again' : 'Continue') : 'Play') + GO + '</span></a></li>';
       }).join('') + '</ul></div></div></section>';
   };
 
@@ -385,8 +433,8 @@
   R.keep = function () {
     if (CC.store.get('exploreToast.' + COUNTRY, false)) return '';
     return '<aside class="rd-sec rd-keep" aria-labelledby="keep-title"><div class="rd-wrap"><div class="rd-keep-in rd-rise">' +
-      '<div><h2 class="rd-keep-title" id="keep-title">Keep Vietnam for your trip</h2><p>Save stories and phrases with the bookmark. They stay in this browser, ready to print.</p></div>' +
-      '<div class="rd-keep-act"><button type="button" class="rd-btn rd-btn-quiet" data-keep-no>No, thanks</button><a class="rd-btn" href="collection.html">Show me' + GO + '</a></div>' +
+      '<div><h2 class="rd-keep-title" id="keep-title">Save one thing for your trip</h2><p>Press Save on a story or a phrase. It goes to your Passport, stays in this browser and is ready to print.</p></div>' +
+      '<div class="rd-keep-act"><button type="button" class="rd-btn rd-btn-quiet" data-keep-no>No, thanks</button><a class="rd-btn" href="collection.html">Open my passport' + GO + '</a></div>' +
     '</div></div></aside>';
   };
 
@@ -416,14 +464,15 @@
 
   /* every picture on the page, with its maker, licence and source; rendered last, after every module has run */
   R.credits = function () {
-    return '<section class="rd-sec rd-credits" id="picture-credits" aria-labelledby="credits-title"><div class="rd-wrap rd-grid">' +
-      '<h2 id="credits-title" class="rd-credits-h">Picture credits</h2>' +
+    /* folded away: the page should end on what to do next, not on licence lines. Opens itself when linked to. */
+    return '<section class="rd-sec rd-credits" id="picture-credits" aria-labelledby="credits-title"><div class="rd-wrap">' +
+      '<details class="rd-credits-box"' + (location.hash === '#picture-credits' ? ' open' : '') + '><summary><h2 id="credits-title" class="rd-credits-h">Picture credits <span class="rd-credits-n">(' + USED.length + ')</span></h2>' + ic('chevronDown') + '</summary>' +
       '<ul class="rd-credits-list">' + USED.map(function (p) {
         var lic = p.license ? (p.licenseUrl ? '<a href="' + esc(p.licenseUrl) + '">' + esc(p.license) + '</a>' : esc(p.license)) : '';
         return '<li>' + (p.sourceUrl ? '<a href="' + esc(p.sourceUrl) + '">' + esc(p.credit) + '</a>' : esc(p.credit)) + (lic ? '. ' + lic : '') + '</li>';
       }).join('') + '</ul>' +
       '<p class="rd-credits-more"><a href="about.html#credits">All media credits</a></p>' +
-    '</div></section>';
+    '</details></div></section>';
   };
 
   /* ================================================================
@@ -450,6 +499,7 @@
       { type: 'timeline', plate: 'img-stelae', id: 'past-title', title: 'A thousand years in Hà Nội', sub: 'A capital since 1010, a university since 1076, and a lake named after a legend.', ids: ['st-thang-long', 'st-van-mieu-university', 'st-stelae', 'st-sword-lake'] },
       { type: 'list', plate: 'vid-incense', id: 'belief-title', title: 'Altars, temples and festivals', sub: 'What you will see in homes, on Hàng Mã and at the pagoda, and what a temple asks of visitors.', ids: ['st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] }
     ] },
+    { type: 'phrases' },
     { type: 'places' },
     { type: 'keep' },
     { type: 'nav' },
@@ -474,12 +524,17 @@
     var c = country();
     var out = SECTIONS.filter(function (s) { return s.type !== 'credits'; }).map(function (s) {
       if (s.type === 'chapter') {
-        var ch = CHAPTERS[s.ch];
-        return '<div class="rd-ch" id="' + ch.anchor + '" data-anchor="' + ch.anchor + '" data-tone="' + ch.tone + '" role="region" aria-labelledby="' + ch.anchor + '-title" tabindex="-1">' +
+        var ch = CHAPTERS[s.ch], nx = CHAPTERS[s.ch + 1];
+        CUR = ch.anchor;
+        var html = '<div class="rd-ch" id="' + ch.anchor + '" data-anchor="' + ch.anchor + '" data-tone="' + ch.tone + '" role="region" aria-labelledby="' + ch.anchor + '-title" tabindex="-1">' +
           '<div class="rd-wrap rd-grid">' + plateFor(ch, s.modules) +
           '<div class="rd-col">' + R.chapterOpen(ch) + s.modules.map(function (m) {
             return '<div class="rd-mod" data-plate-for="' + esc(m.plate || ch.imageId) + '">' + R[m.type](m, c) + '</div>';
-          }).join('') + '</div></div></div>';
+          }).join('') +
+          '<p class="rd-next">' + (nx ? jump(nx.anchor, 'Next chapter: ' + esc(nx.name)) : jump('phrases', 'Next: words for Hà Nội')) + '</p>' +
+          '</div></div></div>';
+        CUR = null;
+        return html;
       }
       return R[s.type](s, c);
     }).join('');
@@ -511,6 +566,31 @@
     Array.prototype.forEach.call(els, function (e) { io.observe(e); });
   }
 
+  /* story.js reads each chapter's stories from CC.ex.reading (ex-kit.js) for Back, previous/next and the breadcrumb.
+     If this page's SECTIONS change, say so here, so the two never disagree in silence. */
+  function checkReadingOrder() {
+    var want = (CC.ex && CC.ex.reading && CC.ex.reading[COUNTRY]) || [];
+    want.forEach(function (ch) {
+      var box = document.getElementById(ch.anchor), got = [];
+      if (!box) return;
+      each('a[href^="story.html?id="]', function (a) { var id = /id=([\w-]+)/.exec(a.getAttribute('href'))[1]; if (got.indexOf(id) === -1) got.push(id); }, box);
+      /* same stories, not the same order: the reading order follows the timeline's years, while the quiz and the plan link a few of them earlier */
+      if (got.slice().sort().join() !== ch.stories.slice().sort().join()) console.warn('CultureCompass: the ' + ch.anchor + ' chapter shows ' + got.join(', ') + ' but CC.ex.reading has ' + ch.stories.join(', ') + '. Update ex-kit.js READING.');
+    });
+  }
+
+  /* a jump (chapter bar, contents, a link with a #hash) lands the reader on blocks that have not risen yet:
+     show everything in the first screen of the destination at once, so they never read a faded block */
+  function settle(el) {
+    if (!el) return;
+    var top = el.getBoundingClientRect().top + scrollY, bottom = top + innerHeight;
+    each('.rd-rise:not(.is-in)', function (r) {
+      var y = r.getBoundingClientRect().top + scrollY;
+      if (y >= top - 40 && y < bottom) { r.classList.add('is-now', 'is-in'); }
+    });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { each('.rd-rise.is-now', function (r) { r.classList.remove('is-now'); }); }); });
+  }
+
   /* videos: play muted while on screen, unless motion is reduced; every one has a pause button */
   function initVideos() {
     var vids = document.querySelectorAll('video[data-autoplay]');
@@ -540,17 +620,8 @@
     Array.prototype.forEach.call(vids, function (v) { io.observe(v); });
   }
 
-  /* heart + share */
+  /* share (the heart that used to sit beside it saved nothing useful: saving is the bookmark, kept in the Passport) */
   function initHeroActions() {
-    var heart = document.getElementById('ex-heart');
-    var liked = !!CC.store.get('exploreLiked.' + COUNTRY, false);
-    var set = function (on) { heart.setAttribute('aria-pressed', on ? 'true' : 'false'); };
-    set(liked);
-    heart.addEventListener('click', function () {
-      liked = !liked; set(liked);
-      CC.store.set('exploreLiked.' + COUNTRY, liked);
-      if (liked && !reduce()) { heart.classList.remove('is-pop'); void heart.offsetWidth; heart.classList.add('is-pop'); }
-    });
     document.addEventListener('click', function (e) {
       var b = e.target.closest && e.target.closest('[data-share]');
       if (!b) return;
@@ -572,7 +643,10 @@
       var open = function (li) { items.forEach(function (x) { x.classList.toggle('is-open', x === li); }); };
       items.forEach(function (li, i) {
         var a = li.querySelector('a');
-        li.addEventListener('mouseenter', function () { if (wide() && matchMedia('(hover: hover)').matches) open(li); });
+        /* hover intent: a pointer crossing the strip on its way elsewhere does not open every moment it passes */
+        var t = 0;
+        li.addEventListener('mouseenter', function () { if (wide() && matchMedia('(hover: hover)').matches) { clearTimeout(t); t = setTimeout(function () { open(li); }, 80); } });
+        li.addEventListener('mouseleave', function () { clearTimeout(t); });
         a.addEventListener('focus', function () { open(li); });
         a.addEventListener('click', function (e) { if (wide() && !li.classList.contains('is-open')) { e.preventDefault(); open(li); } });
         a.addEventListener('keydown', function (e) {
@@ -588,10 +662,15 @@
   /* numbered pins on the plan ⇄ list beside it */
   function initInline() {
     each('[data-inline]', function (box) {
+      /* phones: the far edge fades while there is more plan to see */
+      var scr = box.querySelector('.rd-plan-scroll');
+      if (scr) { var edge = function () { scr.classList.toggle('is-end', scr.scrollLeft + scr.clientWidth >= scr.scrollWidth - 4); }; scr.addEventListener('scroll', edge, { passive: true }); edge(); }
       var set = function (n) {
         var open = null;
         each('.rd-pin', function (p) { p.setAttribute('aria-pressed', String(Number(p.getAttribute('data-pin')) === n)); }, box);
         each('[data-yard]', function (g) { g.classList.toggle('is-on', Number(g.getAttribute('data-yard')) === n); }, box);
+        var svg = box.querySelector('.rd-plan-svg');
+        if (svg) svg.style.setProperty('--walk', String(974 - ([117, 309, 514, 729, 901][n] || 0)));   // distance from the gate to the middle of yard n
         var sc = box.querySelector('.rd-plan-scroll'), pin = box.querySelector('.rd-pin[data-pin="' + n + '"]');
         if (sc && pin && sc.scrollWidth > sc.clientWidth + 1) {   // phones: the plan scrolls sideways; bring the stop to the middle
           sc.scrollTo({ left: pin.offsetLeft - sc.clientWidth / 2, behavior: reduce() ? 'auto' : 'smooth' });
@@ -636,7 +715,8 @@
         g.classList.add('is-done');
         c.setAttribute('aria-pressed', 'true');
         var right = c.getAttribute('data-game') === 'first';
-        msg.innerHTML = (right ? '<b>Yes.</b> ' : '<b>Not quite.</b> ') + 'The temple came first, in 1070. The first stelae were carved more than four centuries later, in 1484.';
+        /* the answer is explained, never graded (PRODUCT.md: feedback is not a bare right or wrong) */
+        msg.innerHTML = (right ? '<b>You picked the temple.</b> ' : '<b>You picked the stelae.</b> ') + 'The temple came first, in 1070. The first stelae were carved more than four centuries later, in 1484.';
         reset.hidden = false;
       });
       reset.addEventListener('click', function () {
@@ -671,10 +751,17 @@
     var go = function (id) {
       var el = document.getElementById(id);
       if (!el) return;
+      settle(el);
       CC.motion.scrollTo(el);
-      history.replaceState(null, '', el.hasAttribute('data-anchor') || id === 'places' ? '#' + id : location.pathname + location.search);
+      history.replaceState(null, '', el.hasAttribute('data-anchor') || id === 'places' || id === 'phrases' ? '#' + id : location.pathname + location.search);
       el.focus({ preventScroll: true });
     };
+    /* remember which story was opened from here, so its Back link can return to this exact spot (story.js) */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="story.html"]');
+      if (!a) return;
+      try { sessionStorage.setItem('cc.readingOpened', a.getAttribute('href').replace(/^story\.html/, '').replace(/&amp;/g, '&')); } catch (x) { /* storage blocked */ }
+    });
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[data-jump]');
       if (!a) return;
@@ -694,20 +781,43 @@
     var fill = bar && bar.querySelector('.rd-progress i');
     var first = chapters[0], last = document.getElementById('places');
     var raf = 0;
+    /* positions are measured once (and again when the page's size changes), so a scroll frame only does arithmetic
+       and writes transforms: no layout reads while you scroll */
+    var M = null;
+    var links = Array.prototype.slice.call(document.querySelectorAll('[data-chlink]'));
+    var measure = function () {
+      if (!first || !last) return;
+      var docTop = function (el) { return el.getBoundingClientRect().top + scrollY; };
+      var prev = bar && bar.previousElementSibling;
+      M = {
+        top: docTop(first), end: last.getBoundingClientRect().bottom + scrollY - innerHeight, vh: innerHeight,
+        stick: bar && prev ? prev.getBoundingClientRect().bottom + scrollY + parseFloat(getComputedStyle(bar).marginTop) - parseFloat(getComputedStyle(bar).top) : Infinity,
+        secs: links.map(function (a) { var s = document.getElementById(a.getAttribute('data-chlink')); return s ? { a: a, top: docTop(s), h: s.offsetHeight } : null; }).filter(Boolean)
+      };
+    };
     var onScroll = function () {
       if (raf) return;
       raf = requestAnimationFrame(function () {
         raf = 0;
-        if (!fill || !first || !last) return;
-        var top = first.getBoundingClientRect().top + scrollY, end = last.getBoundingClientRect().bottom + scrollY - innerHeight;
-        var p = Math.max(0, Math.min(1, (scrollY - top + innerHeight * .3) / Math.max(1, end - top)));
+        if (!fill || !M) return;
+        var y = scrollY;
+        var p = Math.max(0, Math.min(1, (y - M.top + M.vh * .3) / Math.max(1, M.end - M.top)));
         fill.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-        if (bar) bar.classList.toggle('is-stuck', bar.getBoundingClientRect().top <= parseFloat(getComputedStyle(bar).top) + 1);
+        /* wide screens: how far you are through the chapter you are in fills that chapter's own underline
+           (one mark for "where" and "how far", so it can never run into another line) */
+        M.secs.forEach(function (s) {
+          var q = Math.max(0, Math.min(1, (M.vh * .3 - (s.top - y)) / Math.max(1, s.h - M.vh * .7)));
+          s.a.style.setProperty('--p', q.toFixed(4));
+        });
+        if (bar) bar.classList.toggle('is-stuck', y >= M.stick - 1);
       });
     };
+    var remeasure = function () { measure(); onScroll(); };
     addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', onScroll);
-    onScroll();
+    addEventListener('resize', remeasure);
+    addEventListener('load', remeasure);
+    if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.getElementById('explore'));
+    remeasure();
 
     if (!('IntersectionObserver' in window)) return;
     var current = null;
@@ -718,7 +828,8 @@
         else if (current === id) { current = null; mark(null); if (e.target.hasAttribute('data-anchor')) history.replaceState(null, '', location.pathname + location.search); }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    chapters.concat(last ? [last] : []).forEach(function (c) { io.observe(c); });
+    var words = document.getElementById('phrases');
+    chapters.concat(words ? [words] : [], last ? [last] : []).forEach(function (c) { io.observe(c); });
 
     /* plate: show the picture of the section in the middle of the screen */
     var io2 = new IntersectionObserver(function (es) {
@@ -742,8 +853,8 @@
   /* Links written for the earlier compass page (story back links, sub-navigation, hanoi.html, countries.json)
      still arrive with its anchors: #overview, #themes, #practice, a theme id or one of its old aliases.
      Each one lands on the nearest section here. */
-  var HASH_ALIAS = { overview: 'top', themes: 'contents', practice: 'places', practise: 'places', scenes: 'places', stories: 'contents', words: 'contents', history: 'beliefs' };
-  var TOPIC_ANCHOR = { people: 'everyday', food: 'food', beliefs: 'beliefs', history: 'beliefs', language: 'contents', arts: 'contents' };
+  var HASH_ALIAS = { overview: 'top', themes: 'contents', practice: 'places', practise: 'places', scenes: 'places', stories: 'contents', words: 'phrases', phrasebook: 'phrases', history: 'beliefs' };
+  var TOPIC_ANCHOR = { people: 'everyday', food: 'food', beliefs: 'beliefs', history: 'beliefs', language: 'phrases', arts: 'contents' };
   function resolveHash(raw) {
     var key = String(raw || '').replace(/^#/, '');
     if (!key) return null;
@@ -757,6 +868,7 @@
     var el = resolveHash(location.hash);
     if (!el) return;
     if (location.hash.slice(1) !== el.id) history.replaceState(null, '', el.id === 'top' ? location.pathname + location.search : '#' + el.id);
+    settle(el);
     if (smooth) CC.motion.scrollTo(el); else el.scrollIntoView({ behavior: 'instant', block: 'start' });
     if (el.hasAttribute('tabindex')) el.focus({ preventScroll: true });
   }
@@ -765,6 +877,7 @@
     CC.renderShell({ section: 'destinations', country: COUNTRY, sub: 'overview' });
     var main = document.getElementById('explore');
     main.innerHTML = render();
+    checkReadingOrder();
     initRise();
     initVideos();
     initHeroActions();
@@ -773,9 +886,13 @@
     initGame();
     initKeep();
     initChapters();
-    /* jump once the DOM exists, and again after load, when the browser's own fragment handling has run */
-    goToHash(false);
-    window.addEventListener('load', function () { requestAnimationFrame(function () { goToHash(false); }); });
+    /* jump once the DOM exists, and again after load, when the browser's own fragment handling has run.
+       Coming back (Back from a story) the browser puts you where you were, so the hash is left alone. */
+    var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    if (!(nav && nav.type === 'back_forward')) {
+      goToHash(false);
+      window.addEventListener('load', function () { requestAnimationFrame(function () { goToHash(false); }); });
+    }
     window.addEventListener('hashchange', function () { goToHash(true); });
   });
 })();

@@ -325,17 +325,47 @@ Measured contrast (October 2026): every chapter heading, question and section su
 
 **Pictures.** `pic()` resolves every picture: first a credited photo or video from `CC.assets`, then the story's scene painting (a pin of the painting can be zoomed to show a different detail), then the pixel art of the story's Explore zone. Every picture used is listed with its credit, licence and source in "Picture credits" at the foot of the page. Plates and the start picture carry their credit beside them. Pictures that repeat the text of their link are decorative (`alt=""`). Videos play muted only while on screen, never under reduced motion, and each has a pause button.
 
-**Chapter bar.** Sticky under the header: the three chapters plus Places in the game, the current one underlined in cyan, and a 3px reading-progress line. On phones it becomes a native "Go to a chapter" select.
+**Chapter bar.** Sticky under the header: the three chapters plus Places in the game. Each tab owns its underline: the current chapter shows a faint cyan track under its own name that fills as you read that chapter, so "where" and "how far" are one mark and never meet another line (11 November 2026; the old page-wide 3px progress line ran into the current tab's underline). On phones it becomes a native "Go to a chapter" select with the 3px page progress line under it.
+
+**Where a link goes (11 November 2026).** Every control says its destination before it is pressed, in one grammar:
+- a story ends with "N min read →" and opens `story.html?id=…&from=vn:<chapter>`; its Back link returns to that chapter, and when the story was opened from this page it goes back in history so the reader lands on the same card;
+- the game is a cyan "▶ Play · about N min" pill and opens the place itself (`explore.html?zone=…`); in Places in the game the label reads Play, Continue or Play again;
+- a jump within the page points down (↓): the contents rows ("Read the chapter") and the "Next chapter: …" link that ends every chapter;
+- a phrase is not a link: it plays (Listen, "Computer voice") and saves where it is;
+- nothing on this page links to `vietnam-classic.html`, `phrases.html` or other pages still in the old paper design.
+Global navigation is **Destinations · Passport · About**; "Explore" names only the game.
 
 **Places in the game** is the only HUD quotation on the page: a `data-ui` panel with the HUD's cyan corner brackets and hairline frame, holding the zones' pixel art, stamps and progress. The heading stays outside the panel.
 
-**Motion (intensity 3).** Headings, text and pictures rise 24px and fade in turn (70ms stagger) the first time they arrive. The plate cross-fades over 400ms. Hover zoom on pictures is 1.05 over 900ms. The moments strip opens over 500ms. The quiz cards turn over in 800ms. Under the OS or site Reduce motion setting nothing travels, the hidden start states never apply, and videos wait for Play.
+**Motion (intensity 3; values as of 11 November 2026, see below).** Headings, text and pictures rise 12px from 30% opacity in turn (50ms stagger, at most six) the first time they arrive. The plate fades the new picture in over the old one in 300ms. Hover zoom on pictures is 1.04 over 600ms. The moments strip opens over 300ms. The quiz cards turn over in 600ms. Under the OS or site Reduce motion setting nothing travels, the hidden start states never apply, and videos wait for Play.
 
 **Gate (7 November 2026).** `inspect.mjs` reports 0 FAIL at 1440, 768 and 390 and leaves two warnings, both defended:
 - Eleven type sizes: the page itself uses six plus the plan's SVG label; 15, 17, 20 and 24px come from the shared header and footer.
 - Mixed-font rows on phones: a serif row title above a sans standfirst is two roles, not a headline that switches face mid-line.
 
 `lint.mjs` is clean. The neutral scrims under text on pictures and the HUD frame carry `taste-skill-ignore` comments.
+
+### Read section pass · Hà Nội · 11 November 2026
+The country page and the pages it leads to (story, collection, about) now read as one publication. A new country needs only data: none of this needs new CSS per country.
+
+**Motion tokens (one source, `cc.css :root`).** `--t-press 120ms · --t-micro 200ms · --t-open 300ms · --t-move 450ms · --t-reveal 600ms`; `--ease-out` for almost everything, `--ease-in-out` for things that move between two places, `--ease-out-expo` only for zoom and the card flip, `--ease-spring` only for rewards (pins, badges). `--d-rise 12px · --zoom-hover 1.04 · --press .97 · --stagger 50ms`. `read.css` and `explore.css` alias these instead of keeping their own.
+- **Page to page.** A cross-document View Transition (progressive; `file://` just loads the page). Only the picture morphs: a card's photo becomes the story's head photo when they are the same file (450ms, in-out), the rest crossfades in 200ms; Back morphs it home to its card. Arriving this way skips the story's own entrance. Titles never morph. Reduce motion skips it.
+- **Entrances never hide text.** Rise starts at 30% opacity; when you jump to a chapter or a hash, everything in the first screen is shown at once.
+- **Feedback.** Hover zoom only on `(hover: hover) and (pointer: fine)`. On touch, `:active` gives an instant background and a .96–.97 press; no tap flash. The ink ripple (450ms ease-out) is kept for chips and Listen only, not buttons.
+- **Small extras.** The Văn Miếu plan draws the walk between stops (450ms, erases when you go back). A footnote target glows cyan and fades over 1600ms. Toasts leave over 220ms.
+- **Removed on purpose:** the tracing beam (replaced by a 3px reading-progress line under the header on story, collection and about), parallax, scroll snapping, letter-by-letter text, title morphs.
+
+**Story on the night system.** Story titles and section headings are Source Serif 4; body stays Be Vietnam Pro 18px/1.6, ≤ 60ch. The chapter colour comes from the reading page's chapter (everyday cyan, food gold, beliefs #5DCAA5), and the breadcrumb, prev/next and Back follow that chapter. A story of a minute or less gets a shorter head (`is-short`). Points not yet checked: one line in the byline ("N points still being verified") and a light dotted mark on the paragraph; no repeated tags. Footnote numbers are cyan on a tinted 24×24 chip, and each source has "Back to the text".
+
+**Words.** "Save" is the only verb for keeping something and "Passport" the only place it goes; the heart is gone. The save toast says "Saved to your passport. Open it"; removing offers Undo. "Explore" means only the game; links into it say "Play this moment".
+
+**Words for Hà Nội.** The phrasebook is a block inside the reading page (`#phrases`, "Words" in the chapter bar), grouped by what you want to do, each phrase with Vietnamese (`lang="vi"`), meaning, Listen (computer voice) and Save. `phrases.html` forwards there.
+
+**Page end.** Picture credits fold into one line, "Picture credits (N)". The last box is "Save one thing for your trip" with "Open my passport".
+
+**Credits are honest.** `CC.creditHtml` says "Illustration:" for generated and painted pictures and names the real source site for photos.
+
+**Phones.** Everything a finger hits is at least 44px (buttons, pins, Save, footer and breadcrumb links). Six Hà Nội photos have 1000px copies served through `srcset`, and pictures carry their width and height so nothing jumps while loading. Topic labels on story cards are 14px, not spaced capitals. Copy says "Tap a moment" and "Swipe the plan" on touch screens.
 
 ## Logo (8 November 2026)
 

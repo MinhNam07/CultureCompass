@@ -42,7 +42,13 @@
   --t-press: 120ms;
   --t-micro: 200ms;
   --t-open: 300ms;
+  --t-move: 450ms;     /* on-screen moves: view-transition morph, plan path */
+  --t-reveal: 600ms;   /* rare reveals: quiz flip, picture hover zoom in */
   --t-scene: 520ms;
+  --d-rise: 12px;      /* entrance travel */
+  --zoom-hover: 1.04;  /* pictures under a fine pointer */
+  --press: .97;        /* :active scale */
+  --stagger: 50ms;     /* between blocks arriving together, at most 6 steps */
 
   --shadow-1: 0 1px 2px rgba(var(--ink-shadow), .06), 0 6px 18px -10px rgba(var(--ink-shadow), .22);
   --shadow-2: 0 2px 4px rgba(var(--ink-shadow), .06), 0 18px 40px -18px rgba(var(--ink-shadow), .35);
@@ -134,7 +140,7 @@ a:hover { color: var(--color-primary); text-decoration-color: currentColor; text
 @media (hover: hover) and (pointer: fine) { .cc-btn:hover .cc-arrow { transform: translateX(4px); } }
 .cc-btn-quiet { --b-bg: transparent; --b-fg: var(--color-text); --b-bd: var(--line-strong); }
 .cc-btn-quiet:hover { --b-bg: var(--color-surface); --b-fg: var(--color-text); --b-bd: var(--color-text); }
-.cc-btn-sm { min-height: 40px; padding: 7px 14px; font-size: var(--fs-small); }
+.cc-btn-sm { min-height: 44px; padding: 7px 14px; font-size: var(--fs-small); }
 .cc-btn[disabled], .cc-btn[aria-disabled="true"] { cursor: not-allowed; --b-bg: transparent; --b-fg: var(--color-text-secondary); --b-bd: var(--line); transform: none; }
 .cc-btn.on-media-btn { --b-bg: var(--color-surface); --b-fg: var(--color-text); --b-bd: var(--color-surface); }
 .cc-btn.on-media-btn:hover { --b-bg: var(--color-primary); --b-fg: var(--color-surface); --b-bd: var(--color-primary); }
@@ -234,7 +240,7 @@ a:hover { color: var(--color-primary); text-decoration-color: currentColor; text
 .cc-crumb { display: flex; flex-wrap: wrap; gap: 4px 8px; list-style: none; padding: 0; margin: 0 0 20px; font-size: var(--fs-meta); color: var(--color-text-secondary); }
 .cc-crumb li { display: inline-flex; align-items: center; gap: 8px; }
 .cc-crumb li + li::before { content: ''; width: 5px; height: 5px; border-top: 1.5px solid var(--color-accent); border-right: 1.5px solid var(--color-accent); transform: rotate(45deg); }
-.cc-crumb a { color: var(--color-text-secondary); }
+.cc-crumb a { color: var(--color-text-secondary); display: inline-flex; align-items: center; min-height: 44px; }
 .cc-crumb a:hover { color: var(--color-primary); }
 .cc-crumb [aria-current] { color: var(--color-text); }
 
@@ -246,8 +252,8 @@ a:hover { color: var(--color-primary); text-decoration-color: currentColor; text
 .cc-footer { margin-top: clamp(64px, 10vw, 128px); border-top: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent); background: var(--color-surface); padding-block: 48px 32px; font-size: var(--fs-small); }
 .cc-footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; }
 .cc-footer h2 { font: 700 var(--fs-meta)/1.3 var(--font-sans); color: var(--color-text-secondary); margin: 0 0 12px; letter-spacing: 0; }
-.cc-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.cc-footer a, .cc-footer-btn { color: var(--color-text); text-decoration: none; display: inline-flex; align-items: center; min-height: 36px; gap: 8px; }
+.cc-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.cc-footer a, .cc-footer-btn { color: var(--color-text); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; gap: 8px; }
 .cc-footer a:hover, .cc-footer-btn:hover { color: var(--color-primary); text-decoration: underline; }
 .cc-footer-btn { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
 .cc-footer-about p { color: var(--color-text-secondary); max-width: 40ch; }
@@ -284,6 +290,8 @@ a:hover { color: var(--color-primary); text-decoration-color: currentColor; text
 .cc-toast-msg { flex: 1; }
 .cc-toast button { margin: -8px -4px -8px 0; width: 36px; height: 36px; display: grid; place-items: center; background: none; border: 0; color: var(--color-surface); border-radius: var(--r-sm); cursor: pointer; --focus: var(--color-surface); --focus-halo: var(--color-text); }
 @keyframes cc-toast-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+.cc-toast.is-out { opacity: 0; transform: translateY(8px); transition: opacity var(--t-micro) var(--ease-out), transform var(--t-micro) var(--ease-out); }
+.cc-toast .cc-toast-undo { width: auto; height: auto; min-height: 36px; margin: -6px 0 -6px 6px; padding: 0 10px; display: inline-flex; vertical-align: middle; font-weight: 700; font-size: inherit; line-height: 1; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- notices ---------- */
 .cc-note { display: flex; gap: 12px; padding: 16px 18px; background: var(--color-surface); border: 1px solid var(--line); border-radius: var(--r-md); font-size: var(--fs-small); }
@@ -761,11 +769,14 @@ a:hover { color: var(--color-primary); text-decoration-color: currentColor; text
 .story-pager a span { font-size: var(--fs-meta); color: var(--color-text-secondary); display: inline-flex; gap: 6px; align-items: center; }
 .story-pager a b { font: 600 1.125rem/1.3 var(--font-serif); }
 .story-pager .next { text-align: right; justify-items: end; }
-.story-enter > * { animation: cc-rise 420ms var(--ease-out) both; }
-.story-enter > *:nth-child(2) { animation-delay: 50ms; }
-.story-enter > *:nth-child(3) { animation-delay: 100ms; }
-.story-enter > *:nth-child(4) { animation-delay: 150ms; }
-.story-enter > *:nth-child(5) { animation-delay: 200ms; }
+.story-enter > * { animation: cc-rise var(--t-open) var(--ease-out) both; }
+/* by role, not by position (the opening photo and its credit are children too): the crumb and title arrive as one,
+   then the standfirst, byline and actions follow by 50ms. The photo only fades: a picture behind words should not travel. */
+.story-enter > :is(.story-head-media, .story-credit) { animation-name: cc-fade-in; }
+.story-enter > .story-dek { animation-delay: 50ms; }
+.story-enter > .story-byline { animation-delay: 100ms; }
+.story-enter > :is(.story-actions, .story-credit) { animation-delay: 150ms; }
+@keyframes cc-fade-in { from { opacity: 0; } }
 @media (max-width: 960px) { .story-layout { grid-template-columns: 1fr; } .story-aside { position: static; } }
 @media (max-width: 560px) { .story-practice { grid-template-columns: 1fr; } .story-practice .scene-pic { width: 100%; grid-row: auto; } .story-pager { grid-template-columns: 1fr; } .story-pager .next { text-align: left; justify-items: start; } }
 

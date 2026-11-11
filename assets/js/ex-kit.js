@@ -61,8 +61,9 @@
     }
   };
 
-  /* four chapter colours only; a theme without its own chapter borrows the nearest one */
-  var THEME_BG = { people: 'teal', language: 'teal', food: 'peach', beliefs: 'jade', arts: 'jade', history: 'ember' };
+  /* the chapter colour of a theme, as on vietnam.html: everyday = teal (cyan at night), food = peach (gold),
+     beliefs and history = jade. A theme without its own chapter borrows the nearest one. */
+  var THEME_BG = { people: 'teal', language: 'teal', food: 'peach', beliefs: 'jade', arts: 'jade', history: 'jade' };
   var PAGE_BG = { phrases: 'teal', collection: 'peach', about: 'jade' };
 
   function chapterFor(topicId) { return THEME_BG[topicId] || 'teal'; }
@@ -80,12 +81,28 @@
     if (!el.querySelector(':scope > .ex-page-foot')) el.insertAdjacentHTML('beforeend', heroFoot());
   }
 
-  CC.ex = { MOTIF: MOTIF, chapterFor: chapterFor, chapterForScene: chapterForScene, heroFoot: heroFoot, decorate: decorate };
+  /* The reading page's chapters (vietnam.html, explore.js CHAPTERS + SECTIONS) and their stories in the order the
+     page shows them. story.js uses it for the breadcrumb, Back, previous/next and the chapter colour, so a story
+     always belongs to the chapter you read it in. explore.js warns in the console if the page drifts from it. */
+  var READING = {
+    vietnam: [
+      { anchor: 'everyday', name: 'Everyday life', tone: 'teal', stories: ['st-arrive-home', 'st-hand', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market', 'st-old-quarter', 'st-pavement', 'st-hoan-kiem-days'] },
+      { anchor: 'food', name: 'Food & the table', tone: 'peach', stories: ['st-shared-table', 'st-host', 'st-chop', 'st-pho', 'st-bun-cha', 'st-egg-coffee', 'st-street-stall'] },
+      { anchor: 'beliefs', name: 'Temples, beliefs & history', tone: 'jade', stories: ['st-thang-long', 'st-van-mieu-university', 'st-sword-lake', 'st-stelae', 'st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] }
+    ]
+  };
+  function readingChapter(storyId, anchor, country) {
+    var list = READING[country || 'vietnam'] || [];
+    var byAnchor = list.filter(function (c) { return c.anchor === anchor && c.stories.indexOf(storyId) !== -1; })[0];
+    return byAnchor || list.filter(function (c) { return c.stories.indexOf(storyId) !== -1; })[0] || null;
+  }
 
-  /* ink ripple: pills, chips, icon buttons and the site's buttons */
+  CC.ex = { MOTIF: MOTIF, reading: READING, readingChapter: readingChapter, chapterFor: chapterFor, chapterForScene: chapterForScene, heroFoot: heroFoot, decorate: decorate };
+
+  /* ink ripple: pills, chips and Listen buttons. Not on .cc-btn, which already presses down: one press, one response */
   document.addEventListener('pointerdown', function (e) {
     if (!document.body.classList.contains('ex')) return;
-    var el = e.target.closest && e.target.closest('.ex-ripple, .cc-btn, .cc-listen');
+    var el = e.target.closest && e.target.closest('.ex-ripple, .cc-listen');
     if (!el || CC.motion.reduce()) return;
     var r = el.getBoundingClientRect();
     var size = Math.max(r.width, r.height);
@@ -97,14 +114,96 @@
     dot.addEventListener('animationend', function () { dot.remove(); });
   });
 
+  /* reading progress on the story, passport and about pages: a 3px line under the header, in the page's colour.
+     On a story it measures the article only (not the related stories or the footer); elsewhere, the page.
+     It follows the scroll, so it stays under reduced motion, and it hides when there is less than a screen to read.
+     Replaces the React "tracing beam" (a 359 KB bundle for the same line). */
+  function readProgress() {
+    var page = document.body.getAttribute('data-page');
+    if (['story', 'about', 'collection'].indexOf(page) === -1) return;
+    var bar = document.createElement('div');
+    bar.className = 'cc-read-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    bar.innerHTML = '<i></i>';
+    document.body.appendChild(bar);
+    var fill = bar.firstChild, raf = 0, top = 0, span = 1;
+    var target = function () { return page === 'story' ? document.querySelector('.story-body') : document.getElementById('main'); };
+    var measure = function () {
+      var el = target(); if (!el) { bar.hidden = true; return; }
+      var r = el.getBoundingClientRect(), head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 68;
+      top = r.top + scrollY - head; span = Math.max(1, r.height - (innerHeight - head));
+      bar.hidden = r.height < innerHeight * .9;
+      draw();
+    };
+    var draw = function () { raf = 0; fill.style.transform = 'scaleX(' + Math.max(0, Math.min(1, (scrollY - top) / span)).toFixed(4) + ')'; };
+    addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(draw); }, { passive: true });
+    addEventListener('resize', measure);
+    addEventListener('load', measure);
+    document.addEventListener('cc:rendered', measure);
+    setTimeout(measure, 0);
+  }
+
   /* static page heads become chapter bands before the page script fills them */
   document.addEventListener('DOMContentLoaded', function () {
     if (!document.body.classList.contains('ex')) return;
     var page = document.body.getAttribute('data-page');
     if (PAGE_BG[page]) decorate(document.querySelector('.page-head'), PAGE_BG[page]);
     if (page === 'scene') decorate(document.querySelector('.scene-head'), chapterForScene(CC.qs('id')));
+    readProgress();
     /* the paper returns to night above the footer (a sibling, so the footer's own render cannot remove it) */
     var foot = document.getElementById('cc-footer');
     if (foot && !document.querySelector('.ex-foot-join')) foot.insertAdjacentHTML('beforebegin', '<div class="ex-foot-join" aria-hidden="true">' + MOTIF.horizon('up') + '</div>');
+  });
+
+  /* ---------- page transitions (cross-document View Transitions; night.css opts the pages in) ----------
+     Opening a story from vietnam.html, the picture you pressed grows into the story's opening photograph, and
+     Back shrinks it into its card again. Only the picture morphs (a title would smear between 22px and 76px);
+     everything else cross-fades. It runs only where the browser supports it and only over http(s): from file://
+     or in an older browser the page simply loads. Reduced motion (the OS or the site setting) skips it. */
+  var HERO = 'story-hero';
+  function storyPhoto(id) {
+    var st = CC.byId(CC.stories, id), a = st && st.imageId ? CC.byId(CC.assets, st.imageId) : null;
+    return a && a.file && a.kind === 'image' ? [a.file].concat(a.web ? [a.web] : []) : null;   // the photo, or its 1000px copy
+  }
+  function storyIdOf(url) { var m = /story\.html\?(?:[^#]*&)?id=([\w-]+)/.exec(url || ''); return m ? m[1] : null; }
+  function samePicture(img, file) {
+    if (!img || !file || /scale\(/.test(img.getAttribute('style') || '')) return false;   // a zoomed detail is not the same picture
+    var path = function (u) { return new URL(u, location.href).pathname; };
+    try { var got = path(img.currentSrc || img.src); return [].concat(file).some(function (f) { return path(f) === got; }); } catch (e) { return false; }
+  }
+  function onScreen(el) { var r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.width > 0; }
+  function clearHero() { Array.prototype.forEach.call(document.querySelectorAll('[data-vt-hero]'), function (el) { el.style.viewTransitionName = ''; el.removeAttribute('data-vt-hero'); }); }
+  function name(el) { if (!el) return; clearHero(); el.style.viewTransitionName = HERO; el.setAttribute('data-vt-hero', ''); }
+  /* the card's picture for a story on this page, if it shows the story's own photograph and is on screen */
+  function cardPicture(id, link) {
+    var file = storyPhoto(id); if (!file) return null;
+    var links = link ? [link] : Array.prototype.slice.call(document.querySelectorAll('a[href*="id=' + id + '"]'));
+    for (var i = 0; i < links.length; i++) {
+      var img = links[i].querySelector('img');
+      if (samePicture(img, file) && onScreen(img)) return img;
+    }
+    return null;
+  }
+  var pressed = null;
+  document.addEventListener('click', function (e) { pressed = e.target.closest && e.target.closest('a[href]'); }, true);
+
+  window.addEventListener('pageswap', function (e) {
+    if (!e.viewTransition) return;
+    if (CC.motion.reduce()) { e.viewTransition.skipTransition(); return; }
+    var to = e.activation && e.activation.entry ? e.activation.entry.url : '';
+    var page = document.body.getAttribute('data-page');
+    if (page === 'vietnam' && storyIdOf(to)) name(cardPicture(storyIdOf(to), pressed && pressed.closest('a')));
+    else if (page === 'story' && /vietnam\.html/.test(to)) name(document.querySelector('.story-head-media img'));
+  });
+  window.addEventListener('pagereveal', function (e) {
+    clearHero();
+    if (!e.viewTransition) return;
+    if (CC.motion.reduce()) { e.viewTransition.skipTransition(); return; }
+    document.documentElement.classList.add('vt-arrived');   // the transition is the entrance: the story head does not also rise
+    var nav = window.navigation, from = nav && nav.activation && nav.activation.from ? nav.activation.from.url : "";
+    var page = document.body.getAttribute('data-page');
+    if (page === 'story' && /vietnam\.html/.test(from)) name(document.querySelector('.story-head-media img'));
+    else if (page === 'vietnam' && storyIdOf(from)) name(cardPicture(storyIdOf(from)));
+    e.viewTransition.finished.then(clearHero, clearHero);
   });
 })();

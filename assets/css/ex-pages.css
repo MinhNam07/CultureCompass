@@ -94,7 +94,8 @@ body.ex .ex-foot-join { height: clamp(48px, 6vw, 88px); margin-top: clamp(72px, 
 /* the band's own ground: fills under the wave instead of a straight-edged block */
 .ex-band path.ex-band-fill { fill: var(--band-below, transparent); stroke: none; }
 body.ex .cc-skip { background: #202124; color: #FBF3E4; border-radius: var(--radius-pill); }
-body.ex .cc-toast { border-radius: 16px; background: rgb(32 33 36 / .96); }
+body.ex .cc-toast { border-radius: 16px; background: rgb(32 33 36 / .96); color: #FFFCF7; }
+body.ex .cc-toast a { color: #FFFCF7; }   /* the night palette re-points --color-surface to a dark tone, so the toast names its ink */
 body.ex .cc-toast .cc-icon { color: var(--ch-peach); }
 /* toasts can float over the night footer, so they carry a hairline as well as a shadow */
 body.ex :is(.cc-toast, .ex-toast) { border: 1px solid rgb(255 252 247 / .18); }
@@ -223,7 +224,7 @@ body.ex .story-practice h2 { font-weight: 400; font-size: clamp(1.5rem, 1.3rem +
 body.ex .story-practice p { color: var(--ink-2); }
 body.ex .story-practice .scene-pic { grid-row: auto; width: 200px; border: 0; border-radius: var(--radius-card); }
 body.ex .story-practice .scene-pic img { transition: transform var(--dur-zoom) var(--ease-out-expo); }
-@media (hover: hover) and (pointer: fine) { body.ex .story-practice:hover .scene-pic img { transform: scale(1.08); } }
+@media (hover: hover) and (pointer: fine) { body.ex .story-practice:hover .scene-pic img { transform: scale(var(--zoom-hover)); } }
 
 body.ex .story-pager { gap: 16px; border-top: 0; padding-top: 24px; }
 body.ex .story-pager a { padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius-card); transition: background-color 200ms ease-out, border-color 200ms ease-out; }
@@ -239,13 +240,13 @@ body.ex .cc-back { font-weight: 500; }
 body.ex .story-card { gap: 8px; }
 body.ex .story-card .story-pic { border: 0; border-radius: var(--radius-card); }
 body.ex .story-card .story-pic img, body.ex .story-card .story-pic svg { transition: transform var(--dur-zoom) var(--ease-out-expo); }
-body.ex .story-card:hover .story-pic img, body.ex .story-card:focus-within .story-pic img { transform: scale(1.08); }
-body.ex .story-card:hover .story-pic svg, body.ex .story-card:focus-within .story-pic svg { transform: scale(1.35); }
-body.ex .story-card .story-topics { order: -1; font: 700 .6875rem/1.4 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--eyebrow-ink); }
+/* one zoom for every picture under a fine pointer (cc.css --zoom-hover); focus shows its ring, not a zoom */
+@media (hover: hover) and (pointer: fine) { body.ex .story-card:hover .story-pic :is(img, svg) { transform: scale(var(--zoom-hover)); } }
+body.ex .story-card .story-topics { order: -1; font: 600 .875rem/1.4 var(--font-sans); color: var(--eyebrow-ink); }
 body.ex .story-card h3 { font-size: 1.1875rem; font-weight: 500; }
 body.ex .story-card:hover h3 a { text-decoration: none; }
 body.ex .story-card p { color: #3C4043; }
-body.ex .story-card .cc-save-mini { width: 40px; height: 40px; background: rgb(251 243 228 / .94); border: 0; color: #202124; box-shadow: 0 1px 3px rgb(0 0 0 / .18); }
+body.ex .story-card .cc-save-mini { width: 44px; height: 44px; background: rgb(251 243 228 / .94); border: 0; color: #202124; box-shadow: 0 1px 3px rgb(0 0 0 / .18); }
 body.ex .story-card .cc-save-mini[aria-pressed="true"] { color: var(--color-primary); }
 body.ex .story-thumb { border: 0; border-radius: var(--radius-card); }
 

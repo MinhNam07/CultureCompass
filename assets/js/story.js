@@ -6,6 +6,10 @@
   var CC = window.CC;
   var esc = CC.esc;
 
+  function chapterOf(st, from) {
+    var m = /^vn:(\w+)$/.exec(from || '');
+    return CC.ex && CC.ex.readingChapter ? CC.ex.readingChapter(st.id, m && m[1]) : null;
+  }
   function backFor(st, from) {
     from = from || '';
     var m = /^theme:([\w-]+)$/.exec(from);
@@ -15,9 +19,12 @@
       var sc = CC.byId(CC.scenarios, from.slice(6));
       if (sc) return { href: CC.sceneHref(sc.id), label: 'Back to Explore: ' + sc.title, topic: t };
     }
-    if (from === 'index') return { href: 'vietnam-classic.html', label: 'Back to every story', topic: t };
-    if (from === 'overview') return { href: 'vietnam.html#overview', label: 'Back to Vietnam', topic: t };
-    if (from === 'collection') return { href: 'collection.html', label: 'Back to your passport', topic: t };
+    if (from === 'collection') return { href: 'collection.html', label: 'Back to your passport', topic: t, chapter: chapterOf(st, from) };
+    /* from the reading page, or anywhere else: back to the story's chapter on vietnam.html (CC.ex.reading) */
+    var chap = chapterOf(st, from);
+    if (/^vn:places$/.test(from)) return { href: 'vietnam.html#places', label: 'Back to Places in the game', topic: t, page: true, chapter: chap };
+    if (chap) return { href: 'vietnam.html#' + chap.anchor, label: 'Back to ' + chap.name, topic: t, page: true, chapter: chap };
+    if (from === 'index' || from === 'overview') return { href: 'vietnam.html#contents', label: 'Back to Vietnam', topic: t, page: true };
     if (t) return { href: 'vietnam.html#' + t.id, label: 'Back to ' + t.label, topic: t };
     return { href: 'vietnam.html', label: 'Back to Vietnam', topic: null };
   }
@@ -26,7 +33,7 @@
     var img = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
     if (img) {
       return '<figure class="story-figure"><div class="frame"><img src="' + esc(img.file) + '" alt="' + esc(img.alt) + '" decoding="async"></div>' +
-        '<figcaption>' + esc(img.alt) + ' Photo: ' + esc(img.credit) + ', <a href="' + esc(img.licenseUrl) + '" target="_blank" rel="noopener">' + esc(img.license) + '</a>, via <a href="' + esc(img.sourceUrl) + '" target="_blank" rel="noopener">Wikimedia Commons</a>' + (img.note ? ' (' + esc(img.note.replace(/\.$/, '')) + ')' : '') + '.</figcaption></figure>';
+        '<figcaption>' + esc(img.alt) + ' ' + CC.creditHtml(img) + '</figcaption></figure>';
     }
     var sc = CC.byId(CC.scenarios, st.sceneId);
     if (!sc || !CC.svgs[sc.id]) return '';
@@ -38,13 +45,15 @@
   function render(st, from) {
     var back = backFor(st, from);
     var claims = CC.storyClaims(st);
-    var srcOrder = [];
+    var srcOrder = [], marked = [];
     function fn(claimIds) {
       var out = '';
       CC.sourcesOf(CC.claimsOf(claimIds)).forEach(function (sid) {
         if (srcOrder.indexOf(sid) === -1) srcOrder.push(sid);
         var n = srcOrder.indexOf(sid) + 1, s = CC.byId(CC.sources, sid);
-        out += '<a class="fn" href="#src-' + n + '" aria-label="Source ' + n + ': ' + esc(s ? s.short : sid) + '">' + n + '</a>';
+        /* the first mention of each source is where "Back to the text" returns to */
+        var first = marked.indexOf(n) === -1; if (first) marked.push(n);
+        out += '<a class="fn" href="#src-' + n + '"' + (first ? ' id="fn-' + n + '"' : '') + ' aria-label="Source ' + n + ': ' + esc(s ? s.short : sid) + '">' + n + '</a>';
       });
       return out;
     }
@@ -57,7 +66,7 @@
       }
       return '<section>' + (sec.heading ? '<h2>' + esc(sec.heading) + '</h2>' : '') +
         '<p>' + esc(sec.text) + fn(sec.claimIds) +
-          (CC.unverified(cl) ? CC.verifyTag() : '') +
+          (CC.unverified(cl) ? '<span class="story-checking" title="Still being checked against a reliable source">' + CC.icon('verify') + '<span class="visually-hidden">Being verified</span></span>' : '') +
           (tip ? ' <span class="cc-tag" title="CultureCompass’s own advice, not a cultural claim">' + CC.icon('lightbulb') + 'CultureCompass tip</span>' : '') +
         '</p></section>';
     }).join('');
@@ -66,20 +75,25 @@
     var sc = st.sceneId ? CC.byId(CC.scenarios, st.sceneId) : null;
     var entry = sc ? CC.sceneEntry(sc) : null;
 
-    /* reading order: inside the theme it came from */
-    var list = back.topic ? (back.topic.storyIds || []) : (CC.stories || []).map(function (s) { return s.id; });
+    /* reading order: the chapter's order on vietnam.html; else the theme it came from */
+    var list = back.chapter ? back.chapter.stories : back.topic ? (back.topic.storyIds || []) : (CC.stories || []).map(function (s) { return s.id; });
     var i = list.indexOf(st.id);
     var prev = i > 0 ? CC.byId(CC.stories, list[i - 1]) : null;
     var next = i !== -1 && i < list.length - 1 ? CC.byId(CC.stories, list[i + 1]) : null;
-    var keepFrom = from ? '&from=' + encodeURIComponent(from) : '';
+    var keepFrom = back.chapter && !/^(scene:|collection)/.test(from || '') ? '&from=vn:' + back.chapter.anchor : from ? '&from=' + encodeURIComponent(from) : '';
 
     var related = [];
     CC.storyTopics(st).forEach(function (t) { (t.storyIds || []).forEach(function (id) { if (id !== st.id && related.indexOf(id) === -1 && (!next || id !== next.id) && (!prev || id !== prev.id)) related.push(id); }); });
-    related = related.slice(0, 3).map(function (id) { return CC.byId(CC.stories, id); }).filter(Boolean);
+    /* three stories that each show a different picture, so the row doesn't repeat the same photo; fall back to any */
+    related = related.map(function (id) { return CC.byId(CC.stories, id); }).filter(Boolean);
+    var picOf = function (r) { var m = /src="([^"]+)"/.exec(CC.storyCard(r, '', 3)); return m ? m[1].replace(/-thumb(?=\.)/, '') : r.id; };
+    var seenPic = [st.imageId ? (CC.byId(CC.assets, st.imageId) || {}).file : ''], fresh = related.filter(function (r) { var p = picOf(r); if (seenPic.indexOf(p) > -1) return false; seenPic.push(p); return true; });
+    related = fresh.concat(related.filter(function (r) { return fresh.indexOf(r) === -1; })).slice(0, 3);
 
     /* the story takes its chapter colour from the theme it is read in */
-    var bg = CC.ex ? CC.ex.chapterFor(back.topic ? back.topic.id : (CC.storyTopics(st)[0] || {}).id) : 'teal';
-    var CH_INK = { teal: ['var(--ch-teal)', '#fff', '#02606F'], peach: ['var(--ch-peach)', '#202124', '#A14A12'], jade: ['var(--ch-jade)', '#202124', '#2F6F66'], ember: ['var(--ch-ember)', '#202124', '#B3401A'] }[bg];
+    var bg = back.chapter ? back.chapter.tone : CC.ex ? CC.ex.chapterFor(back.topic ? back.topic.id : (CC.storyTopics(st)[0] || {}).id) : 'teal';
+    /* [disc fill, glyph on it, ink on the night ground]: the same tones as the chapter on vietnam.html */
+    var CH_INK = { teal: ['var(--cyan)', 'var(--cyan-ink)', 'var(--cyan)'], peach: ['var(--gold)', '#2A1E05', 'var(--gold)'], jade: ['#5DCAA5', '#06231B', '#5DCAA5'], ember: ['var(--lacquer)', '#FFF6EE', '#FF8A73'] }[bg] || ['var(--cyan)', 'var(--cyan-ink)', 'var(--cyan)'];
     var root = document.getElementById('story-root');
     root.style.setProperty('--story-bg', CH_INK[0]);
     root.style.setProperty('--story-on', CH_INK[1]);
@@ -87,20 +101,22 @@
     /* the story's own photograph is the backdrop of its opening; without one, a plain night ground */
     var photo = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
     var nSrc = CC.sourcesOf(claims).length;
-    var credit = photo ? '<p class="story-credit">Photo: ' + esc(photo.credit) + ', <a href="' + esc(photo.licenseUrl) + '" target="_blank" rel="noopener">' + esc(photo.license) + '</a>, via <a href="' + esc(photo.sourceUrl) + '" target="_blank" rel="noopener">Wikimedia Commons</a></p>' : '';
+    var nCheck = claims.filter(function (c) { return CC.unverified([c]); }).length;
+    var credit = photo ? '<p class="story-credit">' + CC.creditHtml(photo) + '</p>' : '';
 
     var html =
-      '<header class="story-head story-enter' + (photo ? ' has-photo' : '') + '" data-bg="' + bg + '">' +
+      '<header class="story-head story-enter' + (photo ? ' has-photo' : '') + (CC.storyMinutes(st) <= 1 ? ' is-short' : '') + '" data-bg="' + bg + '">' +
         (photo ? '<div class="story-head-media"><img src="' + esc(photo.file) + '" alt="' + esc(photo.alt) + '" decoding="async" fetchpriority="high"></div>' : '') +
         '<ol class="cc-crumb" aria-label="Breadcrumb"><li><a href="index.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
-          (back.topic ? '<li><a href="vietnam.html#' + back.topic.id + '">' + esc(back.topic.label) + '</a></li>' : '') +
+          (back.chapter ? '<li><a href="vietnam.html#' + back.chapter.anchor + '">' + esc(back.chapter.name) + '</a></li>' :
+            back.topic ? '<li><a href="vietnam.html#' + back.topic.id + '">' + esc(back.topic.label) + '</a></li>' : '') +
           '<li><span aria-current="page">Story</span></li></ol>' +
         '<h1 id="story-title" tabindex="-1">' + esc(st.title) + '</h1>' +
         '<p class="story-dek">' + esc(st.dek) + '</p>' +
         '<p class="story-byline">' + esc(st.place) + '<span aria-hidden="true"> · </span>' + CC.storyMinutes(st) + ' min read<span aria-hidden="true"> · </span>' +
-          '<a href="#src-title">' + CC.plural(nSrc, 'source') + '</a>' + (CC.unverified(claims) ? ' ' + CC.verifyTag() : '') + '</p>' +
+          '<a href="#src-title">' + CC.plural(nSrc, 'source') + '</a>' + (nCheck ? '<span aria-hidden="true"> · </span><span class="story-checking-note">' + CC.icon('verify') + CC.plural(nCheck, 'point') + ' still being verified</span>' : '') + '</p>' +
         '<div class="story-actions">' +
-          (sc ? '<a class="cc-btn" href="' + entry.href + '">' + (entry.state === 'started' ? esc(entry.label) : 'Walk through this moment') + ' ' + CC.arrow() + '</a>' : '') +
+          (sc ? '<a class="cc-btn" href="' + entry.href + '">' + (entry.state === 'started' ? esc(entry.label) : 'Play this moment') + ' ' + CC.arrow() + '</a>' : '') +
           CC.saveButton('story', st.id, { cls: 'cc-btn-quiet' }) +
         '</div>' +
         credit +
@@ -123,29 +139,31 @@
         '<ol>' + srcOrder.map(function (sid, k) {
           var s = CC.byId(CC.sources, sid);
           return '<li id="src-' + (k + 1) + '"><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '<span class="visually-hidden"> (opens in a new tab)</span></a>' +
-            '<div class="cc-meta">' + esc(s.org) + '. Checked ' + esc(s.checked) + '.</div><div class="cc-meta"><b>Limits:</b> ' + esc(s.limits) + '</div></li>';
+            '<div class="cc-meta">' + esc(s.org) + '. Checked ' + esc(s.checked) + '.</div><div class="cc-meta"><b>Limits:</b> ' + esc(s.limits) + '</div>' +
+            (marked.indexOf(k + 1) !== -1 ? '<a class="src-back" href="#fn-' + (k + 1) + '">' + CC.icon('arrowUp') + 'Back to the text<span class="visually-hidden"> where source ' + (k + 1) + ' is cited</span></a>' : '') + '</li>';
         }).join('') + '</ol>' +
         (claims.some(function (c) { return c.kind === 'projectNote'; }) ? '<p class="cc-meta" style="margin-top:16px">Points marked “CultureCompass tip” are our own suggestions, not cultural claims, so they have no source.</p>' : '') +
       '</section>' +
       (sc ? '<section class="story-practice" data-bg="' + bg + '" aria-labelledby="practice-title">' +
         '<div class="scene-pic">' + CC.sceneThumb(sc.id) + '</div>' +
-        '<div><h2 id="practice-title">Walk through it in Explore</h2><p>Optional: this moment is part of <b>' + esc((CC.zoneForScene(sc.id) || sc).title) + '</b>, a small pixel-art walk in Hà Nội. ' + esc(sc.goal) + ' About ' + ((CC.zoneForScene(sc.id) || sc).minutes) + ' minutes, no score.</p></div>' +
+        '<div><h2 id="practice-title">Play this moment in the game</h2><p>Optional: this moment is part of <b>' + esc((CC.zoneForScene(sc.id) || sc).title) + '</b>, a small pixel-art walk in Hà Nội. ' + esc(sc.goal) + ' About ' + ((CC.zoneForScene(sc.id) || sc).minutes) + ' minutes, no score.</p></div>' +
         '<a class="cc-btn" href="' + entry.href + '">' + esc(entry.label) + ' ' + CC.arrow() + '</a>' +
       '</section>' : '') +
       '</div>' +
-      (prev || next ? '<nav class="story-pager cc-section-tight" aria-label="More in ' + esc(back.topic ? back.topic.label : 'Vietnam') + '">' +
+      (prev || next ? '<nav class="story-pager cc-section-tight" aria-label="More in ' + esc(back.chapter ? back.chapter.name : back.topic ? back.topic.label : 'Vietnam') + '">' +
         (prev ? '<a class="prev" href="story.html?id=' + prev.id + keepFrom + '"><span>' + CC.icon('arrowLeft') + 'Previous</span><b>' + esc(prev.title) + '</b></a>' : '<span></span>') +
         (next ? '<a class="next" href="story.html?id=' + next.id + keepFrom + '"><span>Next' + CC.icon('arrowRight') + '</span><b>' + esc(next.title) + '</b></a>' : '') +
       '</nav>' : '') +
       (related.length ? '<section class="cc-section-tight" aria-labelledby="rel-title"><h2 id="rel-title" class="h3">Related stories</h2><ul class="story-grid">' +
         related.map(function (r) { return CC.storyCard(r, from, 3); }).join('') + '</ul></section>' : '') +
-      '<p><a class="cc-back" href="' + back.href + '">' + CC.arrow('left') + esc(back.label) + '</a></p>';
+      '<p><a class="cc-back" href="' + back.href + '"' + (back.page ? ' data-back-page' : '') + '>' + CC.arrow('left') + esc(back.label) + '</a></p>';
 
     root.innerHTML = html;
     var head = root.querySelector('.story-head');
     if (head) head.classList.add('ex-page-hero');
     document.title = st.title + ' — CultureCompass';
     CC.reads.mark(st.id);
+    document.dispatchEvent(new CustomEvent('cc:rendered'));
   }
 
   function notFound(id) {
@@ -154,10 +172,26 @@
       '<div class="cc-section-tight"><div class="cc-empty"><svg class="cc-empty-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5.5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6.5v13"/></svg>' +
       '<h1 class="h2" id="story-title" tabindex="-1">We couldn’t find that story</h1>' +
       '<p>' + (id ? 'There is no story called “' + esc(id) + '”. The link may be out of date.' : 'The link doesn’t say which story to open.') + '</p>' +
-      '<p><a class="cc-btn" href="vietnam-classic.html">See every story ' + CC.arrow() + '</a></p></div></div>';
+      '<p><a class="cc-btn" href="vietnam.html#contents">Back to Vietnam ' + CC.arrow() + '</a></p></div>' +
+      /* one way in from each chapter, so a stale link still leads somewhere worth reading */
+      '<section aria-labelledby="try-title" style="margin-top:40px"><h2 id="try-title" class="h3">Start with one of these</h2><ul class="story-grid">' +
+        ((CC.ex && CC.ex.reading.vietnam) || []).map(function (ch) { return CC.byId(CC.stories, ch.stories[0]); }).filter(Boolean)
+          .map(function (s) { return CC.storyCard(s, '', 3); }).join('') + '</ul></section></div>';
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  /* Back to the reading page: when you came straight from it, go back in history, so the page opens where you were
+     (the same card, not the top of the chapter). Otherwise the link's own chapter address is used. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-back-page]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    var came = null;
+    try { came = sessionStorage.getItem('cc.readingOpened'); } catch (x) { /* storage blocked: use the link */ }
+    if (came && came === location.search && history.length > 1) { e.preventDefault(); history.back(); }
+  });
+
+  /* Render as soon as this script runs (it is the last thing in <body>, so everything it fills already exists),
+     not on DOMContentLoaded: the first frame the browser paints, which a page transition morphs into, is the story. */
+  (function start() {
     CC.renderShell({ section: 'destinations', country: 'vietnam', sub: 'themes' });
     var id = CC.qs('id');
     var st = id && CC.byId(CC.stories, id);
@@ -167,5 +201,5 @@
     /* leaving for another story or a scene: remember to come back to the top of this one */
     if (CC.motion.reduce()) Array.prototype.forEach.call(document.querySelectorAll('.story-enter > *'), function (el) { el.style.animation = 'none'; });
     document.addEventListener('cc:cleared', function () { render(st, from); });
-  });
+  })();
 })();

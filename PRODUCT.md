@@ -28,7 +28,7 @@ Reading or completing something is never presented as having understood or maste
 ## Vision vs. what exists today
 
 - **Vision:** many countries, each with its own themes, regions and communities. The architecture (countries.json → topics.json → stories.json, with scenes and phrases attached) is built for that.
-- **Today (1 November 2026):** one destination, **Vietnam, starting in Hà Nội**. 6 themes (5 with stories; *Arts & creativity* is not written yet), 13 stories, 5 places to explore holding 6 scenes (20 moments), 15 phrases, 20 sources. Đà Nẵng and Hội An are shown on the Explore map as “coming later”. Run `node tools/check-content.js` for current numbers.
+- **Today (11 November 2026):** one destination, **Vietnam, starting in Hà Nội**. 6 themes, 27 stories, 6 scenes, 15 phrases, 50 sources, 91 claims (38 still being verified; each story says so in its byline). Đà Nẵng and Hội An are shown on the Explore map as “coming later”. Run `node tools/check-content.js` for current numbers.
 - Hà Nội content is never presented as representing all of Vietnam. No placeholder countries, invented articles, interviews, testimonials, contributors or launch dates are shown.
 
 ## Positioning
@@ -41,7 +41,7 @@ Main flow: `index.html` (muted culture montage → choose a destination) → `vi
 
 Global navigation: **Destinations · My collection · About** (+ Settings). Inside a destination: **Overview · Themes · Explore · Phrasebook**.
 
-Supporting pages: `phrases.html` (phrasebook by intent, theme or scene), `collection.html` (saved stories, phrases and reminder cards, grouped by destination, printable), `about.html` (method, scope, live content status, sources, credits, accessibility, data). Old routes: `saved.html` → `collection.html`; `hanoi.html` → `vietnam.html`; old theme anchors such as `#topic-greetings` or `#street` open the matching new theme.
+Supporting pages: the phrasebook is the "Words for Hà Nội" block on `vietnam.html#phrases` (`phrases.html` forwards there), `collection.html` (saved stories, phrases and reminder cards, grouped by destination, printable), `about.html` (method, scope, live content status, sources, credits, accessibility, data). Old routes: `saved.html` → `collection.html`; `hanoi.html` → `vietnam.html`; old theme anchors such as `#topic-greetings` or `#street` open the matching new theme.
 
 ## Capabilities and Constraints
 
@@ -61,7 +61,7 @@ Supporting pages: `phrases.html` (phrasebook by intent, theme or scene), `collec
 
 ## Evidence on Hand
 
-- Sources with check dates and limits: `assets/data/sources.json`. Claims and their status: `assets/data/scenarios.json` (none still `needs_verification` since 1 November 2026; the last eight were backed with press and reference sources). Stories: `assets/data/stories.json` (every paragraph points to claims). Phrases: `assets/data/phrases.json` (the 11 composed ones checked for wording on 1 November 2026, status `reviewed`).
+- Sources with check dates and limits: `assets/data/sources.json`. Claims and their status: `assets/data/scenarios.json` (38 of 91 still `needs_verification` on 11 November 2026, mostly the newer Văn Miếu, beliefs and food stories; they are marked in place). Stories: `assets/data/stories.json` (every paragraph points to claims). Phrases: `assets/data/phrases.json` (the 11 composed ones checked for wording on 1 November 2026, status `reviewed`).
 - Media credits and licences: `assets/data/assets.json`. Videos are trimmed CC clips from Wikimedia Commons; the market clips were filmed in Hội An and are captioned so.
 - Explore art and sound: LimeZu *Serene Village Revamped* (CC BY 4.0) and *Modern Interiors* free version (non-commercial); music and sounds from *Ninja Adventure* by Pixel-boy and AAA (CC0); buildings, people and props AI-generated (Gemini) and edited for CultureCompass. All credited on `about.html#credits` and under the game.
 - Audio in `assets/audio/` is a synthetic placeholder (macOS “Linh” voice), labelled “Computer voice” everywhere. Do not present it as a real speaker.
