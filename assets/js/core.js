@@ -253,7 +253,18 @@
       b.classList.remove('is-popping'); void b.offsetWidth; b.classList.add('is-popping');
     }
     if (!r.ok) CC.toast('This browser isn’t letting us save, so it will be forgotten when you close the tab.', 'alert');
-    else CC.toast(r.saved ? 'Saved to your <a href="collection.html">passport</a>.' : 'Removed from your passport.', r.saved ? 'bookmarkFill' : 'bookmark', true);
+    else if (r.saved) CC.toast('Saved to your passport. <a href="collection.html">Open it</a>', 'bookmarkFill', true);
+    else {
+      /* removing is one tap, so it can be taken back */
+      CC.toast('Removed from your passport. <button type="button" class="cc-toast-undo">Undo</button>', 'bookmark', true);
+      var u = document.querySelector('#cc-toast .cc-toast-undo');
+      if (u) u.addEventListener('click', function () {
+        CC.collection.toggle(type, id, b.getAttribute('data-save-country'));
+        syncSaveButtons();
+        CC.toast('Saved to your passport again.', 'bookmarkFill');
+        if (document.body.contains(b)) b.focus({ preventScroll: true });
+      });
+    }
   });
 
   /* ---------- content helpers ---------- */
@@ -409,10 +420,18 @@
     var wrap = document.getElementById('cc-toast');
     if (!wrap) return;
     wrap.innerHTML = '<div class="cc-toast">' + CC.icon(icon || 'info') + '<span class="cc-toast-msg">' + (html ? msg : CC.esc(msg)) + '</span>' +
-      '<button type="button" aria-label="Dismiss message">' + CC.icon('close') + '</button></div>';
-    wrap.querySelector('button').addEventListener('click', function () { wrap.innerHTML = ''; });
+      '<button type="button" class="cc-toast-x" aria-label="Dismiss message">' + CC.icon('close') + '</button></div>';
+    var t = wrap.firstChild;
+    /* it leaves the way it came: down and out over 200ms (at once under reduced motion) */
+    var close = function () {
+      if (!t.isConnected) return;
+      if (CC.motion.reduce()) { t.remove(); return; }
+      t.classList.add('is-out');
+      setTimeout(function () { t.remove(); }, 220);
+    };
+    t.querySelector('.cc-toast-x').addEventListener('click', close);
     clearTimeout(CC._toastT);
-    CC._toastT = setTimeout(function () { wrap.innerHTML = ''; }, 5000);
+    CC._toastT = setTimeout(close, 6000);
   };
 
   /* ---------- return position (story ↔ theme, scene ↔ country) ---------- */

@@ -86,10 +86,6 @@ body[data-page="vietnam"] .ex-foot-join { display: none; }
 .rd-round:hover { background: var(--rd-step-2); }
 .rd-round:active { transform: scale(.94); }
 .rd-round .cc-icon { width: 20px; height: 20px; }
-.ex-heart[aria-pressed="true"] { color: #FFB59A; }
-.ex-heart[aria-pressed="true"] svg path { fill: currentColor; }
-.ex-heart.is-pop svg { animation: rd-pop 300ms var(--ease-out); }
-@keyframes rd-pop { 45% { transform: scale(1.3); } }
 .rd-link { display: inline-flex; align-items: center; gap: 8px; color: var(--rd-act) !important; font: 600 1rem/1.3 var(--font-sans); text-decoration: none; }
 .rd-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .rd-go { width: 18px; height: 18px; flex: none; transition: transform 300ms var(--rd-ease); }
@@ -207,6 +203,11 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-acc-item.is-open .rd-acc-text { opacity: 1; transform: none; transition: opacity 300ms ease 120ms, transform 400ms var(--rd-ease) 120ms; }
 .rd-acc-title { font: 600 var(--fs-lead)/1.25 var(--font-serif); }
 .rd-acc-desc { font-size: 1rem; line-height: 1.5; color: #E6EEF6; }
+
+/* the moments hint says what works with the pointer you have */
+.rd-hint-touch { display: none; }
+@media (hover: none), (max-width: 760px) { .rd-hint-wide { display: none; } .rd-hint-touch { display: inline; } }
+.rd-swipe { display: none; }
 
 /* ---------------- story list (rows) ---------------- */
 .rd-list { display: grid; gap: 4px; }
@@ -326,6 +327,10 @@ html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
   .rd-plan-scroll { margin-inline: calc(var(--rd-gutter) * -1); padding-inline: var(--rd-gutter); overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
   .rd-plan-scroll::-webkit-scrollbar { display: none; }
   .rd-plan-box { min-width: 680px; }
+  /* say that the plan goes on, and fade its far edge so the cut reads as "more", not as broken */
+  .rd-plan-scroll { -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); }
+  .rd-plan-scroll.is-end { -webkit-mask-image: none; mask-image: none; }
+  .rd-swipe { display: block; margin-bottom: 4px; color: var(--rd-ink-2); }
 }
 
 /* ---------------- timeline ---------------- */
@@ -379,6 +384,15 @@ html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
 .rd-zone.is-going .rd-zone-meta b { color: var(--rd-act); }
 .rd-zone-go { display: inline-flex; align-items: center; gap: 6px; color: var(--rd-act); font-weight: 600; font-size: 1rem; }
 
+/* ---------------- words for Hà Nội ---------------- */
+.rd-words { scroll-margin-top: var(--chbar-h); }
+.rd-words:focus { outline: none; }
+.rd-words-group + .rd-words-group { margin-top: 48px; }
+#explore .rd-words-h { margin-bottom: 16px; font: 600 var(--fs-meta)/1.3 var(--font-sans); letter-spacing: 0; color: var(--rd-ink-2); }
+.rd-words-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+#explore .rd-words .rd-phrase .phrase { align-content: start; padding: 24px; }
+#explore .rd-words .rd-phrase-vi { font-size: var(--fs-lead); line-height: 1.25; }
+
 /* ---------------- keep it ---------------- */
 .rd-keep-in { display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; padding: 28px 32px; border-radius: 4px; background: var(--rd-step); }
 #explore .rd-keep-title { font-size: var(--fs-lead); line-height: 1.25; margin-bottom: 6px; }
@@ -394,6 +408,14 @@ html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
 #explore .rd-before-h, #explore .rd-credits-h { font-size: var(--fs-h); }
 .rd-before-p { grid-column: 7 / span 6; color: var(--rd-ink-2); max-width: 60ch; }
 .rd-credits { padding-bottom: var(--rd-gap); }
+.rd-credits-box summary { display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; list-style: none; }
+.rd-credits-box summary::-webkit-details-marker { display: none; }
+.rd-credits-box summary .cc-icon { width: 20px; height: 20px; color: var(--rd-muted); transition: transform var(--t-open) var(--ease-out); }
+.rd-credits-box[open] summary .cc-icon { transform: rotate(180deg); }
+.rd-credits-box summary:hover .rd-credits-h { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.rd-credits-n { color: var(--rd-muted); font-weight: 400; }
+.rd-credits-box[open] .rd-credits-list { margin-top: 20px; }
+#explore .rd-credits-box :is(.rd-credits-list, .rd-credits-more) { max-width: 80ch; }
 .rd-credits-list { grid-column: 7 / span 6; display: grid; gap: 8px; font-size: var(--fs-meta); line-height: 1.5; color: var(--rd-muted); }
 .rd-credits-more { grid-column: 7 / span 6; margin-top: 16px !important; font-size: var(--fs-meta); }
 

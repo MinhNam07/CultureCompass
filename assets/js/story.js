@@ -112,7 +112,7 @@
         '<p class="story-byline">' + esc(st.place) + '<span aria-hidden="true"> · </span>' + CC.storyMinutes(st) + ' min read<span aria-hidden="true"> · </span>' +
           '<a href="#src-title">' + CC.plural(nSrc, 'source') + '</a>' + (nCheck ? '<span aria-hidden="true"> · </span><span class="story-checking-note">' + CC.icon('verify') + CC.plural(nCheck, 'point') + ' still being verified</span>' : '') + '</p>' +
         '<div class="story-actions">' +
-          (sc ? '<a class="cc-btn" href="' + entry.href + '">' + (entry.state === 'started' ? esc(entry.label) : 'Walk through this moment') + ' ' + CC.arrow() + '</a>' : '') +
+          (sc ? '<a class="cc-btn" href="' + entry.href + '">' + (entry.state === 'started' ? esc(entry.label) : 'Play this moment') + ' ' + CC.arrow() + '</a>' : '') +
           CC.saveButton('story', st.id, { cls: 'cc-btn-quiet' }) +
         '</div>' +
         credit +
@@ -142,7 +142,7 @@
       '</section>' +
       (sc ? '<section class="story-practice" data-bg="' + bg + '" aria-labelledby="practice-title">' +
         '<div class="scene-pic">' + CC.sceneThumb(sc.id) + '</div>' +
-        '<div><h2 id="practice-title">Walk through it in Explore</h2><p>Optional: this moment is part of <b>' + esc((CC.zoneForScene(sc.id) || sc).title) + '</b>, a small pixel-art walk in Hà Nội. ' + esc(sc.goal) + ' About ' + ((CC.zoneForScene(sc.id) || sc).minutes) + ' minutes, no score.</p></div>' +
+        '<div><h2 id="practice-title">Play this moment in the game</h2><p>Optional: this moment is part of <b>' + esc((CC.zoneForScene(sc.id) || sc).title) + '</b>, a small pixel-art walk in Hà Nội. ' + esc(sc.goal) + ' About ' + ((CC.zoneForScene(sc.id) || sc).minutes) + ' minutes, no score.</p></div>' +
         '<a class="cc-btn" href="' + entry.href + '">' + esc(entry.label) + ' ' + CC.arrow() + '</a>' +
       '</section>' : '') +
       '</div>' +

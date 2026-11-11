@@ -150,7 +150,6 @@
         '<div class="rd-cover-actions">' +
           '<a class="rd-btn" href="#contents" data-jump>Start reading' + ic('arrowDown') + '</a>' +
           '<a class="rd-btn rd-btn-quiet" href="explore.html">' + ic('play') + 'Play in Hà Nội</a>' +
-          '<button type="button" class="rd-round ex-heart" id="ex-heart" aria-pressed="false" aria-label="Like Vietnam">' + ic('heart') + '</button>' +
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
       '</div>' +
@@ -186,7 +185,7 @@
 
   /* the chapter bar: every chapter, the one you are reading, and how far down the page you are */
   R.chbar = function () {
-    var items = CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; }).concat([['places', 'Places in the game']]);
+    var items = CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; }).concat([['phrases', 'Words'], ['places', 'Places in the game']]);
     return '<nav class="rd-chbar" aria-label="Chapters"><div class="rd-wrap">' +
       '<ul class="rd-chbar-list">' + items.map(function (x) { return '<li><a href="#' + x[0] + '" data-jump data-chlink="' + x[0] + '">' + esc(x[1]) + '</a></li>'; }).join('') + '</ul>' +
       '<label class="rd-chbar-pick"><span class="visually-hidden">Go to a chapter</span><select data-chpick>' +
@@ -217,7 +216,7 @@
       items.push({ title: st.title, text: st.dek, href: storyHref(st), min: CC.storyMinutes(st), p: p, pos: id === 'st-hand' ? '75% 50%' : null });
     });
     return '<section class="rd-sec rd-moments" aria-labelledby="acc-title">' +
-      head(3, 'Moments on the street and at home', 'Hover or tab through. Each strip opens one moment you might meet in Hà Nội.', 'acc-title') +
+      head(3, 'Moments on the street and at home', '<span class="rd-hint-wide">Point at a strip, or tab through, to open it.</span><span class="rd-hint-touch">Tap a moment to read it.</span> Each one is something you might meet in Hà Nội.', 'acc-title') +
       '<ul class="rd-acc rd-rise" data-acc>' + items.map(function (it, i) {
         return '<li class="rd-acc-item' + (i === 0 ? ' is-open' : '') + '">' +
           '<a href="' + esc(it.href) + '" class="rd-acc-link">' +
@@ -286,6 +285,21 @@
     '</div></li>';
   }
 
+  /* words for Hà Nội: every phrase, grouped by what you want to do. A phrase plays and saves where it is.
+     (phrases.html, the old phrasebook, now opens here.) */
+  R.phrases = function () {
+    var groups = (CC.intents || []).map(function (it) {
+      return { it: it, list: (CC.phrases || []).filter(function (ph) { return ph.intent === it.id; }) };
+    }).filter(function (g) { return g.list.length; });
+    if (!groups.length) return '';
+    return '<section class="rd-sec rd-words" id="phrases" aria-labelledby="phrases-title" tabindex="-1"><div class="rd-wrap">' +
+      head(2, 'Words for Hà Nội', 'A few phrases for the moments in these stories. Listen, then save the ones you want in your Passport. The voice is a computer’s, not a person’s.', 'phrases-title') +
+      groups.map(function (g) {
+        return '<div class="rd-words-group"><h3 class="rd-words-h">' + esc(g.it.label) + '</h3><ul class="rd-words-list">' + g.list.map(phraseTile).join('') + '</ul></div>';
+      }).join('') +
+    '</div></section>';
+  };
+
   /* walk through Văn Miếu: a drawn plan of the five courtyards on their axis, and one stop open at a time */
   R.inline = function () {
     var pins = [
@@ -332,7 +346,7 @@
           pins.map(function (p, i) {
             return '<button type="button" class="rd-pin" style="--x:' + p.x + '" data-pin="' + i + '" aria-pressed="' + (i === 0) + '" aria-label="Stop ' + (i + 1) + ': ' + esc(p.name) + '">' + (i + 1) + '</button>';
           }).join('') + '</div></div>' +
-        '<figcaption>Illustrated plan, not to scale · Văn Miếu – Quốc Tử Giám</figcaption></figure>' +
+        '<figcaption><span class="rd-swipe" aria-hidden="true">Swipe the plan →</span>Illustrated plan, not to scale · Văn Miếu – Quốc Tử Giám</figcaption></figure>' +
       '<ol class="rd-stops">' + pins.map(function (p, i) {
         return '<li class="' + (i === 0 ? 'is-on' : '') + '" data-pin-item="' + i + '">' +
           '<button type="button" data-pin="' + i + '" aria-expanded="' + (i === 0) + '" aria-controls="pin-body-' + i + '"><span class="rd-stop-n" aria-hidden="true">' + (i + 1) + '</span><span><b>' + esc(p.name) + '</b> <i lang="vi">' + esc(p.vi) + '</i></span></button>' +
@@ -413,8 +427,8 @@
   R.keep = function () {
     if (CC.store.get('exploreToast.' + COUNTRY, false)) return '';
     return '<aside class="rd-sec rd-keep" aria-labelledby="keep-title"><div class="rd-wrap"><div class="rd-keep-in rd-rise">' +
-      '<div><h2 class="rd-keep-title" id="keep-title">Keep Vietnam for your trip</h2><p>Save stories and phrases with the bookmark. They stay in this browser, ready to print.</p></div>' +
-      '<div class="rd-keep-act"><button type="button" class="rd-btn rd-btn-quiet" data-keep-no>No, thanks</button><a class="rd-btn" href="collection.html">Show me' + GO + '</a></div>' +
+      '<div><h2 class="rd-keep-title" id="keep-title">Save one thing for your trip</h2><p>Press Save on a story or a phrase. It goes to your Passport, stays in this browser and is ready to print.</p></div>' +
+      '<div class="rd-keep-act"><button type="button" class="rd-btn rd-btn-quiet" data-keep-no>No, thanks</button><a class="rd-btn" href="collection.html">Open my passport' + GO + '</a></div>' +
     '</div></div></aside>';
   };
 
@@ -444,14 +458,15 @@
 
   /* every picture on the page, with its maker, licence and source; rendered last, after every module has run */
   R.credits = function () {
-    return '<section class="rd-sec rd-credits" id="picture-credits" aria-labelledby="credits-title"><div class="rd-wrap rd-grid">' +
-      '<h2 id="credits-title" class="rd-credits-h">Picture credits</h2>' +
+    /* folded away: the page should end on what to do next, not on licence lines. Opens itself when linked to. */
+    return '<section class="rd-sec rd-credits" id="picture-credits" aria-labelledby="credits-title"><div class="rd-wrap">' +
+      '<details class="rd-credits-box"' + (location.hash === '#picture-credits' ? ' open' : '') + '><summary><h2 id="credits-title" class="rd-credits-h">Picture credits <span class="rd-credits-n">(' + USED.length + ')</span></h2>' + ic('chevronDown') + '</summary>' +
       '<ul class="rd-credits-list">' + USED.map(function (p) {
         var lic = p.license ? (p.licenseUrl ? '<a href="' + esc(p.licenseUrl) + '">' + esc(p.license) + '</a>' : esc(p.license)) : '';
         return '<li>' + (p.sourceUrl ? '<a href="' + esc(p.sourceUrl) + '">' + esc(p.credit) + '</a>' : esc(p.credit)) + (lic ? '. ' + lic : '') + '</li>';
       }).join('') + '</ul>' +
       '<p class="rd-credits-more"><a href="about.html#credits">All media credits</a></p>' +
-    '</div></section>';
+    '</details></div></section>';
   };
 
   /* ================================================================
@@ -478,6 +493,7 @@
       { type: 'timeline', plate: 'img-stelae', id: 'past-title', title: 'A thousand years in Hà Nội', sub: 'A capital since 1010, a university since 1076, and a lake named after a legend.', ids: ['st-thang-long', 'st-van-mieu-university', 'st-stelae', 'st-sword-lake'] },
       { type: 'list', plate: 'vid-incense', id: 'belief-title', title: 'Altars, temples and festivals', sub: 'What you will see in homes, on Hàng Mã and at the pagoda, and what a temple asks of visitors.', ids: ['st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] }
     ] },
+    { type: 'phrases' },
     { type: 'places' },
     { type: 'keep' },
     { type: 'nav' },
@@ -509,7 +525,7 @@
           '<div class="rd-col">' + R.chapterOpen(ch) + s.modules.map(function (m) {
             return '<div class="rd-mod" data-plate-for="' + esc(m.plate || ch.imageId) + '">' + R[m.type](m, c) + '</div>';
           }).join('') +
-          '<p class="rd-next">' + (nx ? jump(nx.anchor, 'Next chapter: ' + esc(nx.name)) : jump('places', 'Next: play these places in the game')) + '</p>' +
+          '<p class="rd-next">' + (nx ? jump(nx.anchor, 'Next chapter: ' + esc(nx.name)) : jump('phrases', 'Next: words for Hà Nội')) + '</p>' +
           '</div></div></div>';
         CUR = null;
         return html;
@@ -598,17 +614,8 @@
     Array.prototype.forEach.call(vids, function (v) { io.observe(v); });
   }
 
-  /* heart + share */
+  /* share (the heart that used to sit beside it saved nothing useful: saving is the bookmark, kept in the Passport) */
   function initHeroActions() {
-    var heart = document.getElementById('ex-heart');
-    var liked = !!CC.store.get('exploreLiked.' + COUNTRY, false);
-    var set = function (on) { heart.setAttribute('aria-pressed', on ? 'true' : 'false'); };
-    set(liked);
-    heart.addEventListener('click', function () {
-      liked = !liked; set(liked);
-      CC.store.set('exploreLiked.' + COUNTRY, liked);
-      if (liked && !reduce()) { heart.classList.remove('is-pop'); void heart.offsetWidth; heart.classList.add('is-pop'); }
-    });
     document.addEventListener('click', function (e) {
       var b = e.target.closest && e.target.closest('[data-share]');
       if (!b) return;
@@ -646,6 +653,9 @@
   /* numbered pins on the plan ⇄ list beside it */
   function initInline() {
     each('[data-inline]', function (box) {
+      /* phones: the far edge fades while there is more plan to see */
+      var scr = box.querySelector('.rd-plan-scroll');
+      if (scr) { var edge = function () { scr.classList.toggle('is-end', scr.scrollLeft + scr.clientWidth >= scr.scrollWidth - 4); }; scr.addEventListener('scroll', edge, { passive: true }); edge(); }
       var set = function (n) {
         var open = null;
         each('.rd-pin', function (p) { p.setAttribute('aria-pressed', String(Number(p.getAttribute('data-pin')) === n)); }, box);
@@ -694,7 +704,8 @@
         g.classList.add('is-done');
         c.setAttribute('aria-pressed', 'true');
         var right = c.getAttribute('data-game') === 'first';
-        msg.innerHTML = (right ? '<b>Yes.</b> ' : '<b>Not quite.</b> ') + 'The temple came first, in 1070. The first stelae were carved more than four centuries later, in 1484.';
+        /* the answer is explained, never graded (PRODUCT.md: feedback is not a bare right or wrong) */
+        msg.innerHTML = (right ? '<b>You picked the temple.</b> ' : '<b>You picked the stelae.</b> ') + 'The temple came first, in 1070. The first stelae were carved more than four centuries later, in 1484.';
         reset.hidden = false;
       });
       reset.addEventListener('click', function () {
@@ -731,7 +742,7 @@
       if (!el) return;
       settle(el);
       CC.motion.scrollTo(el);
-      history.replaceState(null, '', el.hasAttribute('data-anchor') || id === 'places' ? '#' + id : location.pathname + location.search);
+      history.replaceState(null, '', el.hasAttribute('data-anchor') || id === 'places' || id === 'phrases' ? '#' + id : location.pathname + location.search);
       el.focus({ preventScroll: true });
     };
     /* remember which story was opened from here, so its Back link can return to this exact spot (story.js) */
@@ -759,29 +770,43 @@
     var fill = bar && bar.querySelector('.rd-progress i');
     var first = chapters[0], last = document.getElementById('places');
     var raf = 0;
+    /* positions are measured once (and again when the page's size changes), so a scroll frame only does arithmetic
+       and writes transforms: no layout reads while you scroll */
+    var M = null;
+    var links = Array.prototype.slice.call(document.querySelectorAll('[data-chlink]'));
+    var measure = function () {
+      if (!first || !last) return;
+      var docTop = function (el) { return el.getBoundingClientRect().top + scrollY; };
+      var prev = bar && bar.previousElementSibling;
+      M = {
+        top: docTop(first), end: last.getBoundingClientRect().bottom + scrollY - innerHeight, vh: innerHeight,
+        stick: bar && prev ? prev.getBoundingClientRect().bottom + scrollY + parseFloat(getComputedStyle(bar).marginTop) - parseFloat(getComputedStyle(bar).top) : Infinity,
+        secs: links.map(function (a) { var s = document.getElementById(a.getAttribute('data-chlink')); return s ? { a: a, top: docTop(s), h: s.offsetHeight } : null; }).filter(Boolean)
+      };
+    };
     var onScroll = function () {
       if (raf) return;
       raf = requestAnimationFrame(function () {
         raf = 0;
-        if (!fill || !first || !last) return;
-        var top = first.getBoundingClientRect().top + scrollY, end = last.getBoundingClientRect().bottom + scrollY - innerHeight;
-        var p = Math.max(0, Math.min(1, (scrollY - top + innerHeight * .3) / Math.max(1, end - top)));
+        if (!fill || !M) return;
+        var y = scrollY;
+        var p = Math.max(0, Math.min(1, (y - M.top + M.vh * .3) / Math.max(1, M.end - M.top)));
         fill.style.transform = 'scaleX(' + p.toFixed(4) + ')';
         /* wide screens: how far you are through the chapter you are in fills that chapter's own underline
            (one mark for "where" and "how far", so it can never run into another line) */
-        each('[data-chlink]', function (a) {
-          var sec = document.getElementById(a.getAttribute('data-chlink'));
-          if (!sec) return;
-          var r = sec.getBoundingClientRect();
-          var q = Math.max(0, Math.min(1, (innerHeight * .3 - r.top) / Math.max(1, r.height - innerHeight * .7)));
-          a.style.setProperty('--p', q.toFixed(4));
+        M.secs.forEach(function (s) {
+          var q = Math.max(0, Math.min(1, (M.vh * .3 - (s.top - y)) / Math.max(1, s.h - M.vh * .7)));
+          s.a.style.setProperty('--p', q.toFixed(4));
         });
-        if (bar) bar.classList.toggle('is-stuck', bar.getBoundingClientRect().top <= parseFloat(getComputedStyle(bar).top) + 1);
+        if (bar) bar.classList.toggle('is-stuck', y >= M.stick - 1);
       });
     };
+    var remeasure = function () { measure(); onScroll(); };
     addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', onScroll);
-    onScroll();
+    addEventListener('resize', remeasure);
+    addEventListener('load', remeasure);
+    if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.getElementById('explore'));
+    remeasure();
 
     if (!('IntersectionObserver' in window)) return;
     var current = null;
@@ -792,7 +817,8 @@
         else if (current === id) { current = null; mark(null); if (e.target.hasAttribute('data-anchor')) history.replaceState(null, '', location.pathname + location.search); }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    chapters.concat(last ? [last] : []).forEach(function (c) { io.observe(c); });
+    var words = document.getElementById('phrases');
+    chapters.concat(words ? [words] : [], last ? [last] : []).forEach(function (c) { io.observe(c); });
 
     /* plate: show the picture of the section in the middle of the screen */
     var io2 = new IntersectionObserver(function (es) {
@@ -816,8 +842,8 @@
   /* Links written for the earlier compass page (story back links, sub-navigation, hanoi.html, countries.json)
      still arrive with its anchors: #overview, #themes, #practice, a theme id or one of its old aliases.
      Each one lands on the nearest section here. */
-  var HASH_ALIAS = { overview: 'top', themes: 'contents', practice: 'places', practise: 'places', scenes: 'places', stories: 'contents', words: 'contents', history: 'beliefs' };
-  var TOPIC_ANCHOR = { people: 'everyday', food: 'food', beliefs: 'beliefs', history: 'beliefs', language: 'contents', arts: 'contents' };
+  var HASH_ALIAS = { overview: 'top', themes: 'contents', practice: 'places', practise: 'places', scenes: 'places', stories: 'contents', words: 'phrases', phrasebook: 'phrases', history: 'beliefs' };
+  var TOPIC_ANCHOR = { people: 'everyday', food: 'food', beliefs: 'beliefs', history: 'beliefs', language: 'phrases', arts: 'contents' };
   function resolveHash(raw) {
     var key = String(raw || '').replace(/^#/, '');
     if (!key) return null;
