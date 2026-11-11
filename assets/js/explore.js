@@ -31,7 +31,8 @@
   function topic(id) { return CC.byId(CC.topics, id); }
   function phrase(id) { return CC.byId(CC.phrases, id); }
   function asset(id) { return id ? CC.byId(CC.assets, id) : null; }
-  function storyHref(st) { return 'story.html?id=' + st.id + '&from=overview'; }
+  var CUR = null;   // the chapter being rendered: a story opened from it comes back to it
+  function storyHref(st) { return 'story.html?id=' + st.id + '&from=' + (CUR ? 'vn:' + CUR : 'overview'); }
   function country() { return CC.byId(CC.countries, COUNTRY) || {}; }
   function ctx(id) { return CC.byId(country().contexts, id); }
 
@@ -110,6 +111,16 @@
   function link(href, label, cls) {
     return '<a class="rd-link' + (cls ? ' ' + cls : '') + '" href="' + href + '">' + label + GO + '</a>';
   }
+  /* Where a link goes is always visible before you press it:
+     a story says "N min read →", the game says "▶ Play · about N min", a jump on this page points down,
+     and a phrase is not a link at all (it plays and saves where it is). */
+  function playTag(sceneId) {
+    var z = CC.zoneForScene && CC.zoneForScene(sceneId);
+    return '<span class="rd-play">' + ic('play') + 'Play' + (z && z.minutes ? ' · about ' + z.minutes + ' min' : '') + '</span>';
+  }
+  function jump(id, label, cls) {
+    return '<a class="rd-link' + (cls ? ' ' + cls : '') + '" href="#' + id + '" data-jump>' + label + ic('arrowDown', 'rd-go') + '</a>';
+  }
 
   /* ================================================================
      CHAPTERS — what each theme is called and which picture stands beside it
@@ -157,7 +168,7 @@
           '<span class="rd-toc-pic">' + media(pic({ imageId: ch.imageId }), { decorative: true }) + '</span>' +
           '<span class="rd-toc-txt"><span class="rd-toc-name">' + esc(ch.name) + '</span>' +
             '<span class="rd-toc-q">' + esc(chQ(ch)) + '</span>' +
-            '<span class="rd-link" aria-hidden="true">Explore' + GO + '</span></span></a></li>';
+            '<span class="rd-link" aria-hidden="true">Read the chapter' + ic('arrowDown', 'rd-go') + '</span></span></a></li>';
       }).join('') + '</ol>' +
       '<p class="rd-sources rd-rise" id="sources">Built from sources such as ' + names.map(function (s) { return esc(s.org || s.title); }).join(', ') +
         ' <a href="about.html#sources">and ' + Math.max(0, src.length - names.length) + ' more sources</a></p></div></section>';
@@ -197,13 +208,13 @@
   R.accordion = function () {
     var items = [];
     var c = ctx('street');
-    if (c) items.push({ title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), p: pic({ imageId: c.imageId }), pos: '30% 50%' });
+    if (c) items.push({ title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), play: c.sceneId, p: pic({ imageId: c.imageId }), pos: '30% 50%' });
     var crops = { 'st-arrive-home': 'hs-shoes', 'st-family-words': 'hs-family' };
     ['st-arrive-home', 'st-hand', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market'].forEach(function (id) {
       var st = story(id); if (!st) return;
       var p = pic({ story: st });
       if (crops[id]) p = focusOn(p, crops[id], 1.6);
-      items.push({ title: st.title, text: st.dek, href: storyHref(st), p: p, pos: id === 'st-hand' ? '75% 50%' : null });
+      items.push({ title: st.title, text: st.dek, href: storyHref(st), min: CC.storyMinutes(st), p: p, pos: id === 'st-hand' ? '75% 50%' : null });
     });
     return '<section class="rd-sec rd-moments" aria-labelledby="acc-title">' +
       head(3, 'Moments on the street and at home', 'Hover or tab through. Each strip opens one moment you might meet in Hà Nội.', 'acc-title') +
@@ -213,7 +224,8 @@
             '<span class="rd-acc-win">' + media(it.p, { pos: it.pos, decorative: true }) + '</span>' +
             '<span class="rd-acc-short" aria-hidden="true">' + esc(it.title) + '</span>' +
             '<span class="rd-acc-text"><span class="rd-acc-title">' + esc(it.title) + '</span>' +
-              '<span class="rd-acc-desc">' + esc(it.text) + '</span></span>' +
+              '<span class="rd-acc-desc">' + esc(it.text) + '</span>' +
+              (it.play ? playTag(it.play) : '<span class="rd-acc-read">' + esc(it.min) + ' min read' + GO + '</span>') + '</span>' +
           '</a></li>';
       }).join('') + '</ul></section>';
   };
@@ -237,13 +249,12 @@
     var c = ctx('table');
     var no = phrase('ph-no');
     var tiles = [
-      { cls: 'is-wide', title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), p: pic({ imageId: c.imageId }) },
+      { cls: 'is-wide', title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), play: c.sceneId, p: pic({ imageId: c.imageId }) },
       { st: 'st-shared-table', pin: 'hs-dish', zoom: 1.5 },
       { st: 'st-host', pin: 'hs-bowl', zoom: 1.9 },
-      { st: 'st-chop', pin: 'hs-chop', zoom: 2.6 },
-      { st: 'st-street-stall' }
+      { st: 'st-chop', pin: 'hs-chop', zoom: 2.6 }
     ].map(function (x) {
-      if (x.st) { var s = story(x.st); x.title = s.title; x.text = s.dek; x.href = storyHref(s); x.p = pic({ story: s, small: !x.pin }); if (x.pin) x.p = focusOn(pic({ story: s }), x.pin, x.zoom); }
+      if (x.st) { var s = story(x.st); x.title = s.title; x.text = s.dek; x.href = storyHref(s); x.min = CC.storyMinutes(s); x.p = pic({ story: s, small: !x.pin }); if (x.pin) x.p = focusOn(pic({ story: s }), x.pin, x.zoom); }
       return x;
     });
     return '<section class="rd-sec" aria-labelledby="cl-title">' +
@@ -252,12 +263,28 @@
         return '<li class="rd-tile rd-rise ' + (x.cls || '') + '"><a href="' + esc(x.href) + '">' +
           '<span class="rd-tile-pic">' + media(x.p, { decorative: true }) + '</span>' +
           '<span class="rd-tile-title">' + esc(x.title) + '</span>' +
-          '<span class="rd-tile-dek">' + esc(x.text) + '</span></a></li>';
-      }).join('') +
-        '<li class="rd-tile rd-phrase rd-rise"><a href="explore.html"><span class="rd-phrase-vi" lang="vi">' + esc(no.vi) + '</span><span class="rd-tile-dek">' + esc(no.meaning) + '</span></a></li>' +
-      '</ul>' +
-      '<p class="rd-after">' + link('vietnam-classic.html#food', 'Explore food &amp; dining') + '</p></section>';
+          '<span class="rd-tile-dek">' + esc(x.text) + '</span>' +
+          (x.play ? playTag(x.play) : '<span class="rd-row-meta">' + x.min + ' min read' + GO + '</span>') + '</a></li>';
+      }).join('') + (no ? phraseTile(no) : '') +
+      '</ul></section>';
   };
+
+  /* a phrase is something to say, not a place to go: hear it and keep it, right here */
+  function phraseTile(ph) {
+    var a = asset(ph.audioId);
+    return '<li class="rd-tile rd-phrase rd-rise"><div class="phrase">' +
+      '<p class="rd-phrase-vi" lang="vi">' + esc(ph.vi) + '</p>' +
+      '<p class="rd-phrase-mean">“' + esc(ph.meaning) + '”</p>' +
+      (ph.useWith ? '<p class="rd-phrase-use">' + esc(ph.useWith) + '</p>' : '') +
+      '<div class="rd-phrase-foot">' +
+        '<button type="button" class="rd-btn rd-btn-quiet rd-listen" data-audio="' + esc(ph.audioId) + '" aria-pressed="false"' + (a && a.file ? '' : ' aria-disabled="true"') + '>' +
+          ic('listen') + 'Listen<span class="visually-hidden">: ' + esc(ph.vi) + '</span></button>' +
+        CC.saveButton('phrase', ph.id, { mini: true, name: ph.vi }) +
+        (a && a.synthetic ? '<span class="rd-phrase-voice">Computer voice</span>' : '') +
+      '</div>' +
+      '<p class="cc-audio-msg rd-phrase-msg" role="status" aria-live="polite"></p>' +
+    '</div></li>';
+  }
 
   /* walk through Văn Miếu: a drawn plan of the five courtyards on their axis, and one stop open at a time */
   R.inline = function () {
@@ -311,9 +338,10 @@
           '<button type="button" data-pin="' + i + '" aria-expanded="' + (i === 0) + '" aria-controls="pin-body-' + i + '"><span class="rd-stop-n" aria-hidden="true">' + (i + 1) + '</span><span><b>' + esc(p.name) + '</b> <i lang="vi">' + esc(p.vi) + '</i></span></button>' +
           '<div class="rd-stop-body" id="pin-body-' + i + '"><p>' + esc(STOPS[i].text) + '</p>' +
           /* walk on without going back up to the plan */
-          (i < pins.length - 1 ? '<button type="button" class="rd-stop-next" data-pin="' + (i + 1) + '" data-pin-next>Next stop: ' + esc(pins[i + 1].name) + ' <span aria-hidden="true">→</span></button>' : '') +
-          link('story.html?id=st-van-mieu-university&amp;from=overview', 'Sources and more on Văn Miếu') + '</div></li>';
-      }).join('') + '</ol></div></section>';
+          (i < pins.length - 1 ? '<button type="button" class="rd-stop-next" data-pin="' + (i + 1) + '" data-pin-next>Next stop: ' + esc(pins[i + 1].name) + GO + '</button>' : '') +
+          '</div></li>';
+      }).join('') + '</ol>' +
+      '<p class="rd-after">' + link(esc(storyHref({ id: 'st-van-mieu-university' })), 'Read the full story of Văn Miếu, with sources') + '</p></div></section>';
   };
 
   /* a thousand years: the stories on a line of their own years (each year is the one the story itself gives) */
@@ -353,7 +381,7 @@
       '<div data-game-wrap><ul class="rd-qcards rd-rise">' + card(pair[0]) + '<li class="rd-or" aria-hidden="true">or</li>' + card(pair[1]) + '</ul>' +
         '<p class="rd-qmsg" role="status" aria-live="polite"></p>' +
         '<p class="rd-after"><button type="button" class="rd-btn rd-btn-quiet" data-game-reset hidden>' + ic('flip') + ' Play again</button></p>' +
-        '<p class="rd-note">Dates from Tuổi Trẻ and the UNESCO Memory of the World record. <a href="story.html?id=st-stelae&amp;from=overview">Read about the stelae</a></p>' +
+        '<p class="rd-note">Dates from Tuổi Trẻ and the UNESCO Memory of the World record. <a href="' + esc(storyHref({ id: 'st-stelae' })) + '">Read about the stelae</a></p>' +
       '</div></section>';
   };
 
@@ -373,11 +401,11 @@
       '<div class="rd-hud" data-ui><i class="rd-hud-c is-tl"></i><i class="rd-hud-c is-tr"></i><i class="rd-hud-c is-bl"></i><i class="rd-hud-c is-br"></i>' +
       '<ul class="rd-zones">' + zones.map(function (z) {
         var st = status(z);
-        return '<li class="rd-zone rd-rise' + st.cls + '"><a href="explore.html#' + esc(z.id) + '">' +
+        return '<li class="rd-zone rd-rise' + st.cls + '"><a href="explore.html?zone=' + encodeURIComponent(z.id) + '">' +
           '<span class="rd-zone-pic">' + media(zonePic(z), { decorative: true }) + '<span class="rd-zone-stamp" aria-hidden="true">' + esc(z.stamp || z.title) + '</span></span>' +
           '<span class="rd-zone-title">' + esc(z.title) + '</span>' +
           '<span class="rd-zone-meta">About ' + z.minutes + ' min · ' + (z.objectives || []).length + ' moments · <b>' + st.label + '</b></span>' +
-          '<span class="rd-zone-go">Play' + GO + '</span></a></li>';
+          '<span class="rd-zone-go">' + (st.cls ? (st.cls === ' is-done' ? 'Play again' : 'Continue') : 'Play') + GO + '</span></a></li>';
       }).join('') + '</ul></div></div></section>';
   };
 
@@ -474,12 +502,17 @@
     var c = country();
     var out = SECTIONS.filter(function (s) { return s.type !== 'credits'; }).map(function (s) {
       if (s.type === 'chapter') {
-        var ch = CHAPTERS[s.ch];
-        return '<div class="rd-ch" id="' + ch.anchor + '" data-anchor="' + ch.anchor + '" data-tone="' + ch.tone + '" role="region" aria-labelledby="' + ch.anchor + '-title" tabindex="-1">' +
+        var ch = CHAPTERS[s.ch], nx = CHAPTERS[s.ch + 1];
+        CUR = ch.anchor;
+        var html = '<div class="rd-ch" id="' + ch.anchor + '" data-anchor="' + ch.anchor + '" data-tone="' + ch.tone + '" role="region" aria-labelledby="' + ch.anchor + '-title" tabindex="-1">' +
           '<div class="rd-wrap rd-grid">' + plateFor(ch, s.modules) +
           '<div class="rd-col">' + R.chapterOpen(ch) + s.modules.map(function (m) {
             return '<div class="rd-mod" data-plate-for="' + esc(m.plate || ch.imageId) + '">' + R[m.type](m, c) + '</div>';
-          }).join('') + '</div></div></div>';
+          }).join('') +
+          '<p class="rd-next">' + (nx ? jump(nx.anchor, 'Next chapter: ' + esc(nx.name)) : jump('places', 'Next: play these places in the game')) + '</p>' +
+          '</div></div></div>';
+        CUR = null;
+        return html;
       }
       return R[s.type](s, c);
     }).join('');
@@ -675,6 +708,12 @@
       history.replaceState(null, '', el.hasAttribute('data-anchor') || id === 'places' ? '#' + id : location.pathname + location.search);
       el.focus({ preventScroll: true });
     };
+    /* remember which story was opened from here, so its Back link can return to this exact spot (story.js) */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="story.html"]');
+      if (!a) return;
+      try { sessionStorage.setItem('cc.readingOpened', a.getAttribute('href').replace(/^story\.html/, '').replace(/&amp;/g, '&')); } catch (x) { /* storage blocked */ }
+    });
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[data-jump]');
       if (!a) return;
@@ -702,6 +741,15 @@
         var top = first.getBoundingClientRect().top + scrollY, end = last.getBoundingClientRect().bottom + scrollY - innerHeight;
         var p = Math.max(0, Math.min(1, (scrollY - top + innerHeight * .3) / Math.max(1, end - top)));
         fill.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        /* wide screens: how far you are through the chapter you are in fills that chapter's own underline
+           (one mark for "where" and "how far", so it can never run into another line) */
+        each('[data-chlink]', function (a) {
+          var sec = document.getElementById(a.getAttribute('data-chlink'));
+          if (!sec) return;
+          var r = sec.getBoundingClientRect();
+          var q = Math.max(0, Math.min(1, (innerHeight * .3 - r.top) / Math.max(1, r.height - innerHeight * .7)));
+          a.style.setProperty('--p', q.toFixed(4));
+        });
         if (bar) bar.classList.toggle('is-stuck', bar.getBoundingClientRect().top <= parseFloat(getComputedStyle(bar).top) + 1);
       });
     };
@@ -773,9 +821,13 @@
     initGame();
     initKeep();
     initChapters();
-    /* jump once the DOM exists, and again after load, when the browser's own fragment handling has run */
-    goToHash(false);
-    window.addEventListener('load', function () { requestAnimationFrame(function () { goToHash(false); }); });
+    /* jump once the DOM exists, and again after load, when the browser's own fragment handling has run.
+       Coming back (Back from a story) the browser puts you where you were, so the hash is left alone. */
+    var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    if (!(nav && nav.type === 'back_forward')) {
+      goToHash(false);
+      window.addEventListener('load', function () { requestAnimationFrame(function () { goToHash(false); }); });
+    }
     window.addEventListener('hashchange', function () { goToHash(true); });
   });
 })();

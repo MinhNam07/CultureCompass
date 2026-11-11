@@ -94,6 +94,18 @@ body[data-page="vietnam"] .ex-foot-join { display: none; }
 .rd-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .rd-go { width: 18px; height: 18px; flex: none; transition: transform 300ms var(--rd-ease); }
 a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:hover .rd-link .rd-go, a:focus-visible .rd-go { transform: translateX(4px); }
+a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:focus-visible .rd-go { transform: translateY(3px); }
+.rd-stop-next .rd-go { width: 16px; height: 16px; }
+.rd-stop-next:hover .rd-go { transform: translateX(4px); }
+
+/* where a link goes: the game */
+.rd-play { display: inline-flex; align-items: center; gap: 6px; justify-self: start; width: max-content; margin-top: 4px; padding: 5px 12px 5px 10px; border-radius: 999px; background: var(--rd-act); color: var(--rd-act-ink); font: 600 var(--fs-meta)/1.2 var(--font-sans); }
+.rd-play .cc-icon { width: 14px; height: 14px; }
+.rd-acc-read { display: inline-flex; align-items: center; gap: 8px; margin-top: 2px; font-size: var(--fs-meta); color: #D6DEE8; }
+.rd-acc-read .rd-go { color: var(--rd-act); }
+
+/* every chapter ends by pointing to the next */
+.rd-next { margin-top: clamp(64px, 7vw, 104px) !important; }
 .rd-vbtn { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgb(11 18 32 / .72); color: var(--rd-ink); cursor: pointer; }
 .rd-vbtn:hover { background: var(--rd-step-2); }
 .rd-vbtn .cc-icon { width: 18px; height: 18px; }
@@ -138,15 +150,21 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-chbar .rd-wrap { display: flex; align-items: center; min-height: var(--chbar-h); }
 .rd-chbar-list { display: flex; gap: clamp(16px, 3vw, 40px); }
 .rd-chbar-list a { position: relative; display: inline-flex; align-items: center; min-height: var(--chbar-h); color: var(--rd-muted) !important; font: 500 1rem/1.2 var(--font-sans); text-decoration: none; transition: color 200ms ease-out; }
-.rd-chbar-list a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--rd-act); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--rd-ease); }
+/* one mark per tab: the current chapter gets a track under its own name, and the track fills as you read it.
+   No separate page-wide progress line on wide screens, so two lines can never meet. */
+.rd-chbar-list a::before, .rd-chbar-list a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 10px; height: 2px; border-radius: 2px; pointer-events: none; }
+.rd-chbar-list a::before { background: rgb(95 216 232 / .24); opacity: 0; transition: opacity 200ms ease-out; }
+.rd-chbar-list a::after { background: var(--rd-act); transform: scaleX(0); transform-origin: 0 50%; }
 .rd-chbar-list a:hover { color: var(--rd-ink) !important; }
+.rd-chbar-list a:hover::before { opacity: 1; }
 .rd-chbar-list a[aria-current] { color: var(--rd-ink) !important; }
-.rd-chbar-list a[aria-current]::after { transform: none; }
+.rd-chbar-list a[aria-current]::before { opacity: 1; }
+.rd-chbar-list a[aria-current]::after { transform: scaleX(max(var(--p, 0), .06)); }
 .rd-chbar-pick { display: none; position: relative; width: 100%; }
 .rd-chbar-pick select { width: 100%; min-height: var(--chbar-h); padding: 0 36px 0 0; border: 0; background: transparent; color: var(--rd-ink); font: 600 1rem/1.2 var(--font-sans); appearance: none; -webkit-appearance: none; cursor: pointer; }
 .rd-chbar-pick select option { background: var(--rd-step); color: var(--rd-ink); }
 .rd-chbar-pick .cc-icon { position: absolute; right: 4px; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); pointer-events: none; }
-.rd-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; overflow: hidden; }
+.rd-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; overflow: hidden; display: none; }   /* phones only, where the tabs become a select */
 .rd-progress i { display: block; height: 100%; background: var(--rd-act); transform: scaleX(0); transform-origin: 0 50%; }
 
 /* ---------------- chapters: the plate beside the reading column ---------------- */
@@ -192,7 +210,8 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 
 /* ---------------- story list (rows) ---------------- */
 .rd-list { display: grid; gap: 4px; }
-.rd-row { display: grid; gap: 6px; padding: 20px; margin-inline: -20px; border-radius: 4px; text-decoration: none; transition: background-color 200ms ease-out; }
+/* the hover field bleeds into the gutter, but never past it (the gutter is 16px on phones) */
+.rd-row { display: grid; gap: 6px; padding: 20px min(20px, var(--rd-gutter)); margin-inline: calc(min(20px, var(--rd-gutter)) * -1); border-radius: 4px; text-decoration: none; transition: background-color 200ms ease-out; }
 .rd-row:hover { background: var(--rd-step); }
 .rd-row-title { display: inline-flex; align-items: center; gap: 10px; font: 600 var(--fs-lead)/1.25 var(--font-serif); color: var(--rd-ink); letter-spacing: -0.01em; }
 .rd-row-dek { color: var(--rd-ink-2); max-width: 60ch; text-wrap: pretty; }
@@ -211,8 +230,24 @@ a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:h
 .rd-tile-title { margin-top: 6px; font: 600 var(--fs-lead)/1.25 var(--font-serif); color: var(--rd-ink); }
 .rd-tile a:hover .rd-tile-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .rd-tile-dek { font-size: 1rem; line-height: 1.55; color: var(--rd-ink-2); }
-.rd-phrase a { height: 100%; padding: 28px; background: var(--rd-step-2); align-content: end; }
-.rd-phrase-vi { font: 600 var(--fs-h)/1.15 var(--font-serif); color: var(--rd-ink); }
+/* the phrase: said and kept in place (it is not a link) */
+#explore .rd-phrase .phrase, #explore .rd-phrase .phrase:hover { transform: none; box-shadow: none; }
+#explore .rd-phrase .phrase { height: 100%; display: grid; gap: 10px; align-content: end; padding: 28px; border: 0; border-radius: 2px; background: var(--rd-step-2); color: var(--rd-ink); }
+.rd-phrase-vi { margin: 0; font: 600 var(--fs-h)/1.15 var(--font-serif); color: var(--rd-ink); }
+.rd-phrase-mean { font-size: 1rem; color: var(--rd-ink); }
+.rd-phrase-use { font-size: var(--fs-meta); line-height: 1.5; color: var(--rd-ink-2); max-width: 40ch; }
+.rd-phrase-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px; }
+.rd-listen { min-height: 44px; padding-inline: 16px 18px; background: var(--rd-ground); cursor: pointer; border: 0; }
+.rd-listen[aria-pressed="true"] { background: var(--rd-act); color: var(--rd-act-ink) !important; }
+.rd-listen[aria-disabled="true"] { opacity: .55; cursor: default; }
+@media (hover: hover) and (pointer: fine) { .rd-listen:hover .cc-icon { transform: none; } }
+#explore .rd-phrase .cc-save-mini { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--rd-ground); color: var(--rd-ink); cursor: pointer; }
+#explore .rd-phrase .cc-save-mini:hover { background: #20344C; color: var(--rd-ink); }
+#explore .rd-phrase .cc-save-mini[aria-pressed="true"] { color: var(--rd-act); }
+#explore .rd-phrase .cc-save-mini .cc-icon { width: 20px; height: 20px; }
+.rd-phrase-voice { font-size: var(--fs-meta); color: var(--rd-muted); }
+.rd-phrase-msg { font-size: var(--fs-meta); color: var(--rd-ink-2); }
+.rd-phrase-msg:empty { display: none; }
 
 /* ---------------- quotation ---------------- */
 .rd-quote blockquote { margin: 0; }
@@ -353,7 +388,7 @@ html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
 /* ---------------- keep exploring, before you go, credits ---------------- */
 .rd-more-side, .rd-before-h, .rd-credits-h { grid-column: 1 / span 5; }
 .rd-more-list { grid-column: 7 / span 6; display: grid; gap: 4px; }
-.rd-more-list a { display: grid; gap: 6px; padding: 20px; margin-inline: -20px; border-radius: 4px; text-decoration: none; transition: background-color 200ms ease-out; }
+.rd-more-list a { display: grid; gap: 6px; padding: 20px min(20px, var(--rd-gutter)); margin-inline: calc(min(20px, var(--rd-gutter)) * -1); border-radius: 4px; text-decoration: none; transition: background-color 200ms ease-out; }
 .rd-more-list a:hover { background: var(--rd-step); }
 .rd-more-list .rd-go { color: var(--rd-act); }
 #explore .rd-before-h, #explore .rd-credits-h { font-size: var(--fs-h); }
@@ -399,6 +434,7 @@ html.cc-reduce-motion body[data-page="vietnam"] a:hover .rd-media:not([style*="s
   .rd-cover-foot { justify-content: space-between; text-align: left; }
   .rd-chbar-list { display: none; }
   .rd-chbar-pick { display: block; }
+  .rd-progress { display: block; }
   .rd-toc a { grid-template-columns: 88px minmax(0, 1fr); gap: 16px; padding: 12px; margin-inline: -12px; }
   .rd-toc-name { font-size: var(--fs-lead); }
   /* moments: every one open, one under the other */

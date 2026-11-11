@@ -435,7 +435,7 @@
   CC.renderShell = function (opts) {
     opts = opts || {};
     var links = [
-      ['index.html', 'Explore', 'destinations'],
+      ['index.html', 'Destinations', 'destinations'],
       ['collection.html', 'Passport', 'collection'],
       ['about.html', 'About', 'about']
     ];

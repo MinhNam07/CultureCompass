@@ -15,8 +15,12 @@
       var sc = CC.byId(CC.scenarios, from.slice(6));
       if (sc) return { href: CC.sceneHref(sc.id), label: 'Back to Explore: ' + sc.title, topic: t };
     }
-    if (from === 'index') return { href: 'vietnam-classic.html', label: 'Back to every story', topic: t };
-    if (from === 'overview') return { href: 'vietnam.html#overview', label: 'Back to Vietnam', topic: t };
+    /* from the reading page: back to the chapter the story was opened from (vietnam.html, explore.js CHAPTERS) */
+    var VN = { everyday: 'Everyday life', food: 'Food & the table', beliefs: 'Temples, beliefs & history', places: 'Places in the game' };
+    var ch = /^vn:(\w+)$/.exec(from);
+    if (ch && VN[ch[1]]) return { href: 'vietnam.html#' + ch[1], label: 'Back to ' + VN[ch[1]], topic: t, page: true };
+    if (from === 'index') return { href: 'vietnam.html#contents', label: 'Back to Vietnam', topic: t, page: true };
+    if (from === 'overview') return { href: 'vietnam.html#contents', label: 'Back to Vietnam', topic: t, page: true };
     if (from === 'collection') return { href: 'collection.html', label: 'Back to your passport', topic: t };
     if (t) return { href: 'vietnam.html#' + t.id, label: 'Back to ' + t.label, topic: t };
     return { href: 'vietnam.html', label: 'Back to Vietnam', topic: null };
@@ -139,7 +143,7 @@
       '</nav>' : '') +
       (related.length ? '<section class="cc-section-tight" aria-labelledby="rel-title"><h2 id="rel-title" class="h3">Related stories</h2><ul class="story-grid">' +
         related.map(function (r) { return CC.storyCard(r, from, 3); }).join('') + '</ul></section>' : '') +
-      '<p><a class="cc-back" href="' + back.href + '">' + CC.arrow('left') + esc(back.label) + '</a></p>';
+      '<p><a class="cc-back" href="' + back.href + '"' + (back.page ? ' data-back-page' : '') + '>' + CC.arrow('left') + esc(back.label) + '</a></p>';
 
     root.innerHTML = html;
     var head = root.querySelector('.story-head');
@@ -154,8 +158,18 @@
       '<div class="cc-section-tight"><div class="cc-empty"><svg class="cc-empty-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5.5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6.5v13"/></svg>' +
       '<h1 class="h2" id="story-title" tabindex="-1">We couldn’t find that story</h1>' +
       '<p>' + (id ? 'There is no story called “' + esc(id) + '”. The link may be out of date.' : 'The link doesn’t say which story to open.') + '</p>' +
-      '<p><a class="cc-btn" href="vietnam-classic.html">See every story ' + CC.arrow() + '</a></p></div></div>';
+      '<p><a class="cc-btn" href="vietnam.html#contents">See every story ' + CC.arrow() + '</a></p></div></div>';
   }
+
+  /* Back to the reading page: when you came straight from it, go back in history, so the page opens where you were
+     (the same card, not the top of the chapter). Otherwise the link's own chapter address is used. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-back-page]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    var came = null;
+    try { came = sessionStorage.getItem('cc.readingOpened'); } catch (x) { /* storage blocked: use the link */ }
+    if (came && came === location.search && history.length > 1) { e.preventDefault(); history.back(); }
+  });
 
   document.addEventListener('DOMContentLoaded', function () {
     CC.renderShell({ section: 'destinations', country: 'vietnam', sub: 'themes' });

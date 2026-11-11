@@ -325,7 +325,15 @@ Measured contrast (October 2026): every chapter heading, question and section su
 
 **Pictures.** `pic()` resolves every picture: first a credited photo or video from `CC.assets`, then the story's scene painting (a pin of the painting can be zoomed to show a different detail), then the pixel art of the story's Explore zone. Every picture used is listed with its credit, licence and source in "Picture credits" at the foot of the page. Plates and the start picture carry their credit beside them. Pictures that repeat the text of their link are decorative (`alt=""`). Videos play muted only while on screen, never under reduced motion, and each has a pause button.
 
-**Chapter bar.** Sticky under the header: the three chapters plus Places in the game, the current one underlined in cyan, and a 3px reading-progress line. On phones it becomes a native "Go to a chapter" select.
+**Chapter bar.** Sticky under the header: the three chapters plus Places in the game. Each tab owns its underline: the current chapter shows a faint cyan track under its own name that fills as you read that chapter, so "where" and "how far" are one mark and never meet another line (11 November 2026; the old page-wide 3px progress line ran into the current tab's underline). On phones it becomes a native "Go to a chapter" select with the 3px page progress line under it.
+
+**Where a link goes (11 November 2026).** Every control says its destination before it is pressed, in one grammar:
+- a story ends with "N min read →" and opens `story.html?id=…&from=vn:<chapter>`; its Back link returns to that chapter, and when the story was opened from this page it goes back in history so the reader lands on the same card;
+- the game is a cyan "▶ Play · about N min" pill and opens the place itself (`explore.html?zone=…`); in Places in the game the label reads Play, Continue or Play again;
+- a jump within the page points down (↓): the contents rows ("Read the chapter") and the "Next chapter: …" link that ends every chapter;
+- a phrase is not a link: it plays (Listen, "Computer voice") and saves where it is;
+- nothing on this page links to `vietnam-classic.html`, `phrases.html` or other pages still in the old paper design.
+Global navigation is **Destinations · Passport · About**; "Explore" names only the game.
 
 **Places in the game** is the only HUD quotation on the page: a `data-ui` panel with the HUD's cyan corner brackets and hairline frame, holding the zones' pixel art, stamps and progress. The heading stays outside the panel.
 
