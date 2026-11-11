@@ -30,7 +30,7 @@
     var img = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
     if (img) {
       return '<figure class="story-figure"><div class="frame"><img src="' + esc(img.file) + '" alt="' + esc(img.alt) + '" decoding="async"></div>' +
-        '<figcaption>' + esc(img.alt) + ' Photo: ' + esc(img.credit) + ', <a href="' + esc(img.licenseUrl) + '" target="_blank" rel="noopener">' + esc(img.license) + '</a>, via <a href="' + esc(img.sourceUrl) + '" target="_blank" rel="noopener">Wikimedia Commons</a>' + (img.note ? ' (' + esc(img.note.replace(/\.$/, '')) + ')' : '') + '.</figcaption></figure>';
+        '<figcaption>' + esc(img.alt) + ' ' + CC.creditHtml(img) + '</figcaption></figure>';
     }
     var sc = CC.byId(CC.scenarios, st.sceneId);
     if (!sc || !CC.svgs[sc.id]) return '';
@@ -42,13 +42,15 @@
   function render(st, from) {
     var back = backFor(st, from);
     var claims = CC.storyClaims(st);
-    var srcOrder = [];
+    var srcOrder = [], marked = [];
     function fn(claimIds) {
       var out = '';
       CC.sourcesOf(CC.claimsOf(claimIds)).forEach(function (sid) {
         if (srcOrder.indexOf(sid) === -1) srcOrder.push(sid);
         var n = srcOrder.indexOf(sid) + 1, s = CC.byId(CC.sources, sid);
-        out += '<a class="fn" href="#src-' + n + '" aria-label="Source ' + n + ': ' + esc(s ? s.short : sid) + '">' + n + '</a>';
+        /* the first mention of each source is where "Back to the text" returns to */
+        var first = marked.indexOf(n) === -1; if (first) marked.push(n);
+        out += '<a class="fn" href="#src-' + n + '"' + (first ? ' id="fn-' + n + '"' : '') + ' aria-label="Source ' + n + ': ' + esc(s ? s.short : sid) + '">' + n + '</a>';
       });
       return out;
     }
@@ -83,7 +85,8 @@
 
     /* the story takes its chapter colour from the theme it is read in */
     var bg = CC.ex ? CC.ex.chapterFor(back.topic ? back.topic.id : (CC.storyTopics(st)[0] || {}).id) : 'teal';
-    var CH_INK = { teal: ['var(--ch-teal)', '#fff', '#02606F'], peach: ['var(--ch-peach)', '#202124', '#A14A12'], jade: ['var(--ch-jade)', '#202124', '#2F6F66'], ember: ['var(--ch-ember)', '#202124', '#B3401A'] }[bg];
+    /* [disc fill, glyph on it, ink on the night ground]: the same tones as the chapter on vietnam.html */
+    var CH_INK = { teal: ['var(--cyan)', 'var(--cyan-ink)', 'var(--cyan)'], peach: ['var(--gold)', '#2A1E05', 'var(--gold)'], jade: ['#5DCAA5', '#06231B', '#5DCAA5'], ember: ['var(--lacquer)', '#FFF6EE', '#FF8A73'] }[bg] || ['var(--cyan)', 'var(--cyan-ink)', 'var(--cyan)'];
     var root = document.getElementById('story-root');
     root.style.setProperty('--story-bg', CH_INK[0]);
     root.style.setProperty('--story-on', CH_INK[1]);
@@ -91,7 +94,7 @@
     /* the story's own photograph is the backdrop of its opening; without one, a plain night ground */
     var photo = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
     var nSrc = CC.sourcesOf(claims).length;
-    var credit = photo ? '<p class="story-credit">Photo: ' + esc(photo.credit) + ', <a href="' + esc(photo.licenseUrl) + '" target="_blank" rel="noopener">' + esc(photo.license) + '</a>, via <a href="' + esc(photo.sourceUrl) + '" target="_blank" rel="noopener">Wikimedia Commons</a></p>' : '';
+    var credit = photo ? '<p class="story-credit">' + CC.creditHtml(photo) + '</p>' : '';
 
     var html =
       '<header class="story-head story-enter' + (photo ? ' has-photo' : '') + '" data-bg="' + bg + '">' +
@@ -127,7 +130,8 @@
         '<ol>' + srcOrder.map(function (sid, k) {
           var s = CC.byId(CC.sources, sid);
           return '<li id="src-' + (k + 1) + '"><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '<span class="visually-hidden"> (opens in a new tab)</span></a>' +
-            '<div class="cc-meta">' + esc(s.org) + '. Checked ' + esc(s.checked) + '.</div><div class="cc-meta"><b>Limits:</b> ' + esc(s.limits) + '</div></li>';
+            '<div class="cc-meta">' + esc(s.org) + '. Checked ' + esc(s.checked) + '.</div><div class="cc-meta"><b>Limits:</b> ' + esc(s.limits) + '</div>' +
+            (marked.indexOf(k + 1) !== -1 ? '<a class="src-back" href="#fn-' + (k + 1) + '">' + CC.icon('arrowUp') + 'Back to the text<span class="visually-hidden"> where source ' + (k + 1) + ' is cited</span></a>' : '') + '</li>';
         }).join('') + '</ol>' +
         (claims.some(function (c) { return c.kind === 'projectNote'; }) ? '<p class="cc-meta" style="margin-top:16px">Points marked “CultureCompass tip” are our own suggestions, not cultural claims, so they have no source.</p>' : '') +
       '</section>' +

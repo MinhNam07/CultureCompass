@@ -544,6 +544,18 @@
     Array.prototype.forEach.call(els, function (e) { io.observe(e); });
   }
 
+  /* a jump (chapter bar, contents, a link with a #hash) lands the reader on blocks that have not risen yet:
+     show everything in the first screen of the destination at once, so they never read a faded block */
+  function settle(el) {
+    if (!el) return;
+    var top = el.getBoundingClientRect().top + scrollY, bottom = top + innerHeight;
+    each('.rd-rise:not(.is-in)', function (r) {
+      var y = r.getBoundingClientRect().top + scrollY;
+      if (y >= top - 40 && y < bottom) { r.classList.add('is-now', 'is-in'); }
+    });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { each('.rd-rise.is-now', function (r) { r.classList.remove('is-now'); }); }); });
+  }
+
   /* videos: play muted while on screen, unless motion is reduced; every one has a pause button */
   function initVideos() {
     var vids = document.querySelectorAll('video[data-autoplay]');
@@ -704,6 +716,7 @@
     var go = function (id) {
       var el = document.getElementById(id);
       if (!el) return;
+      settle(el);
       CC.motion.scrollTo(el);
       history.replaceState(null, '', el.hasAttribute('data-anchor') || id === 'places' ? '#' + id : location.pathname + location.search);
       el.focus({ preventScroll: true });
@@ -805,6 +818,7 @@
     var el = resolveHash(location.hash);
     if (!el) return;
     if (location.hash.slice(1) !== el.id) history.replaceState(null, '', el.id === 'top' ? location.pathname + location.search : '#' + el.id);
+    settle(el);
     if (smooth) CC.motion.scrollTo(el); else el.scrollIntoView({ behavior: 'instant', block: 'start' });
     if (el.hasAttribute('tabindex')) el.focus({ preventScroll: true });
   }

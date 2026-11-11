@@ -42,7 +42,13 @@
   --t-press: 120ms;
   --t-micro: 200ms;
   --t-open: 300ms;
+  --t-move: 450ms;     /* on-screen moves: view-transition morph, plan path */
+  --t-reveal: 600ms;   /* rare reveals: quiz flip, picture hover zoom in */
   --t-scene: 520ms;
+  --d-rise: 12px;      /* entrance travel */
+  --zoom-hover: 1.04;  /* pictures under a fine pointer */
+  --press: .97;        /* :active scale */
+  --stagger: 50ms;     /* between blocks arriving together, at most 6 steps */
 
   --shadow-1: 0 1px 2px rgba(var(--ink-shadow), .06), 0 6px 18px -10px rgba(var(--ink-shadow), .22);
   --shadow-2: 0 2px 4px rgba(var(--ink-shadow), .06), 0 18px 40px -18px rgba(var(--ink-shadow), .35);

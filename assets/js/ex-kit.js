@@ -61,8 +61,9 @@
     }
   };
 
-  /* four chapter colours only; a theme without its own chapter borrows the nearest one */
-  var THEME_BG = { people: 'teal', language: 'teal', food: 'peach', beliefs: 'jade', arts: 'jade', history: 'ember' };
+  /* the chapter colour of a theme, as on vietnam.html: everyday = teal (cyan at night), food = peach (gold),
+     beliefs and history = jade. A theme without its own chapter borrows the nearest one. */
+  var THEME_BG = { people: 'teal', language: 'teal', food: 'peach', beliefs: 'jade', arts: 'jade', history: 'jade' };
   var PAGE_BG = { phrases: 'teal', collection: 'peach', about: 'jade' };
 
   function chapterFor(topicId) { return THEME_BG[topicId] || 'teal'; }

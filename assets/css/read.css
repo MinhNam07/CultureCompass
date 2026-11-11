@@ -30,7 +30,7 @@ body[data-page="vietnam"] {
   --rd-gutter: clamp(16px, 4vw, 48px);
   --rd-gap: clamp(96px, 10vw, 168px);
   --chbar-h: 56px;
-  --rd-ease: var(--ease-out-expo);
+  --rd-ease: var(--ease-out);   /* cc.css tokens; expo is kept for the quiz flip only */
 
   background: var(--rd-ground);
   color: var(--rd-ink);
@@ -338,7 +338,7 @@ html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
 .rd-qcards > li:not(.rd-or) { flex: 1 1 0; min-width: 0; max-width: 280px; }
 .rd-or { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--rd-step-2); font-size: var(--fs-meta); }
 .rd-qcard { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; perspective: 1200px; border-radius: 2px; text-align: left; }
-.rd-qcard-in { position: relative; display: block; aspect-ratio: 4 / 5; transform-style: preserve-3d; transition: transform 800ms var(--rd-ease); }
+.rd-qcard-in { position: relative; display: block; aspect-ratio: 4 / 5; transform-style: preserve-3d; transition: transform var(--t-reveal) var(--ease-out-expo); }
 .is-done .rd-qcard-in { transform: rotateY(180deg); }
 .rd-qcards > li:last-child .rd-qcard-in { transition-delay: 120ms; }
 @media (hover: hover) and (pointer: fine) { .rd-qcard:hover:not([aria-pressed="true"]) .rd-qcard-in { transform: translateY(-4px); } }
@@ -397,10 +397,12 @@ html.cc-reduce-motion .rd-pin[aria-pressed="true"] { animation: none; }
 .rd-credits-list { grid-column: 7 / span 6; display: grid; gap: 8px; font-size: var(--fs-meta); line-height: 1.5; color: var(--rd-muted); }
 .rd-credits-more { grid-column: 7 / span 6; margin-top: 16px !important; font-size: var(--fs-meta); }
 
-/* ---------------- entrances: every block rises once, 12px over 400ms; blocks arriving together follow by 50ms (explore.js initRise) ---------------- */
+/* ---------------- entrances: every block rises once, 12px over 400ms; blocks arriving together follow by 50ms (explore.js initRise).
+   The start is already 30% visible, so a stalled frame never hides what you are about to read. ---------------- */
 @media (prefers-reduced-motion: no-preference) {
-  html.rd-motion:not(.cc-reduce-motion) .rd-rise { transition: opacity 400ms var(--rd-ease), transform 400ms var(--rd-ease); transition-delay: calc(var(--i, 0) * 50ms); }
-  html.rd-motion:not(.cc-reduce-motion) .rd-rise:not(.is-in) { opacity: 0; transform: translateY(12px); }
+  html.rd-motion:not(.cc-reduce-motion) .rd-rise { transition: opacity 400ms var(--rd-ease), transform 400ms var(--rd-ease); transition-delay: calc(var(--i, 0) * var(--stagger)); }
+  html.rd-motion:not(.cc-reduce-motion) .rd-rise:not(.is-in) { opacity: .3; transform: translateY(var(--d-rise)); }
+  html.rd-motion:not(.cc-reduce-motion) .rd-rise.is-now { transition: none; }
 }
 html.cc-reduce-motion body[data-page="vietnam"] .rd-rise { opacity: 1 !important; transform: none !important; }
 html.cc-reduce-motion body[data-page="vietnam"] :is(.rd-acc-item, .rd-acc-text, .rd-plate-fig, .rd-qcard-in, .rd-media, .rd-go, .rd-pin) { transition: none !important; animation: none !important; }

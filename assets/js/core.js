@@ -26,6 +26,7 @@
     arrowRight: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     arrowLeft: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
     arrowDown: '<path d="M12 5v14M6 13l6 6 6-6"/>',
+    arrowUp: '<path d="M12 19V5M6 11l6-6 6 6"/>',
     bookmark: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/>',
     bookmarkFill: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4z" fill="currentColor"/>',
     play: '<path d="M8 5.5v13l10-6.5z" fill="currentColor" stroke="none"/>',
@@ -275,6 +276,20 @@
   };
   CC.verifyTag = function () {
     return '<span class="cc-tag cc-tag-verify" title="Still being checked against a reliable source.">' + CC.icon('verify') + 'Being verified</span>';
+  };
+  /* one credit line for a picture or clip, true to what it is: "Photo:" / "Video:" for third-party media, with the
+     site it came from named from its sourceUrl; "Illustration:" for artwork made for CultureCompass (AI-generated
+     or drawn), which claims no outside source. */
+  var SOURCE_SITE = { 'commons.wikimedia.org': 'Wikimedia Commons', 'www.pexels.com': 'Pexels', 'pexels.com': 'Pexels' };
+  CC.creditHtml = function (a) {
+    if (!a) return '';
+    var made = a.generated || /^art-/.test(a.id || '') || a.kind === 'illustration' || !a.sourceUrl;
+    if (made) return 'Illustration: ' + CC.esc(String(a.credit || 'made for CultureCompass').replace(/\.$/, '')) + '.';
+    var host = ''; try { host = new URL(a.sourceUrl).hostname; } catch (e) { /* no URL */ }
+    var site = SOURCE_SITE[host] || host.replace(/^www\./, '');
+    var lic = a.license ? (a.licenseUrl ? '<a href="' + CC.esc(a.licenseUrl) + '" target="_blank" rel="noopener">' + CC.esc(a.license) + '</a>' : CC.esc(a.license)) : '';
+    return (a.kind === 'video' ? 'Video: ' : 'Photo: ') + CC.esc(a.credit) + (lic ? ', ' + lic : '') +
+      (site ? ', via <a href="' + CC.esc(a.sourceUrl) + '" target="_blank" rel="noopener">' + CC.esc(site) + '</a>' : '') + '.';
   };
   CC.verifyBadge = function (status) { return status === 'needs_verification' || status === 'draft' ? ' ' + CC.verifyTag() : ''; };
 
