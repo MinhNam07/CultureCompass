@@ -48,13 +48,13 @@
   function fromAsset(a) {
     if (!a) return null;
     var video = a.kind === 'video';
-    return { key: a.id, src: video ? a.poster : a.file, video: video ? a.file : null, alt: a.alt || '', credit: a.credit, license: a.license, licenseUrl: a.licenseUrl, sourceUrl: a.sourceUrl, kind: video ? 'video' : (/^art-/.test(a.id) ? 'art' : 'photo') };
+    return { key: a.id, src: video ? a.poster : a.file, video: video ? a.file : null, alt: a.alt || '', credit: a.credit, license: a.license, licenseUrl: a.licenseUrl, sourceUrl: a.sourceUrl, kind: video ? 'video' : (/^art-/.test(a.id) ? 'art' : 'photo'), web: video ? null : a.web, w: video ? null : a.width, h: video ? null : a.height };
   }
   function fromScene(sceneId, small) {
     var art = CC.sceneArt && CC.sceneArt[sceneId];
     if (art) {
       var a = (CC.assets || []).filter(function (x) { return x.file === art.src; })[0] || {};
-      return { key: a.id || 'art-' + sceneId, src: small ? 'assets/img/scenes/' + art.file + '-thumb.jpg' : art.src, alt: art.alt, credit: a.credit || 'Painting made for CultureCompass', license: a.license, licenseUrl: a.licenseUrl, kind: 'art', pins: art.pins };
+      return { key: a.id || 'art-' + sceneId, src: small ? 'assets/img/scenes/' + art.file + '-thumb.jpg' : art.src, w: small ? null : a.width, h: small ? null : a.height, alt: art.alt, credit: a.credit || 'Painting made for CultureCompass', license: a.license, licenseUrl: a.licenseUrl, kind: 'art', pins: art.pins };
     }
     var z = CC.zoneForScene && CC.zoneForScene(sceneId);
     if (z) return zonePic(z);
@@ -94,7 +94,11 @@
     if (p.video && o.video) {
       return '<video class="' + cls + '" data-autoplay muted loop playsinline preload="none" poster="' + esc(p.src) + '"' + (alt ? ' aria-label="' + esc(alt) + '"' : ' aria-hidden="true"') + style + '><source src="' + esc(p.video) + '"></video>';
     }
-    return '<img class="' + cls + '" src="' + esc(p.src) + '" alt="' + esc(alt) + '" loading="' + (o.eager ? 'eager' : 'lazy') + '" decoding="async"' + style + '>';
+    /* a 1000px copy for the many places a picture is shown at half the screen or less; the full file for the rest.
+       width and height give the browser the shape before the file arrives, so nothing jumps as pictures load. */
+    var set = p.web && p.w ? ' srcset="' + esc(p.web) + ' 1000w, ' + esc(p.src) + ' ' + p.w + 'w" sizes="' + (o.sizes || '(min-width: 1001px) 42vw, 100vw') + '"' : '';
+    var dim = p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '';
+    return '<img class="' + cls + '" src="' + esc(p.src) + '"' + set + dim + ' alt="' + esc(alt) + '" loading="' + (o.eager ? 'eager' : 'lazy') + '" decoding="async"' + style + '>';
   }
   function creditLine(p) {
     if (!p || !p.credit) return '';

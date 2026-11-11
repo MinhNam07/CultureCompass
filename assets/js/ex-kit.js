@@ -163,12 +163,13 @@
   var HERO = 'story-hero';
   function storyPhoto(id) {
     var st = CC.byId(CC.stories, id), a = st && st.imageId ? CC.byId(CC.assets, st.imageId) : null;
-    return a && a.file && a.kind === 'image' ? a.file : null;
+    return a && a.file && a.kind === 'image' ? [a.file].concat(a.web ? [a.web] : []) : null;   // the photo, or its 1000px copy
   }
   function storyIdOf(url) { var m = /story\.html\?(?:[^#]*&)?id=([\w-]+)/.exec(url || ''); return m ? m[1] : null; }
   function samePicture(img, file) {
     if (!img || !file || /scale\(/.test(img.getAttribute('style') || '')) return false;   // a zoomed detail is not the same picture
-    try { return new URL(img.currentSrc || img.src, location.href).pathname.replace(/^\//, '') === new URL(file, location.href).pathname.replace(/^\//, ''); } catch (e) { return false; }
+    var path = function (u) { return new URL(u, location.href).pathname; };
+    try { var got = path(img.currentSrc || img.src); return [].concat(file).some(function (f) { return path(f) === got; }); } catch (e) { return false; }
   }
   function onScreen(el) { var r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.width > 0; }
   function clearHero() { Array.prototype.forEach.call(document.querySelectorAll('[data-vt-hero]'), function (el) { el.style.viewTransitionName = ''; el.removeAttribute('data-vt-hero'); }); }

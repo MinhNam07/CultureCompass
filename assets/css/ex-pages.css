@@ -242,11 +242,11 @@ body.ex .story-card .story-pic { border: 0; border-radius: var(--radius-card); }
 body.ex .story-card .story-pic img, body.ex .story-card .story-pic svg { transition: transform var(--dur-zoom) var(--ease-out-expo); }
 /* one zoom for every picture under a fine pointer (cc.css --zoom-hover); focus shows its ring, not a zoom */
 @media (hover: hover) and (pointer: fine) { body.ex .story-card:hover .story-pic :is(img, svg) { transform: scale(var(--zoom-hover)); } }
-body.ex .story-card .story-topics { order: -1; font: 700 .6875rem/1.4 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--eyebrow-ink); }
+body.ex .story-card .story-topics { order: -1; font: 600 .875rem/1.4 var(--font-sans); color: var(--eyebrow-ink); }
 body.ex .story-card h3 { font-size: 1.1875rem; font-weight: 500; }
 body.ex .story-card:hover h3 a { text-decoration: none; }
 body.ex .story-card p { color: #3C4043; }
-body.ex .story-card .cc-save-mini { width: 40px; height: 40px; background: rgb(251 243 228 / .94); border: 0; color: #202124; box-shadow: 0 1px 3px rgb(0 0 0 / .18); }
+body.ex .story-card .cc-save-mini { width: 44px; height: 44px; background: rgb(251 243 228 / .94); border: 0; color: #202124; box-shadow: 0 1px 3px rgb(0 0 0 / .18); }
 body.ex .story-card .cc-save-mini[aria-pressed="true"] { color: var(--color-primary); }
 body.ex .story-thumb { border: 0; border-radius: var(--radius-card); }
 

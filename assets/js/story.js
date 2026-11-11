@@ -84,7 +84,11 @@
 
     var related = [];
     CC.storyTopics(st).forEach(function (t) { (t.storyIds || []).forEach(function (id) { if (id !== st.id && related.indexOf(id) === -1 && (!next || id !== next.id) && (!prev || id !== prev.id)) related.push(id); }); });
-    related = related.slice(0, 3).map(function (id) { return CC.byId(CC.stories, id); }).filter(Boolean);
+    /* three stories that each show a different picture, so the row doesn't repeat the same photo; fall back to any */
+    related = related.map(function (id) { return CC.byId(CC.stories, id); }).filter(Boolean);
+    var picOf = function (r) { var m = /src="([^"]+)"/.exec(CC.storyCard(r, '', 3)); return m ? m[1].replace(/-thumb(?=\.)/, '') : r.id; };
+    var seenPic = [st.imageId ? (CC.byId(CC.assets, st.imageId) || {}).file : ''], fresh = related.filter(function (r) { var p = picOf(r); if (seenPic.indexOf(p) > -1) return false; seenPic.push(p); return true; });
+    related = fresh.concat(related.filter(function (r) { return fresh.indexOf(r) === -1; })).slice(0, 3);
 
     /* the story takes its chapter colour from the theme it is read in */
     var bg = back.chapter ? back.chapter.tone : CC.ex ? CC.ex.chapterFor(back.topic ? back.topic.id : (CC.storyTopics(st)[0] || {}).id) : 'teal';

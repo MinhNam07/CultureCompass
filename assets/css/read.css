@@ -523,3 +523,10 @@ body[data-page="vietnam"] a, body[data-page="vietnam"] button { -webkit-tap-high
 :is(.rd-toc a, .rd-row, .rd-more-list a, .rd-stops button, .rd-stop-next):active { background: var(--rd-step-2); transition-duration: 0ms; }
 :is(.rd-tile a, .rd-zone a, .rd-acc-link):active .rd-media { transform: scale(.98); transition: transform var(--t-press) var(--ease-out); }
 html.cc-reduce-motion :is(.rd-tile a, .rd-zone a, .rd-acc-link):active .rd-media { transform: none; }
+
+/* ---------- touch sizes: nothing a finger has to hit is smaller than 44px ---------- */
+@media (pointer: coarse) {
+  body[data-page="vietnam"] .rd-vbtn { width: 44px; height: 44px; }
+  body[data-page="vietnam"] .rd-pin { width: 44px; height: 44px; left: clamp(22px, calc(var(--x) * 1%), calc(100% - 22px)); }
+  body[data-page="vietnam"] .rd-link { min-height: 44px; }
+}
