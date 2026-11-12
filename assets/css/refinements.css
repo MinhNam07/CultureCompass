@@ -158,3 +158,11 @@ body[data-page="home"] .cc-footer-btn:hover { color: #FFFCF7; }
 /* home: no scrollbar; the opening is told by scrolling and the bar only breaks the picture */
 html:has(body[data-page="home"]) { scrollbar-width: none; }
 html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
+
+/* "Scroll to launch": beside the rocket's nose as it peeks out under the logo (rocket.js places it); without a
+   flying rocket it sits under the logo on its own (home.js). Hidden once the page has moved. */
+.hero-cue { position: fixed; left: var(--gutter); top: calc(var(--header-h) + 14px); z-index: 41; display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 6px 12px 6px 14px; border-radius: 999px; background: rgb(0 0 0 / .55); border: 1px solid #ffffff40; color: #FFFCF7; font: 600 .875rem/1.2 var(--font-sans); pointer-events: none; opacity: 0; transform: translateY(-4px); transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
+.hero-cue.is-on { opacity: 1; transform: none; }
+.hero-cue .cc-icon { width: 16px; height: 16px; animation: hero-cue-nudge 1.2s ease-in-out infinite; }
+@keyframes hero-cue-nudge { 0%, 100% { transform: translateY(-1px); } 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .hero-cue { transition: none; } .hero-cue .cc-icon { animation: none; } }

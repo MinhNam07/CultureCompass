@@ -1,6 +1,8 @@
 /* CultureCompass — Home: the rocket from the logo.
-   Before the visitor scrolls, the logo's rocket circles the logo's own orbit (behind the star on the top half,
-   in front on the bottom half). Scrolling drops it out of the logo; it only grows once it has left the header,
+   The first time in a session, 0.6 s after the page opens, the logo's rocket leaves the logo, loops once over the
+   opening, slips up behind the header and lowers its nose out under the logo, where it nods beside "Scroll to
+   launch" (after that first time it simply rests there). It takes off from there when the page is scrolled and
+   comes back to peek when the page returns to the top. Scrolling drops it out of the logo; it only grows once it has left the header,
    and settles in the middle of the screen at its parked size. Through the opening it cruises left to right,
    against the pictures drifting right to left: it speeds up and slows down with them (same sine in-out, same
    320 ms follow), weaves gently twice, and answers the hand (it surges ahead and lifts its nose when the page is
@@ -33,6 +35,10 @@
       overlap: 0.35,    // share of its width it may overlap the globe's edge before it shrinks
       offsetY: 0        // 0 = rocket centre level with the globe centre; negative = higher (in radii)
     },
+    /* the first time a session opens the page: it leaves the logo, loops once over the opening, slips up behind the
+       header and lowers its nose out under the logo, so the visitor sees there is a rocket to launch (plans: PR 2) */
+    intro: { delay: 600, ms: 2600, len: 0.16, key: 'cc.rocketIntro' },   // ms before it leaves, ms of the loop, loop size (viewport heights), session flag
+    peek: { len: 0.08, out: 0.5, bob: 0.05, period: 2.4 },    // peeking: length (viewport heights), share of it below the header, nod (lengths), s
     orbitSeconds: 8,    // one turn around the logo
     orbitDelay: 1.5,    // seconds before it starts circling
     takeoffEnd: 0.12,   // share of the opening's scroll spent leaving the logo
@@ -76,6 +82,7 @@
   var cur = null;          // displayed state { x, y, len, head, op }
   var sp = null;           // spring state { x, y, vx, vy, h, vh }
   var orbitT = LOGO.t0, orbitRamp = 0;
+  var intro = 'wait', introAt = 0;   // 'wait' (in the logo) → 'fly' (the loop) → 'peek' (nose out under the logo, until the page is scrolled)
   var sm = 0, prevScroll = 0, vScroll = 0, surge = 0;   // smoothed scroll, last raw scroll, px/frame, surge px
   var back = false, flip = 0;   // scrolled back: it turns round (through nose down) and flies nose first the other way
   var thr = 0, grow = 0, flameLen = 0, pvx = 0, pvy = 0;   // engine: thrust 0..1, take-off growth 0..1, last flame length, last spring speed
@@ -206,6 +213,36 @@
     return { x: m.mark.x + p.x * k, y: m.mark.y + p.y * k, len: LOGO.rocketLen * k, head: lerpAng(LOGO.head, orbitHead(orbitT), orbitRamp), front: p.front };
   }
 
+  /* ---- the opening loop and the peek ---- */
+  function seenIntro() { try { return window.sessionStorage.getItem(CFG.intro.key) === '1'; } catch (e) { return false; } }
+  function endIntro() {
+    intro = 'peek';
+    try { window.sessionStorage.setItem(CFG.intro.key, '1'); } catch (e) { /* storage blocked: it loops again next time */ }
+  }
+  /* nose down under the header, just right of the mark: only the nose shows below the header's glass, nodding */
+  function peekState(now) {
+    var len = m.peekLen, ts = (now - startedAt) / 1000;
+    var y = m.headerBottom + (CFG.peek.out - 0.5) * len + CFG.peek.bob * len * Math.sin(2 * Math.PI * ts / CFG.peek.period);
+    return { x: m.peekX, y: y, len: len, head: 180 };
+  }
+  /* where the rocket rests at the top of the page */
+  function homeState(now) { return intro === 'wait' ? logoState() : peekState(now); }
+  /* Catmull-Rom through the loop's waypoints (built in measure()) */
+  function introPos(u) {
+    var P = m.introPts, n = P.length - 1, f = clamp(u, 0, 1) * n, i = Math.min(n - 1, Math.floor(f)), t = f - i;
+    var p0 = P[Math.max(0, i - 1)], p1 = P[i], p2 = P[i + 1], p3 = P[Math.min(n, i + 2)];
+    function c(a, b, cc, d) { return 0.5 * (2 * b + (-a + cc) * t + (2 * a - 5 * b + 4 * cc - d) * t * t + (-a + 3 * b - 3 * cc + d) * t * t * t); }
+    return { x: c(p0.x, p1.x, p2.x, p3.x), y: c(p0.y, p1.y, p2.y, p3.y) };
+  }
+  function introTarget(now) {
+    var u = (now - introAt) / CFG.intro.ms;
+    if (u >= 1) { endIntro(); var pk = peekState(now); return { x: pk.x, y: pk.y, len: pk.len, head: pk.head, op: 1, phase: 'peek' }; }
+    m.introPts[0] = logoState();   // the logo's rocket leaves from wherever it is
+    var e = sineInOut(u), p = introPos(e), a = introPos(Math.max(0, e - 0.01)), b = introPos(Math.min(1, e + 0.01));
+    var len = u < 0.75 ? lerp(logoState().len, m.introLen, smoothstep(u / 0.15)) : lerp(m.introLen, m.peekLen, smoothstep((u - 0.75) / 0.2));
+    return { x: p.x, y: p.y, len: len, head: headingOf(b.x - a.x, b.y - a.y), op: 1, phase: 'intro', under: u > 0.72 };
+  }
+
   /* ---- measuring (the only place layout is read) ---- */
   function measure() {
     var vw = window.innerWidth, vh = window.innerHeight;
@@ -217,6 +254,16 @@
       headerBottom: header ? header.getBoundingClientRect().bottom : 68,
       heroRun: Math.max(1, hero.offsetHeight - vh),
       frame: { x: fr.left + sx, y: fr.top + sy, w: fr.width, h: fr.height } };
+    /* the peek and the opening loop */
+    m.peekLen = clamp(CFG.peek.len * vh, 48, 76);
+    m.peekX = mr.left + mr.width + 0.3 * m.peekLen;
+    m.introLen = clamp(CFG.intro.len * vh, 70, 150);
+    var hb = m.headerBottom;
+    m.introPts = [{ x: mr.left + mr.width / 2, y: mr.top + mr.height / 2 },
+      { x: 0.24 * vw, y: 0.40 * vh }, { x: 0.50 * vw, y: 0.70 * vh }, { x: 0.80 * vw, y: 0.50 * vh },
+      { x: 0.62 * vw, y: 0.24 * vh }, { x: m.peekX + 0.10 * vw, y: hb - 0.2 * m.introLen },
+      { x: m.peekX, y: hb - 1.4 * m.peekLen }, { x: m.peekX, y: hb + (CFG.peek.out - 0.5) * m.peekLen }];
+    if (on && cue()) { els.cue.style.left = (m.peekX + 0.5 * m.peekLen + 8).toFixed(0) + 'px'; els.cue.style.top = (hb + 10).toFixed(0) + 'px'; }
     if (els.markRocket) {   // not built under reduced motion
       els.markRocket.style.left = els.mark.offsetLeft + 'px';
       els.markRocket.style.top = els.mark.offsetTop + 'px';
@@ -331,13 +378,13 @@
   function cruisePos(s) { return { x: cruiseX(s), y: m.cy + weave(s) }; }
   /* out of the logo: x and y on the same curve, so the nose follows where it goes */
   function takeoffPos(s) {
-    var l = logoState(), c = cruisePos(s), e = smootherstep(s / m.s1);
+    var l = homeState(performance.now()), c = cruisePos(s), e = smootherstep(s / m.s1);
     return { x: lerp(l.x, c.x, e), y: lerp(l.y, c.y, e) };
   }
   /* it only grows once clear of the header */
   function takeoffLen(y) {
     var u = (y - m.headerBottom) / Math.max(1, m.cy - m.headerBottom);
-    return lerp(logoState().len, m.full, smoothstep(u));
+    return lerp(homeState(performance.now()).len, m.full, smoothstep(u));
   }
 
   /* the swoop: from level flight it bends down (to 150°), descends, rounds out at the bottom and pulls up
@@ -407,7 +454,12 @@
 
   /* where the rocket should be for scroll s; phases: logo, takeoff, cruise, swoop, parked */
   function target(now, s) {
-    if (s <= 0.5) { var l = logoState(); return { x: l.x, y: l.y, len: l.len, head: l.head, op: 1, phase: 'logo' }; }
+    if (s <= 0.5) {
+      if (intro === 'fly') return introTarget(now);
+      if (intro === 'peek') { var pk = peekState(now); return { x: pk.x, y: pk.y, len: pk.len, head: pk.head, op: 1, phase: 'peek' }; }
+      var l = logoState(); return { x: l.x, y: l.y, len: l.len, head: l.head, op: 1, phase: 'logo' };
+    }
+    if (intro !== 'peek') endIntro();   // scrolled before or during the loop: it joins the flight from wherever it is, and comes back to peek
     if (s >= m.sLand && !m.phone) return attached(now, s);
     var p = pathPos(s), d = 2;
     var p0 = pathPos(Math.max(0, s - d)), p1 = pathPos(s + d);
@@ -418,7 +470,7 @@
     head -= clamp(vScroll * 0.35, -5, 7) * k;
     /* scrolled back: turned round. Always add, so the turn dips under (nose down), both ways */
     head += 180 * smoothstep(flip);
-    if (s < m.s1) head = lerpAng(logoState().head, head, smoothstep(s / m.s1 / 0.2));
+    if (s < m.s1) head = lerpAng(homeState(now).head, head, smoothstep(s / m.s1 / 0.2));
     /* phones: fades only once the tail has crossed the right edge, so it flies off rather than vanishing */
     var op = m.phone ? 1 - smoothstep((p.x - m.vw - 0.5 * m.full) / (0.3 * m.full)) : 1;
     return { x: p.x, y: p.y, len: s < m.s1 ? takeoffLen(p.y) : m.full, head: head, op: op, phase: s < m.s1 ? 'takeoff' : s < m.s2 ? 'cruise' : 'swoop' };
@@ -522,6 +574,7 @@
 
     /* circling the logo only while the page is at the very top */
     var atTop = sy <= 0.5;
+    if (intro === 'wait' && atTop && now - startedAt > CFG.intro.delay) { intro = 'fly'; introAt = now; }
     if (atTop && (now - startedAt) / 1000 > CFG.orbitDelay) {
       orbitRamp = Math.min(1, orbitRamp + dt / 800);
       orbitT += (dt / 1000) * (2 * Math.PI / CFG.orbitSeconds) * smoothstep(orbitRamp);
@@ -538,7 +591,7 @@
     pvx = sp.vx; pvy = sp.vy;
     var hx = Math.sin(hr), hy = -Math.cos(hr), A = CFG.thrust.full;
     var aAlong = (ax * hx + ay * hy) / m.vh, aLat = Math.abs(ax * hy - ay * hx) / m.vh;
-    var thrTarget = t.phase === 'parked' ? 0 : clamp(smoothstep(Math.max(0, aAlong) / A) + CFG.thrust.side * smoothstep(aLat / A), 0, 1);
+    var thrTarget = t.phase === 'parked' || t.phase === 'peek' ? 0 : clamp(smoothstep(Math.max(0, aAlong) / A) + CFG.thrust.side * smoothstep(aLat / A), 0, 1);
     thr += (thrTarget - thr) * (1 - Math.exp(-dt / (thrTarget > thr ? CFG.thrust.up : CFG.thrust.down)));
     /* lights as it grows out of the logo, goes out before it shrinks back in */
     var logoLen = LOGO.rocketLen * m.mark.w / LOGO.size;
@@ -548,7 +601,7 @@
        pixels take seconds, and the orbit keeps moving, so neither may be waited for); the nose must line up too,
        or it snaps round as it docks */
     var l = atTop ? logoState() : null;
-    var home = atTop && Math.hypot(l.x - sp.x, l.y - sp.y) < Math.max(0.5, 0.15 * l.len) && Math.abs(angDiff(sp.h, l.head)) < 6;
+    var home = atTop && intro === 'wait' && Math.hypot(l.x - sp.x, l.y - sp.y) < Math.max(0.5, 0.15 * l.len) && Math.abs(angDiff(sp.h, l.head)) < 6;
     if (home) { sm = sy; t = target(now, sm); sp.x = t.x; sp.y = t.y; sp.vx = sp.vy = 0; sp.h = t.head; sp.vh = 0; }
     if (home) { thr = 0; pvx = pvy = 0; }
     /* nose jets: one side starts a turn, the other side stops it */
@@ -577,7 +630,9 @@
       drawFly(shown); drawFlame(now); drawPixel(cur, now);
     }
     /* above the header whenever any of it reaches the header band (otherwise the header's blur covers it) */
-    els.fly.classList.toggle('is-over-header', cur.y - 0.6 * cur.len < m.headerBottom);
+    /* (while it slips behind the header at the end of the loop, and while it peeks, it stays under the header's glass) */
+    els.fly.classList.toggle('is-over-header', t.phase !== 'peek' && !t.under && cur.y - 0.6 * cur.len < m.headerBottom);
+    if (cue()) els.cue.classList.toggle('is-on', intro === 'peek' && sy < 40 && !hidden);
     var puffsAlive = stepTrail(dt, sy, dRaw, !home && t.phase !== 'parked' && thr >= 0.08 && !hidden);
 
     var moving = surge !== 0 || vScroll !== 0 || sy !== sm || Math.abs(sp.vx) + Math.abs(sp.vy) > 2 ||
@@ -589,7 +644,7 @@
       lastStarMsg = now;
       els.frame.contentWindow.postMessage({ type: 'culturecompass-stars', vx: sp.vx / m.vh, vy: sp.vy / m.vh, head: sp.h, parked: t.phase === 'parked' }, window.location.origin);
     }
-    var idle = (atTop && !document.hidden) || (t.phase === 'parked' && onScreen && !hidden && !m.phone);
+    var idle = ((atTop || intro === 'fly') && !document.hidden) || (t.phase === 'parked' && onScreen && !hidden && !m.phone);
     /* the pixel flame and the hover keep going while the ship is in view, even when the page rests
        (drawPixel only repaints at 12 fps, so a resting frame costs little) */
     var alive = !home && onScreen && !hidden;
@@ -597,6 +652,8 @@
     else last = 0;
   }
   function kick() { if (on && !raf && !document.hidden) raf = requestAnimationFrame(frame); }
+  /* "Scroll to launch", beside the peeking nose (index.html; home.js shows it on its own when nothing flies) */
+  function cue() { return els.cue || (els.cue = CC.$('hero-cue')); }
 
   /* ---- setup ---- */
   function build() {
@@ -651,6 +708,7 @@
     els.fly.style.width = els.fly.style.height = FLY_BASE + 'px';
     startedAt = performance.now();
     sm = smPrev = prevScroll = window.scrollY; vScroll = 0; surge = 0; sp = null; back = false; flip = 0;
+    intro = seenIntro() || window.scrollY > 0.5 ? 'peek' : 'wait';
     puffs.forEach(function (q) { q.alive = false; q.el.style.opacity = '0'; });
     measure();
     kick();
@@ -664,6 +722,7 @@
     els.mark.src = els.mark.dataset.src;
     if (els.mark.dataset.srcset) els.mark.srcset = els.mark.dataset.srcset;
     els.fly.hidden = true; els.markRocket.hidden = true; els.trail.hidden = true;
+    if (cue()) { els.cue.classList.remove('is-on'); els.cue.style.left = els.cue.style.top = ''; }
   }
 
   /* reduced motion: one still rocket beside the globe, nose up; it scrolls with the page, so no script runs */
