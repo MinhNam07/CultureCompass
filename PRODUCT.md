@@ -28,7 +28,7 @@ Reading or completing something is never presented as having understood or maste
 ## Vision vs. what exists today
 
 - **Vision:** many countries, each with its own themes, regions and communities. The architecture (countries.json → topics.json → stories.json, with scenes and phrases attached) is built for that.
-- **Today (11 November 2026):** one destination, **Vietnam, starting in Hà Nội**. 6 themes, 27 stories, 6 scenes, 15 phrases, 50 sources, 91 claims (38 still being verified; each story says so in its byline). Đà Nẵng and Hội An are shown on the Explore map as “coming later”. Run `node tools/check-content.js` for current numbers.
+- **Today (12 November 2026):** one destination, **Vietnam, starting in Hà Nội**. 6 themes (all written, Arts included), 32 stories of 1,000 to 2,200 words each in five layouts, 6 scenes, 15 phrases, 418 sources, 485 claims (none still being verified; claims that could not be sourced were rewritten or removed). Đà Nẵng and Hội An are shown on the Explore map as “coming later”. Run `node tools/check-content.js` for current numbers.
 - Hà Nội content is never presented as representing all of Vietnam. No placeholder countries, invented articles, interviews, testimonials, contributors or launch dates are shown.
 
 ## Positioning
@@ -61,7 +61,7 @@ Supporting pages: the phrasebook is the "Words for Hà Nội" block on `vietnam.
 
 ## Evidence on Hand
 
-- Sources with check dates and limits: `assets/data/sources.json`. Claims and their status: `assets/data/scenarios.json` (38 of 91 still `needs_verification` on 11 November 2026, mostly the newer Văn Miếu, beliefs and food stories; they are marked in place). Stories: `assets/data/stories.json` (every paragraph points to claims). Phrases: `assets/data/phrases.json` (the 11 composed ones checked for wording on 1 November 2026, status `reviewed`).
+- Sources with check dates and limits: `assets/data/sources.json`. Claims and their status: `assets/data/scenarios.json` (all 485 checked by 12 November 2026; legends and popular explanations are kept as `legend` claims and said to be so in the text). Stories are written in `tools/content/stories/*.cjs` and merged with `node tools/content/apply-stories.cjs`. Stories: `assets/data/stories.json` (every paragraph points to claims). Phrases: `assets/data/phrases.json` (the 11 composed ones checked for wording on 1 November 2026, status `reviewed`).
 - Media credits and licences: `assets/data/assets.json`. Videos are trimmed CC clips from Wikimedia Commons; the market clips were filmed in Hội An and are captioned so.
 - Explore art and sound: LimeZu *Serene Village Revamped* (CC BY 4.0) and *Modern Interiors* free version (non-commercial); music and sounds from *Ninja Adventure* by Pixel-boy and AAA (CC0); buildings, people and props AI-generated (Gemini) and edited for CultureCompass. All credited on `about.html#credits` and under the game.
 - Audio in `assets/audio/` is a synthetic placeholder (macOS “Linh” voice), labelled “Computer voice” everywhere. Do not present it as a real speaker.

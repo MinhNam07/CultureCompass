@@ -367,6 +367,19 @@ The country page and the pages it leads to (story, collection, about) now read a
 
 **Phones.** Everything a finger hits is at least 44px (buttons, pins, Save, footer and breadcrumb links). Six Hà Nội photos have 1000px copies served through `srcset`, and pictures carry their width and height so nothing jumps while loading. Topic labels on story cards are 14px, not spaced capitals. Copy says "Tap a moment" and "Swipe the plan" on touch screens.
 
+### Story layouts · 12 November 2026
+Stories are written as `blocks` (`assets/js/story-blocks.js`, `assets/css/story-layouts.css`); `sections` stay only as the short fallback. Each story picks one of five layouts and may borrow blocks from the others:
+- **longform**: full-bleed hero, one 68ch column, pictures at three sizes (inline, wide, bleed), sticky contents on wide screens.
+- **essay**: opens with a pinned photo essay (pictures stay, short text scrolls over them), then reads like longform.
+- **timeline**: a vertical line that fills as you scroll, eras as dividers, alternating items with optional pictures.
+- **guide**: numbered steps, do / think-twice cards, phrases with Listen, a "Take it with you" card that saves to the passport, a closing quiz.
+- **compare**: tabbed tables (cells carry their own footnotes), cards and before/after sliders.
+Shared blocks: facts, note, quote, pair, gallery with lightbox (arrow keys, swipe, focus returns to the opener), map, glossary words with a hover or tap card, and source footnotes gathered at the end of each paragraph. "Where this applies" and "How it varies" stay in every story.
+
+**Motion decision (reverses "no parallax" above, for story pages only).** The rewrite asked for richer motion on stories, so story pages use GSAP ScrollTrigger 3.12.5 (vendored beside core): the hero photo drifts 14% and scales to 1.06 while its title fades to 20%, bleed pictures drift ±7%, and the timeline line is scrubbed to scroll. Everything is `scrub` (it follows the reader's hand, never plays by itself) and composite-only (transform, opacity). Under the OS or site Reduce motion setting, none of it is created: the timeline line is drawn from scroll position without animation, the lightbox opens without its fade, and the before/after hint does not sweep. The rest of the site keeps the rules above.
+
+**Pictures in stories.** Photos are camera photographs from Wikimedia Commons (no AI images), at least 1080 px on the short side where one exists, served as 640/1280/2560 WebP with the original JPEG. Each is registered in `assets.json` with author, licence and source, and its alt text is checked against the picture. Tools: `tools/media/commons.mjs` (search, peek, fetch, with a pause between downloads for Commons' rate limit), `register.cjs`, and `sheet.mjs` for an alt-text check sheet.
+
 ## Logo (8 November 2026)
 
 **The mark is "Orbit Rose".** A four-point compass star (north point cyan, the others navy with a cyan outline), a wireframe globe in the centre, a thin white orbit ring that passes in front of the star at the lower right and behind it at the top, and a small cyan rocket with an amber flame at the end of the orbit. Drawn by Gemini; it is a picture, not a coloured icon, so it no longer follows `currentColor` or the page's primary ink.

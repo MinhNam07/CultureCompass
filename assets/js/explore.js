@@ -213,7 +213,7 @@
     var c = ctx('street');
     if (c) items.push({ title: c.title, text: c.line, href: CC.sceneHref(c.sceneId), play: c.sceneId, p: pic({ imageId: c.imageId }), pos: '30% 50%' });
     var crops = { 'st-arrive-home': 'hs-shoes', 'st-family-words': 'hs-family' };
-    ['st-arrive-home', 'st-hand', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market'].forEach(function (id) {
+    ['st-arrive-home', 'st-hand', 'st-oi', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market'].forEach(function (id) {
       var st = story(id); if (!st) return;
       var p = pic({ story: st });
       if (crops[id]) p = focusOn(p, crops[id], 1.6);
@@ -497,7 +497,8 @@
       { type: 'quote', plate: 'img-stelae' },
       { type: 'inline' },
       { type: 'timeline', plate: 'img-stelae', id: 'past-title', title: 'A thousand years in Hà Nội', sub: 'A capital since 1010, a university since 1076, and a lake named after a legend.', ids: ['st-thang-long', 'st-van-mieu-university', 'st-stelae', 'st-sword-lake'] },
-      { type: 'list', plate: 'vid-incense', id: 'belief-title', title: 'Altars, temples and festivals', sub: 'What you will see in homes, on Hàng Mã and at the pagoda, and what a temple asks of visitors.', ids: ['st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] }
+      { type: 'list', plate: 'vid-incense', id: 'belief-title', title: 'Altars, temples and festivals', sub: 'What you will see in homes, on Hàng Mã and at the pagoda, and what a temple asks of visitors.', ids: ['st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] },
+      { type: 'list', plate: 'ar-wp-finale', id: 'arts-title', title: 'Puppets, songs, prints and houses', sub: 'The arts Hà Nội kept: water puppets, ca trù, folk prints, Bát Tràng pottery, and the city’s tube houses and French buildings.', ids: ['st-water-puppets', 'st-ca-tru', 'st-folk-paintings', 'st-bat-trang', 'st-architecture'] }
     ] },
     { type: 'phrases' },
     { type: 'places' },
@@ -854,7 +855,7 @@
      still arrive with its anchors: #overview, #themes, #practice, a theme id or one of its old aliases.
      Each one lands on the nearest section here. */
   var HASH_ALIAS = { overview: 'top', themes: 'contents', practice: 'places', practise: 'places', scenes: 'places', stories: 'contents', words: 'phrases', phrasebook: 'phrases', history: 'beliefs' };
-  var TOPIC_ANCHOR = { people: 'everyday', food: 'food', beliefs: 'beliefs', history: 'beliefs', language: 'phrases', arts: 'contents' };
+  var TOPIC_ANCHOR = { people: 'everyday', food: 'food', beliefs: 'beliefs', history: 'beliefs', language: 'phrases', arts: 'arts-title' };
   function resolveHash(raw) {
     var key = String(raw || '').replace(/^#/, '');
     if (!key) return null;

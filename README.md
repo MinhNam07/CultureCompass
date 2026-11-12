@@ -1,6 +1,6 @@
 # CultureCompass
 
-Understand the place before you arrive. A student UX prototype (web-based multimedia application) that helps travellers explore the stories, traditions and everyday life of a destination before a trip. The first destination is **Vietnam, starting in Hà Nội**: six culture themes, thirteen sourced stories, **Explore** (a small pixel-art game: five places in Hà Nội to walk through) and a phrasebook.
+Understand the place before you arrive. A student UX prototype (web-based multimedia application) that helps travellers explore the stories, traditions and everyday life of a destination before a trip. The first destination is **Vietnam, starting in Hà Nội**: six culture themes, thirty-two sourced stories (everyday life, food, history, beliefs, language and the arts, each 1,000 words or more with photographs), **Explore** (a small pixel-art game: five places in Hà Nội to walk through) and a phrasebook.
 
 Built with HTML5, CSS, Bootstrap 5.3.3, vanilla JavaScript, inline SVG and GSAP 3.12.5. No backend, accounts or tracking.
 
@@ -56,7 +56,7 @@ All content lives in JSON files in `assets/data/`. Each starts with a `"$comment
 
 - `sources.json`: every source, with the date checked and its limits
 - `scenarios.json`: **claims** (each linked to sources, with a status) and the six scenes used in Explore (steps, choices, feedback, summaries, reminder cards, `storyIds`)
-- `stories.json`: the culture stories. Every paragraph lists the claims it rests on; a paragraph that only frames scope is marked `editorial`
+- `stories.json`: the culture stories. Every paragraph lists the claims it rests on; a paragraph that only frames scope is marked `editorial`. Stories are written as `blocks` in one of five layouts (longform, essay, timeline, guide, compare; see DESIGN.md). Write them in `tools/content/stories/<name>.cjs` (sources, claims, glossary, stories, topics) and merge them with `node tools/content/apply-stories.cjs [name …]`, then `npm run build`. Story photos come from Wikimedia Commons through `tools/media/commons.mjs fetch <plan> <manifest>` and `node tools/media/register.cjs <manifest>`
 - `topics.json`: the themes on a country page (`storyIds`, `sceneIds`, `phraseIds`, `aliases` for old links). `planned` themes are shown as “Not written yet”
 - `phrases.json`: intents and phrases (meaning, who to use them with, audio id, status)
 - `assets.json`: credits and licences for every image, video and audio file

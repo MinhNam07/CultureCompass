@@ -86,9 +86,9 @@
      always belongs to the chapter you read it in. explore.js warns in the console if the page drifts from it. */
   var READING = {
     vietnam: [
-      { anchor: 'everyday', name: 'Everyday life', tone: 'teal', stories: ['st-arrive-home', 'st-hand', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market', 'st-old-quarter', 'st-pavement', 'st-hoan-kiem-days'] },
+      { anchor: 'everyday', name: 'Everyday life', tone: 'teal', stories: ['st-arrive-home', 'st-hand', 'st-oi', 'st-photo-ask', 'st-keep-cool', 'st-family-words', 'st-market', 'st-old-quarter', 'st-pavement', 'st-hoan-kiem-days'] },
       { anchor: 'food', name: 'Food & the table', tone: 'peach', stories: ['st-shared-table', 'st-host', 'st-chop', 'st-pho', 'st-bun-cha', 'st-egg-coffee', 'st-street-stall'] },
-      { anchor: 'beliefs', name: 'Temples, beliefs & history', tone: 'jade', stories: ['st-thang-long', 'st-van-mieu-university', 'st-sword-lake', 'st-stelae', 'st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess'] }
+      { anchor: 'beliefs', name: 'Temples, beliefs & history', tone: 'jade', stories: ['st-thang-long', 'st-van-mieu-university', 'st-sword-lake', 'st-stelae', 'st-temple-visit', 'st-sacred-places', 'st-family-altar', 'st-paper-offerings', 'st-tet', 'st-mother-goddess', 'st-water-puppets', 'st-ca-tru', 'st-folk-paintings', 'st-bat-trang', 'st-architecture'] }
     ]
   };
   function readingChapter(storyId, anchor, country) {
