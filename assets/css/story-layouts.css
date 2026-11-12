@@ -263,6 +263,9 @@ body.lx .cc-header.is-over-media :is(.cc-brand, .cc-nav a, .cc-nav button, .cc-m
 /* ---------- B: photo essay ---------- */
 .lx-scrolly { position: relative; }
 .lx-scrolly-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; z-index: 0; }
+/* an essay that opens the story also carries .story-head-media (for the page-to-page picture morph); ex-pages.css makes
+   that class an absolute backdrop, which would scroll the photos away under the cards. The stage stays pinned. */
+body.ex .lx-scrolly-stage.story-head-media { position: sticky; inset: auto; top: 0; z-index: 0; }
 .lx-scrolly-stage figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 900ms var(--lx-out); }
 .lx-scrolly-stage figure.is-on { opacity: 1; }
 .lx-scrolly-stage img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 7000ms linear; }

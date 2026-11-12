@@ -48,7 +48,13 @@
   function fromAsset(a) {
     if (!a) return null;
     var video = a.kind === 'video';
-    return { key: a.id, src: video ? a.poster : a.file, video: video ? a.file : null, alt: a.alt || '', credit: a.credit, license: a.license, licenseUrl: a.licenseUrl, sourceUrl: a.sourceUrl, kind: video ? 'video' : (/^art-/.test(a.id) ? 'art' : 'photo'), web: video ? null : a.web, w: video ? null : a.width, h: video ? null : a.height };
+    /* story photos come in 640/1280/2560 WebP beside the original: the 1280 copy is the one for half a screen */
+    var web = video ? null : (a.srcBase ? a.srcBase + '-1280.webp' : a.web);
+    return { key: a.id, src: video ? a.poster : a.file, video: video ? a.file : null, alt: a.alt || '', credit: a.credit, license: a.license, licenseUrl: a.licenseUrl, sourceUrl: a.sourceUrl, kind: video ? 'video' : (/^art-/.test(a.id) ? 'art' : 'photo'), web: web, webW: a.srcBase ? 1280 : 1000, w: video ? null : a.width, h: video ? null : a.height };
+  }
+  /* a story's own picture: its head photo first, then its card picture or scene */
+  function storyPic(st) {
+    return pic({ imageId: st.hero && st.hero.image, story: st });
   }
   function fromScene(sceneId, small) {
     var art = CC.sceneArt && CC.sceneArt[sceneId];
@@ -96,7 +102,7 @@
     }
     /* a 1000px copy for the many places a picture is shown at half the screen or less; the full file for the rest.
        width and height give the browser the shape before the file arrives, so nothing jumps as pictures load. */
-    var set = p.web && p.w ? ' srcset="' + esc(p.web) + ' 1000w, ' + esc(p.src) + ' ' + p.w + 'w" sizes="' + (o.sizes || '(min-width: 1001px) 42vw, 100vw') + '"' : '';
+    var set = p.web && p.w ? ' srcset="' + esc(p.web) + ' ' + (p.webW || 1000) + 'w, ' + esc(p.src) + ' ' + p.w + 'w" sizes="' + (o.sizes || '(min-width: 1001px) 42vw, 100vw') + '"' : '';
     var dim = p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '';
     return '<img class="' + cls + '" src="' + esc(p.src) + '"' + set + dim + ' alt="' + esc(alt) + '" loading="' + (o.eager ? 'eager' : 'lazy') + '" decoding="async"' + style + '>';
   }
@@ -239,7 +245,7 @@
     var hid = s.id || 'list-title';
     return '<section class="rd-sec" aria-labelledby="' + hid + '">' + head(3, s.title, s.sub, hid) +
       '<ul class="rd-list">' + (s.ids || []).map(story).filter(Boolean).map(function (st) {
-        return '<li class="rd-rise"><a class="rd-row" href="' + storyHref(st) + '">' +
+        return '<li class="rd-rise"><a class="rd-row" href="' + storyHref(st) + '"' + platePicAttr(st) + '>' +
           '<span class="rd-row-title">' + esc(st.title) + '</span>' +
           '<span class="rd-row-dek">' + esc(st.dek) + '</span>' +
           '<span class="rd-row-meta">' + esc(st.place) + ' · ' + CC.storyMinutes(st) + ' min read' + GO + '</span>' +
@@ -371,7 +377,7 @@
     return '<section class="rd-sec" aria-labelledby="' + s.id + '">' + head(3, s.title, s.sub, s.id) +
       '<ol class="rd-time">' + list.map(function (st) {
         return '<li class="rd-rise"><span class="rd-year">' + (YEARS[st.id] || '') + '</span>' +
-          '<a class="rd-row" href="' + storyHref(st) + '"><span class="rd-row-title">' + esc(st.title) + '</span>' +
+          '<a class="rd-row" href="' + storyHref(st) + '"' + platePicAttr(st) + '><span class="rd-row-title">' + esc(st.title) + '</span>' +
           '<span class="rd-row-dek">' + esc(st.dek) + '</span>' +
           '<span class="rd-row-meta">' + esc(st.place) + ' · ' + CC.storyMinutes(st) + ' min read' + GO + '</span></a></li>';
       }).join('') + '</ol></section>';
@@ -512,13 +518,33 @@
   function plateFor(ch, mods) {
     var ids = [ch.imageId];
     mods.forEach(function (m) { if (m.plate && ids.indexOf(m.plate) === -1) ids.push(m.plate); });
-    return '<div class="rd-plate" data-plate aria-hidden="false">' + ids.map(function (id, i) {
+    var figs = ids.map(function (id, i) {
       var p = pic({ imageId: id });
       if (!p) return '';
       return '<figure class="rd-plate-fig' + (i === 0 ? ' is-on' : '') + '" data-plate-id="' + esc(id) + '">' +
         '<div class="rd-plate-pic">' + media(p, { video: true, eager: i === 0 }) + (p.video ? videoToggle('the video beside this chapter') : '') + '</div>' +
         '<figcaption><span class="rd-plate-cap">' + esc(p.alt) + '</span>' + creditLine(p) + '</figcaption></figure>';
-    }).join('') + '</div>';
+    });
+    /* one still per story listed in the chapter, shown while the reader points at or tabs to that story.
+       Their files wait in data-src until first shown, so the page does not fetch thirty pictures up front. */
+    var seen = ids.slice();
+    mods.forEach(function (m) {
+      if (m.type !== 'list' && m.type !== 'timeline') return;
+      (m.ids || []).map(story).filter(Boolean).forEach(function (st) {
+        var p = storyPic(st);
+        if (!p || seen.indexOf(p.key) !== -1) return;
+        seen.push(p.key);
+        var img = media(p, {}).replace(' src="', ' data-src="').replace(' srcset="', ' data-srcset="');
+        figs.push('<figure class="rd-plate-fig" data-plate-id="' + esc(p.key) + '" data-plate-story>' +
+          '<div class="rd-plate-pic">' + img + '</div>' +
+          '<figcaption><span class="rd-plate-cap">' + esc(st.title) + ': ' + esc(p.alt) + '</span>' + creditLine(p) + '</figcaption></figure>');
+      });
+    });
+    return '<div class="rd-plate" data-plate aria-hidden="false">' + figs.join('') + '</div>';
+  }
+  function platePicAttr(st) {
+    var p = storyPic(st);
+    return p ? ' data-plate-pic="' + esc(p.key) + '"' : '';
   }
 
   function render() {
@@ -833,18 +859,40 @@
     chapters.concat(words ? [words] : [], last ? [last] : []).forEach(function (c) { io.observe(c); });
 
     /* plate: show the picture of the section in the middle of the screen */
+    var showPlate = function (ch, id) {
+      if (!ch || !id) return;
+      each('.rd-plate-fig', function (f) {
+        var on = f.getAttribute('data-plate-id') === id;
+        if (on) each('img[data-src]', function (im) {
+          if (im.getAttribute('data-srcset')) im.setAttribute('srcset', im.getAttribute('data-srcset'));
+          im.setAttribute('src', im.getAttribute('data-src'));
+          im.removeAttribute('data-src'); im.removeAttribute('data-srcset');
+        }, f);
+        f.classList.toggle('is-on', on);
+        var v = f.querySelector('video');
+        if (v) { if (on && !reduce() && v.cc && v.cc.user !== 'pause') v.play().catch(function () {}); else if (!on) v.pause(); }
+      }, ch);
+    };
     var io2 = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (!e.isIntersecting) return;
         var ch = e.target.closest('.rd-ch'), id = e.target.getAttribute('data-plate-for');
-        each('.rd-plate-fig', function (f) {
-          var on = f.getAttribute('data-plate-id') === id;
-          f.classList.toggle('is-on', on);
-          var v = f.querySelector('video');
-          if (v) { if (on && !reduce() && v.cc && v.cc.user !== 'pause') v.play().catch(function () {}); else if (!on) v.pause(); }
-        }, ch);
+        ch.setAttribute('data-plate-cur', id);
+        if (!ch.hasAttribute('data-plate-hover')) showPlate(ch, id);
       });
     }, { rootMargin: '-55% 0px -40% 0px' });
+    /* pointing at a story (or tabbing to it) puts its own picture on the plate; leaving puts the section's back.
+       Only where the plate stands beside the text: below 1000px it is just the chapter's opening picture. */
+    var wide = matchMedia('(min-width: 1001px)'), fine = matchMedia('(hover: hover) and (pointer: fine)');
+    each('.rd-ch .rd-row[data-plate-pic]', function (a) {
+      var ch = a.closest('.rd-ch');
+      var enter = function () { if (!wide.matches) return; ch.setAttribute('data-plate-hover', ''); showPlate(ch, a.getAttribute('data-plate-pic')); };
+      var leave = function () { if (!ch.hasAttribute('data-plate-hover')) return; ch.removeAttribute('data-plate-hover'); showPlate(ch, ch.getAttribute('data-plate-cur')); };
+      a.addEventListener('pointerenter', function () { if (fine.matches) enter(); });
+      a.addEventListener('pointerleave', leave);
+      a.addEventListener('focus', enter);
+      a.addEventListener('blur', leave);
+    });
     each('.rd-open, .rd-mod', function (m) {
       if (m.classList.contains('rd-open')) m.setAttribute('data-plate-for', (m.closest('.rd-ch').querySelector('.rd-plate-fig') || {}).getAttribute ? m.closest('.rd-ch').querySelector('.rd-plate-fig').getAttribute('data-plate-id') : '');
       io2.observe(m);
