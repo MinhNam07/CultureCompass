@@ -947,10 +947,13 @@ html:not(.cc-reduce-motion) { scroll-behavior: smooth; }
 /* October 25 refinement: clear entrances, a compact country contents. */
 .hero.is-flow .hero-copy { pointer-events: auto; bottom: clamp(32px, 7svh, 76px); }
 .hero-entry { margin-top: 24px; }
-.hero-scope { font: 400 .875rem/1.5 var(--font-sans); margin: 12px 0 0; max-width: 40ch; color: var(--color-surface); }
 /* the two ways in: play now (the main idea), or choose a destination on the globe */
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.hero-play .cc-icon { width: 18px; height: 18px; }
+/* the one way in from the opening: down to the globe, where Vietnam is marked "Start here" */
+.cc-btn.hero-go { min-height: 56px; padding: 12px 28px; gap: 12px; font-size: 1.125rem; box-shadow: 0 0 0 4px rgb(255 252 247 / .16), 0 10px 30px rgb(0 0 0 / .5); }
+.hero-go .cc-icon { width: 20px; height: 20px; animation: hero-go-nudge 1.6s ease-in-out infinite; }
+@keyframes hero-go-nudge { 0%, 100% { transform: translateY(-1px); } 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .hero-go .cc-icon { animation: none; } }
 /* two-line print label: what the photo shows, then where it was taken; each line stays on one line */
 .hero-photo-cap { position: absolute; left: 0; bottom: 0; display: grid; max-width: 100%; padding: 5px 10px 6px; background: var(--color-text); color: var(--color-surface); font: 400 .875rem/1.35 var(--font-sans); }
 .hero-photo-cap > * { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
@@ -989,7 +992,6 @@ html:not(.cc-reduce-motion) { scroll-behavior: smooth; }
   .hero h1 { font-size: clamp(2.5rem, 10.5vw, 4rem); }
   .hero .hero-sub { font-size: 1.0625rem; max-width: 29ch; }
   .hero-entry { margin-top: 18px; }
-  .hero-scope { font-size: .875rem; }
 }
 .hero-entry { width: fit-content; max-width: 40ch; }
 @media (min-width: 961px) {
