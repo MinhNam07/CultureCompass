@@ -1,6 +1,7 @@
-/* Amelia, the walking invitation to Explore (assets/js/companion.js). She lives on the bottom edge of the screen.
+/* Arvy, the walking invitation to Explore (assets/js/companion.js). She lives on the bottom edge of the screen.
    The speech box and the Play tag borrow the game's own dialogue look: ivory, a dark 3px rule and a stepped shadow. */
-.cc-pal { position: fixed; left: 0; top: 0; z-index: 25; display: grid; justify-items: center; color: inherit; text-decoration: none; will-change: transform; -webkit-tap-highlight-color: transparent; }
+/* above every part of the page (the chapter bar, headers, toasts); only Bootstrap dialogs and menus (1040+) cover her */
+.cc-pal { position: fixed; left: 0; top: 0; z-index: 1035; display: grid; justify-items: center; color: inherit; text-decoration: none; will-change: transform; -webkit-tap-highlight-color: transparent; }
 .cc-pal:focus-visible { outline: none; }
 .cc-pal:focus-visible .cc-pal-say, .cc-pal:focus-visible .cc-pal-tag { outline: 2px solid #5FD8E8; outline-offset: 4px; }
 

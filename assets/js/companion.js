@@ -1,13 +1,13 @@
-/* CultureCompass — Amelia, the player from Explore, wanders along the bottom edge of the screen and invites you to play.
+/* CultureCompass — Arvy, the player from Explore, wanders along the bottom edge of the screen and invites you to play.
    She is one link to the game (explore.html), reachable by keyboard and read out by screen readers.
    On arrival she stands and talks, so the line can be read; then she wanders on her own: walks a while, stops and
    looks around, walks on, sometimes turns back, and off one edge comes in at the other. Her line and a small Play tag
    take turns every few seconds. She stops while you point at her or focus her. With reduced motion she stands still.
-   Styles: assets/css/companion.css. Sprites: LimeZu "Amelia" (16 x 32 frames; rows right, up, left, down). */
+   Styles: assets/css/companion.css. Sprites: LimeZu "Amelia" sheet, named Arvy here (16 x 32 frames; rows right, up, left, down). */
 (function () {
   'use strict';
   var CC = window.CC || {};
-  var LINE = ['Hi, I’m Amelia!', 'Click me to explore Hà Nội by playing'];
+  var LINE = ['Hi, I’m Arvy!', 'Click me to explore Hà Nội by playing'];
   var TAG = 'Explore by playing';
   var HREF = 'explore.html';
   var ROW = { right: 0, up: 6, left: 12, down: 18 }, LOOK = ['down', 'left', 'right', 'down', 'up'];

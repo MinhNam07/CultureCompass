@@ -167,7 +167,7 @@
       '<div class="rd-cover-in">' +
         '<h1 id="ex-title" lang="vi">Việt Nam</h1>' +
         '<p class="rd-cover-tag">' + esc(c.name) + ', ' + esc(c.start.replace(/^Starting/, 'starting')) + '. ' + esc(c.intro) + '</p>' +
-        /* the game's way in is Amelia (companion.js), walking along the bottom of the screen; the cue below is the way into the reading */
+        /* the game's way in is Arvy (companion.js), walking along the bottom of the screen; the cue below is the way into the reading */
         '<div class="rd-cover-actions">' +
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
