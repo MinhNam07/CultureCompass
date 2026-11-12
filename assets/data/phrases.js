@@ -192,8 +192,10 @@ window.CC.phrases = [
     "meaning": "Where is Hoàn Kiếm Lake, please?",
     "useWith": "Anyone you have just called with “ơi”. The “ạ” at the end makes it more polite.",
     "audioId": "au-hoiho",
-    "sourceIds": [],
-    "status": "reviewed"
+    "sourceIds": [
+      "DICT-A"
+    ],
+    "status": "published"
   },
   {
     "id": "ph-baonhieu",

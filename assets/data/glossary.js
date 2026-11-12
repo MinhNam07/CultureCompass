@@ -90,5 +90,185 @@ window.CC.glossary = [
     "vi": "áo dài",
     "say": "ow zai (north) / ow yai (south)",
     "en": "The long tunic worn over trousers, Vietnam’s best-known traditional dress."
+  },
+  {
+    "id": "pho-tai",
+    "vi": "tái",
+    "say": "tie",
+    "en": "Rare: thin slices of raw beef that cook in the hot broth. Chín means well cooked."
+  },
+  {
+    "id": "quay",
+    "vi": "quẩy",
+    "say": "kway",
+    "en": "Fried dough sticks, torn into pieces and dipped in phở or rice porridge."
+  },
+  {
+    "id": "baocap",
+    "vi": "bao cấp",
+    "say": "bow cup",
+    "en": "The subsidy era, before the 1986 reforms, when the state rationed food and ran most shops."
+  },
+  {
+    "id": "mam",
+    "vi": "mâm",
+    "say": "mum",
+    "en": "A round tray that holds the shared dishes of a meal; also the meal around it."
+  },
+  {
+    "id": "moi",
+    "vi": "mời",
+    "say": "muh-ee",
+    "en": "“Please, I invite you”: said to elders before eating, and when offering food or a drink."
+  },
+  {
+    "id": "bia-hoi",
+    "vi": "bia hơi",
+    "say": "bee-ah hoy",
+    "en": "Fresh, unpasteurised draught beer, poured from kegs at street corners and sold by the glass."
+  },
+  {
+    "id": "cha",
+    "vi": "chả",
+    "say": "chah",
+    "en": "Grilled or fried meat, often minced and pressed into patties. In bún chả, both patties and sliced pork belly."
+  },
+  {
+    "id": "nuoc-cham",
+    "vi": "nước chấm",
+    "say": "nuke chum",
+    "en": "Dipping sauce: fish sauce balanced with sugar, vinegar or lime, water, garlic and chilli."
+  },
+  {
+    "id": "phin",
+    "vi": "phin",
+    "say": "fin",
+    "en": "A small metal drip filter that sits on the cup; the coffee drips through slowly."
+  },
+  {
+    "id": "ca-phe-nau",
+    "vi": "cà phê nâu",
+    "say": "cah feh now",
+    "en": "“Brown coffee”: the Hà Nội name for coffee with condensed milk."
+  },
+  {
+    "id": "tien-si",
+    "vi": "tiến sĩ",
+    "say": "tee-en see",
+    "en": "Doctor: the title of a scholar who passed the highest royal examination."
+  },
+  {
+    "id": "khue",
+    "vi": "Khuê",
+    "say": "kway",
+    "en": "The constellation of literature in Chinese and Vietnamese astronomy, which gives Khuê Văn Các its name."
+  },
+  {
+    "id": "cam-thanh",
+    "vi": "Cấm thành",
+    "say": "gum tahn",
+    "en": "The Forbidden City: the innermost walled precinct, where the king lived and held court."
+  },
+  {
+    "id": "hoang-thanh",
+    "vi": "Hoàng thành",
+    "say": "hwang tahn",
+    "en": "The Imperial Citadel: the walled royal enclosure around the Forbidden City."
+  },
+  {
+    "id": "ong-tao",
+    "vi": "ông Công ông Táo",
+    "say": "ong cong ong tao",
+    "en": "The Kitchen Gods, who watch over the household and report to heaven on the 23rd of the last lunar month."
+  },
+  {
+    "id": "giao-thua",
+    "vi": "giao thừa",
+    "say": "zao twa",
+    "en": "The moment the old year passes to the new: midnight on New Year’s Eve."
+  },
+  {
+    "id": "vang-ma",
+    "vi": "vàng mã",
+    "say": "vang ma",
+    "en": "Votive paper: paper money and paper copies of goods, burnt as offerings to ancestors and spirits."
+  },
+  {
+    "id": "thanh-hoang",
+    "vi": "thành hoàng",
+    "say": "tahn hwang",
+    "en": "A village or city guardian spirit, honoured in the communal house (đình)."
+  },
+  {
+    "id": "gio",
+    "vi": "giỗ",
+    "say": "zaw",
+    "en": "A death anniversary: the yearly day on which a family honours an ancestor with offerings and a meal."
+  },
+  {
+    "id": "hau-dong",
+    "vi": "hầu đồng",
+    "say": "how dong",
+    "en": "Spirit mediumship in the Mother Goddess religion, also called lên đồng: a medium embodies a series of gods in turn."
+  },
+  {
+    "id": "chau-van",
+    "vi": "chầu văn",
+    "say": "chow van",
+    "en": "The sung music that accompanies hầu đồng."
+  },
+  {
+    "id": "oi",
+    "vi": "ơi",
+    "say": "er-ee",
+    "en": "A friendly word for calling someone, after their name or a family word: chị ơi!"
+  },
+  {
+    "id": "buong-tro",
+    "vi": "buồng trò",
+    "say": "boo-ung chaw",
+    "en": "The screened pavilion at the back of a water puppet stage, where the puppeteers stand in the water."
+  },
+  {
+    "id": "teu",
+    "vi": "Tễu",
+    "say": "teh-oo",
+    "en": "The comic boy who hosts a water puppet show."
+  },
+  {
+    "id": "dan-day",
+    "vi": "đàn đáy",
+    "say": "dahn die",
+    "en": "The long-necked, three-stringed lute of ca trù."
+  },
+  {
+    "id": "phach",
+    "vi": "phách",
+    "say": "fahk",
+    "en": "Small bamboo clappers the ca trù singer strikes to keep time."
+  },
+  {
+    "id": "dao-nuong",
+    "vi": "đào nương",
+    "say": "dow noo-ung",
+    "en": "A ca trù singer."
+  },
+  {
+    "id": "giay-diep",
+    "vi": "giấy điệp",
+    "say": "zay dee-ep",
+    "en": "Paper coated with a paste of powdered shell, used for Đông Hồ prints."
+  },
+  {
+    "id": "thi",
+    "vi": "thị",
+    "say": "tee",
+    "en": "The wood of a persimmon-family tree, carved into blocks for Đông Hồ prints."
+  },
+  {
+    "id": "men-ran",
+    "vi": "men rạn",
+    "say": "men zahn",
+    "en": "Crackle glaze: a fine network of cracks made on purpose in the glaze."
   }
 ];

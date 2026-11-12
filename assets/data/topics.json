@@ -98,10 +98,16 @@
       "label": "Arts & creativity",
       "vi": "Nghệ thuật & sáng tạo",
       "icon": "puppet",
-      "status": "planned",
+      "status": "ready",
       "question": "What do crafts, art and architecture express?",
-      "blurb": "Not written yet. The water puppetry clip on the home page is footage only; we have no sourced story about it yet.",
-      "storyIds": [],
+      "blurb": "Water puppets and ca trù, folk prints and Bát Tràng pottery, tube houses and French villas: Hà Nội’s arts, with where to see them today.",
+      "storyIds": [
+        "st-water-puppets",
+        "st-ca-tru",
+        "st-folk-paintings",
+        "st-bat-trang",
+        "st-architecture"
+      ],
       "sceneIds": [],
       "phraseIds": [],
       "aliases": []

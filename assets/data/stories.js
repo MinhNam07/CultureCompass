@@ -581,37 +581,462 @@ window.CC.stories = [
     "country": "vietnam",
     "place": "Hà Nội",
     "title": "Calling people with “ơi”",
-    "dek": "Instead of “excuse me”, people call each other with a family word and a short “ơi”.",
+    "dek": "No “excuse me”, no raised hand: in Hà Nội you call people by a family word and a short “ơi”, and answer with “dạ”. A guide to getting attention, asking and replying politely.",
     "sceneId": "sc04",
     "imageId": "img-old-quarter",
     "sections": [
       {
-        "text": "Instead of “excuse me”, people call each other with a family word that matches the other person’s age, followed by “ơi”: em ơi for someone younger, chị ơi or anh ơi for a woman or man a bit older, cô ơi or chú ơi for someone your aunt’s or uncle’s age, and bà ơi or ông ơi for someone your grandparents’ age.",
+        "text": "People call each other with a family word that matches the other person’s age, followed by “ơi”.",
         "claimIds": [
           "C-CALL-OI"
         ]
       },
       {
         "heading": "The safe choice",
-        "text": "If you are not sure, “bạn ơi” — “hey, friend” — is a safe, neutral choice.",
+        "text": "If you are not sure, “bạn ơi” is a neutral choice for people about your age.",
         "claimIds": [
           "C-BANOI"
         ]
       },
       {
         "heading": "Call, don’t point",
-        "text": "Avoid pointing at people, or patting them on the back or head, particularly if they are older than you. Calling with “ơi” does the job a pointed finger might do elsewhere.",
+        "text": "Avoid pointing at people, or patting them on the back or head.",
         "claimIds": [
           "C-NO-POINT"
         ]
       }
     ],
-    "appliesTo": "Shops and streets in Hà Nội. The guidance is general advice for Vietnam from the national tourism authority.",
-    "varies": "Which word fits depends on how old the other person seems to you. When unsure, use “bạn ơi”.",
+    "appliesTo": "Shops, cafés and streets in Hà Nội. Word meanings come from Vietnamese dictionaries; how people use them, from linguists who recorded conversations in Hà Nội and from the national tourism authority.",
+    "varies": "Which family word fits depends on how old the other person seems to you, and people judge that differently. The south uses dạ where the north often says vâng.",
     "phraseIds": [
       "ph-chioi",
       "ph-banoi",
       "ph-hoiho"
+    ],
+    "layout": "guide",
+    "hero": {
+      "image": "img-old-quarter"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "In a Hà Nội café people rarely say “excuse me” to get attention. A customer calls *em ơi!* to a young waiter, or *chị ơi!* to a woman a little older behind the counter. That small word, [[oi|ơi]], is how people get each other’s attention in Hà Nội, and the word in front of it says who they think they are talking to.",
+            "claimIds": [
+              "C-CALL-OI",
+              "C-OI-WORD"
+            ]
+          },
+          {
+            "text": "It is one of the most useful things a visitor can learn, and one of the easiest. This guide covers calling, asking and answering politely, and the gestures that go with them. For the family words themselves in depth, see [why people use family words with strangers](story:st-family-words).",
+            "claimIds": [
+              "C-CALL-OI"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The short version",
+        "items": [
+          {
+            "term": "Call",
+            "text": "Family word + ơi: chị ơi, anh ơi, em ơi."
+          },
+          {
+            "term": "Unsure",
+            "text": "Bạn ơi, for someone about your age."
+          },
+          {
+            "term": "Ask",
+            "text": "Add ạ to be polite."
+          },
+          {
+            "term": "Answer",
+            "text": "Dạ when called; vâng for yes."
+          }
+        ],
+        "claimIds": [
+          "C-CALL-OI",
+          "C-BANOI",
+          "C-A",
+          "C-DA"
+        ]
+      },
+      {
+        "type": "steps",
+        "heading": "Call, ask, answer",
+        "id": "steps",
+        "items": [
+          {
+            "title": "Pick the word",
+            "paras": [
+              {
+                "text": "Choose the family word that fits how old the person looks to you: *em* for someone younger, *chị* or *anh* for a woman or man a bit older, *cô* or *chú* for someone your aunt’s or uncle’s age, *bà* or *ông* for someone your grandparents’ age. The national tourism authority suggests *bạn ơi*, hey friend, when you are not sure; it suits people of about your own age.",
+                "claimIds": [
+                  "C-CALL-OI",
+                  "C-BANOI"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Call",
+            "paras": [
+              {
+                "text": "Add *ơi* and say it clearly: *chị ơi!* It is friendly, not rude; it is the same word a child uses to call *mẹ ơi*, Mum. Use your voice rather than your hand.",
+                "claimIds": [
+                  "C-OI-WORD",
+                  "C-OI-TIP"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Ask, with ạ",
+            "paras": [
+              {
+                "text": "Then ask, and end with *ạ*, a small particle of respect or warmth: *Hồ Hoàn Kiếm ở đâu ạ?*, Where is Hoàn Kiếm Lake, please? It works after a greeting too: a pupil says *Em chào thầy ạ* to a teacher.",
+                "claimIds": [
+                  "C-A"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Answer with dạ",
+            "paras": [
+              {
+                "text": "If someone calls you, the polite reply is *dạ*. Answering *ơi* is fine only to an equal or someone younger. For yes, say *vâng*, or *vâng ạ* to be warmer. An old saying sums it up: *gọi dạ, bảo vâng*, answer a call with dạ, an instruction with vâng.",
+                "claimIds": [
+                  "C-DA",
+                  "C-OI-WORD",
+                  "C-VANG"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Hand things over properly",
+            "paras": [
+              {
+                "text": "When you pay or pass something, use both hands, or at least your right hand, especially with someone older.",
+                "claimIds": [
+                  "C-TWO-HANDS"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "phrases",
+        "heading": "Say it",
+        "ids": [
+          "ph-chioi",
+          "ph-banoi",
+          "ph-hoiho"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Who calls whom what",
+        "id": "who",
+        "paras": [
+          {
+            "text": "Linguists who recorded about 35 hours of conversation in Hà Nội cafés and restaurants found that family words were the default way to refer to the person spoken to. They are never used both ways round: if you call someone *em*, they call you *anh* or *chị*. And seniority is not mechanical. People born in the same year may treat each other as equals; five years’ difference matters to some pairs and not to others.",
+            "claimIds": [
+              "C-HANOI-KIN"
+            ]
+          },
+          {
+            "text": "The other person may decide for you. A British writer living in Hà Nội was greeted by a bakery owner with *chào anh*, and answered *chào em*. She told him he could not call her *em*: she had set the terms, whatever their real ages. People guess age from looks and circumstances, he wrote; his wife’s advice when unsure was simply to say *chào bác*.",
+            "claimIds": [
+              "C-STOKES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Gọi dạ, bảo vâng.",
+        "by": "A Vietnamese saying: answer a call with dạ, an instruction with vâng",
+        "claimIds": [
+          "C-DA"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "In shops and markets",
+        "id": "shops",
+        "paras": [
+          {
+            "text": "Family words are the language of buying and selling. In a study of 500 market conversations in Hà Nội, Huế, Nha Trang and Hồ Chí Minh City, 80 percent of questions used them, partly because they make buyer and seller sound close. An old rule of address explains the choice: *xưng khiêm, hô tôn*, speak of yourself modestly and of the other person respectfully.",
+            "claimIds": [
+              "C-MARKET-KIN",
+              "C-XUNGKHIEM"
+            ]
+          },
+          {
+            "text": "In practice: *chị ơi* or *anh ơi* for staff who look older than you, *em ơi* for those who look younger, and *ạ* on the end of your question.",
+            "claimIds": [
+              "C-OI-SHOP-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Why not just “tôi” and “bạn”?",
+        "id": "toi",
+        "paras": [
+          {
+            "text": "Textbooks teach *tôi*, I, and *bạn*, you, because they are the most neutral pair. In everyday talk they sound formal or distant, the language of first meetings. Between two middle-aged neighbours, *tôi* and *bạn* would sound odd; *chị* and *em* would be natural. Among friends in the north the casual pair is *tớ* and *cậu*.",
+            "claimIds": [
+              "C-TOI-FORMAL"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "Answers, north and south",
+        "id": "replies",
+        "intro": "Choose a tab to compare how people answer in Hà Nội and in the south.",
+        "label": "Polite replies",
+        "tabs": [
+          {
+            "label": "Hà Nội",
+            "columns": [
+              "Word",
+              "Use it for"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "dạ",
+                  "vi": true
+                },
+                {
+                  "text": "Answering when someone calls you; starting to speak politely.",
+                  "claimIds": [
+                    "C-DA"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "vâng",
+                  "vi": true
+                },
+                {
+                  "text": "A polite yes.",
+                  "claimIds": [
+                    "C-VANG"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "ạ",
+                  "vi": true
+                },
+                {
+                  "text": "At the end of a sentence, for respect.",
+                  "claimIds": [
+                    "C-A"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "ừ",
+                  "vi": true
+                },
+                {
+                  "text": "Yes, to equals and juniors only.",
+                  "claimIds": [
+                    "C-U"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "The south",
+            "columns": [
+              "Word",
+              "Use it for"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "dạ",
+                  "vi": true
+                },
+                {
+                  "text": "Both answering and yes; often “I’m listening” rather than agreement.",
+                  "claimIds": [
+                    "C-DA-SOUTH"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "vâng",
+                  "vi": true
+                },
+                {
+                  "text": "Rarely used.",
+                  "claimIds": [
+                    "C-DA-SOUTH"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Like “dạ”, an English “yes” from a Vietnamese speaker may mean “I hear you” rather than “I agree”. If something matters, check.",
+        "claimIds": [
+          "C-YES-HEAR"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Hands, fingers and heads",
+        "id": "gestures",
+        "paras": [
+          {
+            "text": "Calling with *ơi* does the job that a pointed finger or a wave might do elsewhere. Pointing at people with the index finger is seen as disrespectful, and beckoning with one finger, palm up, as offensive. Avoid patting people on the back or the head, particularly anyone older than you; touching someone’s head, or passing something over it, is seen as offensive.",
+            "claimIds": [
+              "C-NO-POINT",
+              "C-FINGER",
+              "C-HEAD"
+            ]
+          },
+          {
+            "text": "If you must wave someone over, many people advise keeping the palm down and moving the fingers towards you. Better still, call.",
+            "claimIds": [
+              "C-OI-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Usually welcome",
+          "items": [
+            {
+              "text": "Chị ơi, anh ơi, em ơi to get attention.",
+              "claimIds": [
+                "C-CALL-OI"
+              ]
+            },
+            {
+              "text": "Ạ at the end of a question.",
+              "claimIds": [
+                "C-A"
+              ]
+            },
+            {
+              "text": "Dạ when someone calls you.",
+              "claimIds": [
+                "C-DA"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Answering ừ to someone older.",
+              "claimIds": [
+                "C-U"
+              ]
+            },
+            {
+              "text": "Beckoning with one finger, palm up.",
+              "claimIds": [
+                "C-FINGER"
+              ]
+            },
+            {
+              "text": "Patting someone on the head.",
+              "claimIds": [
+                "C-HEAD",
+                "C-NO-POINT"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "heading": "The Hà Nội voice",
+        "id": "accent",
+        "paras": [
+          {
+            "text": "Hà Nội speech is typical of the northern dialect, and many people treat it as the model for the news: a well-known national-television presenter once argued that the news should be read in the northern, Hà Nội voice. Others answered that no rule says so, and linguists note that no official standard of pronunciation has been fixed. What a visitor hears in Hà Nội is the north’s *vâng* and *ạ*, alongside the *dạ* that every region shares.",
+            "claimIds": [
+              "C-ACCENT",
+              "C-DA-SOUTH"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Call",
+            "text": "Chị ơi! Anh ơi! Em ơi!"
+          },
+          {
+            "term": "Unsure",
+            "text": "Bạn ơi!"
+          },
+          {
+            "term": "Polite",
+            "text": "… ạ?"
+          },
+          {
+            "term": "Answer",
+            "text": "Dạ. Vâng ạ."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "img-old-quarter",
+        "question": "Someone calls your name",
+        "prompt": "Your friend’s grandmother calls you from the kitchen. What do you answer?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Ơi!",
+            "feedback": "Ơi as a reply is for equals and juniors. To someone older, answer dạ."
+          },
+          {
+            "label": "Dạ!",
+            "fit": true,
+            "feedback": "Yes. Dạ is the polite reply to a call."
+          },
+          {
+            "label": "Ừ!",
+            "feedback": "Ừ is for equals and juniors; to a grandmother it sounds too casual."
+          }
+        ]
+      }
     ]
   },
   {
@@ -619,54 +1044,482 @@ window.CC.stories = [
     "country": "vietnam",
     "place": "Hà Nội",
     "title": "Why does the host keep filling your bowl?",
-    "dek": "Serving a guest is one of the clearest ways a host shows hospitality.",
+    "dek": "Hospitality you can see: a full bowl, a full glass, a bill already paid. What hosts do, what the etiquette books say, and how to say “enough” kindly.",
     "sceneId": "sc02",
     "sections": [
       {
-        "text": "Serving a guest — topping up drinks and choosing the best pieces for their bowl — is one way hosts show hospitality.",
+        "text": "Serving a guest, topping up drinks and choosing the best pieces for their bowl, is one way hosts show hospitality.",
         "claimIds": [
           "C-HOST-SERVE"
         ]
       },
       {
         "heading": "Saying you have had enough",
-        "text": "That is also why saying you are full matters: to decline more food, politely say that you are very full. It gives your host a clear, polite signal.",
+        "text": "To decline more food, politely say that you are very full.",
         "claimIds": [
           "C-DECLINE-FULL"
         ]
       },
       {
         "heading": "When you eat out",
-        "text": "If you are invited out to eat, the person who invited you usually pays; otherwise it is often the most senior person.",
+        "text": "The person who invited usually pays; otherwise it is often the most senior person.",
         "claimIds": [
           "C-WHO-PAYS"
         ]
       }
     ],
-    "appliesTo": "A home-cooked family dinner in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
-    "varies": "Restaurants, other families and other regions may differ.",
+    "appliesTo": "Meals as a guest at home and in restaurants in Hà Nội, from the national tourism authority, the foreign ministry’s newspaper, Vietnamese press and the law.",
+    "varies": "Families, generations and occasions differ: a family dinner is not a business banquet. Laws and fines are as of 2026.",
     "phraseIds": [
       "ph-no",
       "ph-camon"
+    ],
+    "layout": "compare",
+    "imageId": "ev-home-meal",
+    "hero": {
+      "image": "ev-home-meal"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "You have barely finished a mouthful when a piece of fish lands in your bowl. You eat it; a piece of pork follows. Your glass is never empty for long. For a guest at a Vietnamese table this can feel like a lot, and it is meant to: serving a guest, choosing the best pieces for them and keeping their glass full is how a host shows care.",
+            "claimIds": [
+              "C-HOST-SERVE"
+            ]
+          },
+          {
+            "text": "Not everyone agrees on how far this should go. The national tourism authority describes it as normal hospitality; a protocol column in the foreign ministry’s newspaper advises hosts to hold back. This story compares the two, and explains how to say “enough”, to food, to drink and to the bill, without giving offence.",
+            "claimIds": [
+              "C-HOST-SERVE",
+              "C-HOST-PROTOCOL"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "In brief",
+        "items": [
+          {
+            "term": "Food in your bowl",
+            "text": "A sign of care. Eat what you can."
+          },
+          {
+            "term": "To stop",
+            "text": "Say you are very full: *no rồi*."
+          },
+          {
+            "term": "Drinks",
+            "text": "Pressing someone to drink is illegal since 2020."
+          },
+          {
+            "term": "The bill",
+            "text": "Usually paid by whoever invited."
+          }
+        ],
+        "claimIds": [
+          "C-HOST-SERVE",
+          "C-DECLINE-FULL",
+          "C-ALC-LAW",
+          "C-WHO-PAYS"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Two views of a full bowl",
+        "id": "views",
+        "paras": [
+          {
+            "text": "At a family table, the host putting food in your bowl is the custom the tourism authority describes, and the one most visitors meet. It says, more clearly than words, that you are welcome and that the best of the meal is for you.",
+            "claimIds": [
+              "C-HOST-SERVE"
+            ]
+          },
+          {
+            "text": "The foreign ministry’s newspaper, *Thế giới & Việt Nam*, sets out a stricter etiquette. Never serve someone with the chopsticks you eat with: turn them round or use serving chopsticks. Do not press food on a guest. At a formal banquet, offer in words, *mời anh lấy thêm*, “please, have some more”, and let guests serve themselves. A guest who would rather do so can say so, gently: *cứ để tôi tự nhiên*, “let me help myself”.",
+            "claimIds": [
+              "C-HOST-PROTOCOL",
+              "C-CHOP-TURN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "Home, restaurant, banquet",
+        "id": "compare",
+        "intro": "The same gesture means different things in different settings. Choose a tab to compare. On a phone, each row reads as a card.",
+        "label": "Hosting in three settings",
+        "tabs": [
+          {
+            "label": "Food",
+            "columns": [
+              "",
+              "Family dinner",
+              "Formal banquet"
+            ],
+            "rows": [
+              [
+                "Food in your bowl",
+                {
+                  "match": "yes",
+                  "text": "Common, a sign of care.",
+                  "claimIds": [
+                    "C-HOST-SERVE"
+                  ]
+                },
+                {
+                  "match": "no",
+                  "text": "Avoided; hosts offer in words.",
+                  "claimIds": [
+                    "C-HOST-PROTOCOL"
+                  ]
+                }
+              ],
+              [
+                "Pressing guests to eat",
+                {
+                  "match": "part",
+                  "text": "Happens; say you are full.",
+                  "claimIds": [
+                    "C-DECLINE-FULL"
+                  ]
+                },
+                {
+                  "match": "no",
+                  "text": "Not done.",
+                  "claimIds": [
+                    "C-HOST-PROTOCOL"
+                  ]
+                }
+              ],
+              [
+                "Serving chopsticks",
+                {
+                  "match": "part",
+                  "text": "Many families turn chopsticks round.",
+                  "claimIds": [
+                    "C-CHOP-TURN"
+                  ]
+                },
+                {
+                  "match": "yes",
+                  "text": "Expected.",
+                  "claimIds": [
+                    "C-HOST-PROTOCOL"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Drinks",
+            "columns": [
+              "",
+              "Among friends",
+              "With elders or bosses"
+            ],
+            "rows": [
+              [
+                "Toasting",
+                {
+                  "match": "yes",
+                  "text": "Together, often: “một, hai, ba, dô!”",
+                  "claimIds": [
+                    "C-TOAST-DO"
+                  ]
+                },
+                {
+                  "match": "part",
+                  "text": "Follows rank; wait to be toasted.",
+                  "claimIds": [
+                    "C-TOAST-RANK"
+                  ]
+                }
+              ],
+              [
+                "Pressure to drink",
+                {
+                  "match": "part",
+                  "text": "Can happen; “just one drink”.",
+                  "claimIds": [
+                    "C-TOAST-100"
+                  ]
+                },
+                {
+                  "match": "part",
+                  "text": "Most often comes from here.",
+                  "claimIds": [
+                    "C-ALC-PRESSURE"
+                  ]
+                }
+              ],
+              [
+                "Saying no",
+                {
+                  "match": "yes",
+                  "text": "Say it early and plainly.",
+                  "claimIds": [
+                    "C-ALC-DECLINE"
+                  ]
+                },
+                {
+                  "match": "yes",
+                  "text": "Driving, health or religion are accepted reasons.",
+                  "claimIds": [
+                    "C-ALC-DECLINE"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "The bill",
+            "columns": [
+              "",
+              "Older generation",
+              "Younger friends"
+            ],
+            "rows": [
+              [
+                "Who pays",
+                {
+                  "text": "Whoever invited, or the most senior person.",
+                  "claimIds": [
+                    "C-WHO-PAYS"
+                  ]
+                },
+                {
+                  "text": "Often each pays their own share.",
+                  "claimIds": [
+                    "C-PAY-FIGHT"
+                  ]
+                }
+              ],
+              [
+                "At the till",
+                {
+                  "text": "Friends may fight to pay, or one settles quietly.",
+                  "claimIds": [
+                    "C-PAY-FIGHT"
+                  ]
+                },
+                {
+                  "text": "Splitting is normal.",
+                  "claimIds": [
+                    "C-PAY-FIGHT"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Saying “enough” to food",
+        "id": "enough",
+        "paras": [
+          {
+            "text": "The kind way to stop is to say that you are very full, *no rồi*, and to say it more than once. A first refusal can sound like politeness; the second and third are believed. Leave a little in your bowl if you really cannot eat more; an empty bowl may simply be refilled.",
+            "claimIds": [
+              "C-DECLINE-FULL",
+              "C-HOME-BOWL"
+            ]
+          },
+          {
+            "text": "Praise the food as you go. A host may call the meal simple, just rice and greens; that is modesty, and it is your cue to say how good it is.",
+            "claimIds": [
+              "C-HOME-MODEST"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "phrases",
+        "heading": "Phrases",
+        "ids": [
+          "ph-no",
+          "ph-camon",
+          "ph-do"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Saying “no” to a drink",
+        "id": "drink",
+        "paras": [
+          {
+            "text": "Drinking together is a big part of hospitality, and pressure is real. A foreign resident writing in VnExpress described tables shouting *trăm phần trăm*, empty your glass, and guests treated as impolite for refusing. Expats interviewed in 2025 said the hardest words to escape were “just one drink”. A cultural researcher traces the custom to village ritual and calls today’s drinking excessive.",
+            "claimIds": [
+              "C-TOAST-100",
+              "C-ALC-PRESSURE"
+            ]
+          },
+          {
+            "text": "The law has changed the balance. The 2019 alcohol law, in force since 2020, bans urging, coaxing or forcing anyone to drink; under Decree 117/2020, forcing someone can cost 1–3 million đồng. A health ministry official said the point is to change behaviour, not to fine people, and that the pressure comes mostly from bosses, older relatives and fathers.",
+            "claimIds": [
+              "C-ALC-LAW",
+              "C-ALC-PRESSURE"
+            ]
+          },
+          {
+            "text": "Driving is the strongest reason of all. Vietnam allows no alcohol at all for anyone at the wheel or on a motorbike, and since 2025 the fines have been heavy: 2–10 million đồng for a motorbike rider and 6–40 million đồng for a car driver, with the licence suspended for up to two years at the highest level.",
+            "claimIds": [
+              "C-ALC-DRIVE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "steps",
+        "heading": "Declining a drink, politely",
+        "id": "decline",
+        "items": [
+          {
+            "title": "Say it early",
+            "paras": [
+              {
+                "text": "Tell your host before the first round that you are not drinking alcohol. It is easier than refusing a glass already poured.",
+                "claimIds": [
+                  "C-ALC-DECLINE"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Give a reason people accept",
+            "paras": [
+              {
+                "text": "Health, religion or “I am driving” are understood. With zero tolerance for drivers, the last one is hard to argue with.",
+                "claimIds": [
+                  "C-ALC-DECLINE",
+                  "C-ALC-DRIVE"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Join the toast anyway",
+            "paras": [
+              {
+                "text": "Fill your glass with tea, water or a soft drink and raise it with everyone. The toast is about being together, not about the drink.",
+                "claimIds": [
+                  "N-ANY-DRINK",
+                  "C-DRINK-TIP"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Change the subject",
+            "paras": [
+              {
+                "text": "If someone insists, smile, thank them and talk about something else.",
+                "claimIds": [
+                  "C-ALC-DECLINE"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-biahoi",
+        "size": "wide",
+        "caption": "A bia hơi corner in the Old Quarter."
+      },
+      {
+        "type": "text",
+        "heading": "Who pays",
+        "id": "pay",
+        "paras": [
+          {
+            "text": "When you eat out, the person who made the invitation usually pays. If nobody clearly invited, the most senior person often does. If you are invited, let your host pay, thank them, and offer to treat them next time.",
+            "claimIds": [
+              "C-WHO-PAYS"
+            ]
+          },
+          {
+            "text": "Among friends paying can turn into a contest, with people racing to the till or one friend quietly settling the bill before the others notice. A 2026 Tiền Phong essay noted that many young people now prefer to split the bill and each pay their own share.",
+            "claimIds": [
+              "C-PAY-FIGHT"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Food in your bowl",
+            "text": "Care. Eat what you can."
+          },
+          {
+            "term": "Enough",
+            "text": "“No rồi”, said more than once."
+          },
+          {
+            "term": "Not drinking",
+            "text": "Say so early; toast with tea."
+          },
+          {
+            "term": "Driving",
+            "text": "Zero alcohol, heavy fines."
+          },
+          {
+            "term": "The bill",
+            "text": "Whoever invited."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ev-home-meal",
+        "question": "The third refill",
+        "prompt": "Your host has filled your bowl twice and is reaching for the fish again. You cannot eat any more. What do you say?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Nothing; just eat it",
+            "feedback": "Your host will keep going. Saying you are full is the clear, polite signal they are expecting."
+          },
+          {
+            "label": "“No rồi, cảm ơn”: I’m full, thank you, and say how good it was",
+            "fit": true,
+            "feedback": "Yes. Say it kindly, more than once if needed, and praise the cooking."
+          },
+          {
+            "label": "Put your hand over your bowl without a word",
+            "feedback": "Words are kinder here. A silent block can look like you did not like the food."
+          }
+        ]
+      }
     ]
   },
   {
     "id": "st-shared-table",
     "country": "vietnam",
-    "place": "Hà Nội",
+    "place": "Hà Nội homes",
     "title": "A table of shared dishes",
-    "dek": "At a family meal the food sits in the middle, and everyone eats from it together.",
+    "dek": "Rice in your bowl, everything else in the middle. How a Hà Nội family meal is laid out, who sits where, who starts, and what happens when the glasses come out.",
     "sceneId": "sc02",
     "sections": [
       {
-        "text": "Meals are shared: dishes are placed in the middle, and each person has a small rice bowl and chopsticks.",
+        "text": "Meals are shared: dishes in the middle, a small rice bowl and chopsticks each.",
         "claimIds": [
           "C-SHARED-MEAL"
         ]
       },
       {
         "heading": "Passing things",
-        "text": "Pass dishes and other items with both hands or with the right hand, not the left. When eating soup, the spoon is held in the left hand.",
+        "text": "Pass dishes with both hands or the right hand. Hold the soup spoon in the left.",
         "claimIds": [
           "C-PASS-HANDS",
           "C-SPOON-LEFT"
@@ -674,23 +1527,358 @@ window.CC.stories = [
       },
       {
         "heading": "Raising a glass",
-        "text": "Drinking is communal: people often raise glasses together and toast with “dô” — said “zo” in the North and “yo” in the South.",
+        "text": "People toast together with “dô”, “zo” in the North and “yo” in the South.",
         "claimIds": [
           "C-TOAST-DO"
         ]
       },
       {
-        "text": "You can join a toast with any drink. Whether you drink alcohol is your choice.",
+        "text": "You can join a toast with any drink.",
         "claimIds": [
           "N-ANY-DRINK"
         ]
       }
     ],
-    "appliesTo": "A home-cooked family meal in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
-    "varies": "Pronunciation of “dô” differs between North and South. Families set their own tables.",
+    "appliesTo": "Family meals at home in Hà Nội and northern Vietnam, from the national tourism authority’s etiquette guide and Vietnamese press.",
+    "varies": "Many families now eat at a table and keep fewer of the old customs; city and village, young and old, do things differently.",
     "phraseIds": [
       "ph-do",
       "ph-no"
+    ],
+    "layout": "longform",
+    "imageId": "fd-family-meal",
+    "hero": {
+      "image": "fd-family-meal"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "At a Vietnamese family meal nobody has a plate of their own. The food sits in the middle, often on a round [[mam|mâm]], a tray, and everyone has a small bowl of rice and a pair of chopsticks. You take a little from the shared dishes, put it on your rice, eat, and take a little more. The national tourism authority puts it simply: mealtimes are about sharing.",
+            "claimIds": [
+              "C-SHARED-MEAL"
+            ]
+          },
+          {
+            "text": "That one idea shapes everything else: where people sit, who starts, how you reach for food, even how you raise a glass. Researchers who study the family meal describe it as a mix of food and conversation, a daily rehearsal of who is who in the family. You do not need to know every rule to be a good guest. It helps to know what is going on around you.",
+            "claimIds": [
+              "C-MAM-STUDY",
+              "C-TABLE-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "At the table",
+        "items": [
+          {
+            "term": "Yours",
+            "text": "A small rice bowl, chopsticks, maybe a spoon."
+          },
+          {
+            "term": "Shared",
+            "text": "Every other dish, in the middle."
+          },
+          {
+            "term": "Start",
+            "text": "When the oldest person starts."
+          },
+          {
+            "term": "Toast",
+            "text": "“Một, hai, ba, dô!”, with any drink."
+          }
+        ],
+        "claimIds": [
+          "C-SHARED-MEAL",
+          "C-MAM-WAIT",
+          "C-TOAST-DO",
+          "N-ANY-DRINK"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The tray",
+        "id": "tray",
+        "paras": [
+          {
+            "text": "A traditional tray is laid out around a small bowl of fish sauce or dipping sauce in the centre. Around it go a vegetable, a dish of meat or fish, and a soup. For generations families sat cross-legged on a mat around the tray; many now eat at a table, but the layout is the same.",
+            "claimIds": [
+              "C-MAM-LAYOUT"
+            ]
+          },
+          {
+            "text": "What goes on it is everyday food. VnExpress described a typical northern summer meal: boiled pork belly, a crab soup cooked with jute leaves and gourd, fried tofu dipped in shrimp paste, boiled morning glory, salted baby aubergines, and fruit to finish. Nothing is served in courses. It all arrives together, and you move between the dishes as you like.",
+            "claimIds": [
+              "C-MAM-MENU"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-family-meal",
+        "size": "wide",
+        "caption": "An everyday meal on an aluminium tray: soup, sweet and sour pork, vegetables and a dipping sauce in the middle."
+      },
+      {
+        "type": "text",
+        "heading": "The person by the rice pot",
+        "id": "pot",
+        "paras": [
+          {
+            "text": "In an old Hà Nội family, the rice pot sat on the floor beside the tray, and one person sat at the head of it. That was usually the grandmother, the mother or the eldest daughter-in-law, and an essay on Hà Nội food calls her the most important woman in the house. When your bowl was empty she refilled it, so that nobody had to get up during the meal.",
+            "claimIds": [
+              "C-MAM-POT"
+            ]
+          },
+          {
+            "text": "A guest at a family table today will often see the same thing in a smaller form: someone, usually the host, keeps an eye on everyone’s bowl. Hold yours out when it is offered, and say thank you.",
+            "claimIds": [
+              "C-MAM-POT",
+              "C-HOST-SERVE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Who sits where, and who starts",
+        "id": "order",
+        "paras": [
+          {
+            "text": "Seats follow age. A northern proverb says *ăn trông nồi, ngồi trông hướng*: watch the pot as you eat, watch where you sit. The best places go to the grandparents and parents. At village feasts the most senior guests may have a tray of their own, set a little apart.",
+            "claimIds": [
+              "C-MAM-SEATS"
+            ]
+          },
+          {
+            "text": "Before anyone eats, the younger people invite their elders, one by one: *Con mời bà ăn cơm*, “I invite you to eat, grandmother”. In older Hà Nội speech it was *mời mẹ xơi cơm ạ*, with the polite verb *xơi*. Nobody starts until the oldest person picks up their bowl. At the end, the younger ones ask leave to get up, and bring the elders tea.",
+            "claimIds": [
+              "C-MAM-WAIT",
+              "C-HOME-MOI"
+            ]
+          },
+          {
+            "text": "This custom is fading. A 2025 VnExpress report found many families have dropped the invitation altogether, as busy households eat together less often. As a guest, a simple [[moi|mời]] to the people around you before you start is always welcome, and never wrong.",
+            "claimIds": [
+              "C-HOME-MOI"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ev-home-meal",
+            "caption": "A home meal in Hà Nội, with rice bowls round the shared dishes."
+          },
+          {
+            "image": "ev-home-table",
+            "caption": "A family table set for a meal."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Reaching for food",
+        "id": "reach",
+        "paras": [
+          {
+            "text": "Pass dishes with both hands or with the right hand, not the left. If there is soup, the spoon goes in your left hand while the chopsticks stay in your right. Soup from the shared bowl is ladled into your own bowl; you never sip from the serving spoon.",
+            "claimIds": [
+              "C-PASS-HANDS",
+              "C-SPOON-LEFT",
+              "C-MAM-SOUP"
+            ]
+          },
+          {
+            "text": "Take from the side of the dish nearest you, and do not dig around for the best piece. When you take from a shared dish, or put food in someone else’s bowl, many families turn their chopsticks round and use the other end, or use a pair of serving chopsticks. Our guide to [chopsticks](story:st-chop) has the details.",
+            "claimIds": [
+              "C-CHOP-TABOOS",
+              "C-CHOP-TURN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The last piece",
+        "id": "last",
+        "paras": [
+          {
+            "text": "Here the sources disagree, and so do Vietnamese families. The traditional custom is to leave one piece on a shared dish, a polite last piece, so that nobody looks greedy. A proverb jokes about it: eat it all and get a beating, leave some and lose a wife.",
+            "claimIds": [
+              "C-LEFTOVER"
+            ]
+          },
+          {
+            "text": "Times have changed. When VnExpress asked readers, many said that leaving food is wasteful, and that clearing your bowl is how you show respect for the cook. The safest course is the one the host sets: if they urge you to take the last piece, take it.",
+            "claimIds": [
+              "C-LEFTOVER",
+              "C-HOME-BOWL"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Watch the pot as you eat, watch where you sit.",
+        "by": "Northern proverb, ăn trông nồi, ngồi trông hướng",
+        "claimIds": [
+          "C-MAM-SEATS"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Raising a glass",
+        "id": "toast",
+        "paras": [
+          {
+            "text": "When there are drinks, nobody drinks alone. People raise their glasses together, often counting *một, hai, ba, dô!*, one, two, three, cheers, and drink as a group. *Dô* is said “zo” in the North and “yo” in the South. Someone may call out *trăm phần trăm*, “one hundred per cent”: empty the glass.",
+            "claimIds": [
+              "C-TOAST-DO",
+              "C-TOAST-100"
+            ]
+          },
+          {
+            "text": "Toasts follow rank too. VnExpress told the story of a new son-in-law scolded for raising his glass to the head of his wife’s clan: only the elder’s equals, like his father-in-law, should have invited him to drink. As a guest you will not be expected to know this; wait to be toasted, and toast back.",
+            "claimIds": [
+              "C-TOAST-RANK"
+            ]
+          },
+          {
+            "text": "You can join any toast with any drink. Whether you drink alcohol is your choice, and the law is on your side: since 2020 it has been illegal to urge or force anyone to drink. Our story on [hosts and guests](story:st-host) covers saying no.",
+            "claimIds": [
+              "N-ANY-DRINK",
+              "C-ALC-LAW"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "phrases",
+        "heading": "Phrases for the table",
+        "ids": [
+          "ph-do",
+          "ph-no",
+          "ph-camon"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Bia hơi on the corner",
+        "id": "biahoi",
+        "paras": [
+          {
+            "text": "Outside the home, Hà Nội drinks [[bia-hoi|bia hơi]]: fresh, unpasteurised beer, brewed to be drunk within a day or so and poured at pavement corners into thick glasses. In the subsidy era it arrived in 100-litre aluminium tanks; since 2000 the city’s brewer has delivered it in 50-litre kegs. The first foamy cups from a new keg have a nickname, *bia cắt tiết*.",
+            "claimIds": [
+              "C-BIAHOI"
+            ]
+          },
+          {
+            "text": "It is part of why Vietnam drinks a lot of beer: by one brewer’s estimate about 4.6 billion litres in 2024, the eighth-largest total in the world. From 2026 the tax on beer rises every year, to 90% by 2031.",
+            "claimIds": [
+              "C-BEER-VOLUME",
+              "C-BEER-TAX"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-biahoi",
+        "size": "bleed",
+        "caption": "A bia hơi corner in the Old Quarter at night."
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Usually welcome",
+          "items": [
+            {
+              "text": "Waiting for the oldest person to start.",
+              "claimIds": [
+                "C-MAM-WAIT"
+              ]
+            },
+            {
+              "text": "Saying “mời” before you eat.",
+              "claimIds": [
+                "C-HOME-MOI"
+              ]
+            },
+            {
+              "text": "Passing dishes with both hands or the right hand.",
+              "claimIds": [
+                "C-PASS-HANDS"
+              ]
+            },
+            {
+              "text": "Joining a toast with whatever is in your glass.",
+              "claimIds": [
+                "N-ANY-DRINK"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Digging through a dish for the best piece.",
+              "claimIds": [
+                "C-CHOP-TABOOS"
+              ]
+            },
+            {
+              "text": "Sipping from the shared soup spoon.",
+              "claimIds": [
+                "C-MAM-SOUP"
+              ]
+            },
+            {
+              "text": "Leaving chopsticks upright in your rice.",
+              "claimIds": [
+                "C-CHOP-UPRIGHT"
+              ]
+            },
+            {
+              "text": "Drinking alone while others wait.",
+              "claimIds": [
+                "C-TOAST-DO"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "quiz",
+        "image": "fd-family-meal",
+        "question": "Everyone is seated",
+        "prompt": "The dishes are on the tray and everyone has rice. You are hungry. What do you do?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Start eating so the food does not go cold",
+            "feedback": "In many families nobody starts until the oldest person picks up their bowl."
+          },
+          {
+            "label": "Wait, say “mời” to the people around you, and start when the oldest does",
+            "fit": true,
+            "feedback": "Yes. Inviting others and waiting for the eldest is the traditional order."
+          },
+          {
+            "label": "Serve yourself a large portion of everything first",
+            "feedback": "Take a little at a time from the shared dishes; it is a meal you eat together."
+          }
+        ]
+      }
     ]
   },
   {
@@ -698,76 +1886,847 @@ window.CC.stories = [
     "country": "vietnam",
     "place": "Hà Nội",
     "title": "Chopsticks and the rice bowl",
-    "dek": "A small habit at the table that some guides link to how the dead are remembered.",
+    "dek": "Which end to use, where to rest them, and why they should never stand in your rice. A short guide to the two things you hold all through a meal.",
     "sceneId": "sc02",
     "sections": [
       {
-        "text": "Some guides explain that chopsticks standing upright in rice look like the incense sticks placed for the dead, so they are rested across the bowl or on the table instead.",
+        "text": "Chopsticks standing upright in rice look like the incense and rice offered to the dead, so they are rested across the bowl or on the table instead.",
         "claimIds": [
           "C-CHOP-UPRIGHT"
         ]
       },
       {
-        "editorial": true,
-        "text": "We have only found this in a travel blog so far, so it is marked as being verified until a stronger source confirms it.",
-        "claimIds": []
+        "heading": "Serving others",
+        "text": "To serve someone, turn your chopsticks round or use serving chopsticks.",
+        "claimIds": [
+          "C-CHOP-TURN"
+        ]
       }
     ],
-    "appliesTo": "Family meals. The only source so far is a third-party travel blog.",
-    "varies": "Not confirmed for any particular region or family.",
-    "phraseIds": []
+    "appliesTo": "Family meals and restaurants in Hà Nội. Some customs here are shared across East Asia; we say where.",
+    "varies": "Families differ, and street stalls are more relaxed than a family table. The luck beliefs are beliefs, held by some people more than others.",
+    "phraseIds": [],
+    "layout": "guide",
+    "imageId": "fd-buncha-condiments",
+    "hero": {
+      "image": "fd-buncha-condiments"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "At a Vietnamese meal you hold two things from start to finish: a small bowl of rice and a pair of chopsticks. The dishes are shared, so the chopsticks do more than carry food to your mouth. They reach into the middle of the table, into other people’s bowls, and they rest beside you when you stop. That is why people notice how you use them.",
+            "claimIds": [
+              "C-SHARED-MEAL"
+            ]
+          },
+          {
+            "text": "Most of what follows is ordinary politeness, the kind any family would teach a child. A few customs come from beliefs about the dead and about luck. Some are shared across East Asia; a widely read VnExpress list of chopstick taboos was adapted from a Chinese source. None of it needs to make you nervous: hosts forgive a visitor almost anything, and watching the people around you is the best guide.",
+            "claimIds": [
+              "C-CHOP-TABOOS",
+              "C-TABLE-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The essentials",
+        "items": [
+          {
+            "term": "Resting",
+            "text": "Across the bowl or on the table, never standing in the rice."
+          },
+          {
+            "term": "Serving",
+            "text": "Turn them round, or use serving chopsticks."
+          },
+          {
+            "term": "Spoon",
+            "text": "Left hand, for soup."
+          },
+          {
+            "term": "Passing",
+            "text": "Both hands, or the right hand."
+          }
+        ],
+        "claimIds": [
+          "C-CHOP-UPRIGHT",
+          "C-CHOP-TURN",
+          "C-SPOON-LEFT",
+          "C-PASS-HANDS"
+        ]
+      },
+      {
+        "type": "steps",
+        "heading": "Through a meal, step by step",
+        "id": "steps",
+        "items": [
+          {
+            "title": "Before you start",
+            "paras": [
+              {
+                "text": "Wait for the oldest person to pick up their bowl. In many northern families the younger people first invite each elder to eat. A quiet *mời* to the people beside you is always welcome.",
+                "claimIds": [
+                  "C-MAM-WAIT",
+                  "C-HOME-MOI"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Taking from the shared dishes",
+            "paras": [
+              {
+                "text": "Take a little at a time, from the side of the dish nearest you, and put it on your rice. Do not dig through the dish for the best piece.",
+                "claimIds": [
+                  "C-CHOP-TABOOS"
+                ]
+              },
+              {
+                "text": "Many families keep a pair of serving chopsticks, or turn their own round and use the clean end for the shared dishes. One VnExpress reader wrote that her family always kept shared chopsticks and spoons, and that if you are not sure, you can simply ask.",
+                "claimIds": [
+                  "C-CHOP-TURN"
+                ]
+              }
+            ],
+            "image": "fd-family-meal",
+            "caption": "Shared dishes round a bowl of dipping sauce."
+          },
+          {
+            "title": "Serving someone else",
+            "paras": [
+              {
+                "text": "Hosts often put food in a guest’s bowl, and you may want to do the same for an elder. Never do it with the end you eat from: turn your chopsticks round, or use the serving pair. The foreign ministry’s newspaper says the same.",
+                "claimIds": [
+                  "C-CHOP-TURN",
+                  "C-HOST-SERVE",
+                  "C-HOST-PROTOCOL"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Soup",
+            "paras": [
+              {
+                "text": "Ladle soup from the shared bowl into your own; never sip from the serving spoon. The spoon goes in your left hand, the chopsticks stay in your right.",
+                "claimIds": [
+                  "C-MAM-SOUP",
+                  "C-SPOON-LEFT"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Resting your chopsticks",
+            "paras": [
+              {
+                "text": "When you pause, lay your chopsticks across the top of your bowl or on the table beside it. Never leave them standing upright in the rice: it recalls the incense sticks and the bowl of rice offered to the dead at an altar.",
+                "claimIds": [
+                  "C-CHOP-UPRIGHT"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Finishing",
+            "paras": [
+              {
+                "text": "Lay the chopsticks down neatly. In traditional families the younger people ask leave before getting up, and bring the elders tea.",
+                "claimIds": [
+                  "C-MAM-WAIT"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Why not upright?",
+        "id": "upright",
+        "paras": [
+          {
+            "text": "On a family altar, a bowl of rice is offered to the ancestors and sticks of incense are planted upright in a bowl of sand or rice. Chopsticks standing in a bowl of rice look the same. At a meal for the living, that is a picture nobody wants to see. The Cultural Atlas, the national broadcaster’s foreign service and VnExpress all mention it.",
+            "claimIds": [
+              "C-CHOP-UPRIGHT"
+            ]
+          },
+          {
+            "text": "It is a belief, but a widely shared one, in Vietnam and across East Asia, and it is the one chopstick rule a host is most likely to notice. Our story on [arriving at a Hà Nội home](story:st-arrive-home) says more about the family altar.",
+            "claimIds": [
+              "C-CHOP-UPRIGHT",
+              "C-HOME-ALTAR"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Some of these customs are shared with China, Korea and Japan. The VnExpress list of chopstick taboos we cite was adapted from a Chinese-language source, so treat it as East Asian etiquette in general.",
+        "claimIds": [
+          "C-CHOP-TABOOS"
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "Chopstick habits that read badly",
+        "id": "habits",
+        "intro": "Choose a tab: everyday manners, or the older beliefs about luck.",
+        "label": "Chopstick habits",
+        "tabs": [
+          {
+            "label": "Manners",
+            "columns": [
+              "Habit",
+              "How it can read"
+            ],
+            "rows": [
+              [
+                "Pointing your chopsticks at someone",
+                {
+                  "text": "Rude and disrespectful, as with pointing a finger.",
+                  "claimIds": [
+                    "C-CHOP-TABOOS"
+                  ]
+                }
+              ],
+              [
+                "Tapping your bowl with them",
+                {
+                  "text": "Suggests a beggar asking for food.",
+                  "claimIds": [
+                    "C-CHOP-TABOOS"
+                  ]
+                }
+              ],
+              [
+                "Digging for the best piece",
+                {
+                  "text": "Greedy, and unfair to everyone else.",
+                  "claimIds": [
+                    "C-CHOP-TABOOS"
+                  ]
+                }
+              ],
+              [
+                "Serving with the end you eat from",
+                {
+                  "text": "Unhygienic; use the other end.",
+                  "claimIds": [
+                    "C-CHOP-TURN"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Beliefs",
+            "columns": [
+              "Habit",
+              "The belief"
+            ],
+            "rows": [
+              [
+                "Standing them upright in rice",
+                {
+                  "text": "Recalls incense and the rice offered to the dead.",
+                  "claimIds": [
+                    "C-CHOP-UPRIGHT"
+                  ]
+                }
+              ],
+              [
+                "Dropping a chopstick",
+                {
+                  "text": "Once counted as very bad luck.",
+                  "claimIds": [
+                    "C-CHOP-LUCK"
+                  ]
+                }
+              ],
+              [
+                "Using an uneven pair",
+                {
+                  "text": "Thought unlucky in older families.",
+                  "claimIds": [
+                    "C-CHOP-LUCK"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Hands, bowls and passing",
+        "id": "hands",
+        "paras": [
+          {
+            "text": "When you pass a dish, a bowl or anything else across the table, use both hands or your right hand, not the left. Handing something to an elder with both hands is a small, clear sign of respect.",
+            "claimIds": [
+              "C-PASS-HANDS"
+            ]
+          },
+          {
+            "text": "When someone at the head of the rice pot offers to refill your bowl, hold it out with both hands and say thank you. In old Hà Nội families that person, usually the grandmother or mother, made sure nobody had to get up during the meal.",
+            "claimIds": [
+              "C-MAM-POT",
+              "C-PASS-HANDS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-buncha-top",
+        "size": "wide",
+        "caption": "Chopsticks resting across the bowls at a bún chả meal."
+      },
+      {
+        "type": "text",
+        "heading": "At a street stall",
+        "id": "stall",
+        "paras": [
+          {
+            "text": "At a [street-food stall](story:st-street-stall) things are simpler. Chopsticks wait in a holder on the table, and wiping them with a paper napkin before you eat is normal. You will rarely share dishes with strangers, so serving etiquette mostly does not apply. The rule about standing chopsticks in your bowl still does.",
+            "claimIds": [
+              "C-FOOD-WIPE",
+              "C-CHOP-UPRIGHT"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Usually right",
+          "items": [
+            {
+              "text": "Resting chopsticks across the bowl or on the table.",
+              "claimIds": [
+                "C-CHOP-UPRIGHT"
+              ]
+            },
+            {
+              "text": "Turning them round to serve others.",
+              "claimIds": [
+                "C-CHOP-TURN"
+              ]
+            },
+            {
+              "text": "Spoon in the left hand for soup.",
+              "claimIds": [
+                "C-SPOON-LEFT"
+              ]
+            },
+            {
+              "text": "Passing with both hands or the right hand.",
+              "claimIds": [
+                "C-PASS-HANDS"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Chopsticks standing upright in rice.",
+              "claimIds": [
+                "C-CHOP-UPRIGHT"
+              ]
+            },
+            {
+              "text": "Pointing with them, or tapping the bowl.",
+              "claimIds": [
+                "C-CHOP-TABOOS"
+              ]
+            },
+            {
+              "text": "Searching a shared dish for the best piece.",
+              "claimIds": [
+                "C-CHOP-TABOOS"
+              ]
+            },
+            {
+              "text": "Sipping from the shared soup spoon.",
+              "claimIds": [
+                "C-MAM-SOUP"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Rest",
+            "text": "Across the bowl, never upright."
+          },
+          {
+            "term": "Serve",
+            "text": "Other end, or serving pair."
+          },
+          {
+            "term": "Soup",
+            "text": "Into your own bowl; spoon in the left hand."
+          },
+          {
+            "term": "Pass",
+            "text": "Both hands or the right."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "fd-buncha-condiments",
+        "question": "A pause in the meal",
+        "prompt": "You want to put your chopsticks down for a moment to talk. Where do they go?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Stuck upright in the rice, so they stay clean",
+            "feedback": "That is the one to avoid: it recalls the incense and rice offered to the dead."
+          },
+          {
+            "label": "Across the top of your bowl, or on the table beside it",
+            "fit": true,
+            "feedback": "Yes. Either is fine."
+          },
+          {
+            "label": "Pointing towards the person you are talking to",
+            "feedback": "Pointing chopsticks at people reads as rude."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-stelae",
     "country": "vietnam",
     "place": "Văn Miếu – Quốc Tử Giám, Hà Nội",
     "title": "The stelae of doctoral laureates",
-    "dek": "Stone records of three centuries of royal examinations, standing in the Temple of Literature.",
+    "dek": "Eighty-two stones on the backs of stone turtles, carved with the names of 1,304 scholars. Three centuries of royal examinations, and why you may no longer touch them.",
     "sceneId": "sc03",
     "imageId": "img-stelae",
     "sections": [
       {
-        "text": "Each stone stele records the names of people who passed the highest royal examinations. 82 of the original 85 survive. They were erected between 1484 and 1780 for exams held from 1442 to 1779.",
+        "text": "The stelae record the names of people who passed the highest royal examinations: 82 stelae for exams held from 1442 to 1779.",
         "claimIds": [
           "C-STELAE-FACTS"
         ]
       },
       {
         "heading": "On UNESCO’s registers",
-        "text": "The stelae were added to UNESCO’s Memory of the World registers in 2010 (Asia-Pacific) and 2011 (international).",
+        "text": "They were added to UNESCO’s Memory of the World registers in 2010 and 2011.",
         "claimIds": [
           "C-STELAE-FACTS"
         ]
       },
       {
         "heading": "Looking, not touching",
-        "text": "The site’s rules ask visitors not to touch, write on or draw on artefacts, stelae or buildings.",
+        "text": "The site asks visitors not to touch, write on or draw on the stelae.",
         "claimIds": [
           "C-VM-NOTOUCH"
         ]
-      },
-      {
-        "editorial": true,
-        "text": "The UNESCO record does not explain why the stelae stand on stone turtles. That is a good question to ask a guide on the day.",
-        "claimIds": []
       }
     ],
-    "appliesTo": "Văn Miếu – Quốc Tử Giám in Hà Nội, using the UNESCO Memory of the World record and the site’s own rules.",
-    "varies": "Specific to this site.",
-    "phraseIds": []
+    "appliesTo": "The doctoral stelae at Văn Miếu – Quốc Tử Giám, from UNESCO’s Memory of the World record, the site’s official pages and Vietnamese press.",
+    "varies": "Specific to this site. Sources differ slightly on the number of names (1,304 or 1,307).",
+    "phraseIds": [],
+    "layout": "timeline",
+    "hero": {
+      "image": "img-stelae"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "In the third courtyard of Văn Miếu, on either side of a square pond, stand two rows of stone turtles. Each carries a stone slab on its back, and each slab is carved with the names of the men who passed one royal examination: when it was held, who set it, who came first, and where each laureate came from. There are 82 of them, for exams held between 1442 and 1779, and together they name 1,304 doctors.",
+            "claimIds": [
+              "C-STELAE-FACTS",
+              "C-STELAE-NAMES",
+              "C-VM-WELL"
+            ]
+          },
+          {
+            "text": "They are the closest thing Vietnam has to a stone archive of its scholars. UNESCO added them to its Memory of the World register in 2011, and Vietnam made them a national treasure in 2015.",
+            "claimIds": [
+              "C-STELAE-FACTS",
+              "C-VM-STATUS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The stelae in brief",
+        "items": [
+          {
+            "term": "How many",
+            "text": "82 stelae, 82 examinations."
+          },
+          {
+            "term": "Exams",
+            "text": "1442 to 1779."
+          },
+          {
+            "term": "Names",
+            "text": "1,304 doctoral laureates."
+          },
+          {
+            "term": "Tallest",
+            "text": "2.07 m, on a stone turtle."
+          }
+        ],
+        "claimIds": [
+          "C-STELAE-FACTS",
+          "C-STELAE-NAMES",
+          "C-STELAE-SIZE"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The examinations they record",
+        "id": "exams",
+        "paras": [
+          {
+            "text": "To earn a place on a stele, a scholar had to pass three examinations: the regional *thi Hương*, the metropolitan *thi Hội* in the capital, and the palace *thi Đình*, where candidates knelt in the courtyard before the king to receive the question. From 1434 the exams were held every three years, and from 1442 those who passed the last stage were titled [[tien-si|tiến sĩ]].",
+            "claimIds": [
+              "C-EXAMS"
+            ]
+          },
+          {
+            "text": "The stelae begin with that year. In 1484 King Lê Thánh Tông ordered a stele for the examination of 1442, held 42 years before. Its text, written by the scholar Thân Nhân Trung, contains a famous line: *hiền tài là nguyên khí quốc gia*, talented people are the vital force of the nation.",
+            "claimIds": [
+              "C-STELAE-FIRST"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Talented people are the vital force of the nation.",
+        "by": "Thân Nhân Trung, on the stele of the 1442 examination",
+        "claimIds": [
+          "C-STELAE-FIRST"
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "Three centuries in stone",
+        "label": "Timeline of the doctoral stelae",
+        "items": [
+          {
+            "era": "The examinations"
+          },
+          {
+            "year": "1075",
+            "title": "The first exam",
+            "text": "The first Confucian examination is held under the Lý, a year before the academy opens.",
+            "claimIds": [
+              "C-VM-EXAM1075"
+            ]
+          },
+          {
+            "year": "1434",
+            "title": "Every three years",
+            "text": "Under the Lê, examinations are set every three years.",
+            "claimIds": [
+              "C-EXAMS"
+            ]
+          },
+          {
+            "year": "1442",
+            "title": "The first doctors on stone",
+            "text": "The examination that the first stele will record. From now on, laureates are titled tiến sĩ.",
+            "claimIds": [
+              "C-EXAMS",
+              "C-STELAE-FIRST"
+            ]
+          },
+          {
+            "era": "The stelae go up"
+          },
+          {
+            "year": "1484",
+            "title": "Lê Thánh Tông’s order",
+            "text": "The king orders stelae to honour the laureates, starting with 1442.",
+            "claimIds": [
+              "C-STELAE-FIRST"
+            ],
+            "image": "img-stelae",
+            "caption": "Stelae on their stone turtles."
+          },
+          {
+            "year": "1653",
+            "title": "25 more",
+            "text": "A large batch is added under the restored Lê.",
+            "claimIds": [
+              "C-STELAE-BATCHES"
+            ]
+          },
+          {
+            "year": "1717",
+            "title": "21 more",
+            "text": "Another batch fills the gaps of the previous decades.",
+            "claimIds": [
+              "C-STELAE-BATCHES"
+            ]
+          },
+          {
+            "year": "1780",
+            "title": "The last stele",
+            "text": "The last of 22 stelae set up since 1721, for the exam of 1779.",
+            "claimIds": [
+              "C-STELAE-BATCHES",
+              "C-STELAE-FACTS"
+            ]
+          },
+          {
+            "era": "After"
+          },
+          {
+            "year": "1840",
+            "title": "Lines chiselled off",
+            "text": "Under the Nguyễn, praise for the old Trịnh lords is cut from some stelae.",
+            "claimIds": [
+              "C-STELAE-1840"
+            ]
+          },
+          {
+            "year": "1919",
+            "title": "The last examination",
+            "text": "The last palace exam is held in Huế. “The road of examinations ends here.”",
+            "claimIds": [
+              "C-EXAMS-1919"
+            ]
+          },
+          {
+            "era": "Protected"
+          },
+          {
+            "year": "2010–11",
+            "title": "Memory of the World",
+            "text": "UNESCO’s Asia-Pacific register (9 March 2010), then the international register (26 May 2011).",
+            "claimIds": [
+              "C-STELAE-FACTS"
+            ]
+          },
+          {
+            "year": "2014",
+            "title": "A fence",
+            "text": "After years of rubbing for luck, a steel fence replaces the ropes.",
+            "claimIds": [
+              "C-STELAE-FENCE"
+            ],
+            "image": "vm-stelae-row",
+            "caption": "A row of stelae behind the fence."
+          },
+          {
+            "year": "2015",
+            "title": "National treasure",
+            "text": "The 82 stelae are named a national treasure.",
+            "claimIds": [
+              "C-VM-STATUS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Why turtles?",
+        "id": "turtles",
+        "paras": [
+          {
+            "text": "Each stele stands on a stone turtle, the tallest more than two metres high. UNESCO’s record describes the turtles but does not explain them. The folklorist Ngô Đức Thịnh does: the turtle lives long and is the very picture of endurance, so a stele on its back means the laureates’ names will be kept from generation to generation, for ever.",
+            "claimIds": [
+              "C-STELAE-SIZE",
+              "C-STELAE-TURTLE"
+            ]
+          },
+          {
+            "text": "Turtles appear elsewhere in Hà Nội’s stories too, above all in the legend of [the returned sword](story:st-sword-lake) at Hoàn Kiếm Lake.",
+            "claimIds": [
+              "C-SWORD-LEGEND"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Rubbing for luck, and the fence",
+        "id": "fence",
+        "paras": [
+          {
+            "text": "For generations students rubbed the turtles’ heads before their exams, hoping some of the laureates’ luck would pass to them. By 2010 UNESCO’s nomination noted that touching and rubbing was wearing the stones down. In 2012 the rows were roped off and student volunteers stood guard in exam season; in 2014 a steel fence went up.",
+            "claimIds": [
+              "C-STELAE-FENCE",
+              "C-VM-LUCK"
+            ]
+          },
+          {
+            "text": "The rule today is simple: look, do not touch. The site’s rules forbid touching, writing or drawing on the stelae and buildings.",
+            "claimIds": [
+              "C-VM-NOTOUCH"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Struck out and spared",
+        "id": "politics",
+        "paras": [
+          {
+            "text": "The stones also record politics. Some of their texts praised the Trịnh lords, and later rulers did not want that remembered: after an order of 1840 under the Nguyễn, those lines were chiselled off some of the stelae.",
+            "claimIds": [
+              "C-STELAE-1840"
+            ]
+          },
+          {
+            "text": "Nor did the stones go up as the exams were held. They came in batches: the first under Lê Thánh Tông, then 25 in 1653, 21 in 1717 and 22 between 1721 and 1780, often recording examinations held many years earlier, just as the first stele did for 1442.",
+            "claimIds": [
+              "C-STELAE-BATCHES",
+              "C-STELAE-FIRST"
+            ]
+          },
+          {
+            "text": "What survived is still remarkable: 82 stones covering 82 examinations over more than three centuries, with each laureate’s name, home village and position. UNESCO added them to its Memory of the World register for Asia and the Pacific in 2010, and to the international register in 2011.",
+            "claimIds": [
+              "C-STELAE-FACTS",
+              "C-STELAE-NAMES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Sources differ on the number of names: UNESCO and most Vietnamese reports give 1,304, one newspaper 1,307 entries. We use UNESCO’s figure.",
+        "claimIds": [
+          "C-STELAE-NAMES"
+        ]
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Usually welcome",
+          "items": [
+            {
+              "text": "Reading the stelae from the path.",
+              "claimIds": [
+                "C-VM-NOTOUCH"
+              ]
+            },
+            {
+              "text": "Keeping your voice down.",
+              "claimIds": [
+                "C-VM-QUIET"
+              ]
+            },
+            {
+              "text": "Coming early, before the crowds.",
+              "claimIds": [
+                "C-VM-TIP"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Not allowed",
+          "items": [
+            {
+              "text": "Rubbing a turtle’s head for luck.",
+              "claimIds": [
+                "C-STELAE-FENCE"
+              ]
+            },
+            {
+              "text": "Touching, writing or drawing on a stele.",
+              "claimIds": [
+                "C-VM-NOTOUCH"
+              ]
+            },
+            {
+              "text": "Climbing the fence for a photo.",
+              "claimIds": [
+                "C-STELAE-FENCE"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Stelae",
+            "text": "82, on stone turtles."
+          },
+          {
+            "term": "Exams",
+            "text": "1442–1779."
+          },
+          {
+            "term": "Names",
+            "text": "1,304 doctors."
+          },
+          {
+            "term": "Rule",
+            "text": "Look, don’t touch."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "img-stelae",
+        "question": "The turtle’s head",
+        "prompt": "A friend with an exam next week wants to rub a turtle’s head for luck. What do you tell them?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Go ahead, everyone does",
+            "feedback": "They used to, and it wore the stones down. Since 2014 the stelae are fenced off."
+          },
+          {
+            "label": "It is not allowed now; pray or ask for a calligraphy character instead",
+            "fit": true,
+            "feedback": "Yes. Students still come for luck, but the stelae are looked at, not touched."
+          },
+          {
+            "label": "Only on the first day of Tết",
+            "feedback": "There is no exception: the rule applies every day."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-temple-visit",
     "country": "vietnam",
-    "place": "Văn Miếu – Quốc Tử Giám, Hà Nội",
-    "title": "Visiting a temple or heritage site",
-    "dek": "What one site’s own rules say, what general temple guidance adds, and where both are silent.",
+    "place": "Hà Nội",
+    "title": "Visiting a temple or pagoda",
+    "dek": "What to wear, how many incense sticks, where the money goes, and when to put the camera away. A practical guide to Hà Nội’s places of worship, from the rules sites publish to the customs they leave unsaid.",
     "sceneId": "sc03",
     "imageId": "img-garden",
     "sections": [
       {
         "heading": "The site’s own rules",
-        "text": "Văn Miếu – Quốc Tử Giám asks visitors to dress respectfully when entering places of worship and to keep quiet in solemn areas. Visitors must not touch, write on or draw on artefacts, stelae or buildings.",
+        "text": "Văn Miếu – Quốc Tử Giám asks visitors to dress respectfully, keep quiet and not touch the stelae or buildings.",
         "claimIds": [
           "C-VM-DRESS",
           "C-VM-QUIET",
@@ -775,24 +2734,337 @@ window.CC.stories = [
         ]
       },
       {
-        "heading": "General temple guidance",
-        "text": "General guidance for temples in Vietnam is to dress modestly — for example covering shoulders and knees — and to take off hats.",
+        "heading": "General guidance",
+        "text": "Dress modestly and take off hats.",
         "claimIds": [
           "C-TEMPLE-COVER"
         ]
-      },
-      {
-        "heading": "Where the rules are silent",
-        "text": "The site’s published rules do not mention photography or incense, so ask staff or look for signs on the day.",
-        "claimIds": [
-          "C-VM-PHOTO-UNKNOWN"
-        ]
       }
     ],
-    "appliesTo": "Văn Miếu – Quốc Tử Giám, using the rules on its official website (checked October 2026), plus general temple guidance from Viet Nam News and the national tourism authority.",
-    "varies": "Other temples and pagodas have their own rules, and rules can change. Check signs on the day.",
+    "appliesTo": "Pagodas, temples and heritage sites in Hà Nội. Site rules come from the sites themselves; general guidance from the national tourism authority.",
+    "varies": "Each site has its own rules, and they change. Check signs on the day.",
     "phraseIds": [
       "ph-chupanh-noi"
+    ],
+    "layout": "guide",
+    "hero": {
+      "image": "bl-tranquoc"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "At Hà Nội’s pagodas and temples a few things matter: what you wear, where you put your feet and your money, and when you lift your camera. This guide sets out what the sites themselves ask, what general guidance adds, and where both are silent.",
+            "claimIds": [
+              "C-TEMPLE-COVER",
+              "C-VM-DRESS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The short version",
+        "items": [
+          {
+            "term": "Wear",
+            "text": "Shoulders and knees covered; hat off."
+          },
+          {
+            "term": "Incense",
+            "text": "Usually one or three sticks."
+          },
+          {
+            "term": "Money",
+            "text": "In the donation box, not on statues."
+          },
+          {
+            "term": "Photos",
+            "text": "Ask before photographing people."
+          }
+        ],
+        "claimIds": [
+          "C-TEMPLE-COVER",
+          "C-INCENSE",
+          "C-MONEY-STATUES",
+          "C-TEMPLE-CAMERA"
+        ]
+      },
+      {
+        "type": "steps",
+        "heading": "A visit, step by step",
+        "id": "steps",
+        "items": [
+          {
+            "title": "Dress for it",
+            "paras": [
+              {
+                "text": "General guidance for temples in Vietnam is to dress modestly, covering shoulders and knees, and to take off your hat. Văn Miếu’s own rules ask for respectful dress in its places of worship. If you are touring in shorts, a scarf or light trousers in your bag solves it.",
+                "claimIds": [
+                  "C-TEMPLE-COVER",
+                  "C-VM-DRESS",
+                  "C-TEMPLE-TIP"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Shoes",
+            "paras": [
+              {
+                "text": "The national tourism authority advises taking off shoes at temples; you may carry them, just not wear them.",
+                "claimIds": [
+                  "C-TEMPLE-SHOES"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Incense",
+            "paras": [
+              {
+                "text": "Custom favours an odd number of sticks, usually three or one. The abbot of the One Pillar pagoda, asked about it, said one, two or three are all fine, and that pagodas set no rule; what matters is sincerity.",
+                "claimIds": [
+                  "C-INCENSE"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Offerings",
+            "paras": [
+              {
+                "text": "On the first day of Tết 2025, reporters found the trays at Phủ Tây Hồ and Trấn Quốc held only fruit and sweets, with no votive paper and no meat. Many temples now limit paper offerings; see [paper offerings](story:st-paper-offerings).",
+                "claimIds": [
+                  "C-OFFER-2025",
+                  "C-VANGMA-HN"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Money",
+            "paras": [
+              {
+                "text": "For years visitors tucked small notes into statues’ hands and piled them at their feet. The rules now ask festival organisers to guide people to put money only in the places set aside, and money-changing for a fee inside sites is to stop. Use the donation box.",
+                "claimIds": [
+                  "C-MONEY-STATUES",
+                  "C-TEMPLE-TIP"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Quiet, and hands off",
+            "paras": [
+              {
+                "text": "Keep your voice down in the halls. At heritage sites such as Văn Miếu you must not touch, write on or draw on stelae, statues or buildings.",
+                "claimIds": [
+                  "C-VM-QUIET",
+                  "C-VM-NOTOUCH"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "The camera",
+            "paras": [
+              {
+                "text": "Ask before photographing people, especially anyone praying. Do not use flash where signs ask for no photos, and avoid posing for selfies with Buddha statues, which can be seen as disrespectful. Where the published rules are silent, as Văn Miếu’s are, look for signs or ask staff.",
+                "claimIds": [
+                  "C-TEMPLE-CAMERA",
+                  "C-VM-PHOTO-UNKNOWN",
+                  "C-PHOTO-TEMPLE"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Usually welcome",
+          "items": [
+            {
+              "text": "Covering shoulders and knees.",
+              "claimIds": [
+                "C-TEMPLE-COVER"
+              ]
+            },
+            {
+              "text": "One or three sticks of incense.",
+              "claimIds": [
+                "C-INCENSE"
+              ]
+            },
+            {
+              "text": "Money in the donation box.",
+              "claimIds": [
+                "C-MONEY-STATUES"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Tucking notes into a statue’s hand.",
+              "claimIds": [
+                "C-MONEY-STATUES"
+              ]
+            },
+            {
+              "text": "Stepping over a small floor altar in a shop.",
+              "claimIds": [
+                "C-FLOOR-ALTAR"
+              ]
+            },
+            {
+              "text": "Photographing someone praying without asking.",
+              "claimIds": [
+                "C-TEMPLE-CAMERA"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "heading": "Busy days",
+        "id": "busy",
+        "paras": [
+          {
+            "text": "The 1st and 15th of each lunar month are the days families light incense, at home and at temples, and the first days of the year are the busiest of all: on the first day of Tết 2025 crowds were at Phủ Tây Hồ from nine in the morning. If you want a quiet visit, avoid those days; if you want to see the city at worship, go then.",
+            "claimIds": [
+              "C-ALTAR",
+              "C-OFFER-2025"
+            ]
+          },
+          {
+            "text": "On the busiest days the halls may be closed to the crowd. At Phủ Tây Hồ on the first day of Tết 2025, visitors made their offerings from the courtyard rather than inside. Follow the staff and the signs, and give the people praying room.",
+            "claimIds": [
+              "C-OFFER-2025"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Altars in homes and shops",
+        "id": "floor",
+        "paras": [
+          {
+            "text": "Many shops and homes keep a small altar on the floor near the door, for the god of wealth and the earth god. The national tourism authority advises not stepping over it or walking directly in front of it. Our story on [the family altar](story:st-family-altar) explains it.",
+            "claimIds": [
+              "C-FLOOR-ALTAR",
+              "C-THANTAI"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Tickets, hours and luck",
+        "id": "tickets",
+        "paras": [
+          {
+            "text": "Heritage sites charge for entry. Văn Miếu opens every day from 8 a.m. to 5 p.m., and a ticket is 70,000 đồng, half price for students and people over 60. The Imperial Citadel is open 8:00–17:00 and costs 100,000 đồng.",
+            "claimIds": [
+              "C-VM-VISIT",
+              "C-TL-VISIT"
+            ]
+          },
+          {
+            "text": "Some customs have had to change. For years students rubbed the heads of the stone turtles under Văn Miếu’s stelae for luck before their exams, until the wear forced the site to fence them off in 2014. Look, and leave them be.",
+            "claimIds": [
+              "C-STELAE-FENCE",
+              "C-VM-LUCK"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Paper offerings and the new rules",
+        "id": "paper",
+        "paras": [
+          {
+            "text": "Hà Nội’s temples have tightened up on paper offerings. In the 2026 festival season Quán Thánh asked visitors not to bring paper offerings into the main shrine, Kim Liên did not allow burning in its main worship area, and Phủ Tây Hồ set up a supervised place for burning. The city also forbids scattering rice or salt and sticking incense into trees. If you buy offerings at the gate, ask what the temple allows.",
+            "claimIds": [
+              "C-VANGMA-HN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "At Tết and on pilgrimage",
+        "id": "tet",
+        "paras": [
+          {
+            "text": "On the first day of the year many Hanoians go to pagodas and temples such as Trấn Quốc and Ngọc Sơn to pray for peace, and calligraphers write characters for the new year at Ngọc Sơn and Văn Miếu. In spring pilgrims travel by boat to the Hương pagoda; in 2026 the festival ran from February to May and 135,900 people came in its first five days.",
+            "claimIds": [
+              "C-TET-DILE",
+              "C-TET-CHU",
+              "C-HUONG2026"
+            ]
+          },
+          {
+            "text": "For the difference between a chùa, a đền and a đình, and what each one honours, see [Chùa, đền, đình](story:st-sacred-places).",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Wear",
+            "text": "Covered shoulders and knees."
+          },
+          {
+            "term": "Incense",
+            "text": "One or three sticks."
+          },
+          {
+            "term": "Money",
+            "text": "Donation box only."
+          },
+          {
+            "term": "Ask",
+            "text": "Chụp ảnh được không? May I take a photo?"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "img-garden",
+        "question": "The statue’s hand",
+        "prompt": "At a temple you see notes tucked into a statue’s hand. You would like to make an offering too. What do you do?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Add a note to the statue’s hand",
+            "feedback": "Others may do it, but the rules ask people to put money only in the places set aside."
+          },
+          {
+            "label": "Put it in the donation box",
+            "fit": true,
+            "feedback": "Yes. That is what the sites and the national rules ask."
+          },
+          {
+            "label": "Leave a note on the incense urn",
+            "feedback": "Better not: use the donation box."
+          }
+        ]
+      }
     ]
   },
   {
@@ -2391,13 +4663,13 @@ window.CC.stories = [
   {
     "id": "st-street-stall",
     "country": "vietnam",
-    "place": "Hà Nội",
+    "place": "Streets of Hà Nội",
     "title": "Eating at a street-food stall",
-    "dek": "Order at the front, sit where there is room, eat first and pay on the way out.",
+    "dek": "Order at the front, sit where there is room, eat first and pay on the way out. A guide to Hà Nội’s plastic-stool kitchens: what to order, when, and how to choose one.",
     "sceneId": "sc06",
     "sections": [
       {
-        "text": "At a small street-food stall there is often no menu. You order at the front, where the cook is, then choose your own table or stool. Pointing at what you want is fine: ask for “một suất” (one serving) or “một cái này” (one of these).",
+        "text": "At a small street-food stall there is often no menu. Order at the front, then choose your own stool; pointing is fine.",
         "claimIds": [
           "C-FOOD-ORDER",
           "C-FOOD-POINT"
@@ -2405,14 +4677,14 @@ window.CC.stories = [
       },
       {
         "heading": "Sharing a table",
-        "text": "Stalls are small. At busy times other diners may sit down at your table; that is normal, not rude.",
+        "text": "At busy times other diners may sit at your table; that is normal.",
         "claimIds": [
           "C-FOOD-SHARE"
         ]
       },
       {
         "heading": "What is already on the table",
-        "text": "Noodle dishes come with a free plate of herbs and leafy greens to add as you like. “Trà đá”, iced green tea, is served instead of water. A quick wipe of your chopsticks or spoon before you eat is normal.",
+        "text": "Herbs come free with noodle dishes, trà đá replaces water, and wiping your chopsticks is normal.",
         "claimIds": [
           "C-FOOD-HERBS",
           "C-FOOD-TRADA",
@@ -2421,18 +4693,520 @@ window.CC.stories = [
       },
       {
         "heading": "Paying",
-        "text": "Eat first, pay later: ask the cook for the total on your way out. Tipping is less common; you may tip if you want to, but you don’t have to.",
+        "text": "Eat first and pay on the way out. Tipping is not expected.",
         "claimIds": [
           "C-FOOD-PAY",
           "C-TIP"
         ]
       }
     ],
-    "appliesTo": "Small pavement stalls in Hà Nội, using the national tourism authority’s street-food guide.",
-    "varies": "Restaurants, cafés and stalls in other cities may do things differently. Watch what the people around you do.",
+    "appliesTo": "Small pavement and shopfront stalls in Hà Nội, from the national tourism authority’s street-food guides, Vietnamese press and official pages. Prices from 2026.",
+    "varies": "Restaurants and cafés work differently, and stalls in other cities have their own habits. Pavement rules in Hà Nội were changing in 2025–26.",
     "phraseIds": [
       "ph-motsuat",
       "ph-tinhtien"
+    ],
+    "layout": "guide",
+    "imageId": "fd-stall-snails",
+    "hero": {
+      "image": "fd-stall-snails"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Much of the best food in Hà Nội is cooked in a space the size of a parked car. A pot of broth on a gas ring, a tray of herbs, a stack of bowls, and a cluster of low plastic stools: that is a restaurant. Many stalls serve only two or three dishes, perfected over years, and some have no sign at all.",
+            "claimIds": [
+              "C-FOOD-ORDER"
+            ]
+          },
+          {
+            "text": "The city is proud of them. In 2025 Time Out ranked Hà Nội the second-best street-food city in Asia, and the Michelin Guide now lists stalls alongside restaurants, its director praising the street stalls and family eateries that keep old recipes alive. This guide explains how a stall works, what to eat and when, and how to choose a good one.",
+            "claimIds": [
+              "C-FOOD-TIMEOUT",
+              "C-FOOD-MICHELIN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Street stalls in brief",
+        "items": [
+          {
+            "term": "Order",
+            "text": "At the front, then sit anywhere."
+          },
+          {
+            "term": "Drink",
+            "text": "Trà đá, iced tea, instead of water."
+          },
+          {
+            "term": "Pay",
+            "text": "On the way out. Say “tính tiền”."
+          },
+          {
+            "term": "Price",
+            "text": "About 45,000–50,000 đồng for a bowl of noodles (2026)."
+          }
+        ],
+        "claimIds": [
+          "C-FOOD-ORDER",
+          "C-FOOD-TRADA",
+          "C-FOOD-PAY",
+          "C-FOOD-PRICE"
+        ]
+      },
+      {
+        "type": "steps",
+        "heading": "A meal at a stall, step by step",
+        "id": "steps",
+        "items": [
+          {
+            "title": "Choose a busy one",
+            "paras": [
+              {
+                "text": "The national tourism authority’s rule of thumb: the busier the stall, the more likely it is worth the wait. Locals know which cook is good. The health ministry adds a few signs to look for: a clean cooking area, staff wearing gloves, and oil that is not dark from reuse. Avoid stalls that are dusty, smoky or right on the edge of heavy traffic.",
+                "claimIds": [
+                  "C-FOOD-BUSY",
+                  "C-FOOD-SAFE"
+                ]
+              }
+            ],
+            "image": "fd-stools",
+            "caption": "Plastic stools stacked outside a Hà Nội eatery."
+          },
+          {
+            "title": "Order at the front",
+            "paras": [
+              {
+                "text": "Go to the cook, usually at the front by the pot, and order before you sit. If there is no menu, point at what you want and ask for *một suất*, one serving, or *một cái này*, one of these. Or order what the next table is eating.",
+                "claimIds": [
+                  "C-FOOD-ORDER",
+                  "C-FOOD-POINT"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Sit wherever there is room",
+            "paras": [
+              {
+                "text": "Pick your own stool or table. At busy times strangers will sit at yours; that is normal, and a smile is enough.",
+                "claimIds": [
+                  "C-FOOD-SHARE"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Use what is on the table",
+            "paras": [
+              {
+                "text": "Noodle dishes come with a free plate of herbs and greens. On the table you will find a jar of garlic and chilli in vinegar, fish sauce, chilli and lime: vinegar usually goes with beef phở, lime with chicken. Wiping your chopsticks and spoon with a napkin before you eat is normal, and the used napkins, lime husks and herb stalks go in the bin under the table.",
+                "claimIds": [
+                  "C-FOOD-HERBS",
+                  "C-FOOD-CONDIMENTS",
+                  "C-FOOD-WIPE"
+                ]
+              },
+              {
+                "text": "Instead of water you will be offered [[tra-da|trà đá]], iced green tea, or hot tea in cold weather.",
+                "claimIds": [
+                  "C-FOOD-TRADA"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Eat first, pay last",
+            "paras": [
+              {
+                "text": "When you have finished, say *tính tiền* and pay the cook on your way out; someone may add up the bill at your table. Tipping is not expected at stalls.",
+                "claimIds": [
+                  "C-FOOD-PAY",
+                  "C-TIP"
+                ]
+              },
+              {
+                "text": "Carry small notes. Stalls rarely take cards, and a large note can leave the cook without change.",
+                "claimIds": [
+                  "C-FOOD-TIP2"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "phrases",
+        "heading": "Phrases for the stall",
+        "ids": [
+          "ph-motsuat",
+          "ph-baonhieu",
+          "ph-tinhtien",
+          "ph-camon"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Hà Nội eats by the clock",
+        "id": "clock",
+        "paras": [
+          {
+            "text": "Stalls keep hours, and so do dishes. Morning stalls open soon after sunrise; lunch is from about half past eleven to one; dinner is busiest from six to eight. Arrive late and the pot may be empty.",
+            "claimIds": [
+              "C-FOOD-BUSY"
+            ]
+          },
+          {
+            "text": "Breakfast is the big meal of the street. [Phở](story:st-pho) is the best known, but there is also *bánh cuốn*, delicate steamed rice sheets; *xôi*, sticky rice with savoury toppings; and *bún thang*, a clear noodle soup with many fine toppings that, the tourism authority says, began as a way to use up leftover Tết food. [Bún chả](story:st-bun-cha) belongs to lunch.",
+            "claimIds": [
+              "C-FOOD-TIMES",
+              "C-FOOD-BUNTHANG",
+              "C-FOOD-BANHCUON"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "What to eat, and when",
+        "id": "when",
+        "intro": "Choose a time of day. On a phone, each row reads as a card.",
+        "label": "Hà Nội street dishes by time of day",
+        "tabs": [
+          {
+            "label": "Morning",
+            "columns": [
+              "Dish",
+              "What it is"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "phở",
+                  "vi": true
+                },
+                {
+                  "text": "Rice noodles in clear broth with beef or chicken.",
+                  "claimIds": [
+                    "C-PHO-BOWL"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "bánh cuốn",
+                  "vi": true
+                },
+                {
+                  "text": "Steamed rice sheets; the Thanh Trì craft is national heritage.",
+                  "claimIds": [
+                    "C-FOOD-BANHCUON"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "xôi",
+                  "vi": true
+                },
+                {
+                  "text": "Sticky rice with savoury toppings; cheap and filling.",
+                  "claimIds": [
+                    "C-FOOD-TIMES"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "bún thang",
+                  "vi": true
+                },
+                {
+                  "text": "Clear noodle soup with many fine toppings.",
+                  "claimIds": [
+                    "C-FOOD-BUNTHANG"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Midday",
+            "columns": [
+              "Dish",
+              "What it is"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "bún chả",
+                  "vi": true
+                },
+                {
+                  "text": "Grilled pork in dipping sauce with noodles; almost always lunch.",
+                  "claimIds": [
+                    "C-FOOD-TIMES",
+                    "C-BUNCHA"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "bún riêu",
+                  "vi": true
+                },
+                {
+                  "text": "Noodles in a crab and tomato broth.",
+                  "claimIds": [
+                    "C-FOOD-TIMES"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "bún ốc",
+                  "vi": true
+                },
+                {
+                  "text": "Snail noodle soup, a Hà Nội comfort food.",
+                  "claimIds": [
+                    "C-FOOD-TIMES"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Evening and seasons",
+            "columns": [
+              "Dish",
+              "What it is"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "chả cá Lã Vọng",
+                  "vi": true
+                },
+                {
+                  "text": "Turmeric fish finished with dill at the table; more than 130 years on Chả Cá street.",
+                  "claimIds": [
+                    "C-FOOD-CHACA"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "ốc",
+                  "vi": true
+                },
+                {
+                  "text": "Snails with lemongrass and lime leaf, best in autumn.",
+                  "claimIds": [
+                    "C-FOOD-AUTUMN"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "cốm",
+                  "vi": true
+                },
+                {
+                  "text": "Young green rice in a lotus leaf: the taste of autumn.",
+                  "claimIds": [
+                    "C-FOOD-AUTUMN"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-stall-snails",
+        "size": "wide",
+        "caption": "A snail stall on the pavement, with baskets of snails and low stools."
+      },
+      {
+        "type": "text",
+        "heading": "Is it safe?",
+        "id": "safety",
+        "paras": [
+          {
+            "text": "Street food is regulated. The 2010 Food Safety Law has its own section on it: food must be displayed on clean tables, shelves or stands, with clean ingredients and utensils. Since January 2025 Hà Nội can fine violations up to 6 million đồng, and a revised law with new street-food rules went before the National Assembly in October 2026.",
+            "claimIds": [
+              "C-FOOD-LAW"
+            ]
+          },
+          {
+            "text": "Enforcement is a big job. A city council survey in 2025 counted 6,890 street-food businesses in Hà Nội, out of about 80,000 food businesses of all kinds; since 2021 inspectors had found violations in about one check in seven. We could not find reliable figures for food poisoning from Hà Nội street food, so we do not give any.",
+            "claimIds": [
+              "C-FOOD-COUNT"
+            ]
+          },
+          {
+            "text": "The practical advice is the same as in step one: choose busy stalls, food cooked hot in front of you, a clean cooking area, and clean oil.",
+            "claimIds": [
+              "C-FOOD-SAFE",
+              "C-FOOD-BUSY"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "We could not find Hà Nội food-poisoning figures for 2024–26 from a reliable source, so we have not given any.",
+        "claimIds": [
+          "C-FOOD-COUNT"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Off the pavement",
+        "id": "pavement",
+        "paras": [
+          {
+            "text": "The stalls are changing. In 2025–26 Hà Nội’s campaign to clear the pavements, described in our story on [life on the pavement](story:st-pavement), pushed many food sellers indoors. One crab-noodle seller on Hàng Cháo moved into an alley a metre wide and lost about two-thirds of the stall’s trade; a xôi seller on Hàng Khoai moved into a shop two hundred metres away and paid double the rent.",
+            "claimIds": [
+              "C-FOOD-MOVED"
+            ]
+          },
+          {
+            "text": "Some streets are made for eating. Tống Duy Tân has been the city’s food street since 2000, and in January 2025 it reopened with stone paving, lanterns and a bronze statue of a phở seller.",
+            "claimIds": [
+              "C-FOOD-TDT"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ev-night-market",
+            "caption": "Food stalls at the Old Quarter night market."
+          },
+          {
+            "image": "ev-tra-da",
+            "caption": "Iced tea and stools under a tree."
+          }
+        ]
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Usually right",
+          "items": [
+            {
+              "text": "Ordering at the front before you sit.",
+              "claimIds": [
+                "C-FOOD-ORDER"
+              ]
+            },
+            {
+              "text": "Choosing a busy stall.",
+              "claimIds": [
+                "C-FOOD-BUSY"
+              ]
+            },
+            {
+              "text": "Sharing a table with strangers.",
+              "claimIds": [
+                "C-FOOD-SHARE"
+              ]
+            },
+            {
+              "text": "Paying on the way out, with small notes.",
+              "claimIds": [
+                "C-FOOD-PAY",
+                "C-FOOD-TIP2"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Waiting at the table for a menu.",
+              "claimIds": [
+                "C-FOOD-ORDER"
+              ]
+            },
+            {
+              "text": "Stalls with dark, reused oil or food that smells odd.",
+              "claimIds": [
+                "C-FOOD-SAFE"
+              ]
+            },
+            {
+              "text": "Looking for bún chả at breakfast.",
+              "claimIds": [
+                "C-FOOD-TIMES"
+              ]
+            },
+            {
+              "text": "Leaving a tip as if it were expected.",
+              "claimIds": [
+                "C-TIP"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Order",
+            "text": "At the front; point if you need to."
+          },
+          {
+            "term": "Sit",
+            "text": "Anywhere there is room."
+          },
+          {
+            "term": "Table",
+            "text": "Herbs, vinegar, lime, trà đá."
+          },
+          {
+            "term": "Pay",
+            "text": "“Tính tiền”, on the way out."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "fd-stools",
+        "question": "No menu, no waiter",
+        "prompt": "You sit down at a stall and nobody comes to take your order. What is going on?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "They are ignoring you",
+            "feedback": "Not at all. At most stalls nobody comes to the table to take orders."
+          },
+          {
+            "label": "You were supposed to order from the cook at the front first",
+            "fit": true,
+            "feedback": "Yes. Order at the front, then sit; your food will be brought to you."
+          },
+          {
+            "label": "You need to wave for the bill first",
+            "feedback": "You pay at the end, on the way out."
+          }
+        ]
+      }
     ]
   },
   {
@@ -2829,108 +5603,936 @@ window.CC.stories = [
     "country": "vietnam",
     "place": "Văn Miếu – Quốc Tử Giám, Hà Nội",
     "title": "Vietnam’s first university",
-    "dek": "A temple to Confucius from 1070, and the royal academy that grew up beside it.",
+    "dek": "A temple to Confucius from 1070, and the royal academy that grew up beside it. Five courtyards, walked from the street gate to the school at the back.",
     "sceneId": "sc03",
     "sections": [
       {
-        "text": "Văn Miếu, the “Temple of Literature”, was built in 1070 under King Lý Thánh Tông. Six years later King Lý Nhân Tông founded Quốc Tử Giám beside it: a school first for princes, later for gifted students from across the country.",
+        "text": "Văn Miếu was built in 1070; in 1076 Quốc Tử Giám, the royal academy, was founded beside it.",
         "claimIds": [
           "C-VM-FOUNDED"
         ]
       },
       {
         "heading": "Seven centuries of teaching",
-        "text": "The academy taught for more than 700 years, until 1802. The temple honours Confucius and Confucian scholars, and the teacher Chu Văn An, remembered as a model of learning and integrity.",
+        "text": "The academy taught for more than 700 years, until 1802.",
         "claimIds": [
           "C-VM-ACADEMY"
         ]
       },
       {
         "heading": "Five courtyards",
-        "text": "Today the walled site is divided into five courtyards, walked from the street gate to Thái Học house at the back. The plan on this page follows that route.",
+        "text": "The walled site is divided into five courtyards along one axis.",
         "claimIds": [
           "C-VM-LAYOUT"
         ]
       },
       {
         "editorial": true,
-        "text": "Calling it a “university” is a modern shorthand: it trained scholars for the royal examinations in the Confucian classics, not in the subjects a university teaches today.",
+        "text": "Calling it a “university” is a modern shorthand: it trained scholars for the royal examinations in the Confucian classics.",
         "claimIds": []
       }
     ],
-    "appliesTo": "Văn Miếu – Quốc Tử Giám in Hà Nội, from a Tuổi Trẻ feature on the site.",
-    "varies": "Specific to this site.",
-    "phraseIds": []
+    "appliesTo": "Văn Miếu – Quốc Tử Giám in Hà Nội, from the site’s official pages, UNESCO and Vietnamese press. Prices and hours from November 2026.",
+    "varies": "Specific to this site. Hours and ticket prices change; check the official site before you go.",
+    "phraseIds": [],
+    "layout": "longform",
+    "imageId": "vm-khuevan",
+    "hero": {
+      "image": "vm-khuevan"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Behind a long wall on a busy street west of the Old Quarter is the quietest place in central Hà Nội. In 1070 King Lý Thánh Tông built Văn Miếu, a temple to Confucius. Six years later his successor, Lý Nhân Tông, founded Quốc Tử Giám beside it, a royal academy that taught for more than seven centuries. Vietnamese call it the country’s first university.",
+            "claimIds": [
+              "C-VM-FOUNDED",
+              "C-VM-ACADEMY"
+            ]
+          },
+          {
+            "text": "That is a modern shorthand. Quốc Tử Giám did not teach medicine or law; it trained young men in the Confucian classics for the royal examinations that chose the country’s officials. At first its students were the sons of the royal family, nobles and mandarins; from 1253, under the Trần, commoners of ability were admitted too. In 2026 the site marks 950 years since the academy opened.",
+            "claimIds": [
+              "C-VM-FOUNDED",
+              "C-VM-VISITORS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Văn Miếu in brief",
+        "items": [
+          {
+            "term": "Built",
+            "text": "Temple 1070, academy 1076."
+          },
+          {
+            "term": "Taught",
+            "text": "Until 1802, when the academy moved to Huế."
+          },
+          {
+            "term": "Site",
+            "text": "54,331 m², five courtyards."
+          },
+          {
+            "term": "Open",
+            "text": "Daily 8 a.m.–5 p.m.; 70,000 đồng."
+          }
+        ],
+        "claimIds": [
+          "C-VM-FOUNDED",
+          "C-VM-ACADEMY",
+          "C-VM-LAYOUT",
+          "C-VM-VISIT"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "An academy for the examinations",
+        "id": "academy",
+        "paras": [
+          {
+            "text": "The first Confucian examination was held in 1075, a year before the academy itself. Over the next centuries the exams became the road into government. A scholar passed the regional exam, *thi Hương*, then the metropolitan exam, *thi Hội*, in the capital, and finally the palace exam, *thi Đình*, in front of the king. From 1434 they were held every three years. Those who passed the highest were called [[tien-si|tiến sĩ]], doctors.",
+            "claimIds": [
+              "C-VM-EXAM1075",
+              "C-EXAMS"
+            ]
+          },
+          {
+            "text": "Quốc Tử Giám was where many of them studied. Its most famous teacher was Chu Văn An, deputy head under the Trần in the fourteenth century, still honoured as a model of learning and integrity. King Lê Thánh Tông enlarged the school in 1483. When the Nguyễn dynasty made Huế its capital, it moved the academy there in 1802, and the Hà Nội site became a provincial school.",
+            "claimIds": [
+              "C-VM-ACADEMY",
+              "C-VM-THAIHOC"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "steps",
+        "heading": "Walking the five courtyards",
+        "id": "walk",
+        "items": [
+          {
+            "title": "The street gate",
+            "paras": [
+              {
+                "text": "You enter through Văn Miếu Môn, a gate of two storeys, three openings and eight roofs. Look at the stone dragons: the pair in front are Lê-period, the pair inside Nguyễn.",
+                "claimIds": [
+                  "C-VM-GATE"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Đại Trung gate",
+            "paras": [
+              {
+                "text": "The second gate is decorated with carp, a symbol of students striving to succeed. Two small side gates are named for what a scholar needed: Thành Đức, virtue, and Đạt Tài, talent.",
+                "claimIds": [
+                  "C-VM-GATE"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Khuê Văn Các",
+            "paras": [
+              {
+                "text": "The second courtyard ends at Khuê Văn Các, built in 1805: brick pillars below, a small wooden pavilion above. Its round windows have spokes like rays of light, for the [[khue|Khuê]] star, the constellation of literature. In 2012 the National Assembly made it the symbol of Hà Nội.",
+                "claimIds": [
+                  "C-VM-KHUEVAN"
+                ]
+              }
+            ],
+            "image": "vm-khuevan",
+            "caption": "Khuê Văn Các, the Pavilion of the Constellation of Literature."
+          },
+          {
+            "title": "The Well of Heavenly Clarity",
+            "paras": [
+              {
+                "text": "In the third courtyard a square pond, Thiên Quang Tỉnh, lies between two rows of stone turtles carrying stelae: the records of the royal examinations. Our story on [the stelae](story:st-stelae) tells their history.",
+                "claimIds": [
+                  "C-VM-WELL",
+                  "C-STELAE-FACTS"
+                ]
+              }
+            ],
+            "image": "vm-well",
+            "caption": "The pond of the third courtyard, with Khuê Văn Các behind."
+          },
+          {
+            "title": "The temple",
+            "paras": [
+              {
+                "text": "Through Đại Thành gate is the temple itself. The side halls once held tablets for Confucius’s 72 leading disciples. At the end stands the Bái Đường, a nine-bay hall on 40 ironwood columns, under a panel that calls Confucius *vạn thế sư biểu*, teacher of ten thousand generations. A bronze bell cast in 1768 hangs on one side.",
+                "claimIds": [
+                  "C-VM-DAITHANH"
+                ]
+              }
+            ],
+            "image": "vm-hall",
+            "caption": "Inside the hall: red columns and bronze cranes on turtles."
+          },
+          {
+            "title": "Thái Học, the school",
+            "paras": [
+              {
+                "text": "The fifth courtyard is where the academy stood. After it moved to Huế the site became a temple to Confucius’s parents, burnt in 1946. Thái Học house was rebuilt there in 1999–2000. Downstairs it honours Chu Văn An; upstairs, the three kings who built and grew the school.",
+                "claimIds": [
+                  "C-VM-THAIHOC"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "After the exams ended",
+        "id": "after",
+        "paras": [
+          {
+            "text": "The examinations that gave the place its purpose outlived the academy by more than a century. The last palace examination was held in Huế on 16 May 1919, and King Khải Định declared that the road of examinations ended there. Văn Miếu kept its temple and its stelae, but nothing more was added to them.",
+            "claimIds": [
+              "C-EXAMS-1919",
+              "C-STELAE-FACTS"
+            ]
+          },
+          {
+            "text": "In the twentieth century the state took over its protection. The site was listed as a national relic in 1962 and as a special national relic in 2012, and its 82 stelae were named a national treasure in 2015. In 2026 it marks 950 years since Quốc Tử Giám was founded, and 2025 was a record year, with about 1.7 million visits. For the royal city it belonged to, see [Thăng Long, a capital since 1010](story:st-thang-long).",
+            "claimIds": [
+              "C-VM-STATUS",
+              "C-VM-VISITORS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Exams, luck and calligraphy",
+        "id": "today",
+        "paras": [
+          {
+            "text": "The temple has never stopped being about exams. Students come before their university entrance exams to pray for luck. For years visitors rubbed the stone turtles’ heads for luck, until the wear forced the site to fence them off.",
+            "claimIds": [
+              "C-VM-LUCK",
+              "C-STELAE-FENCE"
+            ]
+          },
+          {
+            "text": "Around Tết, calligraphers set up their tables by Văn Lake and write characters on red paper for visitors’ wishes: learning, good character, luck. In 2026 the spring festival ran for almost three weeks with 35 calligraphers.",
+            "claimIds": [
+              "C-VM-XINCHU"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Talented people are the vital force of the nation.",
+        "by": "From the stele of the 1442 examination, by Thân Nhân Trung (hiền tài là nguyên khí quốc gia)",
+        "claimIds": [
+          "C-STELAE-FIRST"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Visiting",
+        "id": "visit",
+        "paras": [
+          {
+            "text": "The site opens every day from 8 a.m. to 5 p.m. A ticket is 70,000 đồng, half price for students in Vietnam and people over 60, and free for under-16s. On Wednesday, Saturday and Sunday evenings a night tour with light shows tells the story of the academy and the stelae.",
+            "claimIds": [
+              "C-VM-VISIT"
+            ]
+          },
+          {
+            "text": "Dress respectfully for the temple halls, keep your voice down, and do not touch the stelae or the turtles. The site counted about 1.7 million visits in 2025, so go early.",
+            "claimIds": [
+              "C-VM-DRESS",
+              "C-VM-QUIET",
+              "C-VM-NOTOUCH",
+              "C-VM-VISITORS",
+              "C-VM-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Built",
+            "text": "1070 (temple), 1076 (academy)."
+          },
+          {
+            "term": "Walk",
+            "text": "Five courtyards, gate to school."
+          },
+          {
+            "term": "Symbol",
+            "text": "Khuê Văn Các, symbol of the capital."
+          },
+          {
+            "term": "Rules",
+            "text": "Dress modestly, keep quiet, don’t touch."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "vm-khuevan",
+        "question": "Why “first university”?",
+        "prompt": "Quốc Tử Giám is often called Vietnam’s first university. What did it actually teach?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Medicine, law and astronomy",
+            "feedback": "Not as subjects of their own. It was a school of Confucian learning."
+          },
+          {
+            "label": "The Confucian classics, for the royal examinations",
+            "fit": true,
+            "feedback": "Yes. It prepared scholars for the exams that chose the country’s officials."
+          },
+          {
+            "label": "Only religious ritual for monks",
+            "feedback": "It was a Confucian school, not a Buddhist one, and its students went into government."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-family-altar",
     "country": "vietnam",
     "place": "Hà Nội",
     "title": "The family altar",
-    "dek": "Photos, incense and fruit: where the living keep company with the family’s dead.",
+    "dek": "Photographs, incense and a plate of fruit on the top floor of a tube house. Why nearly every home in Vietnam keeps an altar to its dead, even where nobody calls themselves religious.",
     "sections": [
       {
-        "text": "Many Vietnamese homes have an ancestral altar, often in the main room, holding photographs of family members who have died, with incense, flowers, fruit and water as offerings.",
-        "claimIds": [
-          "C-ALTAR"
-        ]
-      },
-      {
-        "heading": "When it matters most",
-        "text": "Some families light incense every day. Most give the altar special attention on a person’s death anniversary (giỗ), on the 1st and 15th days of the lunar month, and above all at Tết.",
+        "text": "Many Vietnamese homes have an ancestral altar holding photographs of family members who have died.",
         "claimIds": [
           "C-ALTAR"
         ]
       },
       {
         "heading": "Not tied to one religion",
-        "text": "The practice rests on filial piety (hiếu), the duty to care for parents and elders in life and after death. Most people in Vietnam keep it up whatever their religion, including many Catholics and people who call themselves non-religious.",
+        "text": "Most people in Vietnam keep it up whatever their religion.",
+        "claimIds": [
+          "C-ALTAR-ALL"
+        ]
+      }
+    ],
+    "appliesTo": "Homes of Vietnam’s Việt majority, with Hà Nội examples. Figures come from a 2023 survey and the 2019 census.",
+    "varies": "Altars, offerings and how often incense is lit differ from family to family, and so does who keeps the altar.",
+    "phraseIds": [],
+    "layout": "longform",
+    "imageId": "ev-home-altar",
+    "hero": {
+      "image": "ev-home-altar"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Climb to the top floor of almost any Hà Nội tube house and you will find it: a polished wooden altar, framed photographs of grandparents and great-grandparents, an incense urn, a vase of flowers, a plate of fruit, a cup of water. It is the family altar, *bàn thờ gia tiên*, and it is where the living keep company with the family’s dead.",
+            "claimIds": [
+              "C-ALTAR",
+              "C-ALTAR-PLACE"
+            ]
+          },
+          {
+            "text": "It is also one of the most widely shared practices in Vietnam. In a 2023 survey nearly half of people said they had no religion, yet 95 percent had an altar at home.",
+            "claimIds": [
+              "C-PEW-ALTAR"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The altar in brief",
+        "items": [
+          {
+            "term": "Where",
+            "text": "The highest, most central place in the house."
+          },
+          {
+            "term": "What",
+            "text": "Photographs, an incense urn, flowers, fruit, water."
+          },
+          {
+            "term": "When",
+            "text": "The 1st and 15th of the lunar month, death anniversaries, Tết."
+          },
+          {
+            "term": "Who",
+            "text": "95% of households, whatever their religion (2023)."
+          }
+        ],
+        "claimIds": [
+          "C-ALTAR-PLACE",
+          "C-ALTAR",
+          "C-PEW-ALTAR"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Why the top floor",
+        "id": "place",
+        "paras": [
+          {
+            "text": "The altar goes in the most central and highest place in the house. In an old village house that meant the middle room. Hà Nội’s town houses are narrow and tall, and there the highest place is the top floor, so that is where most families put it.",
+            "claimIds": [
+              "C-ALTAR-PLACE"
+            ]
+          },
+          {
+            "text": "Shops add a second, very different altar: a low one near the door, often on the floor, for Thần Tài, the god of wealth, and Ông Địa, the earth god. A scholar quoted in 2026 says it sits low to keep it apart from the high ancestral altar, not because it ranks lower. The 10th day of the first lunar month is Thần Tài’s day. Because the shop altar sits on the floor, the national tourism authority advises visitors not to step over it or walk directly in front of it.",
+            "claimIds": [
+              "C-THANTAI",
+              "C-FLOOR-ALTAR"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ev-home-flat-altar",
+        "size": "wide",
+        "caption": "An ancestral altar in a high-rise flat."
+      },
+      {
+        "type": "text",
+        "heading": "What is on it",
+        "id": "what",
+        "paras": [
+          {
+            "text": "The altar holds photographs of family members who have died, and offerings of incense, flowers, fruit and water. At its centre is the incense urn, *bát hương*, often flanked by candlesticks. Before Tết families clean the urn and the candlesticks and set the altar for the new year: a tray of five fruits, flowers, the square rice cake bánh chưng, betel and a cup of water.",
+            "claimIds": [
+              "C-ALTAR",
+              "C-ALTAR-TET"
+            ]
+          },
+          {
+            "text": "In the Old Quarter you can still see where the pieces come from: altars on Hàng Quạt, bronze urns and altar sets on Hàng Đồng, and paper offerings on [Hàng Mã](story:st-paper-offerings).",
+            "claimIds": [
+              "C-ALTAR-SHOPS",
+              "C-HANGMA"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The days that matter",
+        "id": "days",
+        "paras": [
+          {
+            "text": "Some families light incense every day. Most give the altar special attention on the 1st and 15th of each lunar month, on each ancestor’s [[gio|death anniversary]], and above all at Tết, when the ancestors are invited home from their graves to celebrate with the family.",
+            "claimIds": [
+              "C-ALTAR",
+              "C-TET-GRAVES"
+            ]
+          },
+          {
+            "text": "By tradition the eldest son keeps the rites, and after him the eldest grandson. On a death anniversary the family gathers at his house, to honour the ancestor at the altar. That is the custom as it is usually described; families today arrange it in many ways.",
+            "claimIds": [
+              "C-ALTAR-SON"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Ancestor veneration rests on filial piety, the duty to care for parents and elders in life and after death.",
+        "by": "A summary of the Cultural Atlas, our wording",
         "claimIds": [
           "C-ALTAR-ALL"
         ]
       },
       {
+        "type": "text",
+        "heading": "Religion, or not",
+        "id": "religion",
+        "paras": [
+          {
+            "text": "The altar rests on filial piety, *hiếu*: the duty to care for one’s parents and elders, in life and after death. It is not tied to one religion. In the 2019 census only 13.7 percent of people said they belonged to a religion; another official count, by the Government Committee for Religious Affairs, puts it at about 27 percent. Either way, most Vietnamese are not members of a religion in that sense.",
+            "claimIds": [
+              "C-ALTAR-ALL",
+              "C-CENSUS-REL"
+            ]
+          },
+          {
+            "text": "Yet nearly everyone keeps the altar. Pew Research Center’s 2023 survey found that 95 percent of households had one, in equal shares among Buddhists, Christians and people with no religion, and that 86 percent of people had offered food or drink to their ancestors in the past year. Many Catholics keep an altar to their ancestors alongside their faith.",
+            "claimIds": [
+              "C-PEW-ALTAR",
+              "C-ALTAR-ALL"
+            ]
+          },
+          {
+            "text": "The same survey shows how much the practice involves. In the past year 96 percent had burnt incense for their ancestors and 90 percent had offered flowers or candles. More than eight in ten families had a family grave, about seven in ten visited it every year, and nearly eight in ten people said an ancestor’s spirit had helped them. The altar at home and the grave in the village are two ends of the same bond; at Tết, families tidy the graves and invite the ancestors home.",
+            "claimIds": [
+              "C-PEW-MORE",
+              "C-TET-GRAVES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Official counts of religious affiliation differ: 13.7 percent in the 2019 census, about 27 percent in figures from the Government Committee for Religious Affairs. We give both.",
+        "claimIds": [
+          "C-CENSUS-REL"
+        ]
+      },
+      {
+        "type": "text",
         "heading": "As a guest",
-        "editorial": true,
-        "text": "Our sources say nothing about guests and altars. Leaving the altar and its offerings alone, and asking before taking a photo of it, are the safe choices.",
-        "claimIds": []
+        "id": "guest",
+        "paras": [
+          {
+            "text": "An old custom is for the host to place a guest’s gift on the altar first, as if offering it to the ancestors; in some homes your box of sweets may go up to the altar before it is opened. Leave the altar and its offerings alone, and ask before photographing it. If your host invites you to light a stick of incense, for instance on a death anniversary, it is a kindness to accept.",
+            "claimIds": [
+              "C-ALTAR-GIFT",
+              "C-ALTAR-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "paras": [
+          {
+            "text": "For what happens at the altar during the New Year, from the Kitchen Gods to the five-fruit tray and New Year’s Eve, see our story on [Tết](story:st-tet).",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Bàn thờ",
+            "text": "The family altar, highest in the house."
+          },
+          {
+            "term": "Giỗ",
+            "text": "A death anniversary."
+          },
+          {
+            "term": "Hiếu",
+            "text": "Filial piety."
+          },
+          {
+            "term": "Guest",
+            "text": "Hands off; ask before a photo."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ev-home-altar",
+        "question": "No religion?",
+        "prompt": "A friend says that since most Vietnamese report no religion, few families keep an altar. What do the figures say?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Only Buddhists keep altars",
+            "feedback": "No. Christians and the unaffiliated keep them in equal shares."
+          },
+          {
+            "label": "Nearly every household keeps one",
+            "fit": true,
+            "feedback": "Yes: 95 percent in a 2023 survey, whatever their religion."
+          },
+          {
+            "label": "About half of households",
+            "feedback": "Far more: 95 percent."
+          }
+        ]
       }
-    ],
-    "appliesTo": "Homes of Vietnam’s Việt majority, as described by the Cultural Atlas.",
-    "varies": "Altars, offerings and how often incense is lit differ from family to family.",
-    "phraseIds": []
+    ]
   },
   {
     "id": "st-sacred-places",
     "country": "vietnam",
     "place": "Hà Nội",
     "title": "Chùa, đền, đình: which is which?",
-    "dek": "Pagoda, temple and communal house are three different kinds of sacred place.",
+    "dek": "English signs call them all temples. Vietnamese does not. A guide to the pagodas, temples, communal houses and shrines of Hà Nội, and the four temples that once guarded the city.",
     "sections": [
       {
-        "text": "English signs often say “temple” for all of them, but Vietnamese tells them apart. A chùa is a Buddhist pagoda. A đền is usually a temple to a national hero, a king or a deity. A đình is a village communal house, built for the guardian spirit that each village is thought to have.",
+        "text": "A chùa is a Buddhist pagoda; a đền honours a hero or deity; a đình is a village communal house.",
         "claimIds": [
           "C-SACRED-TYPES"
         ]
       },
       {
-        "heading": "Three examples in Hà Nội",
-        "editorial": true,
-        "text": "Trấn Quốc on West Lake is a chùa. Ngọc Sơn on Hoàn Kiếm Lake is a đền. Văn Miếu, the Temple of Literature, is something else again: a temple to Confucius.",
-        "claimIds": []
-      },
-      {
         "heading": "Lines blur",
-        "text": "Real places mix the three: a pagoda may have a shrine to a spirit, and a temple may hold a Buddha statue. Ngọc Sơn, for one, keeps a statue of the Buddha Amitābha.",
+        "text": "Real places mix them: Ngọc Sơn, a đền, keeps a statue of the Buddha.",
         "claimIds": [
           "C-NGOCSON"
         ]
       }
     ],
-    "appliesTo": "Places of worship in and around Hà Nội. The three-way distinction comes from a travel guide we are still checking.",
-    "varies": "Many sites combine a pagoda, a temple and a communal house in one compound.",
+    "appliesTo": "Places of worship in and around Hà Nội. Founding dates are often tradition; we say so where they are.",
+    "varies": "Many sites combine a pagoda, a temple and a communal house in one compound, and the words are used loosely.",
     "phraseIds": [
       "ph-chupanh-noi"
+    ],
+    "layout": "compare",
+    "imageId": "bl-tranquoc",
+    "hero": {
+      "image": "bl-tranquoc"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Hà Nội has about 5,900 recorded relics, from pagodas older than the city to shrines the size of a cupboard. English signs call most of them “temples”. Vietnamese is more precise: a *chùa* is not a *đền*, and neither is a *đình*. Knowing which is which tells you who is worshipped there, who looks after it, and what to bring.",
+            "claimIds": [
+              "C-HN-RELICS",
+              "C-SACRED-TYPES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Sacred places in brief",
+        "items": [
+          {
+            "term": "Chùa",
+            "text": "Buddhist pagoda."
+          },
+          {
+            "term": "Đền",
+            "text": "Temple to a hero, deity or spirit."
+          },
+          {
+            "term": "Đình",
+            "text": "Village communal house."
+          },
+          {
+            "term": "Phủ",
+            "text": "Shrine to the Mother Goddesses."
+          }
+        ],
+        "claimIds": [
+          "C-SACRED-TYPES"
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "Which is which?",
+        "id": "types",
+        "intro": "Choose a tab: the kinds of place, or the four temples that guarded Thăng Long.",
+        "label": "Kinds of sacred place in Hà Nội",
+        "tabs": [
+          {
+            "label": "Kinds of place",
+            "columns": [
+              "Word",
+              "What it is",
+              "Hà Nội example"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "chùa",
+                  "vi": true
+                },
+                {
+                  "text": "A Buddhist pagoda, often home to monks or nuns.",
+                  "claimIds": [
+                    "C-SACRED-TYPES"
+                  ]
+                },
+                "Trấn Quốc, One Pillar"
+              ],
+              [
+                {
+                  "text": "đền",
+                  "vi": true
+                },
+                {
+                  "text": "A temple to a national hero, a deity or a local spirit.",
+                  "claimIds": [
+                    "C-SACRED-TYPES"
+                  ]
+                },
+                "Ngọc Sơn, Quán Thánh"
+              ],
+              [
+                {
+                  "text": "đình",
+                  "vi": true
+                },
+                {
+                  "text": "A village communal house for the guardian spirit.",
+                  "claimIds": [
+                    "C-SACRED-TYPES"
+                  ]
+                },
+                "The đình of old villages, now inside the city"
+              ],
+              [
+                {
+                  "text": "miếu",
+                  "vi": true
+                },
+                {
+                  "text": "A small shrine, often by a road, with no clergy.",
+                  "claimIds": [
+                    "C-SACRED-TYPES"
+                  ]
+                },
+                "Street corners across the city"
+              ],
+              [
+                {
+                  "text": "phủ",
+                  "vi": true
+                },
+                {
+                  "text": "A shrine to the Mother Goddesses.",
+                  "claimIds": [
+                    "C-SACRED-TYPES"
+                  ]
+                },
+                "Phủ Tây Hồ"
+              ]
+            ]
+          },
+          {
+            "label": "Four guardians",
+            "columns": [
+              "Temple",
+              "Direction",
+              "God"
+            ],
+            "rows": [
+              [
+                "Quán Thánh",
+                "North",
+                {
+                  "text": "Huyền Thiên Trấn Vũ",
+                  "claimIds": [
+                    "C-TUTRAN"
+                  ]
+                }
+              ],
+              [
+                "Bạch Mã",
+                "East",
+                {
+                  "text": "Long Đỗ",
+                  "claimIds": [
+                    "C-TUTRAN"
+                  ]
+                }
+              ],
+              [
+                "Kim Liên",
+                "South",
+                {
+                  "text": "Cao Sơn",
+                  "claimIds": [
+                    "C-TUTRAN"
+                  ]
+                }
+              ],
+              [
+                "Voi Phục",
+                "West",
+                {
+                  "text": "Linh Lang",
+                  "claimIds": [
+                    "C-TUTRAN"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Chùa: the pagodas",
+        "id": "chua",
+        "paras": [
+          {
+            "text": "A *chùa* is Buddhist: the halls hold statues of the Buddha and bodhisattvas, and monks or nuns often live there. Hà Nội’s best known is Trấn Quốc, on its islet in West Lake. By tradition it was founded in the sixth century, under Lý Nam Đế, as Khai Quốc, which would make it older than the city itself; the date is tradition, not a finding. Its tall stupa, eleven storeys and about fifteen metres, is recent, built in 1998, and the bodhi tree in its courtyard grew from a cutting brought by the president of India in 1959.",
+            "claimIds": [
+              "C-SACRED-TYPES",
+              "C-TRANQUOC"
+            ]
+          },
+          {
+            "text": "The One Pillar pagoda is the other famous one. The chronicle dates it to 1049, under King Lý Thái Tông, and a legend says he built it after dreaming of the bodhisattva Quan Âm seated on a lotus. French forces blew it up in 1954; what you see now was rebuilt in 1955.",
+            "claimIds": [
+              "C-MOTCOT"
+            ]
+          },
+          {
+            "text": "Both pagodas have been national relics since 1962, and in 2012 an Asian records organisation named the One Pillar pagoda the most unique architecture in Asia: a large title for a very small building.",
+            "claimIds": [
+              "C-MOTCOT-RECORD"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "bl-tranquoc",
+            "caption": "Trấn Quốc pagoda on West Lake."
+          },
+          {
+            "image": "bl-motcot",
+            "caption": "The One Pillar pagoda, rebuilt in 1955."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Đền: temples to heroes and gods",
+        "id": "den",
+        "paras": [
+          {
+            "text": "A *đền* honours someone other than the Buddha: a national hero, a deity, a local spirit. A keeper looks after it rather than a community of monks. Ngọc Sơn, on Hoàn Kiếm Lake, honours General Trần Hưng Đạo and the god of literature, though it also keeps a statue of the Buddha; in practice the lines blur.",
+            "claimIds": [
+              "C-SACRED-TYPES",
+              "C-NGOCSON"
+            ]
+          },
+          {
+            "text": "Four temples once guarded the four sides of Thăng Long: Quán Thánh in the north, Bạch Mã in the east, Kim Liên in the south and Voi Phục in the west. In January 2022 they were made a special national relic together. Bạch Mã, on Hàng Buồm in the Old Quarter, is the oldest. Its legend says the god Long Đỗ appeared as a white horse, *bạch mã*, whose tracks showed the king where to build the citadel walls. Like many founding stories it does not sit neatly with the recorded dates.",
+            "claimIds": [
+              "C-TUTRAN",
+              "C-BACHMA"
+            ]
+          },
+          {
+            "text": "Quán Thánh, by West Lake, holds a great black bronze statue of the guardian Trấn Vũ, cast in 1677 to replace a wooden one and now a national treasure. Sources disagree on how tall it is.",
+            "claimIds": [
+              "C-QUANTHANH"
+            ]
+          },
+          {
+            "text": "Bạch Mã is also an archive. It keeps 18 stone stelae and 17 royal decrees from the Nguyễn kings, and it has partly revived an old spring ritual. Of the four guardians, Kim Liên in the south honours Cao Sơn, and Voi Phục in the west Linh Lang.",
+            "claimIds": [
+              "C-BACHMA-RECORDS",
+              "C-TUTRAN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "bl-quanthanh",
+        "size": "wide",
+        "caption": "Quán Thánh temple, guardian of the north."
+      },
+      {
+        "type": "text",
+        "heading": "Đình, miếu and phủ",
+        "id": "dinh",
+        "paras": [
+          {
+            "text": "A *đình* is the communal house of a village, built for its [[thanh-hoang|guardian spirit]]. As Hà Nội grew around its old villages, their đình remained, some of them in the Old Quarter itself.",
+            "claimIds": [
+              "C-SACRED-TYPES"
+            ]
+          },
+          {
+            "text": "A *miếu* is smaller: a shrine to a local spirit, often by a road, with no clergy at all. A *phủ* is a shrine to the Mother Goddesses; Phủ Tây Hồ, on a spit of land in West Lake, is the city’s best known. Hà Nội has nearly 600 đền, 5 phủ and more than a thousand private shrines of that religion. Our story on [the Mother Goddesses](story:st-mother-goddess) explains it.",
+            "claimIds": [
+              "C-SACRED-TYPES",
+              "C-MAU-HN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The Hương pagoda pilgrimage",
+        "id": "huong",
+        "paras": [
+          {
+            "text": "Every spring pilgrims go to the Hương pagoda, within Hà Nội, travelling by boat on the Yến stream to a cluster of about twenty temples and pagodas on four routes. In 2026 the festival ran from 18 February to 11 May; 135,900 people came in the first five days of Tết alone, and motorboats were not allowed on the stream that year.",
+            "claimIds": [
+              "C-HUONG2026"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Hà Nội’s relic counts differ slightly between a 2024 journal article and a 2025 city list: 21 or 22 special national relics, about 1,160 national ones.",
+        "claimIds": [
+          "C-HN-RELICS"
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Chùa",
+            "text": "Buddha; monks or nuns."
+          },
+          {
+            "term": "Đền",
+            "text": "Heroes, gods, spirits; a keeper."
+          },
+          {
+            "term": "Đình",
+            "text": "The village and its guardian."
+          },
+          {
+            "term": "Phủ",
+            "text": "The Mother Goddesses."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "bl-quanthanh",
+        "question": "Pagoda or temple?",
+        "prompt": "Quán Thánh, by West Lake, honours the guardian god Trấn Vũ. Is it a chùa or a đền?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "A chùa, because it is old",
+            "feedback": "Age does not decide it. A chùa is for the Buddha."
+          },
+          {
+            "label": "A đền, because it honours a god",
+            "fit": true,
+            "feedback": "Yes. It is one of the four temples that guarded Thăng Long."
+          },
+          {
+            "label": "A đình, because it is in the city",
+            "feedback": "A đình is a village communal house for its guardian spirit."
+          }
+        ]
+      }
     ]
   },
   {
@@ -2938,116 +6540,1242 @@ window.CC.stories = [
     "country": "vietnam",
     "place": "Hàng Mã, Hà Nội",
     "title": "Paper offerings on Hàng Mã",
-    "dek": "A street named after paper gifts for the dead, and the smoke on festival days.",
+    "dek": "Paper money, paper houses, paper cars: a street that sells gifts for the dead, the smoke on festival days, and the monks and officials who would like a little less of it.",
     "imageId": "img-hangma",
     "sections": [
       {
-        "text": "Hàng Mã, in the Old Quarter, is named after its trade: “mã” are paper goods made as offerings. Shops sell paper money and paper objects alongside lanterns and decorations for festivals.",
+        "text": "Hàng Mã in the Old Quarter sells paper offerings and paper decorations.",
         "claimIds": [
           "C-HANGMA"
         ]
       },
       {
-        "heading": "Gifts that are burnt",
-        "text": "Families burn paper money for their ancestors, for example on the 1st and 15th of the lunar month.",
-        "claimIds": [
-          "C-HANGMA"
-        ]
-      },
-      {
-        "heading": "Smoke in the street",
-        "text": "On the 15th day of the seventh lunar month many people in the Old Quarter burn votive paper on the pavement, and the smoke, fire risk and waste are a recurring concern in the press.",
+        "heading": "Burning",
+        "text": "On the 15th day of the seventh lunar month many people burn votive paper in the street.",
         "claimIds": [
           "C-VOTIVE-BURN"
         ]
       }
     ],
-    "appliesTo": "Hàng Mã street and the Old Quarter, from Hanoi Times, Dân trí and a travel guide we are still checking.",
-    "varies": "Some families burn a great deal, others very little or none.",
-    "phraseIds": []
+    "appliesTo": "Hàng Mã street, the Old Quarter and Hà Nội’s temples, with national rules and Buddhist guidance.",
+    "varies": "Some families burn a great deal, others very little or none. Temples set their own rules.",
+    "phraseIds": [],
+    "layout": "compare",
+    "hero": {
+      "image": "oq-hang-ma"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Walk up Hàng Mã a few weeks before a festival and the street turns red and gold. *Mã* means paper goods made as offerings: [[vang-ma|vàng mã]], paper money, paper clothes, paper houses, even paper cars and phones. Families burn them so that their ancestors, and the wandering souls who have no one, will have what they need in the other world.",
+            "claimIds": [
+              "C-HANGMA",
+              "C-HANGMA-SEASON"
+            ]
+          },
+          {
+            "text": "It is an old and widespread custom, and an argued one. Buddhist leaders say it has nothing to do with Buddhism; the state asks people to burn only where it is safe; temples are cutting back. This story sets out what the custom is and who says what about it.",
+            "claimIds": [
+              "C-SANGHA-VANGMA",
+              "C-LAW-110",
+              "C-VANGMA-HN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Paper offerings in brief",
+        "items": [
+          {
+            "term": "What",
+            "text": "Paper money and paper copies of goods, burnt for the dead."
+          },
+          {
+            "term": "When",
+            "text": "The 1st and 15th of the lunar month, death anniversaries, Tết, the seventh month."
+          },
+          {
+            "term": "The law",
+            "text": "Burn only in the places set aside."
+          },
+          {
+            "term": "Buddhist view",
+            "text": "Not part of Buddhist teaching."
+          }
+        ],
+        "claimIds": [
+          "C-HANGMA",
+          "C-HANGMA-SEASON",
+          "C-LAW-110",
+          "C-SANGHA-VANGMA"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "A street that follows the calendar",
+        "id": "street",
+        "paras": [
+          {
+            "text": "Hàng Mã’s stock changes with the lunar year. Families burn paper money for their ancestors on the 1st and 15th of each month; for a death anniversary or the seventh-month festival they add paper houses, clothes and cars. Before the Mid-Autumn festival the street fills with lanterns; before Tết it turns red and gold.",
+            "claimIds": [
+              "C-HANGMA",
+              "C-HANGMA-SEASON"
+            ]
+          },
+          {
+            "text": "It is not expensive by the piece. At Vu Lan in 2016 a set of paper clothes cost between 20,000 and 200,000 đồng in Hà Nội, and a paper villa or car about 180,000 to 250,000. The cost lies in the quantity some families burn.",
+            "claimIds": [
+              "C-VANGMA-COST"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "img-hangma",
+        "size": "wide",
+        "caption": "Hàng Mã street in the Old Quarter."
+      },
+      {
+        "type": "text",
+        "heading": "The seventh month",
+        "id": "seventh",
+        "paras": [
+          {
+            "text": "The biggest day for burning is the 15th of the seventh lunar month. On that evening the pavements of Old Quarter streets such as Hàng Ngang, Hàng Đào, Hàng Buồm and Hàng Bông fill with small fires, and the smoke, the fire risk and the ash worry the city.",
+            "claimIds": [
+              "C-VOTIVE-BURN"
+            ]
+          },
+          {
+            "text": "Two different rites fall on that day, and they are often confused. Vu Lan is a Buddhist festival of gratitude to parents. The offering for wandering souls, *cúng cô hồn*, is for wandering souls. The head of Hà Nội’s Buddhist Sangha, interviewed in 2026, called them entirely different, and said the point of Vu Lan is not lavish trays or burning paper money.",
+            "claimIds": [
+              "C-VULAN-TWO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "Who says what",
+        "id": "views",
+        "intro": "Choose a tab to see what Buddhist leaders, the national rules and Hà Nội’s temples say about burning paper.",
+        "label": "Views on paper offerings",
+        "tabs": [
+          {
+            "label": "Buddhist leaders",
+            "columns": [
+              "Who",
+              "What they say"
+            ],
+            "rows": [
+              [
+                "Vietnam Buddhist Sangha, 2018",
+                {
+                  "text": "Clergy should guide people away from burning votive paper at Buddhist sites.",
+                  "claimIds": [
+                    "C-SANGHA-VANGMA"
+                  ]
+                }
+              ],
+              [
+                "A senior monk, 2018",
+                {
+                  "text": "The Buddha never taught burning paper for ancestors.",
+                  "claimIds": [
+                    "C-SANGHA-VANGMA"
+                  ]
+                }
+              ],
+              [
+                "Sangha notice, 2024",
+                {
+                  "text": "Pagodas should not burn votive paper at Vu Lan.",
+                  "claimIds": [
+                    "C-SANGHA-VANGMA"
+                  ]
+                }
+              ],
+              [
+                "Hà Nội Sangha, 2026",
+                {
+                  "text": "Vu Lan is not about lavish trays or burning paper money.",
+                  "claimIds": [
+                    "C-VULAN-TWO"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "The rules",
+            "columns": [
+              "Text",
+              "What it says"
+            ],
+            "rows": [
+              [
+                "Decree 110/2018 on festivals",
+                {
+                  "text": "Festival-goers must burn incense and paper only in the places set aside. It does not ban burning.",
+                  "claimIds": [
+                    "C-LAW-110"
+                  ]
+                }
+              ],
+              [
+                "Ministry of Culture, January 2026",
+                {
+                  "text": "Localities should limit burning and scattering small notes outside the places set aside.",
+                  "claimIds": [
+                    "C-VANGMA-2026"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Hà Nội temples",
+            "columns": [
+              "Place",
+              "What it does"
+            ],
+            "rows": [
+              [
+                "Quán Thánh temple",
+                {
+                  "text": "Asks visitors not to bring paper offerings into the main shrine.",
+                  "claimIds": [
+                    "C-VANGMA-HN"
+                  ]
+                }
+              ],
+              [
+                "Kim Liên temple",
+                {
+                  "text": "No burning in the main worship area.",
+                  "claimIds": [
+                    "C-VANGMA-HN"
+                  ]
+                }
+              ],
+              [
+                "Phủ Tây Hồ",
+                {
+                  "text": "A supervised place for burning.",
+                  "claimIds": [
+                    "C-VANGMA-HN"
+                  ]
+                }
+              ],
+              [
+                "City-wide",
+                {
+                  "text": "No scattering rice or salt, no incense stuck into trees.",
+                  "claimIds": [
+                    "C-VANGMA-HN"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Why people burn",
+        "id": "why",
+        "paras": [
+          {
+            "text": "Behind the custom is an old idea, *trần sao âm vậy*: as in this world, so in the other. The dead are thought to need money, clothes and a house, as the living do, and the family that provides them is keeping faith with its ancestors. The researcher Nguyễn Hùng Vĩ, quoted in the Ministry of Culture’s newspaper, traces the burning to that idea.",
+            "claimIds": [
+              "C-VANGMA-2026"
+            ]
+          },
+          {
+            "text": "Buddhism does not share it. In 2018 the Vietnam Buddhist Sangha asked its clergy to guide people away from burning paper at Buddhist sites, and a senior monk said plainly that the Buddha never taught it. The letter is about pagodas, not homes; at home, families decide for themselves.",
+            "claimIds": [
+              "C-SANGHA-VANGMA"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Smoke and fire",
+        "id": "fire",
+        "paras": [
+          {
+            "text": "Fire is the practical worry. In October 2015 a resident of a tower block in Linh Đàm dumped the ashes of burnt paper into a ventilation shaft and set off a small fire; hundreds of households were evacuated, though no one was hurt. In August 2026, at Vu Lan, incense and paper set off a string of cemetery fires in Huế; reports counted between 13 and more than 20.",
+            "claimIds": [
+              "C-VANGMA-FIRE"
+            ]
+          },
+          {
+            "text": "That is why the rules talk about place rather than belief: burn where it is safe, in the burners that temples and buildings set aside.",
+            "claimIds": [
+              "C-LAW-110"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Reports differ on the number of fires in Huế in August 2026: Tuổi Trẻ counted 13, Tiền Phong more than 20.",
+        "claimIds": [
+          "C-VANGMA-FIRE"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The temples cut back",
+        "id": "temples",
+        "paras": [
+          {
+            "text": "In the 2026 festival season Hà Nội’s temples were noticeably stricter. Quán Thánh asked visitors not to bring paper offerings into the main shrine; Kim Liên stopped burning in its main worship area and played reminders over loudspeakers; Phủ Tây Hồ set up a supervised burning place. The city also banned scattering rice or salt and sticking incense into trees. At Kim Liên, the heavy smoke of earlier years has clearly fallen.",
+            "claimIds": [
+              "C-VANGMA-HN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "dodont",
+        "heading": "If you are with a family",
+        "do": {
+          "title": "Usually welcome",
+          "items": [
+            {
+              "text": "Following the family’s lead at an offering.",
+              "claimIds": [
+                "C-VANGMA-TIP"
+              ]
+            },
+            {
+              "text": "Burning only in the burner provided.",
+              "claimIds": [
+                "C-LAW-110"
+              ]
+            },
+            {
+              "text": "Stepping back from the fire.",
+              "claimIds": [
+                "C-VANGMA-FIRE"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Photographing a family’s offering without asking.",
+              "claimIds": [
+                "C-VANGMA-TIP"
+              ]
+            },
+            {
+              "text": "Taking paper offerings into a temple’s main shrine.",
+              "claimIds": [
+                "C-VANGMA-HN"
+              ]
+            },
+            {
+              "text": "Scattering small notes or rice at a temple.",
+              "claimIds": [
+                "C-VANGMA-HN"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Mã",
+            "text": "Paper goods made as offerings."
+          },
+          {
+            "term": "Biggest day",
+            "text": "15th of the seventh lunar month."
+          },
+          {
+            "term": "Rule",
+            "text": "Burn only where it is set aside."
+          },
+          {
+            "term": "Temples",
+            "text": "Many now limit paper offerings."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "img-hangma",
+        "question": "Is it banned?",
+        "prompt": "A friend says burning votive paper is now illegal in Vietnam. Is that right?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Yes, everywhere since 2018",
+            "feedback": "No. The 2018 decree on festivals regulates where people burn; it does not ban it."
+          },
+          {
+            "label": "No, but it should be done only in the places set aside",
+            "fit": true,
+            "feedback": "Yes. And many temples now limit it further."
+          },
+          {
+            "label": "It is required at every festival",
+            "feedback": "No. It is a family custom, and Buddhist leaders discourage it at pagodas."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-tet",
     "country": "vietnam",
-    "place": "Vietnam",
+    "place": "Hà Nội",
     "title": "Tết, the Lunar New Year",
-    "dek": "Cleaning, cooking and calling the ancestors home: the most important days of the year.",
+    "dek": "Kitchen Gods on carp, peach blossom on motorbikes, and a city that falls quiet for a week. Tết in Hà Nội, day by day, from the 23rd of the last month to the third day of the new year.",
     "sections": [
       {
-        "text": "Tết is the most important celebration in Vietnam. Families get ready by cooking New Year foods, cleaning the house and paying respects to their ancestors, and flowering trees appear outside homes and offices.",
+        "text": "Families prepare for Tết by cooking, cleaning and paying respects to their ancestors.",
         "claimIds": [
           "C-TET-PREP"
         ]
       },
       {
-        "heading": "Inviting the ancestors",
-        "text": "In the last days of the old year many families visit their ancestors’ graves and invite them home to celebrate.",
+        "heading": "The graves",
+        "text": "In the last days of the year families visit their ancestors’ graves and invite them home.",
         "claimIds": [
           "C-TET-GRAVES"
         ]
       },
       {
         "heading": "The first visitor",
-        "text": "The first person to enter a home in the new year (xông đất) is believed to bear on the family’s fortune, so families often invite someone to come first, usually on the morning of the first day.",
+        "text": "The first visitor of the new year is believed to bear on the household’s fortune.",
         "claimIds": [
           "C-TET-FIRST"
         ]
-      },
+      }
+    ],
+    "appliesTo": "Tết in Hà Nội, with dates from 2026. Customs follow Vietnamese press and the national tourism authority; families keep them in their own ways.",
+    "varies": "Dates move with the lunar calendar. Customs differ between north and south and between families, and folk explanations differ too.",
+    "phraseIds": [],
+    "layout": "timeline",
+    "imageId": "ev-oq-flowers",
+    "hero": {
+      "image": "oq-flower-night"
+    },
+    "blocks": [
       {
-        "heading": "Lucky money",
-        "text": "On the first day children receive lucky money in a red envelope from their elders — “mừng tuổi” in the north, “lì xì” in the south.",
-        "claimIds": [
-          "C-TET-PREP"
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "For a week or so each winter, Hà Nội changes. The flower markets fill the Old Quarter with peach branches and kumquat trees; families clean their homes, cook, and tidy their ancestors’ graves. Then the year turns at midnight, and the visiting begins.",
+            "claimIds": [
+              "C-TET-PREP",
+              "C-TET-HANGLUOC",
+              "C-TET-GRAVES"
+            ]
+          },
+          {
+            "text": "Tết Nguyên Đán, the Lunar New Year, is the biggest holiday in Vietnam. In 2026 state employees had nine days off, from 14 to 22 February; the year began on 17 February. Here is how the days run in Hà Nội, from the send-off of the Kitchen Gods to the third day of the year.",
+            "claimIds": [
+              "C-TET-DATES"
+            ]
+          }
         ]
       },
       {
-        "editorial": true,
-        "text": "If you are in Hà Nội at Tết and not invited anywhere, it is kinder not to drop in on a family on the first day.",
-        "claimIds": []
+        "type": "facts",
+        "title": "Tết in brief",
+        "items": [
+          {
+            "term": "Tết 2026",
+            "text": "First day 17 February; holiday 14–22 February."
+          },
+          {
+            "term": "Tết 2027",
+            "text": "Holiday 4–10 February."
+          },
+          {
+            "term": "Flowers",
+            "text": "Peach in the north, from Nhật Tân."
+          },
+          {
+            "term": "Fireworks",
+            "text": "Public displays at midnight; firecrackers banned."
+          }
+        ],
+        "claimIds": [
+          "C-TET-DATES",
+          "C-TET-DAO",
+          "C-TET-PHAO"
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "The days of Tết",
+        "label": "Timeline of Tết in Hà Nội",
+        "items": [
+          {
+            "era": "The last month"
+          },
+          {
+            "year": "Mid-month",
+            "title": "The flower market opens",
+            "text": "Hàng Lược fills with peach, kumquat and white apricot until the afternoon of the 30th.",
+            "claimIds": [
+              "C-TET-HANGLUOC"
+            ],
+            "image": "ev-oq-flowers",
+            "caption": "A flower seller in the Old Quarter."
+          },
+          {
+            "year": "23rd",
+            "title": "The Kitchen Gods leave",
+            "text": "Families make offerings, by folk belief before noon, and release carp at the lakes.",
+            "claimIds": [
+              "C-TET-TAO",
+              "C-TET-CARP"
+            ]
+          },
+          {
+            "year": "23rd–30th",
+            "title": "The graves",
+            "text": "Families tidy their ancestors’ graves and invite them home for Tết.",
+            "claimIds": [
+              "C-TET-GRAVES"
+            ]
+          },
+          {
+            "year": "24th",
+            "title": "Calligraphy",
+            "text": "In 2026 the spring calligraphy festival opens by Văn Lake.",
+            "claimIds": [
+              "C-TET-CHU"
+            ]
+          },
+          {
+            "year": "27th",
+            "title": "The holiday begins",
+            "text": "In 2026, offices close on 14 February.",
+            "claimIds": [
+              "C-TET-DATES"
+            ]
+          },
+          {
+            "year": "30th",
+            "title": "New Year’s Eve",
+            "text": "In the last hour before midnight, an offering to see out the old year’s guardian deity.",
+            "claimIds": [
+              "C-TET-GIAOTHUA"
+            ],
+            "image": "ev-home-altar",
+            "caption": "A home altar ready for Tết."
+          },
+          {
+            "era": "The new year"
+          },
+          {
+            "year": "Midnight",
+            "title": "Fireworks",
+            "text": "Fifteen minutes of fireworks over the city.",
+            "claimIds": [
+              "C-TET-FIREWORKS",
+              "C-TET-PHAO"
+            ]
+          },
+          {
+            "year": "1st",
+            "title": "The first visitor",
+            "text": "A chosen guest comes first; children receive lucky money; the father’s family is visited.",
+            "claimIds": [
+              "C-TET-FIRST",
+              "C-TET-PREP",
+              "C-TET-MUNG3"
+            ]
+          },
+          {
+            "year": "1st",
+            "title": "To the pagoda",
+            "text": "Crowds at Trấn Quốc and Ngọc Sơn pray for a peaceful year.",
+            "claimIds": [
+              "C-TET-DILE"
+            ]
+          },
+          {
+            "year": "2nd",
+            "title": "The mother’s family",
+            "text": "Visits to the mother’s side of the family.",
+            "claimIds": [
+              "C-TET-MUNG3"
+            ]
+          },
+          {
+            "year": "3rd",
+            "title": "Teachers",
+            "text": "Visits to teachers.",
+            "claimIds": [
+              "C-TET-MUNG3"
+            ]
+          },
+          {
+            "year": "6th",
+            "title": "Back to work",
+            "text": "In 2026, the holiday ends on 22 February.",
+            "claimIds": [
+              "C-TET-DATES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The 23rd: sending the Kitchen Gods",
+        "id": "tao",
+        "paras": [
+          {
+            "text": "Tết starts a week early, on the 23rd day of the last lunar month, with the [[ong-tao|Kitchen Gods]]. In the folk tale, two men and a woman who died in a fire became the gods of the hearth; the story has been passed on by word of mouth and exists in several versions. Each year they go up to heaven to report on the household, and families send them off with an offering, by folk belief before noon.",
+            "claimIds": [
+              "C-TET-TAO"
+            ]
+          },
+          {
+            "text": "They travel on carp. Families buy live fish and release them into a lake or river. On 10 February 2026 Hanoians lined the bridges of West Lake and the lake in Nghĩa Đô park to do it. The custom has a problem: people used to throw the plastic bags and basins in after the fish. Before the 2026 festival police in Tây Hồ went door to door asking them not to; bins were set out by the bridges, and volunteers cleaned the water afterwards.",
+            "claimIds": [
+              "C-TET-TAO",
+              "C-TET-CARP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Peach blossom and the flower market",
+        "id": "flowers",
+        "paras": [
+          {
+            "text": "In Hà Nội the Tết flower is peach. Much of it comes from Nhật Tân, where nearly 800 households grow peach on about 80 hectares, mostly on the banks of the Red River. There are two kinds: đào bích, deep red and dense, and đào phai, a paler pink. In 2026 a branch cost from 100,000 to 350,000 đồng, a tree a million or more, and storms had cut the supply.",
+            "claimIds": [
+              "C-TET-DAO"
+            ]
+          },
+          {
+            "text": "In the Old Quarter the flowers are sold on Hàng Lược, a market about a century old that runs from the middle of the last month to the afternoon of the 30th: peach, kumquat trees, chrysanthemums, narcissus, and the white apricot that, the Ministry of Culture’s newspaper says, Hanoians have always loved.",
+            "claimIds": [
+              "C-TET-HANGLUOC"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "oq-flower-night",
+        "size": "wide",
+        "caption": "Flower sellers at dusk in the Old Quarter."
+      },
+      {
+        "type": "text",
+        "heading": "The altar and the five fruits",
+        "id": "altar",
+        "paras": [
+          {
+            "text": "Between the 23rd and the 30th families visit their ancestors’ graves, clean them, light incense and leave flowers, fruit, paper money and sometimes a small kumquat tree. They are inviting the ancestors home. For many Hà Nội families that means a trip to the big cemeteries such as Văn Điển.",
+            "claimIds": [
+              "C-TET-GRAVES"
+            ]
+          },
+          {
+            "text": "At home the altar is cleaned and set with a tray of five fruits. In the north the tray usually rests on a hand of green bananas, with a pomelo or a Buddha’s hand in the middle and fruit of different colours around it. In the south the fruits are chosen to make a wish out of their names: custard apple, fig, coconut, papaya and mango sound like “cầu sung vừa đủ xài”, may we have just enough to spend. These explanations come from popular writing; every family arranges its own tray.",
+            "claimIds": [
+              "C-TET-NGUQUA"
+            ]
+          },
+          {
+            "text": "And there is food. Bánh chưng, the square sticky-rice cake wrapped in leaves, is no longer the rare treat it once was, but many families still make it, because Tết does not feel like Tết without it.",
+            "claimIds": [
+              "C-TET-BANHCHUNG"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Folk explanations for Tết customs, from the Kitchen Gods to the five fruits, differ between sources and families. We give them as explanations people offer, not as history.",
+        "claimIds": [
+          "C-TET-TAO",
+          "C-TET-NGUQUA"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "New Year’s Eve",
+        "id": "eve",
+        "paras": [
+          {
+            "text": "On the night of the 30th, in the last hour before [[giao-thua|giao thừa]], families make one more offering, often at the main door: sticky rice, a boiled chicken, betel, wine, flowers. According to the cultural researcher Phạm Đình Hải, it sees off the old year’s guardian deity and welcomes the new one. The paper offerings are burnt before one o’clock.",
+            "claimIds": [
+              "C-TET-GIAOTHUA"
+            ]
+          },
+          {
+            "text": "At midnight the sky fills with fireworks. Exploding firecrackers are banned in Vietnam; adults may use quiet fireworks bought from licensed sellers, and cities may put on public displays of up to fifteen minutes. In 2026 Hà Nội fired them from 33 places, eleven of them high-altitude, at a cost of nearly 40 billion đồng.",
+            "claimIds": [
+              "C-TET-PHAO",
+              "C-TET-FIREWORKS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The first day",
+        "id": "first",
+        "paras": [
+          {
+            "text": "The first visitor of the year matters. In the custom of xông đất, the first person through the door is believed to bear on the household’s fortune for the year, so families often invite someone in advance: a person of a compatible age and a successful life, who arrives on the morning of the first day with small gifts and lucky money for the children. Some families send one of their own out before midnight so that they can be the first to come back in. Many people now treat it more as a pleasure of the New Year than a forecast.",
+            "claimIds": [
+              "C-TET-FIRST",
+              "C-TET-FIRST-WHO"
+            ]
+          },
+          {
+            "text": "Children receive lucky money in red envelopes, called mừng tuổi in the north and lì xì in the south. Where the word lì xì comes from is uncertain; one explanation makes it a borrowing meaning profit, another a legend of the Tang dynasty.",
+            "claimIds": [
+              "C-TET-PREP",
+              "C-TET-LIXI"
+            ]
+          },
+          {
+            "text": "A saying sets the order of visits: *mùng 1 Tết cha, mùng 2 Tết mẹ, mùng 3 Tết thầy*. The first day for the father’s family, the second for the mother’s, the third for teachers.",
+            "claimIds": [
+              "C-TET-MUNG3"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Mùng một Tết cha, mùng hai Tết mẹ, mùng ba Tết thầy.",
+        "by": "A Vietnamese saying: the first day for the father’s family, the second for the mother’s, the third for teachers",
+        "claimIds": [
+          "C-TET-MUNG3"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Pagodas and calligraphy",
+        "id": "pagodas",
+        "paras": [
+          {
+            "text": "Many Hanoians begin the year at a pagoda or temple. On the first day of 2026 crowds filled Trấn Quốc on West Lake and Ngọc Sơn on Hoàn Kiếm Lake to pray for a peaceful year; a reporter noted that, crowded as it was, everyone was quiet.",
+            "claimIds": [
+              "C-TET-DILE"
+            ]
+          },
+          {
+            "text": "Others ask for a character. Calligraphers sit at Ngọc Sơn and, every spring, by Văn Lake at Văn Miếu, writing characters for luck, learning and success on red paper. In 2026 the calligraphy festival ran from 11 February to 1 March. Our story on [Văn Miếu](story:st-van-mieu-university) tells more.",
+            "claimIds": [
+              "C-TET-CHU"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ev-home-altar",
+            "caption": "A family altar with fruit, flowers and incense."
+          },
+          {
+            "image": "ev-oq-flowers",
+            "caption": "Flowers for the new year."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "If you are in Hà Nội for Tết",
+        "id": "visit",
+        "paras": [
+          {
+            "text": "If you are invited to a home on the first days, ask whether anyone has come yet before you call; some families wait for a chosen first visitor. A first visitor usually brings small gifts, and lucky money for the children.",
+            "claimIds": [
+              "C-TET-TIP",
+              "C-TET-FIRST-WHO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "23rd",
+            "text": "Kitchen Gods leave on carp."
+          },
+          {
+            "term": "30th",
+            "text": "New Year’s Eve offering, then fireworks."
+          },
+          {
+            "term": "1st",
+            "text": "First visitor, lucky money, the pagoda."
+          },
+          {
+            "term": "Greeting",
+            "text": "Chúc mừng năm mới, Happy New Year."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "oq-flower-night",
+        "question": "The first caller",
+        "prompt": "You are invited to a friend’s family on the first morning of Tết. What is the thoughtful thing to do?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Arrive as early as possible to be first",
+            "feedback": "Not without asking: some families have chosen a first visitor in advance."
+          },
+          {
+            "label": "Ask first whether they want you to be the first visitor",
+            "fit": true,
+            "feedback": "Yes. The first visitor is thought to bear on the year, so families like to choose."
+          },
+          {
+            "label": "Wait until the third day",
+            "feedback": "The third day is traditionally for teachers; just ask your friend."
+          }
+        ]
       }
-    ],
-    "appliesTo": "Vietnam as a whole, from the national tourism authority, VietNamNet and the Vietnam News Agency.",
-    "varies": "Dates move with the lunar calendar, and customs differ between regions and families.",
-    "phraseIds": []
+    ]
   },
   {
     "id": "st-sword-lake",
     "country": "vietnam",
-    "place": "Hồ Hoàn Kiếm, Hà Nội",
+    "place": "Hoàn Kiếm Lake, Hà Nội",
     "title": "The lake of the returned sword",
-    "dek": "How a golden turtle gave Hoàn Kiếm Lake its name, and the temple on its islet.",
+    "dek": "A sword from the water, a turtle who took it back, and a lake that kept the story. How the legend of Hoàn Kiếm grew over six hundred years, and the real turtles that lived in it.",
     "sections": [
       {
-        "text": "In the legend, after the victory over the Ming in 1428, Lê Lợi was boating on the lake when a golden turtle rose and asked for the magic sword he had been lent. He gave it back, and the lake, once called Lục Thủy (“Green Water”), became Hoàn Kiếm: the Lake of the Returned Sword.",
+        "text": "In the legend, after the victory over the Ming, a golden turtle rose from the lake and asked Lê Lợi to return his magic sword; the lake became Hoàn Kiếm, the Lake of the Returned Sword.",
         "claimIds": [
           "C-SWORD-LEGEND"
         ]
       },
       {
         "heading": "Turtle Tower",
-        "text": "The small tower on the islet near the south of the lake is linked to the legend and is often used as an emblem of Hà Nội.",
+        "text": "The small tower on the islet was built around 1886.",
         "claimIds": [
-          "C-SWORD-LEGEND"
+          "C-TOWER-BUILT"
         ]
       },
       {
         "heading": "Ngọc Sơn temple",
-        "text": "At the north end, the red Thê Húc bridge leads to Ngọc Sơn temple, dated by its own documents to 1841 and restored in 1865. It honours General Trần Hưng Đạo and Văn Xương; the Pen Tower and Ink Slab at its gate are linked with learning, and students come to pray for luck in exams.",
+        "text": "At the north end, the red Thê Húc bridge leads to Ngọc Sơn temple.",
         "claimIds": [
           "C-NGOCSON"
         ]
       }
     ],
-    "appliesTo": "Hoàn Kiếm Lake and Ngọc Sơn temple, from the national tourism authority.",
-    "varies": "Specific to this place. The legend is told with small differences.",
-    "phraseIds": []
+    "appliesTo": "Hoàn Kiếm Lake in central Hà Nội. The legend is a legend; its written history follows Vietnamese scholars.",
+    "varies": "The legend is told in several versions. Sources differ on the Turtle Tower’s builder and on the turtles’ measurements.",
+    "phraseIds": [],
+    "layout": "timeline",
+    "imageId": "ev-turtle-tower",
+    "hero": {
+      "image": "ev-turtle-tower-night"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Every Hanoian child learns the story. A fisherman pulls a blade from the river in his net; a rebel leader finds a hilt in a forest. Put together, they make a sword that carries the uprising of Lê Lợi to victory over the Ming. Years later, when Lê Lợi is king and boating on a lake in his capital, a golden turtle rises from the water and asks him to return the sword to the Dragon King. He does, and the lake is named Hoàn Kiếm, the Returned Sword.",
+            "claimIds": [
+              "C-SWORD-TWO",
+              "C-SWORD-LEGEND"
+            ]
+          },
+          {
+            "text": "It is a legend, and like most legends it has a history of its own: it took centuries to reach the form taught in schools today. And the lake did have giant turtles, real ones, until the last of them died in 2016. This story follows both.",
+            "claimIds": [
+              "C-SWORD-TEXTS",
+              "C-TURTLE-2016"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The lake in brief",
+        "items": [
+          {
+            "term": "Name",
+            "text": "Hoàn Kiếm, “Returned Sword”; earlier Lục Thủy, “Green Water”."
+          },
+          {
+            "term": "Size",
+            "text": "About 10.7 hectares, once much larger."
+          },
+          {
+            "term": "Turtle Tower",
+            "text": "Built around 1886, about 9 m tall."
+          },
+          {
+            "term": "Last turtle",
+            "text": "Died 19 January 2016."
+          }
+        ],
+        "claimIds": [
+          "C-LAKE-NAMES",
+          "C-LAKE-SIZE",
+          "C-TOWER-BUILT",
+          "C-TURTLE-2016"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "How the legend grew",
+        "id": "legend",
+        "paras": [
+          {
+            "text": "Scholars at Hanoi Metropolitan University have traced the story through the old books. The oldest, *Lam Sơn thực lục* of 1431, the official history of Lê Lợi’s war, tells only half of it: the fisherman Lê Thận netting a strip of iron inscribed with the words “Thuận Thiên”, and Lê Lợi praying that the blade and hilt, if heaven-sent, should fit. There is no lake and no turtle.",
+            "claimIds": [
+              "C-SWORD-TEXTS"
+            ]
+          },
+          {
+            "text": "The lake comes later. Writers of the late eighteenth century tell of a king who sees a huge turtle, points his sword at it, and throws or drops the sword into the water. In these versions losing the sword is a bad omen, a sign of a dynasty’s decline. The nineteenth-century geography *Đại Nam nhất thống chí* has the turtle take the sword in its mouth and dive.",
+            "claimIds": [
+              "C-SWORD-TEXTS",
+              "C-SWORD-OMEN"
+            ]
+          },
+          {
+            "text": "The version Hanoians know now, with the sword received from the water and solemnly given back to the Dragon King, was strung together in the late nineteenth century, says the researcher Trần Quang Đức, and fixed in modern collections of folk tales and the school textbook. The legend did not shrink with time. It grew.",
+            "claimIds": [
+              "C-SWORD-TEXTS",
+              "C-SWORD-OMEN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Your Majesty, return the sword to the Dragon King!",
+        "by": "The golden turtle, in the modern folk telling, our translation",
+        "claimIds": [
+          "C-SWORD-TEXTS"
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "Six centuries of a legend",
+        "label": "Timeline of Hoàn Kiếm Lake",
+        "items": [
+          {
+            "era": "The story"
+          },
+          {
+            "year": "1428",
+            "title": "Victory over the Ming",
+            "text": "Lê Lợi’s uprising ends twenty years of Ming rule. In the legend, the sword returns to the water soon after.",
+            "claimIds": [
+              "C-SWORD-TWO",
+              "C-HK-NAME"
+            ]
+          },
+          {
+            "year": "1431",
+            "title": "The first record",
+            "text": "Lam Sơn thực lục tells of the sword’s finding, but not its return.",
+            "claimIds": [
+              "C-SWORD-TEXTS"
+            ]
+          },
+          {
+            "year": "1700s",
+            "title": "A lake divided",
+            "text": "A road splits the lake into Tả Vọng and Hữu Vọng. Late in the century, writers tell of a king losing his sword to a turtle.",
+            "claimIds": [
+              "C-LAKE-SIZE",
+              "C-LAKE-NAMES",
+              "C-SWORD-TEXTS"
+            ]
+          },
+          {
+            "year": "1800s",
+            "title": "The turtle takes the sword",
+            "text": "Đại Nam nhất thống chí has the turtle seize the sword and dive.",
+            "claimIds": [
+              "C-SWORD-TEXTS"
+            ]
+          },
+          {
+            "era": "Under French rule"
+          },
+          {
+            "year": "1884",
+            "title": "Half the lake disappears",
+            "text": "The French fill Hữu Vọng to build the first French quarter.",
+            "claimIds": [
+              "C-LAKE-NAMES"
+            ]
+          },
+          {
+            "year": "c. 1886",
+            "title": "The Turtle Tower",
+            "text": "A wealthy local, Bá Kim, builds a small tower on the islet.",
+            "claimIds": [
+              "C-TOWER-BUILT"
+            ],
+            "image": "ev-turtle-tower",
+            "caption": "The Turtle Tower on its islet."
+          },
+          {
+            "year": "1890s",
+            "title": "Liberty on the lake",
+            "text": "A bronze copy of the Statue of Liberty briefly stands on the tower.",
+            "claimIds": [
+              "C-TOWER-LIBERTY"
+            ]
+          },
+          {
+            "era": "The real turtles"
+          },
+          {
+            "year": "1967",
+            "title": "A giant found dead",
+            "text": "A turtle of about 200 kg dies; it is preserved at Ngọc Sơn.",
+            "claimIds": [
+              "C-TURTLE-1967"
+            ],
+            "image": "ev-ngoc-son-gate",
+            "caption": "Inside Ngọc Sơn temple."
+          },
+          {
+            "year": "2011",
+            "title": "Treatment",
+            "text": "The last known turtle is caught and treated for skin disease: 185 cm, 169 kg, female.",
+            "claimIds": [
+              "C-TURTLE-2011"
+            ]
+          },
+          {
+            "year": "2016",
+            "title": "The last turtle dies",
+            "text": "She is found dead on 19 January, aged about 200 by one estimate.",
+            "claimIds": [
+              "C-TURTLE-2016"
+            ],
+            "image": "ev-lake-wide",
+            "caption": "Hoàn Kiếm Lake."
+          },
+          {
+            "year": "2019",
+            "title": "On display",
+            "text": "Preserved by German specialists, she joins the 1967 turtle at Ngọc Sơn.",
+            "claimIds": [
+              "C-TURTLE-2016"
+            ],
+            "image": "hk-specimen",
+            "caption": "A preserved turtle on display at Ngọc Sơn."
+          },
+          {
+            "year": "2026",
+            "title": "A new east shore",
+            "text": "Buildings on the east bank are cleared for a lakeside square and park.",
+            "claimIds": [
+              "C-LAKE-EAST"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Green Water, Left and Right",
+        "id": "names",
+        "paras": [
+          {
+            "text": "The lake has had many names. Long ago it was Lục Thủy, Green Water. It was also much bigger, reaching from behind Hàng Đào in the Old Quarter down to Hàng Chuối. A road built across it split it into two lakes, Tả Vọng on the left and Hữu Vọng on the right; architects date the road to the early eighteenth century, other accounts later. The navy once drilled on Hữu Vọng.",
+            "claimIds": [
+              "C-LAKE-NAMES",
+              "C-LAKE-SIZE"
+            ]
+          },
+          {
+            "text": "From 1884 the French filled Hữu Vọng to build their first quarter in the city. What is left, about 10.7 hectares, is the lake you see now. Its formal name is Hoàn Kiếm; in everyday speech Hanoians often call it Hồ Gươm, Sword Lake.",
+            "claimIds": [
+              "C-LAKE-NAMES",
+              "C-LAKE-SIZE",
+              "C-HK-NAME"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The tower on the islet",
+        "id": "tower",
+        "paras": [
+          {
+            "text": "The Turtle Tower was built around 1886 by a wealthy local known as Bá Kim; sources give his full name differently. A story says he wanted to bury his father’s remains on the islet, a lucky site, and that the bones were later thrown into the lake. Hữu Ngọc tells it; another account calls it oral tradition that cannot be verified.",
+            "claimIds": [
+              "C-TOWER-BUILT"
+            ]
+          },
+          {
+            "text": "The tower is small, about nine metres tall: two lower storeys with Gothic-style pointed arches, two upper ones with the roof of a Vietnamese temple. An architect quoted by Tuổi Trẻ says that as architecture it is nothing special. It does not matter. Lit at night in the middle of the water, it has become one of the best-known pictures of Hà Nội.",
+            "claimIds": [
+              "C-TOWER-STYLE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ev-turtle-tower-night",
+        "size": "bleed",
+        "caption": "The Turtle Tower lit at night."
+      },
+      {
+        "type": "text",
+        "heading": "The real turtles",
+        "id": "turtles",
+        "paras": [
+          {
+            "text": "The lake really did have giant turtles. One that died in 1967, about 200 kilograms, is preserved at Ngọc Sơn temple. In April 2011 the last known turtle in the lake, suffering from a skin disease, was caught and treated on an islet: it measured 185 centimetres, weighed 169 kilograms, and DNA tests showed it was female.",
+            "claimIds": [
+              "C-TURTLE-1967",
+              "C-TURTLE-2011"
+            ]
+          },
+          {
+            "text": "She was found dead on 19 January 2016, aged about 200 by one scientist’s estimate. German specialists preserved her body, and since 2019 she has been displayed at Ngọc Sơn beside the turtle of 1967.",
+            "claimIds": [
+              "C-TURTLE-2016"
+            ]
+          },
+          {
+            "text": "What species she was is still argued. Most specialists consider her a Yangtze giant softshell, *Rafetus swinhoei*; some Vietnamese scientists named her a species of her own. Either way, the species is nearly gone: as of 2024 only two animals were known, one in the wild in Vietnam and one captive male in China. The last known female in Vietnam died at Đồng Mô lake, west of the city, in 2023.",
+            "claimIds": [
+              "C-TURTLE-SPECIES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Measurements of the turtles differ between reports (the 1967 turtle is given as 1.9 or 2.1 m, the 2016 turtle as 1.85 or 2.08 m), probably because they were measured differently.",
+        "claimIds": [
+          "C-TURTLE-1967",
+          "C-TURTLE-2016"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The legend today",
+        "id": "today",
+        "paras": [
+          {
+            "text": "The story is everywhere in the city. Lê Lợi returning the sword is a classic act of water puppetry. At the north end of the lake, the red Thê Húc bridge leads to Ngọc Sơn temple, where the two turtles rest. And every weekend evening, when the streets around the lake close to traffic, families walk the shore the turtle once swam past.",
+            "claimIds": [
+              "C-SWORD-PUPPETS",
+              "C-NGOCSON",
+              "C-HK-WALK"
+            ]
+          },
+          {
+            "text": "For more about the lake as a place to spend a day, see [a day by the lake](story:st-hoan-kiem-days).",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ev-huc-bridge",
+            "caption": "The Thê Húc bridge to Ngọc Sơn temple."
+          },
+          {
+            "image": "ev-lake-night",
+            "caption": "The bridge lit red at night."
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Legend",
+            "text": "Sword from the water, returned to a turtle."
+          },
+          {
+            "term": "Oldest record",
+            "text": "1431, and only half the story."
+          },
+          {
+            "term": "Tower",
+            "text": "About 1886."
+          },
+          {
+            "term": "Turtles",
+            "text": "See them preserved at Ngọc Sơn."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ev-turtle-tower",
+        "question": "Where does the story come from?",
+        "prompt": "The oldest written record of Lê Lợi’s sword, from 1431, tells which part of the legend?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "The whole story, turtle and all",
+            "feedback": "Not yet. The turtle and the lake appear in much later writing."
+          },
+          {
+            "label": "Only the finding of the sword",
+            "fit": true,
+            "feedback": "Yes. The return to the turtle was added over the following centuries."
+          },
+          {
+            "label": "Only the turtle taking the sword",
+            "feedback": "It is the other way round: the oldest record has the finding, not the return."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-thang-long",
     "country": "vietnam",
     "place": "Hoàng thành Thăng Long, Hà Nội",
     "title": "Thăng Long, a capital since 1010",
-    "dek": "Why Hà Nội celebrated its thousandth birthday in 2010.",
+    "dek": "A king, a river plain and a rising dragon. How a thousand years of Hà Nội lie stacked under one walled square in Ba Đình, and what you can still see of them.",
     "sections": [
       {
         "text": "Hà Nội counts its history as a capital from 1010, when King Lý Thái Tổ moved the court here and named the city Thăng Long. The city marked its thousandth year in 2010.",
@@ -3059,57 +7787,877 @@ window.CC.stories = [
         "heading": "The citadel",
         "text": "In the same year the Central Sector of the Imperial Citadel of Thăng Long – Hà Nội was added to UNESCO’s World Heritage List.",
         "claimIds": [
-          "C-THANGLONG"
+          "C-TL-UNESCO"
         ]
       },
       {
         "heading": "What you can see",
-        "text": "Đoan Môn, the main gate of the old Forbidden City, faces south; the heritage area also includes the excavations at 18 Hoàng Diệu.",
+        "text": "Đoan Môn, the gate of the old Forbidden City, leads north along the old axis; nearby are the excavations at 18 Hoàng Diệu.",
         "claimIds": [
-          "C-DOANMON"
+          "C-DOANMON",
+          "C-TL-18HD"
         ]
       }
     ],
-    "appliesTo": "The Imperial Citadel in Ba Đình, Hà Nội, from UNESCO and the site’s own conservation centre.",
-    "varies": "Specific to this site.",
-    "phraseIds": []
+    "appliesTo": "The Imperial Citadel in Ba Đình, Hà Nội, and the city’s history as a capital. Dates follow the government portal and the site’s conservation centre.",
+    "varies": "Official sources differ on a few dates (the name Đông Kinh, the French demolition) and on excavated areas; we give both where they do.",
+    "phraseIds": [],
+    "layout": "longform",
+    "imageId": "tl-doanmon",
+    "hero": {
+      "image": "tl-doanmon"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "In the autumn of 1010 a king came by boat to an old walled town on the plain. He had left the capital at Hoa Lư for a site, as he put it, at the centre of the land. The court chronicle says that as his boat arrived, a yellow dragon rose beside it. He named the place Thăng Long, the rising dragon.",
+            "claimIds": [
+              "C-TL-MOVE",
+              "C-TL-DRAGON"
+            ]
+          },
+          {
+            "text": "The dragon is legend; the move is history. From that year Hà Nội counts its life as a capital, and in 2010 it celebrated a thousand years. In the same year the heart of the old royal city, a square of gates, lawns and excavation pits in Ba Đình, was inscribed as a World Heritage Site. It is one of the few places where you can stand on top of a thousand years, more or less in layers.",
+            "claimIds": [
+              "C-THANGLONG",
+              "C-TL-UNESCO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The citadel in brief",
+        "items": [
+          {
+            "term": "Founded",
+            "text": "1010, by Lý Thái Tổ, on the older citadel of Đại La."
+          },
+          {
+            "term": "World Heritage",
+            "text": "Inscribed 31 July 2010."
+          },
+          {
+            "term": "Main gate",
+            "text": "Đoan Môn, fifteenth century, five arches."
+          },
+          {
+            "term": "Open",
+            "text": "8:00–17:00 daily; 100,000 VND."
+          }
+        ],
+        "claimIds": [
+          "C-TL-MOVE",
+          "C-TL-UNESCO",
+          "C-DOANMON",
+          "C-TL-VISIT"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The edict and the dragon",
+        "id": "edict",
+        "paras": [
+          {
+            "text": "Lý Thái Tổ explained his move in a short text, the *Chiếu dời đô*, Edict on Moving the Capital: just 214 characters of classical Chinese. In modern Vietnamese translation it says that, looking across the whole land, only this place is the finest site, a meeting point of the four directions, and that the dynasty should build at the centre for the sake of all the generations to come. It ends not with an order but with a question to the court: what do you think?",
+            "claimIds": [
+              "C-TL-EDICT"
+            ]
+          },
+          {
+            "text": "Đại La was not empty when he came. It was an old citadel that a Tang governor, Gao Pian (in Vietnamese, Cao Biền), had enlarged in 866, during the long centuries of Chinese rule. The king renamed it. The chronicle *Đại Việt sử ký toàn thư*, compiled centuries later, gives the reason as the yellow dragon by the royal boat; some modern retellings make it a cloud dragon. Either way, the name stuck for most of the next eight hundred years.",
+            "claimIds": [
+              "C-TL-MOVE",
+              "C-TL-DRAGON"
+            ]
+          },
+          {
+            "text": "The edict itself survives through copies. In 2010, the anniversary year, archivists announced that the oldest known woodblock of it had been found at the national archives in Đà Lạt. Whether it was carved in the seventeenth century or the early nineteenth is still argued.",
+            "claimIds": [
+              "C-TL-EDICT"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Looking across our land, only this place is the finest site.",
+        "by": "Chiếu dời đô (1010), from a modern Vietnamese translation, our English",
+        "claimIds": [
+          "C-TL-EDICT"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "One city, many names",
+        "id": "names",
+        "paras": [
+          {
+            "text": "Thăng Long was the capital of three long dynasties: the Lý, who founded it, the Trần, who repaired the citadel and rebuilt its Forbidden City in 1243, and the Lê. The names changed with the rulers. The Hồ called it Đông Đô, Eastern Capital, in 1397; under Ming occupation in the early fifteenth century it was Đông Quan; after Lê Lợi drove the Ming out it became Đông Kinh.",
+            "claimIds": [
+              "C-TL-DYNASTIES",
+              "C-TL-NAMES"
+            ]
+          },
+          {
+            "text": "When the Nguyễn united the country in 1802 they ruled from Phú Xuân, today’s Huế, and Thăng Long became a regional seat. In 1805 it kept its name, but with a different character for *Long*: no longer the dragon, a word that sounds the same and means prosperity. In 1831 Emperor Minh Mạng made it the seat of a new province, Hà Nội, and the province gave the city the name it has today.",
+            "claimIds": [
+              "C-TL-NGUYEN",
+              "C-TL-NAMES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Two pages of the same government portal date the name Đông Kinh to 1427 and to 1430. We give both.",
+        "claimIds": [
+          "C-TL-NAMES"
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "A thousand years at a glance",
+        "label": "Timeline of Thăng Long – Hà Nội",
+        "items": [
+          {
+            "era": "Before the capital"
+          },
+          {
+            "year": "866",
+            "title": "Đại La",
+            "text": "A Tang governor enlarges the citadel of Đại La.",
+            "claimIds": [
+              "C-TL-MOVE"
+            ]
+          },
+          {
+            "era": "Thăng Long"
+          },
+          {
+            "year": "1010",
+            "title": "The rising dragon",
+            "text": "Lý Thái Tổ moves the court from Hoa Lư and names the city Thăng Long.",
+            "claimIds": [
+              "C-TL-MOVE",
+              "C-TL-DRAGON"
+            ]
+          },
+          {
+            "year": "1243",
+            "title": "A new Forbidden City",
+            "text": "The Trần rebuild the innermost royal precinct.",
+            "claimIds": [
+              "C-TL-DYNASTIES"
+            ]
+          },
+          {
+            "year": "1397",
+            "title": "Đông Đô",
+            "text": "The Hồ rename the city the Eastern Capital.",
+            "claimIds": [
+              "C-TL-NAMES"
+            ]
+          },
+          {
+            "year": "1428",
+            "title": "Kính Thiên",
+            "text": "The Lê build their main palace; it is rebuilt in 1465.",
+            "claimIds": [
+              "C-TL-KINHTHIEN",
+              "C-TL-DYNASTIES"
+            ]
+          },
+          {
+            "year": "1400s",
+            "title": "Đoan Môn",
+            "text": "The early Lê build the gate that still stands.",
+            "claimIds": [
+              "C-DOANMON"
+            ],
+            "image": "tl-doanmon",
+            "caption": "Đoan Môn today."
+          },
+          {
+            "era": "Under the Nguyễn"
+          },
+          {
+            "year": "1802",
+            "title": "Capital at Huế",
+            "text": "The Nguyễn rule from Phú Xuân; Thăng Long becomes a regional seat.",
+            "claimIds": [
+              "C-TL-NGUYEN"
+            ]
+          },
+          {
+            "year": "1805",
+            "title": "A new citadel",
+            "text": "A new citadel is begun, and the Flag Tower raised by 1812.",
+            "claimIds": [
+              "C-TL-FLAG",
+              "C-TL-BACMON"
+            ],
+            "image": "tl-flagtower",
+            "caption": "The Flag Tower."
+          },
+          {
+            "year": "1831",
+            "title": "Hà Nội",
+            "text": "Minh Mạng creates the province of Hà Nội.",
+            "claimIds": [
+              "C-TL-NGUYEN"
+            ]
+          },
+          {
+            "era": "French rule"
+          },
+          {
+            "year": "1882",
+            "title": "The citadel falls",
+            "text": "French cannon mark Bắc Môn; Governor Hoàng Diệu takes his own life.",
+            "claimIds": [
+              "C-TL-BACMON"
+            ],
+            "image": "tl-bacmon",
+            "caption": "Bắc Môn, the north gate."
+          },
+          {
+            "year": "1894–97",
+            "title": "Demolition",
+            "text": "Most of the citadel is pulled down; the Flag Tower survives.",
+            "claimIds": [
+              "C-TL-FRENCH"
+            ]
+          },
+          {
+            "era": "The modern capital"
+          },
+          {
+            "year": "1945",
+            "title": "Independence",
+            "text": "Hồ Chí Minh proclaims the Democratic Republic of Vietnam at Ba Đình.",
+            "claimIds": [
+              "C-TL-1945"
+            ]
+          },
+          {
+            "year": "1954",
+            "title": "10 October",
+            "text": "The city is handed over; a flag ceremony is held at the Flag Tower.",
+            "claimIds": [
+              "C-TL-1945"
+            ]
+          },
+          {
+            "year": "1968–75",
+            "title": "House D67",
+            "text": "The war is directed from a low building inside the citadel.",
+            "claimIds": [
+              "C-TL-D67"
+            ]
+          },
+          {
+            "year": "2002",
+            "title": "18 Hoàng Diệu",
+            "text": "Archaeologists begin digging beside the palace site.",
+            "claimIds": [
+              "C-TL-18HD"
+            ]
+          },
+          {
+            "year": "2010",
+            "title": "A thousand years",
+            "text": "Ten days of celebrations; the Central Sector is inscribed on 31 July.",
+            "claimIds": [
+              "C-TL-1000",
+              "C-TL-UNESCO"
+            ]
+          },
+          {
+            "year": "2026",
+            "title": "Kính Thiên rises again",
+            "text": "Work begins on rebuilding the main palace.",
+            "claimIds": [
+              "C-TL-REBUILD"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "What the French left, and what they did not",
+        "id": "french",
+        "paras": [
+          {
+            "text": "The citadel you walk through today is mostly a Nguyễn one, built from 1805, on top of the Lê and Lý royal city. It did not last long. In 1882 French troops attacked it; two marks of their cannon fire can still be seen on the brick of Bắc Môn, the north gate. When the citadel fell, its governor, Hoàng Diệu, took his own life rather than surrender. He is honoured, with Nguyễn Tri Phương, who had defended the city in 1873, in the small pavilion above the gate.",
+            "claimIds": [
+              "C-TL-BACMON"
+            ]
+          },
+          {
+            "text": "After a treaty in 1883 France ruled the north, and a decree of 1888 made Hà Nội a French city. Between 1894 and 1897 most of the citadel was pulled down; Kính Thiên palace made way for an artillery barracks. The Flag Tower, a brick tower of 1805–1812 more than thirty metres tall, survived.",
+            "claimIds": [
+              "C-TL-FRENCH",
+              "C-TL-KINHTHIEN",
+              "C-TL-FLAG"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "tl-flagtower",
+        "size": "wide",
+        "caption": "The Flag Tower of 1805–1812."
+      },
+      {
+        "type": "steps",
+        "heading": "Walking the axis",
+        "id": "walk",
+        "items": [
+          {
+            "title": "Đoan Môn",
+            "paras": [
+              {
+                "text": "Enter at the south, through Đoan Môn, the gate of the [[cam-thanh|Forbidden City]]. It dates from the early Lê in the fifteenth century, repaired under the Nguyễn. It has five arched openings; the middle one was the king’s. A dig there in 1999 found a Lê paved yard 1.2 metres down, and a Trần brick road beneath that.",
+                "claimIds": [
+                  "C-DOANMON"
+                ]
+              }
+            ],
+            "image": "tl-doanmon",
+            "caption": "Đoan Môn, seen from the south."
+          },
+          {
+            "title": "Kính Thiên",
+            "paras": [
+              {
+                "text": "North of the gate is the platform where Kính Thiên, the main palace, stood: built in 1428, rebuilt in 1465, demolished by the French. A wide flight of stone steps, carved with dragons, survives. Of the hall above it, nine bays wide, archaeologists have found 28 of its 60 column positions. This is the building now being rebuilt.",
+                "claimIds": [
+                  "C-TL-KINHTHIEN",
+                  "C-TL-REBUILD"
+                ]
+              }
+            ],
+            "image": "tl-dragons",
+            "caption": "Stone dragons on the steps of the Kính Thiên site."
+          },
+          {
+            "title": "House D67",
+            "paras": [
+              {
+                "text": "Behind the platform is a plain building. House D67 was built in 1967, and from September 1968 until 30 April 1975 the Politburo and the Central Military Commission met here to direct the war. Its rooms and the bunkers beneath were opened as new exhibitions in August 2025.",
+                "claimIds": [
+                  "C-TL-D67"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Hậu Lâu",
+            "paras": [
+              {
+                "text": "At the north end stands Hậu Lâu, the rear pavilion, built by Emperor Minh Mạng in 1821 and remodelled by the French, who called it the Pagode des Dames. The Centre’s own texts disagree about its first use: one calls it Daoist, another says it was for Buddhist worship.",
+                "claimIds": [
+                  "C-TL-HAULAU"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Bắc Môn",
+            "paras": [
+              {
+                "text": "A short walk north is the north gate, with its two cannon marks and the shrine to Hoàng Diệu above. Its plaque reads Chính Bắc Môn.",
+                "claimIds": [
+                  "C-TL-BACMON"
+                ]
+              }
+            ],
+            "image": "tl-bacmon",
+            "caption": "Bắc Môn lit at night."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Under 18 Hoàng Diệu",
+        "id": "dig",
+        "paras": [
+          {
+            "text": "In December 2002 archaeologists began digging at 18 Hoàng Diệu, about a hundred metres west of the Kính Thiên foundations. By the end of 2009 they had opened about 33,000 square metres and recorded 168 features: 95 building foundations, 24 wells, 33 drains and the lines of walls, layered from Đại La, in the seventh to ninth centuries, up through the Lý, Trần and Lê to the Nguyễn.",
+            "claimIds": [
+              "C-TL-18HD"
+            ]
+          },
+          {
+            "text": "The finds range from the bricks of Đại La, some stamped with the name of the army unit that made them, to Lê roof tiles shaped as dragons, royal ceramics, a boat with its oars, and ceramics brought from China, Japan and West Asia. That depth, one capital on top of another in the same place, is what the conservation centre means when it speaks of over 1,300 years of continuous history.",
+            "claimIds": [
+              "C-TL-18HD",
+              "C-TL-UNESCO"
+            ]
+          },
+          {
+            "text": "The site of the new National Assembly building next door was dug in 2008–09 and added more: over 400 of its finds are shown in an underground display beneath it.",
+            "claimIds": [
+              "C-TL-QUOCHOI"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Excavated areas are given differently depending on which digs are counted: about 33,000 m² for 18 Hoàng Diệu by 2009 in one Centre text, and over 30,000 m² for that site and the National Assembly site together in a 2025 account.",
+        "claimIds": [
+          "C-TL-DIGAREA"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Ba Đình, 1945 and after",
+        "id": "modern",
+        "paras": [
+          {
+            "text": "The square beside the citadel, Ba Đình, is where the modern state began. On 2 September 1945 Hồ Chí Minh read the Declaration of Independence there, proclaiming the Democratic Republic of Vietnam with Hà Nội as its capital. War followed. On 10 October 1954 the city was handed over and the national flag was raised at the Flag Tower,.",
+            "claimIds": [
+              "C-TL-1945"
+            ]
+          },
+          {
+            "text": "Through the next war the leadership worked inside the old citadel walls, in House D67 and the bunkers under it. In 1976, after reunification, the National Assembly confirmed Hà Nội as capital of the whole country.",
+            "claimIds": [
+              "C-TL-D67",
+              "C-TL-1945"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "A thousand years, 2010",
+        "id": "millennium",
+        "paras": [
+          {
+            "text": "The celebrations began at eight in the morning on 1 October 2010 by Hồ Gươm, with a sacred flame lit, and ran for ten days, with stages set up around the lake. They ended on 10 October at Ba Đình with a 21-gun salute and a parade of about 12,000 marchers; nearly 40,000 people took part.",
+            "claimIds": [
+              "C-TL-1000"
+            ]
+          },
+          {
+            "text": "For [the lake at the centre of those celebrations](story:st-sword-lake), see our story on its legend.",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Kính Thiên, again",
+        "id": "rebuild",
+        "paras": [
+          {
+            "text": "For years the question has been whether to rebuild the palace that the French pulled down. In July 2026 the World Heritage Committee asked Vietnam to keep preparing the technical documents for it. A dig at its base that year found about six metres of layers, from Đại La to the Nguyễn. The city council approved a preliminary budget of 1,686 billion đồng for 2026 to 2030, and work began on 29 September 2026, after what the Centre describes as fifteen years of research.",
+            "claimIds": [
+              "C-TL-REBUILD",
+              "C-TL-KINHTHIEN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Visiting",
+        "id": "visit",
+        "paras": [
+          {
+            "text": "The citadel is open every day from 8:00 to 17:00. Entry is 100,000 đồng; people aged 60 and over and students with a card pay half, and children under 16 go free. The Flag Tower opened for visitors to climb in early 2025.",
+            "claimIds": [
+              "C-TL-VISIT",
+              "C-TL-FLAG"
+            ]
+          },
+          {
+            "text": "On weekend evenings there is a guided night tour, run since 2021, that takes about an hour and a half from Đoan Môn to the excavations; in 2024 it cost 300,000 đồng for adults. If you want to film, ask the site first; and dress neatly, as you would at any place of history.",
+            "claimIds": [
+              "C-TL-NIGHT",
+              "C-PHOTO-CITADEL"
+            ]
+          },
+          {
+            "text": "Give the citadel a morning. Enter at Đoan Môn, walk north along the axis to Hậu Lâu, then walk to the excavations at 18 Hoàng Diệu, and leave the Flag Tower for last.",
+            "claimIds": [
+              "C-TL-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "1010",
+            "text": "Lý Thái Tổ moves the capital; Thăng Long, the rising dragon."
+          },
+          {
+            "term": "1831",
+            "text": "The name Hà Nội."
+          },
+          {
+            "term": "2010",
+            "text": "A thousand years; World Heritage."
+          },
+          {
+            "term": "Ticket",
+            "text": "100,000 đồng; open 8:00–17:00."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "tl-doanmon",
+        "question": "Why “Thăng Long”?",
+        "prompt": "A friend says Thăng Long, the rising dragon, is just a poetic nickname. What does the old chronicle say?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "A dragon appeared by the king’s boat",
+            "fit": true,
+            "feedback": "Yes. Đại Việt sử ký toàn thư says a yellow dragon rose by the royal boat in 1010. It is a legend, but an old one."
+          },
+          {
+            "label": "The French named it",
+            "feedback": "No. The name is from 1010; under the French the city was already Hà Nội."
+          },
+          {
+            "label": "It was the name given in 1831",
+            "feedback": "No. 1831 is when Emperor Minh Mạng created the province of Hà Nội; Thăng Long is from 1010."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-mother-goddess",
     "country": "vietnam",
-    "place": "Northern Vietnam",
+    "place": "Phủ Tây Hồ and northern Vietnam",
     "title": "The Mother Goddesses",
-    "dek": "A northern belief in goddesses of heaven, water and forest, and the lên đồng ritual.",
+    "dek": "Goddesses of heaven, water and forest, a fairy who came down to earth, and mediums who change costume a dozen times in a night. The Mother Goddess religion of northern Vietnam, banned for decades and now World Heritage.",
     "sections": [
       {
-        "text": "Many people worship the Mother Goddesses of Three Realms — heaven, water, and mountains and forests — asking for health and success. Liễu Hạnh is honoured as the Mother of the World.",
-        "claimIds": [
-          "C-MAU"
-        ]
-      },
-      {
-        "heading": "Lên đồng",
-        "text": "Practice includes daily worship, festivals and lên đồng, a ritual in which a medium in costume embodies a series of spirits. UNESCO added these practices to its intangible heritage list in 2016.",
+        "text": "Many people worship the Mother Goddesses of Three Realms for health and success.",
         "claimIds": [
           "C-MAU"
         ]
       },
       {
         "heading": "Open to anyone",
-        "text": "The belief is open to people of any age, occupation or religion, and is most common in the north.",
+        "text": "The belief is open to people of any age, occupation or religion.",
         "claimIds": [
           "C-MAU-OPEN"
         ]
-      },
-      {
-        "editorial": true,
-        "text": "Phủ Tây Hồ, on a spit of land in West Lake, is one Hà Nội shrine to Mother Liễu Hạnh. A ritual you come across is worship, not a show: watch quietly and ask before filming.",
-        "claimIds": []
       }
     ],
-    "appliesTo": "Northern Vietnam, from UNESCO, the UN in Viet Nam and the national tourism authority.",
-    "varies": "Shrines and rituals differ; not everyone in the north takes part.",
-    "phraseIds": []
+    "appliesTo": "The Mother Goddess religion of the Việt, strongest in the north, with Hà Nội examples. From UNESCO, the UN in Viet Nam, the national tourism authority and Vietnamese press.",
+    "varies": "Shrines and rituals differ; not everyone in the north takes part, and many who do never go to a mediumship ritual.",
+    "phraseIds": [],
+    "layout": "longform",
+    "imageId": "bl-tayho",
+    "hero": {
+      "image": "bl-tayho"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "In a temple hall the musicians strike up and a medium in costume begins to dance. For a while the medium is a god. Then the costume changes, and another god arrives, and another: one medium may embody several in a single ceremony.",
+            "claimIds": [
+              "C-MAU-RITUAL"
+            ]
+          },
+          {
+            "text": "This is [[hau-dong|hầu đồng]], or lên đồng, the best-known ritual of the Mother Goddess religion, *Đạo Mẫu*. Its followers worship the Mothers of Three Realms, heaven, water, and mountains and forests, for health and success. Condemned for decades as superstition, it was added to UNESCO’s list of the intangible heritage of humanity in 2016.",
+            "claimIds": [
+              "C-MAU",
+              "C-MAU-HISTORY"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "The Mother Goddesses in brief",
+        "items": [
+          {
+            "term": "Realms",
+            "text": "Heaven, water, mountains and forests."
+          },
+          {
+            "term": "Mother of the World",
+            "text": "Liễu Hạnh."
+          },
+          {
+            "term": "Ritual",
+            "text": "Hầu đồng, with chầu văn music."
+          },
+          {
+            "term": "UNESCO",
+            "text": "Representative List, 2016."
+          }
+        ],
+        "claimIds": [
+          "C-MAU",
+          "C-MAU-RITUAL",
+          "C-MAU-UNESCO"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Three realms and a fairy",
+        "id": "mothers",
+        "paras": [
+          {
+            "text": "The religion honours the Mothers of the Three Realms: of heaven, of water, and of the mountains and forests. Their pantheon draws on the Kinh, the Việt majority, and from the Mường, Tày, Nùng and Dao peoples of the northern hills.",
+            "claimIds": [
+              "C-MAU",
+              "C-MAU-RITUAL"
+            ]
+          },
+          {
+            "text": "Above them all in popular devotion stands Liễu Hạnh, honoured as Mother of the World. She is told of as a fairy who came down to earth, lived as a woman and later turned to Buddhism, and she is counted among the Four Immortals of Vietnamese belief. UNESCO’s record notes that the religion contributes to the appreciation of women and their roles in society.",
+            "claimIds": [
+              "C-MAU-LIEUHANH",
+              "C-MAU-WOMEN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "bl-tayho",
+        "size": "wide",
+        "caption": "Phủ Tây Hồ, on West Lake."
+      },
+      {
+        "type": "text",
+        "heading": "Hầu đồng",
+        "id": "ritual",
+        "paras": [
+          {
+            "text": "Daily worship is quiet: incense, flowers and prayers at a shrine. The ritual that draws attention is hầu đồng. One medium embodies several gods in turn in a single ceremony, changing costume for each, to the sung music called [[chau-van|chầu văn]] and to dance. The practice is carried by temple keepers, ritual masters, mediums, assistants and musicians, and is passed on mostly by word of mouth.",
+            "claimIds": [
+              "C-MAU-RITUAL"
+            ]
+          },
+          {
+            "text": "It is not a performance for an audience, though people watch. During the ritual members of the congregation may come forward to the medium with offerings or requests. A scholar quoted in 2016 criticised the crowding and loud music at some rituals.",
+            "claimIds": [
+              "C-MAU-AUDIENCE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "From ban to World Heritage",
+        "label": "Timeline of the Mother Goddess religion",
+        "items": [
+          {
+            "year": "1500s",
+            "title": "Passed on",
+            "text": "UNESCO dates the practices’ transmission to the sixteenth century.",
+            "claimIds": [
+              "C-MAU-UNESCO"
+            ]
+          },
+          {
+            "year": "20th c.",
+            "title": "Banned",
+            "text": "Lên đồng is condemned as superstition and banned.",
+            "claimIds": [
+              "C-MAU-HISTORY"
+            ]
+          },
+          {
+            "year": "1987",
+            "title": "The ban is lifted",
+            "text": "The rituals become legal again.",
+            "claimIds": [
+              "C-MAU-HISTORY"
+            ]
+          },
+          {
+            "year": "1990s",
+            "title": "Revival",
+            "text": "The practice revives openly, carried by its followers.",
+            "claimIds": [
+              "C-MAU-HISTORY"
+            ]
+          },
+          {
+            "year": "2013",
+            "title": "National list",
+            "text": "Vietnam lists it as national intangible heritage.",
+            "claimIds": [
+              "C-MAU-UNESCO"
+            ]
+          },
+          {
+            "year": "2016",
+            "title": "UNESCO",
+            "text": "Inscribed on 1 December (Vietnam time) in Addis Ababa.",
+            "claimIds": [
+              "C-MAU-UNESCO"
+            ]
+          },
+          {
+            "year": "2018",
+            "title": "Rules for rituals",
+            "text": "Hầu đồng to be held only at shrines, not as tourist shows.",
+            "claimIds": [
+              "C-MAU-HN"
+            ]
+          },
+          {
+            "year": "2023",
+            "title": "Still a worry",
+            "text": "The ministry says distortions are increasing.",
+            "claimIds": [
+              "C-MAU-HN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Banned, then honoured",
+        "id": "history",
+        "paras": [
+          {
+            "text": "For decades the state condemned lên đồng as superstition and banned it. The ban was lifted in 1987, and from the early 1990s the practice revived openly, carried by its own followers. Vietnam put it on its national list of intangible heritage in 2013, and UNESCO inscribed it at its 11th session, in Addis Ababa, on 1 December 2016, Vietnam time.",
+            "claimIds": [
+              "C-MAU-HISTORY",
+              "C-MAU-UNESCO"
+            ]
+          },
+          {
+            "text": "Anyone may take part, whatever their age, occupation or religion. The religion is strongest in the north and north-central regions, with its centre in Nam Định, south of Hà Nội, and is also found in Hồ Chí Minh City.",
+            "claimIds": [
+              "C-MAU-OPEN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Sources date the end of the restrictions differently: the ban was lifted in 1987 according to two press features, while the open revival is dated to the early 1990s.",
+        "claimIds": [
+          "C-MAU-HISTORY"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Money and the market",
+        "id": "money",
+        "paras": [
+          {
+            "text": "UNESCO’s decision names one danger outright: over-commercialisation. Rituals can be costly, and an artisan quoted by Nhân Dân in 2022 spoke of devotees who spent until they were ruined. Since 2018 the Ministry of Culture has asked that hầu đồng be held only at Mother Goddess shrines and relic sites, not as street shows or tourist services, with fewer paper and costly offerings. In 2023 it said such distortions were continuing and even increasing.",
+            "claimIds": [
+              "C-MAU-UNESCO",
+              "C-MAU-HN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Worship or performance?",
+        "id": "stage",
+        "paras": [
+          {
+            "text": "The music and costume of hầu đồng are striking, and some have taken them to the stage: in 2016 a Hà Nội theatre ran staged performances. The Ministry of Culture counts staging the ritual outside its proper setting among the distortions it wants corrected. UNESCO’s decision, for its part, stresses what the practice does for its community: it is open to anyone, with no restrictions, and promotes tolerance between ethnic groups and religions.",
+            "claimIds": [
+              "C-MAU-STAGE",
+              "C-MAU-TOLERANCE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "In Hà Nội",
+        "id": "hanoi",
+        "paras": [
+          {
+            "text": "Hà Nội has nearly 600 đền, 5 phủ and some 1,230 private shrines of the religion. The best known is Phủ Tây Hồ, on West Lake, where crowds gather from early morning on the first day of Tết.",
+            "claimIds": [
+              "C-MAU-HN",
+              "C-OFFER-2025"
+            ]
+          },
+          {
+            "text": "If you come across a ritual, remember it is worship, not a show: stand at the side, keep quiet, and ask the temple keeper before filming.",
+            "claimIds": [
+              "C-MAU-TIP"
+            ]
+          },
+          {
+            "text": "A phủ is one of several kinds of sacred place in the city, alongside pagodas, temples to heroes and village communal houses. For how to tell them apart, and what each one honours, see [Chùa, đền, đình: which is which?](story:st-sacred-places).",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Đạo Mẫu",
+            "text": "The Mother Goddess religion."
+          },
+          {
+            "term": "Hầu đồng",
+            "text": "A medium embodies gods in turn."
+          },
+          {
+            "term": "2016",
+            "text": "UNESCO Representative List."
+          },
+          {
+            "term": "Watching",
+            "text": "Quietly, from the side."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "bl-tayho",
+        "question": "A ritual in progress",
+        "prompt": "At a temple you walk into a hầu đồng ritual, music playing and a medium in costume. What do you do?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Film it from the front; it is a performance",
+            "feedback": "It is worship. Ask the temple keeper before filming."
+          },
+          {
+            "label": "Watch quietly from the side",
+            "fit": true,
+            "feedback": "Yes. Stand back, keep quiet, and ask before filming."
+          },
+          {
+            "label": "Leave at once; outsiders are not allowed",
+            "feedback": "Visitors may usually watch, quietly. Anyone may take part."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-old-quarter",
@@ -4454,42 +10002,553 @@ window.CC.stories = [
     "country": "vietnam",
     "place": "Hà Nội",
     "title": "A bowl of phở",
-    "dek": "From a street snack in the early 1900s to national heritage in 2024.",
+    "dek": "A street snack from a pole-carried kitchen became Hà Nội’s breakfast, then national heritage. A hundred and twenty years of phở, and how to order a bowl today.",
     "sections": [
       {
-        "text": "Phở began as a street snack in the early 1900s. A bowl is rice noodles in an aromatic broth, served mainly with beef (phở bò) or chicken (phở gà), often with fresh herbs, spices and crisp fried dough sticks.",
+        "text": "Phở began as a street snack in early twentieth-century Hà Nội: rice noodles in a clear broth with beef or chicken.",
         "claimIds": [
           "C-PHO-BOWL"
         ]
       },
       {
         "heading": "Heritage in a bowl",
-        "text": "In August 2024 Hà Nội phở was added to Vietnam’s list of national intangible cultural heritage. By 2023 the city had nearly 700 phở shops.",
+        "text": "In August 2024 the folk knowledge of Hà Nội phở was listed as national intangible cultural heritage. A 2023 survey counted nearly 700 shops.",
         "claimIds": [
-          "C-PHO-HERITAGE"
+          "C-PHO-HERITAGE",
+          "C-PHO-COUNT"
         ]
       },
       {
         "heading": "Not only Hà Nội",
-        "text": "Phở Nam Định, from a province south-east of the capital, was recognised in the same year, and other regions have their own versions.",
+        "text": "Phở Nam Định was listed the same week, and southern phở is served quite differently.",
         "claimIds": [
-          "C-PHO-NAMDINH"
+          "C-PHO-NAMDINH",
+          "C-PHO-STYLE"
         ]
       }
     ],
-    "appliesTo": "Hà Nội, from Hanoi Times and The Investor.",
-    "varies": "Every shop has its own broth and toppings, and southern phở is served quite differently.",
-    "phraseIds": []
+    "appliesTo": "Phở as it is sold and eaten in Hà Nội. Prices are from 2025.",
+    "varies": "Every shop has its own broth. Phở in Nam Định and in the south is made and served differently, and where phở began is still argued over.",
+    "phraseIds": [],
+    "layout": "timeline",
+    "imageId": "fd-pho-bowl",
+    "hero": {
+      "image": "fd-pho-bowl"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Before seven in the morning, the phở shops of Hà Nội are already full. People sit on low stools with their knees near their chins, steam rising past their faces, a pot of broth bubbling at the door. It is the city’s breakfast: most shops sell until about ten and then close.",
+            "claimIds": [
+              "C-PHO-WHEN"
+            ]
+          },
+          {
+            "text": "A bowl is simple to describe: flat rice noodles in a clear, fragrant broth, with beef or chicken. Its history is not. Nobody agrees on where phở was born, and the question still starts arguments between Hà Nội and Nam Định. What is not in doubt is that it grew up on the streets of this city in the first years of the twentieth century, and that it has outlived wars, rationing and a hundred years of change.",
+            "claimIds": [
+              "C-PHO-BOWL",
+              "C-PHO-ORIGIN",
+              "C-PHO-NAMVSHN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Phở in brief",
+        "items": [
+          {
+            "term": "What",
+            "text": "Flat rice noodles in clear broth, with beef (phở bò) or chicken (phở gà)."
+          },
+          {
+            "term": "When",
+            "text": "Mostly breakfast. Many shops close by mid-morning."
+          },
+          {
+            "term": "Price",
+            "text": "About 35,000–40,000 đồng a bowl in 2025; more at famous shops."
+          },
+          {
+            "term": "Heritage",
+            "text": "National intangible cultural heritage since August 2024."
+          }
+        ],
+        "claimIds": [
+          "C-PHO-BOWL",
+          "C-PHO-WHEN",
+          "C-PHO-PRICE",
+          "C-PHO-HERITAGE"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Where did it come from?",
+        "id": "origins",
+        "paras": [
+          {
+            "text": "There are four main stories, and Nhân Dân, the Party newspaper, admits that none has been proven. One traces phở to *bún xáo trâu*, a buffalo noodle soup from Thanh Trì on the edge of the city, with beef replacing buffalo once the French raised cattle nearby. A second points to the French *pot-au-feu*, a beef stew; the paper doubts it, since pot-au-feu was full of carrots and turnips. A third places the first phở in Vân Cù, a village in Nam Định province, and a fourth hears the name in the cry of Cantonese vendors selling *ngưu nhục phấn*, beef with rice noodles.",
+            "claimIds": [
+              "C-PHO-ORIGIN"
+            ]
+          },
+          {
+            "text": "The heritage dossier submitted for Hà Nội takes a different view: that phở was made collectively, by many cooks, in early twentieth-century Hà Nội, out of all of these influences. The earliest firm evidence fits that. Drawings made by the Frenchman Henri Oger in 1908–09 show a phở cart in the street, and by 1933 a dictionary was defining phở chín and phở tái.",
+            "claimIds": [
+              "C-PHO-ORIGIN",
+              "C-PHO-EARLY"
+            ]
+          },
+          {
+            "text": "Nam Định has its own claim. Its villages still send hundreds of phở cooks around the country, and its newspapers call the province the home of the trade. The researcher Trịnh Quang Dũng argues the other way: that phở was sold in Hà Nội at least fifteen years before the first shop opened in Nam Định. Both sides have their evidence. This story is about Hà Nội, but it does not take sides.",
+            "claimIds": [
+              "C-PHO-NAMVSHN",
+              "C-PHO-NAMDINH"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Clear, and always piping hot.",
+        "by": "Thạch Lam on phở, in “Hà Nội băm sáu phố phường” (1943), our translation",
+        "claimIds": [
+          "C-PHO-LIT"
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "A hundred and twenty years in a bowl",
+        "label": "Timeline of phở in Hà Nội",
+        "items": [
+          {
+            "era": "On the street"
+          },
+          {
+            "year": "1907–10",
+            "title": "A street snack",
+            "text": "Phở is sold from carts and shoulder poles in the Old Quarter. Henri Oger draws a phở cart in 1908–09.",
+            "claimIds": [
+              "C-PHO-EARLY",
+              "C-PHO-SELLERS"
+            ]
+          },
+          {
+            "year": "1930s",
+            "title": "Shops with names",
+            "text": "Phở moves indoors. Shops take their owners’ nicknames, and a 1933 dictionary lists phở chín and phở tái.",
+            "claimIds": [
+              "C-PHO-EARLY",
+              "C-PHO-LIT"
+            ]
+          },
+          {
+            "year": "1939",
+            "title": "Chicken on beefless days",
+            "text": "With no beef on Mondays and Fridays, some shops serve chicken. Nhân Dân dates phở gà later, to 1947–54.",
+            "claimIds": [
+              "C-PHO-GA"
+            ],
+            "image": "fd-pho-two",
+            "caption": "Beef phở with the herbs, lime and chilli most shops set out."
+          },
+          {
+            "year": "1943",
+            "title": "Into literature",
+            "text": "Thạch Lam writes what is probably the first essay about phở. Nguyễn Tuân and Vũ Bằng follow.",
+            "claimIds": [
+              "C-PHO-LIT"
+            ]
+          },
+          {
+            "era": "War and rationing"
+          },
+          {
+            "year": "After 1954",
+            "title": "Phở goes south",
+            "text": "Northerners moving south take their recipes; Saigon makes the dish its own. Rare beef, tái, becomes the usual order in the North.",
+            "claimIds": [
+              "C-PHO-SOUTH",
+              "C-PHO-TAI"
+            ]
+          },
+          {
+            "year": "1960s–80s",
+            "title": "State phở",
+            "text": "Private stalls close. In state-run shops diners buy a ticket, queue at the window, and sometimes get “pilotless phở”, with no meat.",
+            "claimIds": [
+              "C-PHO-BAOCAP"
+            ]
+          },
+          {
+            "year": "1979",
+            "title": "Phở Thìn",
+            "text": "Nguyễn Trọng Thìn opens on Lò Đúc, frying the beef with garlic before it goes in the bowl.",
+            "claimIds": [
+              "C-PHO-THIN"
+            ]
+          },
+          {
+            "era": "Open again"
+          },
+          {
+            "year": "After 1975",
+            "title": "Phở abroad",
+            "text": "Vietnamese who leave the country take phở to Paris, California and beyond. In 2007 “pho” enters the Shorter Oxford English Dictionary.",
+            "claimIds": [
+              "C-PHO-SOUTH",
+              "C-PHO-WORLD"
+            ]
+          },
+          {
+            "year": "2000s",
+            "title": "Phở cuốn",
+            "text": "In Ngũ Xã, by Trúc Bạch Lake, cooks roll fried beef and herbs in sheets of phở noodle.",
+            "claimIds": [
+              "C-PHO-CUON"
+            ]
+          },
+          {
+            "year": "2017",
+            "title": "Phở Day",
+            "text": "The newspaper Tuổi Trẻ starts marking 12 December as Phở Day.",
+            "claimIds": [
+              "C-PHO-DAY"
+            ]
+          },
+          {
+            "year": "2024",
+            "title": "National heritage",
+            "text": "Hà Nội phở and Phở Nam Định are listed as national intangible cultural heritage in the same week of August.",
+            "claimIds": [
+              "C-PHO-HERITAGE",
+              "C-PHO-NAMDINH"
+            ],
+            "image": "fd-pho-spice",
+            "caption": "Seasoning a bowl at the table."
+          },
+          {
+            "year": "2026",
+            "title": "Towards UNESCO",
+            "text": "The city starts work on a dossier to put phở forward to UNESCO.",
+            "claimIds": [
+              "C-PHO-UNESCO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "From the shoulder pole to the shop",
+        "id": "street",
+        "paras": [
+          {
+            "text": "The first phở cooks carried their kitchens. A *gánh*, a shoulder pole, held a pot of broth over a small fire at one end and the bowls, noodles and meat at the other. Many of the city’s best-known shops began like this, as a stall carried through the Old Quarter or set down by the lake, before they had an address.",
+            "claimIds": [
+              "C-PHO-SELLERS"
+            ]
+          },
+          {
+            "text": "By the 1930s phở had moved indoors. The writer Vũ Bằng described three ways to buy it: from a cart, from a pole, or in a shop. Nguyễn Tuân, in his essay “Phở”, noticed that shops were known by a single word, the owner’s nickname, as if everyone in the city knew them personally. Many shops are still named that way.",
+            "claimIds": [
+              "C-PHO-LIT"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-pho-bowl",
+        "size": "wide",
+        "caption": "Beef phở with spring onion and herbs."
+      },
+      {
+        "type": "text",
+        "heading": "Ticket, queue, pilotless phở",
+        "id": "rationing",
+        "paras": [
+          {
+            "text": "During the war years and the [[baocap|subsidy era]] that followed, private trade in rice goods was banned and the family stalls disappeared. What was left was state phở, sold in state-run shops on streets such as Hàng Bài, Ngô Quyền and Hàng Buồm. You bought a ticket at a counter, queued at the kitchen window and carried your own bowl. A writer who grew up then remembers phở as a luxury, eaten with vinegar because there were no limes.",
+            "claimIds": [
+              "C-PHO-BAOCAP"
+            ]
+          },
+          {
+            "text": "When there was no beef, the shops still sold the noodles and broth. Hanoians called it *phở không người lái*, “pilotless phở”. The phrase is remembered differently: one researcher uses it for the queue-and-carry system instead.",
+            "claimIds": [
+              "C-PHO-BAOCAP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "We could not confirm where the nickname came from beyond memoirs. Sources agree on the phrase, not on exactly what it described.",
+        "claimIds": [
+          "C-PHO-BAOCAP"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Hà Nội phở and southern phở",
+        "id": "styles",
+        "paras": [
+          {
+            "text": "After 1954, when many northerners moved south, phở went with them, and in Saigon it changed. Today the two are easy to tell apart. A Hà Nội bowl is about the broth: clear, savoury, with few herbs. Hoisin sauce, which would cloud it, is rarely used. On the table you will find lime and a jar of garlic and chilli in vinegar, to adjust it as you like, and sometimes [[quay|quẩy]], fried dough, to dip.",
+            "claimIds": [
+              "C-PHO-SOUTH",
+              "C-PHO-STYLE"
+            ]
+          },
+          {
+            "text": "In the south the broth is darker and sweeter, and the bowl comes with a basket of basil, sawtooth herb and bean sprouts, plus bottles of hoisin and chilli sauce. Neither is the wrong way to eat phở. They are two cities’ ideas of the same dish.",
+            "claimIds": [
+              "C-PHO-STYLE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "What to order",
+        "id": "order",
+        "intro": "Choose a tab for the main kinds of bowl in Hà Nội, or for what goes on the table.",
+        "label": "Kinds of phở",
+        "tabs": [
+          {
+            "label": "Beef",
+            "columns": [
+              "Order",
+              "What you get"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "phở tái",
+                  "vi": true
+                },
+                {
+                  "text": "Thin slices of raw beef that cook in the hot broth. The usual order since the 1950s.",
+                  "claimIds": [
+                    "C-PHO-TAI"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "phở chín",
+                  "vi": true
+                },
+                {
+                  "text": "Well-cooked beef, the older style.",
+                  "claimIds": [
+                    "C-PHO-TAI"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "phở tái lăn",
+                  "vi": true
+                },
+                {
+                  "text": "Beef stir-fried quickly with garlic before it goes in, made famous at Phở Thìn, Lò Đúc.",
+                  "claimIds": [
+                    "C-PHO-THIN"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Other kinds",
+            "columns": [
+              "Order",
+              "What you get"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "phở gà",
+                  "vi": true
+                },
+                {
+                  "text": "Chicken phở, which spread when beef was short.",
+                  "claimIds": [
+                    "C-PHO-GA"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "phở cuốn",
+                  "vi": true
+                },
+                {
+                  "text": "Fried beef and herbs rolled in sheets of phở noodle, dipped in sauce. From Ngũ Xã.",
+                  "claimIds": [
+                    "C-PHO-CUON"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "On the table",
+            "columns": [
+              "Item",
+              "What to do"
+            ],
+            "rows": [
+              [
+                "Lime",
+                {
+                  "text": "Squeeze in a little to sharpen the broth.",
+                  "claimIds": [
+                    "C-PHO-STYLE"
+                  ]
+                }
+              ],
+              [
+                "Garlic-chilli vinegar",
+                {
+                  "text": "A spoonful for heat and sourness.",
+                  "claimIds": [
+                    "C-PHO-STYLE"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "quẩy",
+                  "vi": true
+                },
+                "Fried dough. Tear it and dip it in the broth."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Heritage, and a count of 700",
+        "id": "heritage",
+        "paras": [
+          {
+            "text": "On 9 August 2024 the Ministry of Culture, Sports and Tourism listed the folk knowledge of Hà Nội phở as national intangible cultural heritage. What is listed is not one recipe but the know-how: the bones and spices, the way the broth is kept clear, the habits of the people who make and eat it. The certificate was handed to the city on 29 November that year, at the opening of a festival of Hà Nội food.",
+            "claimIds": [
+              "C-PHO-HERITAGE"
+            ]
+          },
+          {
+            "text": "Before the listing, the city’s culture department surveyed 18 of its districts and counted nearly 700 phở shops, with the most in Long Biên (93), Thanh Xuân (56) and Hoàn Kiếm (32). The count included only shops that met hygiene standards, so the real number is higher. Phở Nam Định was listed in the same week; its province counts about 300 shops of its own and sends about 600 cooks around the country.",
+            "claimIds": [
+              "C-PHO-COUNT",
+              "C-PHO-NAMDINH"
+            ]
+          },
+          {
+            "text": "In 2026 the city began preparing a dossier to put phở forward to UNESCO. Experts warn that it has to show something alive, cooked and eaten by a community, not only a famous dish; dossiers usually take about two years, and many are not accepted.",
+            "claimIds": [
+              "C-PHO-UNESCO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "The dossier must show that this is a heritage living in the community.",
+        "by": "Dr Lê Thị Minh Lý, heritage expert, to VietnamPlus (2026), our translation",
+        "claimIds": [
+          "C-PHO-UNESCO"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Eating a bowl",
+        "id": "eat",
+        "paras": [
+          {
+            "text": "Go early. Phở is a breakfast dish, and many shops run out or close by mid-morning. At the busiest places the system can still feel like the old days: at Phở Bát Đàn, listed by the Michelin Guide, you queue, pay and carry your own bowl to the table.",
+            "claimIds": [
+              "C-PHO-WHEN",
+              "C-PHO-QUEUE"
+            ]
+          },
+          {
+            "text": "A bowl cost about 35,000–40,000 đồng in 2025, up 15–20% in a year; in the city centre a 30,000 đồng bowl had nearly disappeared. Famous shops charge 50,000–65,000 đồng or more.",
+            "claimIds": [
+              "C-PHO-PRICE"
+            ]
+          },
+          {
+            "text": "Taste the broth first. Then add lime or vinegar if you want to: in Hà Nội the broth is the point, and the cook has already seasoned it.",
+            "claimIds": [
+              "C-PHO-TIP",
+              "C-PHO-STYLE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "When",
+            "text": "Morning. Many shops close by ten."
+          },
+          {
+            "term": "Order",
+            "text": "Tái (rare), chín (cooked) or gà (chicken)."
+          },
+          {
+            "term": "First",
+            "text": "Taste the broth, then add lime or vinegar."
+          },
+          {
+            "term": "Price",
+            "text": "About 35,000–40,000 đồng."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "fd-pho-two",
+        "question": "Which bowl is from Hà Nội?",
+        "prompt": "A friend from Saigon and a friend from Hà Nội each describe “real” phở. Which one is describing the Hà Nội bowl?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Sweet broth, a basket of basil and bean sprouts, hoisin on the side",
+            "feedback": "That is the southern bowl, shaped by cooks in Saigon after 1954."
+          },
+          {
+            "label": "Clear broth, few herbs, lime and garlic-chilli vinegar to adjust it",
+            "fit": true,
+            "feedback": "Yes. In Hà Nội the clear broth is the point, and hoisin is rarely used."
+          },
+          {
+            "label": "Either one: there is no difference",
+            "feedback": "They are the same dish, but the two cities make and serve it quite differently."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-bun-cha",
     "country": "vietnam",
     "place": "Hà Nội",
     "title": "How to eat bún chả",
-    "dek": "Grilled pork, cold noodles and a bowl of sauce you dip into.",
+    "dek": "Charcoal smoke at the shop front, pork in a bowl of sauce, cold noodles and a basket of herbs. Hà Nội’s lunch, a president’s dinner, and how to put it together.",
     "sections": [
       {
-        "text": "Bún chả comes in parts: a bowl of dipping sauce with grilled pork patties and pork belly in it, a plate of cold rice vermicelli and a basket of fresh herbs. The sauce balances fish sauce, vinegar or lime, chilli and sugar, sometimes with thin slices of green papaya or kohlrabi.",
+        "text": "Bún chả comes in parts: grilled pork in a bowl of dipping sauce, cold rice vermicelli and fresh herbs.",
         "claimIds": [
           "C-BUNCHA"
         ]
@@ -4502,40 +10561,2746 @@ window.CC.stories = [
         ]
       },
       {
-        "heading": "A Hà Nội dish",
-        "text": "Hanoians eat it at any meal. It was once sold from bamboo baskets carried through the streets, and the writer Thạch Lam called it the most characteristic dish of Hà Nội.",
+        "heading": "A Hà Nội lunch",
+        "text": "It is above all a lunch dish, and nobody knows exactly where it began.",
         "claimIds": [
-          "C-BUNCHA-EAT"
+          "C-BUNCHA-WHEN",
+          "C-BUNCHA-HISTORY"
         ]
       }
     ],
-    "appliesTo": "Hà Nội, from Viet Nam News.",
-    "varies": "Shops differ in their sauce and how they serve it.",
-    "phraseIds": []
+    "appliesTo": "Bún chả as it is served in Hà Nội. Prices from 2022–24.",
+    "varies": "Every shop has its own sauce and pork, and some add fried spring rolls. Bún chả elsewhere in Vietnam and abroad can be quite different.",
+    "phraseIds": [],
+    "layout": "guide",
+    "imageId": "fd-buncha-top",
+    "hero": {
+      "image": "fd-buncha-top"
+    },
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Around eleven in the morning, the side streets of Hà Nội fill with smoke. At the front of a bún chả shop someone crouches over a charcoal grill, fanning it, while pork fat drips onto the coals and hisses. By noon every table is full: a shop on Mai Hắc Đế told Znews it sells five or six hundred portions a day, most of them at lunch.",
+            "claimIds": [
+              "C-BUNCHA-GRILL",
+              "C-BUNCHA-WHEN"
+            ]
+          },
+          {
+            "text": "What arrives at your table can be puzzling the first time: not one dish but four, and nothing to tell you how they go together. This guide explains the parts, how to eat them, and a little of the dish’s history, from a 1943 essay to the night an American president sat on a plastic stool.",
+            "claimIds": [
+              "C-BUNCHA"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Bún chả in brief",
+        "items": [
+          {
+            "term": "What",
+            "text": "Charcoal-grilled pork in a dipping sauce, with rice vermicelli and herbs."
+          },
+          {
+            "term": "When",
+            "text": "Lunch, above all."
+          },
+          {
+            "term": "Price",
+            "text": "About 40,000 đồng at a well-known shop."
+          },
+          {
+            "term": "Sauce",
+            "text": "Cool in summer, warm in winter."
+          }
+        ],
+        "claimIds": [
+          "C-BUNCHA",
+          "C-BUNCHA-WHEN",
+          "C-BUNCHA-PRICE",
+          "C-BUNCHA-EAT"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "What is on the table",
+        "id": "parts",
+        "paras": [
+          {
+            "text": "A bowl of [[nuoc-cham|dipping sauce]] with the pork already in it. There are two kinds of [[cha|chả]]: *chả miếng*, thin slices of pork belly, and *chả băm*, chopped shoulder pressed into small patties. Both are grilled over charcoal; the pork was once clamped between strips of split bamboo, and today sits on a wire rack.",
+            "claimIds": [
+              "C-BUNCHA",
+              "C-BUNCHA-GRILL"
+            ]
+          },
+          {
+            "text": "A plate of cold rice vermicelli, *bún*. A basket of fresh greens: lettuce, coriander, perilla and basil. And on the table, small bowls of chopped garlic and sliced chilli, so you can make the sauce hotter. Many shops also serve fried spring rolls, ordered separately.",
+            "claimIds": [
+              "C-BUNCHA"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-buncha-set",
+        "size": "wide",
+        "caption": "The parts of a bún chả meal: pork in sauce, vermicelli, herbs, spring rolls, chilli and garlic."
+      },
+      {
+        "type": "steps",
+        "heading": "Putting it together",
+        "id": "steps",
+        "items": [
+          {
+            "title": "Season the sauce",
+            "paras": [
+              {
+                "text": "Taste the sauce first. Add garlic and chilli from the little bowls if you like. A classic Hà Nội sauce is roughly one part each of fish sauce, sugar and vinegar to five of water, so it is light enough to drink from the spoon.",
+                "claimIds": [
+                  "C-BUNCHA-SAUCE"
+                ]
+              }
+            ],
+            "image": "fd-buncha-condiments",
+            "caption": "Chilli, garlic, vermicelli and the bowl of sauce."
+          },
+          {
+            "title": "Take some noodles",
+            "paras": [
+              {
+                "text": "With your chopsticks, take a small bundle of vermicelli from the plate and dip it into the sauce bowl.",
+                "claimIds": [
+                  "C-BUNCHA-EAT"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Add pork and herbs",
+            "paras": [
+              {
+                "text": "Pick up a piece of pork and some herbs from the sauce and eat them together with the noodles. Tear larger leaves with your fingers.",
+                "claimIds": [
+                  "C-BUNCHA-EAT"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Repeat",
+            "paras": [
+              {
+                "text": "Keep going, a little at a time, topping up with herbs as you like. The pickled papaya or kohlrabi in the sauce is meant to be eaten too.",
+                "claimIds": [
+                  "C-BUNCHA",
+                  "C-BUNCHA-EAT"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Pay on the way out",
+            "paras": [
+              {
+                "text": "As at most small shops, eat first and pay at the front when you leave.",
+                "claimIds": [
+                  "C-FOOD-PAY"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Lunch, by the smell of the smoke",
+        "id": "lunch",
+        "paras": [
+          {
+            "text": "The Michelin Guide calls bún chả a lunchtime staple in Hà Nội, and that is when the shops are busiest. Some Hanoians eat it at any meal, and it was once thought of as a summer dish. Today the sauce follows the season: cool in summer, gently warmed in winter.",
+            "claimIds": [
+              "C-BUNCHA-WHEN",
+              "C-BUNCHA-EAT"
+            ]
+          },
+          {
+            "text": "Smell leads you there. Grills are set at the front of the shop or on the pavement, and fanned by hand, so the smoke drifts down the street. Go between about eleven and one, and expect to share a table.",
+            "claimIds": [
+              "C-BUNCHA-GRILL",
+              "C-BUNCHA-TIP",
+              "C-FOOD-SHARE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "fd-buncha-hangmanh",
+            "caption": "A full table at a bún chả shop on Hàng Mành."
+          },
+          {
+            "image": "fd-buncha-top",
+            "caption": "Bún chả from above: sauce bowls, vermicelli, herbs and spring rolls."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Baskets, smoke and a scholar’s question",
+        "id": "history",
+        "paras": [
+          {
+            "text": "Nobody knows exactly when or where bún chả was first made, and stories about its inventor, including one the Michelin Guide tells about a Hà Nội grill master, are legends. What is remembered is how it was sold: from bamboo baskets carried through the streets, before it settled into shops.",
+            "claimIds": [
+              "C-BUNCHA-HISTORY"
+            ]
+          },
+          {
+            "text": "In 1943 the writer Thạch Lam wrote about it in *Hà Nội băm sáu phố phường*, his book about the food and streets of the city. He describes the smoke, the fat sizzling on the coals and the fanning, and he gives a visiting country scholar a famous couplet, asking whether bún chả is the thousand-year treasure of Thăng Long. The line is often quoted as Thạch Lam’s own; in the book, it belongs to his character.",
+            "claimIds": [
+              "C-BUNCHA-THACHLAM"
+            ]
+          },
+          {
+            "text": "Vũ Bằng, the other great writer of Hà Nội food, thought the city’s bún chả was special perhaps because of the basil grown in Láng village, and because its sauce was never too salty, with the vinegar just right.",
+            "claimIds": [
+              "C-BUNCHA-VUBANG"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "A thousand-year treasure of Thăng Long: is it bún chả?",
+        "by": "A country scholar in Thạch Lam’s “Hà Nội băm sáu phố phường” (1943), our translation",
+        "claimIds": [
+          "C-BUNCHA-THACHLAM"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The president’s table",
+        "id": "obama",
+        "paras": [
+          {
+            "text": "On the evening of 23 May 2016, during his visit to Vietnam, US President Barack Obama sat down at Bún chả Hương Liên, a plain shop at 24 Lê Văn Hưu, with the chef and television host Anthony Bourdain. They ate bún chả, drank Hà Nội beer and stayed about an hour. Bourdain posted afterwards that the meal had cost six dollars in total, and that he had paid.",
+            "claimIds": [
+              "C-BUNCHA-OBAMA"
+            ]
+          },
+          {
+            "text": "The shop was full for days. It later put the table, plates, chopsticks, beer bottles and plastic stools behind glass on its second floor, and many diners still order the “Obama combo”: a fried seafood roll, a bowl of bún chả and a Hà Nội beer.",
+            "claimIds": [
+              "C-BUNCHA-OBAMA",
+              "C-BUNCHA-TABLE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Some reports give the shop’s address as Hàng Bàn or Thi Sách. The Michelin Guide’s listing gives 24 Lê Văn Hưu, in Hai Bà Trưng.",
+        "claimIds": [
+          "C-BUNCHA-OBAMA"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Bib Gourmand bún chả",
+        "id": "michelin",
+        "paras": [
+          {
+            "text": "When the Michelin Guide published its first selection for Vietnam in June 2023, two Hà Nội bún chả shops received a Bib Gourmand, the guide’s award for good food at moderate prices: Bun Cha Ta on Nguyễn Hữu Huân and Tuyết Bún Chả 34 on Hàng Than. Bún Chả Chan on Mai Hắc Đế and Bún Chả Đắc Kim on Hàng Mành followed in 2024, and Hương Liên is recommended.",
+            "claimIds": [
+              "C-BUNCHA-MICHELIN"
+            ]
+          },
+          {
+            "text": "The prices did not change much. A bowl at Bún Chả Chan was still 40,000 đồng after the award, and that is close to what a good bowl costs across the city.",
+            "claimIds": [
+              "C-BUNCHA-PRICE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Usually right",
+          "items": [
+            {
+              "text": "Dipping noodles into the sauce bowl a little at a time.",
+              "claimIds": [
+                "C-BUNCHA-EAT"
+              ]
+            },
+            {
+              "text": "Adding garlic and chilli to taste.",
+              "claimIds": [
+                "C-BUNCHA-SAUCE"
+              ]
+            },
+            {
+              "text": "Going at lunchtime.",
+              "claimIds": [
+                "C-BUNCHA-WHEN"
+              ]
+            },
+            {
+              "text": "Paying at the front when you leave.",
+              "claimIds": [
+                "C-FOOD-PAY"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Pouring the sauce over the noodles: it stays in its bowl.",
+              "claimIds": [
+                "C-BUNCHA-EAT"
+              ]
+            },
+            {
+              "text": "Arriving late in the afternoon, when many shops have sold out.",
+              "claimIds": [
+                "C-BUNCHA-WHEN"
+              ]
+            },
+            {
+              "text": "Quoting the famous couplet as Thạch Lam’s own words.",
+              "claimIds": [
+                "C-BUNCHA-THACHLAM"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Parts",
+            "text": "Pork in sauce, noodles, herbs."
+          },
+          {
+            "term": "How",
+            "text": "Noodles into the sauce, eat with pork and herbs."
+          },
+          {
+            "term": "When",
+            "text": "About 11 to 1."
+          },
+          {
+            "term": "Price",
+            "text": "Around 40,000 đồng."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "fd-buncha-set",
+        "question": "Your bún chả arrives",
+        "prompt": "A bowl of sauce with pork in it, a plate of noodles and a basket of herbs land in front of you. What do you do?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Tip the noodles into the sauce bowl all at once",
+            "feedback": "The bowl is too small, and the noodles would go soggy. Dip a little at a time."
+          },
+          {
+            "label": "Dip a bundle of noodles in the sauce and eat it with pork and herbs",
+            "fit": true,
+            "feedback": "Yes: a little at a time, with as many herbs as you like."
+          },
+          {
+            "label": "Pour the sauce over the plate of noodles",
+            "feedback": "The sauce stays in its own bowl; that is where you dip."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "st-egg-coffee",
     "country": "vietnam",
-    "place": "Hà Nội",
+    "place": "Hà Nội’s cafés",
     "title": "Egg coffee",
-    "dek": "A drink invented when milk ran short, still served by the same family.",
+    "dek": "A bartender, a shortage of milk, and a café that has stayed in one family since 1946. How Hà Nội came to whip egg yolk into its coffee, and how the city drinks it.",
     "sections": [
       {
-        "text": "Egg coffee (cà phê trứng) is thought to have begun in the 1940s with Nguyễn Văn Giang, a bartender at the Metropole Hotel, who used whisked egg yolk because fresh milk was scarce. In 1946 he opened his own café, Café Giảng, which his family still runs.",
+        "text": "Egg coffee is thought to have begun in the 1940s with Nguyễn Văn Giảng, who used whipped egg yolk when fresh milk was scarce. In 1946 he opened Café Giảng, which his family still runs.",
         "claimIds": [
           "C-EGGCOFFEE"
         ]
       },
       {
         "heading": "What is in the cup",
-        "text": "Egg yolk is whipped into a thick, sweet foam and poured over hot black coffee. Some cafés serve the cup in a bowl of hot water to keep it warm.",
+        "text": "Egg yolk is whipped into a sweet foam over hot black coffee, often served in a bowl of hot water.",
         "claimIds": [
           "C-EGGCOFFEE-MAKE"
         ]
       }
     ],
-    "appliesTo": "Hà Nội, from VietNamNet. The origin story is the one told by the café’s family.",
-    "varies": "Recipes differ from café to café, and many now serve iced and flavoured versions.",
-    "phraseIds": []
+    "appliesTo": "Egg coffee and café habits in Hà Nội. The origin story is the one told by the Giảng family.",
+    "varies": "Recipes differ from café to café, and many now serve iced and flavoured versions. Coffee in Saigon is a different world.",
+    "phraseIds": [],
+    "layout": "essay",
+    "imageId": "fd-egg-giang",
+    "hero": {
+      "image": "fd-egg-giang"
+    },
+    "blocks": [
+      {
+        "type": "essay",
+        "label": "Photo essay: egg coffee in Hà Nội",
+        "steps": [
+          {
+            "image": "fd-egg-sign",
+            "label": "Since 1946",
+            "heading": "A sign at the end of a lane",
+            "paras": [
+              {
+                "text": "The most famous café in Hà Nội is easy to miss: a lit sign at the mouth of a narrow lane off Nguyễn Hữu Huân. This is Café Giảng, where by the family’s account egg coffee began.",
+                "claimIds": [
+                  "C-EGGCOFFEE"
+                ]
+              }
+            ]
+          },
+          {
+            "image": "fd-egg-making",
+            "label": "The whisk",
+            "heading": "Yolk, sugar, patience",
+            "paras": [
+              {
+                "text": "Egg yolk is whipped with sweetener until it turns pale and thick. It is spooned on top of a small cup of strong black coffee.",
+                "claimIds": [
+                  "C-EGGCOFFEE-MAKE"
+                ]
+              }
+            ]
+          },
+          {
+            "image": "fd-egg-giang",
+            "label": "The cup",
+            "heading": "Served in hot water",
+            "paras": [
+              {
+                "text": "The cup often comes standing in a bowl of hot water, to keep it warm while you work through the foam with a spoon.",
+                "claimIds": [
+                  "C-EGGCOFFEE-MAKE"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "A bartender and a shortage of milk",
+        "id": "origin",
+        "paras": [
+          {
+            "text": "Nguyễn Văn Giảng started working with coffee in 1937, at the Metropole, the grand French hotel near the Opera House. In the 1940s fresh milk was hard to find in Hà Nội. According to his family, Giảng whipped egg yolk as a substitute, and the thick, sweet foam that resulted became a drink of its own.",
+            "claimIds": [
+              "C-EGGCOFFEE",
+              "C-EGG-ADDRESS"
+            ]
+          },
+          {
+            "text": "In 1946 he left the hotel and opened his own café, at 90 Cầu Gỗ in the Old Quarter. In 1969 it moved to 7 Hàng Gai. Giảng died in 1988, and the business later divided between his children: the café that now carries his name, up a lane off Nguyễn Hữu Huân, and another on Yên Phụ.",
+            "claimIds": [
+              "C-EGGCOFFEE",
+              "C-EGG-ADDRESS"
+            ]
+          },
+          {
+            "text": "Like most food origin stories, this one comes mostly from the people who tell it, and the details vary. One newspaper says Giảng worked in the hotel kitchens, not the bar. One English-language report says he was trying to recreate a cappuccino. The food guide TasteAtlas dates the drink to the 1950s. What everyone agrees on is the family and the café. Giảng’s son Nguyễn Văn Đạo has described the original recipe as egg yolk, condensed milk, coffee, butter, cheese and some secret ingredients.",
+            "claimIds": [
+              "C-EGG-DISPUTE",
+              "C-EGG-RECIPE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "One family, two cafés",
+        "id": "family",
+        "paras": [
+          {
+            "text": "Egg coffee is still a family business. Giảng’s youngest son runs Café Giảng. His daughter, Bích, opened Café Đinh on Đinh Tiên Hoàng, by Hoàn Kiếm Lake, and her son manages it today. Many other cafés now serve egg coffee too, some of them iced or flavoured.",
+            "claimIds": [
+              "C-EGG-FAMILY"
+            ]
+          },
+          {
+            "text": "The recipe has travelled further than the family could have imagined. In 2025 TasteAtlas put egg coffee in its top ten Southeast Asian drinks, and in 2026 a Food & Wine survey of more than four hundred experts ranked Hà Nội the world’s second coffee city, with Café Giảng described as the cradle of egg coffee.",
+            "claimIds": [
+              "C-EGG-RANK"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "fd-egg-giang",
+        "size": "wide",
+        "caption": "Egg coffee at Café Giảng, with a glass of iced tea."
+      },
+      {
+        "type": "text",
+        "heading": "How to drink it",
+        "id": "drink",
+        "paras": [
+          {
+            "text": "There is no single rule, but most people start with the spoon, eating some of the foam on its own, then stir the rest into the coffee underneath. Keep the cup in its bowl of hot water between sips. The drink is rich and sweet, closer to a dessert than a morning coffee, and a small cup is plenty.",
+            "claimIds": [
+              "C-EGGCOFFEE-MAKE",
+              "C-EGG-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Egg coffee uses raw or lightly warmed egg yolk. If you avoid raw egg, ask before ordering.",
+        "editorial": true
+      },
+      {
+        "type": "text",
+        "heading": "A city that drinks coffee slowly",
+        "id": "cafes",
+        "paras": [
+          {
+            "text": "Coffee reached Vietnam with the French: it was brought in 1857 and planted officially from 1888. Hà Nội made its own habits around it. The city’s coffee is traditionally made in a [[phin|phin]], a small metal filter that sits on the cup and lets the coffee drip through, slowly. The writer Nguyễn Tuân would drink nothing else.",
+            "claimIds": [
+              "C-COFFEE-ARRIVE",
+              "C-COFFEE-PHIN"
+            ]
+          },
+          {
+            "text": "Order coffee with milk in Hà Nội and you ask for [[ca-phe-nau|cà phê nâu]], brown coffee: thick with condensed milk, often drunk hot and without ice. *Bạc xỉu*, a glass of milk with a little coffee, is a Saigon drink, its name popularly traced to the city’s Chinese community, and you will rarely see it on an old Hà Nội menu.",
+            "claimIds": [
+              "C-COFFEE-NAU"
+            ]
+          },
+          {
+            "text": "Cafés were also where the city’s artists met. Café Lâm on Nguyễn Hữu Huân, open since the early 1950s, was a haunt of painters. Bùi Xuân Phái drew portraits there as gifts while he drank, and works by Phái, Nguyễn Tư Nghiêm, Nguyễn Sáng and Văn Cao hung on its walls.",
+            "claimIds": [
+              "C-COFFEE-LAM"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Old cafés and new",
+        "id": "oldnew",
+        "paras": [
+          {
+            "text": "Walk down Triệu Việt Vương, south of the lake, and you pass café after café: tiny stools on the pavement, people sitting for an hour over one glass. Some are old. Café Thái at number 27 is nearly a hundred years old, and the street’s cafés appear in the writing of Hà Nội essayists who liked to watch the city go by over a phin.",
+            "claimIds": [
+              "C-COFFEE-OLDNEW",
+              "C-COFFEE-PHIN"
+            ]
+          },
+          {
+            "text": "Others sell the past. Cộng Cà Phê began in 2007 in a 28-square-metre room on the same street, opened by the singer Linh Dung and decorated to recall the subsidy era. Egg coffee, meanwhile, has spread from a single family café to menus across the city. At the family cafés the price has stayed modest: about 20,000 đồng a cup in 2016.",
+            "claimIds": [
+              "C-COFFEE-OLDNEW",
+              "C-EGG-PRICE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "Hà Nội coffee, in four orders",
+        "id": "orders",
+        "intro": "Choose a tab for coffee drinks, or for café habits.",
+        "label": "Coffee in Hà Nội",
+        "tabs": [
+          {
+            "label": "Drinks",
+            "columns": [
+              "Order",
+              "What you get"
+            ],
+            "rows": [
+              [
+                {
+                  "text": "cà phê trứng",
+                  "vi": true
+                },
+                {
+                  "text": "Egg coffee: whipped yolk over black coffee, often in hot water.",
+                  "claimIds": [
+                    "C-EGGCOFFEE-MAKE"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "cà phê nâu",
+                  "vi": true
+                },
+                {
+                  "text": "Coffee with condensed milk, the Hà Nội way.",
+                  "claimIds": [
+                    "C-COFFEE-NAU"
+                  ]
+                }
+              ],
+              [
+                {
+                  "text": "cà phê đen",
+                  "vi": true
+                },
+                "Black coffee, usually from a phin."
+              ],
+              [
+                {
+                  "text": "bạc xỉu",
+                  "vi": true
+                },
+                {
+                  "text": "Mostly milk, a little coffee. A Saigon drink.",
+                  "claimIds": [
+                    "C-COFFEE-NAU"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Habits",
+            "columns": [
+              "Habit",
+              "What to expect"
+            ],
+            "rows": [
+              [
+                "The phin",
+                {
+                  "text": "Your coffee may arrive still dripping. Wait for it.",
+                  "claimIds": [
+                    "C-COFFEE-PHIN"
+                  ]
+                }
+              ],
+              [
+                "Sitting",
+                {
+                  "text": "Cafés are for staying. Nobody will hurry you.",
+                  "claimIds": [
+                    "C-COFFEE-PHIN",
+                    "C-EGG-TIP"
+                  ]
+                }
+              ],
+              [
+                "Iced tea",
+                {
+                  "text": "A glass of trà đá often comes free on the side.",
+                  "claimIds": [
+                    "C-FOOD-TRADA"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Where it began",
+            "text": "Café Giảng, by the family’s account; opened 1946."
+          },
+          {
+            "term": "How",
+            "text": "Foam first with the spoon, then stir."
+          },
+          {
+            "term": "With milk",
+            "text": "Ask for cà phê nâu."
+          },
+          {
+            "term": "Pace",
+            "text": "Slow. Sit."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "fd-egg-making",
+        "question": "Ordering like a Hanoian",
+        "prompt": "You want coffee with milk, the way Hà Nội drinks it. What do you ask for?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Bạc xỉu",
+            "feedback": "That is mostly milk with a little coffee, a Saigon drink you will rarely see on an old Hà Nội menu."
+          },
+          {
+            "label": "Cà phê nâu",
+            "fit": true,
+            "feedback": "Yes: “brown coffee”, thick with condensed milk."
+          },
+          {
+            "label": "Cà phê trứng",
+            "feedback": "That is egg coffee: delicious, but whipped yolk rather than milk."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "st-water-puppets",
+    "country": "vietnam",
+    "layout": "essay",
+    "title": "Water puppets",
+    "dek": "A turtle rises out of a pool, a boy plays the flute on a buffalo, dragons dance on the water. Behind a bamboo screen, puppeteers stand waist-deep and work it all with hidden poles. How a village art from the paddy fields became Hà Nội’s best-known show.",
+    "place": "Hà Nội",
+    "imageId": "ar-wp-finale",
+    "hero": {
+      "image": "ar-wp-finale"
+    },
+    "appliesTo": "Water puppetry as played at the Thăng Long theatre and by village troupes around Hà Nội. History follows the national puppet theatre, a 1121 stele and Vietnamese press; visiting details follow the theatre and a 2026 travel listing.",
+    "varies": "Each guild has its own puppets, scenes and tricks, and kept them secret. City shows run on a daily timetable; a village troupe may put up its stage on the water only for a show.",
+    "sections": [
+      {
+        "text": "The earliest written record of water puppetry is a stele of 1121.",
+        "claimIds": [
+          "C-WP-1121"
+        ]
+      },
+      {
+        "heading": "How it works",
+        "text": "Puppeteers stand waist-deep behind a bamboo screen and move lacquered wooden figures with hidden rods.",
+        "claimIds": [
+          "C-WP-STAGE",
+          "C-WP-WOOD"
+        ]
+      },
+      {
+        "heading": "Seeing a show",
+        "text": "The Thăng Long theatre at 57B Đinh Tiên Hoàng plays every day.",
+        "claimIds": [
+          "C-WP-VISIT",
+          "C-WP-TLNOW"
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "essay",
+        "label": "Photo essay: a water puppet show",
+        "steps": [
+          {
+            "image": "ar-wp-theatre",
+            "label": "57B Đinh Tiên Hoàng",
+            "heading": "A theatre by the lake",
+            "paras": [
+              {
+                "text": "Beside Hoàn Kiếm Lake, the Thăng Long theatre plays water puppets every day of the year, seven or eight times a day. Most of the audience are visitors.",
+                "claimIds": [
+                  "C-WP-VISIT",
+                  "C-WP-TLNOW"
+                ]
+              }
+            ]
+          },
+          {
+            "image": "ar-wp-show",
+            "label": "The stage",
+            "heading": "A pool for a stage",
+            "paras": [
+              {
+                "text": "There is no floor: the stage is a pool of water, the *thủy đình*, in front of a pavilion hung with a bamboo screen. The water hides everything that makes the puppets move.",
+                "claimIds": [
+                  "C-WP-STAGE"
+                ]
+              }
+            ]
+          },
+          {
+            "image": "ar-wp-band",
+            "label": "The music",
+            "heading": "Drums at the side",
+            "paras": [
+              {
+                "text": "Musicians and singers sit to one side and carry the story with drums, cymbals and folk melodies. The puppets barely speak.",
+                "claimIds": [
+                  "C-WP-MUSIC"
+                ]
+              }
+            ]
+          },
+          {
+            "image": "ar-wp-turtle",
+            "label": "The turtle",
+            "heading": "Out of the water",
+            "paras": [
+              {
+                "text": "The figures are carved from light fig wood, which floats, and lacquered in bright colours. They glide, dive and come up again, a golden turtle among them.",
+                "claimIds": [
+                  "C-WP-WOOD",
+                  "C-WP-ACTS"
+                ]
+              }
+            ]
+          },
+          {
+            "image": "ar-wp-performers",
+            "label": "The curtain call",
+            "heading": "Waist-deep",
+            "paras": [
+              {
+                "text": "At the end the puppeteers come out through the screen, wet to the waist. About 20 of them work each show; some puppets weigh up to 10 kg.",
+                "claimIds": [
+                  "C-WP-WEIGHT"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "A show for a king, 1121",
+        "id": "stele",
+        "paras": [
+          {
+            "text": "The first time water puppets appear in writing is on a stone. In 1121, under the Lý dynasty that had made Thăng Long its capital a century earlier, a stele was raised at Long Đọi Sơn pagoda, in what was then Hà Nam province south of the capital. Its inscription describes a performance for the king’s longevity. A golden turtle swam out carrying three mountains on its back; immortals appeared; flocks of rare birds and a troupe of auspicious deer danced on the water.",
+            "claimIds": [
+              "C-WP-1121"
+            ]
+          },
+          {
+            "text": "The scene on the stone is already elaborate, which is why historians think the art is older. How much older nobody can say. The national puppet theatre traces water puppetry back to the legendary Hùng kings; that is a tradition, not a record. What the stele does show is that by the early twelfth century water puppets were good enough to be played before a king.",
+            "claimIds": [
+              "C-WP-OLDER"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-longdoi-brick",
+        "size": "inline",
+        "caption": "A decorated brick from Long Đọi pagoda, made between 1118 and 1121, the years of the stele. Vietnam National Museum of Fine Arts."
+      },
+      {
+        "type": "text",
+        "heading": "Behind the screen",
+        "id": "how",
+        "paras": [
+          {
+            "text": "The trick of the art is that you never see how it is done. The puppeteers stand in water up to the waist in a screened pavilion, the [[buong-tro|buồng trò]]. Each figure sits on a long pole or a set of strings and rods that runs under the water and through the screen, so the puppet seems to move by itself. Villages call the mechanism *máy sào dây*, pole and string.",
+            "claimIds": [
+              "C-WP-STAGE",
+              "C-WP-POOL"
+            ]
+          },
+          {
+            "text": "The puppets are carved from fig wood, chosen because it is light and floats, then painted and lacquered so they survive the water. At Đào Thục, a village on the north side of Hà Nội, an artisan takes about ten days to carve a single puppet 30–40 cm tall. The big ones are heavy: at the Thăng Long theatre some weigh up to 10 kg, and a one-metre fairy needs four people to work it. About 20 puppeteers are in the water for each show, in rubber overalls.",
+            "claimIds": [
+              "C-WP-WOOD",
+              "C-WP-CARVE",
+              "C-WP-WEIGHT"
+            ]
+          },
+          {
+            "text": "It takes decades to become a master.",
+            "claimIds": [
+              "C-WP-WOOD"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Water puppetry in brief",
+        "items": [
+          {
+            "term": "First record",
+            "text": "A stele of 1121, Long Đọi Sơn pagoda."
+          },
+          {
+            "term": "Stage",
+            "text": "A pool, the thủy đình, with a screened pavilion."
+          },
+          {
+            "term": "Puppets",
+            "text": "Fig wood and lacquer; up to 10 kg."
+          },
+          {
+            "term": "Show",
+            "text": "About 50 minutes, 15–17 short scenes."
+          }
+        ],
+        "claimIds": [
+          "C-WP-1121",
+          "C-WP-STAGE",
+          "C-WP-WEIGHT",
+          "C-WP-VISIT"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Tễu and the scenes",
+        "id": "acts",
+        "paras": [
+          {
+            "text": "A traditional show opens with [[teu|Tễu]], a cheerful boy who acts as host and jokes with the audience. In his own story he was exiled to earth for stealing a peach of immortality, which is why he is so pleased to be here.",
+            "claimIds": [
+              "C-WP-TEU"
+            ]
+          },
+          {
+            "text": "Then come the scenes, each only a few minutes long. A city show strings together some 15 to 17 of them. Many are village life: a boy playing the flute on a buffalo’s back, farmers planting rice, men fishing, a fox chased away from the ducks. Some are legends, above all the return of the sword at Hoàn Kiếm Lake, where a golden turtle rises to take back a king’s sword. The show ends with the sacred creatures, dragon, unicorn, tortoise and phoenix, dancing on the water. Village troupes have their own lists: one guild in Nam Định plays buffalo fights, swinging, firecrackers and the fairies’ dance.",
+            "claimIds": [
+              "C-WP-ACTS"
+            ]
+          },
+          {
+            "text": "The legend of the sword is told in full in [the story of Sword Lake](story:st-sword-lake).",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ar-wp-turtle",
+            "caption": "The golden turtle of the sword legend."
+          },
+          {
+            "image": "ar-wp-finale",
+            "caption": "The final dance on the water."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Village secrets",
+        "id": "guilds",
+        "paras": [
+          {
+            "text": "Water puppetry was a village art, and each village’s guild kept its own puppets and tricks. They guarded them closely. New members swore a blood oath to keep the craft secret for life; anyone who leaked it was fined a pig and thrown out. The guilds took only men. A Hà Nội newspaper counted only 14 traditional guilds still active in 2003.",
+            "claimIds": [
+              "C-WP-SECRET"
+            ]
+          },
+          {
+            "text": "Đào Thục is one of them. By the account of its village stele, the craft there is more than 300 years old, founded by a court official, Đào Đăng Khiêm. For most of that time the troupe had no fixed stage: villagers cut bamboo and put up screens on the water for each show. They built a permanent stage only in 2001. In 2023 Đào Thục water puppetry was added to the national list of intangible heritage, and it remains one of the last workshops still carving puppets by hand.",
+            "claimIds": [
+              "C-WP-DAOTHUC",
+              "C-WP-POOL"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "A golden turtle carrying three mountains on its back.",
+        "by": "The 1121 stele at Long Đọi Sơn pagoda, describing a water puppet show",
+        "claimIds": [
+          "C-WP-1121"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "From children’s troupe to tourist stage",
+        "id": "thanglong",
+        "paras": [
+          {
+            "text": "The theatre by the lake began modestly. On 10 October 1969 the city set up the Kim Đồng troupe: nine people doing puppetry on dry land for children. It became the Hà Nội Puppet Troupe in 1975 and took its present name, the Thăng Long Puppet Theatre, in 2001.",
+            "claimIds": [
+              "C-WP-TLHISTORY"
+            ]
+          },
+          {
+            "text": "Today it plays every day of the year, seven or eight shows a day; in 2023 it gave more than 1,600. It has toured more than 40 countries. A news agency that visited in 2018 found it drawing hundreds of tourists a day while few Hà Nội people came.",
+            "claimIds": [
+              "C-WP-TLNOW"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "Nine hundred years on the water",
+        "label": "Timeline of water puppetry",
+        "items": [
+          {
+            "year": "1121",
+            "title": "The stele",
+            "text": "A stele at Long Đọi Sơn pagoda records a show for the Lý king.",
+            "claimIds": [
+              "C-WP-1121"
+            ],
+            "image": "ar-longdoi-brick",
+            "caption": "A brick from the same pagoda."
+          },
+          {
+            "year": "Later Lê",
+            "title": "Đào Thục",
+            "text": "By its stele’s account, the Đào Thục guild starts under the Later Lê.",
+            "claimIds": [
+              "C-WP-DAOTHUC"
+            ]
+          },
+          {
+            "year": "1969",
+            "title": "A children’s troupe",
+            "text": "The Kim Đồng troupe, later the Thăng Long theatre, is founded in Hà Nội.",
+            "claimIds": [
+              "C-WP-TLHISTORY"
+            ]
+          },
+          {
+            "year": "2001",
+            "title": "New names, new stages",
+            "text": "The city troupe becomes the Thăng Long Puppet Theatre; Đào Thục builds a permanent water stage.",
+            "claimIds": [
+              "C-WP-TLHISTORY",
+              "C-WP-POOL"
+            ]
+          },
+          {
+            "year": "2023",
+            "title": "National heritage",
+            "text": "Đào Thục water puppetry joins the national list of intangible heritage.",
+            "claimIds": [
+              "C-WP-DAOTHUC"
+            ]
+          },
+          {
+            "year": "2026",
+            "title": "Towards UNESCO",
+            "text": "The government agrees to prepare a UNESCO nomination, led by Hà Nội.",
+            "claimIds": [
+              "C-WP-UNESCO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Towards UNESCO",
+        "id": "unesco",
+        "paras": [
+          {
+            "text": "Water puppetry is not yet on any UNESCO list. In January 2026 the government agreed in principle to prepare nominations for two things Hà Nội is known for, phở and water puppetry, with the city leading the work together with other provinces where the art is played. No date for a decision has been set.",
+            "claimIds": [
+              "C-WP-UNESCO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Seeing a show",
+        "id": "visit",
+        "paras": [
+          {
+            "text": "The Thăng Long Water Puppet Theatre is at 57B Đinh Tiên Hoàng, across the road from Hoàn Kiếm Lake. A show lasts about 50 minutes, with no interval. A travel listing in 2026 gave tickets at about 100,000 to 200,000 VND depending on the seat, with a small extra fee to take photographs or video. Times and prices change, so check at the box office.",
+            "claimIds": [
+              "C-WP-VISIT"
+            ]
+          },
+          {
+            "text": "Book a day ahead in high season, and sit a few rows back to see the whole stage. Stay for the end, when the puppeteers come out through the screen.",
+            "claimIds": [
+              "C-WP-TIP"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Where",
+            "text": "Thăng Long theatre, 57B Đinh Tiên Hoàng."
+          },
+          {
+            "term": "How long",
+            "text": "About 50 minutes, no interval."
+          },
+          {
+            "term": "Look for",
+            "text": "Tễu, the buffalo boy, the golden turtle."
+          },
+          {
+            "term": "Stay for",
+            "text": "The curtain call."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ar-wp-performers",
+        "question": "Where are the puppeteers?",
+        "prompt": "During a water puppet show, where are the people moving the puppets?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Above the stage, with strings",
+            "feedback": "Not here. Water puppets are worked from behind and below, not from above."
+          },
+          {
+            "label": "Waist-deep behind the screen",
+            "fit": true,
+            "feedback": "Yes. They stand in the water behind a bamboo screen and work the figures with hidden poles and strings."
+          },
+          {
+            "label": "Under the stage, in a dry pit",
+            "feedback": "No: they are in the water, often in rubber overalls."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "st-ca-tru",
+    "country": "vietnam",
+    "layout": "timeline",
+    "title": "Ca trù: sung poetry",
+    "dek": "A woman sings old poems to the click of bamboo clappers, a three-stringed lute answers, and a small drum marks the lines worth praising. Five centuries of Hà Nội’s chamber music: how it rose, fell into disrepute, nearly vanished and came back.",
+    "place": "Hà Nội",
+    "imageId": "ar-catru-perf",
+    "hero": {
+      "image": "ar-catru-perf"
+    },
+    "appliesTo": "Ca trù as sung in Hà Nội and the villages around it. Its form and status follow UNESCO and the Vietnamese Institute for Musicology; its history, scholars and Vietnamese press.",
+    "varies": "Guilds and families keep their own melodies and styles. Where and when ca trù is sung in Hà Nội changes often; only some venues hold regular nights.",
+    "sections": [
+      {
+        "text": "Ca trù is sung poetry performed by a singer, a lute player and a drummer.",
+        "claimIds": [
+          "C-CT-WHAT"
+        ]
+      },
+      {
+        "heading": "On the urgent list",
+        "text": "In 2009 UNESCO listed ca trù as heritage in need of urgent safeguarding.",
+        "claimIds": [
+          "C-CT-UNESCO"
+        ]
+      },
+      {
+        "heading": "Hearing it",
+        "text": "Bích Câu Đạo Quán holds a free show every Saturday night.",
+        "claimIds": [
+          "C-CT-BICHCAU"
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Ca trù is music for a small room. A woman sits on a mat, an old poem in her head and small bamboo clappers in her hands. Beside her a musician plays the [[dan-day|đàn đáy]], a lute with a long neck and three strings. A third person keeps a small drum, and strikes it to praise the lines and turns of voice. UNESCO calls it a complex form of sung poetry from northern Viet Nam.",
+            "claimIds": [
+              "C-CT-WHAT"
+            ]
+          },
+          {
+            "text": "For centuries it was sung at village communal houses, for entertainment and at court. In the twentieth century it fell into disrepute and nearly died. Today it is on UNESCO’s list of heritage in urgent need of safeguarding, and some twenty clubs in Hà Nội are keeping it alive.",
+            "claimIds": [
+              "C-CT-FORMS",
+              "C-CT-COLONIAL",
+              "C-CT-UNESCO"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Ca trù in brief",
+        "items": [
+          {
+            "term": "Who",
+            "text": "A singer with clappers, a lute player, a drummer."
+          },
+          {
+            "term": "What",
+            "text": "Sung poetry; 56 musical forms."
+          },
+          {
+            "term": "Since",
+            "text": "At least around 1500, in the earliest documents."
+          },
+          {
+            "term": "Status",
+            "text": "UNESCO urgent safeguarding list since 2009."
+          }
+        ],
+        "claimIds": [
+          "C-CT-WHAT",
+          "C-CT-FORMS",
+          "C-CT-ORIGIN",
+          "C-CT-UNESCO"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Three performers",
+        "id": "trio",
+        "paras": [
+          {
+            "text": "The singer, the [[dao-nuong|đào nương]], is the leader. She keeps time on the [[phach|phách]], a small bamboo percussion instrument, and its beat sets the pace for everyone. The lute player follows her. The drum is small; UNESCO calls it a praise drum, and its strokes praise the singer at the right moment.",
+            "claimIds": [
+              "C-CT-WHAT",
+              "C-CT-LEAD"
+            ]
+          },
+          {
+            "text": "There are 56 musical forms. *Thét nhạc* opened the singing at a village communal house. *Hát nói*, which appeared in the late eighteenth century, became the best-loved, and its name has nothing to do with speaking, *nói*. Ca trù was sung for worship at temples and communal houses, for entertainment, at the royal palace and in singing contests between guilds.",
+            "claimIds": [
+              "C-CT-FORMS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-danday",
+        "size": "inline",
+        "caption": "A đàn đáy: the long neck and three strings of ca trù’s lute."
+      },
+      {
+        "type": "text",
+        "heading": "Tallies and names",
+        "id": "name",
+        "paras": [
+          {
+            "text": "The word *trù* means a tally. Listeners who liked a singer gave her bamboo tallies as a reward, and the art took its name from them. It was also called *hát ả đào*, after the singers.",
+            "claimIds": [
+              "C-CT-NAME"
+            ]
+          },
+          {
+            "text": "Where it began is argued. Villages tell of a founding couple, and Lỗ Khê, north of Hà Nội, keeps a text of its story dated 1476 and copied in 1740; scholars treat these as legends. The earliest documents are poems from around 1500. One, by Lê Đức Mao, was written before 1505; another, by Hoàng Nghĩa Phú, born in 1480, mentions singers in the streets of Thăng Long. A specialist in Vietnamese music at Goldsmiths, University of London, puts its roots probably in the sixteenth century.",
+            "claimIds": [
+              "C-CT-LEGEND",
+              "C-CT-ORIGIN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "Five centuries of ca trù",
+        "label": "Timeline of ca trù in Hà Nội",
+        "items": [
+          {
+            "era": "Scholars and guilds"
+          },
+          {
+            "year": "1476 / 1740",
+            "title": "A village legend",
+            "text": "Lỗ Khê’s founder story is dated 1476 and copied in 1740.",
+            "claimIds": [
+              "C-CT-LEGEND"
+            ]
+          },
+          {
+            "year": "c. 1500",
+            "title": "The first poems",
+            "text": "Poems by Lê Đức Mao and Hoàng Nghĩa Phú mention singers, some in the streets of Thăng Long.",
+            "claimIds": [
+              "C-CT-ORIGIN"
+            ]
+          },
+          {
+            "year": "Late 1700s",
+            "title": "Hát nói",
+            "text": "The best-loved form of ca trù appears.",
+            "claimIds": [
+              "C-CT-FORMS"
+            ]
+          },
+          {
+            "era": "Disrepute"
+          },
+          {
+            "year": "Early 1900s",
+            "title": "Singing houses",
+            "text": "Under French rule singing houses gather on Hàng Giấy and in Thái Hà, later on Khâm Thiên. Hostesses who cannot sing give the art a bad name.",
+            "claimIds": [
+              "C-CT-COLONIAL"
+            ],
+            "image": "ar-hangbac",
+            "caption": "An Old Quarter street today."
+          },
+          {
+            "year": "After 1945",
+            "title": "Silence",
+            "text": "The shame persists; even Quách Thị Hồ is reluctant to teach.",
+            "claimIds": [
+              "C-CT-1945"
+            ]
+          },
+          {
+            "era": "Revival"
+          },
+          {
+            "year": "1991",
+            "title": "Văn Miếu",
+            "text": "Bạch Vân sings ca trù in public at Văn Miếu; the Hà Nội Ca trù Club grows from it.",
+            "claimIds": [
+              "C-CT-1991"
+            ]
+          },
+          {
+            "year": "1995",
+            "title": "Lỗ Khê and Thái Hà",
+            "text": "Lỗ Khê founds its club with 54 members; the Thái Hà family begins touring abroad.",
+            "claimIds": [
+              "C-CT-LOKHE",
+              "C-CT-THAIHA"
+            ]
+          },
+          {
+            "year": "2006",
+            "title": "Thăng Long club",
+            "text": "Nguyễn Thị Chúc and her student Phạm Thị Huệ found the Thăng Long ca trù club.",
+            "claimIds": [
+              "C-CT-CHUC"
+            ]
+          },
+          {
+            "year": "2009",
+            "title": "UNESCO",
+            "text": "Ca trù goes on the List of Intangible Cultural Heritage in Need of Urgent Safeguarding.",
+            "claimIds": [
+              "C-CT-UNESCO"
+            ]
+          },
+          {
+            "year": "2017",
+            "title": "A theatre at Bích Câu",
+            "text": "The Ca trù Bích Câu theatre opens, with free Saturday shows.",
+            "claimIds": [
+              "C-CT-BICHCAU"
+            ],
+            "image": "ar-bichcau",
+            "caption": "Bích Câu Đạo Quán."
+          },
+          {
+            "year": "2025",
+            "title": "A festival of 105 voices",
+            "text": "The fourth Hà Nội Ca trù Festival draws contestants aged 8 to 86.",
+            "claimIds": [
+              "C-CT-FEST2025"
+            ]
+          },
+          {
+            "year": "2026",
+            "title": "Under review",
+            "text": "UNESCO’s Committee examines Viet Nam’s fourth report on ca trù.",
+            "claimIds": [
+              "C-CT-REPORTS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "How it fell",
+        "id": "fall",
+        "paras": [
+          {
+            "text": "Under French rule ca trù was sung in the city’s singing houses, the *nhà cô đầu*. They gathered on Hàng Giấy and in Thái Hà, and later on Khâm Thiên and in other suburbs. Many houses employed hostesses who could neither sing nor play the clappers, and the public came to confuse them with the singers. The art gained a reputation it took a century to lose.",
+            "claimIds": [
+              "C-CT-COLONIAL"
+            ]
+          },
+          {
+            "text": "Ca trù thrived until the early twentieth century and then declined. After 1945 the shame attached to it persisted. Quách Thị Hồ, the greatest singer of her generation, was reluctant to teach.",
+            "claimIds": [
+              "C-CT-COLONIAL",
+              "C-CT-1945"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "heading": "Voices that carried it",
+        "id": "voices",
+        "items": [
+          {
+            "title": "Quách Thị Hồ (1909–2001)",
+            "text": "Born into a ca trù family, singing from six, famous in Thăng Long by fifteen; called the finest ca trù singer of the twentieth century.",
+            "claimIds": [
+              "C-CT-QTH"
+            ]
+          },
+          {
+            "title": "Nguyễn Thị Chúc (1930–2014)",
+            "text": "Born on Khâm Thiên into a family that ran a singing house; taught at the Hà Nội Conservatory and helped with the UNESCO nomination.",
+            "claimIds": [
+              "C-CT-CHUC"
+            ]
+          },
+          {
+            "title": "Bạch Vân",
+            "text": "Heard Quách Thị Hồ on the radio, sang at Văn Miếu in 1991, and led the Hà Nội Ca trù Club.",
+            "claimIds": [
+              "C-CT-1991"
+            ]
+          },
+          {
+            "title": "The Thái Hà family",
+            "text": "Seven generations of singers and players; Nguyễn Thúy Hòa was Quách Thị Hồ’s best student.",
+            "claimIds": [
+              "C-CT-THAIHA",
+              "C-CT-QTH"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "How it came back",
+        "id": "revival",
+        "paras": [
+          {
+            "text": "The revival began with a few people who refused to let it go. The singer Bạch Vân first heard Quách Thị Hồ on the radio and was captivated. In 1991 she gave a public ca trù performance at Văn Miếu, the Temple of Literature, and a club grew from it. She became its head, she said later, because nobody else dared put their name to it. In 2000 the club held the first expanded Hà Nội ca trù festival.",
+            "claimIds": [
+              "C-CT-1991"
+            ]
+          },
+          {
+            "text": "Others followed. Lỗ Khê, the village with the founder legend, set up its club in 1995 with 54 members. The Thái Hà family, seven generations of singers and players, began touring Europe, the United States and China the same year; a scholar of the music calls its ensemble the finest performers today. In 2006 Nguyễn Thị Chúc, who had grown up in a singing house on Khâm Thiên, founded the Thăng Long club with her student Phạm Thị Huệ.",
+            "claimIds": [
+              "C-CT-LOKHE",
+              "C-CT-THAIHA",
+              "C-CT-CHUC"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "Nobody else dared put their name to it.",
+        "by": "Bạch Vân, on becoming head of the Hà Nội Ca trù Club (Nhân Dân, 2025, our translation)",
+        "claimIds": [
+          "C-CT-1991"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "On the urgent list",
+        "id": "unesco",
+        "paras": [
+          {
+            "text": "In 2009 UNESCO inscribed ca trù on its List of Intangible Cultural Heritage in Need of Urgent Safeguarding. The decision found that too few skilled musicians remained, and it advised Viet Nam to invest in people, singers and teachers, rather than in restoring old venues. UNESCO lists the threats plainly: ageing practitioners, long and hard training, low pay, the loss of places to perform, and competition from mass media.",
+            "claimIds": [
+              "C-CT-UNESCO",
+              "C-CT-THREATS"
+            ]
+          },
+          {
+            "text": "Progress has been reported every few years. By the first report, clubs practising regularly had grown from 20 to 60. In 2022 the Committee welcomed the progress but warned against over-commercialising it for tourists, and asked for every part of it, including the dance, to be passed on. Viet Nam sent its fourth report in December 2025; the Committee examines it at its session that opens at the end of November 2026. Ca trù remains on the urgent list.",
+            "claimIds": [
+              "C-CT-REPORTS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Ca trù in Hà Nội today",
+        "id": "today",
+        "paras": [
+          {
+            "text": "In 2021 the city had 16 ca trù clubs and 250–300 singers and players. Its festival in September 2025, at the Hà Nội Museum, drew 21 clubs and groups and 105 individual contestants aged from 8 to 86; 22 were under 18, and there were two and a half times as many contestants as at the previous festival. Hà Nội now has 32 honoured ca trù artisans. Students have started their own projects, such as *Tiếng Ca Nhịp Phách* and its podcast.",
+            "claimIds": [
+              "C-CT-HN2021",
+              "C-CT-FEST2025",
+              "C-CT-YOUNG"
+            ]
+          },
+          {
+            "text": "Before the pandemic, visitors heard ca trù at Kim Ngân communal house on Hàng Bạc, at Quán Đế temple on Hàng Buồm and at Bích Câu Đạo Quán. The most regular now is Bích Câu: the Ca trù Bích Câu theatre gives free classes and a free show every Saturday night, and in 2026 about ten groups from abroad were visiting each month.",
+            "claimIds": [
+              "C-CT-HN2021",
+              "C-CT-BICHCAU"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ar-kimngan",
+            "caption": "Kim Ngân communal house, Hàng Bạc, an old venue for ca trù."
+          },
+          {
+            "image": "ar-bichcau",
+            "caption": "Bích Câu Đạo Quán, home of the Saturday show."
+          }
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Where",
+            "text": "Ca trù Bích Câu theatre, Saturday nights, free."
+          },
+          {
+            "term": "Listen for",
+            "text": "The clappers, the three-stringed lute, the praise drum."
+          },
+          {
+            "term": "Manners",
+            "text": "On time, phone silent."
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "text": "A ca trù night is quiet and close: arrive on time, silence your phone, and listen for the drum, which praises the singer as she goes.",
+        "claimIds": [
+          "C-CT-TIP"
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ar-catru-perf",
+        "question": "Who leads?",
+        "prompt": "In a ca trù trio, who sets the pace for the others?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "The drummer",
+            "feedback": "The drum praises and marks the lines, but it follows."
+          },
+          {
+            "label": "The singer, with her clappers",
+            "fit": true,
+            "feedback": "Yes. The singer leads with the phách, and the others follow her."
+          },
+          {
+            "label": "The lute player",
+            "feedback": "The đàn đáy answers the voice; the singer leads."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "st-folk-paintings",
+    "country": "vietnam",
+    "layout": "compare",
+    "title": "Folk prints: Đông Hồ and Hàng Trống",
+    "dek": "Pigs, hens and a wedding of mice, printed in five natural colours on shell-coated paper; tigers and goddesses outlined in ink and coloured by hand. Northern Vietnam’s two great folk-print traditions, one from a village and one from a Hà Nội street.",
+    "place": "Hà Nội and Bắc Ninh",
+    "imageId": "ar-dh-mice",
+    "hero": {
+      "image": "ar-dh-mice"
+    },
+    "appliesTo": "Folk prints of the Red River delta: Đông Hồ, made in a village of Bắc Ninh province, and Hàng Trống, made in Hà Nội’s Old Quarter. Technique and status follow Vietnamese press reports, including UNESCO’s 2025 decision as reported there.",
+    "varies": "Each family keeps its own blocks and designs. Ages and origins differ between sources, and village tradition often places them earlier than the records.",
+    "sections": [
+      {
+        "text": "Đông Hồ prints every colour from woodblocks; Hàng Trống prints the outline and colours by hand.",
+        "claimIds": [
+          "C-DH-METHOD",
+          "C-HT-METHOD"
+        ]
+      },
+      {
+        "heading": "On the urgent list",
+        "text": "In December 2025 UNESCO inscribed the craft of Đông Hồ painting as heritage in need of urgent safeguarding.",
+        "claimIds": [
+          "C-DH-UNESCO"
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "For centuries, families in northern Vietnam bought new pictures for [Tết](story:st-tet). Hung on the wall for the new year, they showed pigs and hens, scenes of village life, legends, goddesses and guardians. Two traditions supplied most of them. One is Đông Hồ, a village east of Hà Nội whose prints are made entirely from carved woodblocks. The other is Hàng Trống, named after a street in the Old Quarter, where painters printed an outline and then coloured each sheet by hand.",
+            "claimIds": [
+              "C-DH-THEMES",
+              "C-HT-ORIGIN",
+              "C-HT-METHOD"
+            ]
+          },
+          {
+            "text": "Both are now rare. Only a few households still make Đông Hồ prints, and in December 2025 UNESCO listed the craft as heritage in urgent need of safeguarding. Hàng Trống is held by a single family workshop.",
+            "claimIds": [
+              "C-DH-RISK",
+              "C-DH-UNESCO",
+              "C-HT-NGHIEN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "tabs",
+        "heading": "Two traditions side by side",
+        "id": "compare",
+        "intro": "Choose a tab to compare the two kinds of print.",
+        "label": "Đông Hồ and Hàng Trống compared",
+        "tabs": [
+          {
+            "label": "How they are made",
+            "columns": [
+              "",
+              "Đông Hồ",
+              "Hàng Trống"
+            ],
+            "rows": [
+              [
+                "Where",
+                {
+                  "text": "Đông Khê hamlet, Bắc Ninh.",
+                  "claimIds": [
+                    "C-DH-PLACE"
+                  ]
+                },
+                {
+                  "text": "Hàng Trống and nearby streets, Hà Nội.",
+                  "claimIds": [
+                    "C-HT-ORIGIN"
+                  ]
+                }
+              ],
+              [
+                "Colour",
+                {
+                  "text": "Every colour printed from its own block.",
+                  "claimIds": [
+                    "C-DH-METHOD"
+                  ]
+                },
+                {
+                  "text": "Outline printed, colour added by hand.",
+                  "claimIds": [
+                    "C-HT-METHOD"
+                  ]
+                }
+              ],
+              [
+                "Paper",
+                {
+                  "text": "Dó paper coated with điệp.",
+                  "claimIds": [
+                    "C-DH-PAPER"
+                  ]
+                },
+                {
+                  "text": "Xuyến chỉ paper.",
+                  "claimIds": [
+                    "C-HT-THEMES"
+                  ]
+                }
+              ],
+              [
+                "Each print",
+                {
+                  "text": "Repeatable from the blocks.",
+                  "claimIds": [
+                    "C-DH-METHOD"
+                  ]
+                },
+                {
+                  "text": "No two alike.",
+                  "claimIds": [
+                    "C-HT-METHOD"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "What they show",
+            "columns": [
+              "",
+              "Đông Hồ",
+              "Hàng Trống"
+            ],
+            "rows": [
+              [
+                "Favourites",
+                {
+                  "text": "Pigs, hens, the buffalo boy, the mice’s wedding.",
+                  "claimIds": [
+                    "C-DH-THEMES"
+                  ]
+                },
+                {
+                  "text": "Five Tigers, carp and moon, four elegant women.",
+                  "claimIds": [
+                    "C-HT-THEMES"
+                  ]
+                }
+              ],
+              [
+                "Worship",
+                {
+                  "text": "Devotional prints among others.",
+                  "claimIds": [
+                    "C-DH-THEMES"
+                  ]
+                },
+                {
+                  "text": "Mother Goddess, Saint Trần.",
+                  "claimIds": [
+                    "C-HT-THEMES"
+                  ]
+                }
+              ],
+              [
+                "Feel",
+                {
+                  "text": "Village life and wishes for plenty.",
+                  "claimIds": [
+                    "C-DH-THEMES"
+                  ]
+                },
+                {
+                  "text": "More urban, with Buddhist and Taoist subjects.",
+                  "claimIds": [
+                    "C-HT-THEMES"
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Today",
+            "columns": [
+              "",
+              "Đông Hồ",
+              "Hàng Trống"
+            ],
+            "rows": [
+              [
+                "Makers",
+                {
+                  "text": "A few households.",
+                  "claimIds": [
+                    "C-DH-RISK"
+                  ]
+                },
+                {
+                  "text": "One family workshop, on Cửa Đông.",
+                  "claimIds": [
+                    "C-HT-NGHIEN"
+                  ]
+                }
+              ],
+              [
+                "Recognition",
+                {
+                  "text": "UNESCO urgent safeguarding list, 2025.",
+                  "claimIds": [
+                    "C-DH-UNESCO"
+                  ]
+                },
+                {
+                  "text": "A Hà Nội Museum exhibition, 2019.",
+                  "claimIds": [
+                    "C-HT-2019"
+                  ]
+                }
+              ],
+              [
+                "New life",
+                {
+                  "text": "Youth projects such as Hồn trên giấy mộc.",
+                  "claimIds": [
+                    "C-DH-RISK"
+                  ]
+                },
+                {
+                  "text": "Exhibitions; new art inspired by the prints.",
+                  "claimIds": [
+                    "C-HT-2019",
+                    "C-HT-NEW"
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ar-dh-rooster",
+            "caption": "Đông Hồ: a rooster and hen, every colour from a block."
+          },
+          {
+            "image": "ar-ht-tigers",
+            "caption": "Hàng Trống: the Five Tigers, coloured by hand."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Đông Hồ: five colours from the earth",
+        "id": "dongho",
+        "paras": [
+          {
+            "text": "Đông Hồ prints are made in Đông Khê hamlet, in Thuận Thành, Bắc Ninh province. The age of the craft depends on who is asked. Villagers date it to the Lý dynasty in the eleventh century; researchers place the start of printing around the early seventeenth century; the report on its UNESCO listing calls it about 500 years old.",
+            "claimIds": [
+              "C-DH-PLACE",
+              "C-DH-AGE"
+            ]
+          },
+          {
+            "text": "A design begins as an ink drawing, carved into blocks of [[thi|thị]] wood. Each colour has a block of its own. The printer lays the paper on each inked block in turn: red, blue, yellow and white, and last the black block that carries the outline and holds the picture together. Every stage is done by hand.",
+            "claimIds": [
+              "C-DH-METHOD"
+            ]
+          },
+          {
+            "text": "The colours are what make Đông Hồ unmistakable, and they all come from nature. Blue is from indigo leaves, red from a red gravel, yellow from the flowers of the pagoda tree and from gardenia fruit, white from powdered scallop shell, and black from the ash of bamboo leaves and of glutinous-rice straw. The paper is [[giay-diep|giấy điệp]]: dó paper brushed with a paste containing powdered shell.",
+            "claimIds": [
+              "C-DH-COLOURS",
+              "C-DH-PAPER"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-dh-printing",
+        "size": "wide",
+        "caption": "Pressing a sheet onto an inked block in Đông Hồ village."
+      },
+      {
+        "type": "text",
+        "heading": "Pigs, hens and a wedding of mice",
+        "id": "themes",
+        "paras": [
+          {
+            "text": "The subjects fall into a few families: devotional pictures, congratulations, history, everyday life and landscape. The best sellers are animals and village life: a herd of pigs, hens with their chicks, a boy playing the flute on a buffalo’s back. Folk tales appear too, the best known being the mice’s wedding.",
+            "claimIds": [
+              "C-DH-THEMES"
+            ]
+          },
+          {
+            "text": "People bought them for Tết, for the Mid-Autumn festival and for worship. Printing started months before the new year.",
+            "claimIds": [
+              "C-DH-THEMES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "gallery",
+        "heading": "Đông Hồ prints and printing",
+        "id": "gallery",
+        "intro": "Select a picture to see it larger; use the arrow keys or swipe to move between them.",
+        "items": [
+          {
+            "image": "ar-dh-mice",
+            "caption": "The mice’s wedding."
+          },
+          {
+            "image": "ar-dh-rooster",
+            "caption": "A rooster and hen."
+          },
+          {
+            "image": "ar-dh-printing",
+            "caption": "Printing by hand."
+          },
+          {
+            "image": "ar-dh-drying",
+            "caption": "Half-finished prints drying."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "On the urgent list",
+        "id": "unesco",
+        "paras": [
+          {
+            "text": "By 2025 only a few households in the village still made the prints. Young people were not drawn to the work, the income was poor, and fewer families bought new pictures for the festivals. Bắc Ninh and the Ministry of Culture prepared a dossier, and on 9 December 2025, at its session in New Delhi, UNESCO inscribed the craft of Đông Hồ folk painting on its List of Intangible Cultural Heritage in Need of Urgent Safeguarding. It was Viet Nam’s seventeenth element on UNESCO’s lists.",
+            "claimIds": [
+              "C-DH-RISK",
+              "C-DH-UNESCO"
+            ]
+          },
+          {
+            "text": "In 2026 the craft is still held by a handful of people, among them Nguyễn Hữu Quả, whose family has made prints for three generations, and the Meritorious Artisan Nguyễn Thị Oanh. Young people have started their own projects around the prints, such as *Hồn trên giấy mộc*, Soul on Woodblock Paper.",
+            "claimIds": [
+              "C-DH-RISK"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Hàng Trống: the city’s pictures",
+        "id": "hangtrong",
+        "paras": [
+          {
+            "text": "Hàng Trống is a street in old Hà Nội. Its pictures are said to date from the sixteenth century, and they were made there and on the neighbouring streets of Hàng Nón, Hàng Hòm and Hàng Quạt, mostly in the last months of the lunar year for Tết.",
+            "claimIds": [
+              "C-HT-ORIGIN"
+            ]
+          },
+          {
+            "text": "The technique differs from Đông Hồ in one decisive step. Drawing, carving and printing are the same, but only the outline is printed. Each sheet is then coloured by hand with a brush, so no two prints are exactly alike. The paper is *xuyến chỉ*, not the shell-coated điệp of the village.",
+            "claimIds": [
+              "C-HT-METHOD",
+              "C-HT-THEMES"
+            ]
+          },
+          {
+            "text": "There are pictures for worship, the Mother Goddess and Saint Trần, and for the new year: the Five Tigers; a carp looking at the moon; four panels of elegant women; children playing blind man’s buff.",
+            "claimIds": [
+              "C-HT-THEMES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-ht-tigers",
+        "size": "wide",
+        "caption": "The Five Tigers, a Hàng Trống painting in the Vietnam National Museum of Fine Arts."
+      },
+      {
+        "type": "text",
+        "heading": "One workshop on Cửa Đông",
+        "id": "nghien",
+        "paras": [
+          {
+            "text": "Hàng Trống is now held by one family. Lê Đình Nghiên is the third generation of a family from Bình Vọng village in Thường Tín, whose forebears settled on Hàng Trống street nearly a century before 2006. His workshop is on Cửa Đông street. By 2006 the prints were no longer sold on the old streets at all, and most buyers were foreign visitors.",
+            "claimIds": [
+              "C-HT-NGHIEN",
+              "C-HT-DECLINE"
+            ]
+          },
+          {
+            "text": "In late 2019 the Hà Nội Museum gave the tradition a large exhibition: 50 works in three groups, worship, Tết and social life, among them two painted on corrugated metal by Nghiên’s father in 1942 and 1943. The report called Nghiên the only person still holding the craft’s secrets. In 2025 he restored the Hàng Trống pictures at Nam Hương temple. On Hàng Trống street itself, a young artist born in 1997, Hoàng Anh Trung, shows bright new work inspired by the prints; it is new art, not the old technique.",
+            "claimIds": [
+              "C-HT-2019",
+              "C-HT-NGHIEN",
+              "C-HT-NEW"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "No two are alike.",
+        "by": "On Hàng Trống paintings, coloured by hand (after Sài Gòn Giải Phóng, 2006)",
+        "claimIds": [
+          "C-HT-METHOD"
+        ]
+      },
+      {
+        "type": "note",
+        "text": "The prints in our photographs are museum pieces at the Vietnam National Museum of Fine Arts in Hà Nội. Đông Hồ village is a day trip east of the city, in Bắc Ninh province.",
+        "claimIds": [
+          "C-PRINTS-TIP"
+        ]
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Đông Hồ",
+            "text": "Five natural colours, all from blocks, on shell-coated paper."
+          },
+          {
+            "term": "Hàng Trống",
+            "text": "Outline printed, coloured by hand."
+          },
+          {
+            "term": "Look for",
+            "text": "Pigs and hens; tigers and the carp."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ar-ht-tigers",
+        "question": "Which is which?",
+        "prompt": "A print’s colours differ slightly from copy to copy, as if painted by hand. Which tradition is it most likely from?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "Đông Hồ",
+            "feedback": "Đông Hồ prints every colour from a block, so copies match closely."
+          },
+          {
+            "label": "Hàng Trống",
+            "fit": true,
+            "feedback": "Yes. Hàng Trống colours each sheet by hand over a printed outline."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "st-bat-trang",
+    "country": "vietnam",
+    "layout": "guide",
+    "title": "Bát Tràng: the pottery village",
+    "dek": "On the edge of Hà Nội, a village has been firing clay for some six hundred years. A guide to Bát Tràng: its glazes, its prize-winning museum, its market, and a wheel where you can make your own bowl.",
+    "place": "Bát Tràng, Hà Nội",
+    "imageId": "ar-bt-market",
+    "hero": {
+      "image": "ar-bt-market"
+    },
+    "appliesTo": "Bát Tràng, a pottery village in Hà Nội. History follows the national history museum’s curators and Vietnamese press; visiting details, the national tourism authority.",
+    "varies": "Workshops, prices and class times vary from house to house. Sources give the distance from the city as anything from 13 to 20 km, depending on where they measure from.",
+    "sections": [
+      {
+        "text": "Documents place Bát Tràng in the 14th or 15th century; tradition says it is older.",
+        "claimIds": [
+          "C-BT-RECORD",
+          "C-BT-LEGEND"
+        ]
+      },
+      {
+        "heading": "Visiting",
+        "text": "The village is about 14 km from central Hà Nội, with a market, a museum and pottery classes.",
+        "claimIds": [
+          "C-BT-TRIP",
+          "C-BT-SIGHTS"
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "About 14 km from the Old Quarter, a village has been making pottery since at least the fourteenth century. Bát Tràng’s old pieces are in the national museums in Hà Nội, and its new ones fill the village market.",
+            "claimIds": [
+              "C-BT-RECORD",
+              "C-BT-SIGHTS"
+            ]
+          },
+          {
+            "text": "This guide takes you through a day there: the history in its glazes, the museum that has won prizes for its architecture, the market, and a potter’s wheel where you can try it yourself.",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "facts",
+        "title": "Bát Tràng in brief",
+        "items": [
+          {
+            "term": "Where",
+            "text": "About 14 km from central Hà Nội."
+          },
+          {
+            "term": "Since",
+            "text": "14th–15th century in the records; older by tradition."
+          },
+          {
+            "term": "Known for",
+            "text": "Blue, brown and crackle glazes."
+          },
+          {
+            "term": "Heritage",
+            "text": "National heritage craft; village festival listed 2024."
+          }
+        ],
+        "claimIds": [
+          "C-BT-TRIP",
+          "C-BT-RECORD",
+          "C-BT-GLAZES",
+          "C-BT-HERITAGE"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Six hundred years of clay",
+        "id": "history",
+        "paras": [
+          {
+            "text": "The village tells its origin as part of the capital’s. When Lý Thái Tổ moved the court to Thăng Long, the story goes, craftsmen from the villages of Bồ and Bát in Yên Mô, in today’s Ninh Bình, settled here to make the bricks and ceramics the new city needed. Another legend credits scholars who brought pottery skills from China. These are traditions.",
+            "claimIds": [
+              "C-BT-LEGEND"
+            ]
+          },
+          {
+            "text": "The records are later. Documents place the village in the fourteenth or fifteenth century, and the oldest Bát Tràng pieces in museum collections date from the fourteenth. Next door, at Kim Lan, archaeologists digging in 2001–03 found material spanning the ninth to the twentieth centuries; Kim Lan’s pottery joined the national list of intangible heritage in January 2025.",
+            "claimIds": [
+              "C-BT-RECORD",
+              "C-BT-KIMLAN"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Reading the glazes",
+        "id": "glazes",
+        "paras": [
+          {
+            "text": "The village’s history can be read in its glazes. Blue decoration appeared in the fourteenth century and was everywhere by the sixteenth and seventeenth. Brown was painted on before glazing. Ivory-white glaze appears on seventeenth-century pieces. And the fine web of cracks on many pieces is a technique, [[men-ran|men rạn]], crackle glaze: the clay body and the glaze shrink at different rates. Potters learned to control it deliberately mainly in the nineteenth and twentieth centuries.",
+            "claimIds": [
+              "C-BT-GLAZES"
+            ]
+          },
+          {
+            "text": "You can follow the whole sequence in one room. In 2023 the National Museum of History in Hà Nội showed 39 old Bát Tràng pieces in three periods: the fourteenth century, the fifteenth to eighteenth, and the nineteenth to twentieth. Side by side, the early blue pieces, the brown-painted ones and the crackled wares of the last two centuries show how the village’s style changed over six centuries. Among them was a seventeenth-century model house in ivory-white glaze.",
+            "claimIds": [
+              "C-BT-EXHIBIT",
+              "C-BT-GLAZES"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ar-bt-vase",
+            "caption": "Blue decoration: a 19th-century Bát Tràng vase."
+          },
+          {
+            "image": "ar-bt-tiger",
+            "caption": "Crackle and brown glazes: an 18th-century tiger."
+          }
+        ]
+      },
+      {
+        "type": "steps",
+        "heading": "A day in Bát Tràng",
+        "id": "steps",
+        "items": [
+          {
+            "title": "Getting there",
+            "paras": [
+              {
+                "text": "Bát Tràng is about 14 km from central Hà Nội; sources give anything from 13 to 15 km, more if you measure from further out. Buses, motorbikes, taxis and tour shuttles all go there.",
+                "claimIds": [
+                  "C-BT-TRIP",
+                  "C-BT-MOSAIC"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Start at the museum",
+            "paras": [
+              {
+                "text": "The Bát Tràng Ceramics Museum, open since 2021, is the best place to begin. Its architect, Hoàng Thúc Hào, built it as seven spirals based on potters’ wheels, which also recall the village’s old bottle kilns, in thin concrete faced with reclaimed local bricks and tiles. It stands beside the Bắc Hưng Hải canal. It won a gold prize at the National Architecture Awards 2022–23, and in 2026 Time Out ranked it 17th among the world’s most beautiful buildings.",
+                "claimIds": [
+                  "C-BT-MUSEUM",
+                  "C-BT-AWARDS"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Walk the market",
+            "image": "ar-bt-market",
+            "paras": [
+              {
+                "text": "The pottery market is a short walk away: stall after stall of bowls, cups, vases and pots.",
+                "claimIds": [
+                  "C-BT-SIGHTS"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Into the lanes",
+            "image": "ar-bt-lane",
+            "paras": [
+              {
+                "text": "In the village lanes, look for the Vạn Vân old house, about 200 years old, and the village communal house, whose festival was added to the national list of intangible heritage in December 2024.",
+                "claimIds": [
+                  "C-BT-SIGHTS",
+                  "C-BT-HERITAGE"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Make your own",
+            "image": "ar-bt-wheel",
+            "paras": [
+              {
+                "text": "Many workshops let visitors sit at a wheel and shape their own piece.",
+                "claimIds": [
+                  "C-BT-SIGHTS"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Carry it home",
+            "paras": [
+              {
+                "text": "Go on a weekday morning if you can, and allow time for a class. Bring a bag for anything fragile.",
+                "claimIds": [
+                  "C-BT-TIP"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "A craft city",
+        "id": "heritage",
+        "paras": [
+          {
+            "text": "Bát Tràng’s pottery craft is on the national list of intangible heritage, and on 10 December 2024 the village festival was added too; it was announced at the communal house the following March. In February 2025, at a ceremony in the old Thăng Long citadel, Bát Tràng and the silk village of Vạn Phúc joined the World Crafts Council’s network of creative craft cities.",
+            "claimIds": [
+              "C-BT-HERITAGE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-bt-dinh",
+        "size": "wide",
+        "caption": "Bát Tràng’s communal house, home of the village festival."
+      },
+      {
+        "type": "text",
+        "heading": "Four kilometres of tiles",
+        "id": "mosaic",
+        "paras": [
+          {
+            "text": "Bát Tràng’s artisans also helped make one of Hà Nội’s longest artworks. For the city’s thousandth birthday, the journalist and painter Nguyễn Thị Thu Thủy proposed covering the Red River dyke wall with ceramic mosaic. Begun in 2008 and inaugurated on 5 October 2010, it ran for 3.85 km and was made by artists from Vietnam and abroad, by children, and by artisans from Bát Tràng and other pottery villages. An 810 m section of 1,570 m², called *Vietnamese patterns in the flow of history*, holds a Guinness record as the largest ceramic mosaic.",
+            "claimIds": [
+              "C-BT-MOSAIC",
+              "C-BT-MOSAIC2020"
+            ]
+          },
+          {
+            "text": "Not all of it survived. In June 2020 more than 600 m at Nghi Tàm–Xuân Diệu was demolished to widen the road towards Nhật Tân bridge.",
+            "claimIds": [
+              "C-BT-MOSAIC2020"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-mosaic",
+        "size": "bleed",
+        "caption": "A stretch of the ceramic mosaic on the dyke road."
+      },
+      {
+        "type": "dodont",
+        "heading": "At a glance",
+        "do": {
+          "title": "Worth doing",
+          "items": [
+            {
+              "text": "Start at the museum for the history.",
+              "claimIds": [
+                "C-BT-MUSEUM"
+              ]
+            },
+            {
+              "text": "Look for crackle, blue and brown glazes.",
+              "claimIds": [
+                "C-BT-GLAZES"
+              ]
+            },
+            {
+              "text": "Try a wheel in a workshop.",
+              "claimIds": [
+                "C-BT-SIGHTS"
+              ]
+            }
+          ]
+        },
+        "think": {
+          "title": "Think twice",
+          "items": [
+            {
+              "text": "Taking crackle for age: it is a glaze.",
+              "claimIds": [
+                "C-BT-GLAZES"
+              ]
+            },
+            {
+              "text": "Carrying fragile pieces unwrapped.",
+              "claimIds": [
+                "C-BT-TIP"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "keep",
+        "title": "Take it with you",
+        "items": [
+          {
+            "term": "Distance",
+            "text": "About 14 km from central Hà Nội."
+          },
+          {
+            "term": "See",
+            "text": "Museum, market, Vạn Vân old house, communal house."
+          },
+          {
+            "term": "Do",
+            "text": "Make your own piece at a wheel."
+          },
+          {
+            "term": "Look for",
+            "text": "Men rạn, crackle glaze."
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ar-bt-tiger",
+        "question": "Old or new?",
+        "prompt": "A bowl in the market is covered in a fine web of cracks. What does that tell you?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "It must be very old",
+            "feedback": "Not necessarily. Crackle is a glaze potters create on purpose."
+          },
+          {
+            "label": "It is a crackle glaze",
+            "fit": true,
+            "feedback": "Yes. Men rạn comes from the clay and glaze shrinking at different rates, and potters control it deliberately."
+          },
+          {
+            "label": "It is damaged",
+            "feedback": "No: the cracks are in the glaze, not the bowl."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "st-architecture",
+    "country": "vietnam",
+    "layout": "longform",
+    "title": "Tube houses and French villas",
+    "dek": "Houses a few metres wide and many times as deep; an opera house, a bridge and a governor’s palace; a museum that put Vietnamese roofs on French concrete. How two very different cities grew side by side in Hà Nội, and what is being done to keep them.",
+    "place": "Hà Nội",
+    "imageId": "ar-tube-street",
+    "hero": {
+      "image": "ar-tube-street"
+    },
+    "appliesTo": "The Old Quarter and the French-built quarters of central Hà Nội. Building histories follow Vietnamese press, the National Museum of History and an encyclopedia where noted; rules follow city reports.",
+    "varies": "Dates and architects differ between sources for several buildings, and the story says where. Rules for the Old Quarter and the villas are revised from time to time.",
+    "sections": [
+      {
+        "text": "Tube houses have a narrow front and run deep behind it.",
+        "claimIds": [
+          "C-AR-TUBE"
+        ]
+      },
+      {
+        "heading": "The French city",
+        "text": "The Opera House, the Long Biên bridge and the Presidential Palace were built around 1900.",
+        "claimIds": [
+          "C-AR-OPERA",
+          "C-AR-LONGBIEN",
+          "C-AR-PALACE"
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "lede": true,
+        "paras": [
+          {
+            "text": "Walk from the Old Quarter towards the Opera House and the city changes shape. Behind you are streets of [[nhaong|tube houses]], each a narrow shopfront with rooms running far back behind it. Ahead are wide streets, a pale yellow palace, and the villas the French built for themselves. Hà Nội grew as two cities side by side, and both are still standing.",
+            "claimIds": [
+              "C-AR-TUBE",
+              "C-AR-OPERA",
+              "C-AR-VILLAS"
+            ]
+          },
+          {
+            "text": "This story walks through both: how a tube house works, where the narrow fronts may have come from, the public buildings of the colonial city, and the rules now meant to keep them. For the streets themselves, see [the Old Quarter](story:st-old-quarter).",
+            "editorial": true
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "A house like a tube",
+        "id": "tube",
+        "paras": [
+          {
+            "text": "A tube house, *nhà ống*, has a narrow front on the street and runs deep behind it. The front room was the shop. Behind it came an open courtyard to let in light and air, then a back room, storage and the kitchen; upstairs were the family altar and the bedrooms. The form is associated with Hà Nội’s Old Quarter from the nineteenth century.",
+            "claimIds": [
+              "C-AR-TUBE"
+            ]
+          },
+          {
+            "text": "Why so narrow? The answer most often given is that houses were taxed by the width of their street front, so owners kept fronts small and built back. It is repeated in newspapers and guidebooks, but no historical tax record has been cited for it. It may be true; it has not been shown.",
+            "claimIds": [
+              "C-AR-TAX"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-tube-street",
+        "size": "wide",
+        "caption": "Narrow fronts at the corner of Đào Duy Từ and Mã Mây."
+      },
+      {
+        "type": "text",
+        "heading": "87 Mã Mây",
+        "id": "mamay",
+        "paras": [
+          {
+            "text": "One house shows the plan clearly: 87 Mã Mây. The street is under 300 m long and keeps more old houses than any other in Hà Nội. Number 87 was built in the early nineteenth century; some sources say later. It was a rice business until 1945, then a Chinese family sold traditional medicine there, and in 1954 the state took it over. From 1998 to 1999 it was restored with help from the French city of Toulouse, keeping its structure and objects, and in 2004 it was recognised as a national relic.",
+            "claimIds": [
+              "C-AR-MAMAY",
+              "C-AR-MAMAY87"
+            ]
+          },
+          {
+            "text": "Inside, the plan of a tube house is easy to read: shop, courtyard, rooms, kitchen, and the altar upstairs.",
+            "claimIds": [
+              "C-AR-TUBE",
+              "C-AR-MAMAY87"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-mamay-inside",
+        "size": "inline",
+        "caption": "Inside 87 Mã Mây."
+      },
+      {
+        "type": "text",
+        "heading": "The French city",
+        "id": "french",
+        "paras": [
+          {
+            "text": "The French colonial government’s public buildings came in a rush around the turn of the twentieth century. The Post Office beside Hoàn Kiếm Lake is two buildings, one of 1893–99 and one of 1942. The Opera House was built from 1901 to 1911 to designs by the architects Harley and Broyer.",
+            "claimIds": [
+              "C-AR-POST",
+              "C-AR-OPERA"
+            ]
+          },
+          {
+            "text": "The palace built for the Governor-General of Indochina from 1900 to 1906 is now the Presidential Palace. Its architect is often named as Auguste-Henri Vildieu; some sources say that is a mistake and credit Charles Lichtenfelder. Visitors may walk in the grounds but cannot go inside.",
+            "claimIds": [
+              "C-AR-PALACE"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "pair",
+        "items": [
+          {
+            "image": "ar-opera",
+            "caption": "The Opera House, 1901–11."
+          },
+          {
+            "image": "ar-palace",
+            "caption": "The Presidential Palace, built for the Governor-General."
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-postoffice",
+        "size": "inline",
+        "caption": "The Post Office by Hoàn Kiếm Lake."
+      },
+      {
+        "type": "text",
+        "heading": "A steel bridge",
+        "id": "longbien",
+        "paras": [
+          {
+            "text": "The biggest work of all crosses the Red River. The Long Biên bridge was built from September 1898 to February 1902 by the French firm Daydé & Pillé and named after the Governor-General, Paul Doumer. It was the first steel bridge across the river, with a single railway track down the middle, and at the time it was thought the largest steel structure in South-East Asia. Sources give its length as anything from about 1.7 to 1.9 km. Many guides say Gustave Eiffel’s firm designed it; that is disputed.",
+            "claimIds": [
+              "C-AR-LONGBIEN"
+            ]
+          },
+          {
+            "text": "During the war the bridge was bombed many times between 1965 and 1972. On 10 September 1972 spans fell into the river; it reopened in January 1973.",
+            "claimIds": [
+              "C-AR-LONGBIEN-WAR"
+            ]
+          },
+          {
+            "text": "In 2025 France funded a study of how to repair it and what it should become once the national railway stops using it. Late that year it had its largest repair in more than a century, with rusted rivets replaced by high-strength bolts and a new concrete deck; in spring 2026 motorbikes and pedestrians were kept off for two months.",
+            "claimIds": [
+              "C-AR-LONGBIEN-NOW"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-longbien",
+        "size": "bleed",
+        "caption": "The Long Biên bridge over the Red River."
+      },
+      {
+        "type": "text",
+        "heading": "Vietnamese roofs on French concrete",
+        "id": "indochinese",
+        "paras": [
+          {
+            "text": "In the 1920s a building appeared that borrowed openly from Vietnamese architecture. Its architect, Ernest Hébrard, also designed the Indochina Finance Office, built from 1925 and now the Foreign Ministry, and he drew it with C. Batteur: a museum for the French school of Asian studies, the École française d’Extrême-Orient.",
+            "claimIds": [
+              "C-AR-HEBRARD"
+            ]
+          },
+          {
+            "text": "The museum, named after the scholar Louis Finot, was designed in 1925, finished in 1929 and opened in 1932 at 1 Tràng Tiền. It is now the National Museum of History. Its octagonal main hall rises under a three-tiered roof that the museum compares to the tower of Keo pagoda. The roofs are doubled, with gaps for the air to move, the eaves are wide, and the brackets are concrete. The museum calls it a typical example of the Indochinese style.",
+            "claimIds": [
+              "C-AR-MUSEUM"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-history-museum",
+        "size": "wide",
+        "caption": "The former Louis Finot Museum, now the National Museum of History."
+      },
+      {
+        "type": "quote",
+        "text": "A typical example of Indochinese architecture.",
+        "by": "The National Museum of History, on its own building",
+        "claimIds": [
+          "C-AR-MUSEUM"
+        ]
+      },
+      {
+        "type": "timeline",
+        "heading": "Building two cities",
+        "label": "Timeline of Hà Nội architecture",
+        "items": [
+          {
+            "year": "Early 1800s",
+            "title": "87 Mã Mây",
+            "text": "A tube house is built in the Old Quarter.",
+            "claimIds": [
+              "C-AR-MAMAY87"
+            ]
+          },
+          {
+            "year": "1893–99",
+            "title": "Post Office",
+            "text": "The first Post Office building rises by the lake.",
+            "claimIds": [
+              "C-AR-POST"
+            ]
+          },
+          {
+            "year": "1898–1902",
+            "title": "Long Biên bridge",
+            "text": "The first steel bridge across the Red River.",
+            "claimIds": [
+              "C-AR-LONGBIEN"
+            ],
+            "image": "ar-longbien",
+            "caption": "Long Biên’s steel spans."
+          },
+          {
+            "year": "1900–06",
+            "title": "Governor-General’s palace",
+            "text": "Now the Presidential Palace.",
+            "claimIds": [
+              "C-AR-PALACE"
+            ]
+          },
+          {
+            "year": "1901–11",
+            "title": "Opera House",
+            "text": "Designed by Harley and Broyer.",
+            "claimIds": [
+              "C-AR-OPERA"
+            ]
+          },
+          {
+            "year": "1925–32",
+            "title": "Louis Finot Museum",
+            "text": "Hébrard and Batteur’s Indochinese style.",
+            "claimIds": [
+              "C-AR-MUSEUM"
+            ]
+          },
+          {
+            "year": "1972",
+            "title": "Bombing",
+            "text": "Long Biên loses spans on 10 September.",
+            "claimIds": [
+              "C-AR-LONGBIEN-WAR"
+            ]
+          },
+          {
+            "year": "1999",
+            "title": "Restoration",
+            "text": "87 Mã Mây restored with Toulouse.",
+            "claimIds": [
+              "C-AR-MAMAY87"
+            ]
+          },
+          {
+            "year": "2022",
+            "title": "1,216 villas",
+            "text": "The city lists its villas built before 1954.",
+            "claimIds": [
+              "C-AR-VILLAS"
+            ]
+          },
+          {
+            "year": "2025–26",
+            "title": "Long Biên repaired",
+            "text": "The bridge’s largest repair in a century.",
+            "claimIds": [
+              "C-AR-LONGBIEN-NOW"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Keeping the old city",
+        "id": "keeping",
+        "paras": [
+          {
+            "text": "Both cities are under pressure. In the Old Quarter a 2013 draft regulation proposed limits for the 82 ha area: in a 28 ha conservation zone, buildings no higher than 3 floors, 12 m, on the street front; in the 54 ha around it, 4 floors, 16 m. Inside, many houses are crowded. In 2026, 902 households in Hoàn Kiếm ward, 3,621 people, were living on less than 5 m² each, and the city gave them priority for social housing in 2026–27.",
+            "claimIds": [
+              "C-AR-RULES",
+              "C-AR-CROWD"
+            ]
+          },
+          {
+            "text": "The French villas have a list of their own. In 2022 the city counted 1,216 villas built before 1954, 53 fewer than in 2013, in three groups. The 222 of group 1, the most valuable, are mostly in Ba Đình, 111 of them, and Hoàn Kiếm, 87. The list changes: in November 2026 the city council considered moving two villas, at 68B Trần Hưng Đạo and 62 Nguyễn Du, down to group 3.",
+            "claimIds": [
+              "C-AR-VILLAS"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "figure",
+        "image": "ar-villa",
+        "size": "wide",
+        "caption": "A French-era villa in Hà Nội."
+      },
+      {
+        "type": "facts",
+        "title": "By the numbers",
+        "items": [
+          {
+            "term": "Mã Mây",
+            "text": "Under 300 m, the most old houses of any street."
+          },
+          {
+            "term": "Old Quarter",
+            "text": "82 ha; draft height limit of 3 floors in the core."
+          },
+          {
+            "term": "Villas",
+            "text": "1,216 listed; 222 in the top group."
+          },
+          {
+            "term": "Long Biên",
+            "text": "Built 1898–1902; about 1.7–1.9 km."
+          }
+        ],
+        "claimIds": [
+          "C-AR-MAMAY",
+          "C-AR-RULES",
+          "C-AR-VILLAS",
+          "C-AR-LONGBIEN"
+        ]
+      },
+      {
+        "type": "note",
+        "text": "A walk from 87 Mã Mây to the Opera House takes in both cities: the Old Quarter’s narrow fronts, then the lake, the Post Office and the wide French streets beyond.",
+        "claimIds": [
+          "C-AR-TIP"
+        ]
+      },
+      {
+        "type": "quiz",
+        "image": "ar-tube-street",
+        "question": "Why so narrow?",
+        "prompt": "A guide tells you tube houses are narrow because the French taxed street frontage. What is the best answer?",
+        "fitLabel": "That fits",
+        "otherLabel": "Think again",
+        "options": [
+          {
+            "label": "That is a proven fact",
+            "feedback": "It is widely repeated, but no historical tax record has been cited for it."
+          },
+          {
+            "label": "It is a popular explanation",
+            "fit": true,
+            "feedback": "Yes. It may be true, but it has not been shown from historical records."
+          },
+          {
+            "label": "It is certainly wrong",
+            "feedback": "We cannot say that either: it simply has not been proven."
+          }
+        ]
+      }
+    ]
   }
 ];
