@@ -94,8 +94,17 @@ if (cmd === 'search') {
         if (r.status !== 429) break;
         await new Promise((ok) => setTimeout(ok, 8000 * (k + 1)));
       }
+      if (!r.ok) {
+        // originals of big files are often throttled; a 2560px thumbnail is all the site uses anyway
+        const t = 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(p.file.replace(/^File:/, '')) + '?width=2560';
+        for (let k = 0; k < 4; k++) {
+          r = await fetch(t, { headers: UA, redirect: 'follow' });
+          if (r.status !== 429) break;
+          await new Promise((ok) => setTimeout(ok, 10000 * (k + 1)));
+        }
+      }
       if (!r.ok) { console.log('download failed', r.status, p.file); continue; }
-      await new Promise((ok) => setTimeout(ok, 3000));
+      await new Promise((ok) => setTimeout(ok, 15000));
       await pipeline(Readable.fromWeb(r.body), createWriteStream(orig));
     }
     const video = p.kind === 'video';

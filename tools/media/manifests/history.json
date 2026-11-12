@@ -1,0 +1,100 @@
+[
+ {
+  "id": "vm-khuevan",
+  "kind": "image",
+  "w": 2560,
+  "h": 1709,
+  "alt": "Khuê Văn Các, a small red-roofed wooden pavilion with round windows on four white brick pillars, framed by festival banners",
+  "author": "Xiquinho Silva",
+  "license": "CC BY 2.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Constellation_of_Literature_pavilion_-_Temple_of_Literature,_Hanoi_(32342168616).jpg",
+  "year": "2016"
+ },
+ {
+  "id": "vm-well",
+  "kind": "image",
+  "w": 2560,
+  "h": 1709,
+  "alt": "The square pond of the third courtyard at Văn Miếu, with a stone balustrade, a clipped bonsai and Khuê Văn Các behind",
+  "author": "Jakub Hałun",
+  "license": "CC BY 4.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Third_Courtyard,_Temple_of_Literature,_Hanoi,_Vietnam,_20240123_0947_3141.jpg",
+  "year": "2024"
+ },
+ {
+  "id": "vm-hall",
+  "kind": "image",
+  "w": 2560,
+  "h": 1893,
+  "alt": "Inside the main hall of Văn Miếu: red lacquered columns, gilded panels and a pair of bronze cranes standing on turtles",
+  "author": "Jorge Láscar from Australia",
+  "license": "CC BY 2.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lascar_Main_hall_of_The_Temple_of_Literature_(V%C4%83n_Mi%E1%BA%BFu)_(4551001026).jpg",
+  "year": "2010"
+ },
+ {
+  "id": "vm-stelae-row",
+  "kind": "image",
+  "w": 2560,
+  "h": 1707,
+  "alt": "A long covered row of stone stelae on turtles at Văn Miếu, behind a low red fence",
+  "author": "Daderot",
+  "license": "CC0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stelae_of_Doctors_-_Temple_of_Literature,_Hanoi_-_DSC04676.JPG",
+  "year": "2014"
+ },
+ {
+  "id": "tl-doanmon",
+  "kind": "image",
+  "w": 2560,
+  "h": 1707,
+  "alt": "Đoan Môn, the stone gate of the Imperial Citadel of Thăng Long, with arched openings and a two-tiered pavilion on top, behind clipped hedges",
+  "author": "Isabell Schulz",
+  "license": "CC BY-SA 2.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Th%C4%83ng_Long_Imperial_Citadel_(32451244358).jpg",
+  "year": "2018"
+ },
+ {
+  "id": "tl-flagtower",
+  "kind": "image",
+  "w": 2560,
+  "h": 1819,
+  "alt": "The brick Flag Tower of Hà Nội rising above trees, with a red flag on top and motorbikes on the street below",
+  "author": "Richard Mortel from Riyadh, Saudi Arabia",
+  "license": "CC BY 2.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_Tower_of_Hanoi,_1812_(1)_(37608539335).jpg",
+  "year": "2017"
+ },
+ {
+  "id": "tl-dragons",
+  "kind": "image",
+  "w": 2560,
+  "h": 1920,
+  "alt": "Stone dragons carved along the balustrades of a broad flight of steps at the Kính Thiên palace site",
+  "author": "Gryffindor",
+  "license": "CC BY-SA 3.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hanoi_Citadel_0355.JPG",
+  "year": "2008"
+ },
+ {
+  "id": "tl-bacmon",
+  "kind": "image",
+  "w": 2560,
+  "h": 1920,
+  "alt": "Bắc Môn, the north gate of the old Hà Nội citadel, lit yellow at night, with a pavilion roof above the arch",
+  "author": "Nguyễn Thanh Quang",
+  "license": "CC BY-SA 3.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:C%E1%BB%95ng_B%E1%BA%AFc_ho%C3%A0ng_th%C3%A0nh_Th%C4%83ng_Long.JPG"
+ },
+ {
+  "id": "hk-specimen",
+  "kind": "image",
+  "w": 2560,
+  "h": 1920,
+  "alt": "The preserved giant softshell turtle of Hoàn Kiếm Lake on display at Ngọc Sơn temple, with a visitor looking on",
+  "author": "nakashi",
+  "license": "CC BY-SA 2.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hoan_Kiem_turtle,_Hanoi_-_Sep_5,_2023_(1).jpg",
+  "year": "2023"
+ }
+]
