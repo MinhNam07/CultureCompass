@@ -1,0 +1,27 @@
+{
+  "$comment": "Input for tools/recolor-character.py. Each character is a LimeZu Modern Interiors free sheet (base) with new hair, skin and clothes colours. Change 'to' and run the tool again. 'colours' are the base sheet's shades of that part; 'from' is the main one; 'y' limits a group to rows of the 16 x 32 frame, 'frames' to frames 0-23, and 'keepEdge' keeps the outline pixels that touch the background.",
+  "arvy": {
+    "name": "Arvy",
+    "base": "Amelia",
+    "groups": {
+      "hair":   { "from": "#8a6552", "to": "#3d2c27", "colours": ["#8a6552", "#957350", "#ba8d5e", "#8d7051", "#674d49"] },
+      "skin":   { "from": "#bf8b78", "to": "#f8d3bf", "colours": ["#bf8b78", "#b57972", "#a77a67", "#b58472", "#b2736d"] },
+      "blush":  { "from": "#aa5e56", "to": "#ec9a8c", "colours": ["#aa5e56"] },
+      "top":    { "from": "#a85377", "to": "#2f9aa3", "colours": ["#a85377", "#b95d72"] },
+      "bottom": { "from": "#c78c59", "to": "#ece3d0", "colours": ["#c78c59", "#b35e3f"] },
+      "shoes":  { "from": "#ab4a36", "to": "#6b4a3c", "colours": ["#ab4a36"] }
+    }
+  },
+  "henry": {
+    "name": "Henry",
+    "base": "Bob",
+    "groups": {
+      "hair":     { "from": "#5d585f", "to": "#3a3336", "colours": ["#5d585f", "#716b6e", "#555157"], "y": [9, 22] },
+      "collar":   { "from": "#46465e", "to": "#1f6670", "colours": ["#46465e", "#565972", "#6c6e85"], "y": [22, 22], "frames": [[6, 11]], "keepEdge": true },
+      "jacket":   { "from": "#46465e", "to": "#1f6670", "colours": ["#46465e", "#565972", "#6c6e85"], "y": [23, 27], "keepEdge": true },
+      "shirt":    { "from": "#c2b8d5", "to": "#ece3d0", "colours": ["#c2b8d5", "#d8d0e0", "#787d93"], "y": [23, 28] },
+      "trousers": { "from": "#46465e", "to": "#ece3d0", "colours": ["#46465e", "#565972"], "y": [28, 29], "keepEdge": true },
+      "shoes":    { "from": "#6c6e85", "to": "#6b4a3c", "colours": ["#6c6e85", "#787d93"], "y": [29, 31] }
+    }
+  }
+}

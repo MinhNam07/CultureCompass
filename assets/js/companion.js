@@ -1,13 +1,15 @@
-/* CultureCompass — Arvy, the player from Explore, wanders along the bottom edge of the screen and invites you to play.
-   She is one link to the game (explore.html), reachable by keyboard and read out by screen readers.
-   On arrival she stands and talks, so the line can be read; then she wanders on her own: walks a while, stops and
-   looks around, walks on, sometimes turns back, and off one edge comes in at the other. Her line and a small Play tag
-   take turns every few seconds. She stops while you point at her or focus her. With reduced motion she stands still.
-   Styles: assets/css/companion.css. Sprites: LimeZu "Amelia" sheet, named Arvy here (16 x 32 frames; rows right, up, left, down). */
+/* CultureCompass — the player's traveller from Explore (Arvy or Henry, whichever was picked in the game; Arvy until then)
+   wanders along the bottom edge of the screen and invites you to play.
+   One link to the game (explore.html), reachable by keyboard and read out by screen readers.
+   On arrival the traveller stands and talks, so the line can be read; then wanders: walks a while, stops and
+   looks around, walks on, sometimes turns back, and off one edge comes in at the other. The line and a small Play tag
+   take turns every few seconds. Walking stops while you point at it or focus it. With reduced motion it stands still.
+   Styles: assets/css/companion.css. Sprites: assets/js/game/characters.js (16 x 32 frames; rows right, up, left, down). */
 (function () {
   'use strict';
   var CC = window.CC || {};
-  var LINE = ['Hi, I’m Arvy!', 'Click me to explore Hà Nội by playing'];
+  var WHO = CC.character ? CC.character.get() : { name: 'Arvy' };
+  var LINE = ['Hi, I’m ' + WHO.name + '!', 'Click me to explore Hà Nội by playing'];
   var TAG = 'Explore by playing';
   var HREF = 'explore.html';
   var ROW = { right: 0, up: 6, left: 12, down: 18 }, LOOK = ['down', 'left', 'right', 'down', 'up'];
@@ -24,6 +26,7 @@
     a.className = 'cc-pal';
     a.href = HREF;
     a.setAttribute('aria-label', LINE[0] + ' ' + LINE[1]);
+    if (WHO.run) { a.style.setProperty('--pal-run', CC.character.cssUrl(WHO.run)); a.style.setProperty('--pal-idle', CC.character.cssUrl(WHO.idle)); }
     a.innerHTML =
       '<span class="cc-pal-say" aria-hidden="true"><span class="cc-pal-l1"></span><span class="cc-pal-l2"></span><span class="cc-pal-more">▼</span></span>' +
       '<span class="cc-pal-tag" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>Play<span class="cc-pal-long"> · ' + TAG + '</span></span>' +
@@ -40,7 +43,7 @@
     var typing = null;
     var s = { x: 0, dir: 1, mode: 'rest', left: 6.5, lookAt: null, face: 'down', t: 0, held: false, talking: true, talkLeft: TALK, last: performance.now() };
 
-    /* her line types on like the game's dialogue; a ▼ blinks when it has finished */
+    /* the line types on like the game's dialogue; a ▼ blinks when it has finished */
     function speak() {
       clearTimeout(typing);
       var a = LINE[0], b = LINE[1], i = 0;
@@ -69,7 +72,7 @@
     pal.addEventListener('focus', hold);
     pal.addEventListener('blur', free);
 
-    /* she arrives standing about two thirds across, already talking, and waits to be read */
+    /* the traveller arrives standing about two thirds across, already talking, and waits to be read */
     s.x = Math.min(innerWidth * 0.66, innerWidth - 180);
     talk(true);
 
