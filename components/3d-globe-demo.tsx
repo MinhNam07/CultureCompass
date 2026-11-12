@@ -1,5 +1,5 @@
 "use client";
-import { Component, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Globe3D, globeFocusGeometry } from "@/components/ui/3d-globe";
 import { countries, type CountryMarker } from "@/globe/countries";
 import { CountryHud } from "@/globe/hud/country-hud";
@@ -25,8 +25,10 @@ function Arrow({ back = false }: { back?: boolean }) {
 
 // When a country opens, the globe shrinks to the bottom centre and a V-shaped beam rises from
 // the country into the HUD above it. Only on wide screens: phones have no room for both.
-/* the globe opens facing South-East Asia with Vietnam just above centre, then auto-rotates from there */
+/* the globe opens facing South-East Asia with Vietnam just above centre. It holds still, with a "Start here" arrow
+   on Vietnam (the one destination that is open), until a country has been chosen once; then it auto-rotates. */
 const START_VIEW = { lat: 10, lng: 108 };
+const OPEN = new Set(["vn"]);
 const FOCUS_TILT = 34;      // the focus sits this many degrees above the globe's centre
 const GLOBE_SCALE = 0.9;    // the globe rises as a horizon; its lower half fades out below the section edge
 const PIN_FROM_BOTTOM = 100;
@@ -105,6 +107,12 @@ class GlobeBoundary extends Component<{ children: ReactNode }, { failed: boolean
 export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }) {
   const [hovered, setHovered] = useState<CountryMarker | null>(null);
   const [selected, setSelected] = useState<CountryMarker | null>(null);
+  const [chosenOnce, setChosenOnce] = useState(false);
+  const markers = useMemo<CountryMarker[]>(() => countries.map((c) => ({
+    ...c,
+    status: OPEN.has(c.code) ? "open" : "soon",
+    callout: OPEN.has(c.code) && !chosenOnce ? "Start here" : undefined,
+  })), [chosenOnce]);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [globeExpanded, setGlobeExpanded] = useState(false);
   const picker = useRef<HTMLSelectElement>(null);
@@ -246,6 +254,7 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
   }
   function chooseCountry(country: CountryMarker) {
     setHovered(null);
+    setChosenOnce(true);
     setSelected(country);
     setGlobeExpanded(false);
     if (window.location.hash !== `#${country.code}`) {
@@ -285,7 +294,7 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
         <div className="destination-explore">
           <header className="destination-header">
             <h1>{embedded ? "Choose a destination" : "A world worth understanding."}</h1>
-            <p>Explore a place through its stories and everyday life.</p>
+            <p><b className="destination-open-now">Open now: Vietnam, starting in Hà Nội.</b> More countries are coming; their flags show a first snapshot.</p>
           </header>
           <label className="destination-picker" htmlFor="country-picker">
             Find a country
@@ -294,26 +303,26 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
               if (country) chooseCountry(country);
             }}>
               <option value="" disabled>Choose a country</option>
-              {countries.map((country) => <option key={country.code} value={country.code}>{country.label}</option>)}
+              {countries.map((country) => <option key={country.code} value={country.code}>{country.label}{OPEN.has(country.code) ? " (open now)" : " (coming later)"}</option>)}
             </select>
           </label>
           {selected && <button className="destination-globe-toggle" aria-expanded={globeExpanded} aria-controls="destination-orbit" onClick={() => setGlobeExpanded(!globeExpanded)}>{globeExpanded ? "Hide globe" : "Explore the globe"}<Arrow /></button>}
           <div className="destination-orbit" id="destination-orbit">
             <div className="destination-globe-stage" ref={stage} style={{ transform: stageMove }}>
             <GlobeBoundary>
-              <Globe3D onBlankClick={selected ? closeCountry : undefined} markers={countries} selectedMarker={selected} reducedMotion={reducedMotion} className="destination-canvas"
-                focus={beamed ? hudFocus ?? selected : null} focusTilt={beamed ? FOCUS_TILT : 0} locked={beamed} config={{ bumpScale: .65, ambientIntensity: 1.6, pointLightIntensity: 1.1, frontLightIntensity: 3.2, initialView: START_VIEW, autoRotateSpeed: hovered || selected || reducedMotion ? 0 : 0.3 }}
+              <Globe3D onBlankClick={selected ? closeCountry : undefined} markers={markers} selectedMarker={selected ? markers.find((m) => m.code === selected.code) ?? null : null} reducedMotion={reducedMotion} className="destination-canvas"
+                focus={beamed ? hudFocus ?? selected : null} focusTilt={beamed ? FOCUS_TILT : 0} locked={beamed} config={{ bumpScale: .65, ambientIntensity: 1.6, pointLightIntensity: 1.1, frontLightIntensity: 3.2, initialView: START_VIEW, autoRotateSpeed: hovered || selected || reducedMotion || !chosenOnce ? 0 : 0.3 }}
                 onMarkerHover={(marker) => preview(marker as CountryMarker | null)}
                 onMarkerClick={(marker) => chooseCountry(marker as CountryMarker)} />
             </GlobeBoundary>
             </div>
-            <p className="destination-orbit-hint">Drag to explore. Select a flag to look closer.</p>
-            <p className="destination-preview" aria-live="polite">{hovered && hovered.code !== selected?.code ? hovered.label : selected ? `${selected.label} selected` : "Let curiosity choose your next stop."}</p>
+            <p className="destination-orbit-hint">Select the Vietnamese flag to start. Drag to turn the globe.</p>
+            <p className="destination-preview" aria-live="polite">{hovered && hovered.code !== selected?.code ? hovered.label : selected ? `${selected.label} selected` : "Only Vietnam is open so far."}</p>
           </div>
         </div>
         <div className="destination-invitation" aria-live="polite">
-            <p className="destination-invitation-title">{hovered ? hovered.label : "Let curiosity lead the way."}</p>
-            <p>{hovered ? "Select the flag to take a closer look." : "Choose a flag on the globe, or find your destination in the country list."}</p>
+            <p className="destination-invitation-title">{hovered ? hovered.label : "Start in Vietnam."}</p>
+            <p>{hovered ? (OPEN.has(hovered.code) ? "Open now. Select the flag to choose a city and play." : "Coming later. Select the flag for a first snapshot.") : "Select the flag with the arrow, then Hà Nội on the map, and you are walking its streets."}</p>
         </div>
       </div>
       {selected && <CountryHud key={selected.code} country={selected} reducedMotion={reducedMotion} beamed={beamed} closing={closing} onFocus={setHudFocus} onClose={closeCountry} />}

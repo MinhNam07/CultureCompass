@@ -527,14 +527,16 @@
     });
   }
 
-  /* the closing link: scroll to the chooser and move keyboard focus there */
+  /* every link down to the chooser (hero buttons, skip link, closing link): scroll there and move keyboard focus there */
   function initExplore() {
-    CC.$('hero-explore').addEventListener('click', function (e) {
-      e.preventDefault();
-      var t = CC.$('destinations');
-      CC.motion.scrollTo(t);
-      t.focus({ preventScroll: true });
-      if (history.replaceState) history.replaceState(null, '', '#destinations');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-to-destinations]'), function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var t = CC.$('destinations');
+        CC.motion.scrollTo(t);
+        t.focus({ preventScroll: true });
+        if (history.replaceState) history.replaceState(null, '', '#destinations');
+      });
     });
   }
 

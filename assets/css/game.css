@@ -344,6 +344,10 @@ a.gx-tool { text-decoration: none; }
 .gxs-dest:hover:not([aria-pressed="true"]) { color: var(--night-text); border-color: var(--line-strong); }
 .gxs-cta { background: var(--cyan); color: var(--cyan-ink); border: 0; font-weight: 700; padding: 0 20px; box-shadow: 0 0 0 2px #08101C, 0 0 0 4px var(--pixel-ink); }
 .gxs-cta:hover { background: #9EEEF7; color: var(--cyan-ink); }
+.gxs-cta-go { gap: 10px; min-height: 52px; padding: 0 24px; font-size: 1.0625rem; }
+.gxs-cta-go .cc-icon { width: 18px; height: 18px; }
+.gxs-pin-start { display: inline-block; margin-right: 4px; padding: 1px 6px; background: var(--cyan); color: var(--cyan-ink); font-weight: 700; }
+.gxs-pin.is-on .gxs-pin-start { background: var(--cyan-ink); color: var(--cyan); }
 .gxs-link { background: none; border: 0; color: var(--night-muted); text-decoration: underline; text-underline-offset: 3px; padding: 0 6px; }
 .gxs-link:hover { color: var(--night-text); }
 :is(.gxs-btn, .gxs-dest, .gxs-cta, .gxs-link, .gxs-pin, .gxs-row):focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
