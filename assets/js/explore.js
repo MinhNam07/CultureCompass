@@ -130,6 +130,8 @@
     var z = CC.zoneForScene && CC.zoneForScene(sceneId);
     return '<span class="rd-play">' + ic('play') + 'Play' + (z && z.minutes ? ' · about ' + z.minutes + ' min' : '') + '</span>';
   }
+  /* a section's last line: a rule that runs to the next section's name, whose arrow nudges once it arrives */
+  function nextUp(id, label) { return '<p class="rd-next-up rd-rise">' + jump(id, label) + '</p>'; }
   function jump(id, label, cls) {
     return '<a class="rd-link' + (cls ? ' ' + cls : '') + '" href="#' + id + '" data-jump>' + label + ic('arrowDown', 'rd-go') + '</a>';
   }
@@ -170,8 +172,17 @@
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
       '</div>' +
-      '<div class="rd-cover-foot">' + creditLine(p) + videoToggle('the train street video') + '</div>' +
+      '<div class="rd-cover-foot">' + R.strip() +
+        '<div class="rd-cover-credit">' + creditLine(p) + videoToggle('the train street video') + '</div></div>' +
     '</section>';
+  };
+  /* the cover's bottom edge says what is below, not only that there is more: a scroll cue and every section, each a jump */
+  R.strip = function () {
+    var items = [['hanoi', 'Destinations'], ['contents', 'Story finder']].concat(CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; })).concat([['phrases', 'Words']]);
+    return '<nav class="rd-strip" aria-label="On this page">' +
+      '<a class="rd-strip-cue" href="#hanoi" data-jump>' + ic('arrowDown') + '<span>Scroll</span></a>' +
+      '<ul class="rd-strip-list">' + items.map(function (x) { return '<li><a href="#' + x[0] + '" data-jump>' + esc(x[1]) + '</a></li>'; }).join('') + '</ul>' +
+    '</nav>';
   };
 
   /* destinations: one large card per city that has stories, a small one per city still to come.
@@ -208,7 +219,7 @@
       (later.length ? '<ul class="rd-dests-later" aria-label="Coming later">' + later.map(function (d) {
         return '<li class="rd-dest-later rd-rise"><span class="rd-dest-later-name">' + esc(d.name) + '</span><span class="rd-dest-later-tag">Coming later</span></li>';
       }).join('') + '</ul>' : '') +
-      '</div></div></section>';
+      '</div>' + nextUp('contents', 'Next: Story finder · ' + stories + ' stories') + '</div></section>';
   };
 
   /* story finder: every story on one screen, filtered in place by theme and by words. The whole list is in the
@@ -246,7 +257,7 @@
       '<p class="rd-find-status" role="status" aria-live="polite" data-find-status></p>' +
       '<ul class="rd-find-grid">' + items + '</ul>' +
       '<p class="rd-find-empty" data-find-empty hidden>No story matches that. Try another word, or <button type="button" class="rd-find-reset" data-find-reset>show all stories</button>.</p>' +
-      '<p class="rd-find-more">' + jump(CHAPTERS[0].anchor, 'Or read chapter by chapter') + '</p>' +
+      nextUp(CHAPTERS[0].anchor, 'Next: chapter 1, ' + esc(CHAPTERS[0].name)) +
     '</div></section>';
   };
 
@@ -708,6 +719,10 @@
      and nothing at all without a hovering pointer: on a phone a tap is a press, not a preview. */
   function initCover() {
     var cover = document.querySelector('[data-cover]');
+    if (cover) {
+      var moved = function () { if (window.scrollY > 24) { cover.classList.add('is-scrolled'); window.removeEventListener('scroll', moved); } };
+      window.addEventListener('scroll', moved, { passive: true }); moved();
+    }
     if (!cover || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     var img = cover.querySelector('.rd-cover-game');
     var show = function (what) {
