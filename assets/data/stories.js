@@ -1546,9 +1546,8 @@ window.CC.stories = [
       "ph-no"
     ],
     "layout": "longform",
-    "imageId": "fd-family-meal",
     "hero": {
-      "image": "fd-family-meal"
+      "image": "ev-home-meal"
     },
     "blocks": [
       {
@@ -1616,12 +1615,6 @@ window.CC.stories = [
             ]
           }
         ]
-      },
-      {
-        "type": "figure",
-        "image": "fd-family-meal",
-        "size": "wide",
-        "caption": "An everyday meal on an aluminium tray: soup, sweet and sour pork, vegetables and a dipping sauce in the middle."
       },
       {
         "type": "text",
@@ -1858,7 +1851,6 @@ window.CC.stories = [
       },
       {
         "type": "quiz",
-        "image": "fd-family-meal",
         "question": "Everyone is seated",
         "prompt": "The dishes are on the tray and everyone has rice. You are hungry. What do you do?",
         "fitLabel": "That fits",
@@ -1879,7 +1871,8 @@ window.CC.stories = [
           }
         ]
       }
-    ]
+    ],
+    "imageId": "ev-home-meal"
   },
   {
     "id": "st-chop",
@@ -1992,7 +1985,6 @@ window.CC.stories = [
                 ]
               }
             ],
-            "image": "fd-family-meal",
             "caption": "Shared dishes round a bowl of dipping sauce."
           },
           {
@@ -4775,7 +4767,6 @@ window.CC.stories = [
                 ]
               }
             ],
-            "image": "fd-stools",
             "caption": "Plastic stools stacked outside a Hà Nội eatery."
           },
           {
@@ -5186,7 +5177,6 @@ window.CC.stories = [
       },
       {
         "type": "quiz",
-        "image": "fd-stools",
         "question": "No menu, no waiter",
         "prompt": "You sit down at a stall and nobody comes to take your order. What is going on?",
         "fitLabel": "That fits",
@@ -6396,17 +6386,10 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "pair",
-        "items": [
-          {
-            "image": "bl-tranquoc",
-            "caption": "Trấn Quốc pagoda on West Lake."
-          },
-          {
-            "image": "bl-motcot",
-            "caption": "The One Pillar pagoda, rebuilt in 1955."
-          }
-        ]
+        "type": "figure",
+        "image": "bl-tranquoc",
+        "caption": "Trấn Quốc pagoda on West Lake.",
+        "size": "wide"
       },
       {
         "type": "text",
@@ -11329,7 +11312,7 @@ window.CC.stories = [
             ]
           },
           {
-            "image": "ar-wp-show",
+            "image": "ar-wp-finale",
             "label": "The stage",
             "heading": "A pool for a stage",
             "paras": [
@@ -11338,41 +11321,20 @@ window.CC.stories = [
                 "claimIds": [
                   "C-WP-STAGE"
                 ]
-              }
-            ]
-          },
-          {
-            "image": "ar-wp-band",
-            "label": "The music",
-            "heading": "Drums at the side",
-            "paras": [
+              },
               {
                 "text": "Musicians and singers sit to one side and carry the story with drums, cymbals and folk melodies. The puppets barely speak.",
                 "claimIds": [
                   "C-WP-MUSIC"
                 ]
-              }
-            ]
-          },
-          {
-            "image": "ar-wp-turtle",
-            "label": "The turtle",
-            "heading": "Out of the water",
-            "paras": [
+              },
               {
                 "text": "The figures are carved from light fig wood, which floats, and lacquered in bright colours. They glide, dive and come up again, a golden turtle among them.",
                 "claimIds": [
                   "C-WP-WOOD",
                   "C-WP-ACTS"
                 ]
-              }
-            ]
-          },
-          {
-            "image": "ar-wp-performers",
-            "label": "The curtain call",
-            "heading": "Waist-deep",
-            "paras": [
+              },
               {
                 "text": "At the end the puppeteers come out through the screen, wet to the waist. About 20 of them work each show; some puppets weigh up to 10 kg.",
                 "claimIds": [
@@ -11401,12 +11363,6 @@ window.CC.stories = [
             ]
           }
         ]
-      },
-      {
-        "type": "figure",
-        "image": "ar-longdoi-brick",
-        "size": "inline",
-        "caption": "A decorated brick from Long Đọi pagoda, made between 1118 and 1121, the years of the stele. Vietnam National Museum of Fine Arts."
       },
       {
         "type": "text",
@@ -11488,17 +11444,10 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "pair",
-        "items": [
-          {
-            "image": "ar-wp-turtle",
-            "caption": "The golden turtle of the sword legend."
-          },
-          {
-            "image": "ar-wp-finale",
-            "caption": "The final dance on the water."
-          }
-        ]
+        "type": "figure",
+        "image": "ar-wp-finale",
+        "caption": "The final dance on the water.",
+        "size": "wide"
       },
       {
         "type": "text",
@@ -11559,7 +11508,6 @@ window.CC.stories = [
             "claimIds": [
               "C-WP-1121"
             ],
-            "image": "ar-longdoi-brick",
             "caption": "A brick from the same pagoda."
           },
           {
@@ -11661,7 +11609,6 @@ window.CC.stories = [
       },
       {
         "type": "quiz",
-        "image": "ar-wp-performers",
         "question": "Where are the puppeteers?",
         "prompt": "During a water puppet show, where are the people moving the puppets?",
         "fitLabel": "That fits",
@@ -11691,9 +11638,8 @@ window.CC.stories = [
     "title": "Ca trù: sung poetry",
     "dek": "A woman sings old poems to the click of bamboo clappers, a three-stringed lute answers, and a small drum marks the lines worth praising. Five centuries of Hà Nội’s chamber music: how it rose, fell into disrepute, nearly vanished and came back.",
     "place": "Hà Nội",
-    "imageId": "ar-catru-perf",
     "hero": {
-      "image": "ar-catru-perf"
+      "image": "oq-hang-bac-2"
     },
     "appliesTo": "Ca trù as sung in Hà Nội and the villages around it. Its form and status follow UNESCO and the Vietnamese Institute for Musicology; its history, scholars and Vietnamese press.",
     "varies": "Guilds and families keep their own melodies and styles. Where and when ca trù is sung in Hà Nội changes often; only some venues hold regular nights.",
@@ -11789,12 +11735,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "figure",
-        "image": "ar-danday",
-        "size": "inline",
-        "caption": "A đàn đáy: the long neck and three strings of ca trù’s lute."
-      },
-      {
         "type": "text",
         "heading": "Tallies and names",
         "id": "name",
@@ -11856,7 +11796,6 @@ window.CC.stories = [
             "claimIds": [
               "C-CT-COLONIAL"
             ],
-            "image": "ar-hangbac",
             "caption": "An Old Quarter street today."
           },
           {
@@ -11910,7 +11849,6 @@ window.CC.stories = [
             "claimIds": [
               "C-CT-BICHCAU"
             ],
-            "image": "ar-bichcau",
             "caption": "Bích Câu Đạo Quán."
           },
           {
@@ -12059,19 +11997,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "pair",
-        "items": [
-          {
-            "image": "ar-kimngan",
-            "caption": "Kim Ngân communal house, Hàng Bạc, an old venue for ca trù."
-          },
-          {
-            "image": "ar-bichcau",
-            "caption": "Bích Câu Đạo Quán, home of the Saturday show."
-          }
-        ]
-      },
-      {
         "type": "keep",
         "title": "Take it with you",
         "items": [
@@ -12098,7 +12023,6 @@ window.CC.stories = [
       },
       {
         "type": "quiz",
-        "image": "ar-catru-perf",
         "question": "Who leads?",
         "prompt": "In a ca trù trio, who sets the pace for the others?",
         "fitLabel": "That fits",
@@ -12119,7 +12043,8 @@ window.CC.stories = [
           }
         ]
       }
-    ]
+    ],
+    "imageId": "oq-hang-bac-2"
   },
   {
     "id": "st-folk-paintings",
@@ -12128,9 +12053,8 @@ window.CC.stories = [
     "title": "Folk prints: Đông Hồ and Hàng Trống",
     "dek": "Pigs, hens and a wedding of mice, printed in five natural colours on shell-coated paper; tigers and goddesses outlined in ink and coloured by hand. Northern Vietnam’s two great folk-print traditions, one from a village and one from a Hà Nội street.",
     "place": "Hà Nội and Bắc Ninh",
-    "imageId": "ar-dh-mice",
     "hero": {
-      "image": "ar-dh-mice"
+      "image": "oq-hang-ma"
     },
     "appliesTo": "Folk prints of the Red River delta: Đông Hồ, made in a village of Bắc Ninh province, and Hàng Trống, made in Hà Nội’s Old Quarter. Technique and status follow Vietnamese press reports, including UNESCO’s 2025 decision as reported there.",
     "varies": "Each family keeps its own blocks and designs. Ages and origins differ between sources, and village tradition often places them earlier than the records.",
@@ -12364,19 +12288,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "pair",
-        "items": [
-          {
-            "image": "ar-dh-rooster",
-            "caption": "Đông Hồ: a rooster and hen, every colour from a block."
-          },
-          {
-            "image": "ar-ht-tigers",
-            "caption": "Hàng Trống: the Five Tigers, coloured by hand."
-          }
-        ]
-      },
-      {
         "type": "text",
         "heading": "Đông Hồ: five colours from the earth",
         "id": "dongho",
@@ -12404,12 +12315,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "figure",
-        "image": "ar-dh-printing",
-        "size": "wide",
-        "caption": "Pressing a sheet onto an inked block in Đông Hồ village."
-      },
-      {
         "type": "text",
         "heading": "Pigs, hens and a wedding of mice",
         "id": "themes",
@@ -12425,30 +12330,6 @@ window.CC.stories = [
             "claimIds": [
               "C-DH-THEMES"
             ]
-          }
-        ]
-      },
-      {
-        "type": "gallery",
-        "heading": "Đông Hồ prints and printing",
-        "id": "gallery",
-        "intro": "Select a picture to see it larger; use the arrow keys or swipe to move between them.",
-        "items": [
-          {
-            "image": "ar-dh-mice",
-            "caption": "The mice’s wedding."
-          },
-          {
-            "image": "ar-dh-rooster",
-            "caption": "A rooster and hen."
-          },
-          {
-            "image": "ar-dh-printing",
-            "caption": "Printing by hand."
-          },
-          {
-            "image": "ar-dh-drying",
-            "caption": "Half-finished prints drying."
           }
         ]
       },
@@ -12497,12 +12378,6 @@ window.CC.stories = [
             ]
           }
         ]
-      },
-      {
-        "type": "figure",
-        "image": "ar-ht-tigers",
-        "size": "wide",
-        "caption": "The Five Tigers, a Hàng Trống painting in the Vietnam National Museum of Fine Arts."
       },
       {
         "type": "text",
@@ -12561,7 +12436,6 @@ window.CC.stories = [
       },
       {
         "type": "quiz",
-        "image": "ar-ht-tigers",
         "question": "Which is which?",
         "prompt": "A print’s colours differ slightly from copy to copy, as if painted by hand. Which tradition is it most likely from?",
         "fitLabel": "That fits",
@@ -12578,7 +12452,8 @@ window.CC.stories = [
           }
         ]
       }
-    ]
+    ],
+    "imageId": "oq-hang-ma"
   },
   {
     "id": "st-bat-trang",
@@ -12587,9 +12462,8 @@ window.CC.stories = [
     "title": "Bát Tràng: the pottery village",
     "dek": "On the edge of Hà Nội, a village has been firing clay for some six hundred years. A guide to Bát Tràng: its glazes, its prize-winning museum, its market, and a wheel where you can make your own bowl.",
     "place": "Bát Tràng, Hà Nội",
-    "imageId": "ar-bt-market",
     "hero": {
-      "image": "ar-bt-market"
+      "image": "ev-ceramics-bike"
     },
     "appliesTo": "Bát Tràng, a pottery village in Hà Nội. History follows the national history museum’s curators and Vietnamese press; visiting details, the national tourism authority.",
     "varies": "Workshops, prices and class times vary from house to house. Sources give the distance from the city as anything from 13 to 20 km, depending on where they measure from.",
@@ -12697,19 +12571,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "pair",
-        "items": [
-          {
-            "image": "ar-bt-vase",
-            "caption": "Blue decoration: a 19th-century Bát Tràng vase."
-          },
-          {
-            "image": "ar-bt-tiger",
-            "caption": "Crackle and brown glazes: an 18th-century tiger."
-          }
-        ]
-      },
-      {
         "type": "steps",
         "heading": "A day in Bát Tràng",
         "id": "steps",
@@ -12740,7 +12601,6 @@ window.CC.stories = [
           },
           {
             "title": "Walk the market",
-            "image": "ar-bt-market",
             "paras": [
               {
                 "text": "The pottery market is a short walk away: stall after stall of bowls, cups, vases and pots.",
@@ -12752,7 +12612,6 @@ window.CC.stories = [
           },
           {
             "title": "Into the lanes",
-            "image": "ar-bt-lane",
             "paras": [
               {
                 "text": "In the village lanes, look for the Vạn Vân old house, about 200 years old, and the village communal house, whose festival was added to the national list of intangible heritage in December 2024.",
@@ -12765,7 +12624,6 @@ window.CC.stories = [
           },
           {
             "title": "Make your own",
-            "image": "ar-bt-wheel",
             "paras": [
               {
                 "text": "Many workshops let visitors sit at a wheel and shape their own piece.",
@@ -12802,12 +12660,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "figure",
-        "image": "ar-bt-dinh",
-        "size": "wide",
-        "caption": "Bát Tràng’s communal house, home of the village festival."
-      },
-      {
         "type": "text",
         "heading": "Four kilometres of tiles",
         "id": "mosaic",
@@ -12826,12 +12678,6 @@ window.CC.stories = [
             ]
           }
         ]
-      },
-      {
-        "type": "figure",
-        "image": "ar-mosaic",
-        "size": "bleed",
-        "caption": "A stretch of the ceramic mosaic on the dyke road."
       },
       {
         "type": "dodont",
@@ -12901,7 +12747,6 @@ window.CC.stories = [
       },
       {
         "type": "quiz",
-        "image": "ar-bt-tiger",
         "question": "Old or new?",
         "prompt": "A bowl in the market is covered in a fine web of cracks. What does that tell you?",
         "fitLabel": "That fits",
@@ -12922,7 +12767,8 @@ window.CC.stories = [
           }
         ]
       }
-    ]
+    ],
+    "imageId": "ev-ceramics-bike"
   },
   {
     "id": "st-architecture",
@@ -12931,9 +12777,9 @@ window.CC.stories = [
     "title": "Tube houses and French villas",
     "dek": "Houses a few metres wide and many times as deep; an opera house, a bridge and a governor’s palace; a museum that put Vietnamese roofs on French concrete. How two very different cities grew side by side in Hà Nội, and what is being done to keep them.",
     "place": "Hà Nội",
-    "imageId": "ar-tube-street",
+    "imageId": "oq-tube-houses",
     "hero": {
-      "image": "ar-tube-street"
+      "image": "oq-tube-houses"
     },
     "appliesTo": "The Old Quarter and the French-built quarters of central Hà Nội. Building histories follow Vietnamese press, the National Museum of History and an encyclopedia where noted; rules follow city reports.",
     "varies": "Dates and architects differ between sources for several buildings, and the story says where. Rules for the Old Quarter and the villas are revised from time to time.",
@@ -12994,7 +12840,7 @@ window.CC.stories = [
       },
       {
         "type": "figure",
-        "image": "ar-tube-street",
+        "image": "oq-tube-houses",
         "size": "wide",
         "caption": "Narrow fronts at the corner of Đào Duy Từ and Mã Mây."
       },
@@ -13020,12 +12866,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "figure",
-        "image": "ar-mamay-inside",
-        "size": "inline",
-        "caption": "Inside 87 Mã Mây."
-      },
-      {
         "type": "text",
         "heading": "The French city",
         "id": "french",
@@ -13044,25 +12884,6 @@ window.CC.stories = [
             ]
           }
         ]
-      },
-      {
-        "type": "pair",
-        "items": [
-          {
-            "image": "ar-opera",
-            "caption": "The Opera House, 1901–11."
-          },
-          {
-            "image": "ar-palace",
-            "caption": "The Presidential Palace, built for the Governor-General."
-          }
-        ]
-      },
-      {
-        "type": "figure",
-        "image": "ar-postoffice",
-        "size": "inline",
-        "caption": "The Post Office by Hoàn Kiếm Lake."
       },
       {
         "type": "text",
@@ -13090,12 +12911,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "figure",
-        "image": "ar-longbien",
-        "size": "bleed",
-        "caption": "The Long Biên bridge over the Red River."
-      },
-      {
         "type": "text",
         "heading": "Vietnamese roofs on French concrete",
         "id": "indochinese",
@@ -13113,12 +12928,6 @@ window.CC.stories = [
             ]
           }
         ]
-      },
-      {
-        "type": "figure",
-        "image": "ar-history-museum",
-        "size": "wide",
-        "caption": "The former Louis Finot Museum, now the National Museum of History."
       },
       {
         "type": "quote",
@@ -13156,7 +12965,6 @@ window.CC.stories = [
             "claimIds": [
               "C-AR-LONGBIEN"
             ],
-            "image": "ar-longbien",
             "caption": "Long Biên’s steel spans."
           },
           {
@@ -13238,12 +13046,6 @@ window.CC.stories = [
         ]
       },
       {
-        "type": "figure",
-        "image": "ar-villa",
-        "size": "wide",
-        "caption": "A French-era villa in Hà Nội."
-      },
-      {
         "type": "facts",
         "title": "By the numbers",
         "items": [
@@ -13280,7 +13082,7 @@ window.CC.stories = [
       },
       {
         "type": "quiz",
-        "image": "ar-tube-street",
+        "image": "oq-tube-houses",
         "question": "Why so narrow?",
         "prompt": "A guide tells you tube houses are narrow because the French taxed street frontage. What is the best answer?",
         "fitLabel": "That fits",

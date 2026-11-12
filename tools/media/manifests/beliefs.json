@@ -1,0 +1,35 @@
+[
+ {
+  "id": "bl-tranquoc",
+  "kind": "image",
+  "w": 2560,
+  "h": 1709,
+  "alt": "Trấn Quốc pagoda seen across the water of West Lake, its yellow buildings behind a stone balustrade and clipped trees",
+  "author": "Jakub Hałun",
+  "license": "CC BY 4.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tran_Quoc_Pagoda,_Hanoi,_Vietnam,_20240123_1211c_3302.jpg",
+  "year": "2024"
+ },
+ {
+  "id": "bl-quanthanh",
+  "kind": "image",
+  "w": 2560,
+  "h": 1702,
+  "alt": "The white triple gate of Quán Thánh temple on a Hà Nội street",
+  "author": "Richard Mortel from Riyadh, Saudi Arabia",
+  "license": "CC BY 2.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Quan_Thanh_Taoist_Temple,_Hanoi,_11th_century_and_later_(1)_(38441404416).jpg",
+  "year": "2017"
+ },
+ {
+  "id": "bl-tayho",
+  "kind": "image",
+  "w": 2560,
+  "h": 1440,
+  "alt": "Stone incense urns on the brick terrace of Phủ Tây Hồ, with West Lake behind",
+  "author": "Vuong Tri Binh",
+  "license": "CC BY-SA 4.0",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phu_Tay_Ho_in_2015_04.jpg",
+  "year": "2015"
+ }
+]
