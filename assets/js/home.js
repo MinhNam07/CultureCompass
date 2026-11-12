@@ -540,11 +540,30 @@
     });
   }
 
+  /* "Scroll to launch": rocket.js shows it beside the peeking rocket. When no rocket flies (reduced motion), it
+     shows here on its own as "Scroll to begin", under the logo, until the page has moved. */
+  function initCue() {
+    var cue = CC.$('hero-cue');
+    if (!cue) return;
+    function update() {
+      if (document.documentElement.classList.contains('has-rocket')) return;   // rocket.js owns it
+      cue.querySelector('span').textContent = 'Scroll to begin';
+      cue.classList.toggle('is-on', window.scrollY < 40);
+    }
+    setTimeout(update, 800);
+    window.addEventListener('scroll', update, { passive: true });
+    document.addEventListener('cc:settings', function () { setTimeout(function () {
+      if (document.documentElement.classList.contains('has-rocket')) cue.querySelector('span').textContent = 'Scroll to launch';
+      update();
+    }, 0); });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     CC.renderShell({ current: location.hash === '#destinations' ? 'destinations' : null, section: 'destinations', overMedia: '#hero' });
     initFlow();
     initDestinations();
     initExplore();
+    initCue();
     /* arriving at index.html#destinations: the opening has just changed height, so land on the chooser again */
     if (location.hash === '#destinations') {
       var t = CC.$('destinations');
