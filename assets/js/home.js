@@ -455,7 +455,7 @@
         '<span class="dest-intro" id="dest-intro-' + esc(c.id) + '"><p>' + esc(c.intro) + '</p><span class="cc-meta">' + esc(countsFor(c.id)) + '</span></span>' +
       '</a></li>';
     }).join('');
-    CC.$('dest-note').innerHTML = CC.icon('globe') + '<span>Vietnam is the only destination so far. Other countries will appear here once their stories are researched and sourced; we don’t list them before that.</span>';
+    CC.$('dest-note').innerHTML = CC.icon('globe') + '<span>Vietnam is the only destination so far. Other countries will appear here once their stories are researched; we don’t list them before that.</span>';
 
     /* one picture per country, stacked; only the active one is visible */
     $stage.innerHTML = list.map(function (c) {
@@ -466,7 +466,7 @@
     function credit(c) {
       var img = CC.byId(CC.assets, (c.preview || {}).imageId);
       if (!img) return '';
-      return esc((c.preview || {}).caption || '') + '. Photo: ' + esc(img.credit.split(',')[0]) + ', <a href="' + esc(img.licenseUrl) + '" target="_blank" rel="noopener" tabindex="-1">' + esc(img.license) + '</a>, via Wikimedia Commons.';
+      return esc((c.preview || {}).caption || '');
     }
 
     function preview(id) {

@@ -38,7 +38,7 @@
 
   /* ---------------- pictures ----------------
      pic() resolves one picture from an asset id, a story or a scene, in this order: credited photo or video,
-     scene painting, pixel art of the Explore zone. Every picture used is recorded for the credits list. */
+     scene painting, pixel art of the Explore zone.  */
   var USED = [];
   function credit(p) {
     if (!p || !p.credit) return;
@@ -106,8 +106,9 @@
     var dim = p.w && p.h ? ' width="' + p.w + '" height="' + p.h + '"' : '';
     return '<img class="' + cls + '" src="' + esc(p.src) + '"' + set + dim + ' alt="' + esc(alt) + '" loading="' + (o.eager ? 'eager' : 'lazy') + '" decoding="async"' + style + '>';
   }
+  /* picture credits are not shown on the site (the licence details stay in assets.json) */
   function creditLine(p) {
-    if (!p || !p.credit) return '';
+    return '';
     return '<span class="rd-credit">' + esc(p.credit) + (p.license && p.license.length < 40 ? ', ' + esc(p.license) : '') + '</span>';
   }
   function videoToggle(label) {
@@ -168,8 +169,6 @@
   };
 
   R.toc = function () {
-    var src = CC.sources || [];
-    var names = [src[0], src[1], src[2], src[4]].filter(Boolean);
     return '<section class="rd-sec rd-contents" id="contents" aria-labelledby="toc-title" tabindex="-1"><div class="rd-wrap rd-grid">' +
       '<div class="rd-contents-side">' + head(2, 'Three ways into Vietnam', 'Pick a chapter, or keep scrolling and let the page carry you.', 'toc-title') + '</div>' +
       '<ol class="rd-toc">' + CHAPTERS.map(function (ch) {
@@ -179,8 +178,7 @@
             '<span class="rd-toc-q">' + esc(chQ(ch)) + '</span>' +
             '<span class="rd-link" aria-hidden="true">Read the chapter' + ic('arrowDown', 'rd-go') + '</span></span></a></li>';
       }).join('') + '</ol>' +
-      '<p class="rd-sources rd-rise" id="sources">Built from sources such as ' + names.map(function (s) { return esc(s.org || s.title); }).join(', ') +
-        ' <a href="about.html#sources">and ' + Math.max(0, src.length - names.length) + ' more sources</a></p></div></section>';
+      '</div></section>';
   };
 
   R.banner = function () {
@@ -367,7 +365,7 @@
           (i < pins.length - 1 ? '<button type="button" class="rd-stop-next" data-pin="' + (i + 1) + '" data-pin-next>Next stop: ' + esc(pins[i + 1].name) + GO + '</button>' : '') +
           '</div></li>';
       }).join('') + '</ol>' +
-      '<p class="rd-after">' + link(esc(storyHref({ id: 'st-van-mieu-university' })), 'Read the full story of Văn Miếu, with sources') + '</p></div></section>';
+      '<p class="rd-after">' + link(esc(storyHref({ id: 'st-van-mieu-university' })), 'Read the full story of Văn Miếu') + '</p></div></section>';
   };
 
   /* a thousand years: the stories on a line of their own years (each year is the one the story itself gives) */
@@ -448,8 +446,8 @@
     var links = [
       ['explore.html', 'Play Hà Nội', 'Walk through five places in a small pixel-art game and collect a passport stamp in each.'],
       ['collection.html', 'Your passport', 'Stamps, facts, phrases and stories you have kept, ready to print.'],
-      ['about.html', 'Method & sources', 'How we write, what we leave out, and every source we cite.'],
-      ['index.html', 'Other destinations', 'Turn the globe. Vietnam is the only one with sourced stories so far.']
+      ['about.html', 'How we work', 'How we write and what we leave out.'],
+      ['index.html', 'Other destinations', 'Turn the globe. Vietnam is the only one with stories so far.']
     ];
     return '<section class="rd-sec rd-more" aria-labelledby="nav-title"><div class="rd-wrap rd-grid">' +
       '<div class="rd-more-side">' + head(2, 'Keep exploring', null, 'nav-title') + '</div>' +
@@ -466,19 +464,6 @@
       '<a href="https://vietnam.travel/plan-your-trip/health-safety" target="_blank" rel="noopener">health and safety tips from the Vietnam National Authority of Tourism' + ext + '</a>, its ' +
       '<a href="https://vietnam.travel/faqs" target="_blank" rel="noopener">travel FAQs' + ext + '</a>, and your own government’s travel advice.</p>' +
     '</div></section>';
-  };
-
-  /* every picture on the page, with its maker, licence and source; rendered last, after every module has run */
-  R.credits = function () {
-    /* folded away: the page should end on what to do next, not on licence lines. Opens itself when linked to. */
-    return '<section class="rd-sec rd-credits" id="picture-credits" aria-labelledby="credits-title"><div class="rd-wrap">' +
-      '<details class="rd-credits-box"' + (location.hash === '#picture-credits' ? ' open' : '') + '><summary><h2 id="credits-title" class="rd-credits-h">Picture credits <span class="rd-credits-n">(' + USED.length + ')</span></h2>' + ic('chevronDown') + '</summary>' +
-      '<ul class="rd-credits-list">' + USED.map(function (p) {
-        var lic = p.license ? (p.licenseUrl ? '<a href="' + esc(p.licenseUrl) + '">' + esc(p.license) + '</a>' : esc(p.license)) : '';
-        return '<li>' + (p.sourceUrl ? '<a href="' + esc(p.sourceUrl) + '">' + esc(p.credit) + '</a>' : esc(p.credit)) + (lic ? '. ' + lic : '') + '</li>';
-      }).join('') + '</ul>' +
-      '<p class="rd-credits-more"><a href="about.html#credits">All media credits</a></p>' +
-    '</details></div></section>';
   };
 
   /* ================================================================
@@ -510,8 +495,7 @@
     { type: 'places' },
     { type: 'keep' },
     { type: 'nav' },
-    { type: 'before' },
-    { type: 'credits' }
+    { type: 'before' }
   ];
 
   /* the plate: one figure per distinct picture in the chapter, the active one shown */
@@ -549,7 +533,7 @@
 
   function render() {
     var c = country();
-    var out = SECTIONS.filter(function (s) { return s.type !== 'credits'; }).map(function (s) {
+    var out = SECTIONS.map(function (s) {
       if (s.type === 'chapter') {
         var ch = CHAPTERS[s.ch], nx = CHAPTERS[s.ch + 1];
         CUR = ch.anchor;
@@ -565,7 +549,7 @@
       }
       return R[s.type](s, c);
     }).join('');
-    return out + R.credits();
+    return out;
   }
 
   /* ================================================================

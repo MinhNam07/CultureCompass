@@ -98,8 +98,8 @@
       '</div>' +
       '<div class="place-media" id="' + id + '-media" role="group" aria-labelledby="' + id + '-btn">' +
         (img ? '<figure class="place-figure"><div class="place-frame"><img src="' + esc(img.file) + '" alt="' + esc(img.alt) + '" loading="lazy" decoding="async"></div>' +
-          '<figcaption class="cc-meta">' + esc(x.caption) + '. Photo: ' + esc(img.credit.split(',')[0]) + ', <a href="' + esc(img.licenseUrl) + '" target="_blank" rel="noopener">' + esc(img.license) + '<span class="visually-hidden"> (opens in a new tab)</span></a>.</figcaption></figure>' : '') +
-        (ph ? CC.phraseHtml(ph) : '') +
+          '<figcaption class="cc-meta">' + esc(x.caption) + '.</figcaption></figure>' : '') +
+        (ph ? CC.phraseHtml(ph, { sources: false }) : '') +
       '</div>' +
     '</li>';
   }
@@ -238,7 +238,7 @@
         '<button type="button" class="cc-close" data-close aria-label="Close ' + esc(t.label) + '">' + CC.icon('close') + '</button></div>' +
         '<p class="atlas-panel-q">' + esc(t.question) + '</p>' +
         '<div class="cc-empty"><svg class="cc-empty-art" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">' + ((CC.icons[t.icon] || '').replace(/^<svg[^>]*>|<\/svg>$/g, '')) + '</svg>' +
-          '<h4>Not written yet</h4><p>' + esc(t.blurb) + '</p><p class="cc-meta">We only publish stories we can link to a reliable source.</p></div>' +
+          '<h4>Not written yet</h4><p>' + esc(t.blurb) + '</p><p class="cc-meta">We only publish stories once they are researched and checked.</p></div>' +
       '</div>';
       return;
     }
@@ -371,7 +371,7 @@
   function initIndexes() {
     var stories = (CC.stories || []).filter(function (s) { return s.country === COUNTRY; });
     $('story-index').innerHTML = stories.map(function (s) { return CC.storyCard(s, 'index'); }).join('');
-    $('stories-sub').textContent = CC.plural(stories.length, 'story', 'stories') + ' in one list, if you prefer to browse. Each is set in Hà Nội and links its sources.';
+    $('stories-sub').textContent = CC.plural(stories.length, 'story', 'stories') + ' in one list, if you prefer to browse. Each is set in Hà Nội.';
     $('scene-list').innerHTML = CC.scenarios.slice().sort(function (a, b) { return a.order - b.order; }).map(function (sc) {
       var e = CC.sceneEntry(sc);
       return '<li class="scene-card"><div class="scene-pic">' + CC.sceneThumb(sc.id) + '</div><div class="scene-card-body">' +
@@ -382,7 +382,7 @@
       '</div></li>';
     }).join('');
     var teaser = ['ph-banoi', 'ph-camon', 'ph-no'].map(function (id) { return CC.byId(CC.phrases, id); }).filter(Boolean);
-    $('phrase-teaser').innerHTML = teaser.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true }); }).join('');
+    $('phrase-teaser').innerHTML = teaser.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true, sources: false }); }).join('');
     $('phrase-total').textContent = '(' + CC.phrases.length + ')';
   }
 

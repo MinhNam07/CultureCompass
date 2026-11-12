@@ -53,7 +53,7 @@
       }
       out.classList.toggle('is-grouped', intent === 'all');
       if (intent !== 'all') {
-        out.innerHTML = list.map(function (p) { return CC.phraseHtml(p, { tag: 'li' }); }).join('');
+        out.innerHTML = list.map(function (p) { return CC.phraseHtml(p, { tag: 'li', sources: false }); }).join('');
         return;
       }
       /* "All" reads as a phrasebook: one group per thing you want to do */
@@ -61,7 +61,7 @@
         var of = list.filter(function (p) { return p.intent === it.id; });
         if (!of.length) return '';
         return '<li class="phrase-group" style="--n:' + of.length + '"><h2 class="phrase-group-title">' + esc(it.label) + ' <span class="cc-count">' + of.length + '</span></h2>' +
-          '<ul class="phrase-grid">' + of.map(function (p) { return CC.phraseHtml(p, { tag: 'li' }); }).join('') + '</ul></li>';
+          '<ul class="phrase-grid">' + of.map(function (p) { return CC.phraseHtml(p, { tag: 'li', sources: false }); }).join('') + '</ul></li>';
       }).join('');
     }
     intentWrap.addEventListener('change', function () { draw(true); });
@@ -94,7 +94,7 @@
       if (it.type === 'phrase') {
         var ph = CC.byId(CC.phrases, it.id);
         if (!ph) return null;
-        return CC.phraseHtml(ph, { noSave: true }).replace(/<\/div>$/, '<div class="coll-actions">' + removeBtn(it, ph.vi) + '</div></div>');
+        return CC.phraseHtml(ph, { noSave: true, sources: false }).replace(/<\/div>$/, '<div class="coll-actions">' + removeBtn(it, ph.vi) + '</div></div>');
       }
       if (it.type === 'reminder') {
         var x = reminderOf(it.id);
@@ -105,7 +105,6 @@
           '<dl><dt>Do</dt><dd>' + esc(r.action) + '</dd>' +
           '<dt>Say</dt><dd>' + ph2.map(function (p) { return '<span lang="vi"><strong>' + esc(p.vi) + '</strong></span> — ' + esc(p.meaning); }).join('<br>') + '</dd>' +
           '<dt>Applies to</dt><dd>' + esc(r.note) + '</dd></dl>' +
-          '<p class="cc-meta">' + CC.sourceLinks(CC.sourcesOf(CC.claimsOf(r.claimIds))) + '</p>' +
           '<div class="coll-actions"><a class="cc-btn cc-btn-quiet cc-btn-sm" href="' + CC.sceneHref(x.sc.id) + '">' + CC.icon('scene') + 'Explore this place<span class="visually-hidden">: ' + esc(x.sc.title) + '</span></a>' + removeBtn(it, r.title) + '</div></article>';
       }
       return null;
@@ -163,8 +162,6 @@
 
   /* ---------------- About ---------------- */
   function about() {
-    var typeLabel = { official: 'Official', site: 'Site management', press: 'Press', secondary: 'Secondary', reference: 'Reference' };
-    var pendingClaims = CC.claims.filter(function (c) { return c.status === 'needs_verification'; }).length;
     var pendingPhrases = CC.phrases.filter(function (p) { return p.status === 'needs_verification'; }).length;
     var synthetic = CC.assets.filter(function (a) { return a.synthetic; }).length;
     var ready = CC.topics.filter(function (t) { return t.status === 'ready'; });
@@ -174,10 +171,8 @@
       ['Themes with stories', ready.length + ' of ' + CC.topics.length + (planned.length ? ' (not written yet: ' + planned.map(function (t) { return t.label; }).join(', ') + ')' : '')],
       ['Stories', CC.stories.length],
       ['Places to explore', (CC.exploreZones || []).length],
-      ['Cultural points with sources', CC.claims.filter(function (c) { return c.kind !== 'projectNote'; }).length + ' (' + pendingClaims + ' still being verified)'],
       ['Phrases', CC.phrases.length + ' (' + pendingPhrases + ' waiting for a native-speaker check)'],
-      ['Audio recordings', synthetic + ' computer voice, 0 recorded by a person'],
-      ['Sources', CC.sources.length]
+      ['Audio recordings', synthetic + ' computer voice, 0 recorded by a person']
     ];
     CC.$('status-table').querySelector('tbody').innerHTML = rows.map(function (r) { return '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td></tr>'; }).join('');
 
@@ -185,18 +180,7 @@
       ['needInfo', 'question', 'Needs more context', 'worth rethinking; here is why.'], ['seeGuide', 'info', 'See the rules and guidance', 'a law, a place’s written rule or official guidance says what to do.']];
     CC.$('fb-legend').innerHTML = FB.map(function (f) { return '<li class="fb-' + f[0] + '"><span class="fb-icon">' + CC.icon(f[1]) + '</span><span><b>' + f[2] + '</b>: ' + f[3] + '</span></li>'; }).join('');
 
-    CC.$('src-list').innerHTML = CC.sources.map(function (s) {
-      return '<li class="src-item"><div><h3><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '<span class="visually-hidden"> (opens in a new tab)</span></a></h3><p class="cc-meta">' + esc(s.org) + '</p><span class="src-type">' + esc(typeLabel[s.type] || s.type) + '</span></div>' +
-        '<dl><dt>Used for</dt><dd>' + esc(s.used) + '</dd></dl><dl><dt>Limits</dt><dd>' + esc(s.limits) + '</dd></dl><dl><dt>Checked</dt><dd>' + esc(s.checked) + '</dd></dl></li>';
-    }).join('');
 
-    var media = CC.assets.filter(function (a) { return a.kind !== 'audio'; });
-    var audio = CC.assets.filter(function (a) { return a.kind === 'audio'; });
-    CC.$('credits-list').innerHTML = media.map(function (a) {
-      return '<li>' + esc(a.credit) + (a.sourceUrl ? ', <a href="' + esc(a.sourceUrl) + '" target="_blank" rel="noopener">source</a>' : '') +
-        (a.licenseUrl ? ', <a href="' + esc(a.licenseUrl) + '" target="_blank" rel="noopener">' + esc(a.license) + '</a>' : ', ' + esc(a.license)) +
-        (a.note ? ' <span class="cc-meta">(' + esc(a.note.replace(/\.$/, '')) + ')</span>' : '') + '</li>';
-    }).join('') + (audio.length ? '<li>Audio (' + audio.length + ' phrases): ' + esc(audio[0].credit) + '. ' + esc(audio[0].license) + '</li>' : '');
 
     /* the contents rail marks the section you are reading */
     var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc a'));

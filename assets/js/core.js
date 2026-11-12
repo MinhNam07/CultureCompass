@@ -348,10 +348,8 @@
   };
   CC.storyMeta = function (st) {
     var cl = CC.storyClaims(st);
-    var n = CC.sourcesOf(cl).length;
     return '<span>' + CC.icon('pin') + ' ' + CC.esc(st.place) + '</span>' +
       '<span>' + CC.storyMinutes(st) + ' min read</span>' +
-      (n ? '<span>' + CC.plural(n, 'source') + '</span>' : '') +
       (CC.unverified(cl) ? CC.verifyTag() : '') +
       (CC.reads.has(st.id) ? '<span class="cc-tag cc-tag-done">' + CC.icon('check') + 'Read before</span>' : '');
   };
@@ -424,8 +422,9 @@
         '<button type="button" class="cc-listen" data-audio="' + CC.esc(ph.audioId) + '"' + (hasAudio ? '' : ' aria-disabled="true"') + ' aria-pressed="false">' +
           CC.icon('listen') + '<span>Listen</span><span class="visually-hidden">: ' + CC.esc(ph.vi) + '</span></button>' +
         (asset && asset.synthetic ? '<span class="cc-tag cc-tag-voice" title="' + CC.esc(asset.credit) + '">' + CC.icon('voice') + 'Computer voice</span>' : '') +
-        (ph.status === 'needs_verification' || ph.status === 'draft' ? CC.verifyTag() : '<span class="cc-tag">' + CC.icon('check') + 'Wording from a cited source</span>') +
-        (opts.compact ? '' : (ph.sourceIds && ph.sourceIds.length ? '<span class="phrase-src">' + CC.sourceLinks(ph.sourceIds) + '</span>' : '<span class="phrase-src">Written for CultureCompass; waiting for a native-speaker check.</span>')) +
+        /* outside the game, phrase cards show no sources (opts.sources === false) */
+        (ph.status === 'needs_verification' || ph.status === 'draft' ? CC.verifyTag() : opts.sources === false ? '' : '<span class="cc-tag">' + CC.icon('check') + 'Wording from a cited source</span>') +
+        (opts.compact || opts.sources === false ? '' : (ph.sourceIds && ph.sourceIds.length ? '<span class="phrase-src">' + CC.sourceLinks(ph.sourceIds) + '</span>' : '<span class="phrase-src">Written for CultureCompass; waiting for a native-speaker check.</span>')) +
         '<span class="cc-audio-msg" role="status" aria-live="polite"></span>' +
       '</div>' +
     '</' + tag + '>';
@@ -536,7 +535,7 @@
               '<p>Understand the place before you arrive. A student UX prototype: stories and practice are set in Hà Nội, and customs vary between regions, families and places.</p></div>' +
             '<div><h2>Explore</h2><ul><li><a href="index.html">The globe</a></li><li><a href="explore.html">Play Vietnam</a></li><li><a href="vietnam.html">Read about Vietnam</a></li></ul></div>' +
             '<div><h2>Your trip</h2><ul><li><a href="collection.html">Passport</a></li><li><button type="button" class="cc-footer-btn" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">Sound, motion and text</button></li></ul></div>' +
-            '<div><h2>About</h2><ul><li><a href="about.html">Method &amp; scope</a></li><li><a href="about.html#sources">Sources</a></li><li><a href="about.html#credits">Media credits</a></li><li><a href="about.html#access">Accessibility</a></li></ul></div>' +
+            '<div><h2>About</h2><ul><li><a href="about.html">Method &amp; scope</a></li><li><a href="about.html#access">Accessibility</a></li></ul></div>' +
           '</div>' +
           '<div class="cc-footer-last"><span>© 2026 CultureCompass · student prototype, not a commercial service</span><a href="#main">Back to top</a></div>' +
         '</div></footer>';

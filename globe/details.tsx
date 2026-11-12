@@ -25,7 +25,7 @@ function CountryDetails() {
       <figure>
         <img src={country.image} alt={country.alt} className="max-h-[640px] w-full object-cover" />
         <figcaption className="mt-3 text-sm leading-relaxed">
-          {country.place} · <a className="underline underline-offset-4" href={country.sourceUrl} target="_blank" rel="noreferrer">Photo: {country.credit}</a>
+          {country.place}
         </figcaption>
       </figure>
       <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-16">
@@ -39,12 +39,10 @@ function CountryDetails() {
           <ol className="mt-4 list-decimal space-y-3 pl-5 leading-8">
             <li>What actions, clothing, objects or materials can you observe?</li>
             <li>What would you need to ask someone from this community to understand the scene?</li>
-            <li>Open the original photograph to check its description, location and context.</li>
           </ol>
-          <a href={country.sourceUrl} target="_blank" rel="noreferrer" className="mt-5 inline-block rounded-md bg-[#65453B] px-5 py-3 text-white hover:bg-[#302720] focus-visible:outline-2 focus-visible:outline-offset-4">Read the photo’s source</a>
         </section>
       </div>
-      <p className="mt-12 border-t border-[#302720]/20 pt-6 text-sm leading-7">This page is a visual introduction. Detailed cultural stories for this destination have not yet been researched for CultureCompass. <a href="vietnam.html" className="underline underline-offset-4">Explore our sourced stories about Vietnam, starting in Hà Nội.</a></p>
+      <p className="mt-12 border-t border-[#302720]/20 pt-6 text-sm leading-7">This page is a visual introduction. Detailed cultural stories for this destination have not yet been researched for CultureCompass. <a href="vietnam.html" className="underline underline-offset-4">Explore our stories about Vietnam, starting in Hà Nội.</a></p>
     </main>
   );
 }

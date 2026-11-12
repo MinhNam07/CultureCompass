@@ -33,7 +33,7 @@
     var img = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
     if (img) {
       return '<figure class="story-figure"><div class="frame"><img src="' + esc(img.file) + '" alt="' + esc(img.alt) + '" decoding="async"></div>' +
-        '<figcaption>' + esc(img.alt) + ' ' + CC.creditHtml(img) + '</figcaption></figure>';
+        '<figcaption>' + esc(img.alt) + '</figcaption></figure>';
     }
     var sc = CC.byId(CC.scenarios, st.sceneId);
     if (!sc || !CC.svgs[sc.id]) return '';
@@ -45,18 +45,8 @@
   function render(st, from) {
     var back = backFor(st, from);
     var claims = CC.storyClaims(st);
-    var srcOrder = [], marked = [];
-    function fn(claimIds) {
-      var out = '';
-      CC.sourcesOf(CC.claimsOf(claimIds)).forEach(function (sid) {
-        if (srcOrder.indexOf(sid) === -1) srcOrder.push(sid);
-        var n = srcOrder.indexOf(sid) + 1, s = CC.byId(CC.sources, sid);
-        /* the first mention of each source is where "Back to the text" returns to */
-        var first = marked.indexOf(n) === -1; if (first) marked.push(n);
-        out += '<a class="fn" href="#src-' + n + '"' + (first ? ' id="fn-' + n + '"' : '') + ' aria-label="Source ' + n + ': ' + esc(s ? s.short : sid) + '">' + n + '</a>';
-      });
-      return out;
-    }
+    /* sources are kept in the data but not shown on the site */
+    function fn() { return ''; }
     var body = st.sections.map(function (sec) {
       var cl = CC.claimsOf(sec.claimIds);
       var tip = !sec.editorial && cl.length && cl.every(function (c) { return c.kind === 'projectNote'; });
@@ -101,7 +91,7 @@
     var ending = function (sourcesHtml) {
       return (phrases.length ? '<section class="story-words" aria-labelledby="words-title">' +
           '<h2 id="words-title">' + CC.icon('phrase') + 'Words you can use</h2>' +
-          '<ul class="phrase-grid">' + phrases.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true }); }).join('') + '</ul></section>' : '') +
+          '<ul class="phrase-grid">' + phrases.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true, sources: false }); }).join('') + '</ul></section>' : '') +
         sourcesHtml +
         (sc ? '<section class="story-practice" data-bg="' + bg + '" aria-labelledby="practice-title">' +
           '<div class="scene-pic">' + CC.sceneThumb(sc.id) + '</div>' +
@@ -137,9 +127,8 @@
 
     /* the story's own photograph is the backdrop of its opening; without one, a plain night ground */
     var photo = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
-    var nSrc = CC.sourcesOf(claims).length;
     var nCheck = claims.filter(function (c) { return CC.unverified([c]); }).length;
-    var credit = photo ? '<p class="story-credit">' + CC.creditHtml(photo) + '</p>' : '';
+    var credit = '';
 
     var html =
       '<header class="story-head story-enter' + (photo ? ' has-photo' : '') + (CC.storyMinutes(st) <= 1 ? ' is-short' : '') + '" data-bg="' + bg + '">' +
@@ -150,8 +139,7 @@
           '<li><span aria-current="page">Story</span></li></ol>' +
         '<h1 id="story-title" tabindex="-1">' + esc(st.title) + '</h1>' +
         '<p class="story-dek">' + esc(st.dek) + '</p>' +
-        '<p class="story-byline">' + esc(st.place) + '<span aria-hidden="true"> · </span>' + CC.storyMinutes(st) + ' min read<span aria-hidden="true"> · </span>' +
-          '<a href="#src-title">' + CC.plural(nSrc, 'source') + '</a>' + (nCheck ? '<span aria-hidden="true"> · </span><span class="story-checking-note">' + CC.icon('verify') + CC.plural(nCheck, 'point') + ' still being verified</span>' : '') + '</p>' +
+        '<p class="story-byline">' + esc(st.place) + '<span aria-hidden="true"> · </span>' + CC.storyMinutes(st) + ' min read' + (nCheck ? '<span aria-hidden="true"> · </span><span class="story-checking-note">' + CC.icon('verify') + CC.plural(nCheck, 'point') + ' still being verified</span>' : '') + '</p>' +
         '<div class="story-actions">' +
           (sc ? '<a class="cc-btn" href="' + entry.href + '">' + (entry.state === 'started' ? esc(entry.label) : 'Play this moment') + ' ' + CC.arrow() + '</a>' : '') +
           CC.saveButton('story', st.id, { cls: 'cc-btn-quiet' }) +
@@ -168,19 +156,8 @@
       '</div>' +
       (phrases.length ? '<section class="story-words cc-section-tight" aria-labelledby="words-title">' +
         '<h2 id="words-title">' + CC.icon('phrase') + 'Words you can use</h2>' +
-        '<ul class="phrase-grid">' + phrases.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true }); }).join('') + '</ul></section>' : '') +
+        '<ul class="phrase-grid">' + phrases.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true, sources: false }); }).join('') + '</ul></section>' : '') +
       '<div class="story-close cc-section-tight">' +
-      '<section class="story-sources" aria-labelledby="src-title">' +
-        '<div class="cc-rule cc-rule-left" aria-hidden="true"><i></i></div>' +
-        '<h2 id="src-title" class="h3">Sources</h2>' +
-        '<ol>' + srcOrder.map(function (sid, k) {
-          var s = CC.byId(CC.sources, sid);
-          return '<li id="src-' + (k + 1) + '"><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '<span class="visually-hidden"> (opens in a new tab)</span></a>' +
-            '<div class="cc-meta">' + esc(s.org) + '. Checked ' + esc(s.checked) + '.</div><div class="cc-meta"><b>Limits:</b> ' + esc(s.limits) + '</div>' +
-            (marked.indexOf(k + 1) !== -1 ? '<a class="src-back" href="#fn-' + (k + 1) + '">' + CC.icon('arrowUp') + 'Back to the text<span class="visually-hidden"> where source ' + (k + 1) + ' is cited</span></a>' : '') + '</li>';
-        }).join('') + '</ol>' +
-        (claims.some(function (c) { return c.kind === 'projectNote'; }) ? '<p class="cc-meta" style="margin-top:16px">Points marked “CultureCompass tip” are our own suggestions, not cultural claims, so they have no source.</p>' : '') +
-      '</section>' +
       (sc ? '<section class="story-practice" data-bg="' + bg + '" aria-labelledby="practice-title">' +
         '<div class="scene-pic">' + CC.sceneThumb(sc.id) + '</div>' +
         '<div><h2 id="practice-title">Play this moment in the game</h2><p>Optional: this moment is part of <b>' + esc((CC.zoneForScene(sc.id) || sc).title) + '</b>, a small pixel-art walk in Hà Nội. ' + esc(sc.goal) + ' About ' + ((CC.zoneForScene(sc.id) || sc).minutes) + ' minutes, no score.</p></div>' +

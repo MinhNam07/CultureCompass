@@ -32,10 +32,8 @@
   }
 
   /* ---------- pictures ---------- */
-  function credit(id) {
-    var a = asset(id);
-    return a ? '<span class="lx-credit">' + CC.creditHtml(a) + '</span>' : '';
-  }
+  /* picture credits are not shown on the site (the licence details stay in assets.json) */
+  function credit() { return ''; }
   function img(id, opts) {
     opts = opts || {};
     var a = asset(id); if (!a) return '';
@@ -77,13 +75,8 @@
           return cl.every(function (c) { return c.kind === 'projectNote'; })
             ? '<span class="lx-tip" title="CultureCompass’s own advice, not a cultural claim">' + icon('lightbulb') + 'CultureCompass tip</span>' : '';
         }
-        ids.forEach(function (id) { if (order.indexOf(id) === -1) order.push(id); });
-        var nums = ids.map(function (id) { return order.indexOf(id) + 1; });
-        var anchor = nums.filter(function (n) { if (first[n]) return false; first[n] = true; return true; })[0];
-        var check = CC.unverified(cl);
-        return '<span class="lx-src" data-s="' + ids.join(',') + '"' + (check ? ' data-check' : '') + (anchor ? ' id="fn-' + anchor + '"' : '') + '>' +
-          '<button type="button" class="' + (check ? 'is-checking' : '') + '" aria-expanded="false" aria-label="' + (ids.length === 1 ? 'Source ' : 'Sources ') + nums.join(' and ') + (check ? ', still being verified' : '') + '">' +
-          icon(check ? 'verify' : 'source') + nums.join(' · ') + '</button></span>';
+        /* sources are kept in the data but not shown on the site */
+        return '';
       },
       has: function (n) { return !!first[n]; }
     };
@@ -132,7 +125,7 @@
     },
     facts: function (b, S) {
       return '<aside class="lx-facts' + (b.size === 'wide' ? ' lx-wide' : '') + '" data-rise aria-label="' + esc(b.title || 'Facts') + '">' + (b.title ? '<h3>' + md(b.title) + '</h3>' : '') + dl(b.items) +
-        (b.claimIds ? '<p class="lx-meta" style="margin:12px 0 0">Sources' + S.cluster(b.claimIds) + '</p>' : '') + '</aside>';
+        '</aside>';
     },
     note: function (b, S) { return '<aside class="lx-note" data-rise>' + icon('lightbulb') + '<p>' + md(b.text) + S.cluster(b.claimIds) + '</p></aside>'; },
     beforeAfter: function (b) {
@@ -183,7 +176,7 @@
         '<div class="lx-quiz-opts">' + b.options.map(function (o) {
           return '<button type="button" aria-pressed="false" data-fit="' + (o.fit ? 'yes' : 'no') + '" data-fb="' + esc(o.feedback) + '"><span' + (o.vi ? ' class="lx-vi" lang="vi"' : '') + '>' + md(o.label) + '</span></button>';
         }).join('') + '</div><div class="lx-quiz-fb" role="status" aria-live="polite"></div>' +
-        (b.image ? '<p class="lx-meta" style="margin:12px 0 0">' + CC.creditHtml(asset(b.image)) + '</p>' : '') + '</div></div></section>';
+        '</div></div></section>';
     },
     keep: function (b, S, k, st) {
       return '<section class="lx-keep" data-rise aria-labelledby="keep-' + k + '"><div><h2 id="keep-' + k + '">' + md(b.title || 'Take it with you') + '</h2>' + dl(b.items) + '</div>' +
@@ -212,7 +205,7 @@
               }).join('') + '</tr>';
             }).join('') + '</tbody></table></div>';
         }).join('') +
-        (b.claimIds ? '<p class="lx-meta" style="margin-top:12px">Sources for this table' + S.cluster(b.claimIds) + '</p>' : '') + '</section>';
+        '</section>';
     },
     map: function (b, S, k) {
       return (b.heading ? '<h2 id="' + (b.id || slug(b.heading)) + '">' + md(b.heading) + '</h2>' : '') + (b.intro ? '<p data-rise>' + md(b.intro) + S.cluster(b.claimIds) + '</p>' : '') +
@@ -249,14 +242,13 @@
     }
   };
   function phraseList(ids) {
-    return (ids || []).map(function (id) { var p = CC.byId(CC.phrases, id); return p ? CC.phraseHtml(p, { tag: 'li', compact: true }) : ''; }).join('');
+    return (ids || []).map(function (id) { var p = CC.byId(CC.phrases, id); return p ? CC.phraseHtml(p, { tag: 'li', compact: true, sources: false }) : ''; }).join('');
   }
 
   /* ---------- the opening ---------- */
   function opening(st, ctx, S) {
     var back = ctx.back, claims = CC.storyClaims(st);
     var nCheck = claims.filter(function (c) { return CC.unverified([c]); }).length;
-    var nSrc = CC.sourcesOf(claims).length;
     var crumb = '<ol class="lx-crumb" aria-label="Breadcrumb"><li><a href="index.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
       (back.chapter ? '<li><a href="vietnam.html#' + back.chapter.anchor + '">' + esc(back.chapter.name) + '</a></li>' :
         back.topic ? '<li><a href="vietnam.html#' + back.topic.id + '">' + esc(back.topic.label) + '</a></li>' : '') +
@@ -265,7 +257,6 @@
       '<h1 id="story-title" tabindex="-1">' + esc(st.title) + '</h1>' +
       '<p class="lx-dek">' + esc(st.dek) + '</p>' +
       '<p class="lx-byline"><span>' + icon('pin') + esc(st.place) + '</span><span>' + icon('clock') + CC.storyMinutes(st) + ' min read</span>' +
-        (nSrc ? '<span>' + icon('source') + '<a href="#src-title" style="color:inherit">' + CC.plural(nSrc, 'source') + '</a></span>' : '') +
         (nCheck ? '<span class="is-check">' + icon('verify') + CC.plural(nCheck, 'point') + ' still being verified</span>' : '') + '</p>' +
       '<div class="lx-actions">' +
         (ctx.sc ? '<a class="cc-btn" href="' + ctx.entry.href + '">' + (ctx.entry.state === 'started' ? esc(ctx.entry.label) : 'Play this moment') + ' ' + CC.arrow() + '</a>' : '') +
@@ -279,7 +270,6 @@
       html: '<header class="lx-hero story-head"' + (vid ? ' data-video="' + esc(vid) + '"' : '') + '>' +
         '<div class="lx-hero-media story-head-media">' + (vid ? videoTag(vid, 'metadata', true) : pic ? img(pic, { eager: true, sizes: '100vw', alt: '' }) : '') + '</div>' +
         '<div class="lx-hero-in">' + head + '</div>' +
-        '<p class="lx-hero-credit">' + credit(vid || pic) + '</p>' +
         (st.layout === 'longform' ? '<span class="lx-scroll-cue" aria-hidden="true"></span>' : '') + '</header>'
     };
   }
@@ -302,17 +292,7 @@
   }
 
   /* the end list, numbered as the clusters are */
-  function sourcesList(S, claims) {
-    return '<section class="lx-end" aria-labelledby="src-title"><h2 id="src-title">Sources</h2><ol>' + S.order.map(function (sid, k) {
-      var s = CC.byId(CC.sources, sid); if (!s) return '';
-      return '<li id="src-' + (k + 1) + '"><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '<span class="visually-hidden"> (opens in a new tab)</span></a>' +
-        '<span class="lx-meta">' + esc(s.org) + '. Checked ' + esc(s.checked) + '. <b>Limits:</b> ' + esc(s.limits) + '</span>' +
-        (S.has(k + 1) ? '<a class="src-back" href="#fn-' + (k + 1) + '">' + icon('arrowUp') + 'Back to the text<span class="visually-hidden"> where source ' + (k + 1) + ' is cited</span></a>' : '') + '</li>';
-    }).join('') + '</ol>' +
-      (claims.some(function (c) { return c.kind === 'projectNote'; }) ? '<p class="lx-meta lx-end-note">Points marked “CultureCompass tip” are our own suggestions, not cultural claims, so they have no source.</p>' : '') +
-      (claims.some(function (c) { return CC.unverified([c]); }) ? '<p class="lx-meta lx-end-note">' + icon('verify') + ' A gold source mark means the point is still being checked against that source.</p>' : '') +
-      '</section>';
-  }
+  function sourcesList() { return ''; }
 
   /* =================== behaviour =================== */
   var pop = null, popFor = null;

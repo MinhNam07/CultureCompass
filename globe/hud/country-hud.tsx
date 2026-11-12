@@ -66,8 +66,6 @@ export function CountryHud({ country, reducedMotion, beamed = false, closing = f
   const heading = useRef<HTMLHeadingElement>(null);
   const lastPicked = useRef<string | null>(null);
   const open = data.destinations.filter((d) => d.ready).length;
-  // Credit whichever photo is on screen; the country map has none.
-  const photo = dest ? dest.photo : data.hasMap ? null : data.photo;
   const summary = dest && dest.ready ? zoneSummary(dest) : null;
 
   useEffect(() => { heading.current?.focus({ preventScroll: true }); }, [dest]);
@@ -213,7 +211,6 @@ export function CountryHud({ country, reducedMotion, beamed = false, closing = f
 
         <footer className="hud-foot">
           <a href={data.overviewHref} target="_top">Only want to read? {data.label} overview <Arrow /></a>
-          {photo && <a href={photo.sourceUrl} target="_blank" rel="noreferrer">Photo: {photo.place} · {photo.credit} <span aria-hidden="true">↗</span></a>}
         </footer>
       </div>
     </div>
