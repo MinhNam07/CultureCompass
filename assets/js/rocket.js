@@ -291,7 +291,7 @@
     m.station = { x: left + w / 2, y: gy + CFG.station.offsetY * R, len: L };
 
     /* scroll marks: s1 end of take-off, s2 end of the cruise, sLand parked: with the spot level with mid-screen,
-       or earlier, where "Skip to destinations" stops the page, so it is always parked by then */
+       or earlier, where a jump to #destinations ("Explore destinations") stops the page, so it is always parked by then */
     var sLand = m.station.y - vh * 0.5;
     var dest = CC.$('destinations');
     if (dest && !m.phone) {
