@@ -1,7 +1,7 @@
 /* CultureCompass — Home: the rocket from the logo.
-   The first time in a session, 0.6 s after the page opens, the logo's rocket leaves the logo, loops once over the
-   opening, slips up behind the header and lowers its nose out under the logo, where it nods beside "Scroll to
-   launch" (after that first time it simply rests there). It takes off from there when the page is scrolled and
+   Every time the home page opens at the top (a first visit, a refresh, the logo clicked), 0.6 s after it loads the
+   logo's rocket leaves the logo, loops once over the opening, slips up behind the header and lowers its nose out
+   under the logo, where it nods beside "Scroll to launch". It takes off from there when the page is scrolled and
    comes back to peek when the page returns to the top. Scrolling drops it out of the logo; it only grows once it has left the header,
    and settles in the middle of the screen at its parked size. Through the opening it cruises left to right,
    against the pictures drifting right to left: it speeds up and slows down with them (same sine in-out, same
@@ -35,9 +35,9 @@
       overlap: 0.35,    // share of its width it may overlap the globe's edge before it shrinks
       offsetY: 0        // 0 = rocket centre level with the globe centre; negative = higher (in radii)
     },
-    /* the first time a session opens the page: it leaves the logo, loops once over the opening, slips up behind the
+    /* each time the page opens at the top: it leaves the logo, loops once over the opening, slips up behind the
        header and lowers its nose out under the logo, so the visitor sees there is a rocket to launch (plans: PR 2) */
-    intro: { delay: 600, ms: 2600, len: 0.16, key: 'cc.rocketIntro' },   // ms before it leaves, ms of the loop, loop size (viewport heights), session flag
+    intro: { delay: 600, ms: 2600, len: 0.16, },   // ms before it leaves, ms of the loop, loop size (viewport heights)
     peek: { len: 0.08, out: 0.5, bob: 0.05, period: 2.4 },    // peeking: length (viewport heights), share of it below the header, nod (lengths), s
     orbitSeconds: 8,    // one turn around the logo
     orbitDelay: 1.5,    // seconds before it starts circling
@@ -214,11 +214,7 @@
   }
 
   /* ---- the opening loop and the peek ---- */
-  function seenIntro() { try { return window.sessionStorage.getItem(CFG.intro.key) === '1'; } catch (e) { return false; } }
-  function endIntro() {
-    intro = 'peek';
-    try { window.sessionStorage.setItem(CFG.intro.key, '1'); } catch (e) { /* storage blocked: it loops again next time */ }
-  }
+  function endIntro() { intro = 'peek'; }
   /* nose down under the header, just right of the mark: only the nose shows below the header's glass, nodding */
   function peekState(now) {
     var len = m.peekLen, ts = (now - startedAt) / 1000;
@@ -708,7 +704,7 @@
     els.fly.style.width = els.fly.style.height = FLY_BASE + 'px';
     startedAt = performance.now();
     sm = smPrev = prevScroll = window.scrollY; vScroll = 0; surge = 0; sp = null; back = false; flip = 0;
-    intro = seenIntro() || window.scrollY > 0.5 ? 'peek' : 'wait';
+    intro = window.scrollY > 0.5 ? 'peek' : 'wait';   // opened part way down (Back, a #destinations link): no loop
     puffs.forEach(function (q) { q.alive = false; q.el.style.opacity = '0'; });
     measure();
     kick();
