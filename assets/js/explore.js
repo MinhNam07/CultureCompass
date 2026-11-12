@@ -157,10 +157,14 @@
   /* the cover: the game first. Pointing at (or tabbing to) Play crossfades the video into the game's own
      pixel art; Start reading brings the video back. initCover() wires it, on hover-capable screens only. */
   var COVER_GAME = 'assets/img/explore/pho-co.jpg';
+  /* the cover photo: the flower market at night, sharp on any screen (a 3840px copy beside the usual sizes) */
+  var COVER = 'oq-flower-night';
   R.hero = function (s, c) {
-    var p = pic({ imageId: 'vid-train-street' });
+    var p = pic({ imageId: COVER }), base = 'assets/img/stories/' + COVER;
+    credit(p);
     return '<section class="rd-cover" id="top" aria-labelledby="ex-title" data-cover>' +
-      '<div class="rd-cover-media">' + media(p, { video: true, eager: true }) +
+      '<div class="rd-cover-media">' +
+        '<img class="rd-media rd-cover-photo" src="' + base + '-2560.webp" srcset="' + base + '-1280.webp 1280w, ' + base + '-2560.webp 2560w, ' + base + '-3840.jpg 3840w" sizes="100vw" width="3840" height="2563" alt="' + esc(p ? p.alt : '') + '" fetchpriority="high" decoding="async">' +
         '<img class="rd-media is-pixel rd-cover-game" data-src="' + COVER_GAME + '" alt="" aria-hidden="true" decoding="async">' +
       '</div>' +
       '<div class="rd-cover-in">' +
@@ -172,17 +176,9 @@
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
       '</div>' +
-      '<div class="rd-cover-foot">' + R.strip() +
-        '<div class="rd-cover-credit">' + creditLine(p) + videoToggle('the train street video') + '</div></div>' +
+      /* one small word, centred under everything; it goes once the reader starts scrolling */
+      '<p class="rd-cover-cue" aria-hidden="true">Scroll to explore</p>' +
     '</section>';
-  };
-  /* the cover's bottom edge says what is below, not only that there is more: a scroll cue and every section, each a jump */
-  R.strip = function () {
-    var items = [['hanoi', 'Destinations'], ['contents', 'Story finder']].concat(CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; })).concat([['phrases', 'Words']]);
-    return '<nav class="rd-strip" aria-label="On this page">' +
-      '<a class="rd-strip-cue" href="#hanoi" data-jump>' + ic('arrowDown') + '<span>Scroll</span></a>' +
-      '<ul class="rd-strip-list">' + items.map(function (x) { return '<li><a href="#' + x[0] + '" data-jump>' + esc(x[1]) + '</a></li>'; }).join('') + '</ul>' +
-    '</nav>';
   };
 
   /* destinations: one large card per city that has stories, a small one per city still to come.

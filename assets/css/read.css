@@ -112,32 +112,21 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-cover-media { position: absolute; inset: 0; z-index: -2; }
 .rd-cover-media .rd-media { position: absolute; inset: 0; }
 /* the one neutral scrim under text on a picture */
-.rd-cover::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgb(11 18 32 / .92) 0%, rgb(11 18 32 / .62) 38%, rgb(11 18 32 / 0) 72%); } /* taste-skill-ignore: neutral scrim under text on a picture */
-.rd-cover-in { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 var(--rd-gutter) 120px; }
+.rd-cover::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to right, rgb(11 18 32 / .72) 0%, rgb(11 18 32 / .35) 45%, rgb(11 18 32 / 0) 70%), linear-gradient(to top, rgb(11 18 32 / .92) 0%, rgb(11 18 32 / .55) 40%, rgb(11 18 32 / 0) 75%); } /* taste-skill-ignore: neutral scrim under text on a picture */
+.rd-cover-in { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 var(--rd-gutter) 96px; }
 #explore .rd-cover h1 { font-size: var(--fs-display); line-height: .95; letter-spacing: -0.035em; color: var(--rd-ink); margin-left: -.04em; }
 .rd-cover-tag { max-width: 46ch; margin-top: 28px !important; font-size: var(--fs-body); line-height: 1.6; color: var(--rd-ink); text-wrap: pretty; }
 .rd-cover-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
-/* lined up with the cover's words, which sit in the 1320px column */
-.rd-cover-foot { --rd-edge: max(var(--rd-gutter), calc((100% - 1320px) / 2 + var(--rd-gutter))); position: absolute; right: var(--rd-edge); bottom: 0; left: var(--rd-edge); display: flex; align-items: center; justify-content: space-between; gap: 12px 32px; min-height: 64px; padding-block: 12px; border-top: 1px solid rgb(255 252 247 / .18); }
-.rd-cover-credit { display: flex; align-items: center; justify-content: flex-end; gap: 12px; text-align: right; }
-.rd-cover-foot .rd-credit { color: #D6DEE8; max-width: 40ch; }
-
-/* the strip: Scroll, then every section of the page */
-.rd-strip { display: flex; align-items: center; gap: 12px 28px; min-width: 0; }
-.rd-strip a { color: var(--rd-ink-2); font: 500 .9375rem/1.2 var(--font-sans); text-decoration: none; transition: color 200ms ease-out; }
-.rd-strip a:hover { color: var(--rd-ink); text-decoration: underline; text-underline-offset: 4px; }
-.rd-strip-cue { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; flex: none; color: var(--rd-ink) !important; font-weight: 600 !important; transition: opacity 300ms var(--rd-ease), color 200ms ease-out; }
-.rd-strip-cue .cc-icon { width: 18px; height: 18px; animation: rd-nudge 1.4s ease-in-out 1.2s 3 both; }
-.rd-cover.is-scrolled .rd-strip-cue { opacity: .55; }
-.rd-strip-list { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin: 0; padding: 0 0 0 28px; list-style: none; border-left: 1px solid rgb(255 252 247 / .18); }
-.rd-strip-list a { display: inline-flex; align-items: center; min-height: 32px; }
-@keyframes rd-nudge { 0%, 100% { transform: translateY(0); } 45% { transform: translateY(5px); } }
-@media (prefers-reduced-motion: reduce) { .rd-strip-cue .cc-icon, .rd-next-up .rd-go { animation: none !important; } }
+.rd-cover-photo { object-position: 50% 45%; }
+.rd-cover-cue { position: absolute; left: 50%; bottom: 20px; margin: 0 !important; transform: translateX(-50%); color: #D6DEE8; font: 500 .8125rem/1 var(--font-sans); letter-spacing: .04em; white-space: nowrap; pointer-events: none; transition: opacity 400ms var(--rd-ease); }
+.rd-cover.is-scrolled .rd-cover-cue { opacity: 0; }
 
 /* every opening section ends by naming the next one: a hairline runs to it */
 .rd-next-up { display: flex; align-items: center; gap: 20px; margin: clamp(40px, 5vw, 64px) 0 0 !important; }
 .rd-next-up::before { content: ''; flex: 1; height: 1px; background: var(--rd-line, rgb(255 252 247 / .14)); }
 .rd-next-up.is-in .rd-go { animation: rd-nudge 1.4s ease-in-out 500ms 2; }
+@keyframes rd-nudge { 0%, 100% { transform: translateY(0); } 45% { transform: translateY(5px); } }
+@media (prefers-reduced-motion: reduce) { .rd-next-up .rd-go { animation: none !important; } }
 
 /* Play shows the game: the pixel art fades in over the video (opacity only; explore.js initCover) */
 .rd-cover-game { opacity: 0; transition: opacity 420ms var(--rd-ease); }
@@ -512,9 +501,7 @@ html.cc-reduce-motion body[data-page="vietnam"] a:hover .rd-media:not([style*="s
 @media (max-width: 760px) {
   body[data-page="vietnam"] { --chbar-h: 52px; }
   .rd-cover { min-height: max(520px, calc(100svh - var(--header-h))); }
-  .rd-cover-in { padding-bottom: 104px; }
-  /* phones keep Scroll and the credit; the sections are one tap away in the chapter bar */
-  .rd-strip-list { display: none; }
+  .rd-cover-in { padding-bottom: 80px; }
   .rd-chbar-list { display: none; }
   .rd-chbar-pick { display: block; }
   .rd-progress { display: block; }

@@ -1071,7 +1071,7 @@ window.CC.assets = [
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "srcBase": "assets/img/stories/oq-flower-night",
     "year": "2024",
-    "note": "Resized to 640, 1280 and 2560 px."
+    "note": "Resized to 640, 1280 and 2560 px, plus a 3840 px JPEG (oq-flower-night-3840.jpg) for the cover of vietnam.html."
   },
   {
     "id": "oq-hang-bac-gold",
