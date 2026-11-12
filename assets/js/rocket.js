@@ -328,7 +328,7 @@
     /* the closing line: the flight keeps to its right, where the pictures have left room (phones: above it).
        The first title is left alone: holding the take-off up there made it drop late and hard. */
     m.words = [
-      { box: box('#hero-end h2, #hero-end .hero-cta'), side: m.phone ? 'up' : 'right',
+      { box: box('#hero-end h2, #hero-end .hero-cta > *'), side: m.phone ? 'up' : 'right',
         show: function (u) { return smoothstep((u - 0.78) / 0.1); } }         // clear before it fades in (0.88)
     ].filter(function (w) { return w.box; });
   }
