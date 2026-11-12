@@ -119,27 +119,58 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-cover-foot { position: absolute; right: var(--rd-gutter); bottom: 24px; left: var(--rd-gutter); display: flex; align-items: center; justify-content: flex-end; gap: 12px; text-align: right; }
 .rd-cover-foot .rd-credit { color: #D6DEE8; max-width: 52ch; }
 
-/* ---------------- contents ---------------- */
-.rd-contents-side { grid-column: 1 / span 5; }
-.rd-contents-side { grid-row: 1; }
-.rd-toc { grid-row: 1 / span 2; }
-.rd-sources { grid-column: 1 / span 5; grid-row: 2; align-self: start; margin-top: 28px !important; color: var(--rd-ink-2); font-size: var(--fs-meta); line-height: 1.6; max-width: 46ch; }
-.rd-toc { grid-column: 7 / span 6; display: grid; gap: 8px; }
-.rd-toc a { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 24px; align-items: center; padding: 16px; margin-inline: -16px; border-radius: 4px; text-decoration: none; transition: background-color 200ms ease-out; }
-.rd-toc a:hover { background: var(--rd-step); }
-.rd-toc-pic { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 2px; }
-.rd-toc-pic .rd-media { transition: transform 400ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .rd-toc a:hover .rd-toc-pic .rd-media { transform: scale(var(--zoom-hover)); transition: transform var(--t-reveal) var(--ease-out-expo); } }
-.rd-toc-txt { display: grid; gap: 8px; justify-items: start; }
-.rd-toc-name { font: 600 var(--fs-h)/1.15 var(--font-serif); letter-spacing: -0.015em; }
-.rd-toc-q { color: var(--rd-ink-2); }
+/* Play shows the game: the pixel art fades in over the video (opacity only; explore.js initCover) */
+.rd-cover-game { opacity: 0; transition: opacity 420ms var(--rd-ease); }
+.rd-cover.is-game .rd-cover-game { opacity: 1; }
+.rd-cover.is-instant .rd-cover-game { transition: none; }
 
-/* ---------------- start in Hà Nội ---------------- */
-.rd-start-fig { grid-column: 1 / span 7; }
-.rd-start-fig .rd-media { aspect-ratio: 3 / 2; height: auto; border-radius: 2px; }
-.rd-start-fig figcaption { margin-top: 10px; }
-.rd-start-txt { grid-column: 9 / span 4; align-self: end; display: grid; gap: 20px; justify-items: start; padding-bottom: 36px; }
-.rd-start-txt p { color: var(--rd-ink-2); }
+/* ---------------- destinations ---------------- */
+.rd-dests-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px var(--rd-gutter); margin-top: 40px; }
+.rd-dest { grid-column: 1 / span 9; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); background: var(--rd-step); border-radius: 4px; overflow: hidden; }
+.rd-dest-pic { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.rd-dest-pic .rd-media { position: absolute; inset: 0; }
+/* the photo turns into the game's pixel art while you point at the card */
+.rd-dest-pixel { opacity: 0; transition: opacity 420ms var(--rd-ease); }
+@media (hover: hover) and (pointer: fine) { .rd-dest:hover .rd-dest-pixel { opacity: 1; } }
+.rd-dest:focus-within .rd-dest-pixel { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .rd-dest-pixel { transition: none; } }
+html.cc-reduce-motion .rd-dest-pixel { transition: none; }
+.rd-dest-txt { display: grid; align-content: end; gap: 14px; justify-items: start; padding: clamp(24px, 3vw, 40px); }
+#explore .rd-dest-txt h3 { font-size: var(--fs-ch); line-height: 1; }
+.rd-dest-meta { color: var(--rd-muted); font-size: var(--fs-meta); }
+.rd-dest-line { color: var(--rd-ink-2); max-width: 40ch; text-wrap: pretty; }
+.rd-dest-act { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 10px; }
+.rd-dests-later { grid-column: 10 / span 3; display: grid; gap: 24px; grid-auto-rows: 1fr; }
+.rd-dest-later { display: grid; align-content: end; gap: 6px; padding: 24px; border-radius: 4px; background: var(--rd-step); color: var(--rd-muted); }
+.rd-dest-later-name { font: 600 var(--fs-h)/1.15 var(--font-serif); letter-spacing: -0.015em; color: var(--rd-ink-2); }
+.rd-dest-later-tag { font-size: var(--fs-meta); }
+
+/* ---------------- story finder ---------------- */
+.rd-finder-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 48px; }
+.rd-find-search { position: relative; flex: 0 1 360px; min-width: 0; }
+.rd-find-search .cc-icon { position: absolute; left: 16px; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); color: var(--rd-muted); pointer-events: none; }
+.rd-find-search input { width: 100%; min-height: 48px; padding: 10px 18px 10px 46px; border: 1px solid transparent; border-radius: 999px; background: var(--rd-step-2); color: var(--rd-ink); font: 400 1rem/1.3 var(--font-sans); transition: border-color 200ms ease-out; }
+.rd-find-search input::placeholder { color: var(--rd-muted); }
+.rd-find-search input:hover { border-color: rgb(95 216 232 / .3); }
+.rd-find-search input:focus { border-color: var(--rd-act); outline: none; }
+.rd-find-search input:focus-visible { outline: 2px solid var(--rd-act); outline-offset: 2px; }
+.rd-find-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.rd-find-tab { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 16px; border: 0; border-radius: 999px; background: var(--rd-step); color: var(--rd-ink-2); font: 500 .9375rem/1.2 var(--font-sans); cursor: pointer; transition: background-color 200ms ease-out, color 200ms ease-out; }
+.rd-find-tab:hover { background: var(--rd-step-2); color: var(--rd-ink); }
+.rd-find-tab[aria-pressed="true"] { background: var(--rd-act); color: var(--rd-act-ink); }
+.rd-find-n { font-size: .8125rem; font-variant-numeric: tabular-nums; opacity: .7; }
+.rd-find-status { min-height: 1.5em; margin-top: 16px !important; color: var(--rd-muted); font-size: var(--fs-meta); }
+.rd-find-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 24px; margin-top: 8px; }
+.rd-find-item[hidden] { display: none; }
+.rd-find-item a { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; align-items: center; padding: 10px; margin-inline: -10px; border-radius: 4px; color: var(--rd-ink) !important; text-decoration: none; transition: background-color 200ms ease-out; }
+.rd-find-item a:hover { background: var(--rd-step); }
+.rd-find-pic { display: block; width: 64px; height: 64px; overflow: hidden; border-radius: 2px; background: var(--rd-step); }
+.rd-find-txt { display: grid; gap: 4px; min-width: 0; }
+.rd-find-title { font: 600 1rem/1.3 var(--font-sans); text-wrap: pretty; }
+.rd-find-meta { color: var(--rd-muted); font-size: var(--fs-meta); }
+.rd-find-empty { margin-top: 16px !important; color: var(--rd-ink-2); }
+.rd-find-reset { padding: 0; border: 0; background: none; color: var(--rd-act); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.rd-find-more { margin-top: 32px !important; }
 
 /* ---------------- chapter bar ---------------- */
 .rd-chbar { position: sticky; top: var(--header-h); z-index: 30; margin-top: var(--rd-gap); background: var(--rd-step); }
@@ -169,7 +200,7 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-ch[data-tone="cyan"] { --rd-tone: var(--cyan); }
 .rd-ch[data-tone="gold"] { --rd-tone: var(--gold); background: var(--rd-step); padding-bottom: calc(var(--rd-gap) * .75); margin-top: calc(var(--rd-gap) * .75); }
 .rd-ch[data-tone="jade"] { --rd-tone: #5DCAA5; }
-.rd-ch[data-tone="gold"] .rd-step-on, .rd-ch[data-tone="gold"] :is(.rd-row, .rd-toc a):hover { background: var(--rd-step-2); }
+.rd-ch[data-tone="gold"] .rd-step-on, .rd-ch[data-tone="gold"] :is(.rd-row, .rd-find-item a):hover { background: var(--rd-step-2); }
 .rd-col { grid-column: 7 / span 6; min-width: 0; }
 .rd-mod { margin-top: var(--rd-gap); }
 .rd-mod > .rd-sec { padding-block: 0; }
@@ -443,15 +474,15 @@ html.cc-reduce-motion body[data-page="vietnam"] a:hover .rd-media:not([style*="s
 
 /* ---------------- narrower screens ---------------- */
 @media (max-width: 1100px) {
-  .rd-toc a { grid-template-columns: 104px minmax(0, 1fr); gap: 20px; }
-  .rd-start-txt { grid-column: 8 / span 5; }
+  .rd-find-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rd-dest { grid-column: 1 / -1; }
+  .rd-dests-later { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto; }
 }
 @media (max-width: 1000px) {
-  .rd-contents-side, .rd-toc, .rd-start-fig, .rd-start-txt, .rd-more-side, .rd-more-list, .rd-before-h, .rd-before-p, .rd-credits-h, .rd-credits-list, .rd-credits-more { grid-column: 1 / -1; }
-  .rd-toc, .rd-more-list, .rd-before-p, .rd-credits-list { margin-top: 32px; }
-  .rd-contents-side, .rd-toc, .rd-sources { grid-row: auto; }
+  .rd-more-side, .rd-more-list, .rd-before-h, .rd-before-p, .rd-credits-h, .rd-credits-list, .rd-credits-more { grid-column: 1 / -1; }
+  .rd-more-list, .rd-before-p, .rd-credits-list { margin-top: 32px; }
+  .rd-sources { grid-row: auto; }
   .rd-sources { grid-column: 1 / -1; }
-  .rd-start-txt { padding-bottom: 0; margin-top: 28px; }
   /* the plate stops standing still: it becomes the chapter's opening picture */
   .rd-plate { grid-column: 1 / -1; position: relative; top: auto; height: auto; min-height: 0; max-height: none; margin-bottom: 40px; }
   .rd-plate-fig { position: relative; inset: auto; display: none; opacity: 1; visibility: visible; }
@@ -467,8 +498,13 @@ html.cc-reduce-motion body[data-page="vietnam"] a:hover .rd-media:not([style*="s
   .rd-chbar-list { display: none; }
   .rd-chbar-pick { display: block; }
   .rd-progress { display: block; }
-  .rd-toc a { grid-template-columns: 88px minmax(0, 1fr); gap: 16px; padding: 12px; margin-inline: -12px; }
-  .rd-toc-name { font-size: var(--fs-lead); }
+  .rd-find-grid { grid-template-columns: minmax(0, 1fr); }
+  .rd-find-search { flex-basis: 100%; }
+  .rd-dest { grid-template-columns: minmax(0, 1fr); }
+  .rd-dest-pic { aspect-ratio: 3 / 2; }
+  .rd-dests-later { gap: 12px; }
+  .rd-dest-later { padding: 18px; }
+  .rd-dest-later-name { font-size: var(--fs-lead); }
   /* moments: every one open, one under the other */
   .rd-acc { display: grid; gap: 16px; height: auto; }
   .rd-acc-item, .rd-acc-item.is-open { flex: none; }
@@ -492,7 +528,7 @@ html.cc-reduce-motion body[data-page="vietnam"] a:hover .rd-media:not([style*="s
   .rd-zone-stamp { width: 52px; height: 52px; }
   .rd-zone-meta b { display: block; }
   /* on a phone, the names of moments and chapters are set at reading size: they sit in rows, not as statements */
-  .rd-acc-title, .rd-toc-name { font: 600 var(--fs-body)/1.35 var(--font-sans); letter-spacing: 0; }
+  .rd-acc-title { font: 600 var(--fs-body)/1.35 var(--font-sans); letter-spacing: 0; }
 
 }
 /* a closed settings drawer is not a motion state: with reduced motion it is simply not there until opened */
@@ -510,8 +546,8 @@ html.cc-reduce-motion body[data-page="vietnam"] .offcanvas:not(.show):not(.showi
    Without a hovering pointer the hover looks are undone, and :active gives the feedback at the moment of the tap. */
 body[data-page="vietnam"] a, body[data-page="vietnam"] button { -webkit-tap-highlight-color: transparent; }
 @media (hover: none) {
-  .rd-toc a:hover, .rd-row:hover, .rd-more-list a:hover, .rd-stops li:not(.is-on) button:hover, .rd-stop-next:hover { background: none; }
-  .rd-ch[data-tone="gold"] :is(.rd-row, .rd-toc a):hover { background: none; }
+  .rd-find-item a:hover, .rd-row:hover, .rd-more-list a:hover, .rd-stops li:not(.is-on) button:hover, .rd-stop-next:hover { background: none; }
+  .rd-ch[data-tone="gold"] :is(.rd-row, .rd-find-item a):hover { background: none; }
   a:hover > .rd-go, a:hover .rd-row-meta .rd-go, a:hover .rd-row-title .rd-go, a:hover .rd-link .rd-go, .rd-stop-next:hover .rd-go { transform: none; }
   a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go { transform: none; }
   .rd-zone a:hover .rd-zone-pic .rd-media { outline: 1px solid rgb(95 216 232 / .25); outline-offset: -1px; }
@@ -519,8 +555,9 @@ body[data-page="vietnam"] a, body[data-page="vietnam"] button { -webkit-tap-high
   .rd-btn-quiet:hover, .rd-round:hover, .rd-vbtn:hover { background: var(--rd-step-2); }
   .rd-round:hover, .rd-vbtn:hover { background: rgb(11 18 32 / .72); }
   .rd-tile a:hover .rd-tile-title { text-decoration: none; }
+  .rd-find-tab:not([aria-pressed="true"]):hover { background: var(--rd-step); color: var(--rd-ink-2); }
 }
-:is(.rd-toc a, .rd-row, .rd-more-list a, .rd-stops button, .rd-stop-next):active { background: var(--rd-step-2); transition-duration: 0ms; }
+:is(.rd-find-item a, .rd-row, .rd-more-list a, .rd-stops button, .rd-stop-next):active { background: var(--rd-step-2); transition-duration: 0ms; }
 :is(.rd-tile a, .rd-zone a, .rd-acc-link):active .rd-media { transform: scale(.98); transition: transform var(--t-press) var(--ease-out); }
 html.cc-reduce-motion :is(.rd-tile a, .rd-zone a, .rd-acc-link):active .rd-media { transform: none; }
 
