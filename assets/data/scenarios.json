@@ -6,9 +6,10 @@
       "kind": "custom",
       "status": "published",
       "sourceIds": [
-        "VNAT-ETQ"
+        "VNAT-ETQ",
+        "CA-NAMING"
       ],
-      "text": "People are usually addressed with family terms that reflect age and relationship — younger people like younger siblings, older people like older siblings, aunts, uncles or grandparents."
+      "text": "People are usually addressed with family terms that reflect age and relationship, even when they are strangers: younger people like younger siblings, older people like older siblings, aunts, uncles or grandparents."
     },
     {
       "id": "C-ADDR-TERMS",
@@ -16,9 +17,10 @@
       "status": "published",
       "sourceIds": [
         "VNAT-ETQ",
-        "VNA-NAMES"
+        "VNA-NAMES",
+        "CA-NAMING"
       ],
-      "text": "Common terms: anh (a man somewhat older than you), chị (a woman somewhat older), em (someone younger), cô / chú / bác (people of your parents’ generation)."
+      "text": "Common terms: anh (a man somewhat older than you), chị (a woman somewhat older), em (anyone younger), chú and cô (a man or woman a little younger than your parents), bác (someone a little older than your parents), ông and bà (people of your grandparents’ age)."
     },
     {
       "id": "C-ADDR-NAME",
@@ -26,18 +28,21 @@
       "status": "published",
       "sourceIds": [
         "CA-GREET",
-        "VNA-NAMES"
+        "VNA-NAMES",
+        "CA-NAMING"
       ],
-      "text": "People are usually addressed with a family term and their given name (for example “chị Lan”). The given name alone can come across as impolite, especially with someone older."
+      "text": "People are usually addressed with a family term and their given name, not their surname (for example “chị Lan” or “bác Nam”). The given name alone can come across as impolite, especially with someone older."
     },
     {
       "id": "C-BANOI",
       "kind": "custom",
       "status": "published",
       "sourceIds": [
-        "VNAT-ETQ"
+        "VNAT-ETQ",
+        "CA-NAMING",
+        "TON-2017"
       ],
-      "text": "“Bạn ơi” is a safe, neutral way to get someone’s attention when you are unsure which term to use."
+      "text": "The tourism authority suggests “bạn ơi” when you are unsure which word to use. Bạn suits people of about your own age; with someone clearly older, a family word is safer."
     },
     {
       "id": "C-ELDEST",
@@ -184,7 +189,7 @@
       "sourceIds": [
         "VNAT-ETQ"
       ],
-      "text": "Always ask before photographing people."
+      "text": "Ask before photographing people. Most people will be happy to have their photo taken, and asking first respects their privacy and can start a conversation."
     },
     {
       "id": "C-STELAE-FACTS",
@@ -232,9 +237,10 @@
       "kind": "law",
       "status": "published",
       "sourceIds": [
-        "HATINH-FINE"
+        "HATINH-FINE",
+        "LVN-168"
       ],
-      "text": "Crossing without the required hand signal can be fined 150,000–250,000 đồng under Decree 168/2024."
+      "text": "Under Decree 168/2024, pedestrians who cross in the wrong place, cross without the required hand signal, climb over a median or ignore lights or police can be fined 150,000–250,000 đồng, up from 60,000–100,000 đồng before 2025."
     },
     {
       "id": "C-ROAD-ALERT",
@@ -299,25 +305,28 @@
       "sourceIds": [
         "VNAT-ETQ"
       ],
-      "text": "“Saving face” matters. Keep your cool in public and avoid loud arguments or making a scene."
+      "text": "“Saving face” matters. Keep your cool in public, avoid loud arguments or making a scene, and don’t berate people for their mistakes."
     },
     {
       "id": "C-DX-1889",
       "kind": "history",
       "status": "published",
       "sourceIds": [
-        "VNNEWS-DONGXUAN"
+        "HNM-DX130",
+        "VNE-KECHO",
+        "VNEI-FRENCH"
       ],
-      "text": "Đồng Xuân Market was built in 1889, during the French colonial period, to replace the older Kẻ Chợ markets."
+      "text": "Đồng Xuân Market was created by the French in 1889 (one source says 1890) by moving the vendors of two older markets, beside Cầu Đông pagoda and Bạch Mã temple, onto one site, later covered by five long iron-roofed halls behind five arched gables."
     },
     {
       "id": "C-DX-FLOORS",
       "kind": "custom",
       "status": "published",
       "sourceIds": [
-        "HNT-MARKETS"
+        "HNM-DX2026",
+        "HNM-DX130"
       ],
-      "text": "The ground floor of Đồng Xuân Market is a wet market for fresh food; the upper levels sell fabric, clothing and other goods, often at wholesale prices."
+      "text": "Today’s Đồng Xuân has three floors of more than 14,000 m² and over 2,000 stalls: household goods, electronics, accessories and sweets on the ground floor, fabrics, silk and clothing on the second, children’s goods on the third. It is one of the largest wholesale markets in the north and opens about 6 a.m."
     },
     {
       "id": "C-BARGAIN-MARKET",
@@ -430,12 +439,13 @@
     },
     {
       "id": "C-HK-NAME",
-      "kind": "history",
+      "kind": "legend",
       "status": "published",
       "sourceIds": [
+        "VGP-NGOCSON",
         "VNAT-HOANKIEM"
       ],
-      "text": "Hoàn Kiếm means “Lake of the Returned Sword”. The legend says that in 1428 Emperor Lê Lợi, boating on the lake, gave his sword back to the Golden Turtle God (Kim Qui)."
+      "text": "Hoàn Kiếm means “Returned Sword”. The lake was earlier called Lục Thủy, “Green Water”, and took its present name in the fifteenth century from the legend of Lê Lợi giving back his sword to a turtle; the tourism authority dates the legend to 1428."
     },
     {
       "id": "C-NGOCSON",
@@ -640,13 +650,14 @@
       "text": "The first visitor of the new year (xông đất) is believed to bear on the household’s fortune, so families often invite someone to come first, usually on the morning of the first day."
     },
     {
-      "status": "needs_verification",
       "id": "C-SWORD-LEGEND",
-      "kind": "history",
+      "kind": "legend",
+      "status": "published",
       "sourceIds": [
+        "VGP-NGOCSON",
         "VNAT-HOANKIEM"
       ],
-      "text": "In the legend, after the victory over the Ming in 1428, Lê Lợi was boating on the lake when a golden turtle rose and asked for his magic sword; he returned it, and the lake, once called Lục Thủy (“Green Water”), became Hoàn Kiếm, the Lake of the Returned Sword. The Turtle Tower on its islet is linked to the legend."
+      "text": "In the legend, Lê Lợi found a sword that carried him through ten years of war against the Ming. After he became king, a giant turtle rose from the lake as he was boating, took the sword and dived; the lake has been called the Lake of the Returned Sword since."
     },
     {
       "status": "needs_verification",
@@ -688,85 +699,93 @@
       "text": "The belief is open to anyone regardless of age, occupation or religion, and is most common in northern Vietnam."
     },
     {
-      "status": "needs_verification",
       "id": "C-OQ-GUILDS",
       "kind": "history",
+      "status": "published",
       "sourceIds": [
         "VNAT-OLDQ"
       ],
-      "text": "The Old Quarter has 36 streets, each named after a trade or craft that settled north of Hoàn Kiếm Lake; its workshops made goods for the royal court at the nearby Thăng Long citadel. Only a few streets still sell what their names describe."
+      "text": "The Old Quarter is known as the 36 guild streets, named after trades and crafts that settled north of Hoàn Kiếm Lake and supplied the royal court at the nearby Thăng Long citadel. Only a few streets still sell what their names describe."
     },
     {
-      "status": "needs_verification",
       "id": "C-OQ-HANG",
       "kind": "custom",
+      "status": "published",
       "sourceIds": [
-        "VT-HANGMA"
+        "WIKT-HANG",
+        "VNAT-OLDQ"
       ],
-      "text": "“Hàng” in a street name means goods or merchandise."
+      "text": "“Hàng” means goods or wares, so in a street name it is followed by the thing the street sold."
     },
     {
-      "status": "needs_verification",
       "id": "C-OQ-EXAMPLES",
       "kind": "custom",
+      "status": "published",
       "sourceIds": [
         "VNAT-OLDQ"
       ],
-      "text": "Hàng Bạc was home to silversmiths making items for the palace and now has jewellers and money changers; Lãn Ông is known for traditional medicines and herbs; Hàng Mã for religious goods and festival decorations; Hàng Gai today sells fabrics and made-to-measure clothes."
+      "text": "Hàng Bạc silversmiths made money and jewellery for the palace and the street still has jewellers and money changers; Lãn Ông is a street of traditional medicine and herbs; Hàng Mã sells religious goods and festival decorations; Hàng Gai now sells fabrics and made-to-measure clothes."
     },
     {
-      "status": "needs_verification",
       "id": "C-OQ-TUBE",
       "kind": "history",
+      "status": "published",
       "sourceIds": [
         "VNAT-OLDQ"
       ],
-      "text": "The quarter’s tube houses have narrow fronts but are built deep and tall, with courtyards inside to let in light. Ô Quan Chưởng is the only surviving gate of the wall that once protected the area."
+      "text": "The quarter’s tube houses have narrow fronts but are built deep and high, with several courtyards to let light in. Ô Quan Chưởng is the only gate left of the wall that protected the area."
     },
     {
-      "status": "needs_verification",
       "id": "C-TRADA",
       "kind": "custom",
+      "status": "published",
       "sourceIds": [
-        "HNT-TRADA"
+        "VNN-TRADA",
+        "VCT-TRADA"
       ],
-      "text": "A trà đá (iced tea) stall needs little more than a teapot, some glasses and a few plastic stools on the pavement; some also sell peanut sweets, sunflower seeds and bottled drinks. Stalls open from early morning until late, and serve hot tea in winter."
+      "text": "A trà đá stall needs little more than a kettle or thermos, a teapot, glasses and rows of low plastic stools; many also keep a jar of sweets and a tobacco pipe for customers."
     },
     {
-      "status": "needs_verification",
       "id": "C-TRADA-SOCIAL",
       "kind": "custom",
+      "status": "published",
       "sourceIds": [
-        "HNT-TRADA"
+        "VNE-TRADA",
+        "VNN-TRADA"
       ],
-      "text": "Office workers and street sweepers, young and old, stop for tea after breakfast, at lunch, after work or with friends in the evening, watching the street and chatting, sometimes with strangers."
+      "text": "Iced-tea stalls are busy from morning until late at night with customers from all walks of life; regulars meet there every day, and the stalls are known as places to chat and pass on news."
     },
     {
-      "status": "needs_verification",
       "id": "C-PAVEMENT-2026",
-      "kind": "custom",
+      "kind": "history",
+      "status": "published",
       "sourceIds": [
+        "VNS-CAMPAIGN",
+        "DBND-CAMERA",
+        "VNE-PLAN332",
         "AFP-PAVEMENT"
       ],
-      "text": "Since December 2025 Hà Nội has been fining unauthorised street vending and businesses that block pavements, helped by about 2,000 surveillance cameras, so pavement stalls and seating are less spontaneous than before."
+      "text": "Hà Nội’s Plan 332/KH-UBND of 10 December 2025 began a campaign on 13 December to clear pavements in stages. From January 2026 fines were also issued from camera images, with about 848 cases handled in the first week, 269 of them found by cameras; AFP reported nearly 2,000 surveillance cameras."
     },
     {
-      "status": "needs_verification",
       "id": "C-HK-MORNING",
       "kind": "custom",
+      "status": "published",
       "sourceIds": [
-        "VNAT-HOANKIEM"
+        "VCT-MORNING",
+        "VNS-KINKS"
       ],
-      "text": "Around 6 a.m. local residents practise tai chi on the shore of Hoàn Kiếm Lake. Small groups of students sometimes approach foreign visitors to practise their English."
+      "text": "From around 5 a.m. people come to exercise by Hoàn Kiếm Lake, and group sessions start at about 6: dancing behind an instructor, tai chi, jogging and walking the loop of about 1.5 km around the water."
     },
     {
-      "status": "needs_verification",
       "id": "C-HK-WALK",
       "kind": "custom",
+      "status": "published",
       "sourceIds": [
-        "HNT-WALK"
+        "VNP-WALK-2016",
+        "VNE-WALK-2023"
       ],
-      "text": "From Friday evening to Sunday night the streets around Hoàn Kiếm Lake close to traffic and become a walking space, from about 7 p.m. in summer and 6 p.m. in winter until midnight, with cultural and art performances; the scheme began on trial around 2016."
+      "text": "Since 1 September 2016 the streets around Hoàn Kiếm Lake have closed to vehicles from 7 p.m. on Friday to midnight on Sunday and become a walking space, drawing 25,000–35,000 people a weekend. Hours change for holidays and events."
     },
     {
       "status": "needs_verification",
@@ -830,6 +849,951 @@
         "VNN-EGG"
       ],
       "text": "Egg yolk is whipped into a thick, creamy foam and poured over hot black coffee; some cafés serve the cup standing in a bowl of hot water to keep it warm."
+    },
+    {
+      "id": "C-OQ-AREA",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "HN-QD6398"
+      ],
+      "text": "Hà Nội’s 2013 regulation defines the Old Quarter as about 82 hectares with 10 wards and 79 streets, bounded by Phan Đình Phùng and Hàng Đậu to the north, Trần Nhật Duật and Trần Quang Khải to the east, Phùng Hưng to the west, and Hàng Thùng, Cầu Gỗ, Hàng Gai and Hàng Bông to the south. It cites the quarter’s 2004 listing as a national historic site."
+    },
+    {
+      "id": "C-OQ-RULES",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "HN-QD6398"
+      ],
+      "text": "The 2013 regulation describes most Old Quarter housing as tube-shaped with inner courtyards and sloping tiled roofs, requires the tube-house form, the courtyards and pre-1954 buildings to be conserved, and allows no large shopping centres or new housing that adds population."
+    },
+    {
+      "id": "C-OQ-MIXED",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-OLDQ",
+        "VNS-ARCH"
+      ],
+      "text": "The Old Quarter was partly settled by Chinese immigrants who traded there; before colonial rule Hà Nội was made up of the citadel, the commercial Old Quarter and the surrounding countryside."
+    },
+    {
+      "id": "C-OQ-SILVER",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNP-CHAUKHE",
+        "VGP-HANGBAC"
+      ],
+      "text": "Under King Lê Thánh Tông (1460–1497), Lưu Xuân Tín, a mandarin from the silversmith village of Châu Khê, brought craftsmen to the capital to cast silver ingots and set up a workshop at No. 58 Hàng Bạc. Ingot casting later moved to Huế, but the craftsmen stayed as jewellers, joined by others from Định Công and Đồng Xâm."
+    },
+    {
+      "id": "C-OQ-EXCHANGE",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VGP-HANGBAC",
+        "COMMONS-SALLES"
+      ],
+      "text": "For centuries Hàng Bạc was a centre of gold, silver and money exchange, and in the 1890s the French called it rue des Changeurs, the money changers’ street."
+    },
+    {
+      "id": "C-OQ-KIMNGAN",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "ND-KIMNGAN",
+        "VOV-KIMNGAN"
+      ],
+      "text": "Kim Ngân communal house on Hàng Bạc was built by people from Châu Khê and honours the founder of the hundred crafts. It was ranked a national relic in 2012, and in 2025 it hosted an exhibition with demonstrations of silver-leaf and repoussé work."
+    },
+    {
+      "id": "C-OQ-BACHMA",
+      "kind": "legend",
+      "status": "published",
+      "sourceIds": [
+        "ND-BACHMA",
+        "DBND-BACHMA"
+      ],
+      "text": "Bạch Mã temple on Hàng Buồm is the eastern of Thăng Long’s four guardian temples and worships the god Long Đỗ. Legend, recorded in the fourteenth-century Việt điện u linh tập, says that when Lý Thái Tổ’s new walls kept collapsing, a white horse came out of the temple and its tracks showed where to build. The temple was ranked a special national relic in 2022; its festival falls on the 12th and 13th days of the second lunar month."
+    },
+    {
+      "id": "C-OQ-GATE",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "ND-OQC",
+        "VNE-CUAO",
+        "VTC-OQC",
+        "VNAT-OLDQ"
+      ],
+      "text": "Ô Quan Chưởng was built in 1749, when the outer wall was rebuilt under Lord Trịnh Doanh, and was first called Đông Hà Môn after Đông Hà ward. Sources give different dates for its rebuilding: 1785 and 1804 in one account, 1817 in the tourism authority’s."
+    },
+    {
+      "id": "C-OQ-GATE-NAME",
+      "kind": "legend",
+      "status": "published",
+      "sourceIds": [
+        "ND-OQC",
+        "VTC-OQC"
+      ],
+      "text": "The usual explanation of the name Ô Quan Chưởng is that it remembers a chưởng cơ, a military officer, who fought the French at this gate when they attacked Hà Nội in 1873; other explanations link it to an official who lived or kept watch there."
+    },
+    {
+      "id": "C-OQ-GATES",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "ND-OQC",
+        "VNE-CUAO"
+      ],
+      "text": "Early-nineteenth-century geographies count 21 gates in Hà Nội’s outer wall; maps of 1831 and later show 15 or 16. Ô Quan Chưởng is the only one still standing."
+    },
+    {
+      "id": "C-OQ-GATE-LOOK",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "ND-OQC",
+        "VTC-OQC"
+      ],
+      "text": "The gate has two storeys: three arches below, the central one about three metres high and wide, and a lookout above, built of large unplastered bricks, with its old wooden doors still in place."
+    },
+    {
+      "id": "C-OQ-GATE-STELE",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNE-CUAO",
+        "VTC-OQC"
+      ],
+      "text": "A stone tablet set up by Governor Hoàng Diệu in 1881 on the gate’s wall forbade the guards to harass people passing through."
+    },
+    {
+      "id": "C-OQ-GATE-SAVED",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNE-CUAO",
+        "VTC-OQC"
+      ],
+      "text": "The gate was threatened with demolition under French rule. One account credits the École française d’Extrême-Orient with saving it in 1906; a local tradition credits residents who refused to sign for its removal."
+    },
+    {
+      "id": "C-OQ-FRENCH",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNS-ARCH"
+      ],
+      "text": "The French built Đồng Xuân market in 1889, with a double iron roof to let heat out, and from 1886 a municipal council set out to make Hà Nội a European city of grid streets and boulevards, while the Old Quarter kept its tube houses."
+    },
+    {
+      "id": "C-OQ-TIP-WALK",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion for walking the quarter: go early or in the evening, look above the shop signs, and ask before photographing someone at work."
+    },
+    {
+      "id": "C-TRADA-HISTORY",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNE-TRADA",
+        "VCT-TRADA"
+      ],
+      "text": "Accounts of iced tea’s history differ: one says ice arrived under French rule from a factory on Trần Nhật Duật Street and Hanoians were icing drinks by the early 1920s; another says iced tea only became a northern habit after 1975 and spread through Hà Nội in the 1990s. A glass once cost as little as 500 đồng."
+    },
+    {
+      "id": "C-PAVE-VENDORS",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "EIDSE-2016",
+        "KURFURST-2023"
+      ],
+      "text": "Street trade in Hà Nội, mostly by women, grew after the Đổi Mới reforms of 1986. A study of 305 vendors found most were women and most of the mobile ones were migrants from farming households, carrying loads of up to 45 kg on a shoulder pole."
+    },
+    {
+      "id": "C-PAVE-RULES",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "EIDSE-2016",
+        "KURFURST-2023",
+        "VNE-2017"
+      ],
+      "text": "Hà Nội declared pavements for walking in 1984, ran an order campaign in 1991, banned street trade on 62 streets and at 48 historic sites from 1 July 2008 (another study says 63 streets), and ran another campaign in 2017. Each time stalls returned within months."
+    },
+    {
+      "id": "C-PAVE-SURVEY",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNE-PLAN332"
+      ],
+      "text": "Hà Nội has about 1,100 streets with pavements; a 2025 survey of 120 of them found more than 90% occupied by business or parking."
+    },
+    {
+      "id": "C-PAVE-FINES",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "AFP-PAVEMENT",
+        "VNE-PLAN332"
+      ],
+      "text": "Businesses that block pavements can be fined up to 6 million đồng. Reports of the vendor fine differ: 250,000 đồng in AFP’s report, 2.5 million đồng with equipment seized in VnExpress’s. State media counted more than 3,000 fines between December 2025 and June 2026."
+    },
+    {
+      "id": "C-PAVE-MOVED",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNE-PLAN332",
+        "AFP-PAVEMENT"
+      ],
+      "text": "Vendors reported in 2026 moved a bún riêu stall into a one-metre alley, where sales fell to about a third; an iced-tea stand onto a house’s porch; a xôi stall into a rented shop at double the rent; and a flower seller to a vacant lot where takings roughly halved."
+    },
+    {
+      "id": "C-PAVE-CENTRE",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VGP-PAVEMENTS",
+        "TT-SIDEWALKS"
+      ],
+      "text": "Enforcement began in the central wards of Hoàn Kiếm, Cửa Nam and Ba Đình, including Hàng Mã, Hàng Ngang, Hàng Đào, Tràng Tiền and the streets around Hoàn Kiếm Lake. The government says central pavements are noticeably less congested; residents interviewed found the change strange at first and welcomed the walking space."
+    },
+    {
+      "id": "C-PAVE-NEXT",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNS-FINES",
+        "VCT-LEASE",
+        "VNE-PLAN332"
+      ],
+      "text": "Drafts discussed in May 2026 would raise fines for using pavements for markets or food to 4–6 million đồng from 2027, and would let traders lease pavement for 20,000–45,000 đồng per square metre a month on wide streets, keeping 1.5 metres clear. An economist proposed designated vending zones."
+    },
+    {
+      "id": "C-PAVE-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion: sit where the owner points, ask the price or pay what others pay, and if a stall has moved into an alley or a doorway, follow it there."
+    },
+    {
+      "id": "C-HK-NGOCSON",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VGP-NGOCSON",
+        "VNE-NGOCSON"
+      ],
+      "text": "Ngọc Sơn Temple, on Jade Island, honours the general Trần Hưng Đạo and Văn Xương, a patron of literature. A temple to Guan Yu stood there first; in 1841 the Association of Good Deeds took it over, and in the mid-nineteenth century the scholar Nguyễn Văn Siêu led its rebuilding (1859–1862 in one account, 1865 in another), with the red Thê Húc bridge and the Pen Tower on the shore."
+    },
+    {
+      "id": "C-HK-VISIT",
+      "kind": "siteRule",
+      "status": "published",
+      "sourceIds": [
+        "VNE-NGOCSON"
+      ],
+      "text": "As reported in January 2025, Ngọc Sơn Temple opens 7 a.m.–6 p.m. on weekdays and until 9 p.m. at weekends; a ticket costs 50,000 đồng, children under 16 enter free, and crossing the bridge is free."
+    },
+    {
+      "id": "C-HK-TOWER",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNN-TURTLETOWER"
+      ],
+      "text": "The Turtle Tower on the islet in the lake was built in the 1880s under French rule (1884–1886 in one account) by a local notable, Nguyễn Ngọc Kim, said to have used it as a pretext to bury his parents there. Earlier, a pavilion of King Lê Thánh Tông and a temple of the Trịnh lords stood on the mound. The tower mixes Gothic arches with a Vietnamese roof."
+    },
+    {
+      "id": "C-HK-TURTLE",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "TT-TURTLE",
+        "VGP-NGOCSON",
+        "VNE-NGOCSON"
+      ],
+      "text": "The last giant turtle known to live in the lake was found dead on 19 January 2016; measured in 2011, it was 185 cm long and weighed 169 kg, and officials blamed age and cold. Ngọc Sơn Temple displays preserved turtles, including one 2.1 m long found in 1967."
+    },
+    {
+      "id": "C-HK-LEZ",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "BXD-LEZ",
+        "DTI-LEZ"
+      ],
+      "text": "Since July 2026 the lake and the Old Quarter night-market streets have been the first phase of a low-emission pilot zone: motor vehicles are kept out from 7 p.m. to midnight on Friday to Sunday, and residents push their bikes. Wider limits on petrol motorbikes inside Ring Road 1 were moved to 2028."
+    },
+    {
+      "id": "C-HK-ENGLISH",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "WSJ-ENGLISH",
+        "VNE-FOREIGNER"
+      ],
+      "text": "At weekends, children and students sent by teachers or parents approach foreign visitors by the lake to practise English, often with a list of questions. Some Vietnamese writers think it teaches little and can make visitors uneasy; others enjoy it."
+    },
+    {
+      "id": "C-HK-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion: come at dawn for the exercise and on a weekend evening for the walking street; if a child asks to practise English, a few minutes is a kind gift and saying no politely is fine too."
+    },
+    {
+      "id": "C-DX-KECHO",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNE-KECHO"
+      ],
+      "text": "Thăng Long was once called Kẻ Chợ, “the market place”. In 1883 a French visitor found no covered market and no fixed market site; markets met in turns every few days, and street vendors worked between them."
+    },
+    {
+      "id": "C-DX-STOMACH",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "HNM-DX130",
+        "TT-CHOHN"
+      ],
+      "text": "With trams, the Long Biên bridge and the railway station nearby, Đồng Xuân became the city’s largest and busiest market, nicknamed Hà Nội’s stomach. Its riveted steel roof trusses resembled those of the bridge."
+    },
+    {
+      "id": "C-DX-FIRE",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "HNM-DX130",
+        "VNEI-FRENCH",
+        "HNM-DX2026",
+        "TT-CHOHN"
+      ],
+      "text": "A fire in 1994 destroyed almost all of the stalls. The market was rebuilt on three floors, keeping the front: three of the five original gables survive, the end ones removed to widen the side streets. One source says it reopened the following year."
+    },
+    {
+      "id": "C-DX-NIGHT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "HNM-DX130",
+        "HNM-DX2026"
+      ],
+      "text": "Since 2003 a night market has run on weekend evenings from the square in front of Đồng Xuân along Hàng Đường, Hàng Ngang and Hàng Đào; Hà Nội Mới gives its hours as 6 to 10.30 p.m. on Friday to Sunday."
+    },
+    {
+      "id": "C-LONGBIEN",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "TP-LONGBIEN",
+        "VNE-LBWOMEN"
+      ],
+      "text": "Long Biên market, founded in 1992 beneath the old bridge, is the city’s largest wholesale market for farm produce. It trades mainly by night: goods are laid out by about 11 p.m., trade peaks around midnight, and women porters carry loads of several hundred kilos."
+    },
+    {
+      "id": "C-CHOCOC",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNE-CHOCOC",
+        "VNEC-CHOCOC",
+        "WERTHEIM-2015"
+      ],
+      "text": "Chợ cóc, informal markets on pavements, in alleys and along railway lines, remain where many Hà Nội residents buy food. One study counted about 100 against 25 official markets in four inner districts, within 300 m of nearly half the population; research finds supermarkets reach only a minority of shoppers."
+    },
+    {
+      "id": "C-CHOCOC-POLICY",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "VNEC-CHOCOC",
+        "VNE-CHOCOC"
+      ],
+      "text": "In January 2026 Hà Nội counted 468 markets and 231 informal ones; 98 had been dealt with, and the rest were scheduled by June 2027. Some renovated official markets have lost buyers and sellers."
+    },
+    {
+      "id": "C-MOHANG",
+      "kind": "belief",
+      "status": "published",
+      "sourceIds": [
+        "VNN-MOHANG",
+        "DT-DOTVIA"
+      ],
+      "text": "Many vendors believe the day’s first sale, mở hàng, sets their luck: a first customer who buys easily brings a good day, one who bargains and leaves a bad one. Sellers may avoid quoting the first customer high, or press them to buy. Some of these beliefs are fading."
+    },
+    {
+      "id": "C-BARGAIN-RIGHT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "TT-CHOHN",
+        "DT-DOTVIA"
+      ],
+      "text": "In old village markets, sellers believed a high opening price brought luck and buyers bargained to reach the right price rather than a cheap one. A Hà Nội linguist puts it this way: the right to ask high and the right to bargain are equal."
+    },
+    {
+      "id": "C-BARGAIN-HOW",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNEI-TIPS",
+        "VNEI-OVERCHARGE"
+      ],
+      "text": "A common suggestion with street vendors is to start at about half to two-thirds of the asking price and raise slowly, staying polite; haggling over very small sums is seen as unfair to vendors, and fixed-price shops suit people who prefer not to bargain."
+    },
+    {
+      "id": "C-MARKET-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion: ask the price before you pick something up, agree a price before money changes hands, and if you are the first customer of the morning, buy or say no kindly and quickly."
+    },
+    {
+      "id": "C-HOME-GREET",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-GREET",
+        "VNEI-GREET",
+        "VNAT-LIKE"
+      ],
+      "text": "People are greeted in order of age, oldest first, standing and with a slight bow from the shoulders; if an older person does not offer a hand, a bow or nod is enough. Visitors greet older people with a family word, for example “Cháu chào bác” to someone older than their parents, and adding “ạ” shows respect. Being asked your age is normal: it tells people which word to use."
+    },
+    {
+      "id": "C-HOME-ARMS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "ZN-NEP"
+      ],
+      "text": "In older Hà Nội families, children’s friends who visited were expected to fold their arms when greeting the parents and older siblings; the writer who records this describes such habits as fading."
+    },
+    {
+      "id": "C-HOME-GIFT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ",
+        "VNN-MEAL",
+        "CA-ETQ"
+      ],
+      "text": "Visitors are expected not to arrive empty-handed: fruit, biscuits or cake, flowers or soft drinks are usual, and a specialty from your own country is welcome. The giver plays the gift down as “a small gift”, and the host may not open it straight away."
+    },
+    {
+      "id": "C-HOME-UNLUCKY",
+      "kind": "belief",
+      "status": "published",
+      "sourceIds": [
+        "CA-ETQ",
+        "VNAT-ETQ",
+        "VNN-GIFT",
+        "VNP-ALTAR"
+      ],
+      "text": "Some gifts are thought to be bad omens: guides list anything black, handkerchiefs and yellow flowers, and at Tết folk belief warns against knives, scissors and clocks. Chrysanthemums appear on such lists too, though they are also offered on family altars at Tết."
+    },
+    {
+      "id": "C-HOME-HANDS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-ETQ",
+        "VNAT-ETQ"
+      ],
+      "text": "Things are given and received with both hands; dishes at the table are passed with both hands or the right hand."
+    },
+    {
+      "id": "C-HOME-TEA",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "SGGP-TRA"
+      ],
+      "text": "Hosts often brew a fresh pot of tea when guests arrive; a saying has it that a cup of tea opens the conversation, and not offering tea can seem impolite."
+    },
+    {
+      "id": "C-HOME-ALTAR",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-LIKE",
+        "VNN-ANC",
+        "VNP-ALTAR",
+        "DT-ALTAR"
+      ],
+      "text": "Most Vietnamese homes have an ancestral altar, the most sacred place in the house, with photographs or tablets, an incense bowl and candles. Traditionally it stands at the centre and highest point of the house; in tall city houses it is often on the top floor."
+    },
+    {
+      "id": "C-HOME-ALTAR-GUEST",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ",
+        "DT-ALTAR"
+      ],
+      "text": "Guests should not step over altars placed on the floor, walk directly in front of them or put things in front of them. In the past a visitor’s gift was set on the family altar for the ancestors to see; the custom has largely faded."
+    },
+    {
+      "id": "C-HOME-MOI",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNE-MOI",
+        "VNAT-LIKE"
+      ],
+      "text": "In many northern families, younger members invite their elders to eat, in order, before picking up their chopsticks (“Con mời bố mẹ ăn cơm”), and the meal begins when the oldest person starts. The custom is fading as families eat together less: a 2021 survey found about 45% of families had dinner together five or more times a week."
+    },
+    {
+      "id": "C-HOME-BOWL",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-ETQ",
+        "VNN-MEAL",
+        "BQT-GAP"
+      ],
+      "text": "Hosts often put food in a guest’s bowl; to decline, guests repeat politely that they are full, and leave the last piece unless urged. A protocol column in the foreign ministry’s newspaper advises hosts to invite in words only with less familiar guests and not to press food on them."
+    },
+    {
+      "id": "C-HOME-MODEST",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-ETQ"
+      ],
+      "text": "Hosts may play down their cooking as a simple meal of rice and greens; guests are expected to compliment the food. Chopsticks should never be left standing upright in rice, which recalls incense for the dead."
+    },
+    {
+      "id": "C-HOME-ANCOM",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNE-ANCOM"
+      ],
+      "text": "“Ăn cơm chưa?”, “Have you eaten yet?”, works as a greeting, and when you arrive near a mealtime it is often an invitation to stay."
+    },
+    {
+      "id": "C-HOME-HOUSEHOLD",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "GSO-2019",
+        "VNN-ELD"
+      ],
+      "text": "The 2019 census counted 3.5 people per household nationally and 3.3 in the Red River Delta around Hà Nội. Studies disagree on how many older people still live with their children: one found the share fell to 28% by 2017 in two provinces, while a national survey put it above 60%."
+    },
+    {
+      "id": "C-HOME-LEAVE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "BVH-EQ",
+        "CA-ETQ"
+      ],
+      "text": "Guests leave at a natural pause in the conversation and thank the host for their hospitality, without glancing at the clock or saying they are tired; thanks mean more when they are sincere than when automatic."
+    },
+    {
+      "id": "C-HOME-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion: follow your host. Watch where shoes go, who sits where and when people start eating, and ask if you are unsure."
+    },
+    {
+      "id": "C-ROAD-ART30",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VN-LAW-ROAD"
+      ],
+      "text": "The same article tells pedestrians to use the pavement, or keep to the right-hand edge where there is none, not to climb over medians, to lead children under seven by the hand when crossing, and asks everyone to help children, pregnant women, older and disabled people across."
+    },
+    {
+      "id": "C-ROAD-HOWHAND",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "ZN-VAYTAY",
+        "TT-VAYTAY"
+      ],
+      "text": "No hand signal is required on a marked crossing, and the decree does not say how the signal should be made. Writers in Tuổi Trẻ call raising a hand a long-standing good habit and think drivers have yielded more since the decree."
+    },
+    {
+      "id": "C-ROAD-VEHICLES",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "DBND-EV"
+      ],
+      "text": "Hà Nội has about 6.9 million motorbikes and 1.1 million cars, with more than 450,000 motorbikes inside Ring Road 1 alone."
+    },
+    {
+      "id": "C-ROAD-DIR20",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "BVH-DIR20",
+        "VNN-LEZ-DROP",
+        "BXD-LEZ"
+      ],
+      "text": "A 2025 government directive asked Hà Nội to have no petrol motorbikes inside Ring Road 1 from 1 July 2026. The city chose phases instead: from July 2026 a small zone around Hoàn Kiếm Lake and the Old Quarter is closed to vehicles on weekend evenings, and wider limits were moved to 2028."
+    },
+    {
+      "id": "C-ROAD-DEATHS",
+      "kind": "safety",
+      "status": "published",
+      "sourceIds": [
+        "BVH-TNGT2025",
+        "VNP-TNGT2026",
+        "VNS-WHO"
+      ],
+      "text": "Police counted 10,379 road deaths across Vietnam in the year to mid-December 2025, about 6% fewer than the year before, and 7,198 in the first nine months of 2026. WHO’s modelled estimate, which runs higher, fell from 25.4 deaths per 100,000 people in 2010 to 17.7 in 2021."
+    },
+    {
+      "id": "C-CROSS-HABITS",
+      "kind": "safety",
+      "status": "published",
+      "sourceIds": [
+        "VNE-VACH",
+        "VNS-3SEC"
+      ],
+      "text": "Writers in Hà Nội newspapers describe a city where few drivers stop for pedestrians and many pedestrians ignore crossings: one reader counted 37 people crossing at a single red light, only 4 on the zebra. Their advice is local know-how: walk evenly, look ahead and at the riders, and do not stop, run or hesitate."
+    },
+    {
+      "id": "C-CROSS-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion: motorbikes can steer around a steady walker, but cars, buses and lorries cannot, so let the big vehicles pass before you step out."
+    },
+    {
+      "id": "C-PHOTO-LAW",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VN-CIVIL-2015"
+      ],
+      "text": "Vietnam’s Civil Code gives everyone rights over their image: using a person’s image needs their consent, and commercial use must be paid for unless agreed otherwise. Consent is not needed for use in the public interest or for images from public events such as performances or sports, as long as the use does not harm the person’s dignity. A person can ask a court to stop the use and claim compensation."
+    },
+    {
+      "id": "C-PHOTO-MAUSOLEUM",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VN-DEC218",
+        "TCTA-LANG"
+      ],
+      "text": "An ordinance protecting the Hồ Chí Minh Mausoleum site has been in force since 19 May 2025. Filming or photographing in its restricted and protected zones can be fined 20–30 million đồng, and the camera or phone confiscated."
+    },
+    {
+      "id": "C-PHOTO-MILITARY",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VN-DEC218"
+      ],
+      "text": "Photographing, filming or sketching in a military prohibited area without permission can be fined 5–8 million đồng, or 30–50 million in special-category zones, with the equipment confiscated."
+    },
+    {
+      "id": "C-PHOTO-DRONE",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VNEC-DRONE",
+        "DTI-DRONE",
+        "HTTL-RULES"
+      ],
+      "text": "Since November 2025, flying a drone of 0.25 kg or more needs a licence. Taking aerial photos or video without permission can be fined 8–9 million đồng, and Hà Nội police warn against flying near military and restricted sites. The Imperial Citadel does not allow drones at all."
+    },
+    {
+      "id": "C-PHOTO-CITADEL",
+      "kind": "siteRule",
+      "status": "published",
+      "sourceIds": [
+        "HTTL-RULES"
+      ],
+      "text": "The Imperial Citadel of Thăng Long asks anyone who wants to make films or visual recordings at the site to get permission from its management first, and asks visitors to dress neatly."
+    },
+    {
+      "id": "C-PHOTO-TEMPLE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VOV-CHUA",
+        "VNAT-ETQ"
+      ],
+      "text": "Temples and pagodas are places of worship: dress modestly, take off shoes and hats where asked, and do not use flash where signs ask for no photos. Photographing Buddha statues, or posing for selfies with them, can be seen as disrespectful."
+    },
+    {
+      "id": "C-PHOTO-VENDOR",
+      "kind": "history",
+      "status": "published",
+      "sourceIds": [
+        "DTI-VENDORS"
+      ],
+      "text": "Vendors putting their shoulder poles and baskets on tourists for a photo and then asking for money is a long-reported practice in central Hà Nội; in 2012 Hoàn Kiếm district acted against nearly 140 vendors for it."
+    },
+    {
+      "id": "C-PHOTO-HEAD",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-ETQ"
+      ],
+      "text": "Touching someone on the top of the head, especially a baby or child, is rude."
+    },
+    {
+      "id": "C-PHOTO-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion: ask with a gesture and a smile, show the picture afterwards, delete it if someone asks, and agree any price before you pose with a vendor’s goods."
+    },
+    {
+      "id": "C-FACE-DEF",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-CORE"
+      ],
+      "text": "Face stands for a person’s reputation, influence, dignity and honour. People give face by showing respect and paying compliments, and lose it when they are criticised or behave badly in front of others."
+    },
+    {
+      "id": "C-FACE-SHARED",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "PHAM-2014",
+        "NTK-2015"
+      ],
+      "text": "Research describes Vietnamese face as both personal and shared, depending on how others judge; when someone higher in a hierarchy loses face, the consequences are seen as more serious."
+    },
+    {
+      "id": "C-FACE-WORDS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "NTT-2022"
+      ],
+      "text": "Vietnamese has several overlapping words for face and honour, among them danh dự (honour), thể diện (face) and sĩ diện (pride), often used interchangeably; “sĩ diện hão”, hollow pride, has long been criticised."
+    },
+    {
+      "id": "C-INDIRECT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-COMM",
+        "CA-CORE"
+      ],
+      "text": "Communication tends to be indirect and polite. People may avoid a flat “no”, a “yes” may mean “I hear you” rather than agreement, and a pause before answering is a sign of respect."
+    },
+    {
+      "id": "C-MODEST",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-CORE"
+      ],
+      "text": "Modesty, khiêm tốn, means playing down your feelings and speaking indirectly to keep harmony; it does not mean being dishonest."
+    },
+    {
+      "id": "C-SHOUT",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-COMM"
+      ],
+      "text": "Shouting is generally seen as improper, yet raised voices are common in practice."
+    },
+    {
+      "id": "C-SMILE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-COMM",
+        "VNAT-ETQ"
+      ],
+      "text": "People may smile or laugh quietly when embarrassed, apologetic, frustrated or nervous, and may keep a serious face that is not unfriendly. A smile goes a long way, especially when language fails."
+    },
+    {
+      "id": "C-GESTURES",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-COMM",
+        "CA-ETQ",
+        "VNAT-ETQ"
+      ],
+      "text": "Point or beckon with an open hand rather than one finger; beckoning with a forefinger, palm up, can seem threatening. The head is the most sacred part of the body, the soles of the feet should not point at people, hands on hips can look aggressive, crossed fingers are impolite and the “okay” sign can mean poor quality."
+    },
+    {
+      "id": "C-HOST-MOCK",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "NQ-2019"
+      ],
+      "text": "A Vietnamese host may pretend to scold a friend for bringing a gift; a Vietnamese guest reads it as warmth, while a guest from elsewhere may be confused."
+    },
+    {
+      "id": "C-FACE-CAUTION",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "NQ-2019",
+        "CA-CORE"
+      ],
+      "text": "Scholars warn that such patterns are starting points, not stereotypes, and views differ by region, age, education and experience."
+    },
+    {
+      "id": "C-COOL-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion for a dispute: lower your voice, smile, use a polite form of address, explain the problem as a misunderstanding and leave the other person a way to fix it without losing face."
+    },
+    {
+      "id": "C-ADDR-PAIR",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "NQ-2018"
+      ],
+      "text": "In northern Vietnamese the words come in pairs: speaking to someone of your parents’ age, you call yourself cháu (niece or nephew) and them bác or chú; they call themselves bác and you cháu. Using both halves of the pair shows respect; dropping one can sound closer."
+    },
+    {
+      "id": "C-ADDR-YOUNG",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-NAMING"
+      ],
+      "text": "Someone much younger is called cháu in the North and con in the Centre and South."
+    },
+    {
+      "id": "C-ADDR-NORTH-CO",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "NQ-2018"
+      ],
+      "text": "For strangers of their parents’ age, northern speakers usually say chú and cô, the father’s-side words, rather than dì or cậu."
+    },
+    {
+      "id": "C-ADDR-TOI",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "TON-2017",
+        "NQ-2018"
+      ],
+      "text": "Tôi, “I”, is the most neutral word for oneself but sounds formal and distant in everyday talk; it once meant a king’s subject. Learners who use tôi and bạn with everyone can sound unnatural, for example between two middle-aged neighbours."
+    },
+    {
+      "id": "C-ADDR-SURVEY",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "NQ-2018",
+        "TON-2017"
+      ],
+      "text": "In a 1992 survey, 428 of 562 responses used kinship terms; a study of 500 market conversations in Hà Nội, Huế, Nha Trang and Hồ Chí Minh City found kinship forms in 80% of buyers’ and sellers’ questions."
+    },
+    {
+      "id": "C-ADDR-KIN",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "MSU-BASIC"
+      ],
+      "text": "Inside the family, bác is a parent’s older sibling, chú a father’s younger brother, cô a father’s younger sister, cậu a mother’s younger brother and dì a mother’s younger sister; the details differ by region."
+    },
+    {
+      "id": "C-ADDR-REGION",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "BPL-VUNGMIEN",
+        "VOH-XUNGHO",
+        "CA-NAMING"
+      ],
+      "text": "Family words vary by region: parents are bố and mẹ in the North and often ba and má in the South; the eldest brother is anh cả in the North and anh hai in the South, where anh hai in the North means the second brother; great-grandparents are cụ in the North and cố in the South."
+    },
+    {
+      "id": "C-ADDR-FRIENDS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "TON-2017",
+        "CA-NAMING",
+        "ZN-NEP"
+      ],
+      "text": "Friends of the same age use other pairs: bạn among young people, tớ and cậu as a casual northern pair. Mày and tao are casual to rude, and older Hà Nội families forbade them."
+    },
+    {
+      "id": "C-ADDR-AGE",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-GREET",
+        "VNAT-LIKE"
+      ],
+      "text": "Asking someone’s age when you first meet is not rude: it tells both people which words to use."
+    },
+    {
+      "id": "C-ADDR-CAUTION",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "NQ-2018",
+        "TON-2017"
+      ],
+      "text": "Linguists describe these patterns as tendencies: families, regions and generations differ, and scholars disagree on some details."
+    },
+    {
+      "id": "C-ADDR-TIP",
+      "kind": "projectNote",
+      "status": "published",
+      "sourceIds": [],
+      "text": "Our suggestion: listen to the word the other person uses for themself and answer with its partner."
+    },
+    {
+      "id": "C-ADDR-OI",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "CA-GREET",
+        "VNAT-ETQ"
+      ],
+      "text": "Calling “ơi” after a family word (em ơi, chị ơi, anh ơi, cô ơi, chú ơi, bà ơi, ông ơi) is a polite way to get someone’s attention."
+    },
+    {
+      "id": "C-COOL-ELDERS",
+      "kind": "custom",
+      "status": "published",
+      "sourceIds": [
+        "VNAT-LIKE"
+      ],
+      "text": "Older is seen as wiser. Lễ phép means being courteous, respectful and even compliant towards older people, and Vietnamese uses different words for “you” depending on whether someone is older or younger."
+    },
+    {
+      "id": "C-PHOTO-PRIVACY",
+      "kind": "law",
+      "status": "published",
+      "sourceIds": [
+        "VN-CIVIL-2015"
+      ],
+      "text": "Article 38 of the Civil Code protects private life: collecting, storing, using or publishing information about a person’s private life needs their consent, unless the law says otherwise."
     }
   ],
   "scenarios": [

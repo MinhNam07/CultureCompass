@@ -305,14 +305,31 @@
   CC.verifyBadge = function (status) { return status === 'needs_verification' || status === 'draft' ? ' ' + CC.verifyTag() : ''; };
 
   /* stories */
+  /* a story is either short sections (older stories) or blocks (story-blocks.js); both are walked here */
+  var READ_KEYS = { paras: 1, items: 1, rows: 1, heading: 1, text: 1, title: 1, caption: 1, question: 1, prompt: 1, feedback: 1, means: 1, label: 1, year: 1, era: 1, h3: 1, by: 1, term: 1 };
+  function walk(node, fn, key) {
+    if (Array.isArray(node)) { node.forEach(function (n) { walk(n, fn, key); }); return; }
+    if (node && typeof node === 'object') { Object.keys(node).forEach(function (k) { walk(node[k], fn, k); }); return; }
+    fn(key, node);
+  }
   CC.storyClaims = function (st) {
     var ids = [];
-    (st.sections || []).forEach(function (s) { (s.claimIds || []).forEach(function (c) { if (ids.indexOf(c) === -1) ids.push(c); }); });
+    var add = function (c) { if (ids.indexOf(c) === -1) ids.push(c); };
+    (st.sections || []).forEach(function (s) { (s.claimIds || []).forEach(add); });
+    if (st.blocks) walk(st.blocks, function (k, v) { if (k === 'claimIds') add(v); });
     return CC.claimsOf(ids);
   };
+  CC.storyWords = function (st) {
+    var parts = [st.dek || ''];
+    if (st.blocks) walk(st.blocks, function (k, v) { if (typeof v === 'string' && READ_KEYS[k]) parts.push(v); });
+    else (st.sections || []).forEach(function (s) { parts.push((s.heading || '') + ' ' + s.text); });
+    return parts.join(' ').replace(/\[\[[^|\]]+\|([^\]]+)\]\]/g, '$1').split(/\s+/).filter(Boolean).length;
+  };
+  /* 220 words a minute for prose; pictures, maps and sliders add a little */
   CC.storyMinutes = function (st) {
-    var words = (st.dek + ' ' + (st.sections || []).map(function (s) { return (s.heading || '') + ' ' + s.text; }).join(' ')).split(/\s+/).length;
-    return Math.max(1, Math.round(words / 200));
+    var extra = 0;
+    if (st.blocks) st.blocks.forEach(function (b) { extra += { figure: .15, pair: .25, gallery: .5, video: .3, beforeAfter: .3, map: 1, quiz: .5, essay: .5, cards: .4, tabs: .5 }[b.type] || 0; });
+    return Math.max(1, Math.round(CC.storyWords(st) / (st.blocks ? 220 : 200) + extra));
   };
   CC.storyTopics = function (st) { return (CC.topics || []).filter(function (t) { return (t.storyIds || []).indexOf(st.id) !== -1; }); };
   /* picture for a story: its credited photo, else the related scene illustration (decorative here) */

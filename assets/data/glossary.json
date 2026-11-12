@@ -1,0 +1,95 @@
+{
+  "$comment": "Vietnamese words explained in place in stories: [[id|label]] in a story's text opens the entry. 'say' is a rough English-ear guide plus the tone; the audio phrases in phrases.json are the reference for sound.",
+  "glossary": [
+    {
+      "id": "hang",
+      "vi": "hàng",
+      "say": "hahng, falling tone",
+      "en": "Goods, wares. In a street name, “Hàng” plus a thing means the street that sold that thing."
+    },
+    {
+      "id": "pho",
+      "vi": "phố",
+      "say": "fuh, rising tone",
+      "en": "A street, especially a town street lined with shops. Not the soup, which is phở, said with a different tone."
+    },
+    {
+      "id": "phuong",
+      "vi": "phường",
+      "say": "fuh-uhng, falling tone",
+      "en": "A ward. In old Thăng Long a phường was a quarter where people of one craft or one home village lived and worked together; today it is the smallest unit of city government."
+    },
+    {
+      "id": "nhaong",
+      "vi": "nhà ống",
+      "say": "nyah ohngm, falling then rising tone",
+      "en": "“Tube house”: a narrow, deep and tall shophouse, with the shop at the front and the family behind and above."
+    },
+    {
+      "id": "o",
+      "vi": "ô",
+      "say": "oh, level tone",
+      "en": "A gate in the old city wall. Ô Quan Chưởng is the one that still stands."
+    },
+    {
+      "id": "dinh",
+      "vi": "đình",
+      "say": "ding, falling tone",
+      "en": "A village communal house, where the village’s guardian spirit is worshipped. In the Old Quarter several honour the founder of the craft the street practised."
+    },
+    {
+      "id": "vang",
+      "vi": "vàng",
+      "say": "vahng, falling tone",
+      "en": "Gold. Gold shops carry the word on their signs."
+    },
+    {
+      "id": "bac",
+      "vi": "bạc",
+      "say": "bahk, heavy (low, cut-off) tone",
+      "en": "Silver, and by extension money: Hàng Bạc was the silversmiths’ street and later the money changers’."
+    },
+    {
+      "id": "ma",
+      "vi": "mã",
+      "say": "mah, broken rising tone",
+      "en": "Paper goods made as offerings: paper money, clothes and houses burnt for the ancestors."
+    },
+    {
+      "id": "tra-da",
+      "vi": "trà đá",
+      "say": "chah dah",
+      "en": "Iced tea: cheap green tea over ice, sold from pavement stalls."
+    },
+    {
+      "id": "doimoi",
+      "vi": "Đổi Mới",
+      "say": "doy moy",
+      "en": "“Renovation”: the economic reforms begun in 1986 that opened Vietnam to private trade."
+    },
+    {
+      "id": "ho",
+      "vi": "hồ",
+      "say": "hoh",
+      "en": "Lake."
+    },
+    {
+      "id": "cho-coc",
+      "vi": "chợ cóc",
+      "say": "chuh kok",
+      "en": "“Frog market”: an informal neighbourhood market on a pavement or in an alley."
+    },
+    {
+      "id": "mo-hang",
+      "vi": "mở hàng",
+      "say": "muh hahng",
+      "en": "The day’s first sale, believed by many vendors to set their luck."
+    },
+    {
+      "id": "aodai",
+      "vi": "áo dài",
+      "say": "ow zai (north) / ow yai (south)",
+      "en": "The long tunic worn over trousers, Vietnam’s best-known traditional dress."
+    }
+  ]
+}

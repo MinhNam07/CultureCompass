@@ -1,0 +1,10 @@
+{
+  "name": "culturecompass-media",
+  "private": true,
+  "description": "Offline media tools (resize photos, trim videos). Not installed by the site build.",
+  "type": "module",
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "sharp": "^0.34.4"
+  }
+}

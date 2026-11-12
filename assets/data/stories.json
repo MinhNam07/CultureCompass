@@ -4,48 +4,577 @@
     {
       "id": "st-family-words",
       "country": "vietnam",
-      "place": "Hà Nội",
+      "place": "Hà Nội and the North",
       "title": "Why use family words with strangers?",
-      "dek": "In Vietnamese, the word you choose for “you” places both people in a relationship.",
+      "dek": "In Vietnamese there is no neutral “you”. Every time you speak to someone, you choose a family word that places you both: older sister, uncle, grandchild.",
       "sceneId": "sc01",
       "sections": [
         {
-          "text": "In Vietnamese, the words for “you” and “I” are often family terms chosen by age and relationship — so a host of your parents’ generation may become “cô” (aunt), and a slightly older man “anh” (older brother). Choosing a term places both people in a relationship, which is why listening for how someone introduces themself is so useful.",
+          "text": "People are usually addressed with family words that reflect age and relationship.",
           "claimIds": [
             "C-ADDR-FAMILY"
           ]
         },
         {
           "heading": "The terms you will hear most",
-          "text": "Common terms: anh (a man somewhat older than you), chị (a woman somewhat older), em (someone younger), cô, chú and bác (people of your parents’ generation).",
+          "text": "Anh, chị, em, cô, chú and bác cover most everyday encounters.",
           "claimIds": [
             "C-ADDR-TERMS"
           ]
         },
         {
           "heading": "A first name on its own",
-          "text": "Calling someone by their first name alone, without a family term, is often felt to be impolite. A host may well accept it from a guest, but if someone has offered you a term, using it back is the easy choice.",
+          "text": "Use a family word with the given name; the name alone can sound rude.",
           "claimIds": [
             "C-ADDR-NAME"
           ]
         },
         {
           "heading": "When you are not sure",
-          "text": "“Bạn ơi” is a safe, neutral way to get someone’s attention when you are unsure which term to use. Asking how a person would like to be called is also a respectful way to start.",
+          "text": "“Bạn ơi” works with people your age, and asking is always polite.",
           "claimIds": [
             "C-BANOI",
             "N-ASK"
           ]
         }
       ],
-      "appliesTo": "Meeting a host family in Hà Nội. The general guidance comes from Vietnam’s national tourism authority; the list of terms comes from a travel guide we are still checking.",
-      "varies": "Terms depend on age and relationship, and families differ. Follow the word a person uses about themself.",
+      "appliesTo": "Spoken Vietnamese in Hà Nội and the North. Most of it holds across the country; regional differences are marked.",
+      "varies": "Terms depend on age and relationship, and families and regions differ. Follow the word a person uses about themself.",
       "phraseIds": [
         "ph-xinchao-co",
         "ph-xungho",
         "ph-banoi"
       ],
-      "imageId": "art-sc01"
+      "imageId": "ev-oq-flowers",
+      "layout": "compare",
+      "hero": {
+        "image": "ev-oq-flowers"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "lede": true,
+          "paras": [
+            {
+              "text": "Buy a bunch of flowers from a woman about your mother’s age and you will not call her “you”. You will call her *cô*, aunt, and yourself *cháu*, her niece or nephew. She will answer the same way. A minute later, buying coffee from a student, you are *anh* or *chị*, older brother or sister, and the student is *em*.",
+              "claimIds": [
+                "C-ADDR-PAIR",
+                "C-ADDR-TERMS"
+              ]
+            },
+            {
+              "text": "Vietnamese has no neutral, all-purpose word for “you”, and even “I” is usually a family word. Speakers place themselves and the other person by age, relationship and status every time they open their mouth. It is less complicated than it sounds, and getting it roughly right is one of the warmest things a visitor can do.",
+              "claimIds": [
+                "C-ADDR-FAMILY",
+                "C-ADDR-TOI"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "tabs",
+          "heading": "Who do I call what?",
+          "id": "terms",
+          "intro": "Choose a tab: strangers by age, relatives, or how the North and South differ. On a phone, each row reads as a card.",
+          "label": "Vietnamese family words",
+          "tabs": [
+            {
+              "label": "Strangers",
+              "columns": [
+                "Who they are",
+                "Call them",
+                "Call yourself"
+              ],
+              "rows": [
+                [
+                  "A bit older than you, man",
+                  {
+                    "text": "anh",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-TERMS"
+                    ]
+                  },
+                  {
+                    "text": "em",
+                    "vi": true
+                  }
+                ],
+                [
+                  "A bit older than you, woman",
+                  {
+                    "text": "chị",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-TERMS"
+                    ]
+                  },
+                  {
+                    "text": "em",
+                    "vi": true
+                  }
+                ],
+                [
+                  "Younger than you",
+                  {
+                    "text": "em",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-TERMS"
+                    ]
+                  },
+                  {
+                    "text": "anh / chị",
+                    "vi": true
+                  }
+                ],
+                [
+                  "A little younger than your parents",
+                  {
+                    "text": "chú (man), cô (woman)",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-TERMS",
+                      "C-ADDR-NORTH-CO"
+                    ]
+                  },
+                  {
+                    "text": "cháu",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-PAIR"
+                    ]
+                  }
+                ],
+                [
+                  "A little older than your parents",
+                  {
+                    "text": "bác",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-TERMS"
+                    ]
+                  },
+                  {
+                    "text": "cháu",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-PAIR"
+                    ]
+                  }
+                ],
+                [
+                  "Your grandparents’ age",
+                  {
+                    "text": "ông (man), bà (woman)",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-TERMS"
+                    ]
+                  },
+                  {
+                    "text": "cháu",
+                    "vi": true
+                  }
+                ],
+                [
+                  "Much younger, a child",
+                  {
+                    "text": "cháu (North), con (South)",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-YOUNG"
+                    ]
+                  },
+                  {
+                    "text": "cô / chú / bác…",
+                    "vi": true
+                  }
+                ],
+                [
+                  "Your age, a friend",
+                  {
+                    "text": "bạn, cậu",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-FRIENDS"
+                    ]
+                  },
+                  {
+                    "text": "mình, tớ",
+                    "vi": true
+                  }
+                ]
+              ],
+              "caption": "Words for strangers, by age"
+            },
+            {
+              "label": "Relatives",
+              "columns": [
+                "Relative",
+                "In the North",
+                "Notes"
+              ],
+              "rows": [
+                [
+                  "Parent’s older brother or sister",
+                  {
+                    "text": "bác",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-KIN"
+                    ]
+                  },
+                  "Either side of the family."
+                ],
+                [
+                  "Father’s younger brother",
+                  {
+                    "text": "chú",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-KIN"
+                    ]
+                  },
+                  "Also any man a little younger than your parents."
+                ],
+                [
+                  "Father’s younger sister",
+                  {
+                    "text": "cô",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-KIN"
+                    ]
+                  },
+                  "Also any woman a little younger than your parents."
+                ],
+                [
+                  "Mother’s younger brother",
+                  {
+                    "text": "cậu",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-KIN"
+                    ]
+                  },
+                  "Rarely used for strangers in the North."
+                ],
+                [
+                  "Mother’s younger sister",
+                  {
+                    "text": "dì",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-KIN"
+                    ]
+                  },
+                  "Rarely used for strangers in the North."
+                ],
+                [
+                  "Great-grandparent",
+                  {
+                    "text": "cụ",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-REGION"
+                    ]
+                  },
+                  "Also a respectful word for a very old person."
+                ]
+              ],
+              "caption": "Family words in northern Vietnamese"
+            },
+            {
+              "label": "North and South",
+              "columns": [
+                "",
+                "Hà Nội and the North",
+                "The South"
+              ],
+              "rows": [
+                [
+                  "Father, mother",
+                  {
+                    "text": "bố, mẹ",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-REGION"
+                    ]
+                  },
+                  {
+                    "text": "ba, má",
+                    "vi": true
+                  }
+                ],
+                [
+                  "Eldest brother",
+                  {
+                    "text": "anh cả",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-REGION"
+                    ]
+                  },
+                  {
+                    "text": "anh hai",
+                    "vi": true
+                  }
+                ],
+                [
+                  "Great-grandparent",
+                  {
+                    "text": "cụ",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-REGION"
+                    ]
+                  },
+                  {
+                    "text": "cố",
+                    "vi": true
+                  }
+                ],
+                [
+                  "A much younger person",
+                  {
+                    "text": "cháu",
+                    "vi": true,
+                    "claimIds": [
+                      "C-ADDR-YOUNG"
+                    ]
+                  },
+                  {
+                    "text": "con",
+                    "vi": true
+                  }
+                ]
+              ],
+              "caption": "Regional differences"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Words that come in pairs",
+          "id": "pairs",
+          "paras": [
+            {
+              "text": "The key is that the words come in pairs. If you call a man *bác*, you are his *cháu*; if he calls you *em*, he is your *anh*. A Hà Nội linguist, Nguyễn Quang, shows how the pair carries the relationship: using both halves, “*cháu* invites *bác* upstairs”, sounds respectful even in a request, while dropping one half sounds closer and more relaxed.",
+              "claimIds": [
+                "C-ADDR-PAIR"
+              ]
+            },
+            {
+              "text": "This is everyday speech, not formality. In one survey, three quarters of responses used kinship words; in 500 recorded market conversations across four cities, buyers and sellers used them in 80% of their questions.",
+              "claimIds": [
+                "C-ADDR-SURVEY"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-fruit-pole",
+          "size": "wide",
+          "caption": "At a fruit stall, buyer and seller will call each other by family words."
+        },
+        {
+          "type": "text",
+          "heading": "Calling out: “ơi”",
+          "id": "oi",
+          "paras": [
+            {
+              "text": "To get someone’s attention, add *ơi* to the family word: *chị ơi* to a waitress a little older than you, *em ơi* to a younger one, *chú ơi* to a motorbike-taxi driver of your father’s generation, *bác ơi* to an older shopkeeper. It is the polite way to call someone over, in a restaurant, a market or the street, and it is far warmer than a wave or a raised finger.",
+              "claimIds": [
+                "C-ADDR-OI",
+                "C-ADDR-TERMS"
+              ]
+            },
+            {
+              "text": "If you cannot judge someone’s age at all, the tourism authority’s fallback is *bạn ơi*, “hey, friend”. It works well with people about your own age; with someone obviously older, choose *anh*, *chị* or *cô* and err on the generous side.",
+              "claimIds": [
+                "C-BANOI"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Inside the family",
+          "id": "family",
+          "paras": [
+            {
+              "text": "The words were family words first, and inside the family they are precise. *Bác* is a parent’s older brother or sister; *chú* is your father’s younger brother and *cô* his younger sister; *cậu* is your mother’s younger brother and *dì* her younger sister. That is why northern speakers, who use *chú* and *cô* for strangers of their parents’ age, rarely call an unrelated woman *dì*.",
+              "claimIds": [
+                "C-ADDR-KIN",
+                "C-ADDR-NORTH-CO"
+              ]
+            },
+            {
+              "text": "Regions differ even here. A Hà Nội child says *bố* and *mẹ*; a southern child often says *ba* and *má*. In the North the eldest brother is *anh cả* and *anh hai* is the second; in the South *anh hai* is the eldest. A northern great-grandparent is *cụ*, a southern one *cố*.",
+              "claimIds": [
+                "C-ADDR-REGION"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Why not just “tôi” and “bạn”?",
+          "id": "toi",
+          "paras": [
+            {
+              "text": "Phrasebooks often teach *tôi* for “I” and *bạn* for “you”. They are not wrong, but they are not neutral either. *Tôi* is the most impersonal word for oneself, polite but distant, and it once meant a king’s subject. *Bạn* means friend and fits people of about your own age. Researchers note that learners who use *tôi* and *bạn* with everyone can sound stiff, as two middle-aged neighbours would if they spoke that way.",
+              "claimIds": [
+                "C-ADDR-TOI",
+                "C-BANOI"
+              ]
+            },
+            {
+              "text": "Between friends of the same age, people use other pairs: *bạn* and *mình*, or the casual northern *tớ* and *cậu*. *Mày* and *tao* are for close friends at best and insults at worst; older Hà Nội families banned them at home.",
+              "claimIds": [
+                "C-ADDR-FRIENDS"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Asking someone’s age",
+          "id": "age",
+          "paras": [
+            {
+              "text": "Because the words depend on age, people often ask how old you are soon after meeting. It is not nosy: it is how both of you find the right pair. If you are not sure, it is fine to ask the person what you should call them: *Tôi nên gọi bạn thế nào ạ?*",
+              "claimIds": [
+                "C-ADDR-AGE",
+                "N-ASK"
+              ]
+            },
+            {
+              "text": "And always put the family word before the given name, not the surname: *chị Lan*, *bác Nam*. The given name on its own can sound rude to someone older.",
+              "claimIds": [
+                "C-ADDR-NAME"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": "In Hà Nội a woman of your parents’ age is usually *cô*. Southern speakers sometimes use other words, and families differ; the safest guide is the word she uses for herself.",
+          "claimIds": [
+            "C-ADDR-NORTH-CO",
+            "C-ADDR-TIP"
+          ]
+        },
+        {
+          "type": "phrases",
+          "heading": "Phrases to start with",
+          "ids": [
+            "ph-xinchao-co",
+            "ph-chioi",
+            "ph-banoi",
+            "ph-xungho"
+          ]
+        },
+        {
+          "type": "dodont",
+          "heading": "At a glance",
+          "do": {
+            "title": "Usually welcome",
+            "items": [
+              {
+                "text": "A family word plus the given name: *chị Lan*.",
+                "claimIds": [
+                  "C-ADDR-NAME"
+                ]
+              },
+              {
+                "text": "Answering with the partner of the word they use.",
+                "claimIds": [
+                  "C-ADDR-PAIR",
+                  "C-ADDR-TIP"
+                ]
+              },
+              {
+                "text": "Asking someone’s age, or what to call them.",
+                "claimIds": [
+                  "C-ADDR-AGE",
+                  "N-ASK"
+                ]
+              },
+              {
+                "text": "*Bạn ơi* with people about your age.",
+                "claimIds": [
+                  "C-BANOI"
+                ]
+              }
+            ]
+          },
+          "think": {
+            "title": "Think twice",
+            "items": [
+              {
+                "text": "A given name on its own with someone older.",
+                "claimIds": [
+                  "C-ADDR-NAME"
+                ]
+              },
+              {
+                "text": "*Tôi* and *bạn* with everyone.",
+                "claimIds": [
+                  "C-ADDR-TOI"
+                ]
+              },
+              {
+                "text": "*Mày* and *tao*.",
+                "claimIds": [
+                  "C-ADDR-FRIENDS"
+                ]
+              },
+              {
+                "text": "The surname as a form of address.",
+                "claimIds": [
+                  "C-ADDR-NAME"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "note",
+          "text": "Linguists stress that these are tendencies, and they disagree on some details, such as exactly who counts as *bác*. Families, regions and generations differ.",
+          "claimIds": [
+            "C-ADDR-CAUTION"
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-oq-flowers",
+          "question": "What do you call the flower seller?",
+          "prompt": "She looks a few years younger than your parents. You want to ask the price. Which word fits?",
+          "fitLabel": "That fits",
+          "otherLabel": "Look again",
+          "options": [
+            {
+              "label": "Bạn",
+              "vi": true,
+              "feedback": "*Bạn* suits someone about your own age. For a woman of your parents’ generation it sounds too casual."
+            },
+            {
+              "label": "Cô",
+              "vi": true,
+              "fit": true,
+              "feedback": "In Hà Nội a woman a little younger than your parents is *cô*, and you are *cháu*: *Cô ơi, cái này bao nhiêu tiền ạ?*"
+            },
+            {
+              "label": "Em",
+              "vi": true,
+              "feedback": "*Em* is for someone younger than you. She would be surprised."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "st-oi",
@@ -269,72 +798,368 @@
     {
       "id": "st-arrive-home",
       "country": "vietnam",
-      "place": "Hà Nội",
+      "place": "A family home, Hà Nội",
       "title": "Arriving at a family home",
-      "dek": "Shoes at the door, the eldest first, and a host who takes care of you.",
+      "dek": "Shoes at the door, the eldest first, a pot of tea and a host who keeps filling your bowl: how a visit to a Hà Nội home usually goes.",
       "sceneId": "sc01",
       "sections": [
         {
-          "text": "Shoes are taken off just outside the door when entering a home. A row of shoes by the door is a useful cue.",
+          "text": "Shoes are usually taken off at the door of a home.",
           "claimIds": [
             "C-SHOES-HOME"
           ]
         },
         {
           "heading": "Who to greet first",
-          "text": "When visiting a family, greet the eldest family members first and smile at everyone.",
+          "text": "Greet the oldest people first, and smile at everyone.",
           "claimIds": [
             "C-ELDEST"
           ]
         },
         {
           "heading": "Being looked after",
-          "text": "Hosts show hospitality by serving guests, refilling drinks and placing the best pieces of a dish in a guest’s bowl.",
+          "text": "Hosts serve their guests, refill their drinks and put the best pieces in their bowl.",
           "claimIds": [
             "C-HOST-SERVE"
           ]
         }
       ],
-      "appliesTo": "A family homestay in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
-      "varies": "Families and regions differ — follow how your host introduces themself and what they do.",
+      "appliesTo": "Visiting a family at home in Hà Nội and northern Vietnam. Most of what follows holds across the country.",
+      "varies": "Families differ, and so do generations and regions. Follow how your host introduces themself and what they do; gift taboos are beliefs, not rules.",
       "phraseIds": [
         "ph-xinchao-co",
         "ph-camon",
         "ph-noicham"
       ],
-      "imageId": "art-sc01"
+      "imageId": "ev-home-table",
+      "layout": "guide",
+      "hero": {
+        "image": "ev-home-table"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "lede": true,
+          "paras": [
+            {
+              "text": "Being invited home is a step up from being taken to a restaurant. In Hà Nội, where families often share narrow tube houses or high-rise flats, the invitation means being let into the place where the generations meet and the ancestors are remembered. What follows is how a visit usually goes, step by step.",
+              "claimIds": [
+                "C-HOME-ALTAR",
+                "C-HOME-TIP"
+              ]
+            },
+            {
+              "text": "None of it is a test. Hosts expect a foreign guest to get things slightly wrong, and the easiest rule is to watch them: where the shoes go, who sits where, who starts eating. When you are not sure, ask.",
+              "claimIds": [
+                "C-HOME-TIP",
+                "N-ASK"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "A visit, step by step",
+          "id": "steps",
+          "items": [
+            {
+              "title": "Bring something",
+              "paras": [
+                {
+                  "text": "Don’t arrive empty-handed. Fruit is the usual gift; biscuits or a cake, flowers or soft drinks work too, and something from your own country is a good talking point. Hand it over with both hands and play it down: it is just a small thing. Your host may put it aside without opening it, and may well send you home with fruit of their own.",
+                  "claimIds": [
+                    "C-HOME-GIFT",
+                    "C-HOME-HANDS"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Shoes off at the door",
+              "paras": [
+                {
+                  "text": "Take your shoes off just outside the door, next to the family’s own.",
+                  "claimIds": [
+                    "C-SHOES-HOME"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Greet the eldest first",
+              "paras": [
+                {
+                  "text": "Greet people in order of age, starting with the grandparents. Stand, nod or bow slightly from the shoulders, and let an older person offer a hand first. Use a family word: *Cháu chào bác* to someone older than your parents, *cô* or *chú* to someone younger than them, *ông* or *bà* to a grandparent. Adding *ạ* at the end sounds respectful. Don’t be surprised if someone asks how old you are; it is how they work out what to call you.",
+                  "claimIds": [
+                    "C-HOME-GREET",
+                    "C-ELDEST"
+                  ]
+                },
+                {
+                  "text": "Older Hà Nội families once expected visiting children to fold their arms when they greeted the parents. You will rarely see it now, but it shows how much the greeting matters.",
+                  "claimIds": [
+                    "C-HOME-ARMS"
+                  ]
+                }
+              ],
+              "phraseIds": [
+                "ph-xinchao-co"
+              ]
+            },
+            {
+              "title": "Tea first",
+              "paras": [
+                {
+                  "text": "Before anything else, there is usually tea. The host brews a fresh pot and pours small cups; a saying has it that a cup of tea opens the conversation. Take the cup with both hands, sip, and let the talk begin. You may be asked whether you have eaten, *ăn cơm chưa?*, which is a greeting and, near a mealtime, often an invitation to stay.",
+                  "claimIds": [
+                    "C-HOME-TEA",
+                    "C-HOME-ANCOM",
+                    "C-HOME-HANDS"
+                  ]
+                }
+              ],
+              "image": "ev-home-tea",
+              "caption": "A teapot and cups set out for guests."
+            },
+            {
+              "title": "At the table",
+              "paras": [
+                {
+                  "text": "Wait to be shown where to sit, and wait to start. In many northern families the younger members invite each elder to eat in turn, and nobody begins until the oldest person does. Your host will probably put food in your bowl, again and again. Eat what you can; to stop, say you are full, kindly and more than once, and leave the last piece on a shared dish unless you are urged to take it.",
+                  "claimIds": [
+                    "C-HOME-MOI",
+                    "C-HOME-BOWL",
+                    "C-HOST-SERVE"
+                  ]
+                },
+                {
+                  "text": "Your host may call it a simple meal of rice and greens. Say how good it is. And never leave your chopsticks standing upright in the rice: it recalls the incense sticks offered to the dead.",
+                  "claimIds": [
+                    "C-HOME-MODEST"
+                  ]
+                }
+              ],
+              "image": "ev-home-meal",
+              "caption": "A family meal: fish, greens, vegetables and small bowls of dipping sauce.",
+              "phraseIds": [
+                "ph-no"
+              ]
+            },
+            {
+              "title": "Leaving",
+              "paras": [
+                {
+                  "text": "There is no set ritual for leaving. Wait for a natural pause, thank your hosts for looking after you, and say goodbye to the elders as you greeted them. Avoid glancing at the clock or saying you are tired. One warm thank-you means more than many automatic ones.",
+                  "claimIds": [
+                    "C-HOME-LEAVE"
+                  ]
+                }
+              ],
+              "phraseIds": [
+                "ph-camon"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "The altar",
+          "id": "altar",
+          "paras": [
+            {
+              "text": "Somewhere in the house there will be an ancestral altar: photographs or name tablets of the family’s dead, an incense bowl, candles, fruit and flowers. Families rich and poor keep one, and it is the most sacred place in the home. In a traditional house it stands in the centre and at the highest point; in the tall, narrow houses of Hà Nội it is often on the top floor.",
+              "claimIds": [
+                "C-HOME-ALTAR"
+              ]
+            },
+            {
+              "text": "As a guest, give it room. Don’t step over an altar on the floor, walk straight in front of it or put your things down before it. People once placed a visitor’s gift on the altar so the ancestors could see it; that custom has mostly faded, but if your host does it, it is a compliment.",
+              "claimIds": [
+                "C-HOME-ALTAR-GUEST"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "pair",
+          "items": [
+            {
+              "image": "ev-home-altar",
+              "caption": "A family altar with photographs, flowers and fruit."
+            },
+            {
+              "image": "ev-home-flat-altar",
+              "caption": "An altar in a high-rise flat."
+            }
+          ]
+        },
+        {
+          "type": "dodont",
+          "heading": "At a glance",
+          "do": {
+            "title": "Usually welcome",
+            "items": [
+              {
+                "text": "Fruit, cake or flowers, handed over with both hands.",
+                "claimIds": [
+                  "C-HOME-GIFT",
+                  "C-HOME-HANDS"
+                ]
+              },
+              {
+                "text": "Shoes off at the door.",
+                "claimIds": [
+                  "C-SHOES-HOME"
+                ]
+              },
+              {
+                "text": "Greeting the eldest first, with a family word.",
+                "claimIds": [
+                  "C-HOME-GREET"
+                ]
+              },
+              {
+                "text": "Praising the food, and saying you are full when you are.",
+                "claimIds": [
+                  "C-HOME-MODEST",
+                  "C-HOME-BOWL"
+                ]
+              }
+            ]
+          },
+          "think": {
+            "title": "Think twice",
+            "items": [
+              {
+                "text": "Gifts wrapped in black, handkerchiefs, or knives and clocks at Tết. Some families see them as bad omens.",
+                "claimIds": [
+                  "C-HOME-UNLUCKY"
+                ]
+              },
+              {
+                "text": "Starting to eat before the oldest person.",
+                "claimIds": [
+                  "C-HOME-MOI"
+                ]
+              },
+              {
+                "text": "Chopsticks left standing in rice.",
+                "claimIds": [
+                  "C-HOME-MODEST"
+                ]
+              },
+              {
+                "text": "Stepping over or in front of a floor altar.",
+                "claimIds": [
+                  "C-HOME-ALTAR-GUEST"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "note",
+          "text": "Gift taboos are beliefs, and families differ. Chrysanthemums are on some guides’ list of unlucky flowers, yet families also offer them on their own altars at Tết.",
+          "claimIds": [
+            "C-HOME-UNLUCKY"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Who you might meet",
+          "id": "family",
+          "paras": [
+            {
+              "text": "The picture of three generations under one roof is only partly true now. The 2019 census counted 3.5 people per household across Vietnam and 3.3 in the Red River Delta around Hà Nội. Researchers disagree on how many older people still live with their children: one study found the share fell to 28% by 2017 in two provinces, another national survey put it above 60%. Expect anything from a couple in a flat to grandparents, parents and children in one house.",
+              "claimIds": [
+                "C-HOME-HOUSEHOLD"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-home-table",
+          "caption": "A family table laid for a meal beside the altar cabinet."
+        },
+        {
+          "type": "keep",
+          "title": "Take it with you",
+          "items": [
+            {
+              "term": "Gift",
+              "text": "Fruit or cake, given with both hands."
+            },
+            {
+              "term": "Door",
+              "text": "Shoes off outside."
+            },
+            {
+              "term": "Cháu chào bác ạ",
+              "vi": true,
+              "text": "Hello, to someone older than your parents."
+            },
+            {
+              "term": "Table",
+              "text": "Wait for the eldest to start; say you are full, kindly, when you are."
+            },
+            {
+              "term": "Altar",
+              "text": "Give it room."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-home-meal",
+          "question": "Your bowl keeps filling up",
+          "prompt": "You are full, but your host has just put another piece of fish in your bowl. What do you do?",
+          "fitLabel": "That fits",
+          "otherLabel": "Think again",
+          "options": [
+            {
+              "label": "Eat it quietly, then keep eating whatever comes",
+              "feedback": "Your host will keep going. It is fine to stop."
+            },
+            {
+              "label": "Thank them and say, more than once, that you are full",
+              "fit": true,
+              "feedback": "Repeating kindly that you are full is the usual way to stop. *Tôi no rồi, cảm ơn.*"
+            },
+            {
+              "label": "Put the piece back on the shared plate",
+              "feedback": "Leave it in your bowl and say you are full instead."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "st-hand",
       "country": "vietnam",
-      "place": "Hà Nội",
+      "place": "Streets of Hà Nội",
       "title": "Why raise your hand to cross?",
-      "dek": "Vietnam’s road law asks pedestrians for a hand signal where there is no crossing.",
+      "dek": "Nearly seven million motorbikes, few traffic lights in the old streets, and a law that asks pedestrians to signal with a hand. How Hà Nội crosses the road.",
       "sceneId": "sc04",
-      "imageId": "img-street-central",
+      "imageId": "ev-oq-crossing",
       "sections": [
         {
-          "text": "Since 1 January 2025, Vietnam’s Law on Road Traffic Order and Safety says pedestrians may cross only where there are traffic lights, a marked crossing, or a pedestrian bridge or tunnel, and must follow the signals.",
+          "text": "Vietnam’s road law asks pedestrians to cross at lights, marked crossings, bridges or tunnels where there are any.",
           "claimIds": [
             "C-ROAD-WHERE"
           ]
         },
         {
           "heading": "Where there is no crossing",
-          "text": "Where there are none, pedestrians must watch the oncoming vehicles, cross only when it is safe and give a hand signal while crossing. Crossing without the required hand signal can be fined 150,000–250,000 đồng under Decree 168/2024.",
+          "text": "Watch the traffic, cross when it is safe and give a hand signal. Crossing without one can be fined.",
           "claimIds": [
             "C-ROAD-HAND",
             "C-ROAD-FINE"
           ]
         },
         {
-          "editorial": true,
-          "text": "The law does not say how far away a crossing has to be before you may cross elsewhere. If one is close, use it.",
-          "claimIds": []
-        },
-        {
           "heading": "Keep watching anyway",
-          "text": "The UK government’s travel advice says compliance with road laws is poor in Vietnam, and tells people on foot to be aware of motorcycles approaching as they walk. It also advises holding your bag in front of you or on the side away from the traffic.",
+          "text": "Compliance with road rules is poor, so stay alert and keep your bag away from the traffic.",
           "claimIds": [
             "C-ROAD-ALERT",
             "C-BAG-SIDE"
@@ -342,28 +1167,346 @@
         },
         {
           "heading": "A steady pace",
-          "text": "A Vietnamese lifestyle guide suggests walking at a steady, even pace in a straight line so riders can predict where you will be, and, if you are unsure, moving with local pedestrians when they cross.",
+          "text": "Walk steadily so riders can predict you, or cross with local people.",
           "claimIds": [
             "C-CROSS-STEADY",
             "C-CROSS-LOCALS"
           ]
         }
       ],
-      "appliesTo": "Crossing rules are national law (Law 36/2024/QH15, read October 2026). Safety advice is from the UK government.",
-      "varies": "Traffic differs from street to street and hour to hour. This is not legal advice.",
-      "phraseIds": []
+      "appliesTo": "Crossing streets in Hà Nội and other Vietnamese cities. The law applies nationwide.",
+      "varies": "Traffic differs from street to street and hour to hour, and rules for the city centre are changing. This is not legal advice.",
+      "phraseIds": [],
+      "layout": "guide",
+      "hero": {
+        "image": "ev-oq-crossing"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "lede": true,
+          "paras": [
+            {
+              "text": "The first time you stand at the edge of a Hà Nội street, it can look like a river with no bridge. Motorbikes pour past in both directions, weaving, hooting, filling every gap. There is a reason the city feels like this: it has about 6.9 million motorbikes and 1.1 million cars, and more than 450,000 motorbikes inside the inner ring road alone.",
+              "claimIds": [
+                "C-ROAD-VEHICLES"
+              ]
+            },
+            {
+              "text": "People cross anyway, all day, and so can you. Vietnam’s road law even tells you how, down to a detail that surprises visitors: where there is no crossing, raise your hand. This guide explains the rule, the fine, and the local habits that matter as much as either.",
+              "claimIds": [
+                "C-ROAD-HAND"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "facts",
+          "title": "The law in brief",
+          "items": [
+            {
+              "term": "Where",
+              "text": "At lights, marked crossings, footbridges or underpasses, if there are any."
+            },
+            {
+              "term": "If there is none",
+              "text": "Watch the traffic, cross when it is safe, and signal with your hand."
+            },
+            {
+              "term": "On a zebra crossing",
+              "text": "No hand signal needed; follow the lights."
+            },
+            {
+              "term": "The fine",
+              "text": "150,000–250,000 đồng for crossing in the wrong place or without the signal where it is required."
+            }
+          ],
+          "claimIds": [
+            "C-ROAD-WHERE",
+            "C-ROAD-HAND",
+            "C-ROAD-HOWHAND",
+            "C-ROAD-FINE"
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Crossing, step by step",
+          "id": "steps",
+          "items": [
+            {
+              "title": "Look for a crossing first",
+              "paras": [
+                {
+                  "text": "The law, in force since January 2025, says to cross at traffic lights, a marked crossing, a footbridge or an underpass where one exists, and to follow the signals. On a marked crossing you do not need to raise your hand.",
+                  "claimIds": [
+                    "C-ROAD-WHERE",
+                    "C-ROAD-HOWHAND"
+                  ]
+                }
+              ],
+              "image": "ev-oq-crossing",
+              "caption": "Traffic lights at an Old Quarter junction."
+            },
+            {
+              "title": "Wait for a gap, not an empty road",
+              "paras": [
+                {
+                  "text": "An empty road may never come. Watch the oncoming traffic and choose a moment when it thins. If you are unsure, stand beside local people who are about to cross and move when they do.",
+                  "claimIds": [
+                    "C-ROAD-HAND",
+                    "C-CROSS-LOCALS"
+                  ]
+                },
+                {
+                  "text": "Let cars, buses and lorries pass first. A motorbike can steer around you; a bus cannot.",
+                  "claimIds": [
+                    "C-CROSS-TIP"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Raise your hand",
+              "paras": [
+                {
+                  "text": "Where there is no crossing, the law asks you to give a hand signal while you cross. It does not say how; the point is that riders can see you mean to cross. Crossing without the signal where it is required, or in a place you should not, can be fined 150,000–250,000 đồng, more than double the old fine.",
+                  "claimIds": [
+                    "C-ROAD-HAND",
+                    "C-ROAD-HOWHAND",
+                    "C-ROAD-FINE"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Walk steadily. Don’t stop, don’t run",
+              "paras": [
+                {
+                  "text": "This is the part locals stress most. Walk at an even pace, in a straight line, and look at the riders coming towards you. They judge where you will be and steer around you. Stopping halfway, stepping back or suddenly running is what confuses them.",
+                  "claimIds": [
+                    "C-CROSS-STEADY",
+                    "C-CROSS-HABITS"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Keep watching, and keep your bag close",
+              "paras": [
+                {
+                  "text": "The UK government’s travel advice is blunt: compliance with road laws is poor, so stay aware of motorbikes the whole way across. Thieves on motorbikes snatch bags, so carry yours in front of you or on the side away from the road.",
+                  "claimIds": [
+                    "C-ROAD-ALERT",
+                    "C-BAG-SIDE"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "What locals actually do",
+          "id": "locals",
+          "paras": [
+            {
+              "text": "Hà Nội’s own writers are frank about it. One reader of VnExpress stood at a busy junction and counted 37 people crossing during a single red light; only four used the zebra crossing. Pavements are often blocked by parked bikes and stalls, and at some wide junctions the green light lasts barely long enough to cross. A columnist in Việt Nam News put it simply: don’t expect a vehicle to stop for you.",
+              "claimIds": [
+                "C-CROSS-HABITS"
+              ]
+            },
+            {
+              "text": "Their advice is the same as a motorbike-taxi driver’s: walk evenly, look straight ahead, don’t stop, don’t run, don’t hesitate. It works because riders read a steady walker easily. It is local know-how rather than a rule, and it works far better with motorbikes than with cars.",
+              "claimIds": [
+                "C-CROSS-HABITS",
+                "C-CROSS-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-oq-traffic",
+          "size": "wide",
+          "caption": "Motorbikes turning through an Old Quarter junction."
+        },
+        {
+          "type": "text",
+          "heading": "How dangerous is it?",
+          "id": "safety",
+          "paras": [
+            {
+              "text": "Traffic is a real risk in Vietnam, but the numbers are falling. Police counted 10,379 road deaths across the country in the year to mid-December 2025, about 6% fewer than the year before, and 7,198 in the first nine months of 2026. The World Health Organization’s estimates, made a different way and running higher, show the death rate falling from 25.4 per 100,000 people in 2010 to 17.7 in 2021.",
+              "claimIds": [
+                "C-ROAD-DEATHS"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Police counts and WHO estimates are measured differently and should not be compared directly. Both point the same way: down.",
+          "claimIds": [
+            "C-ROAD-DEATHS"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "A quieter centre on weekend nights",
+          "id": "centre",
+          "paras": [
+            {
+              "text": "Crossing is easiest of all where there is no traffic. Every Friday to Sunday evening, the streets around Hoàn Kiếm Lake close to vehicles and become a walking space. In July 2026 this became the first phase of a low-emission pilot zone. A government directive had asked Hà Nội to keep petrol motorbikes out of the whole inner ring road from that date; the city chose to go in stages, and pushed the wider limits back to 2028.",
+              "claimIds": [
+                "C-ROAD-DIR20",
+                "C-HK-WALK"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-lake-saturday",
+          "size": "bleed",
+          "caption": "The car-free lakeside on a Saturday night."
+        },
+        {
+          "type": "text",
+          "heading": "Walking with children",
+          "id": "children",
+          "paras": [
+            {
+              "text": "The law asks adults to lead children under seven by the hand when crossing, and asks everyone to help children, pregnant women, older people and disabled people across the road. Use the pavement where there is one, and keep to the right-hand edge of the road where there isn’t.",
+              "claimIds": [
+                "C-ROAD-ART30"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "dodont",
+          "heading": "At a glance",
+          "do": {
+            "title": "Usually works",
+            "items": [
+              {
+                "text": "Use lights, crossings and footbridges when you can.",
+                "claimIds": [
+                  "C-ROAD-WHERE"
+                ]
+              },
+              {
+                "text": "Raise a hand where there is no crossing.",
+                "claimIds": [
+                  "C-ROAD-HAND"
+                ]
+              },
+              {
+                "text": "Walk at a steady, even pace and watch the riders.",
+                "claimIds": [
+                  "C-CROSS-STEADY"
+                ]
+              },
+              {
+                "text": "Cross alongside local people.",
+                "claimIds": [
+                  "C-CROSS-LOCALS"
+                ]
+              }
+            ]
+          },
+          "think": {
+            "title": "Think twice",
+            "items": [
+              {
+                "text": "Stopping, stepping back or running halfway across.",
+                "claimIds": [
+                  "C-CROSS-STEADY"
+                ]
+              },
+              {
+                "text": "Stepping out in front of a car or bus.",
+                "claimIds": [
+                  "C-CROSS-TIP"
+                ]
+              },
+              {
+                "text": "Holding your phone or bag on the traffic side.",
+                "claimIds": [
+                  "C-BAG-SIDE"
+                ]
+              },
+              {
+                "text": "Assuming a green light means no one is coming.",
+                "claimIds": [
+                  "C-ROAD-ALERT"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "keep",
+          "title": "Take it with you",
+          "items": [
+            {
+              "term": "Crossing",
+              "text": "Use one if there is one."
+            },
+            {
+              "term": "Hand",
+              "text": "Raise it where there isn’t."
+            },
+            {
+              "term": "Pace",
+              "text": "Steady. Don’t stop, don’t run."
+            },
+            {
+              "term": "Big vehicles",
+              "text": "Let them pass."
+            },
+            {
+              "term": "Bag",
+              "text": "Away from the road."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-oq-pavement",
+          "question": "Halfway across, a motorbike is coming",
+          "prompt": "You are in the middle of the road and a motorbike is heading towards you. What should you do?",
+          "fitLabel": "That fits",
+          "otherLabel": "Think again",
+          "options": [
+            {
+              "label": "Stop and wait for it to pass",
+              "feedback": "Stopping suddenly is what riders find hardest to predict. They are already steering for where you were going to be."
+            },
+            {
+              "label": "Keep walking at the same steady pace",
+              "fit": true,
+              "feedback": "A steady walker is easy to read. The rider will pass behind or in front of you."
+            },
+            {
+              "label": "Run to the other side",
+              "feedback": "Running changes your speed without warning, and that is what causes near misses."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "st-photo-ask",
       "country": "vietnam",
-      "place": "Hà Nội",
+      "place": "Streets and sites of Hà Nội",
       "title": "Asking before a photo",
-      "dek": "A street, a stall or a temple can be photogenic. The people in them get a say.",
+      "dek": "A vendor’s bicycle, a temple courtyard, a pair of friends in áo dài: Hà Nội is easy to photograph. The people in the picture get a say, and a few places have rules of their own.",
       "sceneId": "sc04",
-      "imageId": "img-vendor-blossom",
+      "imageId": "ev-oq-aodai",
       "sections": [
         {
-          "text": "Always ask before photographing people. If the answer is no, accept it calmly.",
+          "text": "Ask before photographing people; a calm, friendly request usually works.",
           "claimIds": [
             "C-PHOTO-ASK",
             "C-KEEP-COOL"
@@ -371,45 +1514,879 @@
         },
         {
           "heading": "At heritage sites",
-          "text": "At Văn Miếu – Quốc Tử Giám, the site’s published rules do not mention photography, so ask staff or look for signs on the day.",
+          "text": "Some sites publish no photo rules, so ask staff or look for signs.",
           "claimIds": [
             "C-VM-PHOTO-UNKNOWN"
           ]
         }
       ],
-      "appliesTo": "Streets and heritage sites in Hà Nội. The guidance on photographing people is general advice for Vietnam from the national tourism authority.",
-      "varies": "Each person decides for themself; each site may post its own rules.",
+      "appliesTo": "Taking photos of people and places in Hà Nội. The laws apply across Vietnam.",
+      "varies": "Each person decides for themself, and each site may post its own rules. Laws and fines are as reported in 2025–26; this is not legal advice.",
       "phraseIds": [
         "ph-chupanh-nguoi",
         "ph-chupanh-noi"
+      ],
+      "layout": "guide",
+      "hero": {
+        "image": "ev-oq-aodai"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "lede": true,
+          "paras": [
+            {
+              "text": "Hà Nội is easy to photograph: a woman in a conical hat with a bicycle full of flowers, a red bridge over green water, friends in [[aodai|áo dài]] posing in an Old Quarter lane. It is tempting to raise the camera and shoot.",
+              "editorial": true
+            },
+            {
+              "text": "Ask first. The national tourism authority puts it plainly, and adds the good news: most people will be happy to have their picture taken, and asking often starts a conversation. This guide covers how to ask, what the law says, and the few places where the answer is always no.",
+              "claimIds": [
+                "C-PHOTO-ASK"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Taking a portrait, step by step",
+          "id": "steps",
+          "items": [
+            {
+              "title": "Ask, even without words",
+              "paras": [
+                {
+                  "text": "Catch the person’s eye, smile, lift the camera slightly and tilt your head: the question is clear in any language. If you can, say it: *Tôi chụp ảnh bạn được không?* A nod means yes; a wave of the hand or a turned shoulder means no, and that is the end of it.",
+                  "claimIds": [
+                    "C-PHOTO-ASK",
+                    "C-PHOTO-TIP"
+                  ]
+                }
+              ],
+              "phraseIds": [
+                "ph-chupanh-nguoi"
+              ]
+            },
+            {
+              "title": "Take your time, then show them",
+              "paras": [
+                {
+                  "text": "Once someone agrees, there is no need to rush. Afterwards, turn the screen round and show them. People often laugh, point, ask for another. If they ask you to delete it, delete it while they watch.",
+                  "claimIds": [
+                    "C-PHOTO-TIP"
+                  ]
+                }
+              ],
+              "image": "ev-fruit-pole",
+              "caption": "A fruit seller with her baskets."
+            },
+            {
+              "title": "Be careful with children",
+              "paras": [
+                {
+                  "text": "Ask a parent before photographing a child, and don’t pat a child on the head to say thank you: touching the top of the head, especially a child’s, is considered rude.",
+                  "claimIds": [
+                    "C-PHOTO-HEAD",
+                    "C-PHOTO-ASK"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Agree a price before you pose",
+              "paras": [
+                {
+                  "text": "In the streets around Hoàn Kiếm Lake, a vendor may offer to put her shoulder pole and baskets on you for a photo. It is a long-reported routine, and money is usually expected afterwards; in 2012 the district acted against nearly 140 vendors who did it without asking. If you want the picture, agree a price first. If you don’t, say no with a smile and walk on.",
+                  "claimIds": [
+                    "C-PHOTO-VENDOR",
+                    "C-BARGAIN-WALK"
+                  ]
+                }
+              ],
+              "image": "ev-lake-vendor",
+              "caption": "A vendor by Hoàn Kiếm Lake."
+            },
+            {
+              "title": "Think before you post",
+              "paras": [
+                {
+                  "text": "Taking a photo in a public place is one thing; publishing it is another. Under Vietnam’s Civil Code, using someone’s image needs their consent, and using it commercially means paying them unless you agree otherwise. Photos of public events, such as performances and sports, are an exception, as long as the use does not harm the person’s dignity.",
+                  "claimIds": [
+                    "C-PHOTO-LAW"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "What the law does and does not say",
+          "id": "law",
+          "paras": [
+            {
+              "text": "Vietnam’s Civil Code of 2015 gives every person rights over their own image. The key word is *use*: the article is about publishing a picture, putting it in an advertisement or selling it, not about pressing the shutter in a public street. Using a person’s image needs their consent; using it to make money means paying them, unless you both agree otherwise.",
+              "claimIds": [
+                "C-PHOTO-LAW"
+              ]
+            },
+            {
+              "text": "There are two exceptions. Images used in the national or public interest need no consent, and nor do images taken at public activities such as conferences, sports matches and performances, provided the use does not damage the person’s honour, dignity or reputation. A separate article protects private life: collecting or publishing information about someone’s private life needs their consent. Anyone whose image is misused can ask a court to order it taken down or destroyed and to award compensation.",
+              "claimIds": [
+                "C-PHOTO-LAW",
+                "C-PHOTO-PRIVACY"
+              ]
+            },
+            {
+              "text": "In practice: a street scene for your own album is fine; a close portrait you post online or sell is where consent matters most.",
+              "claimIds": [
+                "C-PHOTO-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Temples and pagodas",
+          "id": "temples",
+          "paras": [
+            {
+              "text": "A temple is a place of worship before it is a sight. Dress modestly, take off your hat and, where asked, your shoes. Look for signs before you photograph inside, and never use flash where they ask for no photos. Many Buddhists find photos of Buddha statues, and especially selfies with them, disrespectful.",
+              "claimIds": [
+                "C-PHOTO-TEMPLE"
+              ]
+            },
+            {
+              "text": "People who are praying are not part of the scenery. Ask, or wait until they have finished.",
+              "claimIds": [
+                "C-PHOTO-ASK",
+                "C-PHOTO-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "pair",
+          "items": [
+            {
+              "image": "ev-ngoc-son-gate",
+              "caption": "Inside Ngọc Sơn Temple: ask before photographing people at prayer."
+            },
+            {
+              "image": "ev-huc-bridge",
+              "caption": "The bridge to the temple, a favourite spot for photos."
+            }
+          ]
+        },
+        {
+          "type": "tabs",
+          "heading": "Places with their own rules",
+          "intro": "Most of the city is open to your camera. These places have published rules or laws that say otherwise.",
+          "label": "Photo rules at particular places",
+          "tabs": [
+            {
+              "label": "Sites",
+              "columns": [
+                "Place",
+                "Photos",
+                "What the rules say"
+              ],
+              "rows": [
+                [
+                  "Hồ Chí Minh Mausoleum",
+                  {
+                    "match": "no",
+                    "text": "Not in restricted zones"
+                  },
+                  {
+                    "text": "Fines of 20–30 million đồng and confiscation for filming or photographing in restricted and protected zones.",
+                    "claimIds": [
+                      "C-PHOTO-MAUSOLEUM"
+                    ]
+                  }
+                ],
+                [
+                  "Military areas",
+                  {
+                    "match": "no",
+                    "text": "Not without permission"
+                  },
+                  {
+                    "text": "5–8 million đồng, or 30–50 million in special zones; equipment confiscated.",
+                    "claimIds": [
+                      "C-PHOTO-MILITARY"
+                    ]
+                  }
+                ],
+                [
+                  "Imperial Citadel of Thăng Long",
+                  {
+                    "match": "part",
+                    "text": "Visitors’ photos; filming needs permission"
+                  },
+                  {
+                    "text": "Permission needed for films and visual recordings; no drones.",
+                    "claimIds": [
+                      "C-PHOTO-CITADEL"
+                    ]
+                  }
+                ],
+                [
+                  "Temple of Literature",
+                  {
+                    "match": "part",
+                    "text": "Not mentioned"
+                  },
+                  {
+                    "text": "Its published rules say nothing about photos; ask staff or look for signs.",
+                    "claimIds": [
+                      "C-VM-PHOTO-UNKNOWN"
+                    ]
+                  }
+                ],
+                [
+                  "Temples and pagodas",
+                  {
+                    "match": "part",
+                    "text": "Check signs inside"
+                  },
+                  {
+                    "text": "No flash where signs ask; be careful with statues and people at prayer.",
+                    "claimIds": [
+                      "C-PHOTO-TEMPLE"
+                    ]
+                  }
+                ]
+              ],
+              "caption": "Photo rules at particular places in Hà Nội"
+            },
+            {
+              "label": "Drones",
+              "columns": [
+                "Situation",
+                "Allowed?",
+                "What the rules say"
+              ],
+              "rows": [
+                [
+                  "Any drone of 0.25 kg or more",
+                  {
+                    "match": "part",
+                    "text": "With a licence"
+                  },
+                  {
+                    "text": "A licence has been required since November 2025.",
+                    "claimIds": [
+                      "C-PHOTO-DRONE"
+                    ]
+                  }
+                ],
+                [
+                  "Aerial photos or video",
+                  {
+                    "match": "part",
+                    "text": "With permission"
+                  },
+                  {
+                    "text": "Without permission: 8–9 million đồng.",
+                    "claimIds": [
+                      "C-PHOTO-DRONE"
+                    ]
+                  }
+                ],
+                [
+                  "Near military or restricted sites",
+                  {
+                    "match": "no",
+                    "text": "No"
+                  },
+                  {
+                    "text": "Police warn against it; the Imperial Citadel bans drones outright.",
+                    "claimIds": [
+                      "C-PHOTO-DRONE"
+                    ]
+                  }
+                ]
+              ],
+              "caption": "Drone rules in Vietnam"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Guides disagree about whether you may carry a switched-off phone into the Mausoleum or must leave it at the check-in. Follow what the security staff tell you on the day.",
+          "claimIds": [
+            "C-PHOTO-MAUSOLEUM"
+          ]
+        },
+        {
+          "type": "dodont",
+          "heading": "At a glance",
+          "do": {
+            "title": "Usually welcome",
+            "items": [
+              {
+                "text": "Asking first, with words or a gesture.",
+                "claimIds": [
+                  "C-PHOTO-ASK"
+                ]
+              },
+              {
+                "text": "Showing people the photo afterwards.",
+                "claimIds": [
+                  "C-PHOTO-TIP"
+                ]
+              },
+              {
+                "text": "Agreeing a price before posing with a vendor’s goods.",
+                "claimIds": [
+                  "C-PHOTO-VENDOR"
+                ]
+              },
+              {
+                "text": "Looking for signs before photographing inside a temple.",
+                "claimIds": [
+                  "C-PHOTO-TEMPLE"
+                ]
+              }
+            ]
+          },
+          "think": {
+            "title": "Think twice",
+            "items": [
+              {
+                "text": "Photographing people at prayer, or Buddha statues up close.",
+                "claimIds": [
+                  "C-PHOTO-TEMPLE"
+                ]
+              },
+              {
+                "text": "Posting or selling a portrait without the person’s consent.",
+                "claimIds": [
+                  "C-PHOTO-LAW"
+                ]
+              },
+              {
+                "text": "Any camera near the Mausoleum’s restricted zones or a military site.",
+                "claimIds": [
+                  "C-PHOTO-MAUSOLEUM",
+                  "C-PHOTO-MILITARY"
+                ]
+              },
+              {
+                "text": "Flying a drone without a licence and permission.",
+                "claimIds": [
+                  "C-PHOTO-DRONE"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "phrases",
+          "heading": "Words to ask with",
+          "ids": [
+            "ph-chupanh-nguoi",
+            "ph-chupanh-noi",
+            "ph-camon"
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": "Photographed with permission",
+          "id": "gallery",
+          "intro": "Select a picture to see it larger; use the arrow keys or swipe to move between them.",
+          "items": [
+            {
+              "image": "ev-oq-aodai",
+              "caption": "Friends in áo dài in the Old Quarter."
+            },
+            {
+              "image": "ev-oq-flowers",
+              "caption": "A flower seller’s bicycle."
+            },
+            {
+              "image": "ev-fruit-bike",
+              "caption": "Fruit on a bicycle."
+            },
+            {
+              "image": "ev-ceramics-bike",
+              "caption": "A motorbike loaded with ceramics."
+            }
+          ]
+        },
+        {
+          "type": "keep",
+          "title": "Take it with you",
+          "items": [
+            {
+              "term": "Tôi chụp ảnh bạn được không?",
+              "vi": true,
+              "text": "May I take your photo?"
+            },
+            {
+              "term": "No means no",
+              "text": "A wave of the hand is an answer."
+            },
+            {
+              "term": "Vendors",
+              "text": "Agree a price before you pose."
+            },
+            {
+              "term": "Posting",
+              "text": "Needs the person’s consent."
+            },
+            {
+              "term": "Mausoleum and military sites",
+              "text": "Cameras away."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-lake-vendor",
+          "question": "A vendor offers you her baskets",
+          "prompt": "By the lake, a fruit vendor lifts her shoulder pole towards you and gestures for a photo. You hadn’t planned on one. What do you do?",
+          "fitLabel": "That fits",
+          "otherLabel": "Think again",
+          "options": [
+            {
+              "label": "Pose, then see what happens",
+              "feedback": "Payment is usually expected afterwards, and an unagreed price is where trouble starts."
+            },
+            {
+              "label": "Agree a price first, or smile and say no",
+              "fit": true,
+              "feedback": "Either is fine. *Không, cảm ơn* and a smile end it politely."
+            },
+            {
+              "label": "Take her photo instead without asking",
+              "feedback": "Ask first, always. She may well say yes."
+            }
+          ]
+        }
       ]
     },
     {
       "id": "st-keep-cool",
       "country": "vietnam",
-      "place": "Hà Nội",
+      "place": "Everyday Hà Nội",
       "title": "Keeping your cool in public",
-      "dek": "Why a calm reply often works better than a raised voice.",
+      "dek": "Why a quiet word works better than a raised voice, what a smile can mean, and which gestures to keep in your pocket.",
       "sceneId": "sc04",
       "sections": [
         {
-          "text": "“Saving face” matters. Keep your cool in public and avoid loud arguments or making a scene.",
+          "text": "Saving face matters: keep calm in public and avoid loud arguments.",
           "claimIds": [
             "C-KEEP-COOL"
           ]
         },
         {
           "heading": "Gestures to avoid",
-          "text": "Avoid pointing at people, or patting them on the back or head, particularly if they are older than you.",
+          "text": "Don’t point at people or pat them on the head, especially if they are older than you.",
           "claimIds": [
             "C-NO-POINT"
           ]
         }
       ],
-      "appliesTo": "Public places in Hà Nội, using general guidance for Vietnam from the national tourism authority.",
-      "varies": "General guidance, not a rule. People and situations differ.",
+      "appliesTo": "Everyday encounters in Hà Nội: shops, taxis, restaurants, offices and the street.",
+      "varies": "General guidance, not a rule. People, generations and situations differ, and the scholars quoted here warn against treating it as a stereotype.",
       "phraseIds": [],
-      "imageId": "art-sc04"
+      "imageId": "ev-street-market",
+      "layout": "longform",
+      "hero": {
+        "image": "ev-street-market"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "lede": true,
+          "paras": [
+            {
+              "text": "Sooner or later something will go wrong: a wrong order, a taxi that takes the long way, a price that changes at the till. The instinct many visitors bring is to make the problem clear, firmly and loudly. In Hà Nội, that is usually the slowest way to fix it.",
+              "editorial": true
+            },
+            {
+              "text": "The national tourism authority’s advice is short: keep your cool, avoid loud arguments and making a scene, and don’t berate people for mistakes. Behind it is an idea that shapes everyday life here, and has its own small vocabulary: face.",
+              "claimIds": [
+                "C-KEEP-COOL"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "What “face” means",
+          "id": "face",
+          "paras": [
+            {
+              "text": "Face stands for a person’s reputation, dignity and honour in the eyes of others. You give someone face by treating them with respect and paying compliments; they lose it when they are criticised or shown up in public. A shop assistant scolded in front of colleagues has lost face. So, in a different way, has the customer who shouted.",
+              "claimIds": [
+                "C-FACE-DEF"
+              ]
+            },
+            {
+              "text": "Researchers in Vietnam describe face as both personal and shared. It belongs to you, but also to your family and group, and it depends on what others think. One study finds that when someone higher up a hierarchy loses face, an older person, a manager, an official, the consequences are taken more seriously. That is why a public confrontation with an older or senior person can go especially badly.",
+              "claimIds": [
+                "C-FACE-SHARED"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "facts",
+          "title": "Words for face",
+          "items": [
+            {
+              "term": "Thể diện",
+              "vi": true,
+              "text": "Face: your standing in other people’s eyes."
+            },
+            {
+              "term": "Mất mặt",
+              "vi": true,
+              "text": "To lose face, literally “lose the face”."
+            },
+            {
+              "term": "Danh dự",
+              "vi": true,
+              "text": "Honour, of a person or a family."
+            },
+            {
+              "term": "Sĩ diện",
+              "vi": true,
+              "text": "Pride; *sĩ diện hão* is hollow pride, keeping up appearances."
+            },
+            {
+              "term": "Khiêm tốn",
+              "vi": true,
+              "text": "Modest, playing yourself down."
+            }
+          ],
+          "claimIds": [
+            "C-FACE-WORDS",
+            "C-FACE-SHARED",
+            "C-MODEST"
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Vietnamese scholars themselves use these words loosely, often interchangeably, and Vietnamese writers have long criticised *sĩ diện hão*, pride for show. Face is a value people argue about, not a rule they all obey.",
+          "claimIds": [
+            "C-FACE-WORDS"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Older means wiser",
+          "id": "elders",
+          "paras": [
+            {
+              "text": "Age shapes almost every encounter. Vietnam’s tourism authority sums up the attitude in three words, older is wiser, and names the virtue that goes with it: *lễ phép*, being courteous, respectful and even compliant towards older people. The language builds it in, with different words for “you” depending on whether the other person is older or younger, and people will often ask your age soon after meeting so they know which to use.",
+              "claimIds": [
+                "C-COOL-ELDERS",
+                "C-ADDR-AGE"
+              ]
+            },
+            {
+              "text": "This is why the same complaint lands differently depending on who receives it. Research on face finds that when someone higher in a hierarchy loses face, the damage is taken more seriously than when someone lower down does. Contradicting an older shopkeeper in front of her family, or a senior official in front of his staff, costs more than the same words said to a teenager behind a counter. If you need to disagree with someone older, do it privately, gently, and with their title: *bác*, *cô*, *chú*.",
+              "claimIds": [
+                "C-FACE-SHARED",
+                "C-COOL-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Saying no without saying no",
+          "id": "indirect",
+          "paras": [
+            {
+              "text": "Everyday speech tends to be indirect and polite. Someone may avoid a flat “no” and say “maybe”, “it’s difficult” or nothing at all; a “yes” may simply mean “I hear you”. A pause before answering is a sign of respect, not hesitation. If you need a clear answer, ask an open question, “what would be possible?”, rather than one that forces a refusal.",
+              "claimIds": [
+                "C-INDIRECT"
+              ]
+            },
+            {
+              "text": "Modesty works the same way. People play down their feelings, their cooking and their gifts. A host may even pretend to scold a friend for bringing a present: “why did you go to all that trouble?” A Vietnamese guest hears warmth; a visitor may hear a complaint. None of this means people are dishonest. Observers often note the opposite.",
+              "claimIds": [
+                "C-MODEST",
+                "C-HOST-MOCK"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Modesty does not preclude honesty.",
+          "by": "The Cultural Atlas, on Vietnamese culture",
+          "claimIds": [
+            "C-MODEST"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Raised voices and quiet smiles",
+          "id": "voices",
+          "paras": [
+            {
+              "text": "Shouting is generally seen as improper, uncivilised even. It is also, honestly, common: you will hear raised voices in markets, in traffic and across the street. The difference is who is shouting at whom. A visitor raising their voice at a waiter or driver puts the other person in a corner where giving way means losing face.",
+              "claimIds": [
+                "C-SHOUT",
+                "C-FACE-DEF"
+              ]
+            },
+            {
+              "text": "A smile can mean more than happiness. People may smile or laugh softly when they are embarrassed, apologising, frustrated or nervous, as if to spare you the discomfort. Others keep a serious face that is not unfriendly at all. And from you, a smile goes a long way, especially when you have no shared language.",
+              "claimIds": [
+                "C-SMILE"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-oq-pavement",
+          "size": "wide",
+          "caption": "An Old Quarter pavement in the afternoon."
+        },
+        {
+          "type": "tabs",
+          "heading": "Gestures that travel badly",
+          "intro": "Some everyday gestures read differently here. Switch between what to avoid and what to do instead.",
+          "label": "Gestures",
+          "tabs": [
+            {
+              "label": "Avoid",
+              "columns": [
+                "Gesture",
+                "How it may read"
+              ],
+              "rows": [
+                [
+                  "Pointing at someone with a finger",
+                  {
+                    "text": "Rude, especially to someone older.",
+                    "claimIds": [
+                      "C-NO-POINT",
+                      "C-GESTURES"
+                    ]
+                  }
+                ],
+                [
+                  "Beckoning with a forefinger, palm up",
+                  {
+                    "text": "Rude, even threatening.",
+                    "claimIds": [
+                      "C-GESTURES"
+                    ]
+                  }
+                ],
+                [
+                  "Patting a head, even a child’s",
+                  {
+                    "text": "The head is the most sacred part of the body.",
+                    "claimIds": [
+                      "C-GESTURES",
+                      "C-NO-POINT"
+                    ]
+                  }
+                ],
+                [
+                  "Soles of the feet towards someone",
+                  {
+                    "text": "Rude.",
+                    "claimIds": [
+                      "C-GESTURES"
+                    ]
+                  }
+                ],
+                [
+                  "Hands on hips, arms crossed",
+                  {
+                    "text": "Can look aggressive.",
+                    "claimIds": [
+                      "C-GESTURES"
+                    ]
+                  }
+                ],
+                [
+                  "Crossed fingers; the “okay” sign",
+                  {
+                    "text": "Impolite; the okay sign can mean “poor quality”.",
+                    "claimIds": [
+                      "C-GESTURES"
+                    ]
+                  }
+                ]
+              ],
+              "caption": "Gestures to avoid"
+            },
+            {
+              "label": "Instead",
+              "columns": [
+                "Instead of…",
+                "Try"
+              ],
+              "rows": [
+                [
+                  "Pointing",
+                  {
+                    "text": "An open hand, palm up, towards the person or thing.",
+                    "claimIds": [
+                      "C-GESTURES"
+                    ]
+                  }
+                ],
+                [
+                  "Beckoning with one finger",
+                  {
+                    "text": "An open hand.",
+                    "claimIds": [
+                      "C-GESTURES"
+                    ]
+                  }
+                ],
+                [
+                  "A raised voice",
+                  {
+                    "text": "A lower voice and a smile.",
+                    "claimIds": [
+                      "C-KEEP-COOL",
+                      "C-SMILE"
+                    ]
+                  }
+                ],
+                [
+                  "Public criticism",
+                  {
+                    "text": "A quiet word, one to one.",
+                    "claimIds": [
+                      "C-KEEP-COOL",
+                      "C-FACE-DEF"
+                    ]
+                  }
+                ]
+              ],
+              "caption": "What to do instead"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "When something goes wrong",
+          "id": "dispute",
+          "paras": [
+            {
+              "text": "Say the bill is wrong. Lower your voice rather than raising it. Use a polite form of address, *anh ơi*, *chị ơi*, and smile. Describe the problem as a misunderstanding, not an accusation: “I think there may be a mistake here.” Give the other person room to put it right without being shown up. If it is not resolved, ask quietly for a manager, away from the crowd.",
+              "claimIds": [
+                "C-COOL-TIP",
+                "C-KEEP-COOL"
+              ]
+            },
+            {
+              "text": "It will not always work, and you are not obliged to accept being cheated. But the calm route is usually faster, and it leaves both of you able to walk away with your face intact.",
+              "claimIds": [
+                "C-COOL-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "dodont",
+          "heading": "At a glance",
+          "do": {
+            "title": "Usually works",
+            "items": [
+              {
+                "text": "A low voice, a smile and patience.",
+                "claimIds": [
+                  "C-KEEP-COOL",
+                  "C-SMILE"
+                ]
+              },
+              {
+                "text": "Open questions instead of yes-or-no ones.",
+                "claimIds": [
+                  "C-INDIRECT"
+                ]
+              },
+              {
+                "text": "Raising a problem quietly, one to one.",
+                "claimIds": [
+                  "C-FACE-DEF"
+                ]
+              },
+              {
+                "text": "Pointing with an open hand.",
+                "claimIds": [
+                  "C-GESTURES"
+                ]
+              }
+            ]
+          },
+          "think": {
+            "title": "Think twice",
+            "items": [
+              {
+                "text": "Shouting, or scolding someone in front of others.",
+                "claimIds": [
+                  "C-KEEP-COOL"
+                ]
+              },
+              {
+                "text": "Taking a “yes” as a firm agreement.",
+                "claimIds": [
+                  "C-INDIRECT"
+                ]
+              },
+              {
+                "text": "Reading a nervous laugh as mockery.",
+                "claimIds": [
+                  "C-SMILE"
+                ]
+              },
+              {
+                "text": "Touching heads or pointing feet.",
+                "claimIds": [
+                  "C-GESTURES"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "note",
+          "text": "The linguists quoted here are careful to call their findings starting points, not stereotypes. Hà Nội is a city of millions; expect every kind of temperament.",
+          "claimIds": [
+            "C-FACE-CAUTION"
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-oq-traffic",
+          "question": "The fare has gone up",
+          "prompt": "At the end of a ride, the driver asks for more than the price you agreed. What is most likely to work?",
+          "fitLabel": "That fits",
+          "otherLabel": "Think again",
+          "options": [
+            {
+              "label": "Raise your voice so people nearby notice",
+              "feedback": "A public scene corners the driver: backing down now means losing face, so he is more likely to dig in."
+            },
+            {
+              "label": "Smile, show the agreed price and suggest a mistake",
+              "fit": true,
+              "feedback": "Calling it a misunderstanding gives him a way to accept the agreed fare without being shown up."
+            },
+            {
+              "label": "Pay and post a complaint online later",
+              "feedback": "You can, but a calm word on the spot often settles it."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "st-street-stall",
@@ -461,13 +2438,13 @@
     {
       "id": "st-market",
       "country": "vietnam",
-      "place": "Hà Nội",
+      "place": "Chợ Đồng Xuân and beyond, Hà Nội",
       "title": "Shopping at a market",
-      "dek": "Many prices are talked about, not printed. Be friendly, agree a price, or say no and walk on.",
+      "dek": "A covered market from 1889, a wholesale market that wakes at midnight and a pavement market at the end of every alley. Many prices are talked about, not printed.",
       "sceneId": "sc05",
       "sections": [
         {
-          "text": "Đồng Xuân, Hà Nội’s big covered market, was built in 1889 to replace the older Kẻ Chợ markets. Fresh food is sold on the ground floor; fabric, clothes and other goods upstairs, often at wholesale prices.",
+          "text": "Đồng Xuân Market, created in 1889, is Hà Nội’s best-known market: three floors of fabric, clothing and household goods.",
           "claimIds": [
             "C-DX-1889",
             "C-DX-FLOORS"
@@ -475,14 +2452,14 @@
         },
         {
           "heading": "Asking the price",
-          "text": "In local markets many goods have no price tag, and bargaining is common. Ask “Bao nhiêu tiền?” (How much?).",
+          "text": "Bargaining is common at stalls where goods have no printed price.",
           "claimIds": [
             "C-BARGAIN-MARKET"
           ]
         },
         {
           "heading": "Bargaining kindly",
-          "text": "Bargaining goes best when it is polite: smile, stay friendly and keep it light. Once you have agreed a price, it is fair to pay it.",
+          "text": "It goes best when it is friendly and polite; once you have agreed a price, pay it.",
           "claimIds": [
             "C-BARGAIN-POLITE",
             "N-PRICE-AGREE"
@@ -490,17 +2467,361 @@
         },
         {
           "heading": "Saying no",
-          "text": "If you don’t want to buy, say “Không, cảm ơn” (No, thank you) and walk on.",
+          "text": "If you don’t want to buy, say “Không, cảm ơn” and walk on.",
           "claimIds": [
             "C-BARGAIN-WALK"
           ]
         }
       ],
-      "appliesTo": "Local markets in Hà Nội, such as Đồng Xuân.",
-      "varies": "Shops with printed prices, supermarkets and malls usually don’t bargain.",
+      "appliesTo": "Markets and street vendors in Hà Nội, from Đồng Xuân and Long Biên to the small markets of each neighbourhood.",
+      "varies": "Shops with printed prices, supermarkets and malls usually don’t bargain. Market hours and counts change; beliefs about the first sale vary from seller to seller.",
       "phraseIds": [
         "ph-baonhieu",
         "ph-khongcamon"
+      ],
+      "layout": "essay",
+      "imageId": "ev-dx-2018",
+      "hero": {
+        "image": "ev-dx-2018"
+      },
+      "blocks": [
+        {
+          "type": "essay",
+          "label": "Photo essay: Hà Nội’s markets",
+          "steps": [
+            {
+              "image": "ev-dx-interior",
+              "label": "Đồng Xuân",
+              "heading": "Three floors of everything",
+              "paras": [
+                {
+                  "text": "Inside Đồng Xuân, more than two thousand stalls are packed under one roof: buttons and bolts of silk, rice cookers, sweets by the kilo. Much of it is sold wholesale to shops across the north.",
+                  "claimIds": [
+                    "C-DX-FLOORS"
+                  ]
+                }
+              ]
+            },
+            {
+              "image": "ev-longbien-market",
+              "label": "Long Biên",
+              "heading": "A market that wakes at midnight",
+              "paras": [
+                {
+                  "text": "Under the old bridge, the city’s produce market does most of its trade while Hà Nội sleeps. Lorries unload by eleven; by midnight it is at its busiest.",
+                  "claimIds": [
+                    "C-LONGBIEN"
+                  ]
+                }
+              ]
+            },
+            {
+              "image": "ev-street-market",
+              "label": "Chợ cóc",
+              "heading": "The market at the end of the alley",
+              "paras": [
+                {
+                  "text": "Most people buy their food nearer home, at a [[cho-coc|chợ cóc]]: a pavement market that appears in the morning and is gone by noon.",
+                  "claimIds": [
+                    "C-CHOCOC"
+                  ]
+                }
+              ]
+            },
+            {
+              "image": "ev-night-market",
+              "label": "At night",
+              "heading": "And on weekend evenings",
+              "paras": [
+                {
+                  "text": "On Friday to Sunday evenings the streets in front of Đồng Xuân fill with a night market.",
+                  "claimIds": [
+                    "C-DX-NIGHT"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "lede": true,
+          "heading": "A city named after its market",
+          "paras": [
+            {
+              "text": "Before it was Hà Nội, the capital had a nickname: Kẻ Chợ, roughly “the market place”. The capital was a city of markets long before it had a market building. When a French visitor came in 1883 he found no covered hall and no fixed site; markets met in turns every few days, and vendors walked the streets in between.",
+              "claimIds": [
+                "C-DX-KECHO"
+              ]
+            },
+            {
+              "text": "That changed in 1889. The French moved the sellers of two older markets, one beside Cầu Đông pagoda and one beside Bạch Mã temple, onto a single site at Đồng Xuân. It began in the open air and was soon covered by five long iron-roofed halls behind five arched gables.",
+              "claimIds": [
+                "C-DX-1889"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "beforeAfter",
+          "before": "ev-dx-1926",
+          "after": "ev-dx-2018",
+          "labelBefore": "1926",
+          "labelAfter": "2018",
+          "caption": "Đồng Xuân in 1926 and in 2018. Drag the handle, or use the arrow keys. After the 1994 fire three of the five gables were kept; the outer two were removed to widen the side streets."
+        },
+        {
+          "type": "text",
+          "heading": "The city’s stomach",
+          "id": "dong-xuan",
+          "paras": [
+            {
+              "text": "Trams ran close by, the Long Biên bridge brought the countryside in, and the railway station was a short walk away. Đồng Xuân became the biggest and busiest market in the city, and people called it Hà Nội’s stomach. Under the roof, riveted steel trusses echoed the bridge across the river.",
+              "claimIds": [
+                "C-DX-STOMACH"
+              ]
+            },
+            {
+              "text": "In 1994 a fire destroyed almost every stall inside. The city rebuilt it as a three-storey hall but kept the front: three of the original five gables still face Đồng Xuân Street, the two outer ones taken down to widen the roads at either side. One account says it reopened the following year.",
+              "claimIds": [
+                "C-DX-FIRE"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "facts",
+          "title": "Đồng Xuân, floor by floor",
+          "items": [
+            {
+              "term": "Ground floor",
+              "text": "Household goods, electronics, fashion accessories, sweets and dried goods."
+            },
+            {
+              "term": "Second floor",
+              "text": "Fabrics, silk and brocade, sewing supplies, clothing."
+            },
+            {
+              "term": "Third floor",
+              "text": "Children’s clothes, baby goods and accessories."
+            },
+            {
+              "term": "Hours",
+              "text": "From about 6 a.m. into the early evening; the night market outside on Friday to Sunday evenings."
+            }
+          ],
+          "claimIds": [
+            "C-DX-FLOORS",
+            "C-DX-NIGHT"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Long Biên: the night shift",
+          "id": "long-bien",
+          "paras": [
+            {
+              "text": "Walk north to the foot of the Long Biên bridge after dark and you find the market that feeds the other markets. Founded in 1992 on more than 27,000 square metres, it is the city’s largest wholesale market for fruit, vegetables and seafood. Goods are laid out by about eleven at night, trade peaks around midnight, and by dawn it is quiet again.",
+              "claimIds": [
+                "C-LONGBIEN"
+              ]
+            },
+            {
+              "text": "Much of the carrying is done by women porters, mostly in their thirties to fifties, who start work in the small hours and move loads of several hundred kilos on carts and shoulder poles.",
+              "claimIds": [
+                "C-LONGBIEN"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-longbien-market",
+          "size": "bleed",
+          "caption": "Vegetable sellers on the deck of the Long Biên bridge."
+        },
+        {
+          "type": "text",
+          "heading": "The market at the end of the alley",
+          "id": "cho-coc",
+          "paras": [
+            {
+              "text": "Big markets get the photographs, but most Hà Nội households buy their food closer to home. A chợ cóc, a “frog market”, springs up on a pavement, in an alley or along a railway line, sells fresh food to the neighbourhood and disappears. People like them because they are close, the food is fresh, they know the sellers, and older shoppers do not have to travel. A study in four inner districts counted about a hundred of them against twenty-five official markets, within 300 metres of nearly half the population.",
+              "claimIds": [
+                "C-CHOCOC"
+              ]
+            },
+            {
+              "text": "The city wants them tidied away. In January 2026 it counted 468 official markets and 231 informal ones, had dealt with 98, and set a timetable for the rest by mid-2027. Researchers have long warned that supermarkets reach only a minority of shoppers, and some renovated official markets have lost both buyers and sellers.",
+              "claimIds": [
+                "C-CHOCOC-POLICY",
+                "C-CHOCOC"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "pair",
+          "items": [
+            {
+              "image": "ev-fruit-pole",
+              "caption": "A fruit seller with baskets and a carrying pole."
+            },
+            {
+              "image": "ev-dx-night",
+              "caption": "Selling from the street outside Đồng Xuân at night."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "The first sale of the day",
+          "id": "mo-hang",
+          "paras": [
+            {
+              "text": "If you shop early, you may be someone’s [[mo-hang|mở hàng]], their first customer. Many vendors believe the first sale sets the day’s luck. A buyer who pays easily brings a good day; one who bargains hard and walks away brings a bad one. So a seller may give the first customer a gentler price, or press them to buy, and a few will mutter at a shopper who haggles and leaves.",
+              "claimIds": [
+                "C-MOHANG"
+              ]
+            },
+            {
+              "text": "These are beliefs, not rules, and newspapers report that many are fading. They are worth knowing because they explain the moment. If you are first, buy or say no kindly and quickly.",
+              "claimIds": [
+                "C-MOHANG",
+                "C-MARKET-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Bargaining is not haggling for the sake of it. In the old village markets, sellers believed a high opening price brought luck, and buyers bargained to reach the right price, not a cheap one.",
+          "claimIds": [
+            "C-BARGAIN-RIGHT"
+          ]
+        },
+        {
+          "type": "dodont",
+          "heading": "Bargaining kindly",
+          "do": {
+            "title": "Usually welcome",
+            "items": [
+              {
+                "text": "Ask the price before you pick something up: *Cái này bao nhiêu tiền?*",
+                "claimIds": [
+                  "C-BARGAIN-MARKET"
+                ]
+              },
+              {
+                "text": "Offer about half to two-thirds of the first price where goods have no tag, and come up slowly.",
+                "claimIds": [
+                  "C-BARGAIN-HOW"
+                ]
+              },
+              {
+                "text": "Keep it friendly. A smile does more than a hard face.",
+                "claimIds": [
+                  "C-BARGAIN-POLITE"
+                ]
+              },
+              {
+                "text": "Once you have agreed a price, pay it.",
+                "claimIds": [
+                  "N-PRICE-AGREE"
+                ]
+              }
+            ]
+          },
+          "think": {
+            "title": "Think twice",
+            "items": [
+              {
+                "text": "Haggling over a few thousand đồng on a bánh mì. Readers of VnExpress call it unfair to vendors.",
+                "claimIds": [
+                  "C-BARGAIN-HOW"
+                ]
+              },
+              {
+                "text": "Bargaining in shops with printed prices, supermarkets and malls.",
+                "claimIds": [
+                  "C-BARGAIN-HOW"
+                ]
+              },
+              {
+                "text": "Bargaining hard with no intention of buying, especially early in the morning.",
+                "claimIds": [
+                  "C-MOHANG"
+                ]
+              },
+              {
+                "text": "Walking off without a word. *Không, cảm ơn* and a nod are enough.",
+                "claimIds": [
+                  "C-BARGAIN-WALK"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "phrases",
+          "heading": "Words for the market",
+          "ids": [
+            "ph-baonhieu",
+            "ph-khongcamon",
+            "ph-camon"
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": "More from the markets",
+          "id": "gallery",
+          "intro": "Select a picture to see it larger; use the arrow keys or swipe to move between them.",
+          "items": [
+            {
+              "image": "ev-dx-2018",
+              "caption": "The front of Đồng Xuân Market."
+            },
+            {
+              "image": "ev-dx-1926",
+              "caption": "Đồng Xuân in 1926."
+            },
+            {
+              "image": "ev-night-market",
+              "caption": "The weekend night market."
+            },
+            {
+              "image": "ev-ceramics-bike",
+              "caption": "Ceramics on the move."
+            },
+            {
+              "image": "ev-fruit-bike",
+              "caption": "Fruit sold from a bicycle."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-street-market",
+          "question": "Seven in the morning, and you are the first customer",
+          "prompt": "You ask the price of some mangoes but decide not to buy. What is the kindest way to leave?",
+          "fitLabel": "That fits",
+          "otherLabel": "Think again",
+          "options": [
+            {
+              "label": "Bargain a little longer to be polite",
+              "feedback": "Bargaining with no plan to buy is exactly what many vendors hope to avoid from their first customer."
+            },
+            {
+              "label": "Say “Không, cảm ơn” with a smile and move on quickly",
+              "fit": true,
+              "feedback": "A clear, friendly no lets the seller get on with finding a first sale."
+            },
+            {
+              "label": "Walk away without saying anything",
+              "feedback": "It is not a disaster, but a word and a nod are friendlier."
+            }
+          ]
+        }
       ]
     },
     {
@@ -795,7 +3116,7 @@
       "country": "vietnam",
       "place": "Phố cổ, Hà Nội",
       "title": "Streets named after what they sold",
-      "dek": "Silver, herbs, paper offerings: how the Old Quarter’s street names tell its trades.",
+      "dek": "Silver, silk, paper offerings and herbs: how the Old Quarter of Hà Nội wrote its trades into its street names, and what those streets are now.",
       "sections": [
         {
           "text": "North of Hoàn Kiếm Lake, the Old Quarter is often called the “36 streets”. Each was named after a trade or craft that settled there, and many workshops once made goods for the royal court at the nearby citadel.",
@@ -812,92 +3133,1321 @@
         },
         {
           "heading": "Then and now",
-          "text": "Hàng Bạc was the street of silversmiths and now has jewellers and money changers. Lãn Ông still smells of traditional medicine and herbs, and Hàng Mã sells religious goods and festival decorations. Hàng Gai today sells fabric and made-to-measure clothes. Only a few streets still match their names.",
+          "text": "Hàng Bạc was the silversmiths’ street and still has jewellers; Lãn Ông sells herbs and traditional medicine; Hàng Mã sells offerings and festival decorations. Most other streets have moved on.",
           "claimIds": [
-            "C-OQ-EXAMPLES",
-            "C-OQ-GUILDS"
-          ]
-        },
-        {
-          "heading": "Narrow, deep and tall",
-          "text": "The tube houses lining these streets have narrow fronts but run far back, with small courtyards inside for light. At the eastern edge, Ô Quan Chưởng is the last surviving gate of the old city wall.",
-          "claimIds": [
-            "C-OQ-TUBE"
+            "C-OQ-EXAMPLES"
           ]
         }
       ],
-      "appliesTo": "Hà Nội’s Old Quarter (Hoàn Kiếm), from the national tourism authority’s visitor guide.",
-      "varies": "Shops change quickly; many streets now sell clothes and souvenirs whatever their name.",
-      "phraseIds": []
+      "appliesTo": "Hà Nội’s Old Quarter: about 82 hectares between Hoàn Kiếm Lake, the old citadel and the Red River dyke, as the city defines it.",
+      "varies": "Shops change fast and most streets no longer sell what their names say. Dates for some events differ between sources, and a few stories here are legend; the text says which.",
+      "phraseIds": [],
+      "layout": "longform",
+      "imageId": "oq-hang-bac-gold",
+      "hero": {
+        "video": "oq-aerial",
+        "image": "oq-hang-bac-gold"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "lede": true,
+          "paras": [
+            {
+              "text": "Walk north from Hoàn Kiếm Lake and the city closes in. The streets narrow, shopfronts shrink to the width of a doorway, and the blue street signs keep beginning with the same word: [[hang|Hàng]]. Hàng Bạc, Hàng Đào, Hàng Mã, Hàng Gai. Read them one after another and they become a list of goods, as if someone had written the stock of an old market across the map. That is close to what happened.",
+              "claimIds": [
+                "C-OQ-HANG"
+              ]
+            },
+            {
+              "text": "This is the Old Quarter, ~Phố cổ~, the oldest trading district of Hà Nội. For centuries it was the commercial town beside the royal citadel: craftspeople and merchants who made, dyed, cast and sold what the court and the city needed. People still call it the “36 streets”, ~36 phố phường~. The number is a figure of speech. The city’s own regulation counts 79 streets on about 82 hectares, between Hoàn Kiếm Lake, the old citadel and the Red River dyke.",
+              "claimIds": [
+                "C-OQ-GUILDS",
+                "C-OQ-AREA"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "A town beside the citadel",
+          "paras": [
+            {
+              "text": "Before the French arrived, Hà Nội had three parts: the walled citadel of the kings, the countryside of villages and rice fields around it, and between them the commercial quarter where most townspeople lived and worked. The quarter served the court first. Its workshops made jewellery, ritual objects, textiles and tools, and its markets fed the city.",
+              "claimIds": [
+                "C-OQ-MIXED",
+                "C-OQ-GUILDS"
+              ]
+            },
+            {
+              "text": "It was never one people. Craftspeople came from the villages of the Red River Delta, and merchants from China settled and traded here too; some of the old merchant houses and assembly halls in the quarter were theirs.",
+              "claimIds": [
+                "C-OQ-MIXED"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "oq-corner",
+          "size": "wide",
+          "caption": "A corner of the Old Quarter today: balconies, shopfronts and trees over the street."
+        },
+        {
+          "type": "text",
+          "heading": "Villages that moved to town",
+          "paras": [
+            {
+              "text": "The trade streets grew from a simple pattern. Families from one craft village came to the capital to sell their work and settled side by side, so neighbours made the same thing. Each group formed a [[phuong|phường]], a quarter with its own craft and customs, and often its own communal house, a [[dinh|đình]], where the founder of the craft was honoured.",
+              "claimIds": [
+                "C-OQ-GUILDS"
+              ]
+            },
+            {
+              "text": "For a customer this made the city legible. If you wanted a silver bracelet you went to the silversmiths; a sleeping mat, to the mat sellers; paper offerings for the ancestors, to the paper makers. The street took its name from the goods: **Hàng**, goods or wares, followed by the thing itself.",
+              "claimIds": [
+                "C-OQ-HANG"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "facts",
+          "title": "How to read a street name",
+          "items": [
+            {
+              "term": "Hàng Bạc",
+              "vi": true,
+              "text": "bạc, silver: the silversmiths’ street, later the money changers’."
+            },
+            {
+              "term": "Hàng Đào",
+              "vi": true,
+              "text": "đào, peach-pink: the street of dyed silk."
+            },
+            {
+              "term": "Hàng Gai",
+              "vi": true,
+              "text": "gai, hemp: once rope and sacking, now silk and tailoring."
+            },
+            {
+              "term": "Hàng Mã",
+              "vi": true,
+              "text": "mã, paper offerings: goods made to be burnt for the ancestors."
+            },
+            {
+              "term": "Hàng Chiếu",
+              "vi": true,
+              "text": "chiếu, sleeping mats: the street that runs to the last city gate."
+            },
+            {
+              "term": "Hàng Buồm",
+              "vi": true,
+              "text": "buồm, sails: a reminder that the river was close."
+            }
+          ],
+          "claimIds": [
+            "C-OQ-HANG",
+            "C-OQ-EXAMPLES"
+          ]
+        },
+        {
+          "type": "map",
+          "map": "old-quarter",
+          "heading": "Find the trade streets",
+          "water": "Hoàn Kiếm Lake",
+          "label": "Map of the Old Quarter. Streets whose names begin with Hàng are highlighted; the list beside the map picks one.",
+          "intro": "On this map of the quarter, every street whose name begins with Hàng is drawn in blue. Choose one to see where it runs. The map is drawn from OpenStreetMap; it is the streets as they are now.",
+          "claimIds": [
+            "C-OQ-AREA"
+          ],
+          "places": [
+            {
+              "name": "Hàng Bạc",
+              "means": "bạc: silver, money",
+              "text": "Silversmiths from Châu Khê, then money changers; gold and jewellery shops today.",
+              "image": "oq-hang-bac-2"
+            },
+            {
+              "name": "Hàng Mã",
+              "means": "mã: paper offerings",
+              "text": "Still sells paper offerings, lanterns and festival decorations.",
+              "image": "oq-hang-ma"
+            },
+            {
+              "name": "Hàng Đào",
+              "means": "đào: dyed silk",
+              "text": "The silk street; the weekend night market starts here.",
+              "image": "oq-hang-dao-sign"
+            },
+            {
+              "name": "Hàng Gai",
+              "means": "gai: hemp",
+              "text": "Hemp rope once; silk, embroidery and made-to-measure clothes now.",
+              "image": "oq-corner"
+            },
+            {
+              "name": "Hàng Điếu",
+              "means": "điếu: smoking pipe",
+              "text": "The water-pipe makers’ street; few pipes are sold there now.",
+              "image": "oq-hang-dieu"
+            },
+            {
+              "name": "Hàng Chiếu",
+              "means": "chiếu: sleeping mat",
+              "text": "The mat street, which runs east to Ô Quan Chưởng, the last gate of the wall.",
+              "image": "oq-quan-chuong"
+            },
+            {
+              "name": "Hàng Buồm",
+              "means": "buồm: sail",
+              "text": "Home of Bạch Mã temple, the oldest of the city’s four guardian temples."
+            },
+            {
+              "name": "Lãn Ông",
+              "means": "named after a physician",
+              "text": "Not a “Hàng” street: it honours Hải Thượng Lãn Ông and sells herbs and traditional medicine."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Silver, then money",
+          "id": "silver",
+          "paras": [
+            {
+              "text": "Hàng Bạc shows the pattern best, because its history is unusually well remembered. In the fifteenth century, under King Lê Thánh Tông, a mandarin named Lưu Xuân Tín came from Châu Khê, a silversmith village in what is now Hải Dương. He brought craftsmen from home to cast silver ingots for the capital, which served as money, and set up the workshop at what is now No. 58 Hàng Bạc.",
+              "claimIds": [
+                "C-OQ-SILVER"
+              ]
+            },
+            {
+              "text": "When the Nguyễn kings moved the court to Huế in the early nineteenth century, the casting of ingots went with them. The Châu Khê families did not. They stayed and turned to jewellery, and silversmiths from Định Công and Đồng Xâm joined them. Because the street handled precious metal, it also handled money: for centuries merchants came here to change and weigh it, and in the 1890s the French called Hàng Bạc *rue des Changeurs*, the money changers’ street.",
+              "claimIds": [
+                "C-OQ-SILVER",
+                "C-OQ-EXCHANGE"
+              ]
+            },
+            {
+              "text": "The guild built a communal house on the street, [[dinh|đình]] Kim Ngân, “gold and silver”, which honours the founder of the hundred crafts. It was ranked a national relic in 2012, and it is still used: in late 2025 it held an exhibition where craftsmen showed how silver leaf is laid and how a sheet of metal is beaten into relief.",
+              "claimIds": [
+                "C-OQ-KIMNGAN"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "beforeAfter",
+          "before": "oq-changeurs-1890",
+          "after": "oq-hang-bac-gold",
+          "labelBefore": "1896",
+          "labelAfter": "2023",
+          "caption": "Hàng Bạc, rue des Changeurs, photographed by André Salles in 1896, and the same street in 2023. Drag the handle, or use the arrow keys. The same street, not the same viewpoint."
+        },
+        {
+          "type": "text",
+          "paras": [
+            {
+              "text": "Today the street is lined with jewellers and gold shops, their signs crowded with the words [[vang|vàng]] and [[bac|bạc]], and some still change money. Hàng Bạc is one of the few streets whose name still describes its shops.",
+              "claimIds": [
+                "C-OQ-EXAMPLES"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Names that outlived their trades",
+          "id": "then-now",
+          "paras": [
+            {
+              "text": "Hàng Mã also still does what its name says. Its shops sell paper offerings, the paper money, clothes and houses that families burn for their ancestors, and before the Mid-Autumn Festival and Tết the street turns red and gold with lanterns and decorations. Lãn Ông, named after the eighteenth-century physician Hải Thượng Lãn Ông, is still the street of traditional medicine: the smell of dried roots and herbs reaches you before the shops do.",
+              "claimIds": [
+                "C-OQ-EXAMPLES"
+              ]
+            },
+            {
+              "text": "Most streets have moved on. Hàng Gai once sold hemp rope and sacking; now it sells silk, embroidery and made-to-measure clothes. Others sell shoes, toys, coffee or rooms for the night whatever the word on the sign. The names have outlived the trades, and that is part of their value: together they are a map of how the city used to work.",
+              "claimIds": [
+                "C-OQ-EXAMPLES",
+                "C-OQ-GUILDS"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "pair",
+          "items": [
+            {
+              "image": "oq-hang-ma",
+              "caption": "Hàng Mã, hung with lanterns and paper decorations."
+            },
+            {
+              "image": "oq-citron",
+              "caption": "A street seller with fingered citrons, a fruit placed on altars at Tết."
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "The names have outlived the trades. Together they are a map of how the city used to work."
+        },
+        {
+          "type": "figure",
+          "image": "oq-flower-night",
+          "size": "bleed",
+          "caption": "Flower sellers at dusk in the Old Quarter market."
+        },
+        {
+          "type": "text",
+          "heading": "Narrow, deep and tall",
+          "id": "houses",
+          "paras": [
+            {
+              "text": "The buildings explain the streets as much as the names do. The typical house is a [[nhaong|nhà ống]], a tube house: a front only a few metres wide that runs far back from the street, through rooms and small open courtyards that bring in light and air. The shop sits at the front, the workshop and the family behind and above.",
+              "claimIds": [
+                "C-OQ-TUBE"
+              ]
+            },
+            {
+              "text": "Street frontage was what a trader needed, so houses grew upward and backward instead of outward. Many of the façades you see are later: under French rule the city around the quarter was replanned with grid streets and villas, and the quarter kept its tube houses behind newer fronts.",
+              "claimIds": [
+                "C-OQ-TUBE",
+                "C-OQ-FRENCH"
+              ]
+            },
+            {
+              "text": "These houses are now protected by rule as well as by habit. Hà Nội’s 2013 regulation for the quarter describes its housing as tube-shaped with inner courtyards and sloping tiled roofs, and requires that form, the courtyards and buildings from before 1954 to be kept. It allows no large shopping centres, and no new housing that would add to the number of people living there.",
+              "claimIds": [
+                "C-OQ-RULES"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "oq-tube-houses",
+          "caption": "Tube houses: narrow fronts, built upward as families grew."
+        },
+        {
+          "type": "text",
+          "heading": "The white horse of Hàng Buồm",
+          "id": "temple",
+          "paras": [
+            {
+              "text": "Among the shops of Hàng Buồm stands Bạch Mã, the temple of the White Horse. It is the eastern of the four guardian temples that were said to protect Thăng Long, one for each direction, and it worships the god Long Đỗ, the guardian spirit of the capital.",
+              "claimIds": [
+                "C-OQ-BACHMA"
+              ]
+            },
+            {
+              "text": "Its story is a legend, and is told as one. When King Lý Thái Tổ moved his capital here in 1010, the walls he built kept collapsing. He prayed at the temple of Long Đỗ, and a white horse came out of it; the king built along its tracks, and the walls held. The legend is recorded in a fourteenth-century collection of stories about spirits, the *Việt điện u linh tập*. The buildings you see are mostly nineteenth-century, and the temple was ranked a special national relic in 2022. Its festival falls on the 12th and 13th days of the second lunar month.",
+              "claimIds": [
+                "C-OQ-BACHMA",
+                "C-THANGLONG"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "The last gate",
+          "id": "gate",
+          "paras": [
+            {
+              "text": "At the eastern edge of the quarter, where Hàng Chiếu meets the road along the dyke, stands **Ô Quan Chưởng**. An [[o|ô]] is a gate in the outer wall of the city. Early-nineteenth-century geographies count 21 of them; maps from 1831 onward show 15 or 16. This is the only one still standing.",
+              "claimIds": [
+                "C-OQ-GATES",
+                "C-OQ-TUBE"
+              ]
+            },
+            {
+              "text": "It was built in 1749, when the outer wall was rebuilt under Lord Trịnh Doanh, and was first called Đông Hà Môn, the gate of Đông Hà ward; the characters are still above the central arch. Accounts of its later rebuilding differ: one gives repairs in 1785 and a rebuilding in 1804, the national tourism authority gives 1817.",
+              "claimIds": [
+                "C-OQ-GATE"
+              ]
+            },
+            {
+              "text": "The name everyone uses is explained in more than one way. The best-known story says it remembers a military commander, a *chưởng cơ*, who held the gate against the French when they attacked Hà Nội in 1873 and died there. Other explanations tie it to an official who lived nearby or kept watch over the river traffic. The sources agree on the gate, not on the story.",
+              "claimIds": [
+                "C-OQ-GATE-NAME"
+              ]
+            },
+            {
+              "text": "Look closely as you pass under it. It has two storeys, three arches below and a lookout above, built of large bricks left bare, and its heavy wooden doors are still there. On the wall of the main arch is a stone tablet put up in 1881 by the governor Hoàng Diệu, ordering the guards not to harass people passing through. Under French rule the gate was nearly demolished; one account credits French scholars of the École française d’Extrême-Orient with saving it in 1906, a local tradition credits residents who refused to sign for its removal.",
+              "claimIds": [
+                "C-OQ-GATE-LOOK",
+                "C-OQ-GATE-STELE",
+                "C-OQ-GATE-SAVED"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "oq-quan-chuong",
+          "size": "wide",
+          "caption": "Ô Quan Chưởng, the surviving gate of the old city wall."
+        },
+        {
+          "type": "timeline",
+          "heading": "The quarter in eight dates",
+          "label": "Timeline of the Old Quarter",
+          "items": [
+            {
+              "year": "1010",
+              "title": "A capital called Thăng Long",
+              "text": "King Lý Thái Tổ moves his capital here. Hà Nội counts its thousand years from this date.",
+              "claimIds": [
+                "C-THANGLONG"
+              ]
+            },
+            {
+              "era": "Under the Lê kings"
+            },
+            {
+              "year": "1460s",
+              "title": "Silver comes to town",
+              "text": "Under Lê Thánh Tông, craftsmen from Châu Khê begin casting silver ingots on what becomes Hàng Bạc.",
+              "claimIds": [
+                "C-OQ-SILVER"
+              ],
+              "image": "oq-hang-dieu",
+              "caption": "Hàng Điếu, one of the trade streets."
+            },
+            {
+              "year": "1749",
+              "title": "A gate in the wall",
+              "text": "The outer wall is rebuilt and Ô Quan Chưởng, then Đông Hà Môn, is built on the river side.",
+              "claimIds": [
+                "C-OQ-GATE"
+              ],
+              "image": "oq-quan-chuong",
+              "caption": "Ô Quan Chưởng today."
+            },
+            {
+              "era": "Under French rule"
+            },
+            {
+              "year": "1889",
+              "title": "A covered market",
+              "text": "The French build Đồng Xuân market at the north of the quarter, under a double iron roof.",
+              "claimIds": [
+                "C-OQ-FRENCH"
+              ],
+              "image": "oq-pipes-1900",
+              "caption": "Rue des Pipes (Hàng Điếu) in the early twentieth century."
+            },
+            {
+              "year": "1896",
+              "title": "Rue des Changeurs",
+              "text": "André Salles photographs Hàng Bạc, known to the French as the money changers’ street.",
+              "claimIds": [
+                "C-OQ-EXCHANGE"
+              ],
+              "image": "oq-changeurs-1890b",
+              "caption": "Rue des Changeurs (Hàng Bạc), 1896."
+            },
+            {
+              "year": "1920s",
+              "title": "The silk street",
+              "text": "Hàng Đào, rue de la Soie, lined with trees and rickshaws.",
+              "image": "oq-hang-dao-1920",
+              "caption": "Hàng Đào in the 1920s."
+            },
+            {
+              "era": "Today"
+            },
+            {
+              "year": "2004",
+              "title": "A protected quarter",
+              "text": "The Old Quarter is listed as a national historic site; a 2013 regulation sets out how its houses must be kept.",
+              "claimIds": [
+                "C-OQ-AREA",
+                "C-OQ-RULES"
+              ]
+            },
+            {
+              "year": "2022",
+              "title": "The guardian temples",
+              "text": "Bạch Mã and the other guardian temples of Thăng Long are ranked a special national relic.",
+              "claimIds": [
+                "C-OQ-BACHMA"
+              ],
+              "image": "oq-flower-night",
+              "caption": "An Old Quarter evening."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "If you go",
+          "id": "visit",
+          "paras": [
+            {
+              "text": "The quarter is easiest on foot, early in the morning or in the evening when the heat lifts. On weekend evenings the streets around Hoàn Kiếm Lake close to traffic and fill with walkers.",
+              "claimIds": [
+                "C-HK-WALK"
+              ]
+            },
+            {
+              "text": "Look up as well as in: the oldest details are often above the shop signs. Step into a communal house or temple when its doors are open, dressed as you would for any place of worship. And if you want a photo of someone at work, ask first; our story [Asking before a photo](story:st-photo-ask) explains how.",
+              "claimIds": [
+                "C-OQ-TIP-WALK"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": "More from the streets",
+          "id": "gallery",
+          "intro": "Select a picture to see it larger; use the arrow keys or swipe to move between them.",
+          "items": [
+            {
+              "image": "oq-vendor-bike",
+              "caption": "A vendor’s bicycle loaded with flowers."
+            },
+            {
+              "image": "oq-vendor-fruit",
+              "caption": "Fruit sold from baskets on a bicycle."
+            },
+            {
+              "image": "oq-vendor-meat",
+              "caption": "A pavement butcher’s tray."
+            },
+            {
+              "image": "oq-chuong-vang-night",
+              "caption": "A French-era façade on Hàng Bạc at night."
+            },
+            {
+              "image": "oq-hang-bac-2",
+              "caption": "A food stall in front of the jewellers on Hàng Bạc."
+            },
+            {
+              "image": "oq-changeurs-1890b",
+              "caption": "Rue des Changeurs in 1896."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "oq-hang-ma",
+          "question": "Which street is this?",
+          "prompt": "Red lanterns, paper decorations and offerings in every doorway. Choose the name that fits.",
+          "fitLabel": "That fits",
+          "otherLabel": "Look again",
+          "options": [
+            {
+              "label": "Hàng Bạc",
+              "vi": true,
+              "feedback": "Hàng Bạc is the silver street: jewellers and gold shops, not paper. Look at what hangs in the doorways."
+            },
+            {
+              "label": "Hàng Mã",
+              "vi": true,
+              "fit": true,
+              "feedback": "*Mã* means paper offerings. Hàng Mã still sells them, and before Mid-Autumn and Tết it fills with lanterns like these."
+            },
+            {
+              "label": "Hàng Gai",
+              "vi": true,
+              "feedback": "Hàng Gai was the hemp street and now sells silk and tailoring. The lanterns point somewhere else."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "st-pavement",
       "country": "vietnam",
-      "place": "Hà Nội",
+      "place": "Vỉa hè, Hà Nội",
       "title": "Life on the pavement",
-      "dek": "A teapot, some glasses, a few plastic stools: the city’s smallest meeting place.",
+      "dek": "A teapot, some glasses, a few plastic stools: the city’s smallest meeting place, and the long argument over who the pavement is for.",
       "sections": [
         {
-          "text": "A trà đá (iced tea) stall needs very little: a teapot, glasses and a few plastic stools on the pavement. Some also sell peanut sweets, sunflower seeds and bottled drinks. They open from early morning until late, and in winter the tea comes hot.",
+          "text": "A trà đá stall needs little more than a kettle, a teapot, glasses and a few low plastic stools on the pavement.",
           "claimIds": [
             "C-TRADA"
           ]
         },
         {
           "heading": "Who sits there",
-          "text": "Everyone: office workers and street sweepers, students and retirees. People stop after breakfast, at lunch, after work or with friends in the evening, watch the street go by and talk, sometimes with people they have only just met.",
+          "text": "Customers come from every walk of life, from morning until late, to drink, watch the street and pass on news.",
           "claimIds": [
             "C-TRADA-SOCIAL"
           ]
         },
         {
           "heading": "Pavements are changing",
-          "text": "Since December 2025 the city has been fining unlicensed vendors and businesses that block the pavement, using about 2,000 cameras, so stalls and pavement seating are less spontaneous than older guides describe.",
+          "text": "Since December 2025 Hà Nội has been clearing pavements, with fines and surveillance cameras, so stalls are fewer in the centre.",
           "claimIds": [
             "C-PAVEMENT-2026"
           ]
-        },
-        {
-          "editorial": true,
-          "text": "Sitting down on a free stool and ordering a glass is how most people join in.",
-          "claimIds": []
         }
       ],
-      "appliesTo": "Hà Nội, from Hanoi Times and an AFP report from June 2026.",
-      "varies": "Rules on pavement use are changing; what you find depends on the street and the year.",
-      "phraseIds": []
+      "appliesTo": "Hà Nội’s pavements, especially in the central wards where the 2025–26 campaign began.",
+      "varies": "Rules on pavement use are changing, and enforcement differs from street to street. Fines and plans here are as reported up to November 2026; drafts are marked as drafts.",
+      "phraseIds": [],
+      "layout": "essay",
+      "imageId": "ev-tra-da",
+      "hero": {
+        "image": "ev-tra-da"
+      },
+      "blocks": [
+        {
+          "type": "essay",
+          "label": "Photo essay: the pavement",
+          "steps": [
+            {
+              "image": "ev-tra-da-wide",
+              "label": "The stall",
+              "heading": "A kettle and some stools",
+              "paras": [
+                {
+                  "text": "An iced-tea stall, [[tra-da|trà đá]], is the cheapest seat in the city. A kettle or a thermos, a teapot, a tray of glasses, a jar of sweets, and a stack of plastic stools a hand’s width high. That is the whole business.",
+                  "claimIds": [
+                    "C-TRADA"
+                  ]
+                }
+              ]
+            },
+            {
+              "image": "ev-oq-pavement",
+              "label": "The street",
+              "heading": "Everyone’s pavement",
+              "paras": [
+                {
+                  "text": "On most Hà Nội streets the pavement is shop floor, car park, kitchen and dining room before it is a footpath. A survey of 120 streets in 2025 found more than nine in ten taken up by business or parking.",
+                  "claimIds": [
+                    "C-PAVE-SURVEY"
+                  ]
+                }
+              ]
+            },
+            {
+              "image": "ev-fruit-pole",
+              "label": "The vendors",
+              "heading": "A shop on a shoulder pole",
+              "paras": [
+                {
+                  "text": "Many of the sellers walk in from the countryside. Researchers who interviewed 305 vendors found most were women, and the mobile ones carried up to 45 kilos on a bamboo pole.",
+                  "claimIds": [
+                    "C-PAVE-VENDORS"
+                  ]
+                }
+              ]
+            },
+            {
+              "image": "ev-ceramics-bike",
+              "label": "The rules",
+              "heading": "And the city wants it back",
+              "paras": [
+                {
+                  "text": "Since December 2025 Hà Nội has been clearing its pavements again, this time with cameras that send the fine afterwards.",
+                  "claimIds": [
+                    "C-PAVEMENT-2026"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "lede": true,
+          "heading": "The smallest meeting place",
+          "paras": [
+            {
+              "text": "Sit down on a stool at a trà đá stall and you are about a foot off the ground, knees high, a glass of pale green tea with a lump of ice in your hand. The stall owner, usually a woman, knows the regulars by name. Behind you a shop is open; in front of you motorbikes slide past close enough to touch. Nobody minds how long you stay.",
+              "claimIds": [
+                "C-TRADA"
+              ]
+            },
+            {
+              "text": "The stalls are busy from early morning until late at night, and the customers are anyone at all: motorbike-taxi drivers between fares, office workers after lunch, students, retired men who meet at the same corner every morning. Writers on the city keep coming back to the same point. If you want to know what is happening in a street, ask the woman who sells the tea.",
+              "claimIds": [
+                "C-TRADA-SOCIAL"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "pair",
+          "items": [
+            {
+              "image": "ev-tra-da",
+              "caption": "Stools under a tree on Tú Mỡ Street, March 2026."
+            },
+            {
+              "image": "ev-oq-flowers",
+              "caption": "A flower seller’s bicycle in the Old Quarter."
+            }
+          ]
+        },
+        {
+          "type": "facts",
+          "title": "What is on the tray",
+          "items": [
+            {
+              "term": "Trà đá",
+              "vi": true,
+              "text": "Iced green tea, poured from a pot of cheap local tea over ice. Hot tea, *trà nóng*, in winter."
+            },
+            {
+              "term": "Hướng dương",
+              "vi": true,
+              "text": "Sunflower seeds, cracked between the teeth while you talk."
+            },
+            {
+              "term": "Kẹo lạc",
+              "vi": true,
+              "text": "Peanut brittle from the jar on the tray."
+            },
+            {
+              "term": "Điếu cày",
+              "vi": true,
+              "text": "The long bamboo water pipe some stalls keep for customers."
+            }
+          ],
+          "claimIds": [
+            "C-TRADA"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Where the ice came from",
+          "id": "history",
+          "paras": [
+            {
+              "text": "Ice is newer than tea. One history traces it to an ice factory the French set up on Trần Nhật Duật Street to supply their troops, hotels and bars, and says Hanoians were putting ice in their drinks by the early 1920s. Another says iced tea did not become a northern habit until after 1975, and spread through Hà Nội in the 1990s. Both can be partly true: ice came early, the cheap glass on every corner came later. A glass once cost as little as 500 đồng.",
+              "claimIds": [
+                "C-TRADA-HISTORY"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Who sells on the pavement",
+          "id": "vendors",
+          "paras": [
+            {
+              "text": "The tea stall is the fixed end of a much larger trade. Since the [[doimoi|Đổi Mới]] reforms of 1986 opened the economy, street selling, done mostly by women, has grown into one of the ways the city feeds itself. Fruit, flowers, bread, sticky rice and household goods move through the streets on bicycles and shoulder poles.",
+              "claimIds": [
+                "C-PAVE-VENDORS"
+              ]
+            },
+            {
+              "text": "Geographers who spent eight months with 305 vendors found that most of the mobile sellers were migrants from farming households who came to the city for the season, while most of the fixed stalls belonged to people who lived on the street. A full shoulder-pole load could weigh 45 kilos. For the migrants, keeping on the move was not just a way to find customers; it was a way to stay in the city at all.",
+              "claimIds": [
+                "C-PAVE-VENDORS"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-street-market",
+          "size": "wide",
+          "caption": "Fruit sellers along a wet street beside a school wall."
+        },
+        {
+          "type": "quote",
+          "text": "Without vendors, I don’t think Hanoi is Hanoi anymore.",
+          "by": "Nguyễn Thị Hoàn, flower seller, to AFP (2026)",
+          "claimIds": [
+            "C-PAVE-MOVED"
+          ]
+        },
+        {
+          "type": "timeline",
+          "heading": "Forty years of clearing the pavement",
+          "label": "Timeline of Hà Nội’s pavement rules",
+          "items": [
+            {
+              "year": "1984",
+              "title": "Pavements are for walking",
+              "text": "The city declares pavements for pedestrians, with a fee for any other use.",
+              "claimIds": [
+                "C-PAVE-RULES"
+              ]
+            },
+            {
+              "year": "1991",
+              "title": "An order campaign",
+              "text": "The first of many drives to clear the streets.",
+              "claimIds": [
+                "C-PAVE-RULES"
+              ]
+            },
+            {
+              "year": "2008",
+              "title": "Banned streets",
+              "text": "From 1 July, street trade is banned on 62 streets and at 48 historic sites. Police take stools and tables; vendors slip into the alleys and come back.",
+              "claimIds": [
+                "C-PAVE-RULES"
+              ]
+            },
+            {
+              "year": "2017",
+              "title": "A spring campaign",
+              "text": "A three-step plan begins on 10 March. By May, ramps, parked motorbikes and tea sellers are back.",
+              "claimIds": [
+                "C-PAVE-RULES"
+              ],
+              "image": "ev-fruit-bike",
+              "caption": "A fruit seller’s bicycle."
+            },
+            {
+              "era": "The current campaign"
+            },
+            {
+              "year": "Dec 2025",
+              "title": "Plan 332",
+              "text": "The city’s plan, issued on 10 December, starts on the 13th: first persuasion, then inspection, then patrols.",
+              "claimIds": [
+                "C-PAVEMENT-2026"
+              ]
+            },
+            {
+              "year": "Jan 2026",
+              "title": "Fines by camera",
+              "text": "Fines begin to be issued afterwards from camera images, with pilot camera centres at ward police stations.",
+              "claimIds": [
+                "C-PAVEMENT-2026"
+              ]
+            },
+            {
+              "year": "May 2026",
+              "title": "Drafts for what comes next",
+              "text": "Higher fines from 2027 and a scheme to lease pavement back to traders are both put forward as drafts.",
+              "claimIds": [
+                "C-PAVE-NEXT"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "The 2025 campaign",
+          "id": "campaign",
+          "paras": [
+            {
+              "text": "The current campaign is the most organised yet. Plan 332, issued by the city on 10 December 2025, began at seven in the morning three days later and ran in stages: a month of surveys and voluntary clearing, then inspection and fines across the city, then patrols to stop the stalls returning. Its stated aim was to end informal street markets and change what officials called outdated habits.",
+              "claimIds": [
+                "C-PAVEMENT-2026"
+              ]
+            },
+            {
+              "text": "What made it different was the camera. From January 2026 fines could be issued afterwards from images, without a police officer on the street; in the first week, police handled about 848 cases, a third of them found by cameras. AFP counted nearly 2,000 surveillance cameras in use. It started in the centre, in the wards of Hoàn Kiếm, Cửa Nam and Ba Đình: Hàng Mã, Hàng Đào, Tràng Tiền, the streets around the lake.",
+              "claimIds": [
+                "C-PAVEMENT-2026",
+                "C-PAVE-CENTRE"
+              ]
+            },
+            {
+              "text": "The fines are not small. A business that blocks the pavement can be fined up to 6 million đồng. For vendors, the reports disagree by a factor of ten: AFP gave 250,000 đồng, VnExpress 2.5 million with the goods taken. By June, state media had counted more than 3,000 fines.",
+              "claimIds": [
+                "C-PAVE-FINES"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Two newspapers, two vendor fines: 250,000 đồng and 2.5 million. They may describe different offences, or one may have an extra zero. We give both rather than guess.",
+          "claimIds": [
+            "C-PAVE-FINES"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Where the stalls went",
+          "id": "moved",
+          "paras": [
+            {
+              "text": "Stalls did not vanish; they moved a few metres. Reporters followed them. A bún riêu stall on Hàng Cháo retreated into an alley a metre wide, and its owner now sits at the mouth of it calling customers in; her sales fell to about a third. An iced-tea seller moved onto a neighbour’s porch. A sticky-rice seller rented a shop and saw her rent double. A flower seller who had worked the same paving slab for ten years was moved to an empty lot and lost about half her takings.",
+              "claimIds": [
+                "C-PAVE-MOVED"
+              ]
+            },
+            {
+              "text": "Opinion is divided, and not along the lines you might expect. The government reports central pavements noticeably less crowded and fewer repeat offences. Residents interviewed in the Old Quarter said moving tables indoors felt strange at first, but many liked having room to walk. Café owners point out that a good share of their customers want to sit outside.",
+              "claimIds": [
+                "C-PAVE-CENTRE"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-oq-traffic",
+          "size": "bleed",
+          "caption": "A junction in the Old Quarter: parked scooters fill the pavement in front of the shops."
+        },
+        {
+          "type": "text",
+          "heading": "What comes next",
+          "id": "next",
+          "paras": [
+            {
+              "text": "Every campaign before this one faded within months. Whether this one lasts may depend on what the city offers in return. In May 2026 two drafts were on the table: one would raise fines for using pavements to sell food or goods to 4–6 million đồng from 2027; the other would let traders lease pavement back, for 20,000–45,000 đồng per square metre a month, on streets wide enough to keep a metre and a half clear and only where half the households agree. An economist quoted by VnExpress suggested trying designated vending zones. None of these was final when we checked.",
+              "claimIds": [
+                "C-PAVE-NEXT",
+                "C-PAVE-RULES"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "If you sit down",
+          "id": "visit",
+          "paras": [
+            {
+              "text": "Pull up a stool where the owner points, order *một trà đá*, and pay what the people next to you pay; it is rarely more than the price of a bottle of water. If the stall you remember has gone from the pavement, look in the nearest alley or doorway. It may have moved, not closed.",
+              "claimIds": [
+                "C-PAVE-TIP"
+              ]
+            },
+            {
+              "text": "If you want to photograph the people at a stall, ask first; our story [Asking before a photo](story:st-photo-ask) explains how.",
+              "claimIds": [
+                "C-PAVE-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": "More from the pavement",
+          "id": "gallery",
+          "intro": "Select a picture to see it larger; use the arrow keys or swipe to move between them.",
+          "items": [
+            {
+              "image": "ev-fruit-bike",
+              "caption": "Fruit on a bicycle, ready to move."
+            },
+            {
+              "image": "ev-ceramics-bike",
+              "caption": "A motorbike loaded with ceramics in the Old Quarter."
+            },
+            {
+              "image": "ev-lake-vendor",
+              "caption": "A vendor by Hoàn Kiếm Lake."
+            },
+            {
+              "image": "ev-dx-night",
+              "caption": "Selling from the street outside Đồng Xuân Market at night."
+            },
+            {
+              "image": "ev-oq-flowers",
+              "caption": "Flowers in the Old Quarter."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-tra-da",
+          "question": "The stall has gone. What now?",
+          "prompt": "The trà đá stall you sat at last year is not on the pavement any more. What is the most likely explanation?",
+          "fitLabel": "That fits",
+          "otherLabel": "Think again",
+          "options": [
+            {
+              "label": "It closed for good",
+              "feedback": "Possible, but reporters who followed vendors in 2026 found most had moved a few metres rather than stopped."
+            },
+            {
+              "label": "It moved into an alley or a doorway",
+              "fit": true,
+              "feedback": "That is what most did: into alleys, onto porches, into rented shops. Look nearby."
+            },
+            {
+              "label": "Tea stalls are banned in Hà Nội",
+              "feedback": "There is no ban on tea. The campaign is about blocking the pavement, and stalls that leave room to walk or move indoors carry on."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "st-hoan-kiem-days",
       "country": "vietnam",
       "place": "Hồ Hoàn Kiếm, Hà Nội",
       "title": "Mornings and weekends by the lake",
-      "dek": "Tai chi at dawn and a car-free lakeside at the weekend.",
+      "dek": "Tai chi at dawn, a red bridge, a tower on an island and, on weekend nights, a city centre without engines: a day around Hoàn Kiếm Lake.",
       "sections": [
         {
-          "text": "Hoàn Kiếm Lake wakes up early. Around 6 a.m. residents practise tai chi and other exercises along the shore.",
+          "text": "From around 5 a.m. people gather by Hoàn Kiếm Lake to walk, dance and practise tai chi.",
           "claimIds": [
             "C-HK-MORNING"
           ]
         },
         {
           "heading": "A walking city at the weekend",
-          "text": "From Friday evening to Sunday night the streets around the lake close to traffic and become a walking space until midnight, with music, performances and events.",
+          "text": "From Friday evening to Sunday night the streets around the lake close to traffic and fill with people.",
           "claimIds": [
             "C-HK-WALK"
           ]
         },
         {
           "heading": "Practising English",
-          "text": "You may be approached by students who want to practise their English. They are usually polite, and a short chat is an easy way to meet local people.",
+          "text": "Children and students sometimes approach visitors to practise English.",
           "claimIds": [
-            "C-HK-MORNING"
+            "C-HK-ENGLISH"
           ]
         }
       ],
-      "appliesTo": "Hoàn Kiếm Lake, from the national tourism authority and Hanoi Times.",
-      "varies": "Walking-street hours and streets have changed over time, and it may close on some holidays.",
-      "phraseIds": []
+      "appliesTo": "Hoàn Kiếm Lake and the streets around it, in the heart of Hà Nội between the Old Quarter and the French quarter.",
+      "varies": "Walking-street hours change for holidays and events, and the low-emission zone is a pilot. Temple hours and prices are as last reported. The sword story is a legend.",
+      "phraseIds": [],
+      "layout": "longform",
+      "imageId": "ev-lake-wide",
+      "hero": {
+        "image": "ev-lake-wide"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "lede": true,
+          "paras": [
+            {
+              "text": "Before it is light, the lake already has company. Walkers come first, then the joggers, then groups who set up a speaker on the pavement and dance. By six there is tai chi under the trees and men doing push-ups against the railings. The water is still green and flat, the island tower dark in the middle of it. The traffic has not started yet.",
+              "claimIds": [
+                "C-HK-MORNING"
+              ]
+            },
+            {
+              "text": "Hoàn Kiếm Lake, [[ho|Hồ]] Hoàn Kiếm, is the centre of Hà Nội in every sense: the Old Quarter to its north, the French-built streets to its south. People simply call it Hồ Gươm, Sword Lake. It is small, a loop of about a kilometre and a half, and it is where the city comes to breathe.",
+              "claimIds": [
+                "C-HK-MORNING",
+                "C-HK-NAME"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "The sword and the turtle",
+          "id": "legend",
+          "paras": [
+            {
+              "text": "The name comes from a legend every Vietnamese child learns. Lê Lợi, a landowner from Lam Sơn, found a sword that carried him through ten years of war against the Ming. After he won and became king, he was out on the lake in a boat when a giant turtle rose from the water, took the sword in its mouth and dived. The king understood the sword had only been lent. The lake, until then called Lục Thủy, Green Water, has been Hoàn Kiếm, the Returned Sword, ever since.",
+              "claimIds": [
+                "C-SWORD-LEGEND",
+                "C-HK-NAME"
+              ]
+            },
+            {
+              "text": "It is a legend, and the sources that tell it say so. The tourism authority places it in 1428; the government’s own history page says only the fifteenth century.",
+              "claimIds": [
+                "C-HK-NAME"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-huc-bridge",
+          "size": "wide",
+          "caption": "The Thê Húc bridge to Jade Island and Ngọc Sơn Temple."
+        },
+        {
+          "type": "text",
+          "heading": "A temple on Jade Island",
+          "id": "temple",
+          "paras": [
+            {
+              "text": "At the northern end, a curved red wooden bridge, Thê Húc, often translated as Light of Dawn, leads to a small island and Ngọc Sơn Temple, the Temple of the Jade Mountain. It honours two figures: Trần Hưng Đạo, the general who defeated the Mongol invasions in the thirteenth century, and Văn Xương, a patron of literature and exams.",
+              "claimIds": [
+                "C-HK-NGOCSON"
+              ]
+            },
+            {
+              "text": "The site has changed hands more than once. A temple to Guan Yu stood here first. In 1841 it passed to a charitable society, the Association of Good Deeds, and in the middle of the century the scholar Nguyễn Văn Siêu led its rebuilding. Sources date that work to 1859–1862 or to 1865. On the shore he left the Pen Tower, a stone column topped like a brush tip, inscribed *Tả thanh thiên*: writing on the blue sky.",
+              "claimIds": [
+                "C-HK-NGOCSON"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "pair",
+          "items": [
+            {
+              "image": "ev-ngoc-son-gate",
+              "caption": "Inside Ngọc Sơn Temple."
+            },
+            {
+              "image": "ev-lake-night",
+              "caption": "The bridge lit red at night."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "The tower in the middle",
+          "id": "tower",
+          "paras": [
+            {
+              "text": "The small tower on the islet in the middle of the lake is newer than it looks. It was built in the 1880s, under French rule, by a local notable. One account names him Nguyễn Ngọc Kim and says he put it up as a pretext to bury his parents’ remains on the island, a plan the neighbours foiled. Before that the mound had held a pavilion of King Lê Thánh Tông and a temple of the Trịnh lords.",
+              "claimIds": [
+                "C-HK-TOWER"
+              ]
+            },
+            {
+              "text": "Look at it closely and it is a mixture: Gothic pointed arches in the brick storeys, a Vietnamese curved roof on top. It has become the lake’s symbol, and the city’s, but the sources disagree on almost every detail about it, from the builder’s middle name to the number of storeys.",
+              "claimIds": [
+                "C-HK-TOWER"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-turtle-tower",
+          "caption": "The Turtle Tower on its islet."
+        },
+        {
+          "type": "text",
+          "heading": "The last turtle",
+          "id": "turtle",
+          "paras": [
+            {
+              "text": "The lake really did have giant turtles. The last one known to live there, a huge softshell that Hanoians called Cụ Rùa, great-grandfather turtle, was found dead on the afternoon of 19 January 2016. When scientists measured it in 2011 it was 185 centimetres long and weighed 169 kilos. Officials blamed old age and the cold.",
+              "claimIds": [
+                "C-HK-TURTLE"
+              ]
+            },
+            {
+              "text": "Its body went first to Ngọc Sơn Temple and then to the national museum of nature. In the temple you can still see preserved turtles from the lake, including one 2.1 metres long that was found in 1967.",
+              "claimIds": [
+                "C-HK-TURTLE"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "facts",
+          "title": "Names around the lake",
+          "items": [
+            {
+              "term": "Hồ Hoàn Kiếm",
+              "vi": true,
+              "text": "Lake of the Returned Sword, its formal name."
+            },
+            {
+              "term": "Hồ Gươm",
+              "vi": true,
+              "text": "Sword Lake, what most people call it."
+            },
+            {
+              "term": "Lục Thủy",
+              "vi": true,
+              "text": "Green Water, the name before the legend."
+            },
+            {
+              "term": "Tháp Rùa",
+              "vi": true,
+              "text": "The Turtle Tower on the islet."
+            },
+            {
+              "term": "Cầu Thê Húc",
+              "vi": true,
+              "text": "The red bridge to Ngọc Sơn Temple."
+            }
+          ],
+          "claimIds": [
+            "C-HK-NAME",
+            "C-HK-NGOCSON",
+            "C-HK-TOWER"
+          ]
+        },
+        {
+          "type": "timeline",
+          "heading": "A day by the lake",
+          "label": "Timeline of a day and a weekend at Hoàn Kiếm Lake",
+          "items": [
+            {
+              "year": "5:00",
+              "title": "First walkers",
+              "text": "People arrive in the dark to walk and to meet friends before the exercise starts.",
+              "claimIds": [
+                "C-HK-MORNING"
+              ]
+            },
+            {
+              "year": "6:00",
+              "title": "Groups begin",
+              "text": "Dance groups behind an instructor, tai chi under the trees, joggers on the loop.",
+              "claimIds": [
+                "C-HK-MORNING"
+              ],
+              "image": "ev-lake-angler",
+              "caption": "Early morning at the water’s edge."
+            },
+            {
+              "year": "7:00",
+              "title": "The temple opens",
+              "text": "Ngọc Sơn opens its gate; the bridge is free to cross, the temple takes a ticket.",
+              "claimIds": [
+                "C-HK-VISIT"
+              ],
+              "image": "ev-huc-bridge",
+              "caption": "The Thê Húc bridge."
+            },
+            {
+              "year": "Day",
+              "title": "A city crossroads",
+              "text": "Traffic circles the lake; vendors and visitors fill the shore.",
+              "image": "ev-lake-vendor",
+              "caption": "A vendor by the lake."
+            },
+            {
+              "era": "Friday to Sunday"
+            },
+            {
+              "year": "19:00",
+              "title": "Engines off",
+              "text": "The streets around the lake close to vehicles and become a walking space.",
+              "claimIds": [
+                "C-HK-WALK",
+                "C-HK-LEZ"
+              ],
+              "image": "ev-lake-saturday",
+              "caption": "Saturday night on the lakeside street."
+            },
+            {
+              "year": "24:00",
+              "title": "Back to traffic",
+              "text": "At midnight on Sunday the roads reopen, until the walkers come back before dawn.",
+              "claimIds": [
+                "C-HK-WALK"
+              ],
+              "image": "ev-turtle-tower-night",
+              "caption": "The Turtle Tower at night."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "A city centre without engines",
+          "id": "weekend",
+          "paras": [
+            {
+              "text": "On the evening of 1 September 2016, the city closed the streets around the lake to traffic for the first time. Since then, from seven on Friday evening to midnight on Sunday, about fifteen streets, among them Đinh Tiên Hoàng, Hàng Khay, Tràng Tiền and Lê Thái Tổ, belong to people on foot. By 2023 the walking space drew 25,000 to 35,000 people a weekend, and up to 50,000 at Tết.",
+              "claimIds": [
+                "C-HK-WALK"
+              ]
+            },
+            {
+              "text": "In July 2026 the same hours took on a second job. The lake and the Old Quarter night-market streets became the first phase of a low-emission pilot zone: from 7 p.m. to midnight, Friday to Sunday, motorbikes and cars are kept out of a dozen streets, and residents push their bikes home. The bigger plan, to limit petrol motorbikes across the whole inner ring road, has been pushed back to 2028.",
+              "claimIds": [
+                "C-HK-LEZ"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "image": "ev-lake-saturday",
+          "size": "bleed",
+          "caption": "The walking street on a Saturday night."
+        },
+        {
+          "type": "text",
+          "heading": "“Excuse me, can I practise my English?”",
+          "id": "english",
+          "paras": [
+            {
+              "text": "Sit on a bench at the weekend and a child with a clipboard may appear beside you, a parent or teacher hovering behind, ready with questions: where are you from, what is your name, do you like Vietnamese food. The habit is decades old. Students once came on their own; now teachers and parents send younger children.",
+              "claimIds": [
+                "C-HK-ENGLISH"
+              ]
+            },
+            {
+              "text": "Not everyone in Hà Nội approves. One writer in VnExpress argued that these short conversations teach little and can leave visitors uneasy; readers wrote back to say they enjoyed them. A few minutes is a kind gift. A polite no is fine too.",
+              "claimIds": [
+                "C-HK-ENGLISH",
+                "C-HK-TIP"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "If you go",
+          "id": "visit",
+          "paras": [
+            {
+              "text": "Come twice: once at dawn for the exercise and the quiet water, and once on a weekend evening for the walking street. The full loop takes about twenty minutes at a stroll.",
+              "claimIds": [
+                "C-HK-TIP",
+                "C-HK-MORNING"
+              ]
+            },
+            {
+              "text": "Ngọc Sơn Temple was open from 7 a.m. to 6 p.m. on weekdays and until 9 p.m. at weekends when last reported, with a 50,000 đồng ticket and free entry for children under 16. Dress as you would for any place of worship, and ask before photographing people at prayer; our story [Asking before a photo](story:st-photo-ask) explains how.",
+              "claimIds": [
+                "C-HK-VISIT"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": "More from the lake",
+          "id": "gallery",
+          "intro": "Select a picture to see it larger; use the arrow keys or swipe to move between them.",
+          "items": [
+            {
+              "image": "ev-lake-wide",
+              "caption": "The lake on a clear afternoon."
+            },
+            {
+              "image": "ev-turtle-tower-night",
+              "caption": "The Turtle Tower at night."
+            },
+            {
+              "image": "ev-lake-angler",
+              "caption": "Fishing from the shore."
+            },
+            {
+              "image": "ev-lake-night",
+              "caption": "The red bridge after dark."
+            },
+            {
+              "image": "ev-ngoc-son-gate",
+              "caption": "Inside Ngọc Sơn Temple."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "image": "ev-turtle-tower",
+          "question": "What does Hoàn Kiếm mean?",
+          "prompt": "The lake’s name comes from a legend about King Lê Lợi. Choose the translation.",
+          "fitLabel": "That fits",
+          "otherLabel": "Look again",
+          "options": [
+            {
+              "label": "Green Water",
+              "feedback": "Green Water, *Lục Thủy*, was the lake’s name before the legend."
+            },
+            {
+              "label": "Returned Sword",
+              "fit": true,
+              "feedback": "The king gave his sword back to a turtle that rose from the water, so the lake became the Lake of the Returned Sword."
+            },
+            {
+              "label": "Turtle Tower",
+              "feedback": "That is *Tháp Rùa*, the small tower in the middle of the lake, built in the 1880s."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "st-pho",

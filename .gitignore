@@ -21,3 +21,6 @@ docs/game/ref/tmp/
 .venv/
 drafts/
 out/
+
+# downloaded originals and previews for tools/media
+tools/media/.cache/

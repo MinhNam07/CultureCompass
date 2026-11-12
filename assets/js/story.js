@@ -98,6 +98,43 @@
     root.style.setProperty('--story-bg', CH_INK[0]);
     root.style.setProperty('--story-on', CH_INK[1]);
     root.style.setProperty('--story-ink', CH_INK[2]);
+    var ending = function (sourcesHtml) {
+      return (phrases.length ? '<section class="story-words" aria-labelledby="words-title">' +
+          '<h2 id="words-title">' + CC.icon('phrase') + 'Words you can use</h2>' +
+          '<ul class="phrase-grid">' + phrases.map(function (p) { return CC.phraseHtml(p, { tag: 'li', compact: true }); }).join('') + '</ul></section>' : '') +
+        sourcesHtml +
+        (sc ? '<section class="story-practice" data-bg="' + bg + '" aria-labelledby="practice-title">' +
+          '<div class="scene-pic">' + CC.sceneThumb(sc.id) + '</div>' +
+          '<div><h2 id="practice-title">Play this moment in the game</h2><p>Optional: this moment is part of <b>' + esc((CC.zoneForScene(sc.id) || sc).title) + '</b>, a small pixel-art walk in Hà Nội. ' + esc(sc.goal) + ' About ' + ((CC.zoneForScene(sc.id) || sc).minutes) + ' minutes, no score.</p></div>' +
+          '<a class="cc-btn" href="' + entry.href + '">' + esc(entry.label) + ' ' + CC.arrow() + '</a>' +
+        '</section>' : '') +
+        (prev || next ? '<nav class="story-pager" aria-label="More in ' + esc(back.chapter ? back.chapter.name : back.topic ? back.topic.label : 'Vietnam') + '">' +
+          (prev ? '<a class="prev" href="story.html?id=' + prev.id + keepFrom + '"><span>' + CC.icon('arrowLeft') + 'Previous</span><b>' + esc(prev.title) + '</b></a>' : '<span></span>') +
+          (next ? '<a class="next" href="story.html?id=' + next.id + keepFrom + '"><span>Next' + CC.icon('arrowRight') + '</span><b>' + esc(next.title) + '</b></a>' : '') +
+        '</nav>' : '') +
+        (related.length ? '<section aria-labelledby="rel-title"><h2 id="rel-title" class="h3">Related stories</h2><ul class="story-grid">' +
+          related.map(function (r) { return CC.storyCard(r, from, 3); }).join('') + '</ul></section>' : '') +
+        '<p style="margin-top:40px"><a class="cc-back" href="' + back.href + '"' + (back.page ? ' data-back-page' : '') + '>' + CC.arrow('left') + esc(back.label) + '</a></p>';
+    };
+
+    /* a story written in blocks: one of five layouts (story-blocks.js) */
+    if (st.blocks && CC.storyBlocks) {
+      var out = CC.storyBlocks.render(st, { back: back, sc: sc, entry: entry, from: from });
+      var TINT = { teal: 'rgb(95 216 232 / .12)', peach: 'rgb(242 193 78 / .14)', jade: 'rgb(93 202 165 / .14)', ember: 'rgb(255 138 115 / .14)' }[bg] || 'rgb(95 216 232 / .12)';
+      document.body.classList.add('lx', 'lx-layout-' + (st.layout || 'longform'));
+      document.body.style.setProperty('--lx-ch', CH_INK[2]);
+      document.body.style.setProperty('--lx-ch-ink', CH_INK[1]);
+      document.body.style.setProperty('--lx-tint', TINT);
+      document.getElementById('main').classList.add('lx-main');
+      root.className = 'lx-root';
+      root.innerHTML = out.html + '<div class="lx-close">' + ending(CC.storyBlocks.sourcesList(out.sources, claims)) + '</div>';
+      document.title = st.title + ' — CultureCompass';
+      CC.reads.mark(st.id);
+      CC.storyBlocks.init(root, st);
+      document.dispatchEvent(new CustomEvent('cc:rendered'));
+      return;
+    }
+
     /* the story's own photograph is the backdrop of its opening; without one, a plain night ground */
     var photo = st.imageId ? CC.byId(CC.assets, st.imageId) : null;
     var nSrc = CC.sourcesOf(claims).length;
@@ -192,14 +229,18 @@
   /* Render as soon as this script runs (it is the last thing in <body>, so everything it fills already exists),
      not on DOMContentLoaded: the first frame the browser paints, which a page transition morphs into, is the story. */
   (function start() {
-    CC.renderShell({ section: 'destinations', country: 'vietnam', sub: 'themes' });
     var id = CC.qs('id');
     var st = id && CC.byId(CC.stories, id);
+    var blocks = !!(st && st.blocks && CC.storyBlocks);
+    /* a block story opens on a full-screen picture, so the header sits over it: the shell needs the opening first */
+    if (!blocks) CC.renderShell({ section: 'destinations', country: 'vietnam', sub: 'themes' });
     if (!st) { notFound(id); return; }
     var from = CC.qs('from');
     render(st, from);
+    if (blocks) CC.renderShell({ section: 'destinations', country: 'vietnam', sub: 'themes', overMedia: '.story-head' });
     /* leaving for another story or a scene: remember to come back to the top of this one */
     if (CC.motion.reduce()) Array.prototype.forEach.call(document.querySelectorAll('.story-enter > *'), function (el) { el.style.animation = 'none'; });
-    document.addEventListener('cc:cleared', function () { render(st, from); });
+    /* block stories wire behaviour once, so after a reset only their save buttons change */
+    document.addEventListener('cc:cleared', function () { if (blocks) { if (CC.syncSaveButtons) CC.syncSaveButtons(); } else render(st, from); });
   })();
 })();

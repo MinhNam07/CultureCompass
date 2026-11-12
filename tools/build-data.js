@@ -13,7 +13,7 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const dataDir = path.join(root, 'assets', 'data');
-const FILES = ['sources', 'assets', 'phrases', 'scenarios', 'stories', 'topics', 'countries', 'explore'];
+const FILES = ['sources', 'assets', 'phrases', 'scenarios', 'stories', 'topics', 'countries', 'explore', 'glossary'];
 
 function jsonPath(name) { return path.join(dataDir, name + '.json'); }
 function jsPath(name) { return path.join(dataDir, name + '.js'); }
