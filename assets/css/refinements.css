@@ -77,8 +77,6 @@ body[data-page="home"] .hero-stage {
   background-repeat: repeat;
 }
 body[data-page="home"] .hero ::selection { background: #F4EFE5; color: #302720; }
-body[data-page="home"] .hero-skip { background: #000; }
-body[data-page="home"] .hero-skip:hover { background: var(--color-surface); }
 
 /* The homepage's reading section continues the destination night sky. */
 body[data-page="home"] .how-wrap,
