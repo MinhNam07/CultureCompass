@@ -1,5 +1,5 @@
 /* CultureCompass — country reading page (vietnam.html). The earlier compass page lives on as vietnam-classic.html.
-   Layout "Field Atlas": a cover, a contents list, then one chapter per theme. On wide screens each chapter keeps a
+   Layout "Field Atlas": a cover, the destinations, a story finder, then one chapter per theme. On wide screens each chapter keeps a
    picture (the plate) still on the left while the reading column scrolls on the right; the plate changes with the
    section you are reading. Styles: assets/css/read.css (loaded last on this page).
    The page is the SECTIONS config below; each module is one render function. Every picture comes from CC.assets
@@ -18,6 +18,7 @@
     pause: '<path d="M8.5 5.5v13M15.5 5.5v13"/>',
     play: '<path d="M8 5.5v13l10-6.5z" fill="currentColor" stroke="none"/>',
     chevronDown: '<path d="M6 9.5l6 6 6-6"/>',
+    search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
     flip: '<path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5"/>'
   };
   function ic(name, cls) {
@@ -151,16 +152,21 @@
      ================================================================ */
   var R = {};
 
+  /* the cover: the game first. Pointing at (or tabbing to) Play crossfades the video into the game's own
+     pixel art; Start reading brings the video back. initCover() wires it, on hover-capable screens only. */
+  var COVER_GAME = 'assets/img/explore/pho-co.jpg';
   R.hero = function (s, c) {
     var p = pic({ imageId: 'vid-train-street' });
-    return '<section class="rd-cover" id="top" aria-labelledby="ex-title">' +
-      '<div class="rd-cover-media">' + media(p, { video: true, eager: true }) + '</div>' +
+    return '<section class="rd-cover" id="top" aria-labelledby="ex-title" data-cover>' +
+      '<div class="rd-cover-media">' + media(p, { video: true, eager: true }) +
+        '<img class="rd-media is-pixel rd-cover-game" data-src="' + COVER_GAME + '" alt="" aria-hidden="true" decoding="async">' +
+      '</div>' +
       '<div class="rd-cover-in">' +
         '<h1 id="ex-title" lang="vi">Việt Nam</h1>' +
         '<p class="rd-cover-tag">' + esc(c.name) + ', ' + esc(c.start.replace(/^Starting/, 'starting')) + '. ' + esc(c.intro) + '</p>' +
         '<div class="rd-cover-actions">' +
-          '<a class="rd-btn" href="#contents" data-jump>Start reading' + ic('arrowDown') + '</a>' +
-          '<a class="rd-btn rd-btn-quiet" href="explore.html">' + ic('play') + 'Play in Hà Nội</a>' +
+          '<a class="rd-btn" href="explore.html" data-cover-show="game">' + ic('play') + 'Play in Hà Nội</a>' +
+          '<a class="rd-btn rd-btn-quiet" href="#contents" data-jump data-cover-show="video">Start reading' + ic('arrowDown') + '</a>' +
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
       '</div>' +
@@ -168,36 +174,89 @@
     '</section>';
   };
 
-  R.toc = function () {
-    return '<section class="rd-sec rd-contents" id="contents" aria-labelledby="toc-title" tabindex="-1"><div class="rd-wrap rd-grid">' +
-      '<div class="rd-contents-side">' + head(2, 'Three ways into Vietnam', 'Pick a chapter, or keep scrolling and let the page carry you.', 'toc-title') + '</div>' +
-      '<ol class="rd-toc">' + CHAPTERS.map(function (ch) {
-        return '<li class="rd-rise"><a href="#' + ch.anchor + '" data-jump>' +
-          '<span class="rd-toc-pic">' + media(pic({ imageId: ch.imageId }), { decorative: true }) + '</span>' +
-          '<span class="rd-toc-txt"><span class="rd-toc-name">' + esc(ch.name) + '</span>' +
-            '<span class="rd-toc-q">' + esc(chQ(ch)) + '</span>' +
-            '<span class="rd-link" aria-hidden="true">Read the chapter' + ic('arrowDown', 'rd-go') + '</span></span></a></li>';
-      }).join('') + '</ol>' +
-      '</div></section>';
+  /* destinations: one large card per city that has stories, a small one per city still to come.
+     Add a city here (and its stories and zones in the data) to give it a card. */
+  var DESTS = [
+    { id: 'hanoi', name: 'Hà Nội', photo: 'img-old-quarter', pixel: 'assets/img/explore/pho-co.jpg', play: 'explore.html',
+      line: 'Our stories are set in the capital. Customs differ between regions, families and places, and each story says where it applies.' },
+    { id: 'hoi-an', name: 'Hội An', later: true },
+    { id: 'da-nang', name: 'Đà Nẵng', later: true }
+  ];
+  function gameMinutes() {
+    return (CC.exploreZones || []).filter(function (z) { return z.country === COUNTRY; }).reduce(function (n, z) { return n + (z.minutes || 0); }, 0);
+  }
+  R.dests = function () {
+    var ready = DESTS.filter(function (d) { return !d.later; }), later = DESTS.filter(function (d) { return d.later; });
+    var mins = gameMinutes(), zones = (CC.exploreZones || []).filter(function (z) { return z.country === COUNTRY; }).length;
+    var stories = (CC.stories || []).filter(function (st) { return st.country === COUNTRY; }).length;
+    return '<section class="rd-sec rd-dests" id="hanoi" aria-labelledby="dests-title" tabindex="-1"><div class="rd-wrap">' +
+      head(2, 'Destinations in Vietnam', null, 'dests-title') +
+      '<div class="rd-dests-grid">' + ready.map(function (d) {
+        var p = pic({ imageId: d.photo });
+        return '<article class="rd-dest rd-rise" aria-labelledby="dest-' + d.id + '">' +
+          '<div class="rd-dest-pic">' + media(p, { decorative: true, sizes: '(min-width: 1001px) 60vw, 100vw' }) +
+            '<img class="rd-media is-pixel rd-dest-pixel" src="' + esc(d.pixel) + '" alt="" loading="lazy" decoding="async"></div>' +
+          '<div class="rd-dest-txt">' +
+            '<h3 id="dest-' + d.id + '">' + esc(d.name) + '</h3>' +
+            '<p class="rd-dest-meta">' + stories + ' stories · ' + zones + ' places in the game</p>' +
+            '<p class="rd-dest-line">' + esc(d.line) + '</p>' +
+            '<div class="rd-dest-act">' +
+              '<a class="rd-btn" href="' + esc(d.play) + '">' + ic('play') + 'Play' + (mins ? ' · ~' + mins + ' min' : '') + '</a>' +
+              jump('contents', 'Read the ' + esc(d.name) + ' stories') +
+            '</div></div></article>';
+      }).join('') +
+      (later.length ? '<ul class="rd-dests-later" aria-label="Coming later">' + later.map(function (d) {
+        return '<li class="rd-dest-later rd-rise"><span class="rd-dest-later-name">' + esc(d.name) + '</span><span class="rd-dest-later-tag">Coming later</span></li>';
+      }).join('') + '</ul>' : '') +
+      '</div></div></section>';
   };
 
-  R.banner = function () {
-    var p = pic({ imageId: 'img-hangma' });
-    return '<section class="rd-sec rd-start" aria-labelledby="banner-title"><div class="rd-wrap rd-grid">' +
-      '<figure class="rd-start-fig rd-rise">' + media(p) + '<figcaption>' + creditLine(p) + '</figcaption></figure>' +
-      '<div class="rd-start-txt rd-rise"><h2 id="banner-title">Start in Hà Nội</h2>' +
-        '<p>Our stories are set in the capital. Customs differ between regions, families and places, and each story says where it applies.</p>' +
-        '<a class="rd-btn" href="#everyday" data-jump>Take me there' + GO + '</a></div>' +
+  /* story finder: every story on one screen, filtered in place by theme and by words. The whole list is in the
+     HTML; initFinder() only hides what does not match. Search ignores accents, so "pho" finds Phở. */
+  var THEME_SHORT = { people: 'Everyday life', food: 'Food', history: 'History', arts: 'Arts', beliefs: 'Beliefs & festivals', language: 'Language' };
+  function fold(s) { return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase(); }
+  function thumbPic(st) {
+    var p = pic({ imageId: st.hero && st.hero.image, story: st, small: true });
+    if (p && p.web) { var q = {}; for (var k in p) q[k] = p[k]; q.src = p.web.replace(/-1280\.webp$/, '-640.webp'); q.web = null; q.w = q.h = null; return q; }
+    return p;
+  }
+  R.finder = function () {
+    var list = (CC.stories || []).filter(function (st) { return st.country === COUNTRY; });
+    var topics = (CC.topics || []).filter(function (t) { return list.some(function (st) { return (t.storyIds || []).indexOf(st.id) !== -1; }); });
+    CUR = 'contents';
+    var items = list.map(function (st) {
+      var ts = CC.storyTopics(st).map(function (t) { return t.id; }).join(' ');
+      return '<li class="rd-find-item" data-topics="' + esc(ts) + '" data-text="' + esc(fold(st.title + ' ' + st.dek + ' ' + st.place)) + '">' +
+        '<a href="' + esc(storyHref(st)) + '">' +
+          '<span class="rd-find-pic">' + media(thumbPic(st), { decorative: true, sizes: '64px' }) + '</span>' +
+          '<span class="rd-find-txt"><span class="rd-find-title">' + esc(st.title) + '</span>' +
+          '<span class="rd-find-meta">' + esc(st.place) + ' · ' + CC.storyMinutes(st) + ' min read</span></span>' +
+        '</a></li>';
+    }).join('');
+    CUR = null;
+    var tab = function (id, label, n, on) {
+      return '<button type="button" class="rd-find-tab" data-find-topic="' + id + '" aria-pressed="' + on + '">' + esc(label) + ' <span class="rd-find-n">' + n + '</span></button>';
+    };
+    return '<section class="rd-sec rd-finder" id="contents" aria-labelledby="finder-title" tabindex="-1"><div class="rd-wrap" data-finder>' +
+      '<div class="rd-finder-top">' + head(2, 'Story finder', 'All ' + list.length + ' stories from Hà Nội. Pick a theme or search by name, dish or place.', 'finder-title') +
+        '<label class="rd-find-search"><span class="visually-hidden">Search the stories</span>' + ic('search') +
+          '<input type="search" placeholder="Search, e.g. phở or temple" autocomplete="off" spellcheck="false" data-find-q></label></div>' +
+      '<div class="rd-find-tabs" role="group" aria-label="Filter by theme">' + tab('all', 'All', list.length, true) +
+        topics.map(function (t) { return tab(t.id, THEME_SHORT[t.id] || t.label, list.filter(function (st) { return (t.storyIds || []).indexOf(st.id) !== -1; }).length, false); }).join('') + '</div>' +
+      '<p class="rd-find-status" role="status" aria-live="polite" data-find-status></p>' +
+      '<ul class="rd-find-grid">' + items + '</ul>' +
+      '<p class="rd-find-empty" data-find-empty hidden>No story matches that. Try another word, or <button type="button" class="rd-find-reset" data-find-reset>show all stories</button>.</p>' +
+      '<p class="rd-find-more">' + jump(CHAPTERS[0].anchor, 'Or read chapter by chapter') + '</p>' +
     '</div></section>';
   };
 
   /* the chapter bar: every chapter, the one you are reading, and how far down the page you are */
   R.chbar = function () {
-    var items = CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; }).concat([['phrases', 'Words'], ['places', 'Places in the game']]);
+    var items = [['contents', 'All stories']].concat(CHAPTERS.map(function (ch) { return [ch.anchor, ch.name]; })).concat([['phrases', 'Words'], ['places', 'Places in the game']]);
     return '<nav class="rd-chbar" aria-label="Chapters"><div class="rd-wrap">' +
       '<ul class="rd-chbar-list">' + items.map(function (x) { return '<li><a href="#' + x[0] + '" data-jump data-chlink="' + x[0] + '">' + esc(x[1]) + '</a></li>'; }).join('') + '</ul>' +
       '<label class="rd-chbar-pick"><span class="visually-hidden">Go to a chapter</span><select data-chpick>' +
-        '<option value="contents">Contents</option>' + items.map(function (x) { return '<option value="' + x[0] + '">' + esc(x[1]) + '</option>'; }).join('') +
+        items.map(function (x) { return '<option value="' + x[0] + '">' + esc(x[1]) + '</option>'; }).join('') +
       '</select>' + ic('chevronDown') + '</label>' +
     '</div><span class="rd-progress" aria-hidden="true"><i></i></span></nav>';
   };
@@ -472,8 +531,8 @@
      ================================================================ */
   var SECTIONS = [
     { type: 'hero' },
-    { type: 'toc' },
-    { type: 'banner' },
+    { type: 'dests' },
+    { type: 'finder' },
     { type: 'chbar' },
     { type: 'chapter', ch: 0, modules: [
       { type: 'accordion' },
@@ -642,6 +701,63 @@
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(url).then(function () { CC.toast('Link copied.', 'check'); }, function () { CC.toast('Couldn’t copy the link. Copy it from the address bar.', 'alert'); });
       } else CC.toast('Copy the link from the address bar to share it.', 'info');
+    });
+  }
+
+  /* cover: Play shows the game, Start reading the video. Opacity only (read.css), instant with reduced motion,
+     and nothing at all without a hovering pointer: on a phone a tap is a press, not a preview. */
+  function initCover() {
+    var cover = document.querySelector('[data-cover]');
+    if (!cover || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var img = cover.querySelector('.rd-cover-game');
+    var show = function (what) {
+      if (img && img.hasAttribute('data-src')) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+      cover.classList.toggle('is-instant', reduce());
+      cover.classList.toggle('is-game', what === 'game');
+    };
+    each('[data-cover-show]', function (b) {
+      var what = b.getAttribute('data-cover-show');
+      b.addEventListener('pointerenter', function () { show(what); });
+      b.addEventListener('focus', function () { show(what); });
+    }, cover);
+    /* leaving the buttons for anywhere else puts the video back */
+    var actions = cover.querySelector('.rd-cover-actions');
+    actions.addEventListener('pointerleave', function () { show('video'); });
+    actions.addEventListener('focusout', function (e) { if (!actions.contains(e.relatedTarget)) show('video'); });
+  }
+
+  /* story finder: theme buttons and the search box hide the stories that do not match, in place */
+  function initFinder() {
+    each('[data-finder]', function (box) {
+      var q = box.querySelector('[data-find-q]'), status = box.querySelector('[data-find-status]'), empty = box.querySelector('[data-find-empty]');
+      var items = box.querySelectorAll('.rd-find-item'), tabs = box.querySelectorAll('[data-find-topic]');
+      var topic = 'all';
+      var apply = function () {
+        var words = fold(q.value).trim().split(/\s+/).filter(Boolean), n = 0;
+        Array.prototype.forEach.call(items, function (li) {
+          var t = li.getAttribute('data-text');
+          var ok = (topic === 'all' || (' ' + li.getAttribute('data-topics') + ' ').indexOf(' ' + topic + ' ') !== -1) &&
+            words.every(function (w) { return t.indexOf(w) !== -1; });
+          li.hidden = !ok;
+          if (ok) n++;
+        });
+        empty.hidden = n > 0;
+        status.textContent = n === items.length ? '' : CC.plural(n, 'story', 'stories') + ' shown';
+      };
+      Array.prototype.forEach.call(tabs, function (b) {
+        b.addEventListener('click', function () {
+          topic = b.getAttribute('data-find-topic');
+          Array.prototype.forEach.call(tabs, function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+          apply();
+        });
+      });
+      q.addEventListener('input', apply);
+      box.querySelector('[data-find-reset]').addEventListener('click', function () {
+        q.value = ''; topic = 'all';
+        Array.prototype.forEach.call(tabs, function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-find-topic') === 'all')); });
+        apply(); q.focus();
+      });
+      apply();
     });
   }
 
@@ -839,8 +955,8 @@
         else if (current === id) { current = null; mark(null); if (e.target.hasAttribute('data-anchor')) history.replaceState(null, '', location.pathname + location.search); }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    var words = document.getElementById('phrases');
-    chapters.concat(words ? [words] : [], last ? [last] : []).forEach(function (c) { io.observe(c); });
+    var words = document.getElementById('phrases'), finder = document.getElementById('contents');
+    (finder ? [finder] : []).concat(chapters, words ? [words] : [], last ? [last] : []).forEach(function (c) { io.observe(c); });
 
     /* plate: show the picture of the section in the middle of the screen */
     var showPlate = function (ch, id) {
@@ -914,6 +1030,8 @@
     initRise();
     initVideos();
     initHeroActions();
+    initCover();
+    initFinder();
     initAccordion();
     initInline();
     initGame();

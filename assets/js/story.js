@@ -22,6 +22,7 @@
     if (from === 'collection') return { href: 'collection.html', label: 'Back to your passport', topic: t, chapter: chapterOf(st, from) };
     /* from the reading page, or anywhere else: back to the story's chapter on vietnam.html (CC.ex.reading) */
     var chap = chapterOf(st, from);
+    if (from === 'vn:contents') return { href: 'vietnam.html#contents', label: 'Back to the story finder', topic: t, page: true, chapter: chap };
     if (/^vn:places$/.test(from)) return { href: 'vietnam.html#places', label: 'Back to Places in the game', topic: t, page: true, chapter: chap };
     if (chap) return { href: 'vietnam.html#' + chap.anchor, label: 'Back to ' + chap.name, topic: t, page: true, chapter: chap };
     if (from === 'index' || from === 'overview') return { href: 'vietnam.html#contents', label: 'Back to Vietnam', topic: t, page: true };
