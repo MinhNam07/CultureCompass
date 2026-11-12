@@ -14,7 +14,7 @@ The project is also a solo student UX assignment (CSCU9X5), so module assessors 
 
 ## Product Purpose
 
-CultureCompass helps travellers **explore and understand the culture of a destination before they arrive**: everyday life, history and memory, food, arts, beliefs and festivals, and how people speak to each other. **Explore**, a small pixel-art game in which you walk around real places in Hà Nội and meet everyday moments, is one branch that helps apply what they read; it is not the whole product.
+CultureCompass helps travellers **explore and understand the culture of a destination before they arrive**: everyday life, history and memory, food, arts, beliefs and festivals, and how people speak to each other. **Explore**, a small pixel-art game in which you walk around real places in Hà Nội and meet everyday moments, is the main way in: every page keeps it one to three clicks away (decided by the project owner, 12 November 2026, after assessor feedback that the game was buried). The stories explain what the game shows; reading on its own stays fully supported.
 
 Tagline: *Understand the place before you arrive. Explore the stories, traditions and everyday life behind your next destination.*
 
@@ -37,7 +37,7 @@ A cultural publication you explore like a game of discovery. Choosing a destinat
 
 ## Operating Context
 
-Main flow: `index.html` (muted culture montage → choose a destination) → `vietnam.html` (an editorial page in four colour chapters: scope, everyday life, food, beliefs and temples, history, practice, phrases; the six-theme compass is on `vietnam-classic.html`) → `story.html?id=…` (the story, its sources, where it applies, phrases) → optional `explore.html` (the map of places) → `explore.html?zone=…` (walk through one place) → save to `collection.html`. Old `scene.html?id=…` links forward to the place that holds that scene.
+Main flow (from 12 November 2026): `index.html` hero → **Play Hà Nội** → `explore.html` (the map of places; a first visit is offered **Start here: Homestay**) → `explore.html?zone=…`: three clicks into the game. The globe path is: flag of Vietnam (marked "Start here"; every other flag is dimmed, "coming later") → Hà Nội on the country map → the map of places. Selecting an open city goes straight to its game map; only cities still being built open the country HUD's detail panel. The reading path: `index.html` (muted culture montage → choose a destination) → `vietnam.html` (an editorial page in four colour chapters: scope, everyday life, food, beliefs and temples, history, practice, phrases; the six-theme compass is on `vietnam-classic.html`) → `story.html?id=…` (the story, its sources, where it applies, phrases) → optional `explore.html` (the map of places) → `explore.html?zone=…` (walk through one place) → save to `collection.html`. Old `scene.html?id=…` links forward to the place that holds that scene.
 
 Global navigation: **Destinations · My collection · About** (+ Settings). Inside a destination: **Overview · Themes · Explore · Phrasebook**.
 

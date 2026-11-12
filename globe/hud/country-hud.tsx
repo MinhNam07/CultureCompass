@@ -20,6 +20,7 @@ function Typed({ text }: { text: string }) {
 }
 
 function CountryMap({ data, selected, onPick }: { data: HudCountry; selected: HudDestination | null; onPick: (d: HudDestination) => void }) {
+  const [peek, setPeek] = useState<string | null>(null);
   const seas = [
     { t: "Quần đảo Hoàng Sa", s: "Hoàng Sa archipelago", lon: 112.0, lat: 17.45 },
     { t: "Quần đảo Trường Sa", s: "Trường Sa archipelago", lon: 114.75, lat: 11.75 },
@@ -45,12 +46,13 @@ function CountryMap({ data, selected, onPick }: { data: HudCountry; selected: Hu
         const [x, y] = xy(d.lon!, d.lat!);
         const on = selected?.id === d.id;
         return (
-          <g key={d.id} className={`hud-pin ${d.ready ? "is-ready" : "is-soon"} ${on ? "is-on" : ""}`} onClick={() => onPick(d)} aria-hidden="true">
+          <g key={d.id} className={`hud-pin ${d.ready ? "is-ready" : "is-soon"} ${on || peek === d.id ? "is-on" : ""}`} onClick={() => onPick(d)} onPointerEnter={() => setPeek(d.id)} onPointerLeave={() => setPeek(null)} aria-hidden="true">
             {d.ready && <circle className="hud-pin-pulse" cx={x} cy={y} r={10} />}
             <circle className="hud-pin-ring" cx={x} cy={y} r={d.ready ? 13 : 9} />
             <circle className="hud-pin-dot" cx={x} cy={y} r={d.ready ? 6 : 4.5} />
             <circle className="hud-pin-hit" cx={x} cy={y} r={22} />
             <text className="hud-pin-label" x={x + (d.labelDx || 14)} y={y + (d.labelDy || 5)} textAnchor={d.labelAnchor || "start"}>{d.name}{d.ready ? "" : " · soon"}</text>
+            {d.ready && <text className="hud-pin-play" x={x + (d.labelDx || 14)} y={y + (d.labelDy || 5) + 22} textAnchor={d.labelAnchor || "start"}>▶ Click to play</text>}
           </g>
         );
       })}
@@ -85,7 +87,12 @@ export function CountryHud({ country, reducedMotion, beamed = false, closing = f
     setSwap("out");
     swapTimer.current = window.setTimeout(() => { apply(); setSwap("in"); }, SWAP_OUT_MS);
   }
-  function pick(d: HudDestination) { change(() => { lastPicked.current = d.id; setDest(d); }); }
+  // An open destination goes straight to its map of places in the game; only places still being built open the panel.
+  function go(href: string) { (window.top || window).location.href = new URL(href, window.location.href).href; }
+  function pick(d: HudDestination) {
+    if (d.ready && d.playHref) { go(d.playHref); return; }
+    change(() => { lastPicked.current = d.id; setDest(d); });
+  }
   function backToList() {
     change(() => {
       const id = lastPicked.current;
@@ -185,18 +192,34 @@ export function CountryHud({ country, reducedMotion, beamed = false, closing = f
                 <p className="hud-kicker">{open} open · {data.destinations.length - open} in development</p>
                 <h2 id="hud-title" ref={heading} tabIndex={-1}>{data.label}</h2>
                 {intro && <p className="hud-lede">{intro.title}</p>}
-                <p className="hud-hint">Choose a destination. You explore each one in a small pixel-art game.</p>
+                <p className="hud-hint">Select <b>Hà Nội</b> on the map to start playing: you walk its streets in a small pixel-art game.</p>
                 <ol className="hud-list">
                   {data.destinations.map((d, i) => {
                     const s = d.ready ? zoneSummary(d) : null;
-                    return (
+                    if (d.ready) return (
                       <li key={d.id}>
-                        <button type="button" data-dest={d.id} className={`hud-item ${d.ready ? "is-ready" : "is-soon"}`} onClick={() => pick(d)}>
+                        <div className="hud-item is-ready" data-dest={d.id}>
                           <span className="hud-item-n" aria-hidden="true">{pad(i + 1)}</span>
                           <span className="hud-item-txt">
                             <b>{d.name}</b>
                             <span>{d.hook}</span>
-                            <small>{s ? `${s.places} places · ~${s.minutes} min · ${s.stamps}/${s.places} stamps` : "In development"}</small>
+                            <small>{s ? `${s.places} places · ~${s.minutes} min · ${s.stamps}/${s.places} stamps` : ""}</small>
+                          </span>
+                          <span className="hud-item-go">
+                            {d.playHref && <a className="hud-btn is-primary" href={d.playHref} target="_top">Play {d.name} <Arrow /></a>}
+                            <a className="hud-item-read" href={d.readHref} target="_top">Read the stories</a>
+                          </span>
+                        </div>
+                      </li>
+                    );
+                    return (
+                      <li key={d.id}>
+                        <button type="button" data-dest={d.id} className="hud-item is-soon" onClick={() => pick(d)}>
+                          <span className="hud-item-n" aria-hidden="true">{pad(i + 1)}</span>
+                          <span className="hud-item-txt">
+                            <b>{d.name}</b>
+                            <span>{d.hook}</span>
+                            <small>In development</small>
                           </span>
                           <Arrow />
                         </button>

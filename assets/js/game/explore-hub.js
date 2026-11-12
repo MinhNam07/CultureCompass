@@ -71,6 +71,11 @@
     check: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg>'
   };
 
+  /* a first visit: nothing started anywhere, so the first place is offered as "Start here" */
+  function isFresh() { return !zones.some(function (z) { return progress(z).started || progress(z).done; }); }
+  function travel(id) { location.href = 'explore.html?zone=' + encodeURIComponent(id); }
+  var PLAY = '<svg class="cc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>';
+
   /* ---------- render ---------- */
   function readHref(z) {
     var sc = CC.byId(CC.scenarios || [], z.scenes ? z.scenes[0] : z.sceneId);
@@ -104,13 +109,14 @@
       return '<div class="gxs-soon"><div class="gxs-soon-frame"><p class="gxs-soon-k">Under construction</p><p>' + esc(d.name) + ' is being drawn. Hà Nội is ready to play now.</p>' +
         '<button type="button" class="gxs-cta" data-dest="hanoi">Back to Hà Nội</button></div></div>';
     }
+    var fresh = isFresh();
     return '<canvas class="gxs-canvas" id="gxs-canvas" role="img" aria-label="Pixel map of central Hà Nội: West Lake, the Red River, the Old Quarter, Hoàn Kiếm Lake and Văn Miếu"></canvas>' +
       '<span class="gxs-compass" aria-hidden="true"><i></i></span>' +
       '<p class="gxs-map-label" aria-hidden="true">Hà Nội</p>' +
       zones.map(function (z) {
-        var p = PINS[z.id] || { x: 50, y: 50 }, pr = progress(z);
+        var p = PINS[z.id] || { x: 50, y: 50 }, pr = progress(z), start = fresh && z.id === zones[0].id;
         return '<button type="button" class="gxs-pin is-' + pr.tone + (z.id === picked ? ' is-on' : '') + ((p.side ? p.side === 'left' : p.x > 72) ? ' is-left' : '') + '" data-zone="' + esc(z.id) + '" style="left:' + p.x + '%;top:' + p.y + '%" aria-pressed="' + (z.id === picked) + '" aria-label="' + esc(z.title) + ', ' + pr.status + '">' +
-          '<span class="gxs-dot" aria-hidden="true"></span><span class="gxs-pin-label" aria-hidden="true">' + esc(z.stamp || z.title) + '</span></button>';
+          '<span class="gxs-dot" aria-hidden="true"></span><span class="gxs-pin-label" aria-hidden="true">' + (start ? '<b class="gxs-pin-start">Start here</b> ' : '') + esc(z.stamp || z.title) + '</span></button>';
       }).join('');
   }
 
@@ -120,7 +126,7 @@
       return '<div class="gxs-detail"><h2 class="gxs-name">' + esc(d.name) + '</h2><p class="gxs-meta">Coming later</p><p class="gxs-hook">' + esc(d.hook) + '</p></div>';
     }
     var z = CC.byId(zones, picked), pr = progress(z);
-    var cta = pr.done ? 'Play again' : pr.started ? 'Continue' : 'Travel here';
+    var cta = pr.done ? 'Play again' : pr.started ? 'Continue' : isFresh() && z.id === zones[0].id ? 'Start here: ' + (z.stamp || z.title) : 'Travel here';
     return '<div class="gxs-detail">' +
         '<div class="gxs-detail-head"><div><h2 class="gxs-name">' + esc(z.title) + '</h2>' +
           '<p class="gxs-meta">About ' + z.minutes + ' min · ' + pr.n + ' moments</p></div>' +
@@ -132,7 +138,7 @@
         }).join('') + '</ul>' +
         '<p class="gxs-stamp">' + IC.stamp + (pr.done ? 'Passport stamp collected' : 'Stamp after every moment (' + pr.k + ' of ' + pr.n + ')') + '</p>' +
         '<div class="gxs-actions">' +
-          '<a class="gxs-cta" href="explore.html?zone=' + encodeURIComponent(z.id) + '">' + cta + '</a>' +
+          '<a class="gxs-cta gxs-cta-go" href="explore.html?zone=' + encodeURIComponent(z.id) + '">' + PLAY + esc(cta) + '</a>' +
           '<a class="gxs-btn" href="' + readHref(z) + '">Read about it</a>' +
           (pr.started ? '<button type="button" class="gxs-link" data-restart="' + esc(z.id) + '">Start over</button>' : '') +
         '</div>' +
@@ -154,7 +160,7 @@
       '<span>' + stamps + ' of ' + zones.length + ' places stamped</span>' +
       '<span>' + CC.plural(facts, 'fact') + ' found</span>' +
       '<span>' + kept + ' kept in your passport</span>' +
-      '<span class="gxs-keys">Click a pin or a place · Enter to travel</span>';
+      '<span class="gxs-keys">Click a pin to choose it, click it again to travel</span>';
   }
 
   function firstSentence(t) { var m = String(t || '').match(/^.*?[.!?](\s|$)/); return m ? m[0].trim() : t; }
@@ -201,7 +207,9 @@
     hub.addEventListener('click', function (e) {
       var t = e.target.closest('button');
       if (!t) return;
-      if (t.dataset.zone) pick(t.dataset.zone, t.classList.contains('gxs-pin') ? 'pin' : 'row');
+      /* choosing the place that is already chosen (a second click, a double click, Enter again) travels there */
+      if (t.dataset.zone && t.dataset.zone === picked && t.classList.contains('gxs-pin')) travel(picked);
+      else if (t.dataset.zone) pick(t.dataset.zone, t.classList.contains('gxs-pin') ? 'pin' : 'row');
       else if (t.dataset.dest) { dest = t.dataset.dest; paint('.gxs-dest[data-dest="' + dest + '"]'); }
       else if (t.dataset.restart) {
         var z = CC.byId(zones, t.dataset.restart);

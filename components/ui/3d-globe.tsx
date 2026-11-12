@@ -15,6 +15,10 @@ export interface GlobeMarker {
   src: string;
   label?: string;
   size?: number;
+  /** "open": playable now, drawn bright with a pulse; "soon": dimmed, its label says "coming later" */
+  status?: "open" | "soon";
+  /** a short call to action shown beside the flag with an arrow pointing at it (e.g. "Start here") */
+  callout?: string;
 }
 
 export interface Globe3DConfig {
@@ -253,13 +257,15 @@ function Marker({
         >
           <button
             type="button"
-            aria-label={marker.label || "Select country"}
+            aria-label={(marker.label || "Select country") + (marker.status === "open" ? ", open now" : marker.status === "soon" ? ", coming later" : "")}
             aria-pressed={selected}
             aria-hidden={!isVisible}
             tabIndex={isVisible ? 0 : -1}
             className={cn(
               "globe-country-pin grid cursor-pointer place-items-center bg-transparent p-0 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
               selected && "is-selected",
+              marker.status === "open" && "is-open",
+              marker.status === "soon" && "is-soon",
             )}
             style={{
               width: "30px",
@@ -277,7 +283,14 @@ function Marker({
               className="h-[22.5px] w-[30px] rounded-xs object-fill shadow-lg ring-1 ring-white/70"
               draggable={false}
             />
-            {(selected || hovered) && <span className="globe-pin-label" aria-hidden="true">{marker.label}</span>}
+            {marker.status === "open" && <span className="globe-pin-pulse" aria-hidden="true" />}
+            {marker.callout && !selected && !hovered && (
+              <span className="globe-pin-callout" aria-hidden="true">
+                <span className="globe-pin-callout-txt">{marker.callout}</span>
+                <svg viewBox="0 0 40 40" width="34" height="34" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 6c14 2 22 10 26 26" /><path d="M22 30l10 3 2-11" /></svg>
+              </span>
+            )}
+            {(selected || hovered) && <span className="globe-pin-label" aria-hidden="true">{marker.label}{marker.status === "open" ? " · open now" : marker.status === "soon" ? " · coming later" : ""}</span>}
           </button>
         </Html>
       </group>

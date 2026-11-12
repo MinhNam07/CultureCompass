@@ -37,7 +37,7 @@ body[data-page="vietnam"] {
 }
 
 /* shell: one solid bar, separated by tone, not by lines */
-body[data-page="vietnam"] .cc-header { background: var(--rd-ground); border-bottom: 0; }
+body[data-page="vietnam"] .cc-header { background: var(--rd-ground); border-bottom-color: transparent; }   /* no visible rule, same height as every other page */
 body[data-page="vietnam"] .cc-subnav { background: var(--rd-ground); border-bottom: 0; }
 body[data-page="vietnam"] .cc-footer { border-top: 0; background: #08101C; }
 body[data-page="vietnam"] .cc-footer-last { border-top: 0; }

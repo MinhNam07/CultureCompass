@@ -65,7 +65,7 @@ const vietnam: HudCountry = {
       photo: hanoiPhoto,
       zones: zones.filter((z) => z.country === "vietnam").map((z) => z.id),
       playHref: "explore.html",
-      readHref: "vietnam.html",
+      readHref: "vietnam.html#contents",
     },
     {
       id: "hoian", name: "Hội An", ready: false,

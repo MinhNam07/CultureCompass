@@ -73,13 +73,7 @@ a:hover { color: #9EEEF7; }
 .cc-nav a:hover { color: var(--night-text); }
 .cc-nav a[aria-current="page"], .cc-nav a.is-section { color: var(--night-text); }
 .cc-nav a[aria-current="page"]::after, .cc-nav a.is-section::after { background: var(--cyan); }
-.cc-nav-icon { width: 44px; justify-content: center; padding: 0 !important; border: 1px solid var(--night-line) !important; border-radius: 8px !important; }
-.cc-nav-icon .cc-icon { margin: 0; }
-.cc-nav-icon-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@media (max-width: 860px) {
-  .cc-nav-icon { width: 100%; justify-content: flex-start; padding: 8px 12px !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; border-radius: 0 !important; }
-  .cc-nav-icon-label { position: static; width: auto; height: auto; clip: auto; }
-}
+.cc-nav .cc-nav-icon { border-color: var(--night-line); }   /* size and layout: cc.css */
 .cc-subnav, body.ex .cc-subnav { background: var(--night); border-bottom: 1px solid var(--night-line); }
 .cc-subnav-name { color: var(--night-text); }
 .cc-subnav ul a { color: var(--night-muted); font-size: 1rem; }
