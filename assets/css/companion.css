@@ -1,0 +1,41 @@
+/* Amelia, the walking invitation to Explore (assets/js/companion.js). She lives on the bottom edge of the screen.
+   The speech box and the Play tag borrow the game's own dialogue look: ivory, a dark 3px rule and a stepped shadow. */
+.cc-pal { position: fixed; left: 0; top: 0; z-index: 25; display: grid; justify-items: center; color: inherit; text-decoration: none; will-change: transform; -webkit-tap-highlight-color: transparent; }
+.cc-pal:focus-visible { outline: none; }
+.cc-pal:focus-visible .cc-pal-say, .cc-pal:focus-visible .cc-pal-tag { outline: 2px solid #5FD8E8; outline-offset: 4px; }
+
+.cc-pal-sprite { width: 64px; height: 128px; background: url(../game/vendor/limezu-interiors-free/Characters_free/Amelia_run_16x16.png) 0 0 / 1536px 128px; image-rendering: pixelated; }
+.cc-pal-sprite.is-idle { background-image: url(../game/vendor/limezu-interiors-free/Characters_free/Amelia_idle_anim_16x16.png); }
+.cc-pal-shadow { width: 44px; height: 10px; margin-top: -10px; border-radius: 50%; background: rgb(0 0 0 / .45); }
+
+.cc-pal-say { position: relative; display: grid; gap: 6px; max-width: 280px; margin-bottom: -38px; padding: 12px 16px 14px; background: #FFFCF7; color: #1B1F2A; border: 3px solid #1B1F2A; border-radius: 4px; box-shadow: 0 3px 0 #1B1F2A; transform-origin: 50% 100%; animation: cc-pal-pop 260ms cubic-bezier(.2, .9, .3, 1.2); transition: background-color 160ms ease-out; }
+.cc-pal-say::after { content: ''; position: absolute; left: 50%; bottom: -10px; width: 12px; height: 12px; margin-left: -6px; background: inherit; border-right: 3px solid #1B1F2A; border-bottom: 3px solid #1B1F2A; transform: rotate(45deg); }
+.cc-pal-l1 { min-height: 1.15em; font: 700 1.0625rem/1.15 var(--font-sans); white-space: nowrap; }
+.cc-pal-l2 { min-height: 1.35em; font: 500 .875rem/1.35 var(--font-sans); color: #3D4250; }
+.cc-pal-l2 b { color: #B23A26; }
+.cc-pal-more { position: absolute; right: 8px; bottom: 4px; font-size: .625rem; opacity: 0; }
+.cc-pal-say.is-done .cc-pal-more { opacity: 1; animation: cc-pal-blink 900ms steps(1) infinite; }
+
+.cc-pal-tag { display: none; align-items: center; gap: 6px; margin-bottom: -34px; padding: 7px 12px; background: #5FD8E8; color: #062A30; font: 700 .8125rem/1 var(--font-sans); border: 3px solid #1B1F2A; border-radius: 4px; box-shadow: 0 3px 0 #1B1F2A; white-space: nowrap; animation: cc-pal-pop 220ms cubic-bezier(.2, .9, .3, 1.2); }
+.cc-pal-tag svg { width: 11px; height: 11px; }
+.cc-pal-long { display: none; font-weight: 600; }
+.cc-pal.is-quiet .cc-pal-say { display: none; }
+.cc-pal.is-quiet .cc-pal-tag { display: inline-flex; }
+.cc-pal:hover .cc-pal-long, .cc-pal:focus-visible .cc-pal-long { display: inline; }
+@media (hover: hover) and (pointer: fine) {
+  .cc-pal:hover .cc-pal-say { background: #5FD8E8; }
+  .cc-pal:hover .cc-pal-l2, .cc-pal:hover .cc-pal-l2 b { color: #062A30; }
+}
+
+@keyframes cc-pal-pop { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes cc-pal-blink { 50% { visibility: hidden; } }
+
+@media (max-width: 760px) {
+  .cc-pal-sprite { width: 48px; height: 96px; background-size: 1152px 96px; }
+  .cc-pal-say { max-width: 220px; margin-bottom: -28px; padding: 10px 12px 12px; }
+  .cc-pal-l1 { font-size: 1rem; }
+  .cc-pal-tag { margin-bottom: -26px; }
+}
+@media (prefers-reduced-motion: reduce) { .cc-pal-say, .cc-pal-tag, .cc-pal-say.is-done .cc-pal-more { animation: none; } }
+html.cc-reduce-motion .cc-pal-say, html.cc-reduce-motion .cc-pal-tag { animation: none; }
+@media print { .cc-pal { display: none !important; } }

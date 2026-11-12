@@ -154,9 +154,7 @@
      ================================================================ */
   var R = {};
 
-  /* the cover: the game first. Pointing at (or tabbing to) Play crossfades the video into the game's own
-     pixel art; Start reading brings the video back. initCover() wires it, on hover-capable screens only. */
-  var COVER_GAME = 'assets/img/explore/pho-co.jpg';
+  var CHEV = '<svg class="rd-cue-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>';
   /* the cover photo: the flower market at night, sharp on any screen (a 3840px copy beside the usual sizes) */
   var COVER = 'oq-flower-night';
   R.hero = function (s, c) {
@@ -165,19 +163,17 @@
     return '<section class="rd-cover" id="top" aria-labelledby="ex-title" data-cover>' +
       '<div class="rd-cover-media">' +
         '<img class="rd-media rd-cover-photo" src="' + base + '-2560.webp" srcset="' + base + '-1280.webp 1280w, ' + base + '-2560.webp 2560w, ' + base + '-3840.jpg 3840w" sizes="100vw" width="3840" height="2563" alt="' + esc(p ? p.alt : '') + '" fetchpriority="high" decoding="async">' +
-        '<img class="rd-media is-pixel rd-cover-game" data-src="' + COVER_GAME + '" alt="" aria-hidden="true" decoding="async">' +
       '</div>' +
       '<div class="rd-cover-in">' +
         '<h1 id="ex-title" lang="vi">Việt Nam</h1>' +
         '<p class="rd-cover-tag">' + esc(c.name) + ', ' + esc(c.start.replace(/^Starting/, 'starting')) + '. ' + esc(c.intro) + '</p>' +
+        /* the game's way in is Amelia (companion.js), walking along the bottom of the screen; the cue below is the way into the reading */
         '<div class="rd-cover-actions">' +
-          '<a class="rd-btn" href="explore.html" data-cover-show="game">' + ic('play') + 'Play in Hà Nội</a>' +
-          '<a class="rd-btn rd-btn-quiet" href="#contents" data-jump data-cover-show="video">Start reading' + ic('arrowDown') + '</a>' +
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
       '</div>' +
       /* one small word, centred under everything; it goes once the reader starts scrolling */
-      '<p class="rd-cover-cue" aria-hidden="true">Scroll to explore</p>' +
+      '<p class="rd-cover-cue" aria-hidden="true"><span>Scroll to explore</span>' + CHEV + '</p>' +
     '</section>';
   };
 
@@ -711,30 +707,12 @@
     });
   }
 
-  /* cover: Play shows the game, Start reading the video. Opacity only (read.css), instant with reduced motion,
-     and nothing at all without a hovering pointer: on a phone a tap is a press, not a preview. */
+  /* cover: the Scroll to explore cue goes once the reader starts scrolling */
   function initCover() {
     var cover = document.querySelector('[data-cover]');
-    if (cover) {
-      var moved = function () { if (window.scrollY > 24) { cover.classList.add('is-scrolled'); window.removeEventListener('scroll', moved); } };
-      window.addEventListener('scroll', moved, { passive: true }); moved();
-    }
-    if (!cover || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    var img = cover.querySelector('.rd-cover-game');
-    var show = function (what) {
-      if (img && img.hasAttribute('data-src')) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
-      cover.classList.toggle('is-instant', reduce());
-      cover.classList.toggle('is-game', what === 'game');
-    };
-    each('[data-cover-show]', function (b) {
-      var what = b.getAttribute('data-cover-show');
-      b.addEventListener('pointerenter', function () { show(what); });
-      b.addEventListener('focus', function () { show(what); });
-    }, cover);
-    /* leaving the buttons for anywhere else puts the video back */
-    var actions = cover.querySelector('.rd-cover-actions');
-    actions.addEventListener('pointerleave', function () { show('video'); });
-    actions.addEventListener('focusout', function (e) { if (!actions.contains(e.relatedTarget)) show('video'); });
+    if (!cover) return;
+    var moved = function () { if (window.scrollY > 24) { cover.classList.add('is-scrolled'); window.removeEventListener('scroll', moved); } };
+    window.addEventListener('scroll', moved, { passive: true }); moved();
   }
 
   /* story finder: theme buttons and the search box hide the stories that do not match, in place */

@@ -118,8 +118,15 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 .rd-cover-tag { max-width: 46ch; margin-top: 28px !important; font-size: var(--fs-body); line-height: 1.6; color: var(--rd-ink); text-wrap: pretty; }
 .rd-cover-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
 .rd-cover-photo { object-position: 50% 45%; }
-.rd-cover-cue { position: absolute; left: 50%; bottom: 20px; margin: 0 !important; transform: translateX(-50%); color: #D6DEE8; font: 500 .8125rem/1 var(--font-sans); letter-spacing: .04em; white-space: nowrap; pointer-events: none; transition: opacity 400ms var(--rd-ease); }
+/* Scroll to explore: rises in, then the ⌄ dips and the words breathe until the reader scrolls */
+.rd-cover-cue { position: absolute; left: 50%; bottom: 18px; display: grid; justify-items: center; gap: 4px; margin: 0 !important; transform: translateX(-50%); color: #E4EAF1; font: 500 .8125rem/1 var(--font-sans); letter-spacing: .06em; white-space: nowrap; pointer-events: none; transition: opacity 400ms var(--rd-ease); animation: rd-cue-up 700ms var(--rd-ease) 400ms both; }
+.rd-cover-cue span { animation: rd-cue-breathe 2.8s ease-in-out 1.2s infinite; }
+.rd-cue-chev { width: 18px; height: 18px; animation: rd-cue-dip 1.4s ease-in-out 1.1s infinite; }
 .rd-cover.is-scrolled .rd-cover-cue { opacity: 0; }
+@keyframes rd-cue-up { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes rd-cue-breathe { 50% { opacity: .55; } }
+@keyframes rd-cue-dip { 50% { transform: translateY(5px); } }
+@media (prefers-reduced-motion: reduce) { .rd-cover-cue, .rd-cover-cue span, .rd-cue-chev { animation: none; } }
 
 /* every opening section ends by naming the next one: a hairline runs to it */
 .rd-next-up { display: flex; align-items: center; gap: 20px; margin: clamp(40px, 5vw, 64px) 0 0 !important; }
@@ -128,10 +135,6 @@ a[data-jump]:hover > .rd-go, a[data-jump]:hover .rd-link .rd-go, a[data-jump]:fo
 @keyframes rd-nudge { 0%, 100% { transform: translateY(0); } 45% { transform: translateY(5px); } }
 @media (prefers-reduced-motion: reduce) { .rd-next-up .rd-go { animation: none !important; } }
 
-/* Play shows the game: the pixel art fades in over the video (opacity only; explore.js initCover) */
-.rd-cover-game { opacity: 0; transition: opacity 420ms var(--rd-ease); }
-.rd-cover.is-game .rd-cover-game { opacity: 1; }
-.rd-cover.is-instant .rd-cover-game { transition: none; }
 
 /* ---------------- destinations ---------------- */
 .rd-dests-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px var(--rd-gutter); margin-top: 40px; }
