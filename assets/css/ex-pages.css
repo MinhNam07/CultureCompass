@@ -339,3 +339,15 @@ html.cc-reduce-motion body.ex .phrase, html.cc-reduce-motion body.ex .scene-choi
   body.ex .ex-page-hero::before, body.ex .ex-page-foot, body.ex .ex-foot-join { display: none; }
   body.ex .ex-page-hero { padding-bottom: 16px !important; --ink: #202124; --ink-2: #3C4043; --color-text: #202124; --color-text-secondary: #3C4043; --color-primary: #202124; --line: rgb(32 33 36 / .2); color: #202124; }
 }
+
+/* ---------- one motion system: entrances on the inner pages (ex-kit.js rise), the same rise as vietnam.html ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* the transition belongs to the rise only: going into the low, faint state is instant (the block is below the screen) */
+  html:not(.cc-reduce-motion) body.ex .cc-rise.is-in { transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out); transition-delay: calc(var(--i, 0) * var(--stagger)); }
+  html:not(.cc-reduce-motion) body.ex .cc-rise:not(.is-in) { opacity: .3; transform: translateY(var(--d-rise)); }
+}
+/* the story's opening photograph drifts like the country cover (read.css rd-drift): 40s each way, composite only */
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.cc-reduce-motion) body.ex .story-head-media:not(.lx-scrolly-stage) img { animation: cc-drift 40s ease-in-out 1s infinite alternate; }
+}
+@keyframes cc-drift { from { transform: scale(1); } to { transform: scale(1.06) translate(-1%, -.6%); } }

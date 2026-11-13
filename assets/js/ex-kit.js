@@ -143,6 +143,50 @@
     setTimeout(measure, 0);
   }
 
+  /* entrances on the story, about and passport pages: the same rise as vietnam.html (explore.js initRise), so the
+     whole site moves one way. Blocks below the first screen start 30% visible and 12px low, and rise once as they
+     arrive; blocks arriving together follow by 50ms, six steps at most. Nothing already on screen is touched, so a
+     page that opens part-way down (Back, a #link) shows what you came to read at once. A tall wrapper is opened
+     up and its children rise instead. When a block has risen its own transitions come back (the class is removed).
+     Reduced motion, the site setting or no IntersectionObserver: nothing here runs. */
+  var RISE_PAGES = ['story', 'about', 'collection'];
+  var RISE_TAGS = /^(P|H2|H3|H4|FIGURE|BLOCKQUOTE|UL|OL|LI|TABLE|DL|DETAILS|ASIDE|SECTION|ARTICLE|DIV|HEADER|FOOTER|FORM|PICTURE|IMG|VIDEO|NAV)$/;
+  var WRAPS = /^(SECTION|ARTICLE|DIV|UL|OL|HEADER|FOOTER|NAV|FORM|ASIDE)$/;
+  var riseIO = null;
+  function rise() {
+    if (RISE_PAGES.indexOf(document.body.getAttribute('data-page')) === -1) return;
+    if (CC.motion.reduce() || !('IntersectionObserver' in window)) return;
+    var main = document.getElementById('main'); if (!main) return;
+    if (!riseIO) riseIO = new IntersectionObserver(function (es) {
+      var n = 0;
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        riseIO.unobserve(el);
+        el.style.setProperty('--i', Math.min(n++, 6));
+        el.classList.add('is-in');
+        setTimeout(function () { el.classList.remove('cc-rise', 'is-in'); el.style.removeProperty('--i'); }, 400 + 50 * 6 + 120);
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    var h = innerHeight;
+    (function walk(box, depth) {
+      Array.prototype.forEach.call(box.children, function (c) {
+        if (!RISE_TAGS.test(c.tagName) || c.classList.contains('cc-rise') || c.hasAttribute('data-no-rise')) return;
+        var st = getComputedStyle(c);
+        if (st.position === 'fixed' || st.position === 'sticky' || st.display === 'none') return;
+        var r = c.getBoundingClientRect();
+        if (!r.height) return;
+        var many = c.children.length > 1 && WRAPS.test(c.tagName);
+        /* a wrapper taller than half a screen opens up; so does one that starts on screen and runs below it */
+        if (many && depth < 8 && (r.height > h * .5 || (r.top < h && r.bottom > h))) { walk(c, depth + 1); return; }
+        if (r.top < h * .92) return;   // on screen already (or above): leave it be
+        c.classList.add('cc-rise');
+        riseIO.observe(c);
+      });
+    })(main, 0);
+  }
+  CC.ex.rise = rise;
+
   /* static page heads become chapter bands before the page script fills them */
   document.addEventListener('DOMContentLoaded', function () {
     if (!document.body.classList.contains('ex')) return;
@@ -153,6 +197,9 @@
     /* the paper returns to night above the footer (a sibling, so the footer's own render cannot remove it) */
     var foot = document.getElementById('cc-footer');
     if (foot && !document.querySelector('.ex-foot-join')) foot.insertAdjacentHTML('beforebegin', '<div class="ex-foot-join" aria-hidden="true">' + MOTIF.horizon('up') + '</div>');
+    /* after every page script has drawn its content (this listener runs first), and again whenever a page redraws */
+    setTimeout(rise, 0);
+    document.addEventListener('cc:rendered', function () { setTimeout(rise, 0); });
   });
 
   /* ---------- page transitions (cross-document View Transitions; night.css opts the pages in) ----------

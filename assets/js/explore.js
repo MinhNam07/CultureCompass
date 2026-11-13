@@ -1,5 +1,6 @@
 /* CultureCompass — country reading page (vietnam.html). The earlier compass page lives on as vietnam-classic.html.
-   Layout "Field Atlas": a cover, the destinations, a story finder, then one chapter per theme. On wide screens each chapter keeps a
+   Layout "Field Atlas": a cover with the city route (choose Hà Nội, Đà Nẵng, Hội An or TP Hồ Chí Minh; each city is its own
+   panel, swapped in place, with its own URL ?city=…), then for Hà Nội a story finder and one chapter per theme. On wide screens each chapter keeps a
    picture (the plate) still on the left while the reading column scrolls on the right; the plate changes with the
    section you are reading. Styles: assets/css/read.css (loaded last on this page).
    The page is the SECTIONS config below; each module is one render function. Every picture comes from CC.assets
@@ -154,20 +155,66 @@
      ================================================================ */
   var R = {};
 
+  /* ---------------- cities ----------------
+     The page is about Vietnam; each city is one stop on the route under the title, north to south. Choosing a stop
+     changes the cover photo and line and swaps the panel below; the URL follows (vietnam.html?city=da-nang) so a city
+     can be shared and Back returns to the one before. Only Hà Nội has stories so far: the others open an honest
+     "being written" panel (what we plan to cover, nothing invented) that leads back to Hà Nội.
+     plan and where are editorial (what our stories will cover, where the city is), never cultural claims. */
+  var CITIES = [
+    { id: 'hanoi', name: 'Hà Nội', cover: 'oq-flower-night', big: true },
+    { id: 'da-nang', name: 'Đà Nẵng', cover: 'city-da-nang', where: 'on the central coast',
+      plan: 'Mornings on the beach, a seafood market, and the river and its bridges at night.' },
+    { id: 'hoi-an', name: 'Hội An', cover: 'city-hoi-an', where: 'on the Thu Bồn River, near the central coast',
+      plan: 'The old town at dusk, its lanterns on the river, and a tailor’s shop.' },
+    { id: 'ho-chi-minh', name: 'TP Hồ Chí Minh', full: 'Hồ Chí Minh City', cover: 'city-hcm', where: 'in the south',
+      plan: 'Coffee on the pavement, life down the alleys, and an evening on a walking street.' }
+  ];
+  /* three Hà Nội stories to start with while a city is being written */
+  var STARTERS = ['st-old-quarter', 'st-pho', 'st-temple-visit'];
+  function cityById(id) { return CITIES.filter(function (c) { return c.id === id; })[0] || null; }
+  /* the city in the URL is drawn first, so a shared link opens on its own photo with nothing sliding into place */
+  function cityFromUrl() {
+    var m = /[?&]city=([\w-]+)/.exec(location.search);
+    return m && cityById(m[1]) ? m[1] : 'hanoi';
+  }
+  var START_CITY = cityFromUrl();
+  function countryStories() { return (CC.stories || []).filter(function (st) { return st.country === COUNTRY; }); }
+  function countryZones() { return (CC.exploreZones || []).filter(function (z) { return z.country === COUNTRY; }); }
+  function cityTag(city, c) {
+    if (city.id === 'hanoi') return c.name + ', ' + c.start.replace(/^Starting/, 'starting') + '. ' + c.intro;
+    return (city.full || city.name) + ', ' + city.where + '. Our stories here are being written; Hà Nội is ready to read and to play now.';
+  }
+  function coverImg(city) {
+    var base = 'assets/img/stories/' + city.cover, p = pic({ imageId: city.cover }) || {}, first = city.id === START_CITY;
+    var set = base + '-1280.webp 1280w, ' + base + '-2560.webp 2560w' + (city.big ? ', ' + base + '-3840.jpg 3840w' : '');
+    /* only the city on screen loads; the others wait in data-src until their stop is pointed at or chosen */
+    return '<img class="rd-media rd-cover-photo' + (first ? ' is-on' : '') + '" data-cover-city="' + city.id + '" ' +
+      (first ? 'src="' + base + '-2560.webp" srcset="' + set + '" fetchpriority="high"' : 'data-src="' + base + '-2560.webp" data-srcset="' + set + '"') +
+      ' sizes="100vw" width="' + (p.w || 2560) + '" height="' + (p.h || 1440) + '" alt="' + esc(p.alt || '') + '" decoding="async"' + (first ? '' : ' hidden') + '>';
+  }
+
   var CHEV = '<svg class="rd-cue-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>';
-  /* the cover photo: the flower market at night, sharp on any screen (a 3840px copy beside the usual sizes) */
-  var COVER = 'oq-flower-night';
   R.hero = function (s, c) {
-    var p = pic({ imageId: COVER }), base = 'assets/img/stories/' + COVER;
-    credit(p);
+    CITIES.forEach(function (city) { credit(pic({ imageId: city.cover })); });
+    var stories = countryStories().length, zones = countryZones().length;
     return '<section class="rd-cover" id="top" aria-labelledby="ex-title" data-cover>' +
-      '<div class="rd-cover-media">' +
-        '<img class="rd-media rd-cover-photo" src="' + base + '-2560.webp" srcset="' + base + '-1280.webp 1280w, ' + base + '-2560.webp 2560w, ' + base + '-3840.jpg 3840w" sizes="100vw" width="3840" height="2563" alt="' + esc(p ? p.alt : '') + '" fetchpriority="high" decoding="async">' +
-      '</div>' +
+      '<div class="rd-cover-media">' + CITIES.map(coverImg).join('') + '</div>' +
       '<div class="rd-cover-in">' +
         '<h1 id="ex-title" lang="vi">Việt Nam</h1>' +
-        '<p class="rd-cover-tag">' + esc(c.name) + ', ' + esc(c.start.replace(/^Starting/, 'starting')) + '. ' + esc(c.intro) + '</p>' +
-        /* the game's way in is Arvy (companion.js), walking along the bottom of the screen; the cue below is the way into the reading */
+        '<p class="rd-cover-tag" data-city-tag aria-live="polite">' + esc(cityTag(cityById(START_CITY), c)) + '</p>' +
+        /* the route: one stop per city, north to south; the cyan marker travels to the chosen one */
+        '<div class="rd-route" role="tablist" aria-label="Choose a city, north to south" data-route style="--n:' + CITIES.length + ';--sel:' + CITIES.indexOf(cityById(START_CITY)) + '">' +
+          '<span class="rd-route-track" aria-hidden="true"></span><span class="rd-route-marker" aria-hidden="true"></span>' +
+          CITIES.map(function (city, i) {
+            var meta = city.id === 'hanoi' ? stories + ' stories · ' + zones + ' places to play' : 'Being written';
+            return '<button type="button" class="rd-town' + (city.id === 'hanoi' ? ' is-ready' : '') + '" role="tab" id="city-tab-' + city.id + '" aria-controls="city-' + city.id + '"' +
+              ' aria-selected="' + (city.id === START_CITY) + '" tabindex="' + (city.id === START_CITY ? 0 : -1) + '" data-city="' + city.id + '">' +
+              '<span class="rd-town-dot" aria-hidden="true"></span>' +
+              '<span class="rd-town-name" lang="vi">' + esc(city.name) + '</span>' +
+              '<span class="rd-town-meta">' + esc(meta) + '</span></button>';
+          }).join('') +
+        '</div>' +
         '<div class="rd-cover-actions">' +
           '<button type="button" class="rd-round" data-share="vietnam.html" data-share-title="Vietnam on CultureCompass" aria-label="Share this page">' + ic('share') + '</button>' +
         '</div>' +
@@ -177,42 +224,50 @@
     '</section>';
   };
 
-  /* destinations: one large card per city that has stories, a small one per city still to come.
-     Add a city here (and its stories and zones in the data) to give it a card. */
-  var DESTS = [
-    { id: 'hanoi', name: 'Hà Nội', photo: 'img-old-quarter', pixel: 'assets/img/explore/pho-co.jpg', play: 'explore.html',
-      line: 'Our stories are set in the capital. Customs differ between regions, families and places, and each story says where it applies.' },
-    { id: 'hoi-an', name: 'Hội An', later: true },
-    { id: 'da-nang', name: 'Đà Nẵng', later: true }
-  ];
-  function gameMinutes() {
-    return (CC.exploreZones || []).filter(function (z) { return z.country === COUNTRY; }).reduce(function (n, z) { return n + (z.minutes || 0); }, 0);
-  }
-  R.dests = function () {
-    var ready = DESTS.filter(function (d) { return !d.later; }), later = DESTS.filter(function (d) { return d.later; });
-    var mins = gameMinutes(), zones = (CC.exploreZones || []).filter(function (z) { return z.country === COUNTRY; }).length;
-    var stories = (CC.stories || []).filter(function (st) { return st.country === COUNTRY; }).length;
-    return '<section class="rd-sec rd-dests" id="hanoi" aria-labelledby="dests-title" tabindex="-1"><div class="rd-wrap">' +
-      head(2, 'Destinations in Vietnam', null, 'dests-title') +
-      '<div class="rd-dests-grid">' + ready.map(function (d) {
-        var p = pic({ imageId: d.photo });
-        return '<article class="rd-dest rd-rise" aria-labelledby="dest-' + d.id + '">' +
-          '<div class="rd-dest-pic">' + media(p, { decorative: true, sizes: '(min-width: 1001px) 60vw, 100vw' }) +
-            '<img class="rd-media is-pixel rd-dest-pixel" src="' + esc(d.pixel) + '" alt="" loading="lazy" decoding="async"></div>' +
-          '<div class="rd-dest-txt">' +
-            '<h3 id="dest-' + d.id + '">' + esc(d.name) + '</h3>' +
-            '<p class="rd-dest-meta">' + stories + ' stories · ' + zones + ' places in the game</p>' +
-            '<p class="rd-dest-line">' + esc(d.line) + '</p>' +
-            '<div class="rd-dest-act">' +
-              '<a class="rd-btn" href="' + esc(d.play) + '">' + ic('play') + 'Play' + (mins ? ' · ~' + mins + ' min' : '') + '</a>' +
-              jump('contents', 'Read the ' + esc(d.name) + ' stories') +
-            '</div></div></article>';
-      }).join('') +
-      (later.length ? '<ul class="rd-dests-later" aria-label="Coming later">' + later.map(function (d) {
-        return '<li class="rd-dest-later rd-rise"><span class="rd-dest-later-name">' + esc(d.name) + '</span><span class="rd-dest-later-tag">Coming later</span></li>';
-      }).join('') + '</ul>' : '') +
-      '</div>' + nextUp('contents', 'Next: Story finder · ' + stories + ' stories') + '</div></section>';
+  /* a city still being written: what it is, what we plan to cover (the six themes, none written yet), and a way
+     into Hà Nội in the meantime. Nothing here states a custom; that waits for sourced stories. */
+  R.city = function (city) {
+    var topics = (CC.topics || []), stories = countryStories().length, zones = countryZones().length, mins = gameMinutes();
+    var tid = 'city-' + city.id + '-title';
+    return '<section class="rd-sec rd-city" id="city-' + city.id + '" role="tabpanel" aria-labelledby="' + tid + '" tabindex="-1"' + (city.id === START_CITY ? '' : ' hidden') + '>' +
+      '<div class="rd-wrap rd-grid">' +
+        '<div class="rd-city-intro">' +
+          '<h2 id="' + tid + '" class="rd-rise" lang="vi">' + esc(city.name) + '</h2>' +
+          '<p class="rd-city-status rd-rise">' + ic('clock') + 'Being written · no stories yet</p>' +
+          '<p class="rd-city-plan rd-rise">' + esc(city.plan) + '</p>' +
+          '<p class="rd-city-note rd-rise">Like the Hà Nội stories, each one will say where it applies and how customs vary, with its sources.</p>' +
+        '</div>' +
+        '<div class="rd-city-themes">' +
+          '<h3 class="rd-rise" id="city-' + city.id + '-plan">What we plan to write</h3>' +
+          '<ul aria-labelledby="city-' + city.id + '-plan">' + topics.map(function (t) {
+            return '<li class="rd-rise"><span class="rd-city-theme">' + esc(THEME_SHORT[t.id] || t.id) + '</span>' +
+              (t.vi ? '<span class="rd-city-vi" lang="vi">' + esc(t.vi) + '</span>' : '') +
+              '<span class="rd-city-later">Not written yet</span></li>';
+          }).join('') + '</ul>' +
+        '</div>' +
+      '</div>' +
+      '<div class="rd-wrap rd-grid rd-city-start">' +
+        '<div class="rd-city-start-side">' +
+          '<h3 class="rd-rise" id="city-' + city.id + '-start">Start in Hà Nội</h3>' +
+          '<p class="rd-rise">' + stories + ' stories and ' + zones + ' places in the game are ready now.</p>' +
+          '<div class="rd-city-act rd-rise">' +
+            '<button type="button" class="rd-btn" data-city-go="hanoi">Read Hà Nội' + GO + '</button>' +
+            '<a class="rd-link" href="explore.html">' + ic('play') + 'Play Hà Nội' + (mins ? ' · ~' + mins + ' min' : '') + '</a>' +
+          '</div>' +
+        '</div>' +
+        '<ul class="rd-city-start-list" aria-labelledby="city-' + city.id + '-start">' + STARTERS.map(story).filter(Boolean).map(function (st) {
+          return '<li class="rd-rise"><a class="rd-city-card" href="' + storyHref(st) + '">' +
+            '<span class="rd-city-card-pic">' + media(pic({ imageId: st.hero && st.hero.image, story: st }), { decorative: true, sizes: '(min-width: 1001px) 22vw, (min-width: 761px) 30vw, 96px' }) + '</span>' +
+            '<span class="rd-city-card-txt"><span class="rd-city-card-title">' + esc(st.title) + '</span>' +
+            '<span class="rd-row-meta">' + esc(st.place) + ' · ' + CC.storyMinutes(st) + ' min read' + GO + '</span></span>' +
+          '</a></li>';
+        }).join('') + '</ul>' +
+      '</div>' +
+    '</section>';
   };
+  function gameMinutes() {
+    return countryZones().reduce(function (n, z) { return n + (z.minutes || 0); }, 0);
+  }
 
   /* story finder: every story on one screen, filtered in place by theme and by words. The whole list is in the
      HTML; initFinder() only hides what does not match. Search ignores accents, so "pho" finds Phở. */
@@ -509,7 +564,7 @@
       ['explore.html', 'Play Hà Nội', 'Walk through five places in a small pixel-art game and collect a passport stamp in each.'],
       ['collection.html', 'Your passport', 'Stamps, facts, phrases and stories you have kept, ready to print.'],
       ['about.html', 'How we work', 'How we write and what we leave out.'],
-      ['index.html', 'Other destinations', 'Turn the globe. Vietnam is the only one with stories so far.']
+      ['index.html', 'Other countries', 'Turn the globe. Vietnam is the only country with stories so far.']
     ];
     return '<section class="rd-sec rd-more" aria-labelledby="nav-title"><div class="rd-wrap rd-grid">' +
       '<div class="rd-more-side">' + head(2, 'Keep exploring', null, 'nav-title') + '</div>' +
@@ -532,9 +587,9 @@
      PAGE CONFIG — editors reorder or remove entries here.
      A module's `plate` is the picture beside it on wide screens (default: the chapter's).
      ================================================================ */
+  /* Hà Nội's panel, in order. The cover (with the city route) comes before it, the other cities' panels after it,
+     and Keep exploring and Before you go close every city. */
   var SECTIONS = [
-    { type: 'hero' },
-    { type: 'dests' },
     { type: 'finder' },
     { type: 'chbar' },
     { type: 'chapter', ch: 0, modules: [
@@ -555,9 +610,7 @@
     ] },
     { type: 'phrases' },
     { type: 'places' },
-    { type: 'keep' },
-    { type: 'nav' },
-    { type: 'before' }
+    { type: 'keep' }
   ];
 
   /* the plate: one figure per distinct picture in the chapter, the active one shown */
@@ -595,7 +648,7 @@
 
   function render() {
     var c = country();
-    var out = SECTIONS.map(function (s) {
+    var out = '<div id="city-hanoi" class="rd-city-panel" role="tabpanel" aria-labelledby="city-tab-hanoi"' + (START_CITY === 'hanoi' ? '' : ' hidden') + '>' + SECTIONS.map(function (s) {
       if (s.type === 'chapter') {
         var ch = CHAPTERS[s.ch], nx = CHAPTERS[s.ch + 1];
         CUR = ch.anchor;
@@ -610,8 +663,8 @@
         return html;
       }
       return R[s.type](s, c);
-    }).join('');
-    return out;
+    }).join('') + '</div>';
+    return R.hero({}, c) + out + CITIES.filter(function (x) { return x.id !== 'hanoi'; }).map(R.city).join('') + R.nav() + R.before();
   }
 
   /* ================================================================
@@ -619,6 +672,108 @@
      ================================================================ */
   function reduce() { return CC.motion.reduce(); }
   function each(sel, fn, root) { Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn); }
+
+  /* ---------------- the city route ----------------
+     A stop is a tab: arrow keys (and Home / End) move along the route and choose at once. Choosing crossfades the
+     cover photo, swaps the line under the title and the panel below, slides the marker and puts ?city= in the URL.
+     The panel that arrives rises in again, block by block. Hash links into Hà Nội's chapters open Hà Nội first. */
+  var CITY = START_CITY, COUNTRY_DATA = null;
+  function loadCover(id) {
+    var im = document.querySelector('[data-cover-city="' + id + '"]');
+    if (!im || !im.hasAttribute('data-src')) return im;
+    im.setAttribute('srcset', im.getAttribute('data-srcset'));
+    im.setAttribute('src', im.getAttribute('data-src'));
+    im.removeAttribute('data-src'); im.removeAttribute('data-srcset');
+    return im;
+  }
+  function replayRise(panel) {
+    if (reduce() || !('IntersectionObserver' in window)) return;
+    var els = panel.querySelectorAll('.rd-rise');
+    each('.rd-rise', function (e) { e.classList.remove('is-in'); }, panel);
+    var io = new IntersectionObserver(function (es) {
+      var n = 0;
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        e.target.style.setProperty('--i', Math.min(n++, 6));
+        e.target.classList.add('is-in');
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(els, function (e) { io.observe(e); });
+  }
+  function setCity(id, o) {
+    o = o || {};
+    var city = cityById(id) || CITIES[0], i = CITIES.indexOf(city), prev = CITY;
+    CITY = city.id;
+    var route = document.querySelector('[data-route]');
+    if (route) {
+      route.style.setProperty('--sel', i);
+      each('.rd-town', function (b) {
+        var on = b.getAttribute('data-city') === city.id;
+        b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1;
+      }, route);
+    }
+    /* cover: the new photo fades in over the old one, settling from a slight zoom */
+    var im = loadCover(city.id);
+    each('[data-cover-city]', function (x) {
+      var on = x === im;
+      if (on) { x.hidden = false; requestAnimationFrame(function () { x.classList.add('is-on'); }); }
+      else if (x.classList.contains('is-on')) {
+        x.classList.remove('is-on');
+        setTimeout(function () { if (!x.classList.contains('is-on')) x.hidden = true; }, reduce() ? 0 : 700);
+      }
+    });
+    var tag = document.querySelector('[data-city-tag]');
+    if (tag && prev !== city.id) {
+      tag.classList.remove('is-swap'); void tag.offsetWidth;
+      tag.textContent = cityTag(city, COUNTRY_DATA);
+      tag.classList.add('is-swap');
+    }
+    /* panels */
+    each('#city-hanoi, .rd-city', function (panel) {
+      var on = panel.id === 'city-' + city.id;
+      if (on && panel.hidden) { panel.hidden = false; if (prev !== city.id) replayRise(panel); }
+      else if (!on) panel.hidden = true;
+    });
+    document.title = (city.id === 'hanoi' ? 'Vietnam' : (city.full || city.name) + ' · Vietnam') + ' — CultureCompass';
+    if ((o.push || o.replace) && prev !== city.id) {
+      var url = location.pathname + (city.id === 'hanoi' ? '' : '?city=' + city.id) + (o.replace ? location.hash : '');
+      try { history[o.push ? 'pushState' : 'replaceState']({ city: city.id }, '', url); } catch (e) { /* file:// */ }
+    }
+    if (prev !== city.id) document.dispatchEvent(new CustomEvent('cc:city', { detail: { city: city.id } }));
+  }
+  function initCities() {
+    COUNTRY_DATA = country();
+    var route = document.querySelector('[data-route]');
+    if (!route) return;
+    route.addEventListener('click', function (e) {
+      var b = e.target.closest('.rd-town');
+      if (b) setCity(b.getAttribute('data-city'), { push: true });
+    });
+    /* pointing at a stop starts loading its photo, so the crossfade has a picture to show */
+    route.addEventListener('pointerover', function (e) { var b = e.target.closest('.rd-town'); if (b) loadCover(b.getAttribute('data-city')); });
+    route.addEventListener('keydown', function (e) {
+      var stops = [].slice.call(route.querySelectorAll('.rd-town')), i = stops.indexOf(document.activeElement);
+      if (i < 0) return;
+      var j = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: stops.length - 1 }[e.key];
+      if (j == null) return;
+      e.preventDefault();
+      j = (j + stops.length) % stops.length;
+      stops[j].focus();
+      setCity(stops[j].getAttribute('data-city'), { push: true });
+    });
+    /* "Read Hà Nội" in a city being written: open Hà Nội and take the reader to its story finder */
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-city-go]');
+      if (!b) return;
+      var to = document.getElementById('contents') || document.getElementById('top');
+      setCity(b.getAttribute('data-city-go'), { push: true });
+      settle(to); CC.motion.scrollTo(to);
+      if (to.hasAttribute('tabindex')) to.focus({ preventScroll: true });
+    });
+    window.addEventListener('popstate', function () { setCity(cityFromUrl()); });
+    setCity(cityFromUrl());
+  }
 
   /* entrances: each block rises once as it arrives (never again on the way back up). Blocks that arrive together
      follow each other by 50ms. Content is never hidden without script, and with reduced motion nothing moves
@@ -1005,6 +1160,8 @@
   function goToHash(smooth) {
     var el = resolveHash(location.hash);
     if (!el) return;
+    var panel = el.closest && el.closest('#city-hanoi, .rd-city');
+    if (panel && panel.hidden) setCity(panel.id.replace(/^city-/, ''), { replace: true });
     if (location.hash.slice(1) !== el.id) history.replaceState(null, '', el.id === 'top' ? location.pathname + location.search : '#' + el.id);
     settle(el);
     if (smooth) CC.motion.scrollTo(el); else el.scrollIntoView({ behavior: 'instant', block: 'start' });
@@ -1020,6 +1177,7 @@
     initVideos();
     initHeroActions();
     initCover();
+    initCities();
     initFinder();
     initAccordion();
     initInline();
