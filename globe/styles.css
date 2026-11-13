@@ -177,9 +177,9 @@
 .hud-item.is-soon { background:transparent; border-style:dashed; }
 .hud-item.is-ready { cursor:default; grid-template-columns:auto 1fr; border-color:var(--cy-dim); background:rgba(95,216,232,.09); }
 .hud-item.is-ready:hover svg { transform:none; }
-.hud-item-go { grid-column:2; display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px; margin-top:6px; }
-.hud-item-read { font-size:14px; font-weight:600; color:var(--ink); text-underline-offset:3px; }
-.hud-item-read:hover { color:#fff; }
+.hud-item-go { grid-column:2; display:flex; flex-wrap:wrap; align-items:center; gap:14px 24px; margin-top:12px; }
+.hud-item-read { font-size:14px; font-weight:500; color:var(--ink); text-decoration:underline; text-decoration-color:var(--cy-dim); text-underline-offset:4px; }
+.hud-item-read:hover { color:#fff; text-decoration-color:currentColor; }
 .hud-item.is-soon .hud-item-n, .hud-item.is-soon small, .hud-item.is-soon svg { color:var(--amber); }
 .hud-item.is-soon b { color:rgba(255,255,255,.82); }
 
@@ -196,8 +196,14 @@
 .hud-actions { margin-top:20px; display:flex; flex-wrap:wrap; gap:10px; }
 .hud-btn { display:inline-flex; align-items:center; gap:10px; min-height:50px; padding:0 20px; font-size:15px; font-weight:600; color:var(--ink); border:1px solid var(--cy-dim); text-decoration:none; transition:background .15s,color .15s,box-shadow .15s; }
 .hud-btn:hover { background:rgba(95,216,232,.12); color:#fff; }
-.hud-btn.is-primary { background:var(--cy); color:#03141b; border-color:var(--cy); box-shadow:0 0 18px rgba(95,216,232,.45); }
-.hud-btn.is-primary:hover { background:var(--cy-2); color:#03141b; box-shadow:0 0 26px rgba(95,216,232,.65); }
+/* the one action in the HUD: solid cyan, a dark gap and a cyan ring (the game's pixel edge), a steady glow, and a dark arrow */
+.hud-btn.is-primary { min-height:54px; padding:0 22px 0 24px; gap:12px; font-size:17px; font-weight:700; background:var(--cy); color:#03141b; border-color:var(--cy);
+  box-shadow:0 0 0 2px #03141b, 0 0 0 4px var(--cy), 0 0 30px 2px rgba(95,216,232,.5); transition:background .15s,box-shadow .15s,transform .12s; }
+.hud-btn.is-primary:hover { background:var(--cy-2); color:#03141b; box-shadow:0 0 0 2px #03141b, 0 0 0 4px var(--cy-2), 0 0 40px 6px rgba(95,216,232,.6); }
+.hud-btn.is-primary:active { transform:scale(.97); }
+.hud-item .hud-btn.is-primary svg, .hud-btn.is-primary svg { width:20px; height:20px; color:#03141b; stroke-width:2.4; transition:transform .15s; }
+.hud-btn.is-primary:hover svg, .hud-item.is-ready .hud-btn.is-primary:hover svg { transform:translateX(4px); }
+@media (prefers-reduced-motion: reduce) { .hud-btn.is-primary, .hud-btn.is-primary svg { transition:none; } .hud-btn.is-primary:hover svg { transform:none; } }
 .hud-others { margin-top:24px; padding-top:16px; border-top:1px solid var(--cy-faint); }
 .hud-others > div { margin-top:10px; display:flex; flex-wrap:wrap; gap:8px; }
 .hud-chip { min-height:36px; padding:0 14px; font-size:13px; color:var(--ink); border:1px solid var(--cy-faint); cursor:pointer; }
@@ -279,3 +285,17 @@
 /* The globe's lower half fades into the night instead of ending on a hard cut at the section edge. */
 .destination-experience::after { content:""; position:absolute; left:0; right:0; bottom:0; height:110px; z-index:16777301; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,0),#000 85%); opacity:0; transition:opacity .4s ease; }
 .destination-experience.is-beamed::after { opacity:1; }
+/* keyboard focus on the Play button: keep its ring, and draw the focus outline outside it */
+.cc-hud .hud-btn.is-primary:focus-visible { outline:2px solid #fff; outline-offset:6px; box-shadow:0 0 0 2px #03141b, 0 0 0 4px var(--cy), 0 0 30px 2px rgba(95,216,232,.5); }
+/* the Play button breathes: only a soft blurred glow behind it fades up and down (2.4s, opacity only, no outline,
+   no growing box). It holds bright while hovered or focused, and stays still under reduced motion. */
+.hud-btn.is-primary { position:relative; isolation:isolate; }
+.hud-btn.is-primary::after {
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  box-shadow:0 0 34px 8px rgba(95,216,232,.55);
+  opacity:.2; animation:hud-breathe 2.4s cubic-bezier(.45,0,.55,1) infinite;
+}
+@keyframes hud-breathe { 0%, 100% { opacity:.2; } 50% { opacity:.85; } }
+.hud-btn.is-primary:hover::after, .hud-btn.is-primary:focus-visible::after { animation:none; opacity:.85; }
+@media (prefers-reduced-motion: reduce) { .hud-btn.is-primary::after { animation:none; opacity:.5; } }
+html.cc-reduce-motion .hud-btn.is-primary::after { animation:none; opacity:.5; }
