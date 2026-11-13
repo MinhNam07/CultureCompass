@@ -20,6 +20,7 @@ const SKIP_NAMES = new Set(['.DS_Store', 'Thumbs.db', '__pycache__']);
 /* …except these files the game loads from the art packs, and their licences */
 const KEEP = [
   'assets/game/vendor/serene-village/Serene_Village_16x16.png',
+  'assets/game/vendor/limezu-interiors-free/Interiors_free/16x16/Room_Builder_free_16x16.png',
   'assets/game/vendor/limezu-interiors-free/LICENSE.txt',
   'assets/game/vendor/ninja-adventure/LICENSE.txt',
   'assets/game/vendor/ninja-adventure/README.md'
