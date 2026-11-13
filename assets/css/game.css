@@ -310,29 +310,6 @@ a.gx-tool { text-decoration: none; }
 .gx-fact-foot { border-top-color: var(--night-line); }
 .gx-goto button:hover { border-color: var(--cyan); }
 
-/* choosing the traveller (explore-game.js pickCharacter): each one stands and breathes, and walks toward you on hover or focus */
-.gx-pick-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-.gx-pick-opt {
-  display: grid; justify-items: center; gap: 8px; padding: 18px 12px 14px; cursor: pointer;
-  border: 2px solid var(--night-line); border-radius: 2px; background: var(--night-3); color: var(--night-text);
-  font: 600 1.0625rem/1.2 var(--font-sans); transition: border-color 120ms ease-out;
-}
-.gx-pick-opt small { margin-top: -4px; font: 500 .8125rem/1 var(--font-sans); color: var(--cyan); }
-.gx-pick-opt[aria-current="true"], .gx-pick-opt:hover { border-color: var(--cyan); }
-.gx-pick-opt:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
-.gx-pick-sprite { width: 64px; height: 128px; background: var(--pick-idle) -1152px 0 / 1536px 128px no-repeat; image-rendering: pixelated; animation: gx-pick-step 1s steps(6) infinite; }
-.gx-pick-opt:focus-visible .gx-pick-sprite { background-image: var(--pick-run); animation-duration: .6s; }
-@media (hover: hover) and (pointer: fine) { .gx-pick-opt:hover .gx-pick-sprite { background-image: var(--pick-run); animation-duration: .6s; } }
-@keyframes gx-pick-step { from { background-position-x: -1152px; } to { background-position-x: -1536px; } }
-.gx-pick { max-height: 100%; overflow-y: auto; }
-@media (max-width: 720px), (max-height: 640px) {
-  .gx-pick { padding: 18px 18px 20px; }
-  .gx-pick-opt { padding: 12px 10px 10px; }
-  .gx-pick-sprite { width: 48px; height: 96px; background-position-x: -864px; background-size: 1152px 96px; animation-name: gx-pick-step-s; }
-}
-@keyframes gx-pick-step-s { from { background-position-x: -864px; } to { background-position-x: -1152px; } }
-@media (prefers-reduced-motion: reduce) { .gx-pick-sprite { animation: none; } }
-html.cc-reduce-motion .gx-pick-sprite { animation: none; }
 .gx-help-who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 14px 0 6px; }
 
 /* toast and panels */
@@ -476,3 +453,125 @@ body.ex[data-page="explore"] .cc-header { background: var(--color-background); b
 .gx-frame.is-full .gx-hud { top: max(12px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); }
 .gx-frame.is-full .gx-dialog { bottom: max(16px, env(safe-area-inset-bottom)); }
 html.gx-lock, html.gx-lock body { overflow: hidden; overscroll-behavior: none; }
+
+
+/* ---------- traveller cards (characters.js cardsHtml): the map of places and the first-walk chooser ----------
+   The chosen card wears the game's cyan corner brackets (.tc-cursor) instead of a fill, so the cyan Continue / Set out
+   button stays the only cyan block. The brackets slide to the card you pick and that traveller hops once.
+   Sprites: 16 x 32 frames, rows 8-31 shown (the top 8 are empty); frames 18-23 face down. 3x on cards, 4x when large. */
+.gxs-who { margin-top: 18px; }
+.gxs-who .gxs-k { margin-bottom: 10px; }
+.tc-group { --gap: 10px; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+.tc {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 4px 12px;
+  min-height: 104px; padding: 8px 12px 8px 8px; border: 0; border-radius: 2px; cursor: pointer; text-align: left;
+  background: var(--night-2); color: var(--night-text); box-shadow: inset 0 0 0 1px var(--night-line);
+  transition: background-color var(--t-press, 120ms) var(--ease-out), box-shadow var(--t-press, 120ms) var(--ease-out), transform var(--t-press, 120ms) var(--ease-out);
+}
+.tc:focus-visible { outline: none; }   /* the brackets carry focus: see .tc-group:has(.tc:focus-visible) */
+.tc[aria-checked="true"] { background: var(--night-3); box-shadow: inset 0 0 0 1px rgb(95 216 232 / .35); }
+@media (hover: hover) and (pointer: fine) { .tc[aria-checked="false"]:hover { background: var(--night-3); } }
+.tc:active { transform: scale(.98); }
+/* the street under their feet: the game's 16px tile grid at 3x, a ground strip and a stepped pixel shadow */
+.tc-stage {
+  position: relative; width: 64px; height: 88px; overflow: hidden; background-color: #0E1828;
+  background-image:
+    linear-gradient(to top, rgb(30 58 76 / .6) 0 24px, rgb(46 82 104 / .7) 24px 25px, transparent 25px),
+    repeating-linear-gradient(90deg, transparent 0 47px, rgb(30 58 76 / .35) 47px 48px);
+}
+.tc-stage::after {
+  content: ""; position: absolute; left: 50%; bottom: 7px; width: 30px; height: 9px; transform: translateX(-50%); background: #060A12;
+  clip-path: polygon(10% 0, 90% 0, 100% 33%, 100% 66%, 90% 100%, 10% 100%, 0 66%, 0 33%);
+}
+.tc-sprite {
+  position: absolute; z-index: 1; left: calc(50% - 24px); bottom: 10px; width: 48px; height: 72px; image-rendering: pixelated;
+  background: var(--tc-idle) -864px -24px / 1152px 96px no-repeat;
+  animation: tc-step 1s steps(6) infinite;
+}
+@keyframes tc-step { from { background-position-x: -864px; } to { background-position-x: -1152px; } }
+@media (hover: hover) and (pointer: fine) { .tc:hover .tc-sprite { background-image: var(--tc-run); animation-duration: .6s; } }
+.tc:focus-visible .tc-sprite { background-image: var(--tc-run); animation-duration: .6s; }
+.tc.is-hop .tc-sprite { animation: tc-step 1s steps(6) infinite, tc-hop 260ms steps(4) 1; }
+@keyframes tc-hop { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+.tc-txt { display: grid; gap: 3px; min-width: 0; }
+.tc-name { font: 600 1.125rem/1.15 var(--font-sans); }
+.tc[aria-checked="true"] .tc-name { color: var(--cyan); }
+.tc-kind { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; font: 500 .875rem/1.2 var(--font-sans); color: var(--night-muted); }
+.tc-now { display: none; align-items: center; gap: 4px; color: var(--cyan); }
+.tc-now .cc-icon { width: 14px; height: 14px; }
+.tc[aria-checked="true"] .tc-now { display: inline-flex; }
+.tc-cursor {
+  --c: var(--cyan); --l: 14px; --t: 3px;
+  position: absolute; z-index: 2; top: -4px; left: -4px; width: calc((100% - var(--gap)) / 2 + 8px); height: calc(100% + 8px); pointer-events: none;
+  background:
+    linear-gradient(var(--c) 0 0) left top / var(--l) var(--t), linear-gradient(var(--c) 0 0) left top / var(--t) var(--l),
+    linear-gradient(var(--c) 0 0) right top / var(--l) var(--t), linear-gradient(var(--c) 0 0) right top / var(--t) var(--l),
+    linear-gradient(var(--c) 0 0) left bottom / var(--l) var(--t), linear-gradient(var(--c) 0 0) left bottom / var(--t) var(--l),
+    linear-gradient(var(--c) 0 0) right bottom / var(--l) var(--t), linear-gradient(var(--c) 0 0) right bottom / var(--t) var(--l);
+  background-repeat: no-repeat;
+  transition: transform 220ms var(--ease-out);
+}
+.tc-group[data-sel="1"] .tc-cursor { transform: translateX(calc(100% - 8px + var(--gap))); }
+.tc-group:has(.tc:focus-visible) .tc-cursor { --l: 20px; --t: 4px; }   /* keyboard focus: the brackets grow */
+/* large: the first-walk chooser */
+.tc-group.is-lg { --gap: 14px; margin-top: 18px; }
+.is-lg .tc { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 10px 10px 14px; gap: 10px; }
+.is-lg .tc-stage { width: 100%; height: 132px; }
+.is-lg .tc-stage::after { width: 40px; bottom: 9px; }
+.is-lg .tc-sprite { left: calc(50% - 32px); bottom: 14px; width: 64px; height: 96px; background-position: -1152px -32px; background-size: 1536px 128px; animation-name: tc-step-lg; }
+@keyframes tc-step-lg { from { background-position-x: -1152px; } to { background-position-x: -1536px; } }
+.is-lg .tc-txt { justify-items: center; }
+.is-lg .tc-now { display: none !important; }   /* nobody is playing yet; the button names the choice */
+.gx-pick { width: min(540px, 100%); padding: 26px 28px 24px; border-radius: 2px; box-shadow: inset 0 0 0 2px var(--cyan), 0 0 0 4px #08101C, 0 24px 60px -24px #000; max-height: 100%; overflow-y: auto; }
+.gx-pick h2 { font: 600 1.625rem/1.2 var(--font-serif); margin: 0 0 6px; }
+.gx-pick > p { margin: 0; color: var(--night-muted); }
+.gx-pick .gx-actions { justify-content: flex-end; margin-top: 22px; }
+@media (max-width: 720px), (max-height: 640px) {
+  .gx-pick { padding: 18px 18px 20px; }
+  .is-lg .tc-stage { height: 104px; }
+  .is-lg .tc-sprite { left: calc(50% - 24px); width: 48px; height: 72px; background-position: -864px -24px; background-size: 1152px 96px; animation-name: tc-step; }
+}
+@media (max-width: 420px) {
+  .tc { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 8px 8px 12px; }
+  .tc-txt { justify-items: center; }
+  .tc-stage { width: 100%; }
+}
+
+/* map action row: one primary, one secondary, one quiet, one height */
+.gxs-cta-go { min-height: 48px; }
+.gxs-actions .gxs-btn { min-height: 48px; padding: 0 18px; font-weight: 600; border-color: var(--line-strong); }
+.gxs-actions .gxs-restart { margin-left: auto; min-height: 48px; text-decoration: none; }
+.gxs-restart span { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-strong); }
+.gxs-restart:hover span { text-decoration-color: currentColor; }
+.gxs-restart .cc-icon { width: 18px; height: 18px; }
+
+/* toolbar chip (#gx-traveller): face, name and a swap mark; pressing it swaps traveller and the faces roll like a reel */
+.gx-traveller { gap: 8px; padding: 0 10px 0 6px; }
+.gx-traveller-win { position: relative; display: block; flex: none; width: 32px; height: 28px; overflow: hidden; background: #0E1828; box-shadow: inset 0 0 0 1px var(--night-line); }
+.gx-traveller-reel { display: grid; transition: transform 200ms var(--ease-out); }
+.gx-traveller[data-sel="1"] .gx-traveller-reel { transform: translateY(-28px); }
+.gx-traveller-face { display: block; width: 32px; height: 28px; image-rendering: pixelated; background: var(--tc-idle) -576px -18px / 768px 64px no-repeat; }
+#gx-traveller-name { min-width: 3.4em; text-align: left; }
+.gx-traveller-swap { color: var(--cyan); width: 16px !important; height: 16px !important; }
+.gx-traveller-tip {
+  position: absolute; z-index: 3; top: calc(100% + 8px); right: 0; padding: 8px 12px; white-space: nowrap; font: 500 .8125rem/1.2 var(--font-sans); font-style: normal;
+  background: var(--night); color: var(--night-text); box-shadow: inset 0 0 0 1px var(--cyan), 0 0 0 2px #08101C;
+  opacity: 0; translate: 0 -4px; pointer-events: none; transition: opacity 150ms var(--ease-out), translate 150ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .gx-traveller:hover .gx-traveller-tip { opacity: 1; translate: 0 0; } }
+.gx-traveller:focus-visible .gx-traveller-tip { opacity: 1; translate: 0 0; }
+@media (max-width: 720px) {
+  .gx-traveller { padding: 0; }
+  .gx-traveller-swap, .gx-traveller-tip { display: none; }
+  .gx-traveller::after {
+    content: ""; position: absolute; right: -3px; bottom: -3px; width: 14px; height: 14px; border-radius: 1px; box-shadow: 0 0 0 2px #08101C;
+    background: var(--cyan) center / 10px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23062A2A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8h14l-4-4M20 16H6l4 4'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-sprite, .tc.is-hop .tc-sprite { animation: none; }
+  .tc-cursor, .gx-traveller-reel, .gx-traveller-tip { transition: none; }
+}
+html.cc-reduce-motion :is(.tc-sprite, .tc.is-hop .tc-sprite) { animation: none; }
+html.cc-reduce-motion :is(.tc-cursor, .gx-traveller-reel, .gx-traveller-tip) { transition: none; }

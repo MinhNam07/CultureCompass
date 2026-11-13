@@ -4,7 +4,7 @@
    choose again.
    Content: CC.exploreZones (assets/data/explore.json), CC.scenarios / CC.claims (scenarios.json), CC.maps (assets/game/maps).
    A moment is named "<sceneId>:<stepId>" (e.g. "sc01:s2"); map zones may use a bare step id for the zone's first scene.
-   Traveller: CC.character (characters.js), picked before the first walk and changed from How to play.
+   Traveller: CC.character (characters.js), picked before the first walk; switched from the toolbar (#gx-traveller) or How to play.
    Progress: CC.store 'explore' → { zones: { <id>: { steps: { "sc01:s1": { choice, tried: [] } }, facts: { id: iso }, pos: { map, x, y }, done } } }. */
 (function () {
   'use strict';
@@ -527,8 +527,12 @@
     frame.addEventListener('keydown', function (e) {
       if (picking) {
         if (e.key === 'Escape' && !picking.first) { closePick(); e.preventDefault(); }
+        var moved = CC.character.onKey(e);
+        if (moved) { picking.sel = moved; pickLabel(); }
+        /* Enter on a card sets out at once (Space just chooses it) */
+        if (e.key === 'Enter' && e.target.closest && e.target.closest('.tc')) { e.preventDefault(); picked(e.target.closest('.tc').dataset.traveller); }
         if (e.key === 'Tab') {
-          var opts = [].slice.call(CC.$('gx-start').querySelectorAll('button'));
+          var opts = [].slice.call(CC.$('gx-start').querySelectorAll('button:not([tabindex="-1"])'));
           var i = opts.indexOf(document.activeElement);
           if (e.shiftKey && i <= 0) { opts[opts.length - 1].focus(); e.preventDefault(); }
           else if (!e.shiftKey && i === opts.length - 1) { opts[0].focus(); e.preventDefault(); }
@@ -582,7 +586,8 @@
       if (!t) return;
       /* still typing: the first Continue shows the whole line */
       if (typing && (t.dataset.act === 'close' || t.dataset.act === 'done')) { typing.done(); return; }
-      if (t.dataset.pick) picked(t.dataset.pick);
+      if (t.dataset.traveller && picking) pickSelect(t.dataset.traveller);
+      else if (t.dataset.act === 'pick-go') picked(picking.sel);
       else if (t.dataset.act === 'pick-cancel') closePick();
       else if (t.dataset.act === 'character') { closePanel(); pickCharacter(false, loadTraveller); }
       else if (t.dataset.choice) choose(t.dataset.choice);
@@ -603,6 +608,8 @@
     CC.$('gx-goto').addEventListener('click', goTo);
     CC.$('gx-goal').addEventListener('click', function () { if (this.classList.contains('is-complete')) location.href = CC.$('gx-map').href; });
     CC.$('gx-help').addEventListener('click', help);
+    CC.$('gx-traveller').addEventListener('click', switchTraveller);
+    CC.$('gx-start').addEventListener('dblclick', function (e) { var c = e.target.closest('.tc'); if (c && picking) picked(c.dataset.traveller); });
     CC.$('gx-full').addEventListener('click', function () { toggleFull(); });
     CC.$('gx-sound').addEventListener('click', function () { CC.store.set('exploreSound', !soundOn()); syncSound(); });
     window.addEventListener('pagehide', savePos);
@@ -612,28 +619,36 @@
 
   /* ---------- choosing the traveller: before the first walk, and again from How to play ----------
      The choice only changes how the player looks; nobody in the game talks to Arvy and Henry differently. */
-  var picking = null;   // { first: bool, then: fn } while the chooser is open
+  var picking = null;   // { first: bool, then: fn, sel: id } while the chooser is open
   function pickCharacter(first, then) {
-    var now = CC.character.chosen() ? CC.character.get().id : null;
-    picking = { first: first, then: then };
+    var sel = CC.character.get().id;
+    picking = { first: first, then: then, sel: sel };
     if (!first) { eng.frozen = true; eng.releaseKeys(); }
     var box = CC.$('gx-start');
     box.innerHTML =
-      '<div class="gx-start-card gx-pick" role="dialog" aria-modal="true" aria-labelledby="gx-pick-title">' +
-        '<p class="gx-who">' + (first ? 'Before you set out' : 'Change traveller') + '</p>' +
+      '<div class="gx-start-card gx-pick" role="dialog" aria-modal="true" aria-labelledby="gx-pick-title" aria-describedby="gx-pick-note">' +
         '<h2 id="gx-pick-title">Who are you travelling as?</h2>' +
-        '<p>It only changes how you look on the street.' + (first ? ' You can switch later under How to play.' : '') + '</p>' +
-        '<div class="gx-pick-list">' + CC.character.list.map(function (c) {
-          return '<button type="button" class="gx-pick-opt" data-pick="' + esc(c.id) + '"' + (c.id === now ? ' aria-current="true"' : '') +
-            ' style="' + esc('--pick-idle:' + CC.character.cssUrl(c.idle) + ';--pick-run:' + CC.character.cssUrl(c.run)) + '">' +
-            '<span class="gx-pick-sprite" aria-hidden="true"></span><b>' + esc(c.name) + '</b>' +
-            (c.id === now ? '<small>Playing now</small>' : '') + '</button>';
-        }).join('') + '</div>' +
-        (first ? '' : '<div class="gx-actions"><button type="button" class="cc-btn cc-btn-quiet" data-act="pick-cancel">Keep ' + esc(CC.character.get().name) + '</button></div>') +
+        '<p id="gx-pick-note">It only changes how you look on the street.' + (first ? ' You can switch any time from the toolbar.' : '') + '</p>' +
+        CC.character.cardsHtml({ selected: sel, labelledby: 'gx-pick-title', large: true }) +
+        '<div class="gx-actions">' +
+          (first ? '' : '<button type="button" class="cc-btn cc-btn-quiet" data-act="pick-cancel">Keep ' + esc(CC.character.get().name) + '</button>') +
+          '<button type="button" class="cc-btn" data-act="pick-go">' + CC.icon('play') + '<span id="gx-pick-go"></span></button>' +
+        '</div>' +
       '</div>';
     box.hidden = false;
-    var b = box.querySelector('[aria-current="true"]') || box.querySelector('.gx-pick-opt');
-    b.focus({ preventScroll: true });
+    pickLabel();
+    box.querySelector('.tc[aria-checked="true"]').focus({ preventScroll: true });
+  }
+  /* the button names who you will be: "Set out as Arvy" before the first walk, "Travel as Henry" when changing */
+  function pickLabel() {
+    var el = CC.$('gx-pick-go');
+    if (el && picking) el.textContent = (picking.first ? 'Set out as ' : 'Travel as ') + CC.character.byId(picking.sel).name;
+  }
+  function pickSelect(id) {
+    if (!picking) return;
+    picking.sel = id;
+    CC.character.select(CC.$('gx-start').querySelector('.tc-group'), id);
+    pickLabel();
   }
   function closePick() {
     var box = CC.$('gx-start');
@@ -647,7 +662,23 @@
     closePick();
     if (p && p.then) p.then(CC.character.get());
   }
-  function loadTraveller(ch) { return eng.loadPlayer({ run: ch.run, idle: ch.idle }); }
+  function loadTraveller(ch) { syncWho(); return eng.loadPlayer({ run: ch.run, idle: ch.idle }); }
+  /* the toolbar chip: shows who you are and swaps to the other traveller in one press; the faces roll like a reel */
+  function syncWho() {
+    var b = CC.$('gx-traveller'), reel = CC.$('gx-traveller-reel'), ch = CC.character.get(), nx = CC.character.next();
+    if (!reel.children.length) reel.innerHTML = CC.character.list.map(function (c) {
+      return '<i class="gx-traveller-face" style="' + esc('--tc-idle:' + CC.character.cssUrl(c.idle)) + '"></i>';
+    }).join('');
+    b.dataset.sel = CC.character.list.indexOf(ch);
+    CC.$('gx-traveller-name').textContent = ch.name;
+    CC.$('gx-traveller-tip').textContent = 'Switch to ' + nx.name + ' (' + nx.kind.toLowerCase() + ')';
+    b.setAttribute('aria-label', 'Playing as ' + ch.name + ' (' + ch.kind.toLowerCase() + '). Switch to ' + nx.name);
+  }
+  function switchTraveller() {
+    if (picking) return;
+    CC.character.set(CC.character.next().id);
+    loadTraveller(CC.character.get());
+  }
 
   function begin() {
     CC.$('gx-start').hidden = true;
@@ -702,6 +733,7 @@
     frame.addEventListener('pointerdown', wake);
     bind();
     syncSound();
+    syncWho();
     var startMap = (state.pos && CC.maps[state.pos.map]) ? state.pos.map : zone.map;
     var setOut = function (ch) {
       loadTraveller(ch).then(function () {

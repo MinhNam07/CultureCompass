@@ -68,6 +68,7 @@
     passport: '<svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="11" r="3"/><path d="M9 17h6"/></svg>',
     book: '<svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6.5v13"/></svg>',
     stamp: '<svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5" stroke-dasharray="2 2.4"/></svg>',
+    restart: '<svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>',
     check: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg>'
   };
 
@@ -137,10 +138,11 @@
           return '<li class="' + (m.done ? 'is-done' : '') + '"><span class="gxs-box" aria-hidden="true">' + (m.done ? IC.check : '') + '</span><span>' + esc(m.text) + '<span class="visually-hidden">' + (m.done ? ', done' : '') + '</span></span></li>';
         }).join('') + '</ul>' +
         '<p class="gxs-stamp">' + IC.stamp + (pr.done ? 'Passport stamp collected' : 'Stamp after every moment (' + pr.k + ' of ' + pr.n + ')') + '</p>' +
+        '<div class="gxs-who"><p class="gxs-k" id="gxs-who-k">Travelling as</p>' + CC.character.cardsHtml({ labelledby: 'gxs-who-k' }) + '</div>' +
         '<div class="gxs-actions">' +
           '<a class="gxs-cta gxs-cta-go" href="explore.html?zone=' + encodeURIComponent(z.id) + '">' + PLAY + esc(cta) + '</a>' +
           '<a class="gxs-btn" href="' + readHref(z) + '">Read about it</a>' +
-          (pr.started ? '<button type="button" class="gxs-link" data-restart="' + esc(z.id) + '">Start over</button>' : '') +
+          (pr.started ? '<button type="button" class="gxs-link gxs-restart" data-restart="' + esc(z.id) + '">' + IC.restart + '<span>Start over</span></button>' : '') +
         '</div>' +
       '</div>' +
       '<div class="gxs-list"><p class="gxs-k" id="gxs-all-k">All places</p><ul aria-labelledby="gxs-all-k">' + zones.map(function (o) {
@@ -210,6 +212,8 @@
       /* choosing the place that is already chosen (a second click, a double click, Enter again) travels there */
       if (t.dataset.zone && t.dataset.zone === picked && t.classList.contains('gxs-pin')) travel(picked);
       else if (t.dataset.zone) pick(t.dataset.zone, t.classList.contains('gxs-pin') ? 'pin' : 'row');
+      /* the traveller cards change in place (no repaint), so the brackets slide and the traveller hops */
+      else if (t.dataset.traveller) { CC.character.set(t.dataset.traveller); CC.character.select(t.closest('.tc-group'), t.dataset.traveller); }
       else if (t.dataset.dest) { dest = t.dataset.dest; paint('.gxs-dest[data-dest="' + dest + '"]'); }
       else if (t.dataset.restart) {
         var z = CC.byId(zones, t.dataset.restart);
@@ -220,6 +224,7 @@
         paint('.gxs-cta');
       }
     });
+    hub.addEventListener('keydown', function (e) { var id = CC.character.onKey(e); if (id) CC.character.set(id); });
     window.addEventListener('hashchange', function () { var h = decodeURIComponent(location.hash.slice(1)); if (CC.byId(zones, h) && h !== picked) pick(h); });
     document.addEventListener('cc:cleared', function () { paint(); });
   }
