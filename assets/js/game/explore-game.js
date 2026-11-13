@@ -93,7 +93,7 @@
   }
   function updateGoal() {
     var o = currentObjective();
-    CC.$('gx-goal-count').textContent = doneCount() + ' of ' + zone.objectives.length + ' moments';
+    CC.$('gx-goal-count').textContent = 'Moments · ' + doneCount() + ' / ' + zone.objectives.length;
     var next = o ? null : nextZone();
     CC.$('gx-goal-text').textContent = o ? o.text : (next ? 'Place done — next: ' + next.title : 'Place done — choose another place');
     CC.$('gx-needle').style.opacity = o ? '1' : '0';
@@ -105,8 +105,12 @@
       if (enc.npc && !done(ob.step)) eng.markers[enc.npc] = 'quest';
     });
     eng.hotspots.forEach(function (h) { if (h.props.fact && !state.facts[h.props.fact]) eng.markers[h.id] = 'look'; });
-    eng.npcs.forEach(function (n) { if (!eng.markers[n.id] && n.props.fact && !state.facts[n.props.fact]) eng.markers[n.id] = 'look'; });
-    CC.$('gx-journal-count').textContent = Object.keys(state.facts).length;
+    eng.npcs.forEach(function (n) {
+      if (eng.markers[n.id]) return;
+      if (n.props.talk && !(state.talks && state.talks[n.props.talk])) eng.markers[n.id] = 'talk';
+      else if (n.props.fact && !state.facts[n.props.fact]) eng.markers[n.id] = 'look';
+    });
+    renderHud();
   }
   /* ---------- place finished: the Map button blinks and points at the next place ---------- */
   function nextZone() {
@@ -246,8 +250,9 @@
   function closeDialog() {
     if (typing) typing.done();
     dialog.hidden = true;   // the content stays for the 120 ms fade out; the next dialog replaces it
-    open = null;
+    open = null; talking = null;
     if (panel.hidden) eng.frozen = false;
+    if (started) updateGoal();   // the side panel shows who you have met now
     frame.focus({ preventScroll: true });
     returnFocus = null;
   }
@@ -255,6 +260,35 @@
   function continueBtn() { return '<button type="button" class="cc-btn cc-btn-sm" data-act="close" data-autofocus aria-keyshortcuts="E">Continue' + continueKey + '</button>'; }
   function say(speaker, line) {
     showDialog('<p class="gx-who">' + esc(speaker) + '</p><p class="gx-text">' + esc(line) + '</p><div class="gx-actions">' + continueBtn() + '</div>', speaker);
+  }
+
+  /* ---------- conversations: a person with a "talk" prop (zone.talks[id]) answers questions you pick ----------
+     Each node has a line (and maybe the Vietnamese words said, vi), may open a fact, and offers options that lead to
+     other nodes. A node without options ends the talk. Asked questions are remembered (state.talks) and marked. */
+  var talking = null;
+  function talkNode(id, nodeId) {
+    var t = (zone.talks || {})[id], nid = nodeId || 'start';
+    var n = t && t.nodes[nid];
+    if (!n) return false;
+    talking = { id: id };
+    state.talks = state.talks || {};
+    var seen = state.talks[id] = state.talks[id] || {};
+    seen[nid] = 1; save();
+    var f = n.fact && factById(n.fact);
+    if (f) unlock(n.fact, { quiet: true });
+    var opts = n.options || [];
+    var ends = function (next) { var x = t.nodes[next]; return !x || !(x.options || []).length; };
+    showDialog('<p class="gx-who">' + esc(t.speaker) + '</p>' +
+      (n.vi ? '<p class="gx-vi" lang="vi">' + esc(n.vi) + '</p>' : '') +
+      '<p class="gx-text">' + esc(n.line) + '</p>' + (f ? factCard(f) : '') +
+      (opts.length ? '<ol class="gx-choices gx-talk">' + opts.map(function (o, i) {
+        var was = seen[o.next] && !ends(o.next);
+        return '<li><button type="button" class="gx-choice' + (was ? ' is-asked' : '') + '" data-talk="' + esc(o.next) + '"' + (i === 0 ? ' data-autofocus' : '') + '>' +
+          '<span class="gx-key" aria-hidden="true">' + (i + 1) + '</span><span>' + esc(o.label) + '</span>' +
+          (was ? '<span class="gx-tried">Asked</span>' : '') + '</button></li>';
+      }).join('') + '</ol>' : '<div class="gx-actions">' + continueBtn() + '</div>'), t.speaker);
+    updateGoal();
+    return true;
   }
 
   function promptHtml(m) {
@@ -336,9 +370,11 @@
   function interact(it) {
     if (open || !dialog.hidden) return;
     var p = it.props || {};
+    state.seen = state.seen || {}; state.seen[mapId + ':' + it.id] = 1; save();
     if (it.kind === 'npc') {
       var k = zone.objectives.map(function (o) { return key(o.step); }).filter(function (x) { return encounter(x).npc === it.id && !done(x); })[0];
       if (k) return startEncounter(k);
+      if (p.talk && talkNode(p.talk)) return;
       if (p.fact) {
         var f = factById(p.fact);
         unlock(p.fact, { quiet: true });
@@ -351,6 +387,8 @@
       unlock(p.fact, { quiet: true });
       showDialog('<p class="gx-who">' + CC.icon('pin') + esc(p.label || it.name) + '</p>' + (f2 ? factCard(f2) : '') +
         '<div class="gx-actions">' + continueBtn() + '</div>', p.label || it.name);
+    } else if (p.line) {
+      say(p.label || it.name, p.line);
     }
   }
   function onZone(z) {
@@ -380,6 +418,7 @@
     frame.classList.add('is-switching');
     return eng.setMap(map).then(function () {
       mapId = id;
+      if (pos && eng.blockedAt(pos.x, pos.y, eng.player.w, eng.player.h, eng.player)) pos = null;
       var s = pos || eng.spawns[spawnName] || eng.spawn || { x: 32, y: 32 };
       eng.resize();
       eng.teleport(s.x, s.y, s.dir || 'up');
@@ -423,23 +462,169 @@
       'journal');
     if (focusId) { var el = CC.$('gx-f-' + focusId); if (el) el.scrollIntoView({ block: 'nearest' }); }
   }
-  function goTo() {
-    var items = [];
-    zone.objectives.forEach(function (o) {
-      items.push({ label: o.text, sub: done(o.step) ? 'Done' : 'Moment', target: o.target, map: o.map || mapId, step: key(o.step) });
-    });
-    eng.hotspots.forEach(function (h) { items.push({ label: h.props.label || h.name, sub: state.facts[h.props.fact] ? 'Looked at' : 'Something to look at', it: h }); });
-    eng.npcs.forEach(function (n) { if (!n.hidden) items.push({ label: n.props.speaker || n.name, sub: 'Person here', it: n }); });
-    var seen = {};
-    items = items.filter(function (x) { var k = x.label + x.sub; if (seen[k]) return false; seen[k] = 1; return true; });
-    openPanel('Go to…', '<p class="cc-meta">Jump straight to a place or a person instead of walking.</p><ul class="gx-goto">' +
-      items.map(function (x, i) { return '<li><button type="button" data-goto="' + i + '"' + (i === 0 ? ' data-autofocus' : '') + '><b>' + esc(x.label) + '</b><span>' + esc(x.sub) + '</span></button></li>'; }).join('') + '</ul>', 'goto');
-    panel._goto = items;
+  /* ---------- on the game itself: a round map (top left) that opens a big map, the quest lines under it ----------
+     14 Nov 2026, Henry: no side column. The moments are written as lines straight over the game, one after another,
+     like the quest list of an old adventure game; the minimap is a small circle. */
+  var MAP_NAMES = { 'homestay-street': 'The lane outside', 'homestay-inside': 'Inside the house', 'cho-street': 'In front of the market',
+    'cho-inside': 'Inside the market', 'pho-co': 'Old Quarter and the lake', 'quan-an': 'The street eatery', 'van-mieu': 'Temple of Literature' };
+  function mapName(id) { var m = CC.maps[id]; return (m && m.props && m.props.title) || MAP_NAMES[id] || zone.title; }
+  var sideItems = [];
+  function seenIt(it) {
+    var p = it.props || {};
+    if (p.talk) return !!(state.talks && state.talks[p.talk]);
+    if (p.fact) return !!state.facts[p.fact];
+    return !!(state.seen && state.seen[mapId + ':' + it.id]);
   }
-  function doGoTo(i) {
-    var x = panel._goto[i];
-    closePanel();
-    if (x.target) {
+  function placeItems() {
+    var items = [], cur = currentObjective();
+    var questNpc = {};
+    zone.objectives.forEach(function (o) {
+      var enc = encounter(key(o.step));
+      if (enc.npc) questNpc[enc.npc] = 1;
+      items.push({ group: 'Moments', label: o.text, status: done(o.step) ? 'done' : (o === cur ? 'next' : 'todo'),
+        sub: done(o.step) ? 'Done' : (o === cur ? 'Next' : 'Later'), target: o.target, map: o.map || zone.map, step: key(o.step) });
+    });
+    eng.npcs.forEach(function (n) {
+      if (n.hidden || questNpc[n.id]) return;
+      var p = n.props;
+      items.push({ group: 'People', label: p.speaker || n.name, status: seenIt(n) ? 'seen' : 'new', sub: p.talk ? 'Talk' : p.fact ? 'Has something to tell' : 'Say hello', it: n });
+    });
+    eng.hotspots.forEach(function (h) {
+      items.push({ group: 'Things to look at', label: h.props.label || h.name, status: seenIt(h) ? 'seen' : 'new', sub: 'Look', it: h });
+    });
+    eng.doors.forEach(function (d) {
+      if (!d.props.to || !CC.maps[d.props.to]) return;
+      items.push({ group: 'Ways out', label: mapName(d.props.to), status: 'way', sub: 'Walk through', door: d });
+    });
+    return items;
+  }
+  var STATUS_ICON = {
+    next: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 8 8 14.5 1.5 8z" fill="currentColor"/></svg>',
+    done: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    seen: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    todo: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5 13.5 8 8 13.5 2.5 8z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>',
+    'new': '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg>',
+    way: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M9 4.5 12.5 8 9 11.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  };
+  var STATUS_WORD = { next: 'next moment', done: 'done', seen: 'already visited', todo: 'later', 'new': 'not visited yet', way: '' };
+  var PIN = { next: '#F2C14E', todo: '#8DA0B5', done: '#F2C14E', 'new': '#5FD8E8', seen: '#7C8A9C', way: '#EEF2F6' };
+  function renderHud() {
+    if (!eng || !eng.map) return;
+    sideItems = placeItems();
+    sideItems.forEach(function (x, i) { x.i = i; });
+    var cur = currentObjective();
+    var moments = sideItems.filter(function (x) { return x.group === 'Moments'; }), later = 0;
+    var qhtml = moments.filter(function (x) { if (x.status === 'todo' && ++later > 2) return false; return true; }).map(function (x) {
+      return '<li class="is-' + x.status + '"><button type="button" data-place="' + x.i + '" tabindex="-1">' +
+        '<i>' + STATUS_ICON[x.status] + '</i><span>' + esc(x.label) + '</span></button></li>';
+    }).join('') + (later > 2 ? '<li class="is-more"><span>+ ' + CC.plural(later - 2, 'more moment') + '</span></li>' : '') + (cur ? '' : '<li class="is-next"><button type="button" data-act="next-place" tabindex="-1"><i>' + STATUS_ICON.way + '</i><span>' + esc(CC.$('gx-goal-text').textContent) + '</span></button></li>');
+    if (renderHud.last !== qhtml) { CC.$('gx-quest-list').innerHTML = qhtml; renderHud.last = qhtml; }   // only when it changes, so the lines slide in once
+    var left = sideItems.filter(function (x) { return x.group !== 'Moments' && x.status === 'new'; }).length;
+    CC.$('gx-quest-more').textContent = left ? CC.plural(left, 'more person or thing', 'more people and things') + ' to discover · M' : 'Everyone here visited';
+    if (mini.map !== mapId) { mini.img = eng.renderWhole(); mini.map = mapId; }
+    radarDraw();
+    if (panel.dataset.kind === 'map' && !panel.hidden) bigDraw();
+  }
+
+  var mini = { map: null, img: null };
+  function itemPos(x) {
+    if (x.it) return x.it.kind === 'npc' ? { x: x.it.x, y: x.it.y - 6 } : { x: x.it.x + x.it.w / 2, y: x.it.y + x.it.h / 2 };
+    if (x.door) return { x: x.door.x + x.door.w / 2, y: x.door.y + x.door.h / 2 };
+    if (x.target && x.map === mapId && eng.targets[x.target]) return eng.targets[x.target];
+    return null;
+  }
+  function drawPins(ctx, s, ox, oy, W, H, big) {
+    var pins = [];
+    sideItems.forEach(function (x) {
+      var q = itemPos(x);
+      if (!q) return;
+      var px = q.x * s - ox, py = q.y * s - oy;
+      if (px < -6 || py < -6 || px > W + 6 || py > H + 6) return;
+      pins.push({ x: px, y: py, i: x.i, label: x.label });
+      var k = big ? 1.5 : 1;
+      ctx.fillStyle = '#08101C';
+      if (x.status === 'next' || x.status === 'todo') {
+        var r1 = 6 * k, r2 = 4.5 * k;
+        ctx.beginPath(); ctx.moveTo(px, py - r1); ctx.lineTo(px + r1, py); ctx.lineTo(px, py + r1); ctx.lineTo(px - r1, py); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = PIN[x.status];
+        ctx.beginPath(); ctx.moveTo(px, py - r2); ctx.lineTo(px + r2, py); ctx.lineTo(px, py + r2); ctx.lineTo(px - r2, py); ctx.closePath(); ctx.fill();
+      } else {
+        var r = (x.status === 'new' ? 3.5 : 2.6) * k;
+        ctx.beginPath(); ctx.arc(px, py, r + 1.5, 0, 7); ctx.fill();
+        ctx.fillStyle = PIN[x.status]; ctx.beginPath(); ctx.arc(px, py, r, 0, 7); ctx.fill();
+      }
+    });
+    var ppx = eng.player.x * s - ox, ppy = (eng.player.y - 6) * s - oy, k2 = big ? 1.4 : 1;
+    ctx.fillStyle = '#08101C'; ctx.beginPath(); ctx.arc(ppx, ppy, 6 * k2, 0, 7); ctx.fill();
+    ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(ppx, ppy, 4.5 * k2, 0, 7); ctx.fill();
+    ctx.fillStyle = '#5FD8E8'; ctx.beginPath(); ctx.arc(ppx, ppy, 2.2 * k2, 0, 7); ctx.fill();
+    return pins;
+  }
+  function sizeCanvas(cv, W, H) {
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+    var ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+    return ctx;
+  }
+  /* the round map: centred on you, about 18 tiles across */
+  function radarDraw() {
+    var cv = CC.$('gx-mini');
+    if (!cv || !mini.img || !cv.clientWidth) return;
+    var W = cv.clientWidth, H = W, ctx = sizeCanvas(cv, W, H), T = eng.T;
+    var s = W / (18 * T), ox = eng.player.x * s - W / 2, oy = (eng.player.y - 6) * s - H / 2;
+    ctx.fillStyle = '#08101C'; ctx.fillRect(0, 0, W, H);
+    ctx.drawImage(mini.img, -ox, -oy, mini.img.width * s, mini.img.height * s);
+    drawPins(ctx, s, ox, oy, W, H, false);
+  }
+  /* the big map: the whole place, with every pin; click a pin to jump there, anywhere else to walk there */
+  var big = {};
+  function openBigMap(focusList) {
+    renderHud();
+    var list = '', groups = [];
+    sideItems.forEach(function (x) { if (groups.indexOf(x.group) === -1) groups.push(x.group); });
+    groups.forEach(function (g) {
+      list += '<h3 class="gx-pl-h">' + esc(g) + '</h3><ul class="gx-pl">' + sideItems.filter(function (x) { return x.group === g; }).map(function (x) {
+        return '<li><button type="button" class="gx-pl-b is-' + x.status + '" data-place="' + x.i + '"><i class="gx-pl-i">' + STATUS_ICON[x.status] + '</i><b>' + esc(x.label) + '</b><span>' + esc(x.sub) +
+          (STATUS_WORD[x.status] ? '<span class="visually-hidden">, ' + STATUS_WORD[x.status] + '</span>' : '') + '</span></button></li>';
+      }).join('') + '</ul>';
+    });
+    openPanel('Map · ' + esc(mapName(mapId)),
+      '<div class="gx-big"><div class="gx-big-map"><canvas id="gx-big" aria-hidden="true"></canvas>' +
+      '<p class="gx-mini-key" aria-hidden="true"><span><i class="k-you"></i>You</span><span><i class="k-next"></i>Next moment</span><span><i class="k-new"></i>Not visited yet</span><span><i class="k-seen"></i>Visited</span></p></div>' +
+      '<div class="gx-big-list">' + list + '<button type="button" class="gx-jr-open" data-act="journal">Journal · ' + Object.keys(state.facts).filter(function (id) { return factById(id); }).length + ' of ' + zone.facts.length + ' found (J)</button></div></div>', 'map');
+    bigDraw();
+    if (focusList) { var b = panel.querySelector('.gx-pl-b.is-next, .gx-pl-b.is-new, .gx-pl-b'); if (b) b.focus({ preventScroll: true }); }
+  }
+  function bigDraw() {
+    var cv = CC.$('gx-big');
+    if (!cv || !mini.img) return;
+    var box = cv.parentNode, mw = mini.img.width, mh = mini.img.height;
+    var W = box.clientWidth, maxH = Math.max(160, panel.querySelector('.gx-panel-body').clientHeight - 60);
+    var s = Math.min(W / mw, maxH / mh, 3), w = Math.round(mw * s), h = Math.round(mh * s);
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    var ctx = sizeCanvas(cv, w, h);
+    ctx.imageSmoothingEnabled = s < 1;
+    ctx.drawImage(mini.img, 0, 0, w, h);
+    if (eng.cam) { ctx.strokeStyle = 'rgba(238,242,246,.7)'; ctx.lineWidth = 1.5; ctx.strokeRect(eng.cam.x * s, eng.cam.y * s, eng.vw * s, eng.vh * s); }
+    big = { s: s, pins: drawPins(ctx, s, 0, 0, w, h, true) };
+  }
+  function bigHit(e) {
+    var r = CC.$('gx-big').getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, best = null, bd = 196;
+    (big.pins || []).forEach(function (p) { var d = (p.x - x) * (p.x - x) + (p.y - y) * (p.y - y); if (d < bd) { bd = d; best = p; } });
+    return { pin: best, wx: x / big.s, wy: y / big.s };
+  }
+
+  /* jump to a place, person or thing (from the list or a pin) */
+  function goPlace(i) {
+    var x = sideItems[i];
+    if (!x || open || switching) return;
+    if (!dialog.hidden) closeDialog();
+    if (!panel.hidden) closePanel();
+    frame.focus({ preventScroll: true });
+    if (x.door) {
+      goMap(x.door.props.to, x.door.props.spawn);
+    } else if (x.target) {
       var arrive = function () {
         var t = eng.targets[x.target];
         if (!t) return;
@@ -455,6 +640,7 @@
     }
     savePos();
   }
+
   function help() {
     openPanel('How to play',
       '<ul class="gx-help"><li><b>Move</b> arrow keys or W A S D, or click where you want to go.</li>' +
@@ -462,8 +648,9 @@
       '<li><b>!</b> a moment is waiting with this person. <b>?</b> something to look at.</li>' +
       '<li><b>Doors</b> walk into a doorway to go inside or out.</li>' +
       '<li><b>Choices</b> press 1, 2 or 3. If a choice doesn’t fit, you’ll see what happens and can try another way.</li>' +
-      '<li><b>G</b> or <b>Go to…</b> jumps to any place or person without walking, so you can play with the keyboard only.</li>' +
-      '<li><b>J</b> opens your journal. <b>F</b> or the corner button goes full screen. <b>Esc</b> closes a window, then leaves full screen.</li></ul>' +
+      '<li><b>Moments</b> are listed at the top left, one after another; follow the arrows on the ground to the next one. Click a line to jump there.</li>' +
+      '<li><b>The round map</b> at the top left, or <b>M</b>, opens the big map: gold diamond for the next moment, cyan dots for people and things you haven’t visited. Click a pin or a name, or press <b>G</b> to pick from the list, to jump there without walking. <b>J</b> opens your journal.</li>' +
+      '<li><b>…</b> someone to chat with. <b>F</b> or the corner button goes full screen. <b>Esc</b> closes a window, then leaves full screen.</li></ul>' +
       '<p class="gx-help-who">You are playing as <b>' + esc(CC.character.get().name) + '</b>. <button type="button" class="cc-btn cc-btn-quiet" data-act="character">Change traveller</button></p>' +
       scenes().map(function (sc) { return '<p class="cc-meta">' + esc(sc.scope || '') + '</p>'; }).join(''), 'help');
   }
@@ -554,14 +741,15 @@
         e.preventDefault();
         return;
       }
-      if (!dialog.hidden && open && /^[1-9]$/.test(e.key)) {
+      if (!dialog.hidden && (open || talking) && /^[1-9]$/.test(e.key)) {
         var b = dialog.querySelectorAll('.gx-choice')[+e.key - 1];
         if (b && !b.disabled) { b.click(); e.preventDefault(); }
         return;
       }
       if (inUi || !panel.hidden) return;   // let the open panel scroll with the arrow keys
       if ((e.key === 'j' || e.key === 'J') && panel.hidden && dialog.hidden) { journal(); e.preventDefault(); return; }
-      if ((e.key === 'g' || e.key === 'G') && panel.hidden && dialog.hidden) { goTo(); e.preventDefault(); return; }
+      if ((e.key === 'g' || e.key === 'G') && panel.hidden && dialog.hidden) { openBigMap(true); e.preventDefault(); return; }
+      if ((e.key === 'm' || e.key === 'M') && panel.hidden && dialog.hidden) { openBigMap(false); e.preventDefault(); return; }
       if ((e.key === 'f' || e.key === 'F') && !e.metaKey && !e.ctrlKey && panel.hidden && dialog.hidden) { toggleFull(); e.preventDefault(); return; }
       if (eng.setKey(e.key, true)) { e.preventDefault(); return; }
       if ((e.key === 'e' || e.key === 'E' || e.key === ' ' || e.key === 'Enter') && e.target === frame) { eng.interact(); e.preventDefault(); }
@@ -591,12 +779,15 @@
       else if (t.dataset.act === 'pick-cancel') closePick();
       else if (t.dataset.act === 'character') { closePanel(); pickCharacter(false, loadTraveller); }
       else if (t.dataset.choice) choose(t.dataset.choice);
+      else if (t.dataset.talk && talking) talkNode(talking.id, t.dataset.talk);
       else if (t.dataset.act === 'close') closeDialog();
       else if (t.dataset.act === 'done') finishStep();
       else if (t.dataset.act === 'retry') { var m = open; showDialog(promptHtml(m), 'Moment: ' + m.step.prompt); }
       else if (t.dataset.act === 'panel-close') closePanel();
-      else if (t.dataset.act === 'journal') { closePanel(); journal(); }
-      else if (t.dataset.goto != null) doGoTo(+t.dataset.goto);
+      else if (t.dataset.act === 'journal') { if (!panel.hidden) closePanel(); journal(); }
+      else if (t.dataset.place != null) goPlace(+t.dataset.place);
+      else if (t.id === 'gx-radar') openBigMap(false);
+      else if (t.dataset.act === 'next-place') location.href = CC.$('gx-map').href;
       else if (t.dataset.fact) { CC.$('gx-toast').hidden = true; journal(t.dataset.fact); }
       else if (t.id === 'gx-start-btn') begin();
       else if (t.id === 'gx-restart') {
@@ -604,9 +795,19 @@
         goMap(zone.map, 'spawn').then(begin);
       }
     });
-    CC.$('gx-journal').addEventListener('click', function () { journal(); });
-    CC.$('gx-goto').addEventListener('click', goTo);
-    CC.$('gx-goal').addEventListener('click', function () { if (this.classList.contains('is-complete')) location.href = CC.$('gx-map').href; });
+    panel.addEventListener('pointermove', function (e) {
+      if (e.target.id !== 'gx-big') return;
+      var h = bigHit(e); e.target.title = h.pin ? h.pin.label : 'Click to walk there';
+    });
+    panel.addEventListener('click', function (e) {
+      if (e.target.id !== 'gx-big') return;
+      var h = bigHit(e);
+      if (h.pin) { goPlace(h.pin.i); return; }
+      closePanel();
+      eng.pendingInteract = null; eng.moveTarget = { x: h.wx, y: h.wy };
+    });
+    if (window.ResizeObserver) new ResizeObserver(function () { if (eng && eng.map) { eng.resize(); radarDraw(); } }).observe(CC.$('gx-viewport'));
+    setInterval(function () { if (started && eng && eng.map && !document.hidden) radarDraw(); }, 120);
     CC.$('gx-help').addEventListener('click', help);
     CC.$('gx-traveller').addEventListener('click', switchTraveller);
     CC.$('gx-start').addEventListener('dblclick', function (e) { var c = e.target.closest('.tc'); if (c && picking) picked(c.dataset.traveller); });

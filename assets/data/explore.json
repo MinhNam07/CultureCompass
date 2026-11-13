@@ -214,6 +214,56 @@
           ],
           "storyId": "st-host",
           "sound": "chime"
+        },
+        {
+          "id": "f-altar",
+          "title": "The family altar is the most sacred place",
+          "text": "Photos of grandparents, an incense bowl, fruit. Do not put your things on it or walk right in front of it.",
+          "claimIds": [
+            "C-HOME-ALTAR",
+            "C-HOME-ALTAR-GUEST"
+          ],
+          "storyId": "st-arrive-home",
+          "sound": "chime"
+        },
+        {
+          "id": "f-tea",
+          "title": "A pot of tea opens the conversation",
+          "text": "Hosts brew fresh tea when a guest arrives. Accept a cup with both hands.",
+          "claimIds": [
+            "C-HOME-TEA"
+          ],
+          "storyId": "st-arrive-home",
+          "sound": "chime"
+        },
+        {
+          "id": "f-tube",
+          "title": "A tube house: narrow at the front, deep behind",
+          "text": "Shop or living room at the front, kitchen at the back, bedrooms and often the altar upstairs.",
+          "claimIds": [
+            "C-AR-TUBE"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-wait",
+          "title": "Wait for the eldest to start",
+          "text": "Invite the elders to eat (“mời bà ăn cơm”), then wait until the oldest picks up their bowl.",
+          "claimIds": [
+            "C-MAM-WAIT"
+          ],
+          "storyId": "st-shared-table",
+          "sound": "chime"
+        },
+        {
+          "id": "f-hs-trada",
+          "title": "Trà đá: the street’s meeting place",
+          "text": "A kettle, glasses and low plastic stools. Regulars meet here every day to chat and pass on news.",
+          "claimIds": [
+            "C-TRADA",
+            "C-TRADA-SOCIAL"
+          ],
+          "sound": "chime"
         }
       ],
       "stepFacts": {
@@ -232,6 +282,184 @@
         "sc02:s3": [
           "f-glass"
         ]
+      },
+      "talks": {
+        "hs-lan": {
+          "speaker": "Cô Lan",
+          "nodes": {
+            "start": {
+              "line": "Cô Lan wipes her hands on a towel. “Dinner is nearly ready, cháu!”",
+              "vi": "Sắp có cơm rồi cháu ơi!",
+              "options": [
+                {
+                  "label": "Can I help?",
+                  "next": "help"
+                },
+                {
+                  "label": "Who is on the altar?",
+                  "next": "altar"
+                },
+                {
+                  "label": "When do we eat?",
+                  "next": "wait"
+                },
+                {
+                  "label": "I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "help": {
+              "line": "“Bring the bowls to the table, thank you! Guests don’t usually help, but it makes me happy.”",
+              "vi": "Cháu bê bát ra giúp cô nhé.",
+              "options": [
+                {
+                  "label": "When do we eat?",
+                  "next": "wait"
+                },
+                {
+                  "label": "Who is on the altar?",
+                  "next": "altar"
+                },
+                {
+                  "label": "I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "altar": {
+              "line": "“My parents-in-law. We light incense for them on the 1st and 15th of the lunar month. Please don’t put your bag there.”",
+              "vi": "Đây là ông bà nhà cô.",
+              "fact": "f-altar",
+              "options": [
+                {
+                  "label": "When do we eat?",
+                  "next": "wait"
+                },
+                {
+                  "label": "Can I help?",
+                  "next": "help"
+                },
+                {
+                  "label": "I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "wait": {
+              "line": "“When everyone sits down, invite Bà first: ‘Mời bà ăn cơm.’ Then wait until she starts.”",
+              "vi": "Mời bà ăn cơm.",
+              "fact": "f-wait",
+              "options": [
+                {
+                  "label": "Mời bà ăn cơm.",
+                  "next": "practise"
+                },
+                {
+                  "label": "Who is on the altar?",
+                  "next": "altar"
+                },
+                {
+                  "label": "I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "practise": {
+              "line": "Cô Lan laughs. “Very good! Bà will be so pleased.”",
+              "vi": "Giỏi quá!",
+              "options": [
+                {
+                  "label": "I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "“Make yourself at home!”",
+              "vi": "Cứ tự nhiên như ở nhà nhé!"
+            }
+          }
+        },
+        "hs-trada": {
+          "speaker": "The iced-tea seller",
+          "nodes": {
+            "start": {
+              "line": "A woman by a thermos and a tray of glasses waves you to a stool. “Trà đá không cháu?”",
+              "vi": "Trà đá không cháu?",
+              "options": [
+                {
+                  "label": "Một cốc trà đá ạ. (One iced tea.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "How much is it?",
+                  "next": "price"
+                },
+                {
+                  "label": "Who comes here?",
+                  "next": "who"
+                },
+                {
+                  "label": "No, thank you.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Five thousand đồng a glass. Sit as long as you like.”",
+              "vi": "Năm nghìn một cốc.",
+              "options": [
+                {
+                  "label": "Một cốc trà đá ạ. (One iced tea.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Who comes here?",
+                  "next": "who"
+                },
+                {
+                  "label": "No, thank you.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She pours green tea over ice. It is cold and slightly bitter. Around you the regulars are talking about football and the neighbour’s grandson.",
+              "vi": "Đây cháu.",
+              "fact": "f-hs-trada",
+              "options": [
+                {
+                  "label": "Who comes here?",
+                  "next": "who"
+                },
+                {
+                  "label": "Cảm ơn cô! (Thank you!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "who": {
+              "line": "“Everyone! Xe ôm drivers, students, the old men from this lane. Same people every day, they know all the news.”",
+              "vi": "Ai cũng ra đây ngồi.",
+              "fact": "f-hs-trada",
+              "options": [
+                {
+                  "label": "Một cốc trà đá ạ. (One iced tea.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Cảm ơn cô! (Thank you!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "“Lúc nào rảnh lại ra ngồi nhé!” Come and sit any time.",
+              "vi": "Lúc nào rảnh lại ra ngồi nhé!"
+            }
+          }
+        }
       }
     },
     {
@@ -415,6 +643,73 @@
             "C-THEHUC"
           ],
           "sound": "water"
+        },
+        {
+          "id": "f-hangma",
+          "title": "Hàng Mã: the street of paper offerings",
+          "text": "“Hàng” means goods. Hàng Mã sells paper money, houses and clothes that families burn for their ancestors.",
+          "claimIds": [
+            "C-OQ-HANG",
+            "C-HANGMA"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-hk-ngocson",
+          "title": "Ngọc Sơn Temple on Jade Island",
+          "text": "It honours General Trần Hưng Đạo and Văn Xương, a patron of literature. Inside are preserved giant turtles.",
+          "claimIds": [
+            "C-HK-NGOCSON",
+            "C-HK-TURTLE"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-hk-tower",
+          "title": "Tháp Rùa, the Turtle Tower",
+          "text": "Built on an islet in the lake in the 1880s. It has become a symbol of Hà Nội.",
+          "claimIds": [
+            "C-HK-TOWER"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-hk-walk",
+          "title": "A walking street at the weekend",
+          "text": "From Friday 7 p.m. to Sunday midnight the streets around the lake close to traffic and fill with families.",
+          "claimIds": [
+            "C-HK-WALK",
+            "C-HK-LEZ"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-hk-morning",
+          "title": "The lake wakes up at 5 a.m.",
+          "text": "Dancing, tai chi, jogging: people exercise around the 1.5 km loop of the lake every morning.",
+          "claimIds": [
+            "C-HK-MORNING"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-hk-english",
+          "title": "“Can I practise English with you?”",
+          "text": "At weekends students approach visitors to practise English. A few minutes is a kind gift; saying no politely is fine.",
+          "claimIds": [
+            "C-HK-ENGLISH",
+            "C-HK-TIP"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-hk-visit",
+          "title": "The bridge is free, the temple has a ticket",
+          "text": "Ngọc Sơn opens 7 a.m. to 6 p.m. on weekdays, later at weekends. Under-16s go in free.",
+          "claimIds": [
+            "C-HK-VISIT"
+          ],
+          "sound": "chime"
         }
       ],
       "stepFacts": {
@@ -430,6 +725,303 @@
         "sc04:s4": [
           "f-vendor"
         ]
+      },
+      "talks": {
+        "hk-exercise": {
+          "speaker": "Morning exerciser",
+          "nodes": {
+            "start": {
+              "line": "A group of women dance in rows to music from a small speaker. One waves at you. “Tập cùng không? Join us!”",
+              "vi": "Tập cùng không?",
+              "options": [
+                {
+                  "label": "Sure! (Vâng ạ!)",
+                  "next": "join"
+                },
+                {
+                  "label": "Why so early?",
+                  "next": "early"
+                },
+                {
+                  "label": "Maybe tomorrow.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "join": {
+              "line": "You copy the arm swings, one beat behind. Everyone laughs, kindly. “Giỏi lắm! Very good!”",
+              "vi": "Giỏi lắm!",
+              "fact": "f-hk-morning",
+              "options": [
+                {
+                  "label": "Why so early?",
+                  "next": "early"
+                },
+                {
+                  "label": "Cảm ơn! (Thanks!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "early": {
+              "line": "“Before six it’s cool, and the air by the lake is fresh. After eight it’s too hot and the traffic starts.”",
+              "fact": "f-hk-morning",
+              "options": [
+                {
+                  "label": "Sure, I’ll join! (Vâng ạ!)",
+                  "next": "join"
+                },
+                {
+                  "label": "Maybe tomorrow.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "“Mai ra sớm nhé! Come early tomorrow!”",
+              "vi": "Mai ra sớm nhé!"
+            }
+          }
+        },
+        "hk-chess": {
+          "speaker": "Chess player",
+          "nodes": {
+            "start": {
+              "line": "Two old men bend over a board of round wooden pieces. A small crowd watches in silence.",
+              "options": [
+                {
+                  "label": "What game is this?",
+                  "next": "what"
+                },
+                {
+                  "label": "Who is winning?",
+                  "next": "who"
+                },
+                {
+                  "label": "(Watch quietly)",
+                  "next": "watch"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Cờ tướng, Chinese chess. The general stays in his palace, the elephants can’t cross the river.”",
+              "vi": "Cờ tướng đấy cháu.",
+              "options": [
+                {
+                  "label": "Who is winning?",
+                  "next": "who"
+                },
+                {
+                  "label": "(Watch quietly)",
+                  "next": "watch"
+                }
+              ]
+            },
+            "who": {
+              "line": "He taps his nose. “Ask me in an hour.” The watchers chuckle. Giving advice from the side is half the fun here.",
+              "vi": "Một tiếng nữa hỏi lại nhé.",
+              "options": [
+                {
+                  "label": "(Watch quietly)",
+                  "next": "watch"
+                }
+              ]
+            },
+            "watch": {
+              "line": "His opponent moves a cannon. The old man sighs, smiles, and sets the pieces up again."
+            }
+          }
+        },
+        "hk-kem": {
+          "speaker": "Ice-cream seller",
+          "nodes": {
+            "start": {
+              "line": "A man with a cool box on a stand: “Kem đây! Kem Tràng Tiền!”",
+              "vi": "Kem đây!",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Which flavour is best?",
+                  "next": "flavour"
+                },
+                {
+                  "label": "No, thank you.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Fifteen thousand a stick.”",
+              "vi": "Mười lăm nghìn một que.",
+              "options": [
+                {
+                  "label": "Một cái cốm ạ. (One green-rice, please.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "No, thank you.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "flavour": {
+              "line": "“Cốm! Green young rice, a Hà Nội taste. Or đậu xanh, mung bean.”",
+              "vi": "Kem cốm ngon nhất!",
+              "options": [
+                {
+                  "label": "Một cái cốm ạ. (One green-rice, please.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "No, thank you.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "buy": {
+              "line": "The ice cream is pale green and tastes of fresh rice and milk. You eat it fast before it melts.",
+              "vi": "Đây em."
+            },
+            "bye": {
+              "line": "He nods and calls out to the next family. “Kem đây!”"
+            }
+          }
+        },
+        "hk-english": {
+          "speaker": "A student",
+          "nodes": {
+            "start": {
+              "line": "Two students in school uniform walk up with a notebook. “Hello! Can we practise English with you?”",
+              "vi": "Chị ơi, cho em hỏi chút được không?",
+              "options": [
+                {
+                  "label": "Of course!",
+                  "next": "yes"
+                },
+                {
+                  "label": "Sorry, I’m in a hurry.",
+                  "next": "no"
+                }
+              ]
+            },
+            "yes": {
+              "line": "“Where are you from? What is your favourite Vietnamese food?” They write every answer down carefully.",
+              "fact": "f-hk-english",
+              "options": [
+                {
+                  "label": "Can I ask you something?",
+                  "next": "ask"
+                },
+                {
+                  "label": "Good luck! (Chúc may mắn!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "ask": {
+              "line": "“The lake? Hồ Hoàn Kiếm, the Lake of the Returned Sword. A turtle took the king’s sword back!”",
+              "fact": "f-hoankiem",
+              "options": [
+                {
+                  "label": "Good luck! (Chúc may mắn!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "no": {
+              "line": "“No problem! Have a nice day!” They wave and look for the next visitor.",
+              "fact": "f-hk-english"
+            },
+            "bye": {
+              "line": "“Thank you so much!” They take a selfie with you for their teacher."
+            }
+          }
+        },
+        "hk-temple": {
+          "speaker": "Temple keeper",
+          "nodes": {
+            "start": {
+              "line": "A woman at a small desk by the temple door. “Xin chào! Welcome to Ngọc Sơn.”",
+              "vi": "Xin chào!",
+              "options": [
+                {
+                  "label": "Do I need a ticket?",
+                  "next": "ticket"
+                },
+                {
+                  "label": "Who is the temple for?",
+                  "next": "who"
+                },
+                {
+                  "label": "The turtle?",
+                  "next": "turtle"
+                },
+                {
+                  "label": "Cảm ơn! (Thanks!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "ticket": {
+              "line": "“The bridge is free. Inside the temple is fifty thousand. Children under sixteen go in free.”",
+              "vi": "Năm mươi nghìn một vé.",
+              "fact": "f-hk-visit",
+              "options": [
+                {
+                  "label": "Who is the temple for?",
+                  "next": "who"
+                },
+                {
+                  "label": "The turtle?",
+                  "next": "turtle"
+                },
+                {
+                  "label": "Cảm ơn! (Thanks!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "who": {
+              "line": "“Trần Hưng Đạo, the general who beat the Mongols, and Văn Xương, for scholars. Students come before exams.”",
+              "fact": "f-hk-ngocson",
+              "options": [
+                {
+                  "label": "Do I need a ticket?",
+                  "next": "ticket"
+                },
+                {
+                  "label": "The turtle?",
+                  "next": "turtle"
+                },
+                {
+                  "label": "Cảm ơn! (Thanks!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "turtle": {
+              "line": "“The last giant turtle of the lake died in 2016. You can see a preserved one inside. People still call it Cụ Rùa, Great-grandfather Turtle.”",
+              "vi": "Cụ Rùa.",
+              "fact": "f-hk-ngocson",
+              "options": [
+                {
+                  "label": "Do I need a ticket?",
+                  "next": "ticket"
+                },
+                {
+                  "label": "Cảm ơn! (Thanks!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "“Please dress modestly inside, and speak softly.”"
+            }
+          }
+        }
       }
     },
     {
@@ -589,6 +1181,16 @@
           ],
           "sound": "chime",
           "storyId": "st-street-stall"
+        },
+        {
+          "id": "f-price",
+          "title": "What a bowl costs",
+          "text": "In 2026 a bowl of phở or bún in Hà Nội is about 45,000–50,000 đồng; famous shops charge more.",
+          "claimIds": [
+            "C-FOOD-PRICE",
+            "C-PHO-PRICE"
+          ],
+          "sound": "chime"
         }
       ],
       "stepFacts": {
@@ -601,6 +1203,64 @@
         "sc06:s4": [
           "f-pay"
         ]
+      },
+      "talks": {
+        "qa-diner": {
+          "speaker": "A diner",
+          "nodes": {
+            "start": {
+              "line": "A woman with a bowl of bún chả smiles at you. “Lần đầu ăn bún chả à? First time?”",
+              "vi": "Lần đầu ăn bún chả à?",
+              "options": [
+                {
+                  "label": "How do I eat it?",
+                  "next": "how"
+                },
+                {
+                  "label": "Is it expensive?",
+                  "next": "price"
+                },
+                {
+                  "label": "Ngon quá! (So tasty!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "how": {
+              "line": "“Put some noodles in the bowl of sauce, add herbs, then the grilled pork. Dip, don’t pour!”",
+              "vi": "Chấm, đừng đổ!",
+              "fact": "f-herbs",
+              "options": [
+                {
+                  "label": "Is it expensive?",
+                  "next": "price"
+                },
+                {
+                  "label": "Ngon quá! (So tasty!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Not here. The board says the price; the famous shops by the lake cost more.”",
+              "fact": "f-price",
+              "options": [
+                {
+                  "label": "How do I eat it?",
+                  "next": "how"
+                },
+                {
+                  "label": "Ngon quá! (So tasty!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "“Ăn ngon miệng nhé! Enjoy your meal!”",
+              "vi": "Ăn ngon miệng nhé!"
+            }
+          }
+        }
       }
     },
     {
@@ -736,6 +1396,78 @@
           ],
           "sound": "chime",
           "storyId": "st-market"
+        },
+        {
+          "id": "f-dx-stomach",
+          "title": "“Hà Nội’s stomach”",
+          "text": "Trams, Long Biên bridge and the station nearby made Đồng Xuân the city’s biggest, busiest market.",
+          "claimIds": [
+            "C-DX-STOMACH"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-dx-fire",
+          "title": "Rebuilt after the 1994 fire",
+          "text": "A fire destroyed almost every stall in 1994. The hall was rebuilt on three floors behind the old front.",
+          "claimIds": [
+            "C-DX-FIRE"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-dx-night",
+          "title": "A night market at the weekend",
+          "text": "On Friday to Sunday evenings the street in front of the market and the lanes beside it fill with stalls.",
+          "claimIds": [
+            "C-DX-NIGHT"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-dx-kecho",
+          "title": "Kẻ Chợ, “the market place”",
+          "text": "Thăng Long was once called Kẻ Chợ. Markets met in turns every few days before Đồng Xuân gave them one home.",
+          "claimIds": [
+            "C-DX-KECHO"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-bargain-how",
+          "title": "Start lower, raise slowly",
+          "text": "A common tip: offer about half to two-thirds of the first price and raise slowly. Don’t haggle over tiny sums.",
+          "claimIds": [
+            "C-BARGAIN-HOW"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-bargain-right",
+          "title": "The right price, not the cheapest",
+          "text": "In old markets a high first price brought luck, and buyers bargained to reach a fair price.",
+          "claimIds": [
+            "C-BARGAIN-RIGHT"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-market-kin",
+          "title": "Chị, cô, anh: family words at the stall",
+          "text": "Most questions at a market use family words, to sound close to the seller. Call a young woman chị, an older one cô.",
+          "claimIds": [
+            "C-MARKET-KIN"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-market-tip",
+          "title": "Ask before you touch",
+          "text": "Ask the price before you pick something up, and agree the price before you pay.",
+          "claimIds": [
+            "C-MARKET-TIP"
+          ],
+          "sound": "chime"
         }
       ],
       "stepFacts": {
@@ -748,6 +1480,847 @@
         "sc05:s3": [
           "f-agree"
         ]
+      },
+      "talks": {
+        "dx-veg": {
+          "speaker": "Vegetable seller",
+          "nodes": {
+            "start": {
+              "line": "“Rau sạch đây em ơi! Fresh greens!” Bunches of morning glory, herbs and mustard greens are piled high.",
+              "vi": "Rau sạch đây em ơi!",
+              "options": [
+                {
+                  "label": "Cái này là gì chị? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Rau muống, morning glory. Stir-fried with garlic, every family eats it. And these are herbs for phở and bún.”",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Mười nghìn một bó. Ten thousand a bunch.”",
+              "vi": "Mười nghìn một bó.",
+              "fact": "f-market-kin",
+              "options": [
+                {
+                  "label": "Bớt chút được không chị? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“Ten thousand is already cheap, em! But take two, I’ll give you a handful of herbs free.”",
+              "vi": "Lấy hai bó chị cho thêm rau thơm.",
+              "fact": "f-bargain-how",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She wraps two bunches in newspaper and tucks in some mint. “Cảm ơn em nhé!”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-fruit": {
+          "speaker": "Fruit seller",
+          "nodes": {
+            "start": {
+              "line": "Mangoes, dragon fruit, rambutans. “Xoài ngọt lắm em! Sweet mangoes!”",
+              "vi": "Xoài ngọt lắm em!",
+              "options": [
+                {
+                  "label": "Cái này là gì chị? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Hồng xiêm, sapodilla. Soft and sweet like brown sugar. Try one!” She cuts a slice for you.",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Xoài bốn mươi nghìn một cân. Mangoes, forty thousand a kilo.”",
+              "vi": "Bốn mươi nghìn một cân.",
+              "options": [
+                {
+                  "label": "Bớt chút được không chị? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“Thôi, ba mươi lăm cho em. Thirty-five, because you asked so nicely.”",
+              "vi": "Thôi, ba mươi lăm cho em.",
+              "fact": "f-bargain-right",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She weighs the mangoes on her scales and drops in one extra rambutan. “Cảm ơn em!”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-dry": {
+          "speaker": "Dry-goods seller",
+          "nodes": {
+            "start": {
+              "line": "Sacks of dried mushrooms, lotus seeds, vermicelli. “Đồ khô đây! Dried goods!”",
+              "vi": "Đồ khô đây!",
+              "options": [
+                {
+                  "label": "Cái này là gì anh? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền anh? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Mộc nhĩ, wood-ear mushroom, for nem rán. And hạt sen, lotus seeds, for sweet soup.”",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền anh? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Lotus seeds, a hundred and twenty thousand for half a kilo.”",
+              "vi": "Một trăm hai mươi nghìn nửa cân.",
+              "options": [
+                {
+                  "label": "Bớt chút được không anh? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“A hundred and ten. Last price. You are my first customer, I want luck today!”",
+              "vi": "Một trăm mười thôi, em mở hàng cho anh.",
+              "fact": "f-market-tip",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "He ties the bag with a rubber band. “Mở hàng đẹp! A lucky first sale!”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-spice": {
+          "speaker": "Spice seller",
+          "nodes": {
+            "start": {
+              "line": "The air smells of star anise and cinnamon. “Mua gì cháu?”",
+              "vi": "Mua gì cháu?",
+              "options": [
+                {
+                  "label": "Cái này là gì cô? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền cô? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Hoa hồi, star anise, and quế, cinnamon. Toast them before they go into phở broth.”",
+              "fact": "f-dx-floors",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền cô? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Fifty thousand a bag, cháu.”",
+              "vi": "Năm mươi nghìn một túi.",
+              "options": [
+                {
+                  "label": "Bớt chút được không cô? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“Forty-five, and I’ll add some dried chilli. Cô likes foreigners who try Vietnamese!”",
+              "vi": "Bốn lăm, cô cho thêm ớt.",
+              "fact": "f-bargain-how",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She fills a bag and sniffs it with you. “Thơm chưa? Smells good, yes?”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-non": {
+          "speaker": "Nón lá seller",
+          "nodes": {
+            "start": {
+              "line": "Stacks of palm-leaf hats. “Nón lá đây em! Try one on!”",
+              "vi": "Nón lá đây em!",
+              "options": [
+                {
+                  "label": "Cái này là gì chị? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Nón lá, the leaf hat. Hold it to the light!” A faint picture of a pagoda glows between the layers of leaf.",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Eighty thousand.”",
+              "vi": "Tám mươi nghìn.",
+              "options": [
+                {
+                  "label": "Bớt chút được không chị? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“Sixty-five. Not lower, em. Each one takes a day to sew.”",
+              "vi": "Sáu lăm thôi em.",
+              "fact": "f-bargain-right",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She ties a ribbon on the hat and sets it on your head. “Đẹp quá! Beautiful!”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-basket": {
+          "speaker": "Basket seller",
+          "nodes": {
+            "start": {
+              "line": "Rattan baskets and bamboo trays hang from every hook. “Mây tre đan đây!”",
+              "vi": "Mây tre đan đây!",
+              "options": [
+                {
+                  "label": "Cái này là gì anh? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền anh? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Rattan and bamboo, woven by hand in the villages outside Hà Nội.”",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền anh? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“A small basket is a hundred and twenty thousand.”",
+              "vi": "Một trăm hai mươi nghìn.",
+              "options": [
+                {
+                  "label": "Bớt chút được không anh? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“A hundred. And I give you this little one for keys.”",
+              "vi": "Một trăm, anh tặng thêm cái nhỏ.",
+              "fact": "f-bargain-how",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "He wraps both baskets in a plastic bag. “Đi đường cẩn thận nhé! Safe travels!”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-flower": {
+          "speaker": "Flower seller",
+          "nodes": {
+            "start": {
+              "line": "Chrysanthemums, roses, lilies in buckets of water. “Hoa tươi em ơi!”",
+              "vi": "Hoa tươi em ơi!",
+              "options": [
+                {
+                  "label": "Cái này là gì chị? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Yellow cúc, chrysanthemums, for the family altar. Families buy them on the 1st and the 15th of the lunar month.”",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Thirty thousand a bunch.”",
+              "vi": "Ba mươi nghìn một bó.",
+              "options": [
+                {
+                  "label": "Bớt chút được không chị? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“It’s already cheap, em. But I’ll wrap them nicely for you.”",
+              "vi": "Rẻ rồi em ạ, chị gói đẹp cho.",
+              "fact": "f-bargain-right",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She wraps the flowers in brown paper with a ribbon. “Cầm cẩn thận nhé!”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-silk": {
+          "speaker": "Silk seller",
+          "nodes": {
+            "start": {
+              "line": "Rolls of silk shine in every colour. “Lụa Vạn Phúc đây! Silk from Vạn Phúc!”",
+              "vi": "Lụa Vạn Phúc đây!",
+              "options": [
+                {
+                  "label": "Cái này là gì anh? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền anh? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Silk for áo dài. Choose here, then the tailor upstairs makes it in two days.”",
+              "fact": "f-dx-floors",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền anh? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“A metre of this silk is two hundred thousand.”",
+              "vi": "Hai trăm nghìn một mét.",
+              "options": [
+                {
+                  "label": "Bớt chút được không anh? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“A hundred and eighty if you take two metres.”",
+              "vi": "Lấy hai mét anh để một tám.",
+              "fact": "f-bargain-how",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "He measures the silk along his arm and folds it into a bag. “Cảm ơn em!”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-sweets": {
+          "speaker": "Sweets seller",
+          "nodes": {
+            "start": {
+              "line": "Jars of candied ginger, sesame bars and lotus-seed sweets. “Ăn thử đi cháu! Try one!”",
+              "vi": "Ăn thử đi cháu!",
+              "options": [
+                {
+                  "label": "Cái này là gì cô? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền cô? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Mứt gừng, candied ginger, and kẹo lạc, peanut brittle. Families buy boxes of these before Tết.”",
+              "fact": "f-dx-kecho",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền cô? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Sixty thousand a box.”",
+              "vi": "Sáu mươi nghìn một hộp.",
+              "options": [
+                {
+                  "label": "Bớt chút được không cô? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“Fifty-five, cháu. And try a piece of ginger, it’s spicy!”",
+              "vi": "Năm lăm cháu nhé.",
+              "fact": "f-bargain-how",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She packs the box and slips in a piece of ginger. “Cay không? Spicy, yes?”",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-cart": {
+          "speaker": "Fruit-cart seller",
+          "nodes": {
+            "start": {
+              "line": "A woman in a nón lá stands by a bicycle cart heaped with fruit. “Mua quả gì em ơi?”",
+              "vi": "Mua quả gì em ơi?",
+              "options": [
+                {
+                  "label": "Cái này là gì chị? (What is this?)",
+                  "next": "what"
+                },
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Ổi, guava. Eat it crunchy, dipped in chilli salt.”",
+              "options": [
+                {
+                  "label": "Bao nhiêu tiền chị? (How much?)",
+                  "next": "price"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "price": {
+              "line": "“Twenty thousand for three.”",
+              "vi": "Hai mươi nghìn ba quả.",
+              "options": [
+                {
+                  "label": "Bớt chút được không chị? (A little less?)",
+                  "next": "less"
+                },
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "less": {
+              "line": "“Thôi lấy năm quả ba mươi. Five for thirty, then.”",
+              "vi": "Năm quả ba mươi nghìn.",
+              "fact": "f-bargain-how",
+              "options": [
+                {
+                  "label": "Em lấy ạ. (I’ll take it.)",
+                  "next": "buy"
+                },
+                {
+                  "label": "Để em xem đã. (Let me look around first.)",
+                  "next": "leave"
+                }
+              ]
+            },
+            "buy": {
+              "line": "She picks the best guavas for you and sprinkles a little chilli salt in the bag.",
+              "vi": "Cảm ơn em nhé!"
+            },
+            "leave": {
+              "line": "“Ừ, em cứ xem đi.” No problem, have a look around. Nobody minds a polite no.",
+              "vi": "Ừ, em cứ xem đi.",
+              "fact": "f-walk"
+            }
+          }
+        },
+        "dx-porter": {
+          "speaker": "A porter",
+          "nodes": {
+            "start": {
+              "line": "A man in a green shirt lifts a bundle twice his size onto his shoulder. “Tránh ra nào! Mind your back!”",
+              "vi": "Tránh ra nào!",
+              "options": [
+                {
+                  "label": "What’s in the bundles?",
+                  "next": "what"
+                },
+                {
+                  "label": "Is the market always this busy?",
+                  "next": "busy"
+                },
+                {
+                  "label": "Sorry! (Xin lỗi!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Clothes, fabric, shoes. They come in by truck before dawn and go out to shops all over the north.”",
+              "fact": "f-dx-floors",
+              "options": [
+                {
+                  "label": "Is the market always this busy?",
+                  "next": "busy"
+                },
+                {
+                  "label": "Bye!",
+                  "next": "bye"
+                }
+              ]
+            },
+            "busy": {
+              "line": "“Always! My grandfather carried goods here too. People call Đồng Xuân the stomach of Hà Nội.”",
+              "vi": "Bụng của Hà Nội đấy!",
+              "fact": "f-dx-stomach",
+              "options": [
+                {
+                  "label": "What’s in the bundles?",
+                  "next": "what"
+                },
+                {
+                  "label": "Bye!",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "He grins and carries on, weaving between the motorbikes."
+            }
+          }
+        }
       }
     },
     {
@@ -758,7 +2331,7 @@
       "map": "van-mieu",
       "minutes": 5,
       "music": "assets/game/audio/music-chill.mp3",
-      "intro": "You are visiting the Temple of Literature on a hot morning. Find the gate, the stelae and the worship hall. People still come here to worship, so look around and decide how to act.",
+      "intro": "You are visiting the Temple of Literature on a hot morning. Walk through its five courtyards: the gates, the stelae and the worship hall. People still come here to worship, so look around and decide how to act.",
       "objectives": [
         {
           "id": "o1",
@@ -894,6 +2467,135 @@
             "C-KVC-1805"
           ],
           "sound": "chime"
+        },
+        {
+          "id": "f-vm-layout",
+          "title": "Five courtyards on one line",
+          "text": "The site has three parts: Văn Lake, the Giám garden and the walled temple. Inside the walls, five courtyards follow one another along a single axis.",
+          "claimIds": [
+            "C-VM-LAYOUT"
+          ],
+          "sound": "wind"
+        },
+        {
+          "id": "f-vm-gate",
+          "title": "The carp gate",
+          "text": "After the main gate comes Đại Trung Môn. Its carp ornaments stand for students striving to succeed, like a carp leaping the falls.",
+          "claimIds": [
+            "C-VM-GATE"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-sidegates",
+          "title": "Virtue and talent",
+          "text": "Beside Đại Trung Môn are two small gates: Thành Đức, for virtue, and Đạt Tài, for talent.",
+          "claimIds": [
+            "C-VM-GATE"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-symbol",
+          "title": "The symbol of Hà Nội",
+          "text": "Khuê Văn Các was built in 1805. Its round windows evoke the rays of the Khuê star, the constellation of literature, and since 2012 it has been the official symbol of Hà Nội.",
+          "claimIds": [
+            "C-VM-KHUEVAN"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-well",
+          "title": "The Well of Heavenly Clarity",
+          "text": "Thiên Quang Tỉnh, the Well of Heavenly Clarity, is the square pond in the third courtyard, between the rows of stelae.",
+          "claimIds": [
+            "C-VM-WELL"
+          ],
+          "sound": "water"
+        },
+        {
+          "id": "f-stelae-turtle",
+          "title": "Why a turtle?",
+          "text": "Each doctoral stele stands on a stone turtle. The folklorist Ngô Đức Thịnh explains it as a sign that the laureates’ names will be kept for ever.",
+          "claimIds": [
+            "C-STELAE-TURTLE"
+          ],
+          "sound": "chime",
+          "storyId": "st-stelae"
+        },
+        {
+          "id": "f-stelae-fence",
+          "title": "Why the rope is there",
+          "text": "People used to rub the stelae and the turtles’ heads for luck, and wore them down. The rows were roped off by 2012 and fenced in 2014. Today nobody may touch them.",
+          "claimIds": [
+            "C-STELAE-FENCE"
+          ],
+          "sound": "chime",
+          "storyId": "st-stelae"
+        },
+        {
+          "id": "f-vm-daithanh",
+          "title": "The hall courtyard",
+          "text": "Through Đại Thành Môn is the courtyard of the worship hall. Its side halls once held tablets for Confucius’s 72 leading disciples; the hall itself carries the panel “Vạn thế sư biểu”, teacher of ten thousand generations.",
+          "claimIds": [
+            "C-VM-DAITHANH"
+          ],
+          "sound": "chime",
+          "storyId": "st-temple-visit"
+        },
+        {
+          "id": "f-vm-academy",
+          "title": "Seven centuries of teaching",
+          "text": "Quốc Tử Giám taught for more than seven hundred years, until the Nguyễn moved the academy to Huế in 1802. The temple honours Confucius and the teacher Chu Văn An.",
+          "claimIds": [
+            "C-VM-ACADEMY"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-thaihoc",
+          "title": "Thái Học house",
+          "text": "The old academy site was burnt in 1946. Thái Học house was built there in 1999–2000; it honours Chu Văn An downstairs and three kings upstairs.",
+          "claimIds": [
+            "C-VM-THAIHOC"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-xinchu",
+          "title": "Asking for a character",
+          "text": "Every spring, around Tết, calligraphers set up by Văn Lake and write characters for visitors’ wishes: learning, good character, luck.",
+          "claimIds": [
+            "C-VM-XINCHU"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-luck",
+          "title": "Luck before exams",
+          "text": "Students come here before their exams to pray for luck.",
+          "claimIds": [
+            "C-VM-LUCK"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-visit",
+          "title": "Tickets and hours",
+          "text": "Open daily 8 a.m. to 5 p.m. A ticket costs 70,000 đồng; students in Vietnam and people over 60 pay half, and under-16s go in free.",
+          "claimIds": [
+            "C-VM-VISIT"
+          ],
+          "sound": "chime"
+        },
+        {
+          "id": "f-vm-tip",
+          "title": "Come early",
+          "text": "Our suggestion: arrive when the gates open at eight. By mid-morning school groups and graduation photo shoots fill the courtyards.",
+          "claimIds": [
+            "C-VM-TIP"
+          ],
+          "sound": "chime"
         }
       ],
       "stepFacts": {
@@ -910,7 +2612,275 @@
       "scenes": [
         "sc03"
       ],
-      "stamp": "Văn Miếu"
+      "stamp": "Văn Miếu",
+      "talks": {
+        "vm-ticket": {
+          "speaker": "Ticket seller",
+          "nodes": {
+            "start": {
+              "line": "Xin chào! Tickets for Văn Miếu are here.",
+              "options": [
+                {
+                  "label": "How much is a ticket?",
+                  "next": "price"
+                },
+                {
+                  "label": "What time do you close?",
+                  "next": "hours"
+                },
+                {
+                  "label": "Cảm ơn! (Thank you!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "price": {
+              "line": "Seventy thousand đồng for adults. Students and people over sixty pay half, and children under sixteen go in free.",
+              "vi": "Bảy mươi nghìn một vé.",
+              "fact": "f-vm-visit",
+              "options": [
+                {
+                  "label": "What time do you close?",
+                  "next": "hours"
+                },
+                {
+                  "label": "Cảm ơn! (Thank you!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "hours": {
+              "line": "Every day from eight to five. Come early if you can: by mid-morning the school groups arrive.",
+              "fact": "f-vm-tip",
+              "options": [
+                {
+                  "label": "How much is a ticket?",
+                  "next": "price"
+                },
+                {
+                  "label": "Cảm ơn! (Thank you!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "Không có gì! Enjoy your visit."
+            }
+          }
+        },
+        "vm-ongdo": {
+          "speaker": "A calligrapher (ông đồ)",
+          "nodes": {
+            "start": {
+              "line": "The old calligrapher looks up from his red paper. “What word would you like?”",
+              "vi": "Cháu muốn xin chữ gì?",
+              "options": [
+                {
+                  "label": "What is “xin chữ”?",
+                  "next": "what"
+                },
+                {
+                  "label": "Could you write “Tâm”?",
+                  "next": "tam"
+                },
+                {
+                  "label": "I’m just watching, thank you.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "what": {
+              "line": "“Around Tết people come and ask for a character, a wish for the year: learning, a good heart, luck. Then they hang it at home.”",
+              "fact": "f-vm-xinchu",
+              "options": [
+                {
+                  "label": "Could you write “Tâm”?",
+                  "next": "tam"
+                },
+                {
+                  "label": "I’m just watching, thank you.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "tam": {
+              "line": "He dips his brush and writes one character in a few slow, sure strokes. “Tâm: a kind heart. Hang it somewhere you see every day.”",
+              "vi": "Chữ Tâm đây.",
+              "options": [
+                {
+                  "label": "Cảm ơn ông! (Thank you, sir!)",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "He smiles and goes back to his brush."
+            }
+          }
+        },
+        "vm-guide": {
+          "speaker": "A tour guide",
+          "nodes": {
+            "start": {
+              "line": "“Welcome, everyone! Văn Miếu has five courtyards, one after another. We are standing in the first.”",
+              "options": [
+                {
+                  "label": "What is this place?",
+                  "next": "what"
+                },
+                {
+                  "label": "Why so many gates?",
+                  "next": "gates"
+                },
+                {
+                  "label": "Where are the stelae?",
+                  "next": "stelae"
+                },
+                {
+                  "label": "Thanks, I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "what": {
+              "line": "“A temple to Confucius, built in 1070. Beside it, in 1076, the kings founded Quốc Tử Giám, the royal academy.”",
+              "fact": "f-vm-1070",
+              "options": [
+                {
+                  "label": "Why so many gates?",
+                  "next": "gates"
+                },
+                {
+                  "label": "Where are the stelae?",
+                  "next": "stelae"
+                },
+                {
+                  "label": "Thanks, I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "gates": {
+              "line": "“Each gate takes you deeper in. Next is Đại Trung Môn. The small gates beside it are Thành Đức, for virtue, and Đạt Tài, for talent.”",
+              "fact": "f-vm-sidegates",
+              "options": [
+                {
+                  "label": "What is this place?",
+                  "next": "what"
+                },
+                {
+                  "label": "Where are the stelae?",
+                  "next": "stelae"
+                },
+                {
+                  "label": "Thanks, I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "stelae": {
+              "line": "“In the third courtyard, after Khuê Văn Các, on both sides of the square pond. Look as long as you like, but please don’t touch them.”",
+              "options": [
+                {
+                  "label": "What is this place?",
+                  "next": "what"
+                },
+                {
+                  "label": "Thanks, I’ll look around.",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "She raises her flag and leads the group towards the next gate."
+            }
+          }
+        },
+        "vm-grads": {
+          "speaker": "A graduating student",
+          "nodes": {
+            "start": {
+              "line": "Two students in gowns take turns with a tripod. “We just graduated!”",
+              "vi": "Bọn mình vừa tốt nghiệp!",
+              "options": [
+                {
+                  "label": "Chúc mừng! (Congratulations!)",
+                  "next": "congrats"
+                },
+                {
+                  "label": "Can I take a photo of you?",
+                  "next": "photo"
+                },
+                {
+                  "label": "Bye!",
+                  "next": "bye"
+                }
+              ]
+            },
+            "congrats": {
+              "line": "“Cảm ơn! Every graduating class comes here for photos. It’s the place for learning.”",
+              "fact": "f-vm-tip",
+              "options": [
+                {
+                  "label": "Can I take a photo of you?",
+                  "next": "photo"
+                },
+                {
+                  "label": "Bye!",
+                  "next": "bye"
+                }
+              ]
+            },
+            "photo": {
+              "line": "“Of course! Thanks for asking first.” They pose under Khuê Văn Các, caps tilted.",
+              "options": [
+                {
+                  "label": "Chúc mừng! (Congratulations!)",
+                  "next": "congrats"
+                },
+                {
+                  "label": "Bye!",
+                  "next": "bye"
+                }
+              ]
+            },
+            "bye": {
+              "line": "They wave and go back to their photos."
+            }
+          }
+        },
+        "vm-luck": {
+          "speaker": "A student",
+          "nodes": {
+            "start": {
+              "line": "A student stands quietly in front of Thái Học, hands together.",
+              "options": [
+                {
+                  "label": "What are you doing here?",
+                  "next": "why"
+                },
+                {
+                  "label": "Chúc bạn may mắn! (Good luck!)",
+                  "next": "luck"
+                }
+              ]
+            },
+            "why": {
+              "line": "“My exams are next week. Students come here to pray for luck before exams.”",
+              "fact": "f-vm-luck",
+              "options": [
+                {
+                  "label": "Chúc bạn may mắn! (Good luck!)",
+                  "next": "luck"
+                }
+              ]
+            },
+            "luck": {
+              "line": "He grins. “Cảm ơn bạn!”"
+            }
+          }
+        }
+      }
     }
   ]
 }

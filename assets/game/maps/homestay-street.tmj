@@ -9,8 +9,8 @@
  "tilewidth": 16,
  "tileheight": 16,
  "infinite": false,
- "nextlayerid": 7,
- "nextobjectid": 30,
+ "nextlayerid": 8,
+ "nextobjectid": 48,
  "properties": [],
  "tilesets": [
   {
@@ -40,12 +40,77 @@
    "spacing": 0
   },
   {
+   "firstgid": 1301,
+   "name": "cho-tiles",
+   "image": "../tilesets/cho-tiles.png",
+   "imagewidth": 128,
+   "imageheight": 16,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 8,
+   "tilecount": 8,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
+   "firstgid": 401,
+   "name": "serene-village",
+   "image": "../vendor/serene-village/Serene_Village_16x16.png",
+   "imagewidth": 304,
+   "imageheight": 720,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 19,
+   "tilecount": 855,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
+   "firstgid": 1401,
+   "name": "van-mieu-tiles",
+   "image": "../tilesets/van-mieu-tiles.png",
+   "imagewidth": 128,
+   "imageheight": 80,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 8,
+   "tilecount": 40,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
+   "firstgid": 1451,
+   "name": "hn-tiles",
+   "image": "../tilesets/hn-tiles.png",
+   "imagewidth": 256,
+   "imageheight": 48,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 16,
+   "tilecount": 48,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
+   "firstgid": 1501,
+   "name": "room-builder",
+   "image": "../vendor/limezu-interiors-free/Interiors_free/16x16/Room_Builder_free_16x16.png",
+   "imagewidth": 272,
+   "imageheight": 368,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 17,
+   "tilecount": 391,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
    "firstgid": 201,
    "name": "props",
-   "tilewidth": 64,
+   "tilewidth": 192,
    "tileheight": 192,
    "columns": 0,
-   "tilecount": 14,
+   "tilecount": 22,
    "margin": 0,
    "spacing": 0,
    "grid": {
@@ -56,45 +121,45 @@
    "tiles": [
     {
      "id": 0,
-     "image": "../sprites/chung/nha-kieu-phap.png",
-     "imagewidth": 64,
-     "imageheight": 158
-    },
-    {
-     "id": 1,
-     "image": "../sprites/chung/nha-kieu-phap-b.png",
-     "imagewidth": 64,
-     "imageheight": 158
-    },
-    {
-     "id": 2,
-     "image": "../sprites/chung/nha-kieu-phap-xanh.png",
-     "imagewidth": 64,
-     "imageheight": 158
-    },
-    {
-     "id": 3,
      "image": "../sprites/chung/nha-kieu-phap-hong.png",
      "imagewidth": 64,
      "imageheight": 158
     },
     {
-     "id": 4,
+     "id": 1,
+     "image": "../sprites/chung/nha-kieu-phap-xanh.png",
+     "imagewidth": 64,
+     "imageheight": 158
+    },
+    {
+     "id": 2,
+     "image": "../sprites/chung/nha-kieu-phap.png",
+     "imagewidth": 64,
+     "imageheight": 158
+    },
+    {
+     "id": 3,
      "image": "../sprites/homestay/nha-ong.png",
      "imagewidth": 64,
      "imageheight": 192
     },
     {
-     "id": 5,
-     "image": "../sprites/chung/cay-bang.png",
-     "imagewidth": 49,
-     "imageheight": 64
+     "id": 4,
+     "image": "../sprites/chung/nha-kieu-phap-b.png",
+     "imagewidth": 64,
+     "imageheight": 158
     },
     {
-     "id": 6,
+     "id": 5,
      "image": "../sprites/chung/tiles/bon-cay.png",
      "imagewidth": 32,
      "imageheight": 32
+    },
+    {
+     "id": 6,
+     "image": "../sprites/chung/cay-bang.png",
+     "imagewidth": 49,
+     "imageheight": 64
     },
     {
      "id": 7,
@@ -104,15 +169,15 @@
     },
     {
      "id": 8,
-     "image": "../sprites/chung/xe-may-do-do.png",
-     "imagewidth": 32,
-     "imageheight": 25
+     "image": "../sprites/chung/den-duong.png",
+     "imagewidth": 13,
+     "imageheight": 48
     },
     {
      "id": 9,
-     "image": "../sprites/chung/xe-may-do-xanh.png",
+     "image": "../sprites/chung/xe-may-do-do.png",
      "imagewidth": 32,
-     "imageheight": 27
+     "imageheight": 25
     },
     {
      "id": 10,
@@ -122,21 +187,76 @@
     },
     {
      "id": 11,
+     "image": "../sprites/chung/xe-may-do-xanh.png",
+     "imagewidth": 32,
+     "imageheight": 27
+    },
+    {
+     "id": 12,
      "image": "../sprites/chung/chau-cay.png",
      "imagewidth": 15,
      "imageheight": 20
     },
     {
-     "id": 12,
+     "id": 13,
      "image": "../sprites/homestay/ke-giay.png",
      "imagewidth": 37,
      "imageheight": 23
     },
     {
-     "id": 13,
-     "image": "../sprites/chung/den-duong.png",
-     "imagewidth": 13,
-     "imageheight": 48
+     "id": 14,
+     "image": "../sprites/hn/hang-nuoc.png",
+     "imagewidth": 32,
+     "imageheight": 24
+    },
+    {
+     "id": 15,
+     "image": "../sprites/quan-an/ghe-do.png",
+     "imagewidth": 12,
+     "imageheight": 13
+    },
+    {
+     "id": 16,
+     "image": "../sprites/quan-an/ghe-xanh.png",
+     "imagewidth": 12,
+     "imageheight": 13
+    },
+    {
+     "id": 17,
+     "image": "../sprites/hn/ghe-chong.png",
+     "imagewidth": 16,
+     "imageheight": 22
+    },
+    {
+     "id": 18,
+     "image": "../sprites/hn/dong-la.png",
+     "imagewidth": 24,
+     "imageheight": 10,
+     "properties": [
+      {
+       "name": "flat",
+       "type": "bool",
+       "value": true
+      }
+     ]
+    },
+    {
+     "id": 19,
+     "image": "../sprites/hn/choi.png",
+     "imagewidth": 16,
+     "imageheight": 28
+    },
+    {
+     "id": 20,
+     "image": "../sprites/hn/xe-giao-hang.png",
+     "imagewidth": 32,
+     "imageheight": 28
+    },
+    {
+     "id": 21,
+     "image": "../sprites/hn/thung-xop.png",
+     "imagewidth": 16,
+     "imageheight": 16
     }
    ]
   }
@@ -153,90 +273,90 @@
    "opacity": 1,
    "visible": true,
    "data": [
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
-    7,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
+    1513,
     7,
     7,
     7,
@@ -2048,7 +2168,7 @@
    "objects": [
     {
      "id": 1,
-     "gid": 204,
+     "gid": 201,
      "name": "House",
      "x": -32,
      "y": 208,
@@ -2060,7 +2180,7 @@
     },
     {
      "id": 2,
-     "gid": 203,
+     "gid": 202,
      "name": "House",
      "x": 32,
      "y": 208,
@@ -2072,7 +2192,7 @@
     },
     {
      "id": 3,
-     "gid": 201,
+     "gid": 203,
      "name": "House",
      "x": 96,
      "y": 208,
@@ -2084,7 +2204,7 @@
     },
     {
      "id": 4,
-     "gid": 205,
+     "gid": 204,
      "name": "Homestay",
      "x": 160,
      "y": 208,
@@ -2096,7 +2216,7 @@
     },
     {
      "id": 5,
-     "gid": 204,
+     "gid": 201,
      "name": "House",
      "x": 224,
      "y": 208,
@@ -2108,7 +2228,7 @@
     },
     {
      "id": 6,
-     "gid": 202,
+     "gid": 205,
      "name": "House",
      "x": 288,
      "y": 208,
@@ -2120,7 +2240,7 @@
     },
     {
      "id": 7,
-     "gid": 203,
+     "gid": 202,
      "name": "House",
      "x": 352,
      "y": 208,
@@ -2132,7 +2252,7 @@
     },
     {
      "id": 8,
-     "gid": 201,
+     "gid": 203,
      "name": "House",
      "x": 416,
      "y": 208,
@@ -2144,7 +2264,7 @@
     },
     {
      "id": 9,
-     "gid": 207,
+     "gid": 206,
      "name": "Tree pit",
      "x": 48,
      "y": 256,
@@ -2156,7 +2276,7 @@
     },
     {
      "id": 10,
-     "gid": 206,
+     "gid": 207,
      "name": "Indian almond tree",
      "x": 39,
      "y": 247,
@@ -2168,7 +2288,7 @@
     },
     {
      "id": 11,
-     "gid": 207,
+     "gid": 206,
      "name": "Tree pit",
      "x": 336,
      "y": 256,
@@ -2180,7 +2300,7 @@
     },
     {
      "id": 12,
-     "gid": 206,
+     "gid": 207,
      "name": "Indian almond tree",
      "x": 327,
      "y": 247,
@@ -2204,7 +2324,7 @@
     },
     {
      "id": 14,
-     "gid": 214,
+     "gid": 209,
      "name": "Street lamp",
      "x": 259,
      "y": 254,
@@ -2216,7 +2336,7 @@
     },
     {
      "id": 15,
-     "gid": 209,
+     "gid": 210,
      "name": "xe-may-do-do",
      "x": 227,
      "y": 253,
@@ -2240,7 +2360,7 @@
     },
     {
      "id": 17,
-     "gid": 210,
+     "gid": 212,
      "name": "xe-may-do-xanh",
      "x": 390,
      "y": 253,
@@ -2252,7 +2372,7 @@
     },
     {
      "id": 18,
-     "gid": 212,
+     "gid": 213,
      "name": "Potted plant",
      "x": 149,
      "y": 222,
@@ -2264,7 +2384,7 @@
     },
     {
      "id": 19,
-     "gid": 213,
+     "gid": 214,
      "name": "Shoe rack",
      "x": 206,
      "y": 223,
@@ -2273,6 +2393,162 @@
      "rotation": 0,
      "visible": true,
      "type": ""
+    },
+    {
+     "id": 30,
+     "gid": 215,
+     "name": "Iced-tea stall",
+     "x": 400,
+     "y": 234,
+     "width": 32,
+     "height": 24,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 31,
+     "gid": 216,
+     "name": "Stool",
+     "x": 368,
+     "y": 246,
+     "width": 12,
+     "height": 13,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 32,
+     "gid": 217,
+     "name": "Stool",
+     "x": 386,
+     "y": 248,
+     "width": 12,
+     "height": 13,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 33,
+     "gid": 216,
+     "name": "Stool",
+     "x": 362,
+     "y": 235,
+     "width": 12,
+     "height": 13,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 34,
+     "gid": 218,
+     "name": "Stacked stools",
+     "x": 354,
+     "y": 211,
+     "width": 16,
+     "height": 22,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 38,
+     "gid": 219,
+     "name": "Leaves",
+     "x": 19,
+     "y": 230,
+     "width": 24,
+     "height": 10,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 40,
+     "gid": 220,
+     "name": "Broom",
+     "x": 54,
+     "y": 214,
+     "width": 16,
+     "height": 28,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 41,
+     "gid": 213,
+     "name": "Pot plant",
+     "x": 19,
+     "y": 207,
+     "width": 15,
+     "height": 20,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 42,
+     "gid": 213,
+     "name": "Pot plant",
+     "x": 82,
+     "y": 207,
+     "width": 15,
+     "height": 20,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 43,
+     "gid": 213,
+     "name": "Pot plant",
+     "x": 270,
+     "y": 207,
+     "width": 15,
+     "height": 20,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 44,
+     "gid": 213,
+     "name": "Pot plant",
+     "x": 323,
+     "y": 207,
+     "width": 15,
+     "height": 20,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 45,
+     "gid": 221,
+     "name": "Delivery scooter",
+     "x": 3,
+     "y": 255,
+     "width": 32,
+     "height": 28,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 46,
+     "gid": 222,
+     "name": "Foam box",
+     "x": 149,
+     "y": 254,
+     "width": 16,
+     "height": 16,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
     }
    ]
   },
@@ -2530,6 +2806,170 @@
        "name": "offset",
        "type": "string",
        "value": "320"
+      }
+     ]
+    },
+    {
+     "id": 35,
+     "name": "tea-lady",
+     "type": "npc",
+     "x": 424,
+     "y": 222,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "ban-tra-da"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "The iced-tea seller"
+      },
+      {
+       "name": "talk",
+       "type": "string",
+       "value": "hs-trada"
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
+      }
+     ]
+    },
+    {
+     "id": 36,
+     "name": "tea-1",
+     "type": "npc",
+     "x": 390,
+     "y": 239,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "khach-ngoi-ben"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "A regular"
+      },
+      {
+       "name": "line",
+       "type": "string",
+       "value": "He lifts his glass at you. “Trà đá đi, mát lắm!” Have an iced tea, it’s cool."
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
+      }
+     ]
+    },
+    {
+     "id": 37,
+     "name": "tea-2",
+     "type": "npc",
+     "x": 373,
+     "y": 239,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "khach-ngoi-ben-b"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "A regular"
+      },
+      {
+       "name": "line",
+       "type": "string",
+       "value": "She is telling the others about her neighbour’s new grandson. Everyone here seems to know everyone."
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
+      }
+     ]
+    },
+    {
+     "id": 39,
+     "name": "sweeper",
+     "type": "npc",
+     "x": 42,
+     "y": 221,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "quet-la"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "A neighbour"
+      },
+      {
+       "name": "line",
+       "type": "string",
+       "value": "She is sweeping up the big red leaves of the bàng tree. “Mùa này lá rụng nhiều lắm.” Lots of leaves fall this season."
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
+      }
+     ]
+    },
+    {
+     "id": 47,
+     "name": "Iced-tea stall",
+     "type": "hotspot",
+     "x": 400,
+     "y": 218,
+     "width": 32,
+     "height": 19,
+     "rotation": 0,
+     "visible": true,
+     "properties": [
+      {
+       "name": "fact",
+       "type": "string",
+       "value": "f-hs-trada"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "An iced-tea stall"
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
       }
      ]
     }
@@ -2963,19 +3403,19 @@
     1,
     0,
     0,
-    0,
+    1,
+    1,
+    1,
+    1,
+    1,
     0,
     1,
     1,
     0,
     0,
-    1,
-    1,
-    0,
-    0,
     0,
     1,
-    0,
+    1,
     0,
     0,
     0,

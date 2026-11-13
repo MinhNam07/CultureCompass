@@ -61,3 +61,14 @@ Ký hiệu: **[H]** Henry · **[G]** Gemini (Henry gửi prompt) · **[C]** Clau
 - [x] 01/11: sổ tay không cuộn được → đã sửa (cuộn chuột + phím mũi tên)
 - [x] 01/11: bồn cây vẽ đè lên cây bàng → đã sửa (sprite trong thư mục `tiles/` luôn nằm dưới đất)
 - [x] 01/11: thêm fact địa danh: Tháp Bút, đền Ngọc Sơn, cầu Thê Húc, Hồ Hoàn Kiếm (phố cổ); Văn Miếu Môn 1070, Khuê Văn Các 1805 (Văn Miếu)
+
+## Sửa map 14/11 (Henry chơi thử: map trống, tường Văn Miếu lỗi, nút Journal/Go to khó thấy)
+- [x] [C] Văn Miếu dựng lại đủ 5 sân, tường có trụ, giếng Thiên Quang có bờ đá, 13 người mới + 14 fact (`tools/maps/draft-van-mieu.py`)
+- [x] [C] Hệ thống hội thoại nhiều lượt (`talks` trong explore.json): câu tiếng Việt màu vàng, câu đã hỏi mờ đi
+- [x] [C] Trong nhà homestay thành nhà ống thật (tường, bếp, bàn thờ, cầu thang, phòng khách); ngoài phố có hàng trà đá; thoại cô Lan + bà bán trà đá
+- [x] [C] Chợ Đồng Xuân: trong chợ 30×22, 3 dãy sạp; 10 người bán hỏi được "Cái này là gì? / Bao nhiêu tiền? / Bớt chút?"; ngoài chợ có người bốc vác, xe hoa quả
+- [x] [C] Phố cổ – Hồ Gươm: xuất phát gần hồ + biển chỉ đường; cổng Ngọc Sơn → Tháp Bút, Đài Nghiên → cầu Thê Húc → đền Ngọc Sơn; Tháp Rùa giữa hồ; người tập thể dục, đánh cờ, bán kem, học sinh hỏi tiếng Anh
+- [x] [C] Quán ăn: thêm bàn khách, chậu rửa, bảng giá, xe giao hàng, thoại khách ăn
+- [x] [C] Bỏ nút Journal + Go to…: góc trái: bản đồ tròn viền la bàn vàng có chữ N (M), dưới là các dòng nhiệm vụ hiện thẳng trên game; bản đồ tròn mở bản đồ lớn có ghim + danh sách (G), J mở sổ tay. Đã bỏ cột trái theo góp ý của Henry 14/11
+- [ ] [H] Duyệt các câu tiếng Việt trong thoại mới (explore.json → `talks`) và giá trong thoại chợ
+- [ ] [H] Chạy prompt nhóm I trong `docs/game/gemini-prompts.md` → mình thay sprite tự vẽ bằng hình Gemini

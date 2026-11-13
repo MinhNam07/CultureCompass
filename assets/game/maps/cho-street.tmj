@@ -9,8 +9,8 @@
  "tilewidth": 16,
  "tileheight": 16,
  "infinite": false,
- "nextlayerid": 7,
- "nextobjectid": 20,
+ "nextlayerid": 8,
+ "nextobjectid": 30,
  "properties": [
   {
    "name": "viewTiles",
@@ -72,12 +72,51 @@
    "spacing": 0
   },
   {
+   "firstgid": 1401,
+   "name": "van-mieu-tiles",
+   "image": "../tilesets/van-mieu-tiles.png",
+   "imagewidth": 128,
+   "imageheight": 80,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 8,
+   "tilecount": 40,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
+   "firstgid": 1451,
+   "name": "hn-tiles",
+   "image": "../tilesets/hn-tiles.png",
+   "imagewidth": 256,
+   "imageheight": 48,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 16,
+   "tilecount": 48,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
+   "firstgid": 1501,
+   "name": "room-builder",
+   "image": "../vendor/limezu-interiors-free/Interiors_free/16x16/Room_Builder_free_16x16.png",
+   "imagewidth": 272,
+   "imageheight": 368,
+   "tilewidth": 16,
+   "tileheight": 16,
+   "columns": 17,
+   "tilecount": 391,
+   "margin": 0,
+   "spacing": 0
+  },
+  {
    "firstgid": 201,
    "name": "props",
-   "tilewidth": 64,
+   "tilewidth": 192,
    "tileheight": 192,
    "columns": 0,
-   "tilecount": 11,
+   "tilecount": 15,
    "margin": 0,
    "spacing": 0,
    "grid": {
@@ -88,69 +127,93 @@
    "tiles": [
     {
      "id": 0,
+     "image": "../sprites/pho-co/shop-hang-vai.png",
+     "imagewidth": 63,
+     "imageheight": 58
+    },
+    {
+     "id": 1,
      "image": "../sprites/cho-dong-xuan/mat-tien-cho.png",
      "imagewidth": 256,
      "imageheight": 110
     },
     {
-     "id": 1,
-     "image": "../sprites/cho-dong-xuan/kien-hang.png",
-     "imagewidth": 22,
-     "imageheight": 35
-    },
-    {
      "id": 2,
-     "image": "../sprites/chung/xe-may-do-do.png",
-     "imagewidth": 32,
-     "imageheight": 25
-    },
-    {
-     "id": 3,
-     "image": "../sprites/chung/xe-may-do-xanh.png",
-     "imagewidth": 32,
-     "imageheight": 27
-    },
-    {
-     "id": 4,
-     "image": "../sprites/chung/xe-may-do-den.png",
-     "imagewidth": 32,
-     "imageheight": 27
-    },
-    {
-     "id": 5,
-     "image": "../sprites/chung/xe-dap.png",
-     "imagewidth": 34,
-     "imageheight": 23
-    },
-    {
-     "id": 6,
-     "image": "../sprites/chung/cot-dien.png",
-     "imagewidth": 23,
-     "imageheight": 48
-    },
-    {
-     "id": 7,
-     "image": "../sprites/chung/cay-bang.png",
-     "imagewidth": 49,
-     "imageheight": 64
-    },
-    {
-     "id": 8,
-     "image": "../sprites/chung/tiles/bon-cay.png",
-     "imagewidth": 32,
-     "imageheight": 32
-    },
-    {
-     "id": 9,
      "image": "../sprites/pho-co/shop-tap-hoa.png",
      "imagewidth": 70,
      "imageheight": 58
     },
     {
+     "id": 3,
+     "image": "../sprites/cho-dong-xuan/kien-hang.png",
+     "imagewidth": 22,
+     "imageheight": 35
+    },
+    {
+     "id": 4,
+     "image": "../sprites/chung/xe-may-do-do.png",
+     "imagewidth": 32,
+     "imageheight": 25
+    },
+    {
+     "id": 5,
+     "image": "../sprites/chung/xe-may-do-xanh.png",
+     "imagewidth": 32,
+     "imageheight": 27
+    },
+    {
+     "id": 6,
+     "image": "../sprites/chung/xe-may-do-den.png",
+     "imagewidth": 32,
+     "imageheight": 27
+    },
+    {
+     "id": 7,
+     "image": "../sprites/chung/xe-dap.png",
+     "imagewidth": 34,
+     "imageheight": 23
+    },
+    {
+     "id": 8,
+     "image": "../sprites/chung/cot-dien.png",
+     "imagewidth": 23,
+     "imageheight": 48
+    },
+    {
+     "id": 9,
+     "image": "../sprites/hn/xe-tho.png",
+     "imagewidth": 40,
+     "imageheight": 28
+    },
+    {
      "id": 10,
-     "image": "../sprites/pho-co/shop-hang-vai.png",
-     "imagewidth": 63,
-     "imageheight": 58
+     "image": "../sprites/hn/bao-tai.png",
+     "imagewidth": 16,
+     "imageheight": 18
+    },
+    {
+     "id": 11,
+     "image": "../sprites/hn/bao-tai-b.png",
+     "imagewidth": 16,
+     "imageheight": 18
+    },
+    {
+     "id": 12,
+     "image": "../sprites/hn/xe-day-hoa-qua.png",
+     "imagewidth": 40,
+     "imageheight": 28
+    },
+    {
+     "id": 13,
+     "image": "../sprites/hn/gio.png",
+     "imagewidth": 16,
+     "imageheight": 12
+    },
+    {
+     "id": 14,
+     "image": "../sprites/hn/ghe-chong.png",
+     "imagewidth": 16,
+     "imageheight": 22
     }
    ]
   }
@@ -1366,7 +1429,7 @@
    "objects": [
     {
      "id": 1,
-     "gid": 211,
+     "gid": 201,
      "name": "shop-hang-vai",
      "x": 0,
      "y": 128,
@@ -1378,7 +1441,7 @@
     },
     {
      "id": 2,
-     "gid": 201,
+     "gid": 202,
      "name": "Đồng Xuân Market",
      "x": 64,
      "y": 128,
@@ -1390,7 +1453,7 @@
     },
     {
      "id": 3,
-     "gid": 210,
+     "gid": 203,
      "name": "shop-tap-hoa",
      "x": 320,
      "y": 128,
@@ -1402,7 +1465,7 @@
     },
     {
      "id": 4,
-     "gid": 202,
+     "gid": 204,
      "name": "Bundles of goods",
      "x": 83,
      "y": 143,
@@ -1414,7 +1477,7 @@
     },
     {
      "id": 5,
-     "gid": 202,
+     "gid": 204,
      "name": "Bundles of goods",
      "x": 282,
      "y": 143,
@@ -1426,7 +1489,7 @@
     },
     {
      "id": 6,
-     "gid": 203,
+     "gid": 205,
      "name": "xe-may-do-do",
      "x": 115,
      "y": 173,
@@ -1438,7 +1501,7 @@
     },
     {
      "id": 7,
-     "gid": 204,
+     "gid": 206,
      "name": "xe-may-do-xanh",
      "x": 234,
      "y": 173,
@@ -1450,7 +1513,7 @@
     },
     {
      "id": 8,
-     "gid": 205,
+     "gid": 207,
      "name": "xe-may-do-den",
      "x": 307,
      "y": 173,
@@ -1462,7 +1525,7 @@
     },
     {
      "id": 9,
-     "gid": 206,
+     "gid": 208,
      "name": "xe-dap",
      "x": 35,
      "y": 173,
@@ -1474,7 +1537,7 @@
     },
     {
      "id": 10,
-     "gid": 207,
+     "gid": 209,
      "name": "Electric pole",
      "x": 160,
      "y": 174,
@@ -1483,6 +1546,78 @@
      "rotation": 0,
      "visible": true,
      "type": ""
+    },
+    {
+     "id": 20,
+     "gid": 210,
+     "name": "Hand cart",
+     "x": 202,
+     "y": 159,
+     "width": 40,
+     "height": 28,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 21,
+     "gid": 211,
+     "name": "Sacks",
+     "x": 294,
+     "y": 154,
+     "width": 16,
+     "height": 18,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 22,
+     "gid": 212,
+     "name": "Sacks",
+     "x": 307,
+     "y": 155,
+     "width": 16,
+     "height": 18,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 23,
+     "gid": 213,
+     "name": "Fruit cart",
+     "x": 330,
+     "y": 160,
+     "width": 40,
+     "height": 28,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 24,
+     "gid": 214,
+     "name": "Basket",
+     "x": 19,
+     "y": 158,
+     "width": 16,
+     "height": 12,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
+    },
+    {
+     "id": 25,
+     "gid": 215,
+     "name": "Stools",
+     "x": 362,
+     "y": 142,
+     "width": 16,
+     "height": 22,
+     "rotation": 0,
+     "visible": true,
+     "type": "fill"
     }
    ]
   },
@@ -1706,6 +1841,152 @@
        "name": "offset",
        "type": "string",
        "value": "90"
+      }
+     ]
+    },
+    {
+     "id": 26,
+     "name": "porter",
+     "type": "npc",
+     "x": 234,
+     "y": 141,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "boc-vac"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "A porter"
+      },
+      {
+       "name": "talk",
+       "type": "string",
+       "value": "dx-porter"
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
+      }
+     ]
+    },
+    {
+     "id": 27,
+     "name": "fruit-cart",
+     "type": "npc",
+     "x": 350,
+     "y": 142,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "ban-hang-rong"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "Fruit-cart seller"
+      },
+      {
+       "name": "talk",
+       "type": "string",
+       "value": "dx-cart"
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
+      }
+     ]
+    },
+    {
+     "id": 28,
+     "name": "shopper",
+     "type": "npc",
+     "x": 106,
+     "y": 149,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "khach-viet"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "A shopper"
+      },
+      {
+       "name": "line",
+       "type": "string",
+       "value": "“Upstairs is fabric, downstairs is everything else. Đi đi, go in!”"
+      },
+      {
+       "name": "fact",
+       "type": "string",
+       "value": "f-dx-floors"
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
+      }
+     ]
+    },
+    {
+     "id": 29,
+     "name": "night",
+     "type": "npc",
+     "x": 150,
+     "y": 158,
+     "width": 0,
+     "height": 0,
+     "rotation": 0,
+     "visible": true,
+     "point": true,
+     "properties": [
+      {
+       "name": "sprite",
+       "type": "string",
+       "value": "sinh-vien"
+      },
+      {
+       "name": "speaker",
+       "type": "string",
+       "value": "A student"
+      },
+      {
+       "name": "line",
+       "type": "string",
+       "value": "“Come back on Friday evening! The whole street turns into a night market.”"
+      },
+      {
+       "name": "fact",
+       "type": "string",
+       "value": "f-dx-night"
+      },
+      {
+       "name": "fill",
+       "type": "string",
+       "value": "1"
       }
      ]
     }
@@ -1951,16 +2232,16 @@
     0,
     0,
     0,
+    1,
+    1,
     0,
     0,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    1,
+    1,
+    1,
+    1,
     1,
     1,
     0,

@@ -32,44 +32,46 @@
       <!-- explore.html?zone=…: one place, played (assets/js/game/explore-game.js) -->
       <section class="gx" id="gx-game" aria-label="Game">
         <div class="gx-frame" id="gx-frame" tabindex="0" role="group" aria-roledescription="game" aria-describedby="gx-how">
+          <div class="gx-stage">
           <div class="cc-loader gx-loader" role="status"><svg class="cc-loader-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".45"/><circle cx="20" cy="20" r="12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1.4 2.6" opacity=".45"/><g class="cc-loader-needle"><path d="M20 5l4 15h-8z" fill="currentColor"/><path d="M20 35l-4-15h8z" fill="currentColor" opacity=".35"/></g></svg><span>Setting out…</span></div>
           <div class="gx-viewport" id="gx-viewport"><canvas id="gx-canvas" aria-hidden="true"></canvas></div>
 
           <div class="gx-hud">
             <div class="gx-hud-start">
               <a class="gx-tool" id="gx-map" href="explore.html"><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6z"/><path d="M9 4v14M15 6v14"/></svg><span>Map</span></a>
-              <div class="gx-goal" id="gx-goal" role="status" aria-live="polite">
-                <span class="gx-compass" aria-hidden="true">
-                  <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17.5"/><circle cx="20" cy="20" r="12.5" stroke-dasharray="1.4 2.6"/></svg>
-                  <svg class="gx-needle" id="gx-needle" viewBox="0 0 40 40"><path d="M20 5l4 15h-8z"/><path d="M20 35l-4-15h8z" opacity=".35"/></svg>
-                </span>
-                <span class="gx-goal-txt"><small id="gx-goal-count">0 of 3 moments</small><b id="gx-goal-text">Loading…</b></span>
+              <button type="button" class="gx-radar" id="gx-radar" aria-label="Open the map of this place (M)" title="Map of this place (M)"><canvas id="gx-mini" aria-hidden="true"></canvas><b class="gx-radar-n" aria-hidden="true">N</b><kbd aria-hidden="true">M</kbd></button>
+              <div class="gx-goal gx-quest" id="gx-goal">
+                <p class="gx-quest-head"><span class="gx-compass" hidden aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17.5"/><circle cx="20" cy="20" r="12.5" stroke-dasharray="1.4 2.6"/></svg><svg class="gx-needle" id="gx-needle" viewBox="0 0 40 40"><path d="M20 5l4 15h-8z"/><path d="M20 35l-4-15h8z" opacity=".35"/></svg></span><small id="gx-goal-count">Moments · 0 / 3</small></p>
+                <b class="visually-hidden" id="gx-goal-text" role="status" aria-live="polite">Loading…</b>
+                <ol class="gx-quest-list" id="gx-quest-list"></ol>
+                <p class="gx-quest-more" id="gx-quest-more"></p>
               </div>
             </div>
+            <div class="gx-hud-end">
             <div class="gx-tools">
-              <button type="button" class="gx-tool" id="gx-journal"><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6.5v13"/></svg><span>Journal</span><span class="gx-badge" id="gx-journal-count">0</span></button>
-              <button type="button" class="gx-tool" id="gx-goto"><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span>Go to…</span></button>
               <button type="button" class="gx-tool gx-tool-icon" id="gx-sound" aria-pressed="true" aria-label="Sound on"><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><span class="visually-hidden">Sound on</span></button>
               <button type="button" class="gx-tool gx-tool-icon" id="gx-full" aria-pressed="false" aria-label="Full screen" title="Full screen (F)"><svg class="cc-icon gx-full-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><svg class="cc-icon gx-full-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></button>
               <button type="button" class="gx-tool gx-traveller" id="gx-traveller"><i class="gx-traveller-win" aria-hidden="true"><i class="gx-traveller-reel" id="gx-traveller-reel"></i></i><span id="gx-traveller-name">Arvy</span><svg class="cc-icon gx-traveller-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14l-4-4M20 16H6l4 4"/></svg><i class="gx-traveller-tip" id="gx-traveller-tip" aria-hidden="true"></i></button>
               <button type="button" class="gx-tool gx-tool-icon" id="gx-help" aria-label="How to play"><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.2 9.2a2.9 2.9 0 1 1 4 2.7c-.8.4-1.2 1-1.2 1.9v.7"/><path d="M12 17.6v.4" stroke-width="2.4"/></svg></button>
             </div>
+            </div>
           </div>
 
           <div class="gx-toast" id="gx-toast" role="status" aria-live="polite" hidden></div>
           <div class="gx-dialog" id="gx-dialog" role="dialog" aria-modal="false" hidden></div>
+          </div>
           <div class="gx-panel" id="gx-panel" hidden></div>
           <div class="gx-start" id="gx-start" hidden></div>
         </div>
       </section>
 
       <div class="gx-below">
-        <p id="gx-how"><b>How to play:</b> arrow keys or W A S D to move, or click where you want to go. E, Space or Enter to talk or look. J opens your journal, F goes full screen. G or <b>Go to…</b> jumps to any person, place or moment without walking. Number keys pick an answer; Escape closes a window.</p>
+        <p id="gx-how"><b>How to play:</b> arrow keys or W A S D to move, or click where you want to go. E, Space or Enter to talk or look. F goes full screen. The round map at the top left (M) opens a big map of the place: click a pin or a name, or press G, to jump there without walking. Your moments are listed under it. J opens your journal. Number keys pick an answer; Escape closes a window.</p>
         <div class="gx-read-alt" id="gx-read-alt">
           <p><b>Prefer to read?</b> <a href="vietnam.html">Read about Vietnam</a> has the same knowledge as short stories<span id="gx-read-lead"></span></p>
           <ul id="gx-read"></ul>
         </div>
-        <p class="gx-credit">Pixel art: tiles and characters by <a href="https://limezu.itch.io/" rel="noopener">LimeZu</a> (Serene Village Revamped, CC BY 4.0; Modern Interiors free version, the travellers Arvy and Henry recoloured from its Amelia and Bob); Hà Nội buildings, people and objects generated with Google Gemini and edited for CultureCompass; map of Vietnam from Natural Earth (public domain); music and sounds from Ninja Adventure by Pixel-boy (CC0). Imagined scenes, not documentary images.</p>
+        <p class="gx-credit">Pixel art: tiles and characters by <a href="https://limezu.itch.io/" rel="noopener">LimeZu</a> (Serene Village Revamped, CC BY 4.0; Modern Interiors free version for the furniture, walls and floors indoors, the travellers Arvy and Henry recoloured from its Amelia and Bob, and two visitors from its Adam and Alex); Hà Nội buildings, people and objects generated with Google Gemini and edited for CultureCompass; temple gates, the Thái Học hall, Ngọc Sơn temple, Tháp Rùa, market stalls, street props and the wall and lake tiles drawn pixel by pixel for CultureCompass; map of Vietnam from Natural Earth (public domain); music and sounds from Ninja Adventure by Pixel-boy (CC0). Imagined scenes, not documentary images.</p>
       </div>
     </div>
   </main>

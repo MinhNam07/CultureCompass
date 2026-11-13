@@ -262,3 +262,41 @@ a map frame kit: 4 corner pieces (16×16) and straight edge pieces top/bottom/le
 ```
 
 Gửi xong (hoặc từng nhóm), Claude: tách sprite → ghép lên nền pixel → thay bản đồ SVG trên `explore.html` (giữ chấm Hà Nội bấm được, chữ là chữ thật, bàn phím vẫn dùng được).
+
+---
+
+## I. Lấp đầy map · viết 14/11
+
+Dùng cùng STYLE BLOCK ở trên (một cuộc trò chuyện cho I1–I3, một cho I4–I5). Lưu ảnh vào `assets/game/raw/<khu>/` đúng tên ghi ở mỗi mục; Claude cắt và thay sprite tạm. Trong lúc chưa có ảnh, game dùng sprite tạm Claude tự vẽ, nên làm mục nào trước cũng được.
+
+**I1. Văn Miếu: Đại Trung Môn + Đại Thành Môn** → `raw/van-mieu/cong-trong.png`
+```
+Two inner gates of the Temple of Literature, Hà Nội, side by side, 3/4 top-down RPG view (front wall + roof only):
+1) Đại Trung Môn: a single-storey gate building with three wide wooden door openings (doors open, dark inside), dark red lacquered pillars, white-grey plaster walls, one curved red-tile roof with gently upturned corners. 8 tiles wide × 5 tiles tall.
+2) Đại Thành Môn: similar but grander, three openings, red lacquered doors with gold-lacquer studs, a horizontal board above the middle door with abstract gold strokes (no text), red-tile roof with upturned corners. 8 tiles wide × 5 tiles tall.
+```
+**I2. Văn Miếu: Thái Học + trống, chuông** → `raw/van-mieu/thai-hoc.png`
+```
+Image 1: Thái Học hall (the old Imperial Academy): a two-storey hall, 12 tiles wide × 9 tiles tall, dark red lacquered wooden columns and lattice doors, two stacked curved red-tile roofs with upturned corners, stone steps in front.
+Image 2: a big ceremonial drum on a wooden stand (2×3 tiles) and a large bronze bell hanging in a small wooden frame with a tiled roof (2×3 tiles), side by side.
+```
+**I3. Văn Miếu: giếng Thiên Quang + lan can** → `raw/van-mieu/gieng.png`
+```
+Tileset 16×16 with 1-tile magenta gaps: edge pieces of a square ornamental pond seen from the 3/4 top-down view: grey-green stone kerb on all 4 sides and 4 corners, a low stone balustrade along the top edge (with small square posts), water tiles (dark at the top edge for shadow, then mid blue), plus one lotus-leaf-on-water tile. Ground and water tiles have NO outline and must tile seamlessly.
+```
+**I4. Hồ Gươm: đền Ngọc Sơn, Tháp Rùa, Đài Nghiên** → `raw/pho-co/ho-guom-2.png`
+```
+Image 1: front of Ngọc Sơn Temple on its island: single-storey temple hall with red lacquered pillars, yellow-ochre walls, curved red-tile roof with dragon-tip corners, small stone steps, 10 tiles wide × 6 tiles tall.
+Image 2: Turtle Tower (Tháp Rùa): small three-storey square tower in weathered grey-white plaster with pointed-arch openings, a small decorative top, standing on a little grassy mound with one tree, all on lake water edge. 4 tiles wide × 5 tiles tall.
+Image 3: Đài Nghiên: a small stone ink-slab shaped like half a peach resting on the back of three stone frogs, on a plinth. 2 × 2 tiles.
+```
+**I5. NPC Hà Nội (chibi 16×32, đứng yên 2 khung, nhìn thẳng)** → `raw/npc/npc-ho-guom.png`
+```
+NPC sprites matching the attached LimeZu character reference (chibi, 16×32 art pixels each, big head), front-facing idle, 2 frames each (breathing), side by side:
+1) older woman doing morning exercise, tracksuit, arms raised.
+2) old man in a cap sitting on a tiny stool, leaning over a Chinese chess board (board included in the sprite, 32×32).
+3) graduating student in a dark blue gown and square academic cap holding a bouquet.
+4) ice-cream seller with a small cool box on a strap, cap.
+5) tour guide with a small flag on a stick and a lanyard.
+6) man pulling a cart of goods (cart included, 32×32).
+```

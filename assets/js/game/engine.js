@@ -158,7 +158,10 @@
     for (var i = 0; i < this.npcs.length; i++) {
       var n = this.npcs[i];
       if (n === self || n.hidden) continue;
-      if (Math.abs(n.x - x) < (n.w + w) / 2 && y > n.y - n.h - h + 1 && y - h < n.y) return true;
+      var hit = function (px, py) { return Math.abs(n.x - px) < (n.w + w) / 2 && py > n.y - n.h - h + 1 && py - h < n.y; };
+      // someone already standing on top of you (a spawn or a jump landed there) never traps you: you can walk away
+      if (self && hit(self.x, self.y)) continue;
+      if (hit(x, y)) return true;
     }
     return false;
   };
@@ -534,6 +537,26 @@
     ctx.setTransform(1, 0, 0, 1, 0, 0);
   };
 
+  /* the whole map at 1 px per pixel, without people: the picture behind the minimap (drawn once per map) */
+  Engine.prototype.renderWhole = function () {
+    var m = this.map, T = this.T, self = this;
+    var cv = document.createElement('canvas');
+    cv.width = m.w * T; cv.height = m.h * T;
+    var keep = this.ctx, keepTime = this.time;
+    this.ctx = cv.getContext('2d'); this.ctx.imageSmoothingEnabled = false; this.time = 0;
+    var sortOrder = this.objectsOrder == null ? 1e9 : this.objectsOrder;
+    this.tileLayers.forEach(function (l) { if (!l.ysort && l.order < sortOrder) self.drawLayerRows(l, 0, m.h - 1, 0, m.w - 1); });
+    this.props.forEach(function (o) { if (o.tile.flat) self.drawProp(o); });
+    var list = [];
+    this.tileLayers.forEach(function (l) { if (l.ysort) for (var ty = 0; ty < m.h; ty++) list.push({ y: (ty + 1) * T, row: ty, layer: l }); });
+    this.props.forEach(function (o) { if (!o.tile.flat) list.push({ y: o.y, prop: o }); });
+    list.sort(function (a, b) { return a.y - b.y; });
+    list.forEach(function (d) { if (d.layer) self.drawLayerRows(d.layer, d.row, d.row, 0, m.w - 1); else self.drawProp(d.prop); });
+    this.tileLayers.forEach(function (l) { if (!l.ysort && l.order > sortOrder) self.drawLayerRows(l, 0, m.h - 1, 0, m.w - 1); });
+    this.ctx = keep; this.time = keepTime;
+    return cv;
+  };
+
   Engine.prototype.drawProp = function (o) {
     var t = o.tile, img = t.img;
     if (t.frameImgs && t.frameImgs.length) img = t.frameImgs[Math.floor(this.time * t.fps) % t.frameImgs.length] || img;
@@ -599,6 +622,7 @@
       var q = pos(it);
       if (m === 'quest') self.bubble(q.x, q.y, '!', '#fc5c46', '#fbf3e4');
       else if (m === 'look') self.bubble(q.x, q.y, '?', '#f1ce8e', '#3a3a50');
+      else if (m === 'talk') self.bubble(q.x, q.y, '…', '#9fe3e8', '#3a3a50');
     });
     if (this.near) { var q = pos(this.near); this.bubble(q.x, q.y, 'E', '#fbf3e4', '#3a3a50'); }
     this.emotes.forEach(function (e) {
