@@ -138,8 +138,10 @@ def tuft_everywhere(x0, y0, x1, y1, chance=.06):
 lawn(4, 87, 15, 89); lawn(24, 87, 35, 89); lawn(4, 94, 15, 98); lawn(24, 94, 35, 98)
 for x, y in [(6, 97), (11, 97), (26, 97), (31, 97)]:
     m.obj('chung/cay-da', x - 2, y - 0.2, 'Old tree'); m.block(x, y - 1, x + 1, y - 1)
+# a prop blocks the tile row its feet stand on: the row 9 px above its bottom edge, not always the row above it
+foot_row = lambda y: int(y - 9 / 16)
 for x, y in [(15, 93.9), (22.2, 93.9)]:
-    m.obj('pho-co/ghe-da', x, y, 'Stone bench'); m.block(int(x), int(y) - 1, int(x) + 1, int(y) - 1)
+    m.obj('pho-co/ghe-da', x, y, 'Stone bench'); m.block(int(x), foot_row(y), int(x) + 1, foot_row(y))
 m.obj('hn/cay-canh', 16.2, 90.8, 'Bonsai'); m.block(16, 90, 17, 90)
 m.obj('hn/cay-canh', 22.3, 90.8, 'Bonsai'); m.block(22, 90, 23, 90)
 m.obj('hn/dong-la', 30, 92.6, 'Leaves', flat=True)
@@ -169,7 +171,7 @@ for x0 in (2, 30):
     m.rect(m.floor, x0 - 1, 43, x0 + 8, 62, lambda x, y: m.at(m.floor, x, y) or brick(x, y))
 # loose stelae on turtles at the corners of the well
 for x, y, p in [(12.4, 46.6, 'bia-1'), (25.6, 46.6, 'bia-2'), (12.4, 58, 'bia-2'), (25.6, 58, 'bia-1')]:
-    m.obj('van-mieu/' + p, x, y, 'Stele'); m.block(int(x), int(y) - 1, int(x) + 1, int(y) - 1)
+    m.obj('van-mieu/' + p, x, y, 'Stele'); m.block(int(x), foot_row(y), int(x) + 1, foot_row(y))
 for x, y in [(11, 52), (28, 52)]:
     m.obj('hn/chum-men', x, y, 'Glazed jar'); m.block(x, y - 1)
 for x in (13, 26):
@@ -181,7 +183,7 @@ m.obj('hn/ta-vu', 2.5, 32, 'Tả Vu (east hall)'); m.block(3, 30, 7, 31)
 m.obj('hn/ta-vu', 31.5, 32, 'Hữu Vu (west hall)'); m.block(32, 30, 36, 31)
 m.obj('van-mieu/lu-huong-0', 19, 31, 'Incense burner', frames=['van-mieu/lu-huong-%d' % i for i in range(4)]); m.block(19, 30, 20, 30)
 for x, y in [(13, 27.6), (25.5, 27.6), (13, 35.6), (25.5, 35.6)]:
-    m.obj('hn/cay-canh', x, y, 'Bonsai'); m.block(int(x), int(y) - 1, int(x) + 1, int(y) - 1)
+    m.obj('hn/cay-canh', x, y, 'Bonsai'); m.block(int(x), foot_row(y), int(x) + 1, foot_row(y))
 for x in (10, 29):
     m.obj('hn/chum', x, 26.6, 'Jar'); m.block(x, 26)
 for x, y in [(3, 23), (34, 23)]:

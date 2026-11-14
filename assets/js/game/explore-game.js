@@ -304,7 +304,30 @@
         return '<li><button type="button" class="gx-choice" data-choice="' + esc(ch.id) + '"' + (t ? ' disabled' : '') + '>' +
           '<span class="gx-key" aria-hidden="true">' + (i + 1) + '</span><span>' + esc(ch.label) + '</span>' +
           (t ? '<span class="gx-tried">Tried</span>' : '') + '</button></li>';
-      }).join('') + '</ol>';
+      }).join('') + '</ol>' + laterHtml(m);
+  }
+  /* 14 Nov 2026: a moment never holds you. "Not now" (or Esc) closes it and it waits with its "!" mark; if the person
+     also has something to say, "Just chat" goes to that instead. */
+  function momentNpc(m) {
+    var id = encounter(m.key).npc;
+    return id ? eng.npcs.filter(function (n) { return n.id === id && !n.hidden; })[0] || null : null;
+  }
+  function canChat(n) { var p = (n && n.props) || {}; return !!(p.talk || p.fact || p.line); }
+  function laterHtml(m) {
+    var n = momentNpc(m);
+    return '<div class="gx-actions gx-later">' +
+      (canChat(n) ? '<button type="button" class="cc-btn cc-btn-quiet cc-btn-sm" data-act="chat">Just chat</button>' : '') +
+      '<button type="button" class="cc-btn cc-btn-quiet cc-btn-sm" data-act="later" aria-keyshortcuts="Escape">Not now</button></div>';
+  }
+  function later() {
+    if (!open || open.chosen) return;
+    closeDialog();
+  }
+  function chatInstead() {
+    var n = open && momentNpc(open);
+    if (!n) return;
+    closeDialog();
+    chat(n);
   }
   function startEncounter(k) {
     var m = moment(k);
@@ -330,6 +353,7 @@
     var meta = FB[ch.type] || FB.seeGuide;
     var st = state.steps[m.key] = state.steps[m.key] || { tried: [] };
     if (meta.ok) {
+      m.chosen = true;
       st.choice = ch.id;
       save();
       play('chime');
@@ -344,7 +368,8 @@
       if (!eng.reduce) { frame.classList.remove('is-shake'); void frame.offsetWidth; frame.classList.add('is-shake'); }
       showDialog((con ? '<p class="gx-who">' + esc(con.speaker) + '</p><p class="gx-text">' + esc(con.line) + '</p>' : '<p class="gx-who">You chose</p><p class="gx-text gx-chosen">' + esc(ch.label) + '</p>') +
         feedbackHtml(ch) +
-        '<div class="gx-actions"><button type="button" class="cc-btn cc-btn-sm" data-act="retry" data-autofocus>' + CC.icon('swap') + 'Try another way</button></div>', 'What happens');
+        '<div class="gx-actions"><button type="button" class="cc-btn cc-btn-sm" data-act="retry" data-autofocus>' + CC.icon('swap') + 'Try another way</button>' +
+        '<button type="button" class="cc-btn cc-btn-quiet cc-btn-sm" data-act="later" aria-keyshortcuts="Escape">Not now</button></div>', 'What happens');
     }
   }
   function finishStep() {
@@ -372,16 +397,13 @@
     var p = it.props || {};
     state.seen = state.seen || {}; state.seen[mapId + ':' + it.id] = 1; save();
     if (it.kind === 'npc') {
-      var k = zone.objectives.map(function (o) { return key(o.step); }).filter(function (x) { return encounter(x).npc === it.id && !done(x); })[0];
+      // a moment waiting with this person starts, unless it comes later in the story: then they just chat
+      var mine = zone.objectives.map(function (o) { return key(o.step); }).filter(function (x) { return encounter(x).npc === it.id && !done(x); });
+      var k = mine.filter(function (x) { var a = encounter(x).after; return !a || done(a); })[0];
       if (k) return startEncounter(k);
-      if (p.talk && talkNode(p.talk)) return;
-      if (p.fact) {
-        var f = factById(p.fact);
-        unlock(p.fact, { quiet: true });
-        return showDialog('<p class="gx-who">' + esc(p.speaker || 'Someone') + '</p>' + (p.line ? '<p class="gx-text">' + esc(p.line) + '</p>' : '') +
-          (f ? factCard(f) : '') + '<div class="gx-actions">' + continueBtn() + '</div>', p.speaker);
-      }
-      if (p.line) return say(p.speaker || 'Someone', p.line);
+      if (chat(it)) return;
+      var wait = mine.length && encounter(mine[0]);
+      if (wait && wait.notYet) say(wait.notYetSpeaker || p.speaker || 'Not yet', wait.notYet);
     } else if (p.fact) {
       var f2 = factById(p.fact);
       unlock(p.fact, { quiet: true });
@@ -390,6 +412,20 @@
     } else if (p.line) {
       say(p.label || it.name, p.line);
     }
+  }
+  /* what a person says when no moment is open with them: a conversation, a fact, or a line */
+  function chat(it) {
+    var p = it.props || {};
+    if (p.talk && talkNode(p.talk)) return true;
+    if (p.fact) {
+      var f = factById(p.fact);
+      unlock(p.fact, { quiet: true });
+      showDialog('<p class="gx-who">' + esc(p.speaker || 'Someone') + '</p>' + (p.line ? '<p class="gx-text">' + esc(p.line) + '</p>' : '') +
+        (f ? factCard(f) : '') + '<div class="gx-actions">' + continueBtn() + '</div>', p.speaker);
+      return true;
+    }
+    if (p.line) { say(p.speaker || 'Someone', p.line); return true; }
+    return false;
   }
   function onZone(z) {
     var k = z.props && z.props.step && key(z.props.step);
@@ -403,12 +439,8 @@
   }
   var switching = false;
   function onDoor(d) {
+    // doors are never locked behind a moment: you can always walk in and out, the moments wait where they are
     if (switching || !d.props.to) return;
-    if (d.props.after && !done(d.props.after)) {
-      var m = moment(d.props.after);
-      eng.teleport(eng.player.x, eng.player.y + 10, 'down');
-      return say('Not yet', d.props.notYet || ('First: ' + (m ? m.step.prompt : '')));
-    }
     goMap(d.props.to, d.props.spawn);
   }
   function goMap(id, spawnName, pos) {
@@ -731,6 +763,7 @@
       if (e.key === 'Escape') {
         if (!panel.hidden) { closePanel(); e.preventDefault(); }
         else if (!dialog.hidden && !open) { closeDialog(); e.preventDefault(); }
+        else if (!dialog.hidden && open && !open.chosen) { later(); e.preventDefault(); }
         else if (frame.classList.contains('is-full') && !nativeFull()) { toggleFull(false); e.preventDefault(); }
         return;
       }
@@ -780,6 +813,8 @@
       else if (t.dataset.act === 'character') { closePanel(); pickCharacter(false, loadTraveller); }
       else if (t.dataset.choice) choose(t.dataset.choice);
       else if (t.dataset.talk && talking) talkNode(talking.id, t.dataset.talk);
+      else if (t.dataset.act === 'later') later();
+      else if (t.dataset.act === 'chat') chatInstead();
       else if (t.dataset.act === 'close') closeDialog();
       else if (t.dataset.act === 'done') finishStep();
       else if (t.dataset.act === 'retry') { var m = open; showDialog(promptHtml(m), 'Moment: ' + m.step.prompt); }
