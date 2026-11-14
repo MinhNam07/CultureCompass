@@ -102,6 +102,9 @@ a:hover { color: var(--color-primary); text-decoration-color: currentColor; text
 
 .visually-hidden, .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
 
+/* big external monitors (≥1600px; laptops never reach this): the column grows with the screen so the side margins
+   hold at ~180px instead of widening to 340px+ around a fixed 1240px column */
+@media (min-width: 1600px) { :root { --max: min(calc(100vw - 360px), 1840px); } }
 .cc-wrap { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
 .cc-read { max-width: var(--measure); }
 .cc-lead { font-family: var(--font-serif); font-size: var(--fs-lead); line-height: 1.5; color: var(--color-text); }

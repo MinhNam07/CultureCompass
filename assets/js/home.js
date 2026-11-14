@@ -90,7 +90,8 @@
     var W = sr.width, H = sr.height, phone = W <= 760;
     var header = document.getElementById('cc-header');
     var hh = header ? header.offsetHeight : 68;
-    var top = hh + (phone ? 14 : 22), bottom = H - (phone ? 18 : 30), band = bottom - top;
+    /* on big monitors (≥1600px) the photos start lower, clear of the "Scroll to launch" cue under the logo */
+    var top = hh + (phone ? 14 : W >= 1600 ? 60 : 22), bottom = H - (phone ? 18 : 30), band = bottom - top;
     var pad = phone ? 18 : 36, gapY = phone ? 12 : 22;
     /* the closing line is hidden but keeps its size, so both texts can be measured */
     var copy = textBox(CC.$('hero-copy'), sr), end = textBox(CC.$('hero-end'), sr);

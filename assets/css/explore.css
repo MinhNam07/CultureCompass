@@ -61,6 +61,8 @@ body.ex .cc-footer { background: var(--bg-paper-hi); margin-top: 0; }
 #explore button { font: inherit; color: inherit; }
 
 .ex-wrap { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+/* big external monitors: grow with the shared column (see --max in cc.css) */
+@media (min-width: 1600px) { .ex-wrap { max-width: calc(var(--max) + 48px); } }
 .ex-sec { position: relative; padding-block: clamp(36px, 4.5vw, 56px); }
 .ex-center { text-align: center; margin-top: 32px !important; }
 

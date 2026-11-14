@@ -164,3 +164,14 @@ html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
 .hero-cue .cc-icon { width: 16px; height: 16px; animation: hero-cue-nudge 1.2s ease-in-out infinite; }
 @keyframes hero-cue-nudge { 0%, 100% { transform: translateY(-1px); } 50% { transform: translateY(3px); } }
 @media (prefers-reduced-motion: reduce) { .hero-cue { transition: none; } .hero-cue .cc-icon { animation: none; } }
+
+/* ---- Big external monitors (≥1600px wide; laptops never reach this) ----
+   On a laptop the 1240px column leaves ~115px each side. On a 1920px monitor it left ~340px, so the copy sat
+   in the middle of an empty field. From 1600px the column grows with the screen (side margins hold at ~180px)
+   and the hero type grows a step, so the page keeps the proportions it has on a laptop. */
+@media (min-width: 1600px) {
+  body[data-page="home"] .hero h1, body[data-page="home"] .hero h2 { font-size: min(calc(6rem + (100vw - 1600px) * .05), 11.5svh); }
+  /* the wider column lets the headline run in two lines instead of three, which keeps room above it for the photos */
+  body[data-page="home"] .hero h1 { max-width: 21ch; }
+  body[data-page="home"] .hero-sub { font-size: calc(1.375rem + (100vw - 1600px) * .008); }
+}
