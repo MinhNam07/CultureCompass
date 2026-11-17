@@ -60,7 +60,6 @@ for x in (5.2, 10.6, 18.8, 24.2):
 I.obj('cho-dong-xuan/quat-cay', 1.2, 20.9, 'Fan'); I.block(1, 20)
 I.obj('cho-dong-xuan/quat-cay', 27.6, 20.9, 'Fan'); I.block(27, 20)
 I.obj('cho-dong-xuan/kien-hang', 25.6, 20.95, 'Bundles'); I.block(25, 20, 26, 20)
-I.obj('hn/xe-tho', 20.6, 20.95, 'Hand cart'); I.block(20, 20, 22, 20)
 
 # ---- points (names kept: the moments use them)
 I.point('spawn', 'spawn', 14.9, 20.3, {'dir': 'up'})

@@ -2734,18 +2734,6 @@
      "rotation": 0,
      "visible": true,
      "type": ""
-    },
-    {
-     "id": 36,
-     "gid": 224,
-     "name": "Hand cart",
-     "x": 330,
-     "y": 335,
-     "width": 40,
-     "height": 28,
-     "rotation": 0,
-     "visible": true,
-     "type": ""
     }
    ]
   },
@@ -4046,9 +4034,9 @@
     0,
     0,
     0,
-    1,
-    1,
-    1,
+    0,
+    0,
+    0,
     0,
     0,
     1,
