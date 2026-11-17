@@ -3,7 +3,6 @@
 shoppers, sacks. Uses Map.load, so it can be rerun (python3 tools/maps/fill-cho-street.py --force)."""
 from tiledmap import Map
 m = Map.load('cho-street', seed=4)
-m.obj('hn/xe-tho', 12.6, 9.95, 'Hand cart'); m.block(13, 9, 14, 9)
 m.obj('hn/bao-tai', 18.4, 9.6, 'Sacks'); m.obj('hn/bao-tai-b', 19.2, 9.7, 'Sacks'); m.block(19, 9)
 m.obj('hn/xe-day-hoa-qua', 20.6, 10.0, 'Fruit cart'); m.block(20, 9, 22, 9)
 m.obj('hn/gio', 1.2, 9.9, 'Basket'); m.obj('hn/ghe-chong', 22.6, 8.9, 'Stools')

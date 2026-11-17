@@ -23,7 +23,7 @@ PIECES = {
     'ke-chai': [10, 69, 2, 2], 'ke-chai-b': [12, 69, 2, 2], 'ke-chai-c': [14, 69, 2, 2],
     'sofa-xam': [1, 72, 3, 2], 'sofa-nau': [7, 72, 2, 2],
     'bep-ga': [12, 79, 2, 2], 'bep-hut': [12, 81, 2, 3], 'tu-trung-bay': [2, 18, 2, 3],
-    'tranh-to': [8, 21, 2, 1], 'cau-thang': [9, 5, 2, 4], 'cua-so-lon': [7, 28, 2, 2],
+    'tranh-to': [8, 21, 2, 1], 'cau-thang': [9, 5, 2, 3], 'cua-so-lon': [7, 28, 2, 2],
 }
 os.makedirs(OUT, exist_ok=True)
 sheet = Image.open(SRC).convert('RGBA')

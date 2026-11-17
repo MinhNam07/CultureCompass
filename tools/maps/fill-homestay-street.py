@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Adds street life to cô Lan's street (homestay-street.tmj) without moving what is there: an iced-tea stall with
-low stools and regulars, a woman sweeping leaves, pot plants along the house fronts, a delivery scooter.
+low stools and regulars, a woman sweeping leaves, pot plants along the house fronts.
 Safe to rerun: what it added last time is removed first (tiledmap.Map.load). Then npm run build."""
 from tiledmap import Map, rb
 
@@ -18,10 +18,8 @@ m.npc('tea-2', 23.3, 14.95, 'khach-ngoi-ben-b', 'A regular', line='She is tellin
 m.obj('hn/dong-la', 1.2, 14.4, 'Leaves', flat=True)
 m.npc('sweeper', 2.6, 13.8, 'quet-la', 'A neighbour', line='She is sweeping up the big red leaves of the bàng tree. “Mùa này lá rụng nhiều lắm.” Lots of leaves fall this season.')
 m.obj('hn/choi', 3.4, 13.4, 'Broom')
-# pot plants and a delivery scooter
+# pot plants
 for x in (1.2, 5.1, 16.9, 20.2):
     m.obj('chung/chau-cay', x, 12.95, 'Pot plant'); m.block(int(x), 12)
-m.obj('hn/xe-giao-hang', 0.2, 15.95, 'Delivery scooter'); m.block(0, 15, 1, 15)
-m.obj('hn/thung-xop', 9.3, 15.9, 'Foam box'); m.block(9, 15)
 m.hotspot('Iced-tea stall', 25, 13.6, 2, 1.2, 'f-hs-trada', 'An iced-tea stall')
 m.save()

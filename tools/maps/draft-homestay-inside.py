@@ -36,15 +36,13 @@ m.obj('homestay/bep', 4.6, 3.9, 'Kitchen', foot=(1, 0))
 m.obj('noi-that/tu-ngan', 8.1, 4.1, 'Cupboard', foot=(1, 0))
 m.obj('homestay/tu-lanh', 10.1, 4.2, 'Fridge', foot=(1, 0))
 m.obj('noi-that/gio-rau', 6.2, 4.8, 'Basket of greens'); m.block(6, 4)
-m.obj('noi-that/cau-thang', 16.5, 6.6, 'Stairs'); m.block(16, 3, 18, 6)
+m.obj('noi-that/cau-thang', 16.5, 5.6, 'Stairs'); m.block(16, 3, 18, 6)
 m.obj('noi-that/ke-sach', 13, 4.2, 'Shelf', foot=(1, 0))
 m.obj('noi-that/cay-cao', 14.9, 4.3, 'Plant', foot='auto')
 
 # ---- middle: dining table (the dinner moments happen here)
 TX, TY = 7, 8.6
 m.obj('homestay/ban-an', TX, TY, 'Dining table'); m.block(7, 7, 9, 7)
-m.obj('noi-that/tham-xanh', 12.6, 8.3, 'Mat', flat=True)
-m.obj('noi-that/ghe-dau', 13.3, 7.9, 'Stool')
 m.obj('homestay/chau-cay-nha', 1.3, 9.2, 'Plant', foot='auto')
 m.obj('noi-that/tu-go', 1.2, 7.2, 'Cabinet', foot=(1, 0))
 

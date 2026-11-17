@@ -183,7 +183,7 @@
      "id": 9,
      "image": "../sprites/noi-that/cau-thang.png",
      "imagewidth": 32,
-     "imageheight": 64
+     "imageheight": 48
     },
     {
      "id": 10,
@@ -1524,9 +1524,9 @@
      "gid": 210,
      "name": "Stairs",
      "x": 264,
-     "y": 106,
+     "y": 90,
      "width": 32,
-     "height": 64,
+     "height": 48,
      "rotation": 0,
      "visible": true,
      "type": ""
@@ -1563,30 +1563,6 @@
      "y": 138,
      "width": 51,
      "height": 33,
-     "rotation": 0,
-     "visible": true,
-     "type": ""
-    },
-    {
-     "id": 15,
-     "gid": 214,
-     "name": "Mat",
-     "x": 202,
-     "y": 133,
-     "width": 24,
-     "height": 16,
-     "rotation": 0,
-     "visible": true,
-     "type": ""
-    },
-    {
-     "id": 16,
-     "gid": 215,
-     "name": "Stool",
-     "x": 213,
-     "y": 126,
-     "width": 14,
-     "height": 14,
      "rotation": 0,
      "visible": true,
      "type": ""

@@ -1548,18 +1548,6 @@
      "type": ""
     },
     {
-     "id": 20,
-     "gid": 210,
-     "name": "Hand cart",
-     "x": 202,
-     "y": 159,
-     "width": 40,
-     "height": 28,
-     "rotation": 0,
-     "visible": true,
-     "type": "fill"
-    },
-    {
      "id": 21,
      "gid": 211,
      "name": "Sacks",
@@ -2232,8 +2220,8 @@
     0,
     0,
     0,
-    1,
-    1,
+    0,
+    0,
     0,
     0,
     0,

@@ -2746,18 +2746,6 @@
      "rotation": 0,
      "visible": true,
      "type": ""
-    },
-    {
-     "id": 37,
-     "gid": 225,
-     "name": "Polystyrene box",
-     "x": 38,
-     "y": 334,
-     "width": 16,
-     "height": 16,
-     "rotation": 0,
-     "visible": true,
-     "type": ""
     }
    ]
   },
@@ -4040,7 +4028,7 @@
     1,
     1,
     1,
-    1,
+    0,
     0,
     0,
     0,
