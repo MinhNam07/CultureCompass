@@ -90,7 +90,41 @@
       }
     });
     this.snapCamera = true;
-    return Promise.all(jobs);
+    this.bg = null;
+    return Promise.all(jobs).then(function () { if (self.map === map) self.bake(); });
+  };
+
+  /* the layers under everything (ground, floor) drawn once into one picture per map, so ground-fx.js can finish
+     the edges between paths and lawns; render() then copies the visible part of it */
+  Engine.prototype.bake = function () {
+    var m = this.map, T = this.T, self = this;
+    var sortOrder = this.objectsOrder == null ? 1e9 : this.objectsOrder;
+    var under = this.tileLayers.filter(function (l) { return !l.ysort && l.order < sortOrder; });
+    var cv = document.createElement('canvas');
+    cv.width = m.w * T; cv.height = m.h * T;
+    var g = cv.getContext('2d', { willReadFrequently: true }), keep = this.ctx;
+    g.imageSmoothingEnabled = false;
+    this.ctx = g;
+    try {
+      var lawn = null;
+      under.forEach(function (l, i) {
+        self.drawLayerRows(l, 0, m.h - 1, 0, m.w - 1);
+        if (i === 0 && CC.groundFx) lawn = g.getImageData(0, 0, cv.width, cv.height);
+      });
+      if (lawn) CC.groundFx.apply(g, lawn, m);
+      this.bg = cv; this.bgLayers = under;
+    } catch (e) { this.bg = null; }
+    this.ctx = keep;
+  };
+
+  Engine.prototype.drawBackground = function (r0, r1, c0, c1) {
+    var T = this.T, self = this, sortOrder = this.objectsOrder == null ? 1e9 : this.objectsOrder;
+    if (this.bg) {
+      var x = c0 * T, y = r0 * T, w = (c1 - c0 + 1) * T, h = (r1 - r0 + 1) * T;
+      this.ctx.drawImage(this.bg, x, y, w, h, x, y, w, h);
+      return;
+    }
+    this.tileLayers.forEach(function (l) { if (!l.ysort && l.order < sortOrder) self.drawLayerRows(l, r0, r1, c0, c1); });
   };
 
   Engine.prototype.addPoint = function (o, jobs) {
@@ -501,7 +535,7 @@
     var sortOrder = this.objectsOrder == null ? 1e9 : this.objectsOrder;
 
     // background layers: unsorted layers that sit below the objects layer
-    this.tileLayers.forEach(function (l) { if (!l.ysort && l.order < sortOrder) self.drawLayerRows(l, r0, r1, c0, c1); });
+    this.drawBackground(r0, r1, c0, c1);
 
     // flat props (tree pits, drains, mats) lie on the ground, so they go under everything that stands
     var viewL = cx - 200, viewR = cx + this.vw + 200, viewT = cy - 20, viewB = cy + this.vh + 220;
@@ -545,7 +579,7 @@
     var keep = this.ctx, keepTime = this.time;
     this.ctx = cv.getContext('2d'); this.ctx.imageSmoothingEnabled = false; this.time = 0;
     var sortOrder = this.objectsOrder == null ? 1e9 : this.objectsOrder;
-    this.tileLayers.forEach(function (l) { if (!l.ysort && l.order < sortOrder) self.drawLayerRows(l, 0, m.h - 1, 0, m.w - 1); });
+    this.drawBackground(0, m.h - 1, 0, m.w - 1);
     this.props.forEach(function (o) { if (o.tile.flat) self.drawProp(o); });
     var list = [];
     this.tileLayers.forEach(function (l) { if (l.ysort) for (var ty = 0; ty < m.h; ty++) list.push({ y: (ty + 1) * T, row: ty, layer: l }); });
