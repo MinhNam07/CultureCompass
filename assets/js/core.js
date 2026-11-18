@@ -107,7 +107,13 @@
     },
     remove: function (key) { delete memory[key]; try { window.localStorage.removeItem(PREFIX + key); } catch (e) { /* ignore */ } },
     clearUserData: function () {
-      ['progress', 'scenes', 'collection', 'saved', 'read', 'migrations'].forEach(function (k) { CC.store.remove(k); });
+      /* Explore keeps its own keys: places walked, facts, stamps ('explore'), the chosen traveller ('character')
+         and the one-time game tip on the reading page ('exploreToast.<country>'). The game's sound switch is a setting, so it stays. */
+      ['progress', 'scenes', 'collection', 'saved', 'read', 'migrations', 'explore', 'character'].forEach(function (k) { CC.store.remove(k); });
+      try {
+        Object.keys(window.localStorage).forEach(function (k) { if (k.indexOf(PREFIX + 'exploreToast.') === 0) window.localStorage.removeItem(k); });
+      } catch (e) { /* storage blocked: nothing was kept */ }
+      Object.keys(memory).forEach(function (k) { if (k.indexOf('exploreToast.') === 0) delete memory[k]; });
       return available;
     }
   };
@@ -567,13 +573,15 @@
     CC.$('set-motion').addEventListener('change', function (e) { CC.settings.set({ reduceMotion: e.target.checked }); CC.$('set-motion-note').textContent = 'Videos stay still until you press Play; scenes show each action as still steps.'; });
     CC.$('set-text').addEventListener('change', function (e) { CC.settings.set({ textOnly: e.target.checked }); });
     CC.$('set-clear').addEventListener('click', function () {
-      if (!window.confirm('Remove your collection, reading log and scene progress from this browser? Settings are kept.')) return;
+      if (!window.confirm('Remove your collection, reading log and game progress (places, journal facts, stamps and chosen traveller) from this browser? Settings are kept.')) return;
       var ok = CC.store.clearUserData();
       CC.store.set('migrations', { collectionV2: { at: new Date().toISOString(), moved: 0, cleared: true } });
       CC.updateCount();
       syncSaveButtons();
       CC.$('set-msg').textContent = ok ? 'Cleared. Your settings were kept.' : 'Nothing was stored on this browser.';
       document.dispatchEvent(new CustomEvent('cc:cleared'));
+      // Inside a place the game holds its progress in memory and would save it straight back, so start the place again.
+      if (/[?&]zone=/.test(window.location.search)) window.location.reload();
     });
 
     CC.settings.apply();
