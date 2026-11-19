@@ -11,7 +11,7 @@
     "build:globe": "node tools/build-hud-map.mjs && npm run typecheck && node tools/build-globe.mjs && tailwindcss -i globe/styles.css -o assets/globe/globe.css --minify",
     "typecheck": "tsc --noEmit",
     "build:tracing-beam": "npm run typecheck && node tools/build-tracing-beam.mjs",
-    "zip": "node tools/make-zip.js"
+    "zip": "node tools/make-submission.mjs"
   },
   "dependencies": {
     "@react-three/drei": "10.7.6",

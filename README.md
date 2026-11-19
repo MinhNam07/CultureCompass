@@ -13,7 +13,7 @@ Built with HTML5, CSS, Bootstrap 5.3.3, vanilla JavaScript, inline SVG and GSAP 
   npm run dev
   ```
   Then open http://localhost:8765. This rebuilds the site and serves the folder with `tools/dev-server.py` (Python's built-in server with caching off). Stop it with Ctrl + C.
-- **Other commands:** `npm run build` rebuilds the data and map files, compiles the React bundles and CSS, validates content, packages the website into `dist/`, and checks local HTML/CSS links. `npm run check` runs the content checker; `npm run check:dist` checks the packaged output; `npm run zip` makes the submission zip (see below).
+- **Other commands:** `npm run build` rebuilds the data and map files, compiles the React bundles and CSS, validates content, packages the website into `dist/`, and checks local HTML/CSS links. `npm run check` runs the content checker; `npm run check:dist` checks the packaged output; `npm run zip` makes the clean submission folder and zip (see below).
 
 ## Deploy to Vercel
 
@@ -116,7 +116,7 @@ My collection, the reading log (“Read before”), scene progress (including th
 npm run zip
 ```
 
-Writes `../CultureCompass-submission.zip` with only what the site needs (pages, `assets/`, `vendor/`, docs, tools and `package.json`). It leaves out `node_modules/`, `background-vietnam/` (raw footage), `assets/game/raw/` and `assets/game/vendor/` (source art packs; only the three sheets the game loads and the licences go in), `_to_delete/` and hidden folders. Open `HomePage.html` from the unzipped folder to check it.
+Run `npm run build` first. Builds `~/CultureCompass-submission/30066857/` (the `website/` folder, plus the coversheet copied from the template if it is missing) and zips it to `~/CultureCompass-submission/30066857.zip`. Files are copied from an allowlist (`tools/make-submission.mjs`): the eight pages and only the folders they load, without JSON sources, Tiled files, unused videos or anything from git, Vercel or the build tools. The script checks that every local path the pages name is in the folder, lists any line that mentions tooling, and writes `last-build.txt`. Add the report PDF to the folder and run it again. Open `website/HomePage.html` from the unzipped folder to check it.
 
 ## Design and QA
 
