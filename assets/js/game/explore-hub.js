@@ -11,9 +11,10 @@
   var COUNTRY = 'vietnam';
   var DESTS = [
     { id: 'hanoi', name: 'Hà Nội', ready: true },
+    { id: 'danang', name: 'Đà Nẵng', ready: false, hook: 'Beach mornings and a seafood market.' },
     { id: 'hoian', name: 'Hội An', ready: false, hook: 'The old town at dusk, lanterns, and a tailor’s shop.' },
-    { id: 'danang', name: 'Đà Nẵng', ready: false, hook: 'Beach mornings and a seafood market.' }
-  ];
+    { id: 'hcm', name: 'TP Hồ Chí Minh', ready: false, hook: 'Coffee on the pavement, life down the alleys, and an evening on a walking street.' }
+  ];   /* the same four cities, in the same order, as the reading page's city route (explore.js CITIES) and the globe HUD */
   /* where each place sits on the map image (hanoi-map.png, 600×448), in %. Each point is on open ground
      next to the landmark (a doorstep, a street, a plaza) so the pin doesn't hide the building.
      side: which way the label opens (default: right, or left near the right edge). */
@@ -87,7 +88,7 @@
   function shell() {
     return '<div class="gxs-win">' +
       '<div class="gxs-bar">' +
-        '<a class="gxs-btn" href="index.html">' + IC.back + '<span>Globe</span></a>' +
+        '<a class="gxs-btn" href="HomePage.html#destinations">' + IC.back + '<span>Globe</span></a>' +
         '<div class="gxs-dests" role="group" aria-label="Destination">' + DESTS.map(function (d) {
           return '<button type="button" class="gxs-dest" data-dest="' + d.id + '" aria-pressed="false">' + esc(d.name) + (d.ready ? '' : '<small> · soon</small>') + '</button>';
         }).join('') + '</div>' +

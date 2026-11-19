@@ -31,8 +31,8 @@ async function walk(dir) {
   }
 }
 await walk(root);
-for (const required of ['index.html', 'assets/globe/globe.js', 'assets/globe/details.js', 'assets/globe/globe.css', 'assets/tracing-beam/tracing-beam.js']) {
-  await check(path.join(root, 'index.html'), required);
+for (const required of ['HomePage.html', 'index.html', 'assets/globe/globe.js', 'assets/globe/details.js', 'assets/globe/globe.css', 'assets/tracing-beam/tracing-beam.js']) {
+  await check(path.join(root, 'HomePage.html'), required);
 }
 if (errors.length) {
   console.error(errors.join('\n'));

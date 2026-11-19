@@ -432,7 +432,7 @@
       new ResizeObserver(scheduleDestinationHeader).observe(destinationSection);
       updateDestinationHeader();
       window.addEventListener('message' , function (event) {
-        if (event.source !== globe.contentWindow || event.origin !== window.location.origin) return;
+        if (event.source !== globe.contentWindow || !CC.sameOrigin(event)) return;
         var data = event.data;
         /* the country HUD opens in place: the page is not scrolled for the visitor */
         if (data && data.type === 'culturecompass-hud') return;
@@ -565,7 +565,7 @@
     initDestinations();
     initExplore();
     initCue();
-    /* arriving at index.html#destinations: the opening has just changed height, so land on the chooser again */
+    /* arriving at HomePage.html#destinations: the opening has just changed height, so land on the chooser again */
     if (location.hash === '#destinations') {
       var t = CC.$('destinations');
       requestAnimationFrame(function () { window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0), behavior: 'instant' }); });

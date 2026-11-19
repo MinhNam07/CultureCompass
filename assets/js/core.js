@@ -18,6 +18,11 @@
     var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(window.location.search);
     return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : null;
   };
+  /* Messages between the home page and the globe iframe. Opened from file://, Chrome reports location.origin as
+     "file://" while the real origin is opaque ("null"), so an exact target or origin check would drop every message;
+     there the sender is still checked (event.source is our own frame). */
+  CC.frameOrigin = function () { return window.location.protocol === 'file:' || window.location.origin === 'null' ? '*' : window.location.origin; };
+  CC.sameOrigin = function (e) { return window.location.protocol === 'file:' || e.origin === window.location.origin; };
   CC.plural = function (n, one, many) { return n + ' ' + (n === 1 ? one : (many || one + 's')); };
   CC.$ = function (id) { return document.getElementById(id); };
 
@@ -136,7 +141,7 @@
   }
 
   /* ---------- settings ---------- */
-  var DEFAULTS = { sound: true, reduceMotion: null, textOnly: false };
+  var DEFAULTS = { sound: true, reduceMotion: null };
   CC.settings = {
     get: function () {
       var s = CC.store.get('settings', {});
@@ -155,12 +160,10 @@
     systemReduce: function () { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); },
     reduce: function () {
       var s = CC.settings.get();
-      if (s.textOnly) return true;
       return s.reduceMotion == null ? CC.settings.systemReduce() : !!s.reduceMotion;
     },
     apply: function () {
       document.documentElement.classList.toggle('cc-reduce-motion', CC.settings.reduce());
-      document.documentElement.classList.toggle('cc-text-only', CC.settings.get().textOnly);
     }
   };
   if (window.matchMedia) {
@@ -491,7 +494,7 @@
   CC.renderShell = function (opts) {
     opts = opts || {};
     var links = [
-      ['index.html', 'Destinations', 'destinations'],
+      ['HomePage.html#destinations', 'Destinations', 'destinations'],
       ['collection.html', 'Passport', 'collection'],
       ['about.html', 'About', 'about']
     ];
@@ -509,7 +512,7 @@
       header.innerHTML =
         '<a class="cc-skip" href="#main">Skip to content</a>' +
         '<div class="cc-wrap cc-header-in">' +
-          '<a class="cc-brand" href="index.html">' + CC.MARK + '<span>CultureCompass</span></a>' +
+          '<a class="cc-brand" href="HomePage.html">' + CC.MARK + '<span>CultureCompass</span></a>' +
           '<button type="button" class="cc-menu-btn" aria-expanded="false" aria-controls="cc-navwrap">' + CC.icon('menu') + 'Menu <span class="cc-count" data-coll-count hidden></span></button>' +
           '<nav class="cc-navwrap" id="cc-navwrap" aria-label="Main"><ul class="cc-nav">' + nav + '</ul></nav>' +
         '</div>';
@@ -539,7 +542,7 @@
           '<div class="cc-footer-grid">' +
             '<div class="cc-footer-about"><p class="cc-footer-mark">' + CC.MARK + 'CultureCompass</p>' +
               '<p>Understand the place before you arrive. A student UX prototype: stories and practice are set in Hà Nội, and customs vary between regions, families and places.</p></div>' +
-            '<div><h2>Explore</h2><ul><li><a href="index.html">The globe</a></li><li><a href="explore.html">Play Vietnam</a></li><li><a href="vietnam.html">Read about Vietnam</a></li></ul></div>' +
+            '<div><h2>Explore</h2><ul><li><a href="HomePage.html#destinations">The globe</a></li><li><a href="explore.html">Play Vietnam</a></li><li><a href="vietnam.html">Read about Vietnam</a></li></ul></div>' +
             '<div><h2>Your trip</h2><ul><li><a href="collection.html">Passport</a></li><li><button type="button" class="cc-footer-btn" data-bs-toggle="offcanvas" data-bs-target="#cc-settings" aria-controls="cc-settings">Sound, motion and text</button></li></ul></div>' +
             '<div><h2>About</h2><ul><li><a href="about.html">Method &amp; scope</a></li><li><a href="about.html#access">Accessibility</a></li></ul></div>' +
           '</div>' +
@@ -558,11 +561,9 @@
           '<label class="cc-switch"><strong>Sound</strong><input type="checkbox" role="switch" id="set-sound"' + (s.sound ? ' checked' : '') + '>' +
             '<span class="cc-meta">Phrases play only when you press Listen. Videos are always silent.</span></label>' +
           '<label class="cc-switch"><strong>Reduce motion</strong><input type="checkbox" role="switch" id="set-motion"' + (reduceState ? ' checked' : '') + '>' +
-            '<span class="cc-meta" id="set-motion-note">Videos stay still until you press Play; scenes show each action as still steps. ' + (s.reduceMotion == null ? 'Now following your device setting.' : '') + '</span></label>' +
-          '<label class="cc-switch"><strong>Text-first scenes</strong><input type="checkbox" role="switch" id="set-text"' + (s.textOnly ? ' checked' : '') + '>' +
-            '<span class="cc-meta">The same choices and explanations, with no animation at all.</span></label>' +
+            '<span class="cc-meta" id="set-motion-note">Videos stay still until you press Play, and the game camera stops easing and shaking. ' + (s.reduceMotion == null ? 'Now following your device setting.' : '') + '</span></label>' +
           '<h3 class="h4" style="margin-top:28px">Your data</h3>' +
-          '<p class="cc-meta" id="set-data-note">Your collection, reading log, scene progress and these settings stay in this browser on this device. Nothing is sent anywhere.</p>' +
+          '<p class="cc-meta" id="set-data-note">Your passport, reading log, game progress and these settings stay in this browser on this device. Nothing is sent anywhere.</p>' +
           '<button type="button" class="cc-btn cc-btn-quiet cc-btn-sm" id="set-clear">Clear my collection and progress</button>' +
           '<p class="cc-meta" id="set-msg" role="status" aria-live="polite" style="margin-top:10px"></p>' +
         '</div></div>' +
@@ -570,8 +571,7 @@
     while (oc.firstChild) document.body.appendChild(oc.firstChild);
 
     CC.$('set-sound').addEventListener('change', function (e) { CC.settings.set({ sound: e.target.checked }); });
-    CC.$('set-motion').addEventListener('change', function (e) { CC.settings.set({ reduceMotion: e.target.checked }); CC.$('set-motion-note').textContent = 'Videos stay still until you press Play; scenes show each action as still steps.'; });
-    CC.$('set-text').addEventListener('change', function (e) { CC.settings.set({ textOnly: e.target.checked }); });
+    CC.$('set-motion').addEventListener('change', function (e) { CC.settings.set({ reduceMotion: e.target.checked }); CC.$('set-motion-note').textContent = 'Videos stay still until you press Play, and the game camera stops easing and shaking.'; });
     CC.$('set-clear').addEventListener('click', function () {
       if (!window.confirm('Remove your collection, reading log and game progress (places, journal facts, stamps and chosen traveller) from this browser? Settings are kept.')) return;
       var ok = CC.store.clearUserData();

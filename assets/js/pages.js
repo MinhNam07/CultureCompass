@@ -78,6 +78,49 @@
       ['phrase', 'Phrases', 'phrase'],
       ['reminder', 'Reminder cards', 'bookmark']
     ];
+    /* Explore progress, read from the game's own save (cc.explore): a stamp for every place where each moment is done,
+       and the facts found there. Shown here so the passport holds the stamps and journal facts the game promises.
+       They are cleared with Settings › Clear my collection and progress, not one by one. */
+    function sceneKey(z, k) { return k.indexOf(':') === -1 ? (z.scenes ? z.scenes[0] : z.sceneId) + ':' + k : k; }
+    function exploreByCountry() {
+      var saves = ((CC.store.get('explore', {}) || {}).zones) || {};
+      var out = {};
+      (CC.exploreZones || []).forEach(function (z) {
+        var s = saves[z.id] || null;
+        var objs = z.objectives || [];
+        var k = objs.filter(function (o) { var st = s && s.steps && (s.steps[sceneKey(z, o.step)] || s.steps[o.step]); return !!(st && st.choice); }).length;
+        var found = s ? Object.keys(s.facts || {}) : [];
+        var facts = (z.facts || []).filter(function (f) { return found.indexOf(f.id) !== -1; });
+        var c = z.country || 'vietnam';
+        var e = out[c] = out[c] || { zones: [], stamps: 0, facts: 0 };
+        var done = !!(s && s.done) || (objs.length > 0 && k === objs.length);
+        e.zones.push({ z: z, done: done, k: k, n: objs.length, facts: facts });
+        if (done) e.stamps++;
+        e.facts += facts.length;
+      });
+      Object.keys(out).forEach(function (c) { if (!out[c].stamps && !out[c].facts) delete out[c]; });
+      return out;
+    }
+    function exploreHtml(e) {
+      var stamps = e.zones.map(function (x) {
+        var state = x.done ? 'Stamped' : x.k ? x.k + ' of ' + x.n + ' moments' : x.facts.length ? 'Started' : 'Not visited yet';
+        return '<li class="coll-stamp' + (x.done ? ' is-done' : '') + '">' +
+          '<span class="coll-stamp-mark" aria-hidden="true"><span>' + esc(x.z.stamp || x.z.title) + '</span><small>' + esc(x.z.place) + '</small></span>' +
+          '<span class="coll-stamp-text"><a href="explore.html?zone=' + esc(x.z.id) + '">' + esc(x.z.title) + '</a><span class="cc-meta">' + state + '</span></span></li>';
+      }).join('');
+      var facts = e.zones.filter(function (x) { return x.facts.length; }).map(function (x) {
+        return '<div class="coll-facts-place"><h4>' + esc(x.z.title) + ' <span class="cc-meta">' + CC.plural(x.facts.length, 'fact') + '</span></h4><ul class="coll-facts">' +
+          x.facts.map(function (f) {
+            var st = f.storyId && CC.byId(CC.stories, f.storyId);
+            return '<li class="coll-fact"><h5>' + esc(f.title) + '</h5><p>' + esc(f.text) + '</p>' +
+              (st ? '<p class="coll-fact-link"><a href="story.html?id=' + esc(st.id) + '&amp;from=collection">Read the story: ' + esc(st.title) + '</a></p>' : '') + '</li>';
+          }).join('') + '</ul></div>';
+      }).join('');
+      return '<div class="coll-group" data-type="stamp"><h3>' + CC.icon('compass') + 'Passport stamps <span class="cc-count">' + e.stamps + ' of ' + e.zones.length + '</span></h3>' +
+          '<p class="cc-meta coll-group-note">One stamp for each place in Explore where you finish every moment.</p><ul class="coll-stamps">' + stamps + '</ul></div>' +
+        (e.facts ? '<div class="coll-group" data-type="fact"><h3>' + CC.icon('lightbulb') + 'Facts from your journal <span class="cc-count">' + e.facts + '</span></h3>' +
+          '<p class="cc-meta coll-group-note">Everything you found while walking. To start again, use Settings › Clear my collection and progress.</p>' + facts + '</div>' : '');
+    }
     function reminderOf(id) { var sc = CC.scenarios.filter(function (s) { return s.reminder.id === id; })[0]; return sc ? { sc: sc, r: sc.reminder } : null; }
     function removeBtn(it, name) {
       return '<button type="button" class="cc-btn cc-btn-quiet cc-btn-sm" data-remove-type="' + it.type + '" data-remove-id="' + esc(it.id) + '">' + CC.icon('close') + 'Remove<span class="visually-hidden">: ' + esc(name) + '</span></button>';
@@ -111,22 +154,26 @@
     }
     function draw() {
       var items = CC.collection.list();
-      CC.$('coll-print').hidden = !items.length;
+      var explore = exploreByCountry();
+      var any = items.length || Object.keys(explore).length;
+      CC.$('coll-print').hidden = !any;
       if (!CC.store.ok) CC.$('coll-storage').textContent = 'This browser is blocking storage, so anything you save lasts only until you leave this page.';
-      if (!items.length) {
+      if (!any) {
         root.innerHTML = '<div class="cc-empty"><svg class="cc-empty-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/></svg>' +
-          '<h2 class="h3">Nothing saved yet</h2><p>Use the bookmark on any story, phrase or reminder card to keep it here for your trip. You can print it all before you go.</p>' +
+          '<h2 class="h3">Nothing here yet</h2><p>Walk through a place in Explore to collect its stamp and journal facts, or use the bookmark on any story, phrase or reminder card to keep it here for your trip. You can print it all before you go.</p>' +
           '<div class="scene-actions"><a class="cc-btn" href="explore.html">Play Vietnam ' + CC.arrow() + '</a><a class="cc-btn cc-btn-quiet" href="vietnam.html">Read about Vietnam</a></div></div>';
         return;
       }
       var byCountry = {};
       items.forEach(function (it) { var c = it.country || 'vietnam'; (byCountry[c] = byCountry[c] || []).push(it); });
+      Object.keys(explore).forEach(function (c) { byCountry[c] = byCountry[c] || []; });
       root.innerHTML = Object.keys(byCountry).map(function (cid) {
         var c = CC.byId(CC.countries, cid) || { name: cid, local: '', start: '' };
         var list = byCountry[cid];
+        var ex = explore[cid];
         return '<section class="coll-dest" aria-labelledby="coll-' + esc(cid) + '">' +
-          '<div class="coll-dest-head"><h2 id="coll-' + esc(cid) + '">' + esc(c.name) + '</h2><p class="cc-meta"><span lang="vi">' + esc(c.local) + '</span> · ' + esc(c.start) + '</p><p class="cc-meta">' + CC.plural(list.length, 'item') + ' saved</p></div>' +
-          '<div>' + TYPES.map(function (T) {
+          '<div class="coll-dest-head"><h2 id="coll-' + esc(cid) + '">' + esc(c.name) + '</h2><p class="cc-meta"><span lang="vi">' + esc(c.local) + '</span> · ' + esc(c.start) + '</p><p class="cc-meta">' + (ex ? CC.plural(ex.stamps, 'stamp') + ' · ' : '') + CC.plural(list.length, 'item') + ' saved</p></div>' +
+          '<div>' + (ex ? exploreHtml(ex) : '') + TYPES.map(function (T) {
             var of = list.filter(function (x) { return x.type === T[0]; });
             if (!of.length) return '';
             var rows = of.map(function (it) {

@@ -109,9 +109,11 @@
       var lawn = null;
       under.forEach(function (l, i) {
         self.drawLayerRows(l, 0, m.h - 1, 0, m.w - 1);
-        if (i === 0 && CC.groundFx) lawn = g.getImageData(0, 0, cv.width, cv.height);
+        /* Reading pixels back can be refused (Chrome treats images opened from file:// as cross-origin).
+           Then the map keeps its baked ground and only skips the kerb and hedge finishing. */
+        if (i === 0 && CC.groundFx) { try { lawn = g.getImageData(0, 0, cv.width, cv.height); } catch (e) { lawn = null; } }
       });
-      if (lawn) CC.groundFx.apply(g, lawn, m);
+      if (lawn) { try { CC.groundFx.apply(g, lawn, m); } catch (e) { /* keep the plain baked ground */ } }
       this.bg = cv; this.bgLayers = under;
     } catch (e) { this.bg = null; }
     this.ctx = keep;

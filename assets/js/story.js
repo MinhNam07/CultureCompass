@@ -134,7 +134,7 @@
     var html =
       '<header class="story-head story-enter' + (photo ? ' has-photo' : '') + (CC.storyMinutes(st) <= 1 ? ' is-short' : '') + '" data-bg="' + bg + '">' +
         (photo ? '<div class="story-head-media"><img src="' + esc(photo.file) + '" alt="' + esc(photo.alt) + '" decoding="async" fetchpriority="high"></div>' : '') +
-        '<ol class="cc-crumb" aria-label="Breadcrumb"><li><a href="index.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
+        '<ol class="cc-crumb" aria-label="Breadcrumb"><li><a href="HomePage.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
           (back.chapter ? '<li><a href="vietnam.html#' + back.chapter.anchor + '">' + esc(back.chapter.name) + '</a></li>' :
             back.topic ? '<li><a href="vietnam.html#' + back.topic.id + '">' + esc(back.topic.label) + '</a></li>' : '') +
           '<li><span aria-current="page">Story</span></li></ol>' +

@@ -10,7 +10,7 @@ function hashCountry() {
 }
 function tellParent(data: Record<string, unknown>) {
   if (window.parent === window) return;
-  window.parent.postMessage(data, window.location.origin === "null" ? "*" : window.location.origin);
+  window.parent.postMessage(data, window.location.protocol === "file:" || window.location.origin === "null" ? "*" : window.location.origin);
 }
 
 // Fixed positions keep the star field stable across previews and selections.
@@ -185,7 +185,7 @@ export default function Globe3DDemo({ embedded = false }: { embedded?: boolean }
       raf = info || Math.abs(x) + Math.abs(y) + Math.abs(vx) + Math.abs(vy) > 0.05 ? requestAnimationFrame(tick) : 0;
     };
     const onMsg = (e: MessageEvent) => {
-      if (e.source !== window.parent || e.origin !== window.location.origin || e.data?.type !== "culturecompass-stars") return;
+      if (e.source !== window.parent || (window.location.protocol !== "file:" && e.origin !== window.location.origin) || e.data?.type !== "culturecompass-stars") return;
       info = e.data as Info; at = performance.now();
       if (!raf) { last = 0; raf = requestAnimationFrame(tick); }
     };

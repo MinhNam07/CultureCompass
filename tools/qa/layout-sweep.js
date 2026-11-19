@@ -8,7 +8,7 @@
    Returns { page: { sw: page scroll width, W: viewport width, bad: [...] } }. */
 (async () => {
 const W0 = innerWidth, H0 = innerHeight;
-const pages=['index.html','vietnam.html','vietnam.html#food','story.html?id=st-hand&from=theme:people','story.html?id=st-stelae','scene.html?id=sc04','phrases.html','collection.html','about.html'];
+const pages=['HomePage.html','vietnam.html','vietnam.html#food','story.html?id=st-hand&from=theme:people','story.html?id=st-stelae','scene.html?id=sc04','phrases.html','collection.html','about.html'];
 const out={};
 for (const p of pages){ const f=document.createElement('iframe'); f.style.cssText=`position:fixed;left:0;top:0;width:${W0}px;height:${H0}px;border:0;opacity:0;pointer-events:none`; document.body.appendChild(f); f.src='/'+p; await new Promise(r=>f.onload=r); await new Promise(r=>setTimeout(r,900)); const d=f.contentDocument, w=f.contentWindow; const W=w.innerWidth; const bad=[];
  d.querySelectorAll('body *').forEach(el=>{ if(el.closest('svg')&&el.tagName!=='svg') return; if(el.closest('.story-thumb,.story-pic,.scene-pic,.frame,.visually-hidden,.offcanvas,[hidden],.cc-subnav-in,.atlas-lines,.hero-media,.dest-stage')) return; const r=el.getBoundingClientRect(); if(!r.width||!r.height) return; if(r.right>W+1||r.left<-1) bad.push('X '+el.tagName+'.'+String(el.className.baseVal??el.className).slice(0,40)+' '+Math.round(r.left)+'-'+Math.round(r.right));

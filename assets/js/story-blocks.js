@@ -249,7 +249,7 @@
   function opening(st, ctx, S) {
     var back = ctx.back, claims = CC.storyClaims(st);
     var nCheck = claims.filter(function (c) { return CC.unverified([c]); }).length;
-    var crumb = '<ol class="lx-crumb" aria-label="Breadcrumb"><li><a href="index.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
+    var crumb = '<ol class="lx-crumb" aria-label="Breadcrumb"><li><a href="HomePage.html#destinations">Destinations</a></li><li><a href="vietnam.html">Vietnam</a></li>' +
       (back.chapter ? '<li><a href="vietnam.html#' + back.chapter.anchor + '">' + esc(back.chapter.name) + '</a></li>' :
         back.topic ? '<li><a href="vietnam.html#' + back.topic.id + '">' + esc(back.topic.label) + '</a></li>' : '') +
       '<li><span aria-current="page">Story</span></li></ol>';

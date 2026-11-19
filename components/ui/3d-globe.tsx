@@ -4,6 +4,11 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Html, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { cn } from "@/lib/utils";
+// Earth textures (NASA Blue Marble and topology, from the three-globe examples) are bundled into globe.js as data
+// URLs: the globe then works offline, and WebGL accepts them when the site is opened from file://, where a
+// separate image file would count as cross-origin.
+import earthBlueMarble from "@/globe/textures/earth-blue-marble.jpg";
+import earthTopology from "@/globe/textures/earth-topology.png";
 
 // ============================================================================
 // Types
@@ -111,10 +116,8 @@ export function globeFocusGeometry(tiltDeg: number) {
 // Constants - Earth Texture URLs (NASA Blue Marble)
 // ============================================================================
 
-const DEFAULT_EARTH_TEXTURE =
-  "https://unpkg.com/three-globe@2.31.0/example/img/earth-blue-marble.jpg";
-const DEFAULT_BUMP_TEXTURE =
-  "https://unpkg.com/three-globe@2.31.0/example/img/earth-topology.png";
+const DEFAULT_EARTH_TEXTURE = earthBlueMarble;
+const DEFAULT_BUMP_TEXTURE = earthTopology;
 
 // ============================================================================
 // Utility Functions

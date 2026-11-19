@@ -9,12 +9,12 @@ function CountryDetails() {
   if (!country) return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="font-serif text-4xl">Country not found</h1>
-      <a className="mt-6 inline-block underline" href="index.html#destinations">Return to the globe</a>
+      <a className="mt-6 inline-block text-[#5FD8E8] underline" href="HomePage.html#destinations">Return to the globe</a>
     </main>
   );
   return (
     <main className="mx-auto max-w-6xl px-6 py-8 md:px-12 md:py-12">
-      <a href="index.html#destinations" className="text-sm underline underline-offset-4 focus-visible:outline-2">Back to the globe</a>
+      <a href="HomePage.html#destinations" className="text-sm text-[#5FD8E8] underline underline-offset-4 focus-visible:outline-2">Back to the globe</a>
       <header className="my-10 md:my-14">
         <div className="flex items-center gap-4">
           <img src={country.src} alt="" className="h-8 w-11 object-fill" />
@@ -24,7 +24,7 @@ function CountryDetails() {
       </header>
       <figure>
         <img src={country.image} alt={country.alt} className="max-h-[640px] w-full object-cover" />
-        <figcaption className="mt-3 text-sm leading-relaxed">
+        <figcaption className="mt-3 text-sm leading-relaxed text-[#A9B8C8]">
           {country.place}
         </figcaption>
       </figure>
@@ -42,7 +42,7 @@ function CountryDetails() {
           </ol>
         </section>
       </div>
-      <p className="mt-12 border-t border-[#302720]/20 pt-6 text-sm leading-7">This page is a visual introduction. Detailed cultural stories for this destination have not yet been researched for CultureCompass. <a href="vietnam.html" className="underline underline-offset-4">Explore our stories about Vietnam, starting in Hà Nội.</a></p>
+      <p className="mt-12 border-t border-[#1E3A4C] pt-6 text-sm leading-7 text-[#A9B8C8]">This page is a visual introduction. Detailed cultural stories for this destination have not yet been researched for CultureCompass. <a href="vietnam.html" className="text-[#5FD8E8] underline underline-offset-4">Explore our stories about Vietnam, starting in Hà Nội.</a></p>
     </main>
   );
 }

@@ -7,7 +7,7 @@ Built with HTML5, CSS, Bootstrap 5.3.3, vanilla JavaScript, inline SVG and GSAP 
 ## Open it
 
 - Install dependencies with `npm ci` before the first build. Node.js and npm are required; the local development server also uses Python 3.
-- After building, double-click `index.html` for the static content. The globe needs WebGL and internet access for its Earth textures; use the local server for the full experience.
+- After building, double-click `HomePage.html` (the home page; `index.html` only forwards to it for the site root). Everything, the globe's Earth textures included, works offline from `file://`; the globe needs WebGL.
 - **Local server (optional):**
   ```bash
   npm run dev
@@ -38,7 +38,7 @@ warnings. These are tracked content limitations, not build failures.
 
 | File | Purpose |
 |---|---|
-| `index.html` | Home: credited photo flow, immediate **Explore destinations** CTA and persistent skip link, clear Vietnam scope, then the destination chooser (hover or focus previews the country; click or Enter opens it) |
+| `HomePage.html` | Home: credited photo flow, immediate **Explore destinations** CTA and persistent skip link, clear Vietnam scope, then the destination chooser (hover or focus previews the country; click or Enter opens it) |
 | `vietnam.html` | Vietnam as a long editorial page in four colour chapters (Everyday life, Food & the table, Beliefs & temples, History & memory): poster hero, contents tiles, accordion strip, round views, bento clusters, story carousel, practice cover-stack, Văn Miếu stops, a quotation, a “which came first?” game, phrase tiles. Built from the `SECTIONS` config in `assets/js/explore.js`; pictures are labelled frames until photos are chosen. Old anchors (`#food`, `#themes`, `#practice` …) land on the matching section |
 | `vietnam-classic.html` | The earlier Vietnam page: cover, the **compass of six themes** (`#food`, `#language` … open a theme), three familiar places, the full story index, practice scenes, words to carry |
 | `story.html?id=st-…` | A culture story: standfirst, picture with credit, numbered source notes, where it applies, how it varies, phrases, sources with limits, optional practice, next/previous in the theme |
@@ -116,7 +116,7 @@ My collection, the reading log (“Read before”), scene progress (including th
 npm run zip
 ```
 
-Writes `../CultureCompass-submission.zip` with only what the site needs (pages, `assets/`, `vendor/`, docs, tools and `package.json`). It leaves out `node_modules/`, `background-vietnam/` (raw footage), `assets/game/raw/` and `assets/game/vendor/` (source art packs; only the three sheets the game loads and the licences go in), `_to_delete/` and hidden folders. Open `index.html` from the unzipped folder to check it.
+Writes `../CultureCompass-submission.zip` with only what the site needs (pages, `assets/`, `vendor/`, docs, tools and `package.json`). It leaves out `node_modules/`, `background-vietnam/` (raw footage), `assets/game/raw/` and `assets/game/vendor/` (source art packs; only the three sheets the game loads and the licences go in), `_to_delete/` and hidden folders. Open `HomePage.html` from the unzipped folder to check it.
 
 ## Design and QA
 
@@ -190,7 +190,7 @@ cultural scenes as their scope (`globe/country-intros.ts`).
 The homepage `#destinations` section embeds `globe.html?embed=1`. Its height
 follows the React content via a source-checked message, avoiding an inner
 scrollbar. Country clicks navigate the parent page. Detail-page return links
-lead back to `index.html#destinations`.
+lead back to `HomePage.html#destinations`.
 
 ### Content tracing beam
 

@@ -7,6 +7,6 @@ createRoot(root).render(<Globe3DDemo embedded={embedded} />);
 
 if (embedded) {
   new ResizeObserver(() => {
-    window.parent.postMessage({ type: "culturecompass-globe-height", height: Math.ceil(root.getBoundingClientRect().height) }, window.location.origin === "null" ? "*" : window.location.origin);
+    window.parent.postMessage({ type: "culturecompass-globe-height", height: Math.ceil(root.getBoundingClientRect().height) }, window.location.protocol === "file:" || window.location.origin === "null" ? "*" : window.location.origin);
   }).observe(root);
 }

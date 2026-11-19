@@ -638,7 +638,7 @@
     /* near the globe, the iframe's stars slide against the ship (at most 20 messages a second) */
     if ((t.phase === 'parked' || t.phase === 'swoop') && !m.phone && !hidden && onScreen && now - lastStarMsg > 50 && els.frame && els.frame.contentWindow) {
       lastStarMsg = now;
-      els.frame.contentWindow.postMessage({ type: 'culturecompass-stars', vx: sp.vx / m.vh, vy: sp.vy / m.vh, head: sp.h, parked: t.phase === 'parked' }, window.location.origin);
+      els.frame.contentWindow.postMessage({ type: 'culturecompass-stars', vx: sp.vx / m.vh, vy: sp.vy / m.vh, head: sp.h, parked: t.phase === 'parked' }, CC.frameOrigin());
     }
     var idle = ((atTop || intro === 'fly') && !document.hidden) || (t.phase === 'parked' && onScreen && !hidden && !m.phone);
     /* the pixel flame and the hover keep going while the ship is in view, even when the page rests
@@ -648,7 +648,7 @@
     else last = 0;
   }
   function kick() { if (on && !raf && !document.hidden) raf = requestAnimationFrame(frame); }
-  /* "Scroll to launch", beside the peeking nose (index.html; home.js shows it on its own when nothing flies) */
+  /* "Scroll to launch", beside the peeking nose (HomePage.html; home.js shows it on its own when nothing flies) */
   function cue() { return els.cue || (els.cue = CC.$('hero-cue')); }
 
   /* ---- setup ---- */
@@ -763,7 +763,7 @@
     });
     /* the iframe reports where the globe is, which flag the pointer is on, and whether a country is open */
     window.addEventListener('message', function (e) {
-      if (!els.frame || e.source !== els.frame.contentWindow || e.origin !== window.location.origin) return;
+      if (!els.frame || e.source !== els.frame.contentWindow || !CC.sameOrigin(e)) return;
       var d = e.data;
       if (!d || d.type !== 'culturecompass-rocket') return;
       globe = d;

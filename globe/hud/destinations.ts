@@ -68,16 +68,22 @@ const vietnam: HudCountry = {
       readHref: "vietnam.html#contents",
     },
     {
-      id: "hoian", name: "Hội An", ready: false,
-      hook: "The old town, lanterns at dusk and a tailor’s shop.",
-      lon: 108.33, lat: 15.88, labelDx: 14, labelDy: 16, labelAnchor: "start",
-      photo: countryPhoto("vn"), zones: [], readHref: "vietnam.html",
-    },
-    {
       id: "danang", name: "Đà Nẵng", ready: false,
       hook: "Beach mornings and a seafood market.",
       lon: 108.21, lat: 16.06, labelDx: 14, labelDy: -8, labelAnchor: "start",
-      photo: countryPhoto("vn"), zones: [], readHref: "vietnam.html",
+      photo: countryPhoto("vn"), zones: [], readHref: "vietnam.html?city=da-nang",
+    },
+    {
+      id: "hoian", name: "Hội An", ready: false,
+      hook: "The old town, lanterns at dusk and a tailor’s shop.",
+      lon: 108.33, lat: 15.88, labelDx: 14, labelDy: 16, labelAnchor: "start",
+      photo: countryPhoto("vn"), zones: [], readHref: "vietnam.html?city=hoi-an",
+    },
+    {
+      id: "hcm", name: "TP Hồ Chí Minh", ready: false,
+      hook: "Coffee on the pavement, life down the alleys, and an evening on a walking street.",
+      lon: 106.70, lat: 10.78, labelDx: 14, labelDy: 5, labelAnchor: "start",
+      photo: countryPhoto("vn"), zones: [], readHref: "vietnam.html?city=ho-chi-minh",
     },
   ],
 };

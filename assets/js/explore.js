@@ -1,4 +1,4 @@
-/* CultureCompass — country reading page (vietnam.html). The earlier compass page lives on as vietnam-classic.html.
+/* CultureCompass — country reading page (vietnam.html).
    Layout "Field Atlas": a cover with the city route (choose Hà Nội, Đà Nẵng, Hội An or TP Hồ Chí Minh; each city is its own
    panel, swapped in place, with its own URL ?city=…), then for Hà Nội a story finder and one chapter per theme. On wide screens each chapter keeps a
    picture (the plate) still on the left while the reading column scrolls on the right; the plate changes with the
@@ -564,7 +564,7 @@
       ['explore.html', 'Play Hà Nội', 'Walk through five places in a small pixel-art game and collect a passport stamp in each.'],
       ['collection.html', 'Your passport', 'Stamps, facts, phrases and stories you have kept, ready to print.'],
       ['about.html', 'How we work', 'How we write and what we leave out.'],
-      ['index.html', 'Other countries', 'Turn the globe. Vietnam is the only country with stories so far.']
+      ['HomePage.html#destinations', 'Other countries', 'Turn the globe. Vietnam is the only country with stories so far.']
     ];
     return '<section class="rd-sec rd-more" aria-labelledby="nav-title"><div class="rd-wrap rd-grid">' +
       '<div class="rd-more-side">' + head(2, 'Keep exploring', null, 'nav-title') + '</div>' +

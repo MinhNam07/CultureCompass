@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CultureCompass — Understand the place before you arrive</title>
+  <meta name="description" content="Explore the stories, traditions and everyday life behind your next destination. Starting with Vietnam, in Hà Nội.">
+  <meta name="theme-color" content="#302720">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/cc.css?v=20261112-onebtn">
+  <link rel="stylesheet" href="assets/css/refinements.css?v=20261112-noskip">
+  <script>document.documentElement.classList.add('cc-js');</script>
+  <link rel="stylesheet" href="assets/css/tracing-beam.css">
+  <link rel="icon" href="assets/img/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+</head>
+<body data-page="home">
+  <header id="cc-header"></header>
+
+  <main id="main" tabindex="-1">
+    <!-- Opening: photographs of cultural life around the world enter from the right and flow left as the page scrolls.
+         The section is tall and its stage is sticky, so scrolling stays native; home.js only maps scroll position
+         to one GSAP timeline. Without script, or with reduced motion, it reads top to bottom with no pin. -->
+    <section class="hero on-media" id="hero" aria-labelledby="hero-title">
+      <div class="hero-stage" id="hero-stage">
+        <div class="cc-wrap hero-copy" id="hero-copy">
+          <h1 id="hero-title">Understand the place before you arrive.</h1>
+          <p class="hero-sub">Explore the stories, traditions and everyday life behind your next destination.</p>
+          <div class="hero-entry"><div class="hero-actions"><a class="cc-btn on-media-btn hero-go" href="#destinations" data-to-destinations>Explore destinations <svg class="cc-icon cc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></div></div>
+        </div>
+        <p class="hero-cue" id="hero-cue" aria-hidden="true"><span>Scroll to launch</span><svg class="cc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5l6 6 6-6"/></svg></p>
+        <ul class="hero-flow" id="hero-flow" aria-label="Photographs of cultural life around the world"></ul>
+        <div class="cc-wrap hero-end" id="hero-end">
+          <h2 id="hero-end-title">Every place has a story.</h2>
+          <div class="hero-actions hero-cta"><a class="cc-btn on-media-btn hero-go" href="#destinations" id="hero-explore" data-to-destinations>Find your first destination <svg class="cc-icon cc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></div>
+          <noscript><p class="hero-note"><a href="vietnam.html">Open Vietnam, our first destination</a></p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Isolated globe keeps its Tailwind styles separate from the existing site. -->
+    <section id="destinations" class="globe-destinations" aria-label="Choose a destination" tabindex="-1">
+      <div class="cc-loader globe-loader" role="status"><svg class="cc-loader-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".45"/><circle cx="20" cy="20" r="12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1.4 2.6" opacity=".45"/><g class="cc-loader-needle"><path d="M20 5l4 15h-8z" fill="currentColor"/><path d="M20 35l-4-15h8z" fill="currentColor" opacity=".35"/></g></svg><span>Loading the globe…</span></div>
+      <iframe onload="this.parentNode.classList.add('is-loaded')" id="destination-globe" src="globe.html?embed=1" title="Choose a destination on the interactive globe" loading="lazy" scrolling="no"></iframe>
+      <noscript><p><a href="vietnam.html">Explore Vietnam, starting in Hà Nội</a></p></noscript>
+    </section>
+
+    <section class="cc-section how-wrap" aria-labelledby="how-title">
+      <div class="cc-wrap">
+        <div class="cc-rule cc-rule-left" aria-hidden="true"><i></i></div>
+        <h2 id="how-title">How a visit works</h2>
+        <ol class="how">
+          <li><h3>Walk through Hà Nội</h3><p>A small pixel-art game: arrive at a family home, cross the Old Quarter, eat at a street stall. You meet everyday moments and choose what to do. <a href="explore.html">Play Hà Nội</a></p></li>
+          <li><h3>Read the story behind it</h3><p>Short, sourced explanations of where a custom applies and how it varies, grouped by theme. <a href="vietnam.html">Read about Vietnam</a></p></li>
+          <li><h3>Keep what helps</h3><p>Save stories, phrases and reminder cards to your Passport, and collect a stamp for each place you walk through.</p></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <div id="cc-footer"></div>
+
+  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="assets/data/sources.js"></script>
+  <script src="assets/data/assets.js"></script>
+  <script src="assets/data/phrases.js"></script>
+  <script src="assets/data/scenarios.js"></script>
+  <script src="assets/data/explore.js"></script>
+  <script src="assets/data/stories.js"></script>
+  <script src="assets/data/topics.js"></script>
+  <script src="assets/data/countries.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/home.js?v=20261112-cue"></script>
+  <script src="assets/js/rocket.js?v=20261112-loop"></script>
+  <script defer src="assets/tracing-beam/tracing-beam.js"></script>
+</body>
+</html>
